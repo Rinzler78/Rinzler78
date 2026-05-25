@@ -1,6 +1,15 @@
-# Welcome to my GitHub Profile 👋
+<div align="center">
 
-![Available for hire](https://img.shields.io/badge/Available%20for%20hire-Yes-brightgreen) ![Languages](https://img.shields.io/badge/languages-FR%20%7C%20EN-blue) ![Location](https://img.shields.io/badge/location-France-blue) ![Visitors](https://komarev.com/ghpvc/?username=Rinzler78&label=Profile%20views&color=0e75b6&style=flat)
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=180&section=header&text=Boris%20Leclere&fontSize=42&fontColor=fff&animation=twinkling&fontAlignY=38&desc=Software%20Craftsman%20·%20Freelance%20CTO%20%2F%20Tech%20Lead&descAlignY=62&descSize=16" width="100%" alt="Boris Leclere — Software Craftsman · Freelance CTO / Tech Lead." />
+
+![Available for hire](https://img.shields.io/badge/Available%20for%20hire-Yes-brightgreen?style=for-the-badge)
+![Languages](https://img.shields.io/badge/Languages-FR%20%7C%20EN-blue?style=for-the-badge)
+![Location](https://img.shields.io/badge/Location-France-blue?style=for-the-badge)
+![Visitors](https://komarev.com/ghpvc/?username=Rinzler78&label=Profile%20views&color=0e75b6&style=for-the-badge)
+
+</div>
+
+---
 
 ## About me
 
@@ -28,15 +37,69 @@ For over 14 years, I have been building my expertise as a developer and CTO. Tod
 📬 **Let's connect!**  
 📧 borisleclere@gmail.com | 📞 +33 6 26 26 34 61
 
+---
+
 ## Useful links
 
-[![Discord](https://img.shields.io/badge/Discord-7289DA?style=flat&logo=discord&logoColor=white)](https://discordapp.com/users/rinzler84)[![LinkedIn](https://img.shields.io/badge/-LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/borisleclere)[![YouTube Channel](https://img.shields.io/badge/YouTube-FF0000?style=flat&logo=youtube&logoColor=white)](https://www.youtube.com/@borisleclere6095)[![Twitter Follow](https://img.shields.io/twitter/follow/BorisLeclere?style=social)](https://twitter.com/BorisLeclere)
+<div align="center">
 
-[![PyPI](https://img.shields.io/badge/PyPI-Rinzler78-3775A9?style=flat&logo=pypi&logoColor=white)](https://pypi.org/user/Rinzler78)
+[![Discord](https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white)](https://discordapp.com/users/rinzler84)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/borisleclere)
+[![Malt](https://img.shields.io/badge/Malt-FF5C57?style=for-the-badge&logo=malt&logoColor=white)](https://www.malt.fr/profile/borisleclere)
+[![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/@borisleclere6095)
+[![X](https://img.shields.io/badge/X-000000?style=for-the-badge&logo=x&logoColor=white)](https://twitter.com/BorisLeclere)
+[![PyPI](https://img.shields.io/badge/PyPI-Rinzler78-3775A9?style=for-the-badge&logo=pypi&logoColor=white)](https://pypi.org/user/Rinzler78)
 
-## Languages and Tools
+</div>
 
-![Shell](https://img.shields.io/badge/-Shell-5391FE?style=flat&logo=gnu-bash&logoColor=white) ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat&logo=python&logoColor=white) ![Docker](https://img.shields.io/badge/-Docker-2496ED?style=flat&logo=docker&logoColor=white) ![C#](https://img.shields.io/badge/-C%23-239120?style=flat&logo=c-sharp&logoColor=white) ![Xamarin](https://img.shields.io/badge/-Xamarin-3498DB?style=flat&logo=xamarin&logoColor=white) ![Microsoft Visual Studio Code](https://img.shields.io/badge/VS%20Code-007ACC?style=flat&logo=visual-studio-code&logoColor=white)
+---
+
+## 🛠️ Languages and Tools
+
+<div align="center">
+
+### 🔤 Languages
+![Python, C#, C++, C, Bash, Java, Go.](https://skillicons.dev/icons?i=python,cs,cpp,c,bash,java,go&perline=8 "Python, C#, C++, C, Bash, Java, Go.")
+
+### 📱 Mobile
+![Swift, Android Studio.](https://skillicons.dev/icons?i=swift,androidstudio&perline=8 "Swift, Android Studio.")
+&nbsp;
+<img src="https://img.shields.io/badge/Xamarin-3498DB?style=for-the-badge&logo=xamarin&logoColor=white" title="Xamarin.Forms" alt="Xamarin badge." />
+<img src="https://img.shields.io/badge/iOS-000000?style=for-the-badge&logo=ios&logoColor=white" title="iOS" alt="iOS badge." />
+<img src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=black" title="Android" alt="Android badge." />
+
+### 🔩 Embedded & Systems
+![Linux, Windows.](https://skillicons.dev/icons?i=linux,windows&perline=8 "Linux, Windows.")
+&nbsp;
+<img src="https://img.shields.io/badge/Windows_CE-0078D6?style=for-the-badge&logo=windows&logoColor=white" title="Windows CE 5.0 / 6.0" alt="Windows CE badge." />
+<img src="https://img.shields.io/badge/NFC-ISO_14443%2F15693-333333?style=for-the-badge" title="NFC ISO 14443 / 15693" alt="NFC ISO 14443/15693 badge." />
+<img src="https://img.shields.io/badge/BLE-0082FC?style=for-the-badge&logo=bluetooth&logoColor=white" title="Bluetooth Low Energy" alt="BLE badge." />
+
+### 🌐 Backend & Web
+![.NET, FastAPI, Node.js.](https://skillicons.dev/icons?i=dotnet,fastapi,nodejs&perline=8 ".NET, FastAPI, Node.js.")
+&nbsp;
+<img src="https://img.shields.io/badge/ASP.NET_Web_API-512BD4?style=for-the-badge&logo=dotnet&logoColor=white" title="ASP.NET Web API 2" alt="ASP.NET Web API badge." />
+<img src="https://img.shields.io/badge/Blazor-512BD4?style=for-the-badge&logo=blazor&logoColor=white" title="Blazor WASM / Server" alt="Blazor badge." />
+
+### ⚙️ DevOps & Infra
+![Docker, GitHub Actions, Linux, Git, VS Code, Visual Studio.](https://skillicons.dev/icons?i=docker,githubactions,linux,git,vscode,visualstudio&perline=8 "Docker, GitHub Actions, Linux, Git, VS Code, Visual Studio.")
+&nbsp;
+<img src="https://img.shields.io/badge/Portainer-13BEF9?style=for-the-badge&logo=portainer&logoColor=white" title="Portainer" alt="Portainer badge." />
+
+### 🤖 AI & LLM
+![PyTorch, TensorFlow.](https://skillicons.dev/icons?i=pytorch,tensorflow&perline=8 "PyTorch, TensorFlow.")
+&nbsp;
+<img src="https://img.shields.io/badge/OpenAI-412991?style=for-the-badge&logo=openai&logoColor=white" title="OpenAI API v1.x" alt="OpenAI badge." />
+<img src="https://img.shields.io/badge/LangChain-1C3C3C?style=for-the-badge&logoColor=white" title="LangChain 0.2.x" alt="LangChain badge." />
+
+### ⛓️ Blockchain
+<img src="https://img.shields.io/badge/Cosmos_SDK-2E3148?style=for-the-badge&logo=cosmos&logoColor=white" title="Cosmos SDK" alt="Cosmos SDK badge." />
+<img src="https://img.shields.io/badge/Osmosis-E3196F?style=for-the-badge&logoColor=white" title="Osmosis (OSMO)" alt="Osmosis badge." />
+<img src="https://img.shields.io/badge/AIOZ_Network-00C2FF?style=for-the-badge&logoColor=white" title="AIOZ Network" alt="AIOZ Network badge." />
+
+</div>
+
+---
 
 ## 🚩 Featured Projects
 
@@ -55,24 +118,53 @@ For over 14 years, I have been building my expertise as a developer and CTO. Tod
   _Simplifies the setup and maintenance of AIOZ nodes for decentralized content delivery. Ready-to-use, with best practices for containerization._  
   <sub>Open source, community-driven, and regularly updated.</sub>
 
-## GitHub Stats
+---
 
-![GitHub followers](https://img.shields.io/github/followers/Rinzler78?label=Follow&style=social) ![GitHub stars](https://img.shields.io/github/stars/Rinzler78?affiliations=OWNER%2CCOLLABORATOR&style=social)
+## 📊 GitHub Stats
+
+<div align="center">
+
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=Rinzler78&theme=github_dark" height="120" alt="GitHub stats card." />
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=Rinzler78&theme=github_dark" height="120" alt="Top languages by repository card." />
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=Rinzler78&theme=github_dark" height="120" alt="Top languages by commit card." />
+
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Rinzler78&theme=github_dark" width="100%" alt="GitHub profile details and contribution timeline." />
+
+<img src="https://streak-stats.demolab.com/?user=Rinzler78&theme=dark" alt="GitHub contribution streak stats." />
+
+</div>
 
 ---
 
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=Rinzler78&layout=compact&theme=dark)
+## 🏆 GitHub Trophies
+
+<div align="center">
+
+<img src="https://github-profile-trophy.vercel.app/?username=Rinzler78&theme=darkhub" alt="GitHub profile trophies." />
+
+</div>
 
 ---
 
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=Rinzler78&show_icons=true&theme=dark)
+## 🐍 Contribution Graph
+
+<div align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Rinzler78/Rinzler78/output/github-contribution-grid-snake-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Rinzler78/Rinzler78/output/github-contribution-grid-snake.svg" />
+    <img alt="GitHub contribution grid snake animation." src="https://raw.githubusercontent.com/Rinzler78/Rinzler78/output/github-contribution-grid-snake-dark.svg" width="100%" />
+  </picture>
+</div>
 
 ---
 
-![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=Rinzler78&theme=dark)
+<div align="center">
 
----
-
-![GitHub Trophies](https://github-profile-trophy.vercel.app/?username=Rinzler78&theme=darkhub)
+![GitHub followers](https://img.shields.io/github/followers/Rinzler78?label=Follow&style=social)
+![GitHub stars](https://img.shields.io/github/stars/Rinzler78?affiliations=OWNER%2CCOLLABORATOR&style=social)
 
 Thank you for visiting!
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=80&section=footer" width="100%" alt="Footer wave decoration." />
+
+</div>
