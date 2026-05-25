@@ -124,12 +124,6 @@ For over 14 years, I have been building my expertise as a developer and CTO. Tod
 
 <div align="center">
 
-<img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=Rinzler78&theme=github_dark" height="120" alt="GitHub stats card." />
-<img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=Rinzler78&theme=github_dark" height="120" alt="Top languages by repository card." />
-<img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=Rinzler78&theme=github_dark" height="120" alt="Top languages by commit card." />
-
-<img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Rinzler78&theme=github_dark" width="100%" alt="GitHub profile details and contribution timeline." />
-
 <img src="https://streak-stats.demolab.com/?user=Rinzler78&theme=dark" alt="GitHub contribution streak stats." />
 
 </div>
