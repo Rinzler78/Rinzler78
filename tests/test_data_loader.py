@@ -117,3 +117,18 @@ def test_check_referential_integrity_raises_on_dangling_timeline_tech():
 
     with pytest.raises(DataLoadError, match="missing"):
         check_referential_integrity(bag)
+
+
+def test_check_referential_integrity_passes_on_empty_bag():
+    # No entities at all — nothing to check, should not raise
+    check_referential_integrity({})
+
+
+def test_check_referential_integrity_ignores_collections_without_foreign_keys():
+    # Services, modes, methodology have no FKs — checker must not error
+    bag = {
+        "services": [{"id": "architecture"}],
+        "modes": [{"id": "pompier"}],
+        "methodology": [{"id": "simple-before-clever"}],
+    }
+    check_referential_integrity(bag)

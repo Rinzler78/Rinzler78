@@ -68,7 +68,9 @@ def _level_from_score(score: int) -> Level:
 def _extract_overrides(tech: dict) -> tuple[int | None, Level | None]:
     score_override = tech.get("score_override")
     level_override_raw = tech.get("level_override")
-    level_override = Level(level_override_raw) if level_override_raw else None
+    level_override = (
+        Level(level_override_raw) if level_override_raw is not None else None
+    )
     if score_override is not None and level_override is not None:
         derived = _level_from_score(score_override)
         if derived != level_override:

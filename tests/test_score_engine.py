@@ -192,6 +192,14 @@ def test_compute_skill_both_overrides_coherent_applied_together():
     assert result.override_applied is True
 
 
+def test_compute_skill_empty_string_level_override_is_rejected():
+    # An empty string is an invalid Level — must not be silently ignored
+    tech = {"id": "x", "since": 2026, "versions": [], "level_override": ""}
+
+    with pytest.raises(ValueError):
+        compute_skill(tech, [], date(2026, 1, 1))
+
+
 def test_compute_skill_incoherent_overrides_raises_value_error():
     # score_override=95 maps to expert but level_override claims working
     tech = {
@@ -204,6 +212,35 @@ def test_compute_skill_incoherent_overrides_raises_value_error():
 
     with pytest.raises(ValueError, match="incoherent|coherent"):
         compute_skill(tech, [], date(2026, 1, 1))
+
+
+def test_compute_skill_combines_all_factors_below_clamp():
+    # Intermediate, non-trivial case: every factor contributes, none caps the total.
+    # since=2014, today=2026 → 12 active years × 3 = 36 (base, not capped)
+    # 3 versions × 3 = 9 (not capped)
+    # 4 projects × 3 = 12 (not capped)
+    # 2 distinct domains → (2-1) × 5 = 5 (not capped)
+    # featured=False → 0 bonus
+    # no until → no oubli
+    # Total = 36 + 9 + 12 + 5 = 62 → professional (55-69)
+    tech = {
+        "id": "docker",
+        "since": 2014,
+        "versions": [{"id": "v1"}, {"id": "v2"}, {"id": "v3"}],
+        "featured": False,
+    }
+    projects = [
+        {"id": "p1", "domain": "backend", "tech_ids": ["docker"]},
+        {"id": "p2", "domain": "backend", "tech_ids": ["docker"]},
+        {"id": "p3", "domain": "devops", "tech_ids": ["docker"]},
+        {"id": "p4", "domain": "devops", "tech_ids": ["docker"]},
+    ]
+    today = date(2026, 1, 1)
+
+    result = compute_skill(tech, projects, today)
+
+    assert result.score == 62
+    assert result.level == Level.PROFESSIONAL
 
 
 def test_compute_skill_score_clamped_at_ninety_nine_when_all_max():
