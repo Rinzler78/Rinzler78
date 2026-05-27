@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 184" width="1200" height="184" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Modes d'intervention — 4 prestations : CTO temps partiel, Architecte de solutions, Renfort technique d'urgence, Cofondateur technique freelance">
+  <title>Modes d'intervention</title>
+  <desc>Cards présentant les modes d'intervention freelance.</desc>
+
+  <rect width="1200" height="184" fill="#0d1117"/>
+  <rect x="0" y="0" width="1200" height="184" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1"/>  <text x="24" y="22" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="11" font-weight="600" letter-spacing="0.08em" fill="#8b949e">MODES D'INTERVENTION</text>
+    <rect x="24.0" y="50" width="276.0" height="110" rx="6" fill="#1c2128" stroke="#30363d" stroke-width="1"/>
+    <rect x="24.0" y="50" width="3" height="110" rx="1.5" fill="#f78166"/>
+
+    <text x="40.0" y="76" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#f0f6fc">CTO temps partiel</text>
+    <text x="40.0" y="100" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="11" fill="#8b949e">Direction technique externalisée sur</text>    <text x="40.0" y="116" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="11" fill="#8b949e">la durée — décisions d'architecture,</text>    <text x="40.0" y="132" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="11" fill="#8b949e">recrutement, roadmap, mentoring.</text>
+    <rect x="316.0" y="50" width="276.0" height="110" rx="6" fill="#1c2128" stroke="#30363d" stroke-width="1"/>
+    <rect x="316.0" y="50" width="3" height="110" rx="1.5" fill="#f78166"/>
+
+    <text x="332.0" y="76" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#f0f6fc">Architecte de solutions</text>
+    <text x="332.0" y="100" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="11" fill="#8b949e">Mission courte (1 à 3 semaines) :</text>    <text x="332.0" y="116" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="11" fill="#8b949e">audit, choix de stack, refonte</text>    <text x="332.0" y="132" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="11" fill="#8b949e">d'architecture, plan de migration.</text>
+    <rect x="608.0" y="50" width="276.0" height="110" rx="6" fill="#1c2128" stroke="#30363d" stroke-width="1"/>
+    <rect x="608.0" y="50" width="3" height="110" rx="1.5" fill="#f78166"/>
+
+    <text x="624.0" y="76" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#f0f6fc">Renfort technique d'urgence</text>
+    <text x="624.0" y="100" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="11" fill="#8b949e">Incident production, dette critique,</text>    <text x="624.0" y="116" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="11" fill="#8b949e">déploiement bloqué, équipe submergée.</text>    <text x="624.0" y="132" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="11" fill="#8b949e">J'éteins l'incendie et je documente le</text>
+    <rect x="900.0" y="50" width="276.0" height="110" rx="6" fill="#1c2128" stroke="#30363d" stroke-width="1"/>
+    <rect x="900.0" y="50" width="3" height="110" rx="1.5" fill="#f78166"/>
+
+    <text x="916.0" y="76" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#f0f6fc">Cofondateur technique freelance</text>
+    <text x="916.0" y="100" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="11" fill="#8b949e">Porter un produit de zéro à mise en</text>    <text x="916.0" y="116" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="11" fill="#8b949e">marché, en s'engageant aux côtés du</text>    <text x="916.0" y="132" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="11" fill="#8b949e">fondateur non-tech.</text></svg>

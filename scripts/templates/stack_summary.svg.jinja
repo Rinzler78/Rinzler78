@@ -1,0 +1,42 @@
+{%- import '_panel.svg.jinja' as p -%}
+{%- set width = 620 -%}
+{%- set domains_ordered = domains | sort(attribute='order') -%}
+{%- set row_h = 28 -%}
+{%- set header_h = 50 -%}
+{%- set height = header_h + domains_ordered | length * row_h + 20 -%}
+{%- set pal = theme.palette -%}
+
+{%- set max_years = 2026 - profile.since_coding -%}
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {{ width }} {{ height }}" width="{{ width }}" height="{{ height }}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Stack summary — {{ domains | length }} domaines de compétence avec ancienneté en années">
+  <title>Stack summary</title>
+  <desc>Panel listant les domaines de compétence avec une barre de progression représentant l'ancienneté.</desc>
+
+  <rect width="{{ width }}" height="{{ height }}" fill="{{ pal.bg }}"/>
+  {{ p.panel(0, 0, width, height, 'STACK / EXPERIENCE') }}
+
+  {%- for d in domains_ordered %}
+    {%- set y = header_h + loop.index0 * row_h %}
+    {%- set techs = techs_by_domain(d.id) %}
+    {%- set has_expert = techs | selectattr('level', 'equalto', 'expert') | list | length > 0 %}
+    {%- set has_intermediate = techs | selectattr('level', 'equalto', 'intermediate') | list | length > 0 %}
+    {%- if has_expert %}
+      {%- set color = 'accent' %}
+    {%- elif has_intermediate %}
+      {%- set color = 'info' %}
+    {%- else %}
+      {%- set color = 'text_dim' %}
+    {%- endif %}
+    {%- set since_values = techs | map(attribute='since') | reject('none') | list %}
+    {%- if since_values %}
+      {%- set first_year = since_values | min %}
+      {%- set years = 2026 - first_year %}
+      {%- set pct = (years * 100 / max_years) | round | int %}
+      {%- set value_text = years ~ 'y · since ' ~ first_year %}
+    {%- else %}
+      {%- set pct = 10 %}
+      {%- set value_text = '—' %}
+    {%- endif %}
+    {{ p.bar(24, y, width - 48, d.label, value_text, pct, color) }}
+  {%- endfor %}
+</svg>

@@ -1,0 +1,30 @@
+# Secrets — JAMAIS committer
+.env
+.env.*
+!.env.example
+
+# Worktrees Claude (règle globale CLAUDE.md)
+.worktrees/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Playwright MCP
+.playwright-mcp/

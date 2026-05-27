@@ -1,0 +1,28 @@
+{%- import '_panel.svg.jinja' as p -%}
+{%- set width = 300 -%}
+{%- set height = 280 -%}
+{%- set pal = theme.palette -%}
+{%- set years_coding = 2026 - profile.since_coding -%}
+{%- set public_repos = projects | length -%}
+{%- set active_projects = projects | selectattr('state', 'equalto', 'active') | list | length -%}
+{%- set total_techs = techs | length -%}
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {{ width }} {{ height }}" width="{{ width }}" height="{{ height }}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Activity stats — {{ years_coding }} années de code, {{ total_techs }} technologies maîtrisées, {{ public_repos }} dépôts publics, {{ active_projects }} actifs">
+  <title>Activity stats</title>
+  <desc>Cards de statistiques quantifiables : années de code, technologies, dépôts publics, projets actifs.</desc>
+
+  <rect width="{{ width }}" height="{{ height }}" fill="{{ pal.bg }}"/>
+  {{ p.panel(0, 0, width, height, 'ACTIVITY') }}
+
+  {{ p.stat(24, 90, years_coding, 'YEARS OF CODE') }}
+  {{ p.stat(160, 90, total_techs, 'TECHNOLOGIES') }}
+  {{ p.stat(24, 180, public_repos, 'PUBLIC REPOS') }}
+  {{ p.stat(160, 180, active_projects, 'ACTIVE NOW') }}
+
+  <!-- Separator -->
+  <line x1="24" y1="220" x2="{{ width - 24 }}" y2="220" stroke="{{ pal.border_muted }}" stroke-width="1"/>
+
+  <!-- Footer ligne avec uptime -->
+  <text x="24" y="248" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="11" fill="{{ pal.text_muted }}">$ uptime --since=</text>
+  <text x="174" y="248" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="11" fill="{{ pal.accent }}" font-weight="600">{{ profile.since_coding }}</text>
+  <text x="24" y="265" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="11" fill="{{ pal.text }}">&gt; {{ profile.tagline }}_</text>
+</svg>

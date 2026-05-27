@@ -1,0 +1,37 @@
+{%- import '_panel.svg.jinja' as p -%}
+{%- set width = 260 -%}
+{%- set events = timeline | rejectattr('is_origin') | list -%}
+{%- set header_h = 50 -%}
+{%- set row_h = 22 -%}
+{%- set height = header_h + events | length * row_h + 20 -%}
+{%- set pal = theme.palette -%}
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {{ width }} {{ height }}" width="{{ width }}" height="{{ height }}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Timeline mini — {{ events | length }} jalons de carrière du plus récent au plus ancien">
+  <title>Timeline mini</title>
+  <desc>Frise minimaliste des jalons clés du parcours, du plus récent au plus ancien.</desc>
+
+  <rect width="{{ width }}" height="{{ height }}" fill="{{ pal.bg }}"/>
+  {{ p.panel(0, 0, width, height, 'TIMELINE') }}
+
+  <!-- Vertical line -->
+  <line x1="56" y1="{{ header_h + 6 }}" x2="56" y2="{{ header_h + events | length * row_h - 4 }}" stroke="{{ pal.border }}" stroke-width="1"/>
+
+  {%- for event in events %}
+    {%- set y = header_h + 8 + loop.index0 * row_h %}
+    {%- set is_now = event.is_now %}
+    {%- set is_highlight = event.highlight %}
+    {%- set dot_color = 'accent' if (is_now or is_highlight) else 'text_dim' %}
+    {%- set dot_r = 5 if is_now else (4 if is_highlight else 3) %}
+
+    <text x="20" y="{{ y + 4 }}" text-anchor="end" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="11" fill="{{ pal.text if (is_now or is_highlight) else pal.text_muted }}" font-weight="{{ 700 if is_now else (600 if is_highlight else 400) }}">{{ event.year }}</text>
+
+    <circle cx="56" cy="{{ y }}" r="{{ dot_r }}" fill="{{ pal.bg }}" stroke="{{ pal[dot_color] }}" stroke-width="1.5"/>
+    {%- if is_now %}
+    <circle cx="56" cy="{{ y }}" r="{{ dot_r + 4 }}" fill="none" stroke="{{ pal.accent }}" stroke-width="1.5" opacity="0">
+      <animate attributeName="r" values="{{ dot_r }};{{ dot_r + 8 }};{{ dot_r }}" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.7;0;0.7" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    {%- endif %}
+
+    <text x="68" y="{{ y + 4 }}" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="11" fill="{{ pal.text if (is_now or is_highlight) else pal.text_muted }}">{{ event.label | truncate(28, true, '…') }}</text>
+  {%- endfor %}
+</svg>

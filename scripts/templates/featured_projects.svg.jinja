@@ -1,0 +1,49 @@
+{%- import '_panel.svg.jinja' as p -%}
+{%- set width = 1200 -%}
+{%- set highlighted = projects_highlighted() -%}
+{%- set cols = 3 -%}
+{%- set card_w = (width - 48 - (cols - 1) * 16) / cols -%}
+{%- set card_h = 120 -%}
+{%- set rows = ((highlighted | length) + cols - 1) // cols -%}
+{%- set header_h = 50 -%}
+{%- set height = header_h + rows * (card_h + 16) + 8 -%}
+{%- set pal = theme.palette -%}
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {{ width }} {{ height }}" width="{{ width }}" height="{{ height }}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Featured projects — {{ highlighted | length }} dépôts publics phares groupés en cards">
+  <title>Featured projects</title>
+  <desc>Grid de cards : projets publics phares avec leur stack et description.</desc>
+
+  <rect width="{{ width }}" height="{{ height }}" fill="{{ pal.bg }}"/>
+  {{ p.panel(0, 0, width, height, 'FEATURED PROJECTS') }}
+
+  {%- for proj in highlighted %}
+    {%- set col = loop.index0 % cols %}
+    {%- set row = loop.index0 // cols %}
+    {%- set x = 24 + col * (card_w + 16) %}
+    {%- set y = header_h + row * (card_h + 16) %}
+    {%- set domain = domain_by_id(proj.domain) %}
+
+    <!-- card -->
+    <rect x="{{ x }}" y="{{ y }}" width="{{ card_w }}" height="{{ card_h }}" rx="6" fill="{{ pal.panel_alt }}" stroke="{{ pal.border }}" stroke-width="1"/>
+
+    <!-- accent line top -->
+    <rect x="{{ x }}" y="{{ y }}" width="{{ card_w }}" height="2" rx="1" fill="{{ pal.accent }}"/>
+
+    <!-- name -->
+    <text x="{{ x + 16 }}" y="{{ y + 28 }}" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="14" font-weight="700" fill="{{ pal.text }}">{{ proj.name | truncate(28, true, '…') }}</text>
+
+    <!-- domain chip / state -->
+    <text x="{{ x + card_w - 16 }}" y="{{ y + 28 }}" text-anchor="end" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="10" fill="{{ pal.accent }}" letter-spacing="0.08em">{{ domain.id | upper if domain else proj.domain | upper }}</text>
+
+    <!-- stack -->
+    <text x="{{ x + 16 }}" y="{{ y + 50 }}" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="11" fill="{{ pal.text_muted }}">{{ proj.stack_label | truncate(46, true, '…') }}</text>
+
+    <!-- description -->
+    <text x="{{ x + 16 }}" y="{{ y + 74 }}" font-family="'{{ theme.fonts.body }}', {{ theme.fonts.body_fallback }}" font-size="11" fill="{{ pal.text }}" opacity="0.85">{{ proj.description | truncate(70, true, '…') }}</text>
+
+    <!-- footer : extra metric ou state -->
+    {%- if proj.extra_metric %}
+    <text x="{{ x + 16 }}" y="{{ y + card_h - 14 }}" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="10" fill="{{ pal.warn }}">★ {{ proj.extra_metric }}</text>
+    {%- endif %}
+    <text x="{{ x + card_w - 16 }}" y="{{ y + card_h - 14 }}" text-anchor="end" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="10" fill="{{ pal.text_muted }}">→ github</text>
+  {%- endfor %}
+</svg>

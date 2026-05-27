@@ -16,8 +16,8 @@ jobs:
         with:
           github_user_name: Rinzler78
           outputs: |
-            dist/github-contribution-grid-snake.svg
-            dist/github-contribution-grid-snake-dark.svg?palette=github-dark
+            dist/github-contribution-grid-snake.svg?color_snake=%23C75D3E&color_dots=%23FAF7F2,%23EAD9C8,%23D6B79A,%23C75D3E,%231A1A1F
+            dist/github-contribution-grid-snake-dark.svg?color_snake=%23FFB454&color_dots=%2314171C,%233A2E26,%237F5238,%23C75D3E,%23FFB454
 
       - uses: crazy-max/ghaction-github-pages@v4
         with:

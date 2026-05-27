@@ -1,0 +1,56 @@
+[
+  {
+    "id": "embedded",
+    "label": "Embedded & Systems",
+    "order": 1,
+    "show_in_id_card": true,
+    "id_card_summary": "Windows CE 5.0/6.0 · NFC ISO 14443/15693 · BLE · GPS",
+    "id_card_daterange": "2009 → 2023"
+  },
+  {
+    "id": "mobile",
+    "label": "Mobile",
+    "order": 2,
+    "show_in_id_card": true,
+    "id_card_summary": ".NET MAUI · Xamarin.Forms 5.x · iOS Objective-C",
+    "id_card_daterange": "2011 → today"
+  },
+  {
+    "id": "languages",
+    "label": "Languages",
+    "order": 3,
+    "show_in_id_card": false
+  },
+  {
+    "id": "backend",
+    "label": "Backend & Web",
+    "order": 4,
+    "show_in_id_card": true,
+    "id_card_summary": "C# / .NET 8 / 10 · ASP.NET Core · Blazor · FastAPI · EF Core",
+    "id_card_daterange": null
+  },
+  {
+    "id": "devops",
+    "label": "DevOps & Infrastructure",
+    "order": 5,
+    "show_in_id_card": true,
+    "id_card_summary": "Docker 24.x · Compose v2 · GitHub Actions · Linux Ubuntu LTS",
+    "id_card_daterange": null
+  },
+  {
+    "id": "ai-llm",
+    "label": "AI & LLM",
+    "order": 6,
+    "show_in_id_card": true,
+    "id_card_summary": "Claude API SDK · OpenAI v1.x · LangChain 0.2.x · LiteLLM",
+    "id_card_daterange": null
+  },
+  {
+    "id": "blockchain",
+    "label": "Blockchain",
+    "order": 7,
+    "show_in_id_card": true,
+    "id_card_summary": "Cosmos SDK · CometBFT · Idena · AIOZ · Osmosis",
+    "id_card_daterange": null
+  }
+]

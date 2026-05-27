@@ -1,0 +1,51 @@
+{%- import '_panel.svg.jinja' as p -%}
+{%- set width = 1200 -%}
+{%- set height = 200 -%}
+{%- set pal = theme.palette -%}
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {{ width }} {{ height }}" width="{{ width }}" height="{{ height }}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Header — {{ profile.name }}, {{ profile.role }}. Disponible. Basé en {{ profile.location.region }}.">
+  <title>{{ profile.name }} — header</title>
+  <desc>Bandeau d'identité du dashboard : nom, rôle, statut, langues, location.</desc>
+
+  <rect width="{{ width }}" height="{{ height }}" fill="{{ pal.bg }}"/>
+
+  {{ p.panel(0, 0, width, height, '') }}
+
+  <!-- accent stroke gauche -->
+  <rect x="0" y="0" width="4" height="{{ height }}" rx="2" fill="{{ pal.accent }}"/>
+
+  <!-- name -->
+  <text x="40" y="68" font-family="'{{ theme.fonts.display }}', {{ theme.fonts.display_fallback }}" font-size="42" font-weight="700" fill="{{ pal.text }}" letter-spacing="-0.02em">{{ profile.name }}</text>
+
+  <!-- role -->
+  <text x="40" y="98" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="14" fill="{{ pal.accent }}" letter-spacing="0.02em">{{ profile.role }}</text>
+
+  <!-- status row -->
+  <g transform="translate(40 130)">
+    {{ p.status_dot(6, 8) }}
+    <text x="20" y="12" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="12" fill="{{ pal.success }}" font-weight="600">{{ profile.status }}</text>
+
+    <text x="120" y="12" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="12" fill="{{ pal.text_muted }}">·</text>
+    <text x="135" y="12" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="12" fill="{{ pal.text }}">{{ profile.location.city }}, {{ profile.location.country }}</text>
+
+    <text x="380" y="12" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="12" fill="{{ pal.text_muted }}">·</text>
+    <text x="395" y="12" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="12" fill="{{ pal.text }}">{{ profile.languages | join(' / ') }}</text>
+
+    <text x="465" y="12" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="12" fill="{{ pal.text_muted }}">·</text>
+    <text x="480" y="12" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="12" fill="{{ pal.text }}">{{ 2026 - profile.since_coding }} years of code</text>
+  </g>
+
+  <!-- contact CTAs en haut à droite -->
+  <g transform="translate({{ width - 380 }} 36)">
+    <a href="mailto:{{ profile.contacts.email_pro }}">
+      <rect x="0" y="0" width="170" height="36" rx="6" fill="{{ pal.accent }}" stroke="{{ pal.accent }}" stroke-width="1"/>
+      <text x="85" y="23" text-anchor="middle" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="12" font-weight="600" fill="{{ pal.bg }}">✉  email</text>
+    </a>
+    <a href="{{ profile.links.linkedin }}">
+      <rect x="180" y="0" width="170" height="36" rx="6" fill="{{ pal.panel_alt }}" stroke="{{ pal.border }}" stroke-width="1"/>
+      <text x="265" y="23" text-anchor="middle" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="12" font-weight="600" fill="{{ pal.text }}">in  linkedin</text>
+    </a>
+  </g>
+
+  <!-- tagline en bas -->
+  <text x="40" y="178" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="11" fill="{{ pal.text_muted }}" font-style="italic">// {{ profile.tagline }} · embedded → cloud → ai</text>
+</svg>

@@ -1,0 +1,490 @@
+[
+  {
+    "id": "csharp",
+    "label": "C#",
+    "domain": "languages",
+    "level": "expert",
+    "since": 2006,
+    "until": null,
+    "display_version": "2.0 → 12",
+    "notes": "Daily driver since college. Cross-era: Framework 2.0 to .NET 10.",
+    "versions": [
+      { "id": "csharp_2_0", "version": "2.0", "since": 2006 },
+      { "id": "csharp_8",   "version": "8",   "since": 2019 },
+      { "id": "csharp_10",  "version": "10",  "since": 2021 },
+      { "id": "csharp_12",  "version": "12",  "since": 2023 }
+    ]
+  },
+  {
+    "id": "python",
+    "label": "Python",
+    "domain": "languages",
+    "level": "expert",
+    "since": 2023,
+    "until": null,
+    "display_version": "3.11+",
+    "notes": "PyScaffold projects, FastAPI, LLM/Crypto tooling, PyPI publishing.",
+    "versions": [
+      { "id": "python_3_11", "version": "3.11", "since": 2023 }
+    ]
+  },
+  {
+    "id": "c-cpp",
+    "label": "C / C++",
+    "domain": "languages",
+    "level": "intermediate",
+    "since": 2006,
+    "until": 2013,
+    "display_version": "C99, C++11",
+    "notes": "Embedded era — robotics, Windows CE, NFC drivers. Not used in production since 2013.",
+    "versions": [
+      { "id": "c_99", "version": "C99", "since": 2006 },
+      { "id": "cpp_11", "version": "C++11", "since": 2010 }
+    ]
+  },
+  {
+    "id": "bash",
+    "label": "Bash / Shell",
+    "domain": "languages",
+    "level": "intermediate",
+    "since": 2023,
+    "until": null,
+    "display_version": "Bash 5.x",
+    "notes": "Docker automation, CI scripts, devcontainer tooling.",
+    "versions": [
+      { "id": "bash_5", "version": "5.x", "since": 2023 }
+    ]
+  },
+  {
+    "id": "typescript",
+    "label": "TypeScript",
+    "domain": "languages",
+    "level": "intermediate",
+    "since": 2024,
+    "until": null,
+    "display_version": "5.x",
+    "notes": "Node.js bots (Claude/Kalshi), React/Next.js front-ends.",
+    "versions": [
+      { "id": "typescript_5", "version": "5.x", "since": 2024 }
+    ]
+  },
+  {
+    "id": "objective-c",
+    "label": "Objective-C",
+    "domain": "languages",
+    "level": "notions",
+    "since": 2014,
+    "until": 2015,
+    "display_version": "iOS 6-8",
+    "notes": "Native iOS NFC libraries at Ingenico.",
+    "versions": [
+      { "id": "objective_c_ios_6_8", "version": "iOS 6-8", "since": 2014 }
+    ]
+  },
+  {
+    "id": "go",
+    "label": "Go",
+    "domain": "languages",
+    "level": "notions",
+    "since": null,
+    "until": null,
+    "display_version": "1.x",
+    "notes": "Read-level — used to navigate blockchain codebases.",
+    "versions": []
+  },
+
+  {
+    "id": "dotnet",
+    "label": ".NET",
+    "domain": "backend",
+    "level": "expert",
+    "since": 2006,
+    "until": null,
+    "display_version": "4.x → 8 / 10",
+    "notes": "Continuous migrations across versions. Currently shipping on .NET 8 and .NET 10.",
+    "versions": [
+      { "id": "dotnet_framework_4", "version": "Framework 4.x", "since": 2010 },
+      { "id": "dotnet_5", "version": "5", "since": 2020 },
+      { "id": "dotnet_6", "version": "6", "since": 2021 },
+      { "id": "dotnet_8", "version": "8", "since": 2024 },
+      { "id": "dotnet_10", "version": "10", "since": 2026 }
+    ]
+  },
+  {
+    "id": "asp-net-core",
+    "label": "ASP.NET Core",
+    "domain": "backend",
+    "level": "expert",
+    "since": 2020,
+    "until": null,
+    "display_version": "6 / 7 / 8",
+    "notes": "REST APIs, minimal APIs, modular architectures.",
+    "versions": [
+      { "id": "asp_net_core_6", "version": "6", "since": 2020 },
+      { "id": "asp_net_core_7", "version": "7", "since": 2022 },
+      { "id": "asp_net_core_8", "version": "8", "since": 2024 }
+    ]
+  },
+  {
+    "id": "asp-net-web-api-2",
+    "label": "ASP.NET Web API 2",
+    "domain": "backend",
+    "level": "expert-legacy",
+    "since": 2016,
+    "until": 2023,
+    "display_version": "Framework 4.x",
+    "notes": "Good Angel platform — JWT-secured REST API.",
+    "versions": []
+  },
+  {
+    "id": "blazor",
+    "label": "Blazor (WASM & Server)",
+    "domain": "backend",
+    "level": "expert",
+    "since": 2020,
+    "until": null,
+    "display_version": ".NET 6+",
+    "notes": "BlazorHero + MudBlazor + CQRS, dashboards, DDD apps.",
+    "versions": []
+  },
+  {
+    "id": "ef-core",
+    "label": "Entity Framework Core",
+    "domain": "backend",
+    "level": "expert",
+    "since": 2018,
+    "until": null,
+    "display_version": "6 / 7 / 8",
+    "notes": "DDD-friendly data layer on financial and FFBB projects.",
+    "versions": []
+  },
+  {
+    "id": "fastapi",
+    "label": "FastAPI",
+    "domain": "backend",
+    "level": "intermediate",
+    "since": 2023,
+    "until": null,
+    "display_version": "0.110+",
+    "notes": "LLM gateways, basketball coaching backend.",
+    "versions": []
+  },
+  {
+    "id": "nodejs",
+    "label": "Node.js",
+    "domain": "backend",
+    "level": "intermediate",
+    "since": 2024,
+    "until": null,
+    "display_version": "20 / 22 / 24",
+    "notes": "Express, Socket.io, Claude SDK, Kalshi integrations.",
+    "versions": []
+  },
+  {
+    "id": "react-next",
+    "label": "React + Next.js",
+    "domain": "backend",
+    "level": "intermediate",
+    "since": 2024,
+    "until": null,
+    "display_version": "React 18+, Next 14+",
+    "notes": "shadcn/ui, TypeScript, app router.",
+    "versions": []
+  },
+
+  {
+    "id": "dotnet-maui",
+    "label": ".NET MAUI",
+    "domain": "mobile",
+    "level": "intermediate",
+    "since": 2022,
+    "until": null,
+    "display_version": ".NET 8+",
+    "notes": "Cross-platform apps; modern successor of Xamarin.",
+    "versions": []
+  },
+  {
+    "id": "xamarin-forms",
+    "label": "Xamarin.Forms",
+    "domain": "mobile",
+    "level": "expert-legacy",
+    "since": 2016,
+    "until": 2023,
+    "display_version": "5.x",
+    "notes": "Cross-platform iOS/Android for Good Angel & My Good Life products.",
+    "versions": []
+  },
+  {
+    "id": "ios-objective-c",
+    "label": "Native iOS (Objective-C)",
+    "domain": "mobile",
+    "level": "notions",
+    "since": 2014,
+    "until": 2015,
+    "display_version": "iOS 6-8",
+    "notes": "Mifare NFC libraries used downstream by Nespresso loyalty cards.",
+    "versions": []
+  },
+  {
+    "id": "swift",
+    "label": "Swift",
+    "domain": "mobile",
+    "level": "notions",
+    "since": null,
+    "until": null,
+    "display_version": "—",
+    "notes": "Read-level.",
+    "versions": []
+  },
+  {
+    "id": "android-studio",
+    "label": "Android Studio",
+    "domain": "mobile",
+    "level": "notions",
+    "since": null,
+    "until": null,
+    "display_version": "—",
+    "notes": "Maintenance work only.",
+    "versions": []
+  },
+
+  {
+    "id": "windows-ce",
+    "label": "Windows CE",
+    "domain": "embedded",
+    "level": "intermediate",
+    "since": 2009,
+    "until": 2013,
+    "display_version": "5.0 / 6.0",
+    "notes": "GoodKap, Neurones Assistance, Gunnebo deposit machines (100+ units in production).",
+    "versions": [
+      { "id": "windows_ce_5_0", "version": "5.0", "since": 2009 },
+      { "id": "windows_ce_6_0", "version": "6.0", "since": 2010 }
+    ]
+  },
+  {
+    "id": "nfc",
+    "label": "NFC",
+    "domain": "embedded",
+    "level": "intermediate",
+    "since": 2011,
+    "until": 2013,
+    "display_version": "ISO 14443 / 15693 (Mifare)",
+    "notes": "Ingenico mobile payment, Ondeo Gazpar meters.",
+    "versions": []
+  },
+  {
+    "id": "ble",
+    "label": "BLE",
+    "domain": "embedded",
+    "level": "intermediate",
+    "since": 2015,
+    "until": null,
+    "display_version": "4.x",
+    "notes": "Good Angel ethylotest pairing.",
+    "versions": []
+  },
+  {
+    "id": "gps",
+    "label": "GPS",
+    "domain": "embedded",
+    "level": "intermediate",
+    "since": 2009,
+    "until": null,
+    "display_version": "NMEA, A-GPS",
+    "notes": "GoodKap GPS appliances.",
+    "versions": []
+  },
+  {
+    "id": "linux-ubuntu",
+    "label": "Linux / Ubuntu",
+    "domain": "embedded",
+    "level": "expert",
+    "since": 2014,
+    "until": null,
+    "display_version": "22.04 LTS",
+    "notes": "Production servers, Docker hosts, dev environment.",
+    "versions": []
+  },
+  {
+    "id": "windows",
+    "label": "Windows",
+    "domain": "embedded",
+    "level": "expert",
+    "since": null,
+    "until": null,
+    "display_version": "10/11 + Server",
+    "notes": "Daily driver since school.",
+    "versions": []
+  },
+
+  {
+    "id": "docker",
+    "label": "Docker",
+    "domain": "devops",
+    "level": "expert",
+    "since": 2020,
+    "until": null,
+    "display_version": "24.x+",
+    "notes": "Multistage builds, devcontainers, blockchain nodes.",
+    "versions": [
+      { "id": "docker_24", "version": "24.x", "since": 2023 }
+    ]
+  },
+  {
+    "id": "docker-compose",
+    "label": "Docker Compose",
+    "domain": "devops",
+    "level": "expert",
+    "since": 2020,
+    "until": null,
+    "display_version": "v2",
+    "notes": "Local & production orchestration.",
+    "versions": []
+  },
+  {
+    "id": "github-actions",
+    "label": "GitHub Actions",
+    "domain": "devops",
+    "level": "expert",
+    "since": 2021,
+    "until": null,
+    "display_version": "—",
+    "notes": "CI/CD for PyPI packages, .NET libraries, Docker images.",
+    "versions": []
+  },
+  {
+    "id": "git",
+    "label": "Git",
+    "domain": "devops",
+    "level": "expert",
+    "since": 2010,
+    "until": null,
+    "display_version": "2.x",
+    "notes": "Trunk-based, worktrees, conventional commits.",
+    "versions": []
+  },
+  {
+    "id": "portainer",
+    "label": "Portainer",
+    "domain": "devops",
+    "level": "intermediate",
+    "since": 2022,
+    "until": null,
+    "display_version": "2.x",
+    "notes": "Container monitoring on self-hosted infra.",
+    "versions": []
+  },
+
+  {
+    "id": "openai-api",
+    "label": "OpenAI API",
+    "domain": "ai-llm",
+    "level": "intermediate",
+    "since": 2023,
+    "until": null,
+    "display_version": "v1.x",
+    "notes": "Custom integrations, structured outputs, function calling.",
+    "versions": []
+  },
+  {
+    "id": "claude-api",
+    "label": "Anthropic Claude API / SDK",
+    "domain": "ai-llm",
+    "level": "intermediate",
+    "since": 2024,
+    "until": null,
+    "display_version": "SDK 0.x",
+    "notes": "Production usage on trading bot (Alph.bot) and SafeAudit.",
+    "versions": []
+  },
+  {
+    "id": "langchain",
+    "label": "LangChain",
+    "domain": "ai-llm",
+    "level": "intermediate",
+    "since": 2023,
+    "until": null,
+    "display_version": "0.2.x",
+    "notes": "Pipelines, agents, retrieval.",
+    "versions": []
+  },
+  {
+    "id": "litellm",
+    "label": "LiteLLM",
+    "domain": "ai-llm",
+    "level": "intermediate",
+    "since": 2024,
+    "until": null,
+    "display_version": "—",
+    "notes": "CortexAI — multi-provider LLM gateway.",
+    "versions": []
+  },
+  {
+    "id": "pytorch-tensorflow",
+    "label": "PyTorch / TensorFlow",
+    "domain": "ai-llm",
+    "level": "notions",
+    "since": 2019,
+    "until": null,
+    "display_version": "—",
+    "notes": "Computer-vision experiments (basketballVideoAnalysis).",
+    "versions": []
+  },
+
+  {
+    "id": "cosmos-sdk",
+    "label": "Cosmos SDK",
+    "domain": "blockchain",
+    "level": "intermediate",
+    "since": 2022,
+    "until": null,
+    "display_version": "Client integration",
+    "notes": ".NET client surfacing CometBFT primitives.",
+    "versions": []
+  },
+  {
+    "id": "cometbft",
+    "label": "CometBFT",
+    "domain": "blockchain",
+    "level": "intermediate",
+    "since": 2023,
+    "until": null,
+    "display_version": "REST · WebSocket · gRPC",
+    "notes": "Released CometBFT.Client for .NET consumers.",
+    "versions": []
+  },
+  {
+    "id": "osmosis",
+    "label": "Osmosis (OSMO)",
+    "domain": "blockchain",
+    "level": "operational",
+    "since": 2022,
+    "until": null,
+    "display_version": "Node ops, launcher tuning",
+    "notes": "Modified launcher published as osmosis-launcher.",
+    "versions": []
+  },
+  {
+    "id": "aioz",
+    "label": "AIOZ Network",
+    "domain": "blockchain",
+    "level": "operational",
+    "since": 2023,
+    "until": null,
+    "display_version": "Node ops",
+    "notes": "Docker images with automatic reward withdrawal.",
+    "versions": []
+  },
+  {
+    "id": "idena",
+    "label": "Idena",
+    "domain": "blockchain",
+    "level": "operational",
+    "since": 2020,
+    "until": null,
+    "display_version": "Node ops",
+    "notes": "Dockerized node — 470+ Docker Hub pulls.",
+    "versions": []
+  }
+]

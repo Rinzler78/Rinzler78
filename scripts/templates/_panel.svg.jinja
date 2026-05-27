@@ -1,0 +1,52 @@
+{#-
+  _panel.svg.jinja — macros réutilisables pour le dashboard.
+
+  Tous les rendus partent d'un container "panel" : background + border + label
+  optionnel en haut. Conforme à la palette `data/theme.json` (GitHub Dark + Feu).
+-#}
+
+{#- Panel rectangulaire avec border et label optionnel en tête -#}
+{% macro panel(x, y, w, h, label='') -%}
+  {%- set p = theme.patterns.panel -%}
+  <rect x="{{ x }}" y="{{ y }}" width="{{ w }}" height="{{ h }}" rx="{{ p.corner_radius }}" fill="{{ theme.palette.panel }}" stroke="{{ theme.palette.border }}" stroke-width="{{ p.border_width }}"/>
+  {%- if label %}
+  <text x="{{ x + p.padding_x }}" y="{{ y + 22 }}" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="{{ p.label_font_size }}" font-weight="{{ p.label_weight }}" letter-spacing="{{ p.label_letter_spacing }}" fill="{{ theme.palette[p.label_color] }}">{{ label }}</text>
+  {%- endif %}
+{%- endmacro %}
+
+{#- Chip arrondie style pill (label seul ou label + valeur) -#}
+{% macro chip(x, y, text, accent=false, width=None) -%}
+  {%- set c = theme.patterns.chip -%}
+  {%- set w = width if width else (text|length * 7 + c.padding_x * 2) -%}
+  <g transform="translate({{ x }} {{ y }})">
+    <rect x="0" y="0" width="{{ w }}" height="{{ c.padding_y * 2 + 14 }}" rx="{{ c.corner_radius }}" fill="{{ theme.palette[c.bg_color] }}" stroke="{{ theme.palette[c.border_color] }}" stroke-width="1"/>
+    <text x="{{ w / 2 }}" y="{{ c.padding_y + 11 }}" text-anchor="middle" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="{{ c.font_size }}" font-weight="{{ c.font_weight }}" fill="{{ theme.palette[c.accent_text_color] if accent else theme.palette[c.text_color] }}">{{ text }}</text>
+  </g>
+{%- endmacro %}
+
+{#- Status dot pulsant (online indicator) -#}
+{% macro status_dot(x, y, color='success') -%}
+  {%- set s = theme.patterns.status_dot -%}
+  <circle cx="{{ x }}" cy="{{ y }}" r="{{ s.radius }}" fill="{{ theme.palette[color] }}">
+    <animate attributeName="fill-opacity" values="1;0.4;1" dur="{{ s.pulse_duration }}" repeatCount="indefinite"/>
+  </circle>
+{%- endmacro %}
+
+{#- Barre horizontale avec label, valeur, et fill animé -#}
+{% macro bar(x, y, w, label, value_text, fill_pct, color='accent') -%}
+  {%- set b = theme.patterns.bar -%}
+  {%- set label_w = 130 -%}
+  {%- set value_w = 60 -%}
+  {%- set bar_w = w - label_w - value_w -%}
+  <text x="{{ x }}" y="{{ y + 4 }}" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="{{ b.label_font_size }}" fill="{{ theme.palette[b.label_color] }}" font-weight="500">{{ label }}</text>
+  <rect x="{{ x + label_w }}" y="{{ y - 6 }}" width="{{ bar_w }}" height="{{ b.height }}" rx="{{ b.corner_radius }}" fill="{{ theme.palette[b.track_color] }}"/>
+  <rect x="{{ x + label_w }}" y="{{ y - 6 }}" width="{{ (bar_w * fill_pct / 100) | round | int }}" height="{{ b.height }}" rx="{{ b.corner_radius }}" fill="{{ theme.palette[color] }}"/>
+  <text x="{{ x + label_w + bar_w + 10 }}" y="{{ y + 4 }}" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="{{ b.label_font_size }}" fill="{{ theme.palette[b.value_color] }}">{{ value_text }}</text>
+{%- endmacro %}
+
+{#- Card de stat : grand chiffre + petit label sous -#}
+{% macro stat(x, y, value, label) -%}
+  {%- set s = theme.patterns.stat_card -%}
+  <text x="{{ x }}" y="{{ y }}" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="{{ s.value_font_size }}" font-weight="{{ s.value_weight }}" fill="{{ theme.palette[s.value_color] }}">{{ value }}</text>
+  <text x="{{ x }}" y="{{ y + 16 }}" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="{{ s.label_font_size }}" letter-spacing="{{ s.label_letter_spacing }}" fill="{{ theme.palette[s.label_color] }}">{{ label }}</text>
+{%- endmacro %}

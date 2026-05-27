@@ -1,0 +1,117 @@
+[
+  {
+    "year": "2026",
+    "label": "now — still curious_",
+    "description": "~20 ans de code · disponible pour ta prochaine mission",
+    "techs_added": ["cometbft", "dotnet_10"],
+    "techs_summary": "+ CometBFT.Client · .NET 10 · LLM gateways",
+    "highlight": true,
+    "is_now": true
+  },
+  {
+    "year": "2024-25",
+    "label": "IA en production · projets perso multiples",
+    "description": "Alph.bot · SafeAudit · CortexAI gateway · React shadcn/ui",
+    "techs_added": ["claude-api", "litellm", "typescript", "nodejs", "react-next", "dotnet_8"],
+    "techs_summary": "+ Claude API SDK · LiteLLM · TypeScript · Node.js 22/24 · Next.js 14",
+    "highlight": true
+  },
+  {
+    "year": "2023",
+    "label": "Bascule freelance · installation en Provence",
+    "description": "exploration intensive nodes blockchain & LLM",
+    "techs_added": ["python_3_11", "docker_24", "fastapi", "langchain", "openai-api", "idena", "aioz"],
+    "techs_summary": "+ Python 3.11 · Docker 24.x · FastAPI · LangChain 0.2.x · OpenAI v1.x · Idena · AIOZ",
+    "highlight": true
+  },
+  {
+    "year": "2022",
+    "label": "Premier node blockchain en prod",
+    "description": "Osmosis (OSMO) · OsmoBot trading · Portainer",
+    "techs_added": ["cosmos-sdk", "dotnet-maui", "osmosis", "portainer"],
+    "techs_summary": "+ Cosmos SDK · .NET MAUI",
+    "highlight": false
+  },
+  {
+    "year": "2020",
+    "label": "Migration .NET Core · adoption Blazor",
+    "description": "refonte progressive vers stack moderne",
+    "techs_added": ["blazor", "dotnet_5", "dotnet_6", "ef-core", "docker", "docker-compose", "github-actions"],
+    "techs_summary": "+ Blazor WASM/Server · .NET 5/6 · EF Core 6 · Docker · GitHub Actions",
+    "highlight": true
+  },
+  {
+    "year": "2016",
+    "label": "CTO — direction technique double",
+    "description": "équipes remote · déploiement marque blanche B2B",
+    "techs_added": ["xamarin-forms"],
+    "techs_summary": "+ Xamarin.Forms 5.x · EF (legacy)",
+    "highlight": false
+  },
+  {
+    "year": "2014",
+    "label": "Premier salarié × 2 — Good Angel & My Good Life",
+    "description": "éthylotest connecté · plateforme santé connectée (IoT)",
+    "techs_added": ["asp-net-web-api-2", "ble", "ios-objective-c", "objective-c"],
+    "techs_summary": "+ Xamarin · ASP.NET Web API 2 · JWT · BLE 4.x",
+    "highlight": true
+  },
+  {
+    "year": "2012-13",
+    "label": "Systar / Dassault / Ondeo Systems",
+    "description": "monitoring AIX · réalité augmentée Rafale · compteurs Gazpar",
+    "techs_added": [],
+    "techs_summary": "+ C sous AIX · C++/CLI · WinRT",
+    "highlight": false
+  },
+  {
+    "year": "2011",
+    "label": "Ingenico — paiement mobile (Theoris)",
+    "description": "librairie NFC iOS — utilisée downstream par Nespresso",
+    "techs_added": ["nfc"],
+    "techs_summary": "+ NFC ISO 14443/15693 · Objective-C · BT",
+    "highlight": false
+  },
+  {
+    "year": "2010",
+    "label": "Neurones Assistance — vitesse limite GPS",
+    "description": "service embarqué C/C++ · API SOGENACTIF C#",
+    "techs_added": ["windows_ce_6_0", "git"],
+    "techs_summary": "+ Windows Server · VMware · AD",
+    "highlight": false
+  },
+  {
+    "year": "2009",
+    "label": "Master Systèmes Embarqués · 1er emploi GoodKap",
+    "description": "GPS connectés · refonte SDK · TCP & Web Services SOAP",
+    "techs_added": ["windows-ce", "windows_ce_5_0", "gps", "dotnet"],
+    "techs_summary": "+ C# / .NET · Windows CE 5.0 · GPS NMEA",
+    "highlight": true
+  },
+  {
+    "year": "2008",
+    "label": "Coupe de France de Robotique",
+    "description": "28e/200+ équipes · vision embarquée",
+    "techs_added": ["cpp_11"],
+    "techs_summary": "+ embedded C · PIC16F1938",
+    "highlight": false
+  },
+  {
+    "year": "2006",
+    "label": "$ touch first.c — Licence STIC EEA (Reims)",
+    "description": "premier code écrit · début du décompte uptime",
+    "techs_added": ["csharp", "csharp_2_0", "c_99"],
+    "techs_summary": "+ C",
+    "highlight": true,
+    "is_milestone": true
+  },
+  {
+    "year": "~1990s",
+    "label": "Premier ordinateur — ICL DRS M30",
+    "description": "curiosité informatique · pas encore de code · origines",
+    "techs_added": [],
+    "techs_summary": null,
+    "highlight": false,
+    "is_origin": true
+  }
+]

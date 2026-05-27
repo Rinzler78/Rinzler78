@@ -1,0 +1,105 @@
+{
+  "approach": {
+    "headline_easter_egg": "// pragma: humanity",
+    "paragraph": "J'accompagne les équipes techniques — **startups en construction comme structures plus matures** — sur leur stratégie logicielle : choix de stack, architecture, dette technique, industrialisation, mise en production. J'aime autant comprendre un protocole bas niveau, orchestrer un pipeline CI/CD que brancher un LLM sur un produit existant. **Mon angle, c'est la polyvalence et une curiosité sincère pour la technologie** — pas un terrain de jeu unique."
+  },
+
+  "modes_intervention": {
+    "easter_egg": "// FIXME: shave fewer yaks",
+    "modes": [
+      {
+        "label": "CTO temps partiel",
+        "description": "Direction technique externalisée sur la durée — décisions d'architecture, recrutement, roadmap, mentoring."
+      },
+      {
+        "label": "Architecte de solutions",
+        "description": "Mission courte (1 à 3 semaines) : audit, choix de stack, refonte d'architecture, plan de migration."
+      },
+      {
+        "label": "Renfort technique d'urgence",
+        "description": "Incident production, dette critique, déploiement bloqué, équipe submergée. J'éteins l'incendie et je documente le retour à la stabilité."
+      },
+      {
+        "label": "Cofondateur technique freelance",
+        "description": "Porter un produit de zéro à mise en marché, en s'engageant aux côtés du fondateur non-tech."
+      }
+    ]
+  },
+
+  "parcours": {
+    "blockquote": "*Parcours autodidacte assumé : du BEP Électrotechnique au Master Systèmes Embarqués, sans saut hors-cursus. Premier ordinateur — un ICL DRS M30 — dans les années 90, mais le code, lui, commence en 2006.*"
+  },
+
+  "featured": {
+    "easter_egg": "// ls projects/ --sort=love-desc",
+    "intro_blockquote": "Tous les dépôts publics, groupés par domaine. Stack et état à jour 2026."
+  },
+
+  "cahier_technique": {
+    "prose_contextuelle": [
+      {
+        "title": "C# / .NET (depuis 2006)",
+        "body": "C# est ma langue maternelle. J'ai vécu Framework 2.0, traversé Mono/Xamarin, basculé sur .NET Core, puis sur .NET 5 → 8 → 10. À chaque palier j'ai migré des codebases existantes (Good Angel passe de Framework 4.x à .NET Core 3.1 puis 6 ; My Good Life suit ASP.NET Web API 2 → API minimal moderne). Aujourd'hui mes projets actifs (`NetExtension`, `CometBFT.Client`, `Here.Sdk.Common`) sont tous sur .NET 8/10."
+      },
+      {
+        "title": "Embarqué (2009-2013)",
+        "body": "Quatre ans en industrie sur Windows CE 5.0/6.0, NFC ISO 14443/15693, drivers C/C++. Gunnebo : driver pour automate de dépôt d'espèces déployé sur 100+ machines sans incident post-livraison. Ingenico : librairie Objective-C de NFC Mifare utilisée downstream par Nespresso. Ondeo Systems : chaîne logicielle de configuration NFC pour compteurs Gazpar. Je ne refais pas d'embarqué pro aujourd'hui, mais cette fondation guide mes choix d'architecture quand la perf et la fiabilité comptent."
+      },
+      {
+        "title": "DevOps & conteneurisation (depuis 2020)",
+        "body": "Mes nodes blockchain m'ont forcé à industrialiser : Docker, Compose v2, GitHub Actions, Portainer. Mes images Idena et AIOZ tournent en prod chez d'autres opérateurs (470+ pulls Docker Hub). Mon poste de dev tourne sur Linux/Ubuntu 22.04 LTS avec des devcontainers normalisés — chaque projet démarre avec son environnement reproductible."
+      }
+    ]
+  },
+
+  "github_activity": {
+    "easter_egg": "// pulse check"
+  },
+
+  "boot_log": {
+    "summary_label": "> boot log — click à vos risques",
+    "lines": [
+      "[OK] curiosity      … mounted at /home/boris",
+      "[OK] coffee         … daemon running on :8080",
+      "[OK] basketball.so  … loaded since 1991",
+      "[WARN] imposter.sys … signal ignored",
+      "[OK] embedded.ko    … 2006 → 2013",
+      "[OK] mobile.ko      … 2014 → 2023",
+      "[OK] cloud.ko       … 2020 →",
+      "[OK] llm.ko         … 2023 →",
+      "[OK] provence.env   … exported PATH=$PATH:/sunlight"
+    ]
+  },
+
+  "beyond_code": {
+    "easter_egg": "// human.boris{ basketball: true, papa: true }",
+    "paragraph": "Coach basket à Pélissanne, en Provence, après avoir attrapé un ballon pour la première fois à 7 ans (et ne l'ayant jamais vraiment lâché depuis). Autodidacte du BEP Électrotechnique au Master Systèmes Embarqués. Papa d'un futur peut-être-développeur."
+  },
+
+  "connect": {
+    "easter_egg": "// open socket",
+    "phone_label": "Tél. (sur demande sérieuse)",
+    "footer_eof": "EOF · boris@github · 2026 — still curious, still shipping_"
+  },
+
+  "id_card_terminal": {
+    "title": "boris@github:~/id  —  cat profile.yaml",
+    "uptime_label": "$ uptime --since=2006",
+    "uptime_value": "~20 years of code · still curious"
+  },
+
+  "whoami_terminal": {
+    "title": "boris@github:~  —  whoami",
+    "lines": [
+      { "cmd": "whoami", "out_label": "Boris Leclere", "out_extra": "Freelance CTO & Architecte de Solutions" },
+      { "cmd": "pwd", "out_label": "/home/boris/provence" },
+      { "cmd": "uptime --since=2006", "out_label": "coding for ~20 years", "out_comment": "// still curious" }
+    ]
+  },
+
+  "map": {
+    "header": "$ traceroute home",
+    "subheader": "// last hop : Senas, Provence-Alpes-Côte d'Azur, France",
+    "ping_easter_egg": "// ping boris ~ 26ms"
+  }
+}

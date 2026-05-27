@@ -1,0 +1,81 @@
+<div align="center">
+
+<a href="mailto:{{ profile.contacts.email_pro }}">
+  <img src="assets/svg/header.svg" width="100%" alt="Header — {{ profile.name }}, {{ profile.role }}. Statut : {{ profile.status }}. Basé à {{ profile.location.city }}, {{ profile.location.country }}. Langues : {{ profile.languages | join(' / ') }}. {{ 2026 - profile.since_coding }} années de code." />
+</a>
+
+</div>
+
+<table align="center">
+  <tr>
+    <td valign="top" width="52%">
+      <img src="assets/svg/stack-summary.svg" width="100%" alt="Stack summary — barres de progression représentant l'ancienneté par domaine : {% for d in domains | sort(attribute='order') %}{{ d.label }}{% if not loop.last %}, {% endif %}{% endfor %}." />
+    </td>
+    <td valign="top" width="26%">
+      <img src="assets/svg/activity-stats.svg" width="100%" alt="Activity stats — années de code, technologies maîtrisées, dépôts publics, projets actifs." />
+    </td>
+    <td valign="top" width="22%">
+      <img src="assets/svg/timeline-mini.svg" width="100%" alt="Timeline mini — jalons de carrière du plus récent ({{ (timeline | first).year }}) au plus ancien ({{ (timeline | last).year }})." />
+    </td>
+  </tr>
+</table>
+
+<div align="center">
+
+<a href="https://github.com/{{ profile.username }}?tab=repositories">
+  <img src="assets/svg/featured-projects.svg" width="100%" alt="Featured projects — {{ projects_highlighted() | length }} dépôts publics phares avec stack et description." />
+</a>
+
+</div>
+
+<div align="center">
+
+<img src="assets/svg/modes.svg" width="100%" alt="Modes d'intervention : {% for m in content.modes_intervention.modes %}{{ m.label }}{% if not loop.last %} · {% endif %}{% endfor %}." />
+
+</div>
+
+<div align="center">
+
+<img src="assets/svg/map.svg" width="100%" alt="Localisation — basé à {{ profile.location.city }}, {{ profile.location.region }}, {{ profile.location.country }}. Coordonnées {{ profile.location.lat }}° N, {{ profile.location.lon }}° E." />
+
+</div>
+
+<div align="center">
+
+<a href="mailto:{{ profile.contacts.email_pro }}"><img alt="Email pro" src="https://img.shields.io/badge/{{ profile.contacts.email_pro | replace('@', '%40') }}-{{ theme.palette.accent | replace('#', '') }}?style=for-the-badge&logo=gmail&logoColor=white&labelColor={{ theme.palette.panel | replace('#', '') }}" /></a>
+<a href="{{ profile.links.linkedin }}"><img alt="LinkedIn" src="https://img.shields.io/badge/in-LinkedIn-{{ theme.palette.accent | replace('#', '') }}?style=for-the-badge&logo=linkedin&logoColor=white&labelColor={{ theme.palette.panel | replace('#', '') }}" /></a>
+<a href="{{ profile.links.malt }}"><img alt="Malt" src="https://img.shields.io/badge/Malt-{{ theme.palette.accent | replace('#', '') }}?style=for-the-badge&logo=malt&logoColor=white&labelColor={{ theme.palette.panel | replace('#', '') }}" /></a>
+<a href="{{ profile.links.pypi }}"><img alt="PyPI" src="https://img.shields.io/badge/PyPI-{{ theme.palette.text_muted | replace('#', '') }}?style=for-the-badge&logo=pypi&logoColor=white&labelColor={{ theme.palette.panel | replace('#', '') }}" /></a>
+<a href="{{ profile.links.discord }}"><img alt="Discord" src="https://img.shields.io/badge/Discord-{{ theme.palette.text_muted | replace('#', '') }}?style=for-the-badge&logo=discord&logoColor=white&labelColor={{ theme.palette.panel | replace('#', '') }}" /></a>
+<a href="{{ profile.links.twitter }}"><img alt="X" src="https://img.shields.io/badge/X-{{ theme.palette.text_muted | replace('#', '') }}?style=for-the-badge&logo=x&logoColor=white&labelColor={{ theme.palette.panel | replace('#', '') }}" /></a>
+
+<sub>tel · {{ profile.contacts.phone }}  &nbsp;·&nbsp;  <code>{{ content.connect.footer_eof }}</code></sub>
+
+</div>
+
+<details>
+<summary><code>$ cat ~/.bashrc  # easter eggs</code></summary>
+
+```
+{% for line in content.boot_log.lines %}{{ line }}
+{% endfor %}
+```
+
+```
+{{ content.approach.headline_easter_egg }}
+{{ content.modes_intervention.easter_egg }}
+{{ content.featured.easter_egg }}
+{{ content.github_activity.easter_egg }}
+{{ content.beyond_code.easter_egg }}
+{{ content.connect.easter_egg }}
+```
+
+</details>
+
+<sub align="center">
+
+{{ content.beyond_code.paragraph }}
+
+</sub>
+
+**Liens directs :** {% for p in projects %}[{{ p.name }}]({{ p.github_url }}){% if not loop.last %} · {% endif %}{% endfor %}

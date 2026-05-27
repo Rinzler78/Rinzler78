@@ -1,0 +1,55 @@
+{%- import '_panel.svg.jinja' as p -%}
+{%- set width = 1200 -%}
+{%- set modes = content.modes_intervention.modes -%}
+{%- set cols = 4 -%}
+{%- set card_w = (width - 48 - (cols - 1) * 16) / cols -%}
+{%- set card_h = 110 -%}
+{%- set header_h = 50 -%}
+{%- set height = header_h + card_h + 24 -%}
+{%- set pal = theme.palette -%}
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {{ width }} {{ height }}" width="{{ width }}" height="{{ height }}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Modes d'intervention — {{ modes | length }} prestations : {% for m in modes %}{{ m.label }}{% if not loop.last %}, {% endif %}{% endfor %}">
+  <title>Modes d'intervention</title>
+  <desc>Cards présentant les modes d'intervention freelance.</desc>
+
+  <rect width="{{ width }}" height="{{ height }}" fill="{{ pal.bg }}"/>
+  {{ p.panel(0, 0, width, height, "MODES D'INTERVENTION") }}
+
+  {%- for mode in modes %}
+    {%- set x = 24 + loop.index0 * (card_w + 16) %}
+    {%- set y = header_h %}
+
+    <rect x="{{ x }}" y="{{ y }}" width="{{ card_w }}" height="{{ card_h }}" rx="6" fill="{{ pal.panel_alt }}" stroke="{{ pal.border }}" stroke-width="1"/>
+    <rect x="{{ x }}" y="{{ y }}" width="3" height="{{ card_h }}" rx="1.5" fill="{{ pal.accent }}"/>
+
+    <text x="{{ x + 16 }}" y="{{ y + 26 }}" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="13" font-weight="700" fill="{{ pal.text }}">{{ mode.label }}</text>
+
+    {%- set words = mode.description.split(' ') %}
+    {%- set line1 = [] %}
+    {%- set line2 = [] %}
+    {%- set line3 = [] %}
+    {%- set ns = namespace(current=1, length=0) %}
+    {%- for w in words %}
+      {%- if ns.length + w | length + 1 > 38 %}
+        {%- set ns.current = ns.current + 1 %}
+        {%- set ns.length = w | length %}
+      {%- else %}
+        {%- set ns.length = ns.length + w | length + 1 %}
+      {%- endif %}
+      {%- if ns.current == 1 %}
+        {%- set _ = line1.append(w) %}
+      {%- elif ns.current == 2 %}
+        {%- set _ = line2.append(w) %}
+      {%- elif ns.current == 3 %}
+        {%- set _ = line3.append(w) %}
+      {%- endif %}
+    {%- endfor %}
+
+    <text x="{{ x + 16 }}" y="{{ y + 50 }}" font-family="'{{ theme.fonts.body }}', {{ theme.fonts.body_fallback }}" font-size="11" fill="{{ pal.text_muted }}">{{ line1 | join(' ') }}</text>
+    {%- if line2 %}
+    <text x="{{ x + 16 }}" y="{{ y + 66 }}" font-family="'{{ theme.fonts.body }}', {{ theme.fonts.body_fallback }}" font-size="11" fill="{{ pal.text_muted }}">{{ line2 | join(' ') }}</text>
+    {%- endif %}
+    {%- if line3 %}
+    <text x="{{ x + 16 }}" y="{{ y + 82 }}" font-family="'{{ theme.fonts.body }}', {{ theme.fonts.body_fallback }}" font-size="11" fill="{{ pal.text_muted }}">{{ line3 | join(' ') | truncate(38, true, '…') }}</text>
+    {%- endif %}
+  {%- endfor %}
+</svg>

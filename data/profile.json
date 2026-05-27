@@ -1,0 +1,35 @@
+{
+  "name": "Boris Leclere",
+  "role": "Freelance CTO · Architecte de Solutions",
+  "username": "Rinzler78",
+  "languages": ["fr", "en"],
+  "status": "available",
+  "since_coding": 2006,
+  "tagline": "still curious",
+
+  "location": {
+    "city": "Senas",
+    "postcode": "13560",
+    "region": "Provence-Alpes-Côte d'Azur",
+    "country": "France",
+    "lat": 43.74,
+    "lon": 5.06,
+    "zone": "FR-13 (Bouches-du-Rhône)",
+    "tz": "Europe/Paris (UTC+1)"
+  },
+
+  "contacts": {
+    "email_pro": "borisleclere.pro@gmail.com",
+    "phone": "+33 6 26 26 34 61"
+  },
+
+  "links": {
+    "linkedin": "https://www.linkedin.com/in/borisleclere",
+    "github": "https://github.com/Rinzler78",
+    "malt": "https://www.malt.fr/profile/borisleclere",
+    "pypi": "https://pypi.org/user/Rinzler78",
+    "discord": "https://discordapp.com/users/rinzler84",
+    "youtube": "https://www.youtube.com/@borisleclere6095",
+    "twitter": "https://twitter.com/BorisLeclere"
+  }
+}

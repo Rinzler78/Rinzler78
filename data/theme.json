@@ -1,0 +1,91 @@
+{
+  "name": "GitHub Dark + Feu",
+  "version": "2.0",
+
+  "palette": {
+    "bg": "#0d1117",
+    "panel": "#161b22",
+    "panel_alt": "#1c2128",
+    "border": "#30363d",
+    "border_muted": "#21262d",
+    "text": "#f0f6fc",
+    "text_muted": "#8b949e",
+    "text_dim": "#6e7681",
+    "accent": "#f78166",
+    "accent_dark": "#bb4f37",
+    "accent_light": "#ffa28b",
+    "success": "#3fb950",
+    "info": "#58a6ff",
+    "warn": "#d29922",
+    "danger": "#f85149",
+    "code_bg": "#0a0d12"
+  },
+
+  "fonts": {
+    "display": "Inter",
+    "body": "Inter",
+    "mono": "JetBrains Mono",
+    "mono_fallback": "ui-monospace, SF Mono, Menlo, Consolas, monospace",
+    "display_fallback": "system-ui, -apple-system, sans-serif",
+    "body_fallback": "system-ui, -apple-system, sans-serif"
+  },
+
+  "patterns": {
+    "panel": {
+      "corner_radius": 8,
+      "border_width": 1,
+      "padding_x": 24,
+      "padding_y": 20,
+      "header_height": 32,
+      "label_font_size": 11,
+      "label_letter_spacing": "0.08em",
+      "label_color": "text_muted",
+      "label_weight": 600
+    },
+
+    "stat_card": {
+      "value_font_size": 28,
+      "value_weight": 700,
+      "value_color": "text",
+      "label_font_size": 10,
+      "label_color": "text_muted",
+      "label_letter_spacing": "0.1em"
+    },
+
+    "bar": {
+      "height": 8,
+      "corner_radius": 2,
+      "track_color": "border_muted",
+      "fill_color": "accent",
+      "label_color": "text",
+      "value_color": "text_muted",
+      "label_font_size": 12
+    },
+
+    "chip": {
+      "corner_radius": 999,
+      "padding_x": 12,
+      "padding_y": 6,
+      "border_color": "border",
+      "bg_color": "panel_alt",
+      "text_color": "text",
+      "accent_text_color": "accent",
+      "font_size": 11,
+      "font_weight": 500
+    },
+
+    "status_dot": {
+      "radius": 4,
+      "color": "success",
+      "pulse_duration": "1.8s"
+    },
+
+    "level_colors": {
+      "expert": "accent",
+      "expert-legacy": "accent_dark",
+      "intermediate": "info",
+      "operational": "warn",
+      "notions": "text_dim"
+    }
+  }
+}
