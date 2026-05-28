@@ -22,10 +22,14 @@ Ce repo est le profil GitHub de Boris Leclere. Le README et les SVG décoratifs 
 
 **Niveau et score** sont des **valeurs dérivées**, jamais saisies directement (sauf override). Le generator calcule `score` ∈ [0, 99] depuis les faits saisis et déduit `level` parmi 5 paliers (`expert` / `advanced` / `professional` / `working` / `explored`) via des seuils figés. Voir [ADR-002](docs/adr/0002-tech-score-derivation.md) pour la formule et les paliers.
 
+Champ `depth` (0–3) : profondeur d'usage en production, **auto-évaluation factuelle** (y compris missions privées invisibles sur GitHub). 0 = read-level, 3 = expertise cœur. Additif (+20/niveau). Corrige le biais « la formule ne voit que le public ». Voir [ADR-002](docs/adr/0002-tech-score-derivation.md).
+
 Champs d'override (optionnels, à utiliser quand la formule sous-évalue, par ex. usage privé non listé dans `projects.json`) :
 - `level_override` — force le level qualitatif
 - `score_override` — force le score numérique
 - `featured` — booléen, ajoute un bonus +15 au score (sert aussi à filtrer hero/core expertise)
+
+**Invariant temporel** (principe énoncé par Boris) : une compétence ne reste « active » (`until: null`) **que si une expérience ou un projet courant l'utilise encore**. Une tech bornée à une période passée doit porter le `until` de la fin de cette période — sinon elle prétendrait à tort à une expertise actuelle (ex. `gps` est borné à 2013, fin de l'ère embarquée GoodKap). Source de vérité des périodes : `data/timeline.json`. Tant que les events timeline ne portent pas la liste des techs *utilisées* par période (seulement `techs-added`), ce `until` est maintenu à la main avec discipline ; une dérivation automatique sera possible quand les périodes porteront leurs techs actives.
 
 ### Timeline Event
 

@@ -371,9 +371,9 @@
     "domain": "embedded",
     "depth": 2,
     "since": 2009,
-    "until": null,
+    "until": 2013,
     "display_version": "NMEA, A-GPS",
-    "notes": "GoodKap GPS appliances.",
+    "notes": "GoodKap GPS appliances. Embedded era, not used since 2013.",
     "versions": []
   },
   {
