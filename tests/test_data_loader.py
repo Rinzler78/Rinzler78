@@ -119,6 +119,19 @@ def test_check_referential_integrity_raises_on_dangling_timeline_tech():
         check_referential_integrity(bag)
 
 
+def test_check_referential_integrity_accepts_version_id_references():
+    # A reference may point to a tech-version id, not only a root tech id.
+    # CONTEXT.md: tech_ids may reference a Tech OR a tech-version.
+    bag = {
+        "domains": [],
+        "techs": [{"id": "dotnet", "versions": [{"id": "dotnet_10"}]}],
+        "projects": [{"id": "p1", "tech_ids": ["dotnet", "dotnet_10"]}],
+        "timeline": [{"year": 2026, "tech_ids": ["dotnet_10"]}],
+    }
+
+    check_referential_integrity(bag)  # should not raise
+
+
 def test_check_referential_integrity_passes_on_empty_bag():
     # No entities at all — nothing to check, should not raise
     check_referential_integrity({})

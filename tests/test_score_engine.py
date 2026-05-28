@@ -32,6 +32,52 @@ def test_compute_skill_years_only_scores_proportional():
 
 
 @pytest.mark.parametrize(
+    "depth, expected",
+    [
+        (0, 0),
+        (1, 20),
+        (2, 40),
+        (3, 60),
+    ],
+)
+def test_compute_skill_depth_adds_twenty_points_per_level(depth, expected):
+    # since=today → 0 base, so score equals depth contribution alone
+    tech = {"id": "x", "since": 2026, "versions": [], "depth": depth}
+
+    result = compute_skill(tech, [], date(2026, 1, 1))
+
+    assert result.score == expected
+
+
+def test_compute_skill_depth_defaults_to_zero_when_absent():
+    tech = {"id": "x", "since": 2026, "versions": []}
+
+    result = compute_skill(tech, [], date(2026, 1, 1))
+
+    assert result.score == 0
+
+
+def test_compute_skill_null_since_yields_zero_base():
+    # since=null (read-level tech, never adopted) → no measurable years
+    tech = {"id": "go", "since": None, "versions": []}
+
+    result = compute_skill(tech, [], date(2026, 1, 1))
+
+    assert result.score == 0
+    assert result.level == Level.EXPLORED
+
+
+def test_compute_skill_null_since_still_counts_other_factors():
+    # A null-since tech used in a real project still earns project points
+    tech = {"id": "go", "since": None, "versions": []}
+    projects = [{"id": "p1", "domain": "backend", "tech_ids": ["go"]}]
+
+    result = compute_skill(tech, projects, date(2026, 1, 1))
+
+    assert result.score == 3  # 0 base + 3 project points
+
+
+@pytest.mark.parametrize(
     "nb_versions, expected",
     [
         (0, 0),

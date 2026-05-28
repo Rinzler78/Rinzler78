@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Tech collection",
+  "description": "Technical skills. Score and level are derived (ADR-002), never stored.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["id", "label", "domain", "since", "versions"],
+    "properties": {
+      "id": { "type": "string", "pattern": "^[a-z0-9_-]+$" },
+      "label": { "type": "string", "minLength": 1 },
+      "domain": { "type": "string", "minLength": 1 },
+      "since": { "type": ["integer", "null"] },
+      "until": { "type": ["integer", "null"] },
+      "depth": { "type": "integer", "minimum": 0, "maximum": 3 },
+      "display_version": { "type": "string" },
+      "notes": { "type": "string" },
+      "featured": { "type": "boolean" },
+      "level_override": {
+        "enum": ["expert", "advanced", "professional", "working", "explored"]
+      },
+      "score_override": { "type": "integer", "minimum": 0, "maximum": 99 },
+      "versions": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "version", "since"],
+          "properties": {
+            "id": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+            "version": { "type": "string", "minLength": 1 },
+            "since": { "type": ["integer", "null"] }
+          }
+        }
+      }
+    }
+  }
+}

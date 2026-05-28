@@ -43,6 +43,8 @@ MAX_PROJECTS_POINTS = 15
 POINTS_PER_EXTRA_DOMAIN = 5
 MAX_CENTRALITY_POINTS = 10
 
+POINTS_PER_DEPTH_LEVEL = 20  # depth 0..3 -> 0/20/40/60
+
 OUBLI_PENALTY_PER_YEAR = 6
 FEATURED_BONUS = 15
 
@@ -84,11 +86,16 @@ def _extract_overrides(tech: dict) -> tuple[int | None, Level | None]:
 
 def _compute_raw_score(tech: dict, projects: list[dict], today: date) -> int:
     tech_id = tech["id"]
-    since = tech["since"]
-    until = tech.get("until")
-    last_active_year = until if until is not None else today.year
-    years_active = last_active_year - since
-    recency_oubli = max(0, today.year - last_active_year)
+    since = tech.get("since")
+    if since is None:
+        # No measurable adoption year (read-level / never really used).
+        years_active = 0
+        recency_oubli = 0
+    else:
+        until = tech.get("until")
+        last_active_year = until if until is not None else today.year
+        years_active = last_active_year - since
+        recency_oubli = max(0, today.year - last_active_year)
 
     base = min(MAX_BASE_POINTS, years_active * POINTS_PER_ACTIVE_YEAR)
     versions_pts = min(
@@ -102,9 +109,10 @@ def _compute_raw_score(tech: dict, projects: list[dict], today: date) -> int:
         MAX_CENTRALITY_POINTS, max(0, nb_domains - 1) * POINTS_PER_EXTRA_DOMAIN
     )
 
+    depth_pts = tech.get("depth", 0) * POINTS_PER_DEPTH_LEVEL
     bonus_featured = FEATURED_BONUS if tech.get("featured") else 0
 
-    raw = base + versions_pts + projets_pts + centralite_pts
+    raw = base + versions_pts + projets_pts + centralite_pts + depth_pts
     oubli = recency_oubli * OUBLI_PENALTY_PER_YEAR
     return max(MIN_SCORE, min(MAX_SCORE, raw - oubli + bonus_featured))
 
