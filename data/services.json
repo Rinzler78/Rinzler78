@@ -1,0 +1,50 @@
+[
+  {
+    "id": "software-architecture",
+    "title": "Architecture & refonte logicielle",
+    "short_description": "Concevoir ou réparer des systèmes maintenables, testables et évolutifs. Sortir une codebase de la dette technique sans tout réécrire.",
+    "keywords": ["Clean Architecture", "DDD", "Modularité", "Refonte", "Dette technique"],
+    "priority": 1,
+    "visible": true
+  },
+  {
+    "id": "technical-audit",
+    "title": "Audit technique",
+    "short_description": "État des lieux honnête : code, architecture, tests, CI/CD, sécurité, documentation. Un rapport actionnable, priorisé par impact.",
+    "keywords": ["Audit", "Code review", "Sécurité", "Qualité", "Risques"],
+    "priority": 2,
+    "visible": true
+  },
+  {
+    "id": "mvp-delivery",
+    "title": "Conception & livraison de MVP",
+    "short_description": "Porter un produit de l'idée à la mise en marché : architecture pragmatique, choix de stack, livraison itérative qui tient la charge.",
+    "keywords": ["MVP", "Time-to-market", "Scalabilité", "Pragmatisme"],
+    "priority": 3,
+    "visible": true
+  },
+  {
+    "id": "delivery-industrialization",
+    "title": "Industrialisation CI/CD & delivery",
+    "short_description": "Stabiliser la chaîne de livraison : Docker, GitHub Actions, releases reproductibles, environnements de dev normalisés.",
+    "keywords": ["CI/CD", "Docker", "GitHub Actions", "Release", "DevOps"],
+    "priority": 4,
+    "visible": true
+  },
+  {
+    "id": "ai-driven-development",
+    "title": "AI-Driven Development",
+    "short_description": "Structurer l'usage des agents IA pour livrer vite sans chaos : specs, règles, mémoire, quality gates, contexte maîtrisé.",
+    "keywords": ["AI-assisted", "Agents", "Quality gates", "Prompts", "Méthode"],
+    "priority": 5,
+    "visible": true
+  },
+  {
+    "id": "developer-tooling",
+    "title": "Developer tooling & automatisation",
+    "short_description": "Créer les outils qui font gagner du temps à l'équipe : CLI, générateurs, scripts, APIs internes, automatisations sur mesure.",
+    "keywords": ["CLI", "Générateurs", "Automatisation", "APIs internes", "Tooling"],
+    "priority": 6,
+    "visible": true
+  }
+]

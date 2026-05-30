@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Methodology collection",
+  "description": "Work principles (how software is built here). Narrative fields are FR for now; wrapped in i18n when that track lands.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["id", "title", "body", "order"],
+    "properties": {
+      "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+      "title": { "type": "string", "minLength": 1 },
+      "body": { "type": "string", "minLength": 1 },
+      "order": { "type": "integer", "minimum": 1 }
+    }
+  }
+}

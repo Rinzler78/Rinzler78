@@ -1,6 +1,6 @@
 {%- import '_panel.svg.jinja' as p -%}
 {%- set width = 1200 -%}
-{%- set modes = content.modes_intervention.modes -%}
+{%- set modes = modes | sort(attribute='order') -%}
 {%- set cols = 4 -%}
 {%- set card_w = (width - 48 - (cols - 1) * 16) / cols -%}
 {%- set card_h = 110 -%}

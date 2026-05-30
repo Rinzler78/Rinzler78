@@ -1,0 +1,44 @@
+[
+  {
+    "id": "simple-before-clever",
+    "title": "Simple avant malin",
+    "body": "Le code le plus malin est une dette pour celui qui le relira. Je choisis la solution la plus simple qui résout vraiment le problème.",
+    "order": 1
+  },
+  {
+    "id": "explicit-before-implicit",
+    "title": "Explicite avant implicite",
+    "body": "Les comportements cachés coûtent cher en debug. Je rends les intentions, les contrats et les dépendances visibles.",
+    "order": 2
+  },
+  {
+    "id": "tested-before-trusted",
+    "title": "Testé avant validé",
+    "body": "Un code sans test n'est pas fini, il est seulement écrit. Les tests décrivent le comportement et survivent aux refactors.",
+    "order": 3
+  },
+  {
+    "id": "automated-before-manual",
+    "title": "Automatisé avant manuel",
+    "body": "Tout ce qui est manuel finit par être oublié ou bâclé. Lint, build, release, qualité : les quality gates font foi, pas la bonne volonté.",
+    "order": 4
+  },
+  {
+    "id": "maintainable-before-trendy",
+    "title": "Maintenable avant tendance",
+    "body": "Une techno se choisit pour ce qu'elle coûtera à maintenir dans deux ans, pas pour son buzz du moment.",
+    "order": 5
+  },
+  {
+    "id": "business-value-before-ego",
+    "title": "Valeur métier avant ego technique",
+    "body": "Comprendre le problème métier avant d'écrire la moindre ligne. La meilleure architecture est celle qui sert l'objectif, pas la démonstration.",
+    "order": 6
+  },
+  {
+    "id": "ai-accelerator-not-replacement",
+    "title": "L'IA accélère, elle ne remplace pas la discipline",
+    "body": "J'utilise l'IA comme accélérateur d'ingénierie, pas comme substitut. Sans specs claires, architecture solide, tests et contexte maîtrisé, l'IA ne fait que générer du chaos plus vite.",
+    "order": 7
+  }
+]

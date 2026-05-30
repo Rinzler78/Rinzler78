@@ -56,6 +56,16 @@ def test_real_timeline_conforms_to_timeline_schema():
     assert len(events) > 0
 
 
+def test_real_content_collections_conform_to_schemas():
+    for data_file, schema_file in [
+        ("services.json", "service.schema.json"),
+        ("modes.json", "mode.schema.json"),
+        ("methodology.json", "methodology.schema.json"),
+    ]:
+        collection = load_collection(DATA / data_file, schema=_schema(schema_file))
+        assert len(collection) > 0
+
+
 def test_real_data_referential_integrity_holds():
     bag = {
         "domains": load_collection(DATA / "domains.json"),

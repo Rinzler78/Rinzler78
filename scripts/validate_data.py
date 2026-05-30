@@ -31,6 +31,9 @@ SCHEMA_MAP = {
     "experiences.json": "experience.schema.json",
     "projects.json": "project.schema.json",
     "timeline.json": "timeline.schema.json",
+    "services.json": "service.schema.json",
+    "modes.json": "mode.schema.json",
+    "methodology.json": "methodology.schema.json",
 }
 
 

@@ -49,19 +49,21 @@ Champs d'override (optionnels, à utiliser quand la formule sous-évalue, par ex
 
 ### Service
 
-`data/services.json` — Une **prestation vendable** que Boris propose à un client : `id` snake_case, `title` (i18n), `short_description` (i18n), `keywords[]` (EN, factuel), `priority` (ordre d'affichage), `visible` (booléen). Exemples : Software Architecture, Technical Audit, AI-Driven Development, Developer Tooling, RAG / Private AI, Delivery Support.
+`data/services.json` — Une **prestation vendable** que Boris propose à un client : `id` (kebab-case), `title`, `short_description`, `keywords[]`, `priority` (ordre d'affichage), `visible` (booléen). Services actuels : Architecture & refonte logicielle, Audit technique, Conception & livraison de MVP, Industrialisation CI/CD & delivery, AI-Driven Development, Developer tooling & automatisation.
 
 Service répond à la question « **qu'est-ce que je peux acheter à Boris** ». À ne pas confondre avec **Mode**.
 
 ### Mode
 
-`data/modes.json` — Un **mode d'intervention** : `id` snake_case, `title` (i18n), `description` (i18n), `keywords[]`. Modes actuels : `pompier` (intervention courte, urgence/crise), `accompagnement_long` (mission étalée, build progressif), `audit` (one-shot, livrable rapport), `mentor` (montée en compétence d'une équipe).
+`data/modes.json` — Un **mode d'intervention** : `id` (kebab-case), `label`, `description`, `order`. Modes actuels : `cto-temps-partiel`, `architecte-solutions`, `renfort-urgence` (le pompier — incident prod, dette critique, équipe submergée), `cofondateur-technique`.
 
 Mode répond à la question « **comment je peux engager Boris** ». Extrait depuis `content.modes_intervention[]` historique — promotion en entité de premier ordre.
 
 ### Methodology
 
-`data/methodology.json` — Collection de **principes de travail** de Boris : `id`, `title` (i18n), `body` (i18n), `order`. Exemples : « Comprendre le problème métier avant le code », « Simple before clever », « AI as engineering accelerator, not replacement ». Extrait depuis `content` historique — promotion en entité de premier ordre pour le rendre adressable depuis le README et les vues dérivées.
+`data/methodology.json` — Collection de **principes de travail** : `id` (kebab-case), `title`, `body`, `order`. Exemples : « Simple avant malin », « Testé avant validé », « Valeur métier avant ego technique », « L'IA accélère, elle ne remplace pas la discipline ».
+
+> **i18n** : les champs narratifs de Service / Mode / Methodology sont en **FR brut** pour l'instant (comme le reste de `content`). Ils seront wrappés `{fr, en}` uniformément quand le track i18n (DeepL, [ADR-004](docs/adr/0004-i18n-bilingual-readme.md)) sera implémenté — pas de demi-i18n maintenant.
 
 ### Config
 

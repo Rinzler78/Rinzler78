@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Service collection",
+  "description": "Sellable services (what a client can buy). Distinct from Mode (engagement style). Narrative fields are FR for now; wrapped in i18n when that track lands.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["id", "title", "short_description", "priority", "visible"],
+    "properties": {
+      "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+      "title": { "type": "string", "minLength": 1 },
+      "short_description": { "type": "string", "minLength": 1 },
+      "keywords": { "type": "array", "items": { "type": "string" } },
+      "priority": { "type": "integer", "minimum": 1 },
+      "visible": { "type": "boolean" }
+    }
+  }
+}

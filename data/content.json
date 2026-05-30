@@ -5,25 +5,7 @@
   },
 
   "modes_intervention": {
-    "easter_egg": "// FIXME: shave fewer yaks",
-    "modes": [
-      {
-        "label": "CTO temps partiel",
-        "description": "Direction technique externalisée sur la durée — décisions d'architecture, recrutement, roadmap, mentoring."
-      },
-      {
-        "label": "Architecte de solutions",
-        "description": "Mission courte (1 à 3 semaines) : audit, choix de stack, refonte d'architecture, plan de migration."
-      },
-      {
-        "label": "Renfort technique d'urgence",
-        "description": "Incident production, dette critique, déploiement bloqué, équipe submergée. J'éteins l'incendie et je documente le retour à la stabilité."
-      },
-      {
-        "label": "Cofondateur technique freelance",
-        "description": "Porter un produit de zéro à mise en marché, en s'engageant aux côtés du fondateur non-tech."
-      }
-    ]
+    "easter_egg": "// FIXME: shave fewer yaks"
   },
 
   "parcours": {

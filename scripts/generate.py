@@ -74,6 +74,11 @@ def load_data() -> dict[str, Any]:
         ),
         "timeline": json.loads((DATA / "timeline.json").read_text(encoding="utf-8")),
         "projects": json.loads((DATA / "projects.json").read_text(encoding="utf-8")),
+        "services": json.loads((DATA / "services.json").read_text(encoding="utf-8")),
+        "modes": json.loads((DATA / "modes.json").read_text(encoding="utf-8")),
+        "methodology": json.loads(
+            (DATA / "methodology.json").read_text(encoding="utf-8")
+        ),
         "theme": json.loads((DATA / "theme.json").read_text(encoding="utf-8")),
         "content": json.loads((DATA / "content.json").read_text(encoding="utf-8")),
     }

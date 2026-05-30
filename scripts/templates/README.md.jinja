@@ -30,7 +30,7 @@
 
 <div align="center">
 
-<img src="assets/svg/modes.svg" width="100%" alt="Modes d'intervention : {% for m in content.modes_intervention.modes %}{{ m.label }}{% if not loop.last %} · {% endif %}{% endfor %}." />
+<img src="assets/svg/modes.svg" width="100%" alt="Modes d'intervention : {% for m in modes | sort(attribute='order') %}{{ m.label }}{% if not loop.last %} · {% endif %}{% endfor %}." />
 
 </div>
 
