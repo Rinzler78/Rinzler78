@@ -5,8 +5,9 @@ idempotent, so re-running it is safe; the determinism test asserts a second
 run produces byte-identical output.
 """
 
-import xml.etree.ElementTree as ET
 from pathlib import Path
+
+import defusedxml.ElementTree as ET  # secure XML parsing (bandit B314/B405)
 
 import scripts.generate as gen
 

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-generate.py — Génère assets/svg/*.svg et README.md depuis data/*.json + scripts/templates/*.jinja.
+generate.py — Génère assets/svg/*.svg et README.md
+depuis data/*.json + scripts/templates/*.jinja.
 
 Lance depuis n'importe où :
     python3 scripts/generate.py
@@ -33,7 +34,6 @@ if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
 
 from scripts.view_builder import build_skills  # noqa: E402
-
 
 REPO = pathlib.Path(__file__).resolve().parent.parent
 DATA = REPO / "data"
@@ -94,9 +94,15 @@ def enrich(data: dict[str, Any], today: date) -> dict[str, Any]:
 
 def make_env(data: dict[str, Any]) -> Environment:
     """Crée l'environnement Jinja2 avec helpers exposés aux templates."""
-    env = Environment(
+    # autoescape=False est intentionnel : générateur statique SVG/Markdown,
+    # pas un serveur HTML. Les data sont auto-rédigées (pas d'input externe),
+    # `&` est échappé globalement (_escape_amp), un `<`/`>` brut dans une data
+    # produirait du XML malformé que validate.py rejette (well-formedness).
+    # Autoescaper casserait les balises SVG voulues. Faux positif B701 en
+    # contexte génération statique.
+    env = Environment(  # nosec B701
         loader=FileSystemLoader(TEMPLATES),
-        autoescape=False,  # SVG output : on contrôle ce qu'on écrit
+        autoescape=False,
         trim_blocks=True,
         lstrip_blocks=True,
         keep_trailing_newline=True,
@@ -217,7 +223,7 @@ def main() -> int:
     readme_tpl = env.get_template("README.md.jinja")
     result = readme_tpl.render()
     README_OUT.write_text(result, encoding="utf-8")
-    print(f"  ✓ README.md")
+    print("  ✓ README.md")
 
     print()
     print("[generate.py] OK")

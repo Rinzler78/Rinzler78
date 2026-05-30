@@ -14,7 +14,7 @@ value (Ebbinghaus-style forgetting toward a residual floor).
 import math
 from dataclasses import dataclass
 from datetime import date
-from enum import Enum
+from enum import StrEnum
 
 from scripts.hours_calculator import TechHours
 
@@ -27,7 +27,7 @@ MIN_SCORE = 0
 MAX_SCORE = 99
 
 
-class Level(str, Enum):
+class Level(StrEnum):
     EXPERT = "expert"
     ADVANCED = "advanced"
     PROFESSIONAL = "professional"

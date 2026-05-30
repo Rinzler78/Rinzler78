@@ -14,7 +14,8 @@ from __future__ import annotations
 import pathlib
 import re
 import sys
-import xml.etree.ElementTree as ET
+
+import defusedxml.ElementTree as ET  # secure XML parsing (bandit B314/B405)
 
 REPO = pathlib.Path(__file__).resolve().parent.parent
 README = REPO / "README.md"
@@ -55,14 +56,15 @@ def validate_readme_refs() -> list[str]:
             continue
 
         if not target.exists():
-            missing.append(f"{path_str}  →  attendu : {target.relative_to(REPO.resolve())}")
+            rel = target.relative_to(REPO.resolve())
+            missing.append(f"{path_str}  →  attendu : {rel}")
     return missing
 
 
 def validate_svgs() -> list[str]:
     """Retourne la liste des SVG mal formés (vide si OK)."""
     if not SVG_DIR.exists():
-        return [f"assets/svg/ introuvable"]
+        return ["assets/svg/ introuvable"]
 
     errors: list[str] = []
     for svg in sorted(SVG_DIR.glob("*.svg")):
@@ -78,7 +80,11 @@ def main() -> int:
     bad_svgs = validate_svgs()
 
     if missing_refs:
-        print(f"[validate.py] ✗ {len(missing_refs)} ressource(s) manquante(s) dans README.md :", file=sys.stderr)
+        print(
+            f"[validate.py] ✗ {len(missing_refs)} ressource(s) manquante(s) "
+            "dans README.md :",
+            file=sys.stderr,
+        )
         for m in missing_refs:
             print(f"    - {m}", file=sys.stderr)
 
