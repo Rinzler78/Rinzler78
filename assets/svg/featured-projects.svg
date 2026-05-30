@@ -11,16 +11,16 @@
     <rect x="24.0" y="50" width="373.3333333333333" height="2" rx="1" fill="#f78166"/>
 
     <!-- name -->
-    <text x="40.0" y="78" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="14" font-weight="700" fill="#f0f6fc">NetExtension</text>
+    <text x="40.0" y="78" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="14" font-weight="700" fill="#f0f6fc">FFBBApiClientV2_Python</text>
 
     <!-- domain chip / state -->
     <text x="381.3333333333333" y="78" text-anchor="end" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="10" fill="#f78166" letter-spacing="0.08em">BACKEND</text>
 
     <!-- stack -->
-    <text x="40.0" y="100" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="11" fill="#8b949e">C# · .NET 10</text>
+    <text x="40.0" y="100" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="11" fill="#8b949e">Python · PyScaffold · pytest · GitHub Actions</text>
 
     <!-- description -->
-    <text x="40.0" y="124" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="11" fill="#f0f6fc" opacity="0.85">Reusable .NET extensions: MVVM helpers, JSON utilities, HTTP abstract…</text>
+    <text x="40.0" y="124" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="11" fill="#f0f6fc" opacity="0.85">Python client for the French Basketball Federation (FFBB) v2 API. Rev…</text>
 
     <!-- footer : extra metric ou state -->    <text x="381.3333333333333" y="156" text-anchor="end" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="10" fill="#8b949e">→ github</text>
     <!-- card -->
@@ -30,16 +30,16 @@
     <rect x="413.3333333333333" y="50" width="373.3333333333333" height="2" rx="1" fill="#f78166"/>
 
     <!-- name -->
-    <text x="429.3333333333333" y="78" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="14" font-weight="700" fill="#f0f6fc">Here.Sdk.Common</text>
+    <text x="429.3333333333333" y="78" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="14" font-weight="700" fill="#f0f6fc">CometBFT.Client</text>
 
     <!-- domain chip / state -->
-    <text x="770.6666666666666" y="78" text-anchor="end" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="10" fill="#f78166" letter-spacing="0.08em">BACKEND</text>
+    <text x="770.6666666666666" y="78" text-anchor="end" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="10" fill="#f78166" letter-spacing="0.08em">BLOCKCHAIN</text>
 
     <!-- stack -->
     <text x="429.3333333333333" y="100" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="11" fill="#8b949e">C# · .NET</text>
 
     <!-- description -->
-    <text x="429.3333333333333" y="124" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="11" fill="#f0f6fc" opacity="0.85">Minimal shared vocabulary for the `Here.Sdk.*` ecosystem: geography, …</text>
+    <text x="429.3333333333333" y="124" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="11" fill="#f0f6fc" opacity="0.85">.NET client library for CometBFT nodes — REST, WebSocket and gRPC tra…</text>
 
     <!-- footer : extra metric ou state -->    <text x="770.6666666666666" y="156" text-anchor="end" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="10" fill="#8b949e">→ github</text>
     <!-- card -->
@@ -49,16 +49,16 @@
     <rect x="802.6666666666666" y="50" width="373.3333333333333" height="2" rx="1" fill="#f78166"/>
 
     <!-- name -->
-    <text x="818.6666666666666" y="78" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="14" font-weight="700" fill="#f0f6fc">CometBFT.Client</text>
+    <text x="818.6666666666666" y="78" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="14" font-weight="700" fill="#f0f6fc">osmosis-launcher</text>
 
     <!-- domain chip / state -->
     <text x="1160.0" y="78" text-anchor="end" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="10" fill="#f78166" letter-spacing="0.08em">BLOCKCHAIN</text>
 
     <!-- stack -->
-    <text x="818.6666666666666" y="100" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="11" fill="#8b949e">C# · .NET</text>
+    <text x="818.6666666666666" y="100" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="11" fill="#8b949e">Python · Shell</text>
 
     <!-- description -->
-    <text x="818.6666666666666" y="124" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="11" fill="#f0f6fc" opacity="0.85">.NET client library for CometBFT nodes — REST, WebSocket and gRPC tra…</text>
+    <text x="818.6666666666666" y="124" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="11" fill="#f0f6fc" opacity="0.85">Modified Osmosis launcher tuned for server-side `osmosisd` execution.</text>
 
     <!-- footer : extra metric ou state -->    <text x="1160.0" y="156" text-anchor="end" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="10" fill="#8b949e">→ github</text>
     <!-- card -->
@@ -68,18 +68,18 @@
     <rect x="24.0" y="186" width="373.3333333333333" height="2" rx="1" fill="#f78166"/>
 
     <!-- name -->
-    <text x="40.0" y="214" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="14" font-weight="700" fill="#f0f6fc">FFBBApiClientV2_Python</text>
+    <text x="40.0" y="214" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="14" font-weight="700" fill="#f0f6fc">docker.idena-node</text>
 
     <!-- domain chip / state -->
-    <text x="381.3333333333333" y="214" text-anchor="end" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="10" fill="#f78166" letter-spacing="0.08em">BACKEND</text>
+    <text x="381.3333333333333" y="214" text-anchor="end" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="10" fill="#f78166" letter-spacing="0.08em">DEVOPS</text>
 
     <!-- stack -->
-    <text x="40.0" y="236" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="11" fill="#8b949e">Python · PyScaffold · pytest · GitHub Actions</text>
+    <text x="40.0" y="236" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="11" fill="#8b949e">Docker · Shell · GitHub Actions</text>
 
     <!-- description -->
-    <text x="40.0" y="260" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="11" fill="#f0f6fc" opacity="0.85">Python client for the French Basketball Federation (FFBB) v2 API. Rev…</text>
+    <text x="40.0" y="260" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="11" fill="#f0f6fc" opacity="0.85">Dockerized Idena blockchain node with monitoring and update automatio…</text>
 
-    <!-- footer : extra metric ou state -->    <text x="381.3333333333333" y="292" text-anchor="end" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="10" fill="#8b949e">→ github</text>
+    <!-- footer : extra metric ou state -->    <text x="40.0" y="292" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="10" fill="#d29922">★ 470+ Docker Hub pulls</text>    <text x="381.3333333333333" y="292" text-anchor="end" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="10" fill="#8b949e">→ github</text>
     <!-- card -->
     <rect x="413.3333333333333" y="186" width="373.3333333333333" height="120" rx="6" fill="#1c2128" stroke="#30363d" stroke-width="1"/>
 
@@ -87,16 +87,16 @@
     <rect x="413.3333333333333" y="186" width="373.3333333333333" height="2" rx="1" fill="#f78166"/>
 
     <!-- name -->
-    <text x="429.3333333333333" y="214" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="14" font-weight="700" fill="#f0f6fc">osmosis-launcher</text>
+    <text x="429.3333333333333" y="214" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="14" font-weight="700" fill="#f0f6fc">aioz-node-docker</text>
 
     <!-- domain chip / state -->
-    <text x="770.6666666666666" y="214" text-anchor="end" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="10" fill="#f78166" letter-spacing="0.08em">BLOCKCHAIN</text>
+    <text x="770.6666666666666" y="214" text-anchor="end" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="10" fill="#f78166" letter-spacing="0.08em">DEVOPS</text>
 
     <!-- stack -->
-    <text x="429.3333333333333" y="236" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="11" fill="#8b949e">Python · Shell</text>
+    <text x="429.3333333333333" y="236" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="11" fill="#8b949e">Docker · Shell</text>
 
     <!-- description -->
-    <text x="429.3333333333333" y="260" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="11" fill="#f0f6fc" opacity="0.85">Modified Osmosis launcher tuned for server-side `osmosisd` execution.</text>
+    <text x="429.3333333333333" y="260" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="11" fill="#f0f6fc" opacity="0.85">Docker image for AIOZ blockchain node deployment (decentralized conte…</text>
 
     <!-- footer : extra metric ou state -->    <text x="770.6666666666666" y="292" text-anchor="end" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="10" fill="#8b949e">→ github</text>
     <!-- card -->
@@ -106,18 +106,18 @@
     <rect x="802.6666666666666" y="186" width="373.3333333333333" height="2" rx="1" fill="#f78166"/>
 
     <!-- name -->
-    <text x="818.6666666666666" y="214" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="14" font-weight="700" fill="#f0f6fc">docker.idena-node</text>
+    <text x="818.6666666666666" y="214" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="14" font-weight="700" fill="#f0f6fc">Here.Sdk.Common</text>
 
     <!-- domain chip / state -->
-    <text x="1160.0" y="214" text-anchor="end" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="10" fill="#f78166" letter-spacing="0.08em">DEVOPS</text>
+    <text x="1160.0" y="214" text-anchor="end" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="10" fill="#f78166" letter-spacing="0.08em">BACKEND</text>
 
     <!-- stack -->
-    <text x="818.6666666666666" y="236" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="11" fill="#8b949e">Docker · Shell · GitHub Actions</text>
+    <text x="818.6666666666666" y="236" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="11" fill="#8b949e">C# · .NET</text>
 
     <!-- description -->
-    <text x="818.6666666666666" y="260" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="11" fill="#f0f6fc" opacity="0.85">Dockerized Idena blockchain node with monitoring and update automatio…</text>
+    <text x="818.6666666666666" y="260" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="11" fill="#f0f6fc" opacity="0.85">Minimal shared vocabulary for the `Here.Sdk.*` ecosystem: geography, …</text>
 
-    <!-- footer : extra metric ou state -->    <text x="818.6666666666666" y="292" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="10" fill="#d29922">★ 470+ Docker Hub pulls</text>    <text x="1160.0" y="292" text-anchor="end" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="10" fill="#8b949e">→ github</text>
+    <!-- footer : extra metric ou state -->    <text x="1160.0" y="292" text-anchor="end" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="10" fill="#8b949e">→ github</text>
     <!-- card -->
     <rect x="24.0" y="322" width="373.3333333333333" height="120" rx="6" fill="#1c2128" stroke="#30363d" stroke-width="1"/>
 
@@ -125,16 +125,16 @@
     <rect x="24.0" y="322" width="373.3333333333333" height="2" rx="1" fill="#f78166"/>
 
     <!-- name -->
-    <text x="40.0" y="350" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="14" font-weight="700" fill="#f0f6fc">aioz-node-docker</text>
+    <text x="40.0" y="350" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="14" font-weight="700" fill="#f0f6fc">NetExtension</text>
 
     <!-- domain chip / state -->
-    <text x="381.3333333333333" y="350" text-anchor="end" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="10" fill="#f78166" letter-spacing="0.08em">DEVOPS</text>
+    <text x="381.3333333333333" y="350" text-anchor="end" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="10" fill="#f78166" letter-spacing="0.08em">BACKEND</text>
 
     <!-- stack -->
-    <text x="40.0" y="372" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="11" fill="#8b949e">Docker · Shell</text>
+    <text x="40.0" y="372" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="11" fill="#8b949e">C# · .NET 10</text>
 
     <!-- description -->
-    <text x="40.0" y="396" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="11" fill="#f0f6fc" opacity="0.85">Docker image for AIOZ blockchain node deployment (decentralized conte…</text>
+    <text x="40.0" y="396" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="11" fill="#f0f6fc" opacity="0.85">Reusable .NET extensions: MVVM helpers, JSON utilities, HTTP abstract…</text>
 
     <!-- footer : extra metric ou state -->    <text x="381.3333333333333" y="428" text-anchor="end" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="10" fill="#8b949e">→ github</text>
     <!-- card -->

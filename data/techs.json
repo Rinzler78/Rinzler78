@@ -177,6 +177,7 @@
     "id": "bluetooth",
     "label": "Bluetooth / BLE / GATT",
     "domain": "embedded",
+    "featured": true,
     "display_version": "Classic + BLE 4.x · custom GATT",
     "notes": "Heavy use across career: Ingenico payment terminals, then Good Angel connected breathalyzer — designed GATT protocols, custom cross-platform Bluetooth stack (iOS CoreBluetooth + Android).",
     "versions": []
@@ -225,7 +226,6 @@
     "id": "docker",
     "label": "Docker",
     "domain": "devops",
-    "featured": true,
     "display_version": "24.x+ · Compose v2",
     "notes": "Multistage builds, devcontainers, blockchain nodes, Compose orchestration.",
     "versions": [

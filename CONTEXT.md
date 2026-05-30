@@ -25,11 +25,17 @@ Ce repo est le profil GitHub de Boris Leclere. Le README et les SVG décoratifs 
 Champ `depth` (0–3) : profondeur d'usage en production, **auto-évaluation factuelle** (y compris missions privées invisibles sur GitHub). 0 = read-level, 3 = expertise cœur. Additif (+20/niveau). Corrige le biais « la formule ne voit que le public ». Voir [ADR-002](docs/adr/0002-tech-score-derivation.md).
 
 Champs d'override (optionnels, à utiliser quand la formule sous-évalue, par ex. usage privé non listé dans `projects.json`) :
-- `level_override` — force le level qualitatif
-- `score_override` — force le score numérique
-- `featured` — booléen, ajoute un bonus +15 au score (sert aussi à filtrer hero/core expertise)
+- `level_override` — force le level qualitatif (s'applique au level **actuel**)
+- `score_override` — force le score numérique actuel
+- `featured` — booléen **d'affichage seul** (sélection hero / core expertise). N'influence **plus** le score depuis [ADR-006](docs/adr/0006-hours-based-expertise-model.md).
 
-**Invariant temporel** (principe énoncé par Boris) : une compétence ne reste « active » (`until: null`) **que si une expérience ou un projet courant l'utilise encore**. Une tech bornée à une période passée doit porter le `until` de la fin de cette période — sinon elle prétendrait à tort à une expertise actuelle (ex. `gps` est borné à 2013, fin de l'ère embarquée GoodKap). Source de vérité des périodes : `data/timeline.json`. Tant que les events timeline ne portent pas la liste des techs *utilisées* par période (seulement `techs-added`), ce `until` est maintenu à la main avec discipline ; une dérivation automatique sera possible quand les périodes porteront leurs techs actives.
+**Score et niveaux dérivés des heures** (ADR-006) : `since`, `until`, `score_max`/`level_max` (pic atteint) et `score_current`/`level_current` (après oubli) sont **calculés** par le pipeline `HoursCalculator → ScoreEngine → ViewBuilder` à partir des **heures d'exposition**. Les heures viennent de deux sources : les **Experience** (durée × 1880 h/an) et les **Project** (`active_days` × 9 h), réparties par tiers concurrents `primary 0.70 / secondary 0.35 / incident 0.10` (cumulables, non normalisés — sur un projet C#+Xamarin+Bluetooth les trois comptent en plein). `peak = 99·(1−e^(−h/3000))` ; décroissance vers un plancher `0.30·peak` selon le temps d'inactivité.
+
+**Invariant temporel** : `since`/`until` d'une tech sont **dérivés** des Experience et Project qui l'utilisent (`until = null` si une source courante l'emploie encore, sinon la dernière fin). Le principe « une compétence s'arrête à la fin de sa dernière période » est donc implémenté structurellement — plus de saisie manuelle de `until`.
+
+### Experience
+
+`data/experiences.json` — Une **période datée** du parcours (emploi, études, mission, compétition, stage) : `id`, `org`, `role`, `type` (`cdi`/`freelance`/`mission`/`education`/`competition`/`internship`), `start` (`YYYY-MM`), `end` (`YYYY-MM` ou `null` si courante), `tech_weights` (map `tech_id → tier`). Source d'heures n°1 (durée × 1880 h/an répartie par tiers). Bornes datées du CV (LinkedIn). Good Angel / My Good Life (parallèles, télétravail) sont modélisés comme **une** période en deux phases pour ne pas double-compter les heures.
 
 ### Timeline Event
 
@@ -45,7 +51,7 @@ Champ optionnel `kind` parmi `job` / `education` / `personal` / `tech_milestone`
 
 ### Project
 
-`data/projects.json` — Un projet public mis en avant : `name`, `github-url`, `domain-id`, `tech-ids[]`, `description`, `state` (`active` / `legacy` / `archive`). Référence techs par id pour cohérence avec les autres concepts.
+`data/projects.json` — Un dépôt public. Double rôle : **vitrine** (`highlight`, `description`, `stack_label` — les ~8 montrés) ET **source d'heures n°2** (`active_days` × 9 h, réparties par `tech_weights` tiers concurrents). `active_days` = nombre de jours distincts avec commits (objectif, depuis GitHub) ; `start`/`end` = années création/dernier push (`end: null` = encore actif → contribue à `until = null` des techs). Champs : `id`, `name`, `github_url`, `domain`, `tech_ids[]`, `active_days`, `start`, `end`, `tech_weights`, `state` (`active`/`legacy`/`archive`), `highlight`. Tous les dépôts significatifs (≥ 3 commit-days) sont présents pour les heures ; `highlight=true` sélectionne la vitrine.
 
 ### Service
 

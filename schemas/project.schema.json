@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Project collection",
+  "description": "Public repos. Display (highlight + description) and hours-source (active_days x 9 + concurrent tech_weights tiers, ADR-006) in one entry. since/until of a tech derive from start/end of the projects + experiences using it.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["id", "name", "github_url", "domain", "tech_ids"],
+    "properties": {
+      "id": { "type": "string", "pattern": "^[a-z0-9._-]+$" },
+      "name": { "type": "string", "minLength": 1 },
+      "github_url": { "type": "string", "pattern": "^https://github\\.com/" },
+      "domain": { "type": "string", "minLength": 1 },
+      "tech_ids": { "type": "array", "items": { "type": "string" } },
+      "active_days": { "type": "integer", "minimum": 0 },
+      "start": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}$" },
+      "end": { "type": ["string", "null"], "pattern": "^[0-9]{4}-[0-9]{2}$" },
+      "tech_weights": {
+        "type": "object",
+        "additionalProperties": { "enum": ["primary", "secondary", "incident"] }
+      },
+      "state": { "enum": ["active", "legacy", "archive"] },
+      "highlight": { "type": "boolean" },
+      "description": { "type": "string" },
+      "stack_label": { "type": "string" },
+      "category": { "type": "string" },
+      "pypi": { "type": "string" },
+      "extra_metric": { "type": "string" }
+    }
+  }
+}

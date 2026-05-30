@@ -78,4 +78,4 @@
 
 </sub>
 
-**Liens directs :** {% for p in projects %}[{{ p.name }}]({{ p.github_url }}){% if not loop.last %} · {% endif %}{% endfor %}
+**Liens directs :** {% for p in projects_highlighted() %}[{{ p.name }}]({{ p.github_url }}){% if not loop.last %} · {% endif %}{% endfor %}

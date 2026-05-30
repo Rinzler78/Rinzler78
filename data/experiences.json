@@ -175,6 +175,8 @@
       "xamarin-forms": "secondary",
       "bluetooth": "secondary",
       "git": "secondary",
+      "linux-ubuntu": "secondary",
+      "windows": "secondary",
       "azure": "incident",
       "github-actions": "incident"
     }
@@ -196,6 +198,7 @@
       "docker": "secondary",
       "linux-ubuntu": "secondary",
       "bash": "secondary",
+      "windows": "incident",
       "github-actions": "secondary",
       "fastapi": "incident",
       "cometbft": "incident",

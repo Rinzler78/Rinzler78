@@ -38,6 +38,22 @@ def test_real_experiences_conform_to_experience_schema():
     assert len(exps) > 0
 
 
+def test_real_projects_conform_to_project_schema():
+    projs = load_collection(
+        DATA / "projects.json", schema=_schema("project.schema.json")
+    )
+    assert len(projs) > 0
+
+
+def test_projects_only_reference_known_techs():
+    tech_ids = {t["id"] for t in load_collection(DATA / "techs.json")}
+    for proj in load_collection(DATA / "projects.json"):
+        for tech_id in proj.get("tech_weights", {}):
+            assert tech_id in tech_ids, (
+                f"Project {proj['id']!r} weights unknown tech {tech_id!r}"
+            )
+
+
 def test_real_data_referential_integrity_holds():
     bag = {
         "domains": load_collection(DATA / "domains.json"),

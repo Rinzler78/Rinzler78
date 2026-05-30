@@ -1,76 +1,112 @@
 [
   {
-    "id": "net-extension",
-    "name": "NetExtension",
-    "github_url": "https://github.com/Rinzler78/NetExtension",
+    "id": "osmobot-csharp",
+    "name": "OsmoBot-CSharp",
+    "github_url": "https://github.com/Rinzler78/OsmoBot-CSharp",
     "domain": "backend",
-    "category": "csharp",
     "tech_ids": [
+      "bash",
+      "cosmos-sdk",
       "csharp-dotnet",
-      "dotnet_10"
+      "osmosis",
+      "python"
     ],
-    "stack_label": "C# · .NET 10",
-    "description": "Reusable .NET extensions: MVVM helpers, JSON utilities, HTTP abstractions. Actively maintained.",
+    "active_days": 154,
+    "start": "2022-01",
+    "end": null,
+    "tech_weights": {
+      "csharp-dotnet": "primary",
+      "bash": "secondary",
+      "python": "incident",
+      "osmosis": "primary",
+      "cosmos-sdk": "secondary"
+    },
     "state": "active",
-    "highlight": true
+    "highlight": false
   },
   {
-    "id": "here-sdk-common",
-    "name": "Here.Sdk.Common",
-    "github_url": "https://github.com/Rinzler78/Here.Sdk.Common",
+    "id": "personnalfinanceassistant",
+    "name": "PersonnalFinanceAssistant",
+    "github_url": "https://github.com/Rinzler78/PersonnalFinanceAssistant",
     "domain": "backend",
-    "category": "csharp",
     "tech_ids": [
+      "bash",
       "csharp-dotnet"
     ],
-    "stack_label": "C# · .NET",
-    "description": "Minimal shared vocabulary for the `Here.Sdk.*` ecosystem: geography, units, error model.",
+    "active_days": 49,
+    "start": "2026-01",
+    "end": null,
+    "tech_weights": {
+      "csharp-dotnet": "primary",
+      "bash": "incident"
+    },
     "state": "active",
-    "highlight": true
-  },
-  {
-    "id": "cometbft-client",
-    "name": "CometBFT.Client",
-    "github_url": "https://github.com/Rinzler78/CometBFT.Client",
-    "domain": "blockchain",
-    "category": "csharp",
-    "tech_ids": [
-      "csharp-dotnet",
-      "cometbft"
-    ],
-    "stack_label": "C# · .NET",
-    "description": ".NET client library for CometBFT nodes — REST, WebSocket and gRPC transports, generic block model.",
-    "state": "active",
-    "highlight": true
+    "highlight": false
   },
   {
     "id": "ffbb-api-client-v2",
     "name": "FFBBApiClientV2_Python",
     "github_url": "https://github.com/Rinzler78/FFBBApiClientV2_Python",
     "domain": "backend",
-    "category": "python",
     "tech_ids": [
-      "python",
-      "github-actions"
+      "bash",
+      "python"
     ],
-    "stack_label": "Python · PyScaffold · pytest · GitHub Actions",
-    "description": "Python client for the French Basketball Federation (FFBB) v2 API. Reverse-engineered, packaged, published to PyPI, full CI.",
+    "active_days": 46,
+    "start": "2024-01",
+    "end": null,
+    "tech_weights": {
+      "python": "primary",
+      "bash": "secondary"
+    },
     "state": "active",
     "highlight": true,
+    "description": "Python client for the French Basketball Federation (FFBB) v2 API. Reverse-engineered, packaged, published to PyPI, full CI.",
+    "stack_label": "Python · PyScaffold · pytest · GitHub Actions",
     "pypi": "https://pypi.org/user/Rinzler78"
   },
   {
-    "id": "ffbb-api-client-v1",
-    "name": "FFBBApiClient_Python",
-    "github_url": "https://github.com/Rinzler78/FFBBApiClient_Python",
+    "id": "cometbft-client",
+    "name": "CometBFT.Client",
+    "github_url": "https://github.com/Rinzler78/CometBFT.Client",
+    "domain": "blockchain",
+    "tech_ids": [
+      "bash",
+      "cometbft",
+      "cosmos-sdk",
+      "csharp-dotnet",
+      "docker"
+    ],
+    "active_days": 20,
+    "start": "2026-01",
+    "end": null,
+    "tech_weights": {
+      "csharp-dotnet": "primary",
+      "bash": "secondary",
+      "docker": "incident",
+      "cometbft": "primary",
+      "cosmos-sdk": "secondary"
+    },
+    "state": "active",
+    "highlight": true,
+    "description": ".NET client library for CometBFT nodes — REST, WebSocket and gRPC transports, generic block model.",
+    "stack_label": "C# · .NET"
+  },
+  {
+    "id": "python-playground",
+    "name": "Python_Playground",
+    "github_url": "https://github.com/Rinzler78/Python_Playground",
     "domain": "backend",
-    "category": "python",
     "tech_ids": [
       "python"
     ],
-    "stack_label": "Python",
-    "description": "Legacy client for the previous FFBB API generation, kept for reference.",
-    "state": "legacy",
+    "active_days": 20,
+    "start": "2024-01",
+    "end": "2024-12",
+    "tech_weights": {
+      "python": "primary"
+    },
+    "state": "active",
     "highlight": false
   },
   {
@@ -78,80 +114,490 @@
     "name": "osmosis-launcher",
     "github_url": "https://github.com/Rinzler78/osmosis-launcher",
     "domain": "blockchain",
-    "category": "python",
     "tech_ids": [
-      "python",
       "bash",
-      "osmosis"
+      "cosmos-sdk",
+      "osmosis",
+      "python"
     ],
-    "stack_label": "Python · Shell",
-    "description": "Modified Osmosis launcher tuned for server-side `osmosisd` execution.",
+    "active_days": 18,
+    "start": "2022-01",
+    "end": null,
+    "tech_weights": {
+      "python": "primary",
+      "bash": "secondary",
+      "osmosis": "primary",
+      "cosmos-sdk": "secondary"
+    },
     "state": "active",
-    "highlight": true
+    "highlight": true,
+    "description": "Modified Osmosis launcher tuned for server-side `osmosisd` execution.",
+    "stack_label": "Python · Shell"
   },
   {
     "id": "docker-idena-node",
     "name": "docker.idena-node",
     "github_url": "https://github.com/Rinzler78/docker.idena-node",
     "domain": "devops",
-    "category": "docker",
     "tech_ids": [
-      "docker",
       "bash",
-      "github-actions",
+      "docker",
       "idena"
     ],
-    "stack_label": "Docker · Shell · GitHub Actions",
-    "description": "Dockerized Idena blockchain node with monitoring and update automation. Adopted by the Idena community.",
+    "active_days": 15,
+    "start": "2020-01",
+    "end": null,
+    "tech_weights": {
+      "bash": "secondary",
+      "docker": "primary",
+      "idena": "primary"
+    },
     "state": "active",
     "highlight": true,
+    "description": "Dockerized Idena blockchain node with monitoring and update automation. Adopted by the Idena community.",
+    "stack_label": "Docker · Shell · GitHub Actions",
     "extra_metric": "470+ Docker Hub pulls"
   },
   {
-    "id": "aioz-node-docker",
-    "name": "aioz-node-docker",
-    "github_url": "https://github.com/Rinzler78/aioz-node-docker",
-    "domain": "devops",
-    "category": "docker",
+    "id": "efextension",
+    "name": "EFExtension",
+    "github_url": "https://github.com/Rinzler78/EFExtension",
+    "domain": "backend",
     "tech_ids": [
-      "docker",
-      "bash",
-      "aioz"
+      "csharp-dotnet",
+      "ef-core"
     ],
-    "stack_label": "Docker · Shell",
-    "description": "Docker image for AIOZ blockchain node deployment (decentralized content delivery).",
+    "active_days": 14,
+    "start": "2021-01",
+    "end": "2022-12",
+    "tech_weights": {
+      "csharp-dotnet": "primary",
+      "ef-core": "primary"
+    },
     "state": "active",
-    "highlight": true
+    "highlight": false
+  },
+  {
+    "id": "scripts",
+    "name": "Scripts",
+    "github_url": "https://github.com/Rinzler78/Scripts",
+    "domain": "backend",
+    "tech_ids": [
+      "bash",
+      "python"
+    ],
+    "active_days": 14,
+    "start": "2022-01",
+    "end": null,
+    "tech_weights": {
+      "python": "primary",
+      "bash": "secondary"
+    },
+    "state": "active",
+    "highlight": false
+  },
+  {
+    "id": "ffbb-api-client-v1",
+    "name": "FFBBApiClient_Python",
+    "github_url": "https://github.com/Rinzler78/FFBBApiClient_Python",
+    "domain": "backend",
+    "tech_ids": [
+      "bash",
+      "python"
+    ],
+    "active_days": 14,
+    "start": "2024-01",
+    "end": null,
+    "tech_weights": {
+      "python": "primary",
+      "bash": "secondary"
+    },
+    "state": "legacy",
+    "highlight": false,
+    "description": "Legacy client for the previous FFBB API generation, kept for reference.",
+    "stack_label": "Python"
+  },
+  {
+    "id": "catmash",
+    "name": "CatMash",
+    "github_url": "https://github.com/Rinzler78/CatMash",
+    "domain": "backend",
+    "tech_ids": [
+      "csharp-dotnet",
+      "nodejs"
+    ],
+    "active_days": 13,
+    "start": "2019-01",
+    "end": "2022-12",
+    "tech_weights": {
+      "nodejs": "primary",
+      "csharp-dotnet": "secondary"
+    },
+    "state": "active",
+    "highlight": false
+  },
+  {
+    "id": "osmobot-docker",
+    "name": "osmoBot-docker",
+    "github_url": "https://github.com/Rinzler78/osmoBot-docker",
+    "domain": "devops",
+    "tech_ids": [
+      "bash",
+      "cosmos-sdk",
+      "docker",
+      "osmosis"
+    ],
+    "active_days": 13,
+    "start": "2022-01",
+    "end": "2023-12",
+    "tech_weights": {
+      "bash": "secondary",
+      "docker": "primary",
+      "osmosis": "primary",
+      "cosmos-sdk": "secondary"
+    },
+    "state": "active",
+    "highlight": false
+  },
+  {
+    "id": "pythonrefactortoolbox",
+    "name": "PythonRefactorToolBox",
+    "github_url": "https://github.com/Rinzler78/PythonRefactorToolBox",
+    "domain": "backend",
+    "tech_ids": [
+      "ai-driven-development",
+      "python"
+    ],
+    "active_days": 13,
+    "start": "2024-01",
+    "end": null,
+    "tech_weights": {
+      "python": "primary",
+      "ai-driven-development": "secondary"
+    },
+    "state": "active",
+    "highlight": false
+  },
+  {
+    "id": "xamtetris",
+    "name": "XamTetris",
+    "github_url": "https://github.com/Rinzler78/XamTetris",
+    "domain": "backend",
+    "tech_ids": [
+      "csharp-dotnet",
+      "xamarin-forms"
+    ],
+    "active_days": 12,
+    "start": "2020-01",
+    "end": null,
+    "tech_weights": {
+      "csharp-dotnet": "primary",
+      "xamarin-forms": "primary"
+    },
+    "state": "active",
+    "highlight": false,
+    "description": "Tetris App developed using Xamarin Forms"
+  },
+  {
+    "id": "condo",
+    "name": "Condo",
+    "github_url": "https://github.com/Rinzler78/Condo",
+    "domain": "backend",
+    "tech_ids": [
+      "csharp-dotnet"
+    ],
+    "active_days": 11,
+    "start": "2018-01",
+    "end": "2023-12",
+    "tech_weights": {
+      "csharp-dotnet": "primary"
+    },
+    "state": "active",
+    "highlight": false
+  },
+  {
+    "id": "aspnetcoreextension",
+    "name": "AspNetCoreExtension",
+    "github_url": "https://github.com/Rinzler78/AspNetCoreExtension",
+    "domain": "backend",
+    "tech_ids": [
+      "asp-net-core",
+      "csharp-dotnet"
+    ],
+    "active_days": 9,
+    "start": "2021-01",
+    "end": "2023-12",
+    "tech_weights": {
+      "csharp-dotnet": "primary",
+      "asp-net-core": "primary"
+    },
+    "state": "active",
+    "highlight": false
+  },
+  {
+    "id": "magicapiclientcreator",
+    "name": "MagicApiClientCreator",
+    "github_url": "https://github.com/Rinzler78/MagicApiClientCreator",
+    "domain": "backend",
+    "tech_ids": [
+      "ai-driven-development",
+      "python"
+    ],
+    "active_days": 8,
+    "start": "2025-01",
+    "end": null,
+    "tech_weights": {
+      "python": "primary",
+      "ai-driven-development": "secondary"
+    },
+    "state": "active",
+    "highlight": false
+  },
+  {
+    "id": "osmosisfullnode",
+    "name": "OsmosisFullNode",
+    "github_url": "https://github.com/Rinzler78/OsmosisFullNode",
+    "domain": "blockchain",
+    "tech_ids": [
+      "bash",
+      "cosmos-sdk",
+      "docker",
+      "osmosis"
+    ],
+    "active_days": 8,
+    "start": "2022-01",
+    "end": null,
+    "tech_weights": {
+      "bash": "secondary",
+      "docker": "secondary",
+      "osmosis": "primary",
+      "cosmos-sdk": "secondary"
+    },
+    "state": "active",
+    "highlight": false
+  },
+  {
+    "id": "deployment",
+    "name": "Deployment",
+    "github_url": "https://github.com/Rinzler78/Deployment",
+    "domain": "devops",
+    "tech_ids": [
+      "bash",
+      "github-actions"
+    ],
+    "active_days": 7,
+    "start": "2014-01",
+    "end": "2021-12",
+    "tech_weights": {
+      "bash": "primary",
+      "github-actions": "secondary"
+    },
+    "state": "active",
+    "highlight": false
+  },
+  {
+    "id": "rayonnancexftest",
+    "name": "RayonnanceXFTest",
+    "github_url": "https://github.com/Rinzler78/RayonnanceXFTest",
+    "domain": "backend",
+    "tech_ids": [
+      "bash",
+      "csharp-dotnet"
+    ],
+    "active_days": 6,
+    "start": "2020-01",
+    "end": "2020-12",
+    "tech_weights": {
+      "csharp-dotnet": "primary",
+      "bash": "secondary"
+    },
+    "state": "active",
+    "highlight": false
+  },
+  {
+    "id": "duedilportal",
+    "name": "DueDilPortal",
+    "github_url": "https://github.com/Rinzler78/DueDilPortal",
+    "domain": "backend",
+    "tech_ids": [
+      "csharp-dotnet"
+    ],
+    "active_days": 6,
+    "start": "2021-01",
+    "end": "2024-12",
+    "tech_weights": {
+      "csharp-dotnet": "primary"
+    },
+    "state": "active",
+    "highlight": false
   },
   {
     "id": "aioz-node-auto-withdraw",
     "name": "aioz-node-auto-withdraw-reward-docker",
     "github_url": "https://github.com/Rinzler78/aioz-node-auto-withdraw-reward-docker",
     "domain": "devops",
-    "category": "docker",
     "tech_ids": [
-      "docker",
+      "aioz",
       "bash",
-      "aioz"
+      "docker"
     ],
-    "stack_label": "Docker · Shell",
+    "active_days": 5,
+    "start": "2023-01",
+    "end": "2024-12",
+    "tech_weights": {
+      "bash": "secondary",
+      "docker": "primary",
+      "aioz": "primary"
+    },
+    "state": "active",
+    "highlight": false,
     "description": "Autonomous reward withdrawal for AIOZ nodes, packaged as a Docker workload.",
+    "stack_label": "Docker · Shell"
+  },
+  {
+    "id": "aioz-node-docker",
+    "name": "aioz-node-docker",
+    "github_url": "https://github.com/Rinzler78/aioz-node-docker",
+    "domain": "devops",
+    "tech_ids": [
+      "aioz",
+      "bash",
+      "docker"
+    ],
+    "active_days": 4,
+    "start": "2023-01",
+    "end": null,
+    "tech_weights": {
+      "bash": "secondary",
+      "docker": "primary",
+      "aioz": "primary"
+    },
+    "state": "active",
+    "highlight": true,
+    "description": "Docker image for AIOZ blockchain node deployment (decentralized content delivery).",
+    "stack_label": "Docker · Shell"
+  },
+  {
+    "id": "here-sdk-common",
+    "name": "Here.Sdk.Common",
+    "github_url": "https://github.com/Rinzler78/Here.Sdk.Common",
+    "domain": "backend",
+    "tech_ids": [
+      "bash",
+      "csharp-dotnet",
+      "xamarin-forms"
+    ],
+    "active_days": 4,
+    "start": "2026-01",
+    "end": null,
+    "tech_weights": {
+      "csharp-dotnet": "primary",
+      "bash": "secondary",
+      "xamarin-forms": "secondary"
+    },
+    "state": "active",
+    "highlight": true,
+    "description": "Minimal shared vocabulary for the `Here.Sdk.*` ecosystem: geography, units, error model.",
+    "stack_label": "C# · .NET"
+  },
+  {
+    "id": "xamyard",
+    "name": "XamYard",
+    "github_url": "https://github.com/Rinzler78/XamYard",
+    "domain": "backend",
+    "tech_ids": [
+      "csharp-dotnet",
+      "xamarin-forms"
+    ],
+    "active_days": 3,
+    "start": "2019-01",
+    "end": "2019-12",
+    "tech_weights": {
+      "csharp-dotnet": "primary",
+      "xamarin-forms": "primary"
+    },
+    "state": "active",
+    "highlight": false,
+    "description": "XamYard"
+  },
+  {
+    "id": "apiclientgenerator",
+    "name": "ApiClientGenerator",
+    "github_url": "https://github.com/Rinzler78/ApiClientGenerator",
+    "domain": "backend",
+    "tech_ids": [
+      "ai-driven-development",
+      "bash",
+      "python"
+    ],
+    "active_days": 3,
+    "start": "2025-01",
+    "end": null,
+    "tech_weights": {
+      "python": "primary",
+      "bash": "secondary",
+      "ai-driven-development": "secondary"
+    },
     "state": "active",
     "highlight": false
+  },
+  {
+    "id": "skillvalue",
+    "name": "skillvalue",
+    "github_url": "https://github.com/Rinzler78/skillvalue",
+    "domain": "backend",
+    "tech_ids": [
+      "csharp-dotnet"
+    ],
+    "active_days": 3,
+    "start": "2018-01",
+    "end": "2020-12",
+    "tech_weights": {
+      "csharp-dotnet": "primary"
+    },
+    "state": "active",
+    "highlight": false
+  },
+  {
+    "id": "net-extension",
+    "name": "NetExtension",
+    "github_url": "https://github.com/Rinzler78/NetExtension",
+    "domain": "backend",
+    "tech_ids": [
+      "bash",
+      "csharp-dotnet"
+    ],
+    "active_days": 2,
+    "start": "2021-01",
+    "end": null,
+    "tech_weights": {
+      "csharp-dotnet": "primary",
+      "bash": "secondary"
+    },
+    "state": "active",
+    "highlight": true,
+    "description": "Reusable .NET extensions: MVVM helpers, JSON utilities, HTTP abstractions. Actively maintained.",
+    "stack_label": "C# · .NET 10"
   },
   {
     "id": "docker-cleaner",
     "name": "docker-cleaner",
     "github_url": "https://github.com/Rinzler78/docker-cleaner",
     "domain": "devops",
-    "category": "docker",
     "tech_ids": [
       "bash",
       "docker"
     ],
-    "stack_label": "Shell",
-    "description": "Disposable Docker cleanup tool.",
+    "active_days": 2,
+    "start": "2025-01",
+    "end": null,
+    "tech_weights": {
+      "bash": "secondary",
+      "docker": "primary"
+    },
     "state": "active",
-    "highlight": true
+    "highlight": true,
+    "description": "Disposable Docker cleanup tool.",
+    "stack_label": "Shell"
   }
 ]
