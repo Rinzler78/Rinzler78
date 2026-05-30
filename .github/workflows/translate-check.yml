@@ -1,0 +1,36 @@
+name: Translate check
+
+# ADR-005: validate that the committed i18n translation cache is consistent
+# with the source data whenever the data layer changes in a pull request.
+"on":
+  pull_request:
+    paths:
+      - 'data/**'
+
+# Read-only: this check never writes to the repo.
+permissions:
+  contents: read
+
+jobs:
+  translate-check:
+    name: i18n cache consistency
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install package + dev deps
+        run: pip install -e ".[dev]"
+      # PLACEHOLDER (pending i18n generation entrypoint):
+      # The i18n generation pipeline does not exist yet, so this step is a
+      # resilient no-op that always succeeds. Once the i18n pipeline lands,
+      # the integrator must replace the command below with the real check:
+      #   python scripts/generate.py --check-translations
+      # which verifies the committed translation cache matches the source
+      # data and fails the PR on drift. DEEPL_API_KEY is wired here now so
+      # the real entrypoint can call DeepL without a follow-up edit.
+      - name: i18n cache consistency check
+        env:
+          DEEPL_API_KEY: ${{ secrets.DEEPL_API_KEY }}
+        run: python -c "import pathlib,sys; print('i18n cache check placeholder')"
