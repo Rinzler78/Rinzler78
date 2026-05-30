@@ -34,6 +34,7 @@ SCHEMA_MAP = {
     "services.json": "service.schema.json",
     "modes.json": "mode.schema.json",
     "methodology.json": "methodology.schema.json",
+    "metrics.json": "metrics.schema.json",
 }
 
 
