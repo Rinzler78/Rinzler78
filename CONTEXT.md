@@ -39,15 +39,9 @@ Champs d'override (optionnels, à utiliser quand la formule sous-évalue, par ex
 
 ### Timeline Event
 
-`data/timeline.json` — Un événement chronologique du parcours : `year` (ou `year-range`), `label`, `description`, `techs-added` (tableau d'ids — réf vers Tech ou tech-version), `highlight` (booléen pour les jalons majeurs : 2006 premier code, 2009 Master, 2014 CTO, 2020 .NET Core, 2023 freelance, 2026 now).
+`data/timeline.json` — La **couche narrative** du parcours : une frise éditoriale de jalons pour le storytelling (rendu par le SVG `timeline-mini`). Chaque event : `year` (ou `year-range`, ex `"2024-25"`, `"~1990s"`), `label`, `description`, `techs_added` (ids — réf vers Tech ou tech-version, **métadonnée non rendue**), `techs_summary` (prose display), `highlight` (jalons majeurs : 2006 premier code, 2009 Master, 2014 CTO, 2020 .NET Core, 2023 freelance, 2026 now), et drapeaux optionnels `is_now` / `is_milestone` / `is_origin`.
 
-Champs optionnels pour dériver la vue **Experience** (postes professionnels) :
-- `role` — intitulé de poste (ex `"CTO"`, `"Freelance CTO / Senior Engineer"`). Si présent, l'event marque un changement de poste.
-- `employer` — nom de l'employeur ou label client (ex `"BIM&CO"`, `"Freelance"`).
-
-La vue Experience est **dérivée** : on filtre les events qui portent `role`, on borne chaque période par l'année du prochain event avec `role` (ou « now » si dernier). Pas de fichier `experience.json` séparé — invariant « une valeur factuelle apparaît dans exactement un fichier data ».
-
-Champ optionnel `kind` parmi `job` / `education` / `personal` / `tech_milestone` pour qualifier la nature de l'event et permettre des vues dérivées (`education` filtre `kind=education`, `tech_milestone` n'apparaît pas dans Experience, etc.). Un event sans `kind` est traité comme `tech_milestone` par défaut.
+**Timeline ≠ Experience.** Timeline est éditorial (highlights, prose, jalons non-pros comme « 2006 premier code » ou « ~1990s premier ordinateur ») ; **Experience** (`data/experiences.json`) est la source d'heures structurée et datée (toutes les périodes). Les deux coexistent et ne doivent pas dériver l'une de l'autre — leurs rôles diffèrent (raconter vs calculer). `techs_added` ne sert qu'à garder une trace des techs introduites par jalon ; il référence des ids valides (vérifié par l'intégrité référentielle) mais n'alimente **pas** le calcul des heures.
 
 ### Project
 

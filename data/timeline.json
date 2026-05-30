@@ -19,25 +19,25 @@
   {
     "year": "2023",
     "label": "Bascule freelance · installation en Provence",
-    "description": "exploration intensive nodes blockchain & LLM",
-    "techs_added": ["python_3_11", "docker_24", "fastapi", "langchain", "openai-api", "idena", "aioz"],
-    "techs_summary": "+ Python 3.11 · Docker 24.x · FastAPI · LangChain 0.2.x · OpenAI v1.x · Idena · AIOZ",
+    "description": "AI-driven development · exploration intensive nodes blockchain & LLM",
+    "techs_added": ["python_3_11", "docker_24", "fastapi", "ai-driven-development", "idena", "aioz"],
+    "techs_summary": "+ Python 3.11 · Docker 24.x · FastAPI · AI-driven dev · Idena · AIOZ",
     "highlight": true
   },
   {
     "year": "2022",
     "label": "Premier node blockchain en prod",
-    "description": "Osmosis (OSMO) · OsmoBot trading · Portainer",
-    "techs_added": ["cosmos-sdk", "dotnet-maui", "osmosis", "portainer"],
-    "techs_summary": "+ Cosmos SDK · .NET MAUI",
+    "description": "Osmosis (OSMO) · OsmoBot trading · agents IA (ChatGPT)",
+    "techs_added": ["cosmos-sdk", "osmosis"],
+    "techs_summary": "+ Cosmos SDK · Osmosis node ops",
     "highlight": false
   },
   {
     "year": "2020",
     "label": "Migration .NET Core · adoption Blazor",
     "description": "refonte progressive vers stack moderne",
-    "techs_added": ["blazor", "dotnet_5", "dotnet_6", "ef-core", "docker", "docker-compose", "github-actions"],
-    "techs_summary": "+ Blazor WASM/Server · .NET 5/6 · EF Core 6 · Docker · GitHub Actions",
+    "techs_added": ["blazor", "dotnet_5", "dotnet_6", "ef-core", "docker", "github-actions"],
+    "techs_summary": "+ Blazor WASM/Server · .NET 5/6 · EF Core · Docker · GitHub Actions",
     "highlight": true
   },
   {
@@ -52,8 +52,8 @@
     "year": "2014",
     "label": "Premier salarié × 2 — Good Angel & My Good Life",
     "description": "éthylotest connecté · plateforme santé connectée (IoT)",
-    "techs_added": ["asp-net-web-api-2", "ble", "ios-objective-c", "objective-c"],
-    "techs_summary": "+ Xamarin · ASP.NET Web API 2 · JWT · BLE 4.x",
+    "techs_added": ["asp-net-web-api-2", "bluetooth", "objective-c"],
+    "techs_summary": "+ Xamarin · ASP.NET Web API 2 · JWT · Bluetooth/BLE · GATT",
     "highlight": true
   },
   {
@@ -68,8 +68,8 @@
     "year": "2011",
     "label": "Ingenico — paiement mobile (Theoris)",
     "description": "librairie NFC iOS — utilisée downstream par Nespresso",
-    "techs_added": ["nfc"],
-    "techs_summary": "+ NFC ISO 14443/15693 · Objective-C · BT",
+    "techs_added": ["nfc", "bluetooth"],
+    "techs_summary": "+ NFC ISO 14443/15693 · Objective-C · Bluetooth",
     "highlight": false
   },
   {
@@ -84,7 +84,7 @@
     "year": "2009",
     "label": "Master Systèmes Embarqués · 1er emploi GoodKap",
     "description": "GPS connectés · refonte SDK · TCP & Web Services SOAP",
-    "techs_added": ["windows-ce", "windows_ce_5_0", "gps", "dotnet"],
+    "techs_added": ["windows-ce", "windows_ce_5_0", "gps", "csharp-dotnet"],
     "techs_summary": "+ C# / .NET · Windows CE 5.0 · GPS NMEA",
     "highlight": true
   },
@@ -92,15 +92,15 @@
     "year": "2008",
     "label": "Coupe de France de Robotique",
     "description": "28e/200+ équipes · vision embarquée",
-    "techs_added": ["cpp_11"],
-    "techs_summary": "+ embedded C · PIC16F1938",
+    "techs_added": ["cpp_11", "computer-vision"],
+    "techs_summary": "+ embedded C · vision · PIC16F1938",
     "highlight": false
   },
   {
     "year": "2006",
     "label": "$ touch first.c — Licence STIC EEA (Reims)",
     "description": "premier code écrit · début du décompte uptime",
-    "techs_added": ["csharp", "csharp_2_0", "c_99"],
+    "techs_added": ["csharp-dotnet", "csharp_2_0", "c_99"],
     "techs_summary": "+ C",
     "highlight": true,
     "is_milestone": true

@@ -2,11 +2,6 @@
 
 Migration safety net: any edit that breaks a schema, a foreign key, or the
 hours→score pipeline fails here.
-
-NOTE: timeline.json is intentionally excluded from the referential-integrity
-check below — it still references pre-merge tech ids (langchain, dotnet-maui,
-ble, ...) and is scheduled for rework now that experiences.json carries the
-dated periods. See task "Rework timeline.json".
 """
 
 import json
@@ -54,11 +49,19 @@ def test_projects_only_reference_known_techs():
             )
 
 
+def test_real_timeline_conforms_to_timeline_schema():
+    events = load_collection(
+        DATA / "timeline.json", schema=_schema("timeline.schema.json")
+    )
+    assert len(events) > 0
+
+
 def test_real_data_referential_integrity_holds():
     bag = {
         "domains": load_collection(DATA / "domains.json"),
         "techs": load_collection(DATA / "techs.json"),
         "projects": load_collection(DATA / "projects.json"),
+        "timeline": load_collection(DATA / "timeline.json"),
     }
     check_referential_integrity(bag)
 
