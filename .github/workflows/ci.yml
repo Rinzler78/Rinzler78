@@ -1,0 +1,54 @@
+name: CI
+
+"on":
+  push:
+  pull_request:
+    branches: [master]
+
+# Lecture seule : aucun job de CI ne doit écrire dans le repo.
+# Le seul workflow en écriture est update-profile (commit auto des métriques).
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    name: lint · security · generate · validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Cache pre-commit envs
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pre-commit
+          key: pre-commit-${{ hashFiles('.pre-commit-config.yaml') }}
+      - name: Install pre-commit
+        run: pip install pre-commit
+      - name: Run all hooks
+        run: pre-commit run --all-files --show-diff-on-failure
+      # Filet de sécurité : les artefacts générés (SVG/README) committés sont
+      # en phase avec les data. La génération ne dépend que de l'année courante
+      # (décroissance ADR-006) — stable au sein d'une année civile.
+      - name: Generated artifacts up-to-date
+        run: git diff --exit-code
+
+  tests:
+    name: pytest · coverage · pip-audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install package + dev deps
+        run: pip install -e ".[dev]"
+      - name: Tests + coverage (>=90% engine)
+        run: pytest -q --cov --cov-report=term-missing --cov-fail-under=90
+      - name: Dependency vulnerability audit
+        run: pip-audit
