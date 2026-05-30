@@ -1,8 +1,8 @@
 # Spécification complète — GitHub Profile README data-driven, visuel et gouverné comme un vrai repo de code
 
-> Version : 1.0  
-> Format de visualisation : **Markdown uniquement**  
-> Principe : les exemples visuels sont des fichiers SVG externes référencés comme images Markdown.  
+> Version : 1.0
+> Format de visualisation : **Markdown uniquement**
+> Principe : les exemples visuels sont des fichiers SVG externes référencés comme images Markdown.
 > Objectif : créer un profil GitHub personnel qui fonctionne comme une landing page professionnelle, générée depuis des données structurées, testée, maintenable, sécurisée et automatisée.
 
 ---

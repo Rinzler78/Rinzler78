@@ -8,6 +8,7 @@ Lance depuis n'importe où :
 
 Le script est aussi appelé par le pre-commit hook (voir scripts/install-hook.sh).
 """
+
 from __future__ import annotations
 
 import json

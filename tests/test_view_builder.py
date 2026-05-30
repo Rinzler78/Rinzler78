@@ -55,9 +55,7 @@ def test_build_skills_preserves_input_order():
 
 
 def test_build_skills_propagates_override():
-    techs = [
-        {"id": "x", "domain": "d", "versions": [], "level_override": "advanced"}
-    ]
+    techs = [{"id": "x", "domain": "d", "versions": [], "level_override": "advanced"}]
 
     skills = build_skills(techs, experiences=[], projects=[], today=date(2026, 1, 1))
 

@@ -9,6 +9,7 @@ Contrôles :
 
 Exit 0 si tout est OK, non-zero sinon. Utilisé par le pre-commit hook.
 """
+
 from __future__ import annotations
 
 import pathlib
@@ -40,10 +41,7 @@ def validate_readme_refs() -> list[str]:
         seen.add(path_str)
 
         # Ignorer URLs distantes (http/https/data/mailto) et ancres
-        if (
-            "://" in path_str
-            or path_str.startswith(("mailto:", "data:", "#", "//"))
-        ):
+        if "://" in path_str or path_str.startswith(("mailto:", "data:", "#", "//")):
             continue
 
         # Résolution relative au repo

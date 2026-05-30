@@ -75,9 +75,7 @@ def test_level_max_mapping(hours, expected_level):
 
 def test_score_override_replaces_current_only():
     th = TechHours(5500, 2009, 2013)  # would compute a decayed current
-    skill = compute_skill(
-        {"id": "cpp", "score_override": 90}, th, date(2026, 1, 1)
-    )
+    skill = compute_skill({"id": "cpp", "score_override": 90}, th, date(2026, 1, 1))
 
     assert skill.score_current == 90
     assert skill.level_current == Level.EXPERT

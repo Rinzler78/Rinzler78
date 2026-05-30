@@ -134,12 +134,14 @@ Voir [ADR-003](docs/adr/0003-data-schema-collections-and-derived-views.md).
 
 ## Workflow
 
+Les quality gates passent par le **framework pre-commit** (`.pre-commit-config.yaml`, voir [ADR-005](docs/adr/0005-quality-gates-ci-branch-protection.md)) — plus l'ancien hook shell.
+
 1. Éditer un ou plusieurs fichiers dans `data/`
 2. `git add data/...`
-3. Le **pre-commit hook** détecte le changement, lance `python scripts/generate.py`, ajoute `assets/svg/*.svg` et `README.md` au staging
-4. `git commit` (les fichiers générés sont inclus dans le même commit que les data sources)
+3. `git commit` — le stage **pre-commit** valide les schemas + l'intégrité référentielle (`validate_data.py`), régénère `assets/svg/*.svg` + `README.md` (`generate.py`), valide les artefacts (`validate.py`), et passe ruff / bandit / gitleaks / cspell / hygiène fichiers. Si la génération modifie des fichiers, le commit échoue : re-stage puis re-commit (flux pre-commit standard).
+4. `git push` — le stage **pre-push** lance `pytest --cov` (≥ 90 % moteur) + `pip-audit`.
 
-Le hook garantit que **les SVG/README versionnés sont toujours en phase avec les data** versionnées au même commit.
+Cela garantit que **les SVG/README versionnés sont toujours en phase avec les data** au même commit, et que tout passe les gates avant d'être poussé.
 
 ---
 

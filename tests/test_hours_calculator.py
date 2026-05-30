@@ -65,10 +65,18 @@ def test_tiers_map_to_distinct_fractions():
 
 def test_hours_aggregate_across_multiple_experiences():
     experiences = [
-        {"id": "j1", "start": "2018-01", "end": "2019-01",
-         "tech_weights": {"py": "primary"}},
-        {"id": "j2", "start": "2020-01", "end": "2021-01",
-         "tech_weights": {"py": "primary"}},
+        {
+            "id": "j1",
+            "start": "2018-01",
+            "end": "2019-01",
+            "tech_weights": {"py": "primary"},
+        },
+        {
+            "id": "j2",
+            "start": "2020-01",
+            "end": "2021-01",
+            "tech_weights": {"py": "primary"},
+        },
     ]
 
     result = compute_tech_hours(experiences, projects=[], today=date(2026, 1, 1))
@@ -77,9 +85,7 @@ def test_hours_aggregate_across_multiple_experiences():
 
 
 def test_personal_projects_contribute_active_days_times_nine():
-    projects = [
-        {"id": "p1", "active_days": 100, "tech_weights": {"py": "primary"}}
-    ]
+    projects = [{"id": "p1", "active_days": 100, "tech_weights": {"py": "primary"}}]
 
     result = compute_tech_hours([], projects=projects, today=date(2026, 1, 1))
 
@@ -88,10 +94,18 @@ def test_personal_projects_contribute_active_days_times_nine():
 
 def test_since_until_derived_active_tech_has_no_until():
     experiences = [
-        {"id": "old", "start": "2009-06", "end": "2013-12",
-         "tech_weights": {"cpp": "primary"}},
-        {"id": "now", "start": "2023-04", "end": None,
-         "tech_weights": {"py": "primary"}},
+        {
+            "id": "old",
+            "start": "2009-06",
+            "end": "2013-12",
+            "tech_weights": {"cpp": "primary"},
+        },
+        {
+            "id": "now",
+            "start": "2023-04",
+            "end": None,
+            "tech_weights": {"py": "primary"},
+        },
     ]
 
     result = compute_tech_hours(experiences, projects=[], today=date(2026, 1, 1))
@@ -106,10 +120,18 @@ def test_since_until_derived_active_tech_has_no_until():
 
 def test_since_until_span_multiple_periods_takes_min_max():
     experiences = [
-        {"id": "a", "start": "2014-04", "end": "2020-06",
-         "tech_weights": {"x": "primary"}},
-        {"id": "b", "start": "2011-01", "end": "2012-09",
-         "tech_weights": {"x": "secondary"}},
+        {
+            "id": "a",
+            "start": "2014-04",
+            "end": "2020-06",
+            "tech_weights": {"x": "primary"},
+        },
+        {
+            "id": "b",
+            "start": "2011-01",
+            "end": "2012-09",
+            "tech_weights": {"x": "secondary"},
+        },
     ]
 
     result = compute_tech_hours(experiences, projects=[], today=date(2026, 1, 1))

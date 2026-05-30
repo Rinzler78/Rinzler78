@@ -31,9 +31,7 @@ def load_collection(path: Path, schema: dict | None = None) -> list[dict]:
         try:
             jsonschema.validate(data, schema)
         except jsonschema.ValidationError as e:
-            raise DataLoadError(
-                f"Schema violation in {path}: {e.message}"
-            ) from e
+            raise DataLoadError(f"Schema violation in {path}: {e.message}") from e
 
     return data
 
@@ -52,9 +50,7 @@ def check_referential_integrity(bag: dict[str, list[dict]]) -> None:
     """
     domain_ids = {d["id"] for d in bag.get("domains", [])}
     tech_ids = {t["id"] for t in bag.get("techs", [])}
-    version_ids = {
-        v["id"] for t in bag.get("techs", []) for v in t.get("versions", [])
-    }
+    version_ids = {v["id"] for t in bag.get("techs", []) for v in t.get("versions", [])}
     tech_refs = tech_ids | version_ids
 
     for tech in bag.get("techs", []):

@@ -94,6 +94,12 @@ def test_full_pipeline_produces_valid_skills():
         assert skill.tech_id == tech["id"]
 
 
+def test_validate_data_cli_passes_on_real_data():
+    import scripts.validate_data as vd
+
+    assert vd.main() == 0
+
+
 def test_every_featured_tech_has_hours():
     techs = load_collection(DATA / "techs.json")
     experiences = load_collection(DATA / "experiences.json")

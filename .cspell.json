@@ -1,0 +1,39 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "ignorePaths": [
+    ".git/**",
+    ".venv/**",
+    "**/__pycache__/**",
+    "assets/**",
+    "*.lock"
+  ],
+  "words": [
+    "Rinzler",
+    "Leclere",
+    "jinja",
+    "jsonschema",
+    "defusedxml",
+    "pyproject",
+    "pytest",
+    "dataclass",
+    "Ebbinghaus",
+    "Xamarin",
+    "Blazor",
+    "FastAPI",
+    "CometBFT",
+    "Osmosis",
+    "Idena",
+    "Cosmos",
+    "Gunnebo",
+    "Goodkap",
+    "Theoris",
+    "Ondeo",
+    "Ingenico",
+    "Nespresso",
+    "DeepL",
+    "bandit",
+    "gitleaks",
+    "precommit"
+  ]
+}
