@@ -18,11 +18,11 @@
   {%- for d in domains_ordered %}
     {%- set y = header_h + loop.index0 * row_h %}
     {%- set techs = techs_by_domain(d.id) %}
-    {%- set has_expert = techs | selectattr('level', 'equalto', 'expert') | list | length > 0 %}
-    {%- set has_intermediate = techs | selectattr('level', 'equalto', 'intermediate') | list | length > 0 %}
+    {%- set has_expert = techs | selectattr('level_current', 'equalto', 'expert') | list | length > 0 %}
+    {%- set has_advanced = techs | selectattr('level_current', 'equalto', 'advanced') | list | length > 0 %}
     {%- if has_expert %}
       {%- set color = 'accent' %}
-    {%- elif has_intermediate %}
+    {%- elif has_advanced %}
       {%- set color = 'info' %}
     {%- else %}
       {%- set color = 'text_dim' %}

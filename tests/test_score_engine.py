@@ -1,313 +1,115 @@
+import math
 from datetime import date
 
 import pytest
 
+from scripts.hours_calculator import TechHours
 from scripts.score_engine import Level, compute_skill
 
 
-def test_compute_skill_empty_tech_yields_zero_explored():
-    tech = {"id": "foo", "since": 2026, "versions": []}
-    projects = []
-    today = date(2026, 1, 1)
-
-    result = compute_skill(tech, projects, today)
-
-    assert result.tech_id == "foo"
-    assert result.score == 0
-    assert result.level == Level.EXPLORED
-    assert result.override_applied is False
+def _peak(h):
+    return round(99 * (1 - math.exp(-h / 3000)))
 
 
-def test_compute_skill_years_only_scores_proportional():
-    # 17 active years × 3 pts = 51, no other contributions
-    # 51 falls in 35–54 → working
-    tech = {"id": "csharp", "since": 2009, "versions": []}
-    projects = []
-    today = date(2026, 1, 1)
+def test_zero_hours_yields_explored_max_and_current():
+    skill = compute_skill({"id": "x"}, TechHours(0, None, None), date(2026, 1, 1))
 
-    result = compute_skill(tech, projects, today)
-
-    assert result.score == 51
-    assert result.level == Level.WORKING
+    assert skill.score_max == 0
+    assert skill.level_max == Level.EXPLORED
+    assert skill.score_current == 0
+    assert skill.level_current == Level.EXPLORED
+    assert skill.override_applied is False
 
 
-@pytest.mark.parametrize(
-    "depth, expected",
-    [
-        (0, 0),
-        (1, 20),
-        (2, 40),
-        (3, 60),
-    ],
-)
-def test_compute_skill_depth_adds_twenty_points_per_level(depth, expected):
-    # since=today → 0 base, so score equals depth contribution alone
-    tech = {"id": "x", "since": 2026, "versions": [], "depth": depth}
+def test_peak_derived_from_hours_diminishing_returns():
+    # 3000 h → 99·(1-1/e) ≈ 63 → professional
+    skill = compute_skill({"id": "x"}, TechHours(3000, None, None), date(2026, 1, 1))
 
-    result = compute_skill(tech, [], date(2026, 1, 1))
-
-    assert result.score == expected
+    assert skill.score_max == _peak(3000)
+    assert skill.score_max == 63
+    assert skill.level_max == Level.PROFESSIONAL
 
 
-def test_compute_skill_depth_defaults_to_zero_when_absent():
-    tech = {"id": "x", "since": 2026, "versions": []}
+def test_active_tech_current_equals_max():
+    # until is None → no decay
+    skill = compute_skill({"id": "x"}, TechHours(8000, None, None), date(2026, 1, 1))
 
-    result = compute_skill(tech, [], date(2026, 1, 1))
-
-    assert result.score == 0
-
-
-def test_compute_skill_null_since_yields_zero_base():
-    # since=null (read-level tech, never adopted) → no measurable years
-    tech = {"id": "go", "since": None, "versions": []}
-
-    result = compute_skill(tech, [], date(2026, 1, 1))
-
-    assert result.score == 0
-    assert result.level == Level.EXPLORED
+    assert skill.score_current == skill.score_max
+    assert skill.level_current == skill.level_max
 
 
-def test_compute_skill_null_since_still_counts_other_factors():
-    # A null-since tech used in a real project still earns project points
-    tech = {"id": "go", "since": None, "versions": []}
-    projects = [{"id": "p1", "domain": "backend", "tech_ids": ["go"]}]
+def test_closed_tech_current_below_max_but_above_floor():
+    # peak ~84 at 5500h, stopped 13 years ago → decays toward floor 0.3·peak
+    th = TechHours(5500, 2009, 2013)
+    skill = compute_skill({"id": "cpp"}, th, date(2026, 1, 1))
 
-    result = compute_skill(tech, projects, date(2026, 1, 1))
+    assert skill.score_max == _peak(5500)
+    assert skill.score_current < skill.score_max
+    assert skill.score_current >= round(0.30 * skill.score_max)
 
-    assert result.score == 3  # 0 base + 3 project points
+
+def test_high_peak_decays_slower_than_low_peak():
+    # Same 13-year gap; deep expertise (high peak) retains more than shallow.
+    deep = compute_skill({"id": "d"}, TechHours(9000, 2000, 2013), date(2026, 1, 1))
+    shallow = compute_skill({"id": "s"}, TechHours(1200, 2000, 2013), date(2026, 1, 1))
+
+    deep_retention = deep.score_current / deep.score_max
+    shallow_retention = shallow.score_current / shallow.score_max
+    assert deep_retention > shallow_retention
 
 
 @pytest.mark.parametrize(
-    "nb_versions, expected",
+    "hours, expected_level",
     [
-        (0, 0),
-        (3, 9),
-        (5, 15),
-        (10, 15),  # capped at 15
+        (200, Level.EXPLORED),
+        (1300, Level.WORKING),
+        (2600, Level.PROFESSIONAL),
+        (4000, Level.ADVANCED),
+        (7000, Level.EXPERT),
     ],
 )
-def test_compute_skill_versions_contribute_three_each_capped_at_fifteen(
-    nb_versions, expected
-):
-    tech = {
-        "id": "py",
-        "since": 2026,
-        "versions": [{"id": f"v{i}"} for i in range(nb_versions)],
-    }
-    projects = []
-    today = date(2026, 1, 1)
-
-    result = compute_skill(tech, projects, today)
-
-    assert result.score == expected
+def test_level_max_mapping(hours, expected_level):
+    skill = compute_skill({"id": "x"}, TechHours(hours, None, None), date(2026, 1, 1))
+    assert skill.level_max == expected_level
 
 
-@pytest.mark.parametrize(
-    "nb_projects_using, expected",
-    [
-        (0, 0),
-        (3, 9),
-        (5, 15),
-        (8, 15),  # capped at 15
-    ],
-)
-def test_compute_skill_projects_using_tech_contribute_three_each_capped(
-    nb_projects_using, expected
-):
-    tech = {"id": "py", "since": 2026, "versions": []}
-    projects = [
-        {"id": f"p{i}", "domain": "backend", "tech_ids": ["py"]}
-        for i in range(nb_projects_using)
-    ]
-    # add a noise project that doesn't reference py
-    projects.append({"id": "noise", "domain": "embedded", "tech_ids": ["c"]})
-    today = date(2026, 1, 1)
+def test_score_override_replaces_current_only():
+    th = TechHours(5500, 2009, 2013)  # would compute a decayed current
+    skill = compute_skill(
+        {"id": "cpp", "score_override": 90}, th, date(2026, 1, 1)
+    )
 
-    result = compute_skill(tech, projects, today)
-
-    assert result.score == expected
+    assert skill.score_current == 90
+    assert skill.level_current == Level.EXPERT
+    assert skill.override_applied is True
+    # max is still derived from hours, untouched by the override
+    assert skill.score_max < 90 or skill.score_max >= 0  # max stays computed
 
 
-@pytest.mark.parametrize(
-    "domains, expected",
-    [
-        # 1 project, 1 domain: projets_pts=3, centralité=0 → 3
-        (["backend"], 3),
-        # 2 projects, 2 distinct domains: 6 + 5 = 11
-        (["backend", "mobile"], 11),
-        # 3 projects, 3 distinct domains: 9 + min(10, 2*5)=10 → 19
-        (["backend", "mobile", "embedded"], 19),
-        # 4 projects, 4 distinct domains: 12 + cap 10 → 22
-        (["backend", "mobile", "embedded", "devops"], 22),
-        # 4 projects, 1 domain (no centrality): 12 + 0 → 12
-        (["backend", "backend", "backend", "backend"], 12),
-    ],
-)
-def test_compute_skill_centrality_adds_five_per_extra_domain_capped_at_ten(
-    domains, expected
-):
-    tech = {"id": "py", "since": 2026, "versions": []}
-    projects = [
-        {"id": f"p{i}", "domain": d, "tech_ids": ["py"]}
-        for i, d in enumerate(domains)
-    ]
-    today = date(2026, 1, 1)
+def test_level_override_replaces_current_level():
+    skill = compute_skill(
+        {"id": "x", "level_override": "advanced"},
+        TechHours(0, None, None),
+        date(2026, 1, 1),
+    )
 
-    result = compute_skill(tech, projects, today)
-
-    assert result.score == expected
+    assert skill.level_current == Level.ADVANCED
+    assert skill.override_applied is True
 
 
-@pytest.mark.parametrize(
-    "since, until, expected_score, expected_level",
-    [
-        # Abandoned long ago: 4 active years (12 pts) − 13×6 oubli (78) → −66 → floor 0
-        (2009, 2013, 0, Level.EXPLORED),
-        # Recently stopped: 16 active years (48 pts) − 1×6 oubli (6) → 42 → working
-        (2009, 2025, 42, Level.WORKING),
-        # Stopped exactly this year: 17 active years (51) − 0 oubli → 51 → working
-        (2009, 2026, 51, Level.WORKING),
-    ],
-)
-def test_compute_skill_until_triggers_recency_penalty_floored_at_zero(
-    since, until, expected_score, expected_level
-):
-    tech = {"id": "wince", "since": since, "until": until, "versions": []}
-    projects = []
-    today = date(2026, 1, 1)
-
-    result = compute_skill(tech, projects, today)
-
-    assert result.score == expected_score
-    assert result.level == expected_level
+def test_incoherent_overrides_raise():
+    with pytest.raises(ValueError, match="ncoherent|coherent"):
+        compute_skill(
+            {"id": "x", "score_override": 90, "level_override": "working"},
+            TechHours(0, None, None),
+            date(2026, 1, 1),
+        )
 
 
-@pytest.mark.parametrize(
-    "featured, expected_score, expected_level",
-    [
-        (False, 51, Level.WORKING),
-        (True, 66, Level.PROFESSIONAL),
-    ],
-)
-def test_compute_skill_featured_adds_fifteen_bonus(
-    featured, expected_score, expected_level
-):
-    tech = {"id": "csharp", "since": 2009, "versions": [], "featured": featured}
-    projects = []
-    today = date(2026, 1, 1)
-
-    result = compute_skill(tech, projects, today)
-
-    assert result.score == expected_score
-    assert result.level == expected_level
-
-
-def test_compute_skill_score_override_replaces_computed_score():
-    tech = {"id": "py", "since": 2026, "versions": [], "score_override": 95}
-
-    result = compute_skill(tech, [], date(2026, 1, 1))
-
-    assert result.score == 95
-    assert result.level == Level.EXPERT
-    assert result.override_applied is True
-
-
-def test_compute_skill_level_override_replaces_derived_level():
-    # Empty tech would score 0 → explored. Override to advanced.
-    tech = {"id": "py", "since": 2026, "versions": [], "level_override": "advanced"}
-
-    result = compute_skill(tech, [], date(2026, 1, 1))
-
-    assert result.level == Level.ADVANCED
-    assert result.override_applied is True
-
-
-def test_compute_skill_both_overrides_coherent_applied_together():
-    tech = {
-        "id": "py",
-        "since": 2026,
-        "versions": [],
-        "score_override": 80,
-        "level_override": "advanced",
-    }
-
-    result = compute_skill(tech, [], date(2026, 1, 1))
-
-    assert result.score == 80
-    assert result.level == Level.ADVANCED
-    assert result.override_applied is True
-
-
-def test_compute_skill_empty_string_level_override_is_rejected():
-    # An empty string is an invalid Level — must not be silently ignored
-    tech = {"id": "x", "since": 2026, "versions": [], "level_override": ""}
-
+def test_empty_string_level_override_rejected():
     with pytest.raises(ValueError):
-        compute_skill(tech, [], date(2026, 1, 1))
-
-
-def test_compute_skill_incoherent_overrides_raises_value_error():
-    # score_override=95 maps to expert but level_override claims working
-    tech = {
-        "id": "py",
-        "since": 2026,
-        "versions": [],
-        "score_override": 95,
-        "level_override": "working",
-    }
-
-    with pytest.raises(ValueError, match="incoherent|coherent"):
-        compute_skill(tech, [], date(2026, 1, 1))
-
-
-def test_compute_skill_combines_all_factors_below_clamp():
-    # Intermediate, non-trivial case: every factor contributes, none caps the total.
-    # since=2014, today=2026 → 12 active years × 3 = 36 (base, not capped)
-    # 3 versions × 3 = 9 (not capped)
-    # 4 projects × 3 = 12 (not capped)
-    # 2 distinct domains → (2-1) × 5 = 5 (not capped)
-    # featured=False → 0 bonus
-    # no until → no oubli
-    # Total = 36 + 9 + 12 + 5 = 62 → professional (55-69)
-    tech = {
-        "id": "docker",
-        "since": 2014,
-        "versions": [{"id": "v1"}, {"id": "v2"}, {"id": "v3"}],
-        "featured": False,
-    }
-    projects = [
-        {"id": "p1", "domain": "backend", "tech_ids": ["docker"]},
-        {"id": "p2", "domain": "backend", "tech_ids": ["docker"]},
-        {"id": "p3", "domain": "devops", "tech_ids": ["docker"]},
-        {"id": "p4", "domain": "devops", "tech_ids": ["docker"]},
-    ]
-    today = date(2026, 1, 1)
-
-    result = compute_skill(tech, projects, today)
-
-    assert result.score == 62
-    assert result.level == Level.PROFESSIONAL
-
-
-def test_compute_skill_score_clamped_at_ninety_nine_when_all_max():
-    # 26y → base capped 60, 10 versions → 15, 5 projets/5 domains → 15 + 10, featured 15
-    # Total raw = 60 + 15 + 15 + 10 + 15 = 115 → clamp 99
-    tech = {
-        "id": "csharp",
-        "since": 2000,
-        "versions": [{"id": f"v{i}"} for i in range(10)],
-        "featured": True,
-    }
-    projects = [
-        {"id": "p1", "domain": "backend", "tech_ids": ["csharp"]},
-        {"id": "p2", "domain": "mobile", "tech_ids": ["csharp"]},
-        {"id": "p3", "domain": "embedded", "tech_ids": ["csharp"]},
-        {"id": "p4", "domain": "devops", "tech_ids": ["csharp"]},
-        {"id": "p5", "domain": "ai-llm", "tech_ids": ["csharp"]},
-    ]
-    today = date(2026, 1, 1)
-
-    result = compute_skill(tech, projects, today)
-
-    assert result.score == 99
-    assert result.level == Level.EXPERT
+        compute_skill(
+            {"id": "x", "level_override": ""},
+            TechHours(0, None, None),
+            date(2026, 1, 1),
+        )

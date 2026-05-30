@@ -13,6 +13,7 @@ import json
 import pathlib
 import re
 import sys
+from datetime import date
 from typing import Any
 
 try:
@@ -23,6 +24,15 @@ except ImportError:
         "    pip install -r scripts/requirements.txt\n"
     )
     sys.exit(1)
+
+# Bootstrap : rend le package `scripts` importable même lancé en
+# `python3 scripts/generate.py` avec un interpréteur sans install editable
+# (cas du pre-commit hook git-natif).
+_REPO_ROOT = pathlib.Path(__file__).resolve().parent.parent
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(_REPO_ROOT))
+
+from scripts.view_builder import build_skills  # noqa: E402
 
 
 REPO = pathlib.Path(__file__).resolve().parent.parent
@@ -53,17 +63,33 @@ def _escape_amp(obj: Any) -> Any:
 
 
 def load_data() -> dict[str, Any]:
-    """Charge les 7 fichiers data/*.json et échappe les `&` pour usage XML/markdown."""
+    """Charge les fichiers data/*.json et échappe les `&` pour usage XML/markdown."""
     raw = {
         "profile": json.loads((DATA / "profile.json").read_text(encoding="utf-8")),
         "domains": json.loads((DATA / "domains.json").read_text(encoding="utf-8")),
         "techs": json.loads((DATA / "techs.json").read_text(encoding="utf-8")),
+        "experiences": json.loads(
+            (DATA / "experiences.json").read_text(encoding="utf-8")
+        ),
         "timeline": json.loads((DATA / "timeline.json").read_text(encoding="utf-8")),
         "projects": json.loads((DATA / "projects.json").read_text(encoding="utf-8")),
         "theme": json.loads((DATA / "theme.json").read_text(encoding="utf-8")),
         "content": json.loads((DATA / "content.json").read_text(encoding="utf-8")),
     }
     return _escape_amp(raw)
+
+
+def enrich(data: dict[str, Any], today: date) -> dict[str, Any]:
+    """Remplace `techs` brut par les Skills enrichis (hours + max/current).
+
+    Les templates consomment des techs enrichis : chaque tech porte `since`,
+    `until`, `score_max`, `level_max`, `score_current`, `level_current`
+    dérivés des expériences (ADR-006). Voir scripts/view_builder.py.
+    """
+    data["techs"] = build_skills(
+        data["techs"], data["experiences"], data["projects"], today
+    )
+    return data
 
 
 def make_env(data: dict[str, Any]) -> Environment:
@@ -110,20 +136,31 @@ def make_env(data: dict[str, Any]) -> Environment:
             key=lambda d: d["order"],
         )
 
+    # Palette key per derived level (ADR-006 vocabulary). Falls back to the
+    # theme's level_colors block when present, else a sane default key.
+    _LEVEL_PALETTE = {
+        "expert": "accent",
+        "advanced": "info",
+        "professional": "info",
+        "working": "text",
+        "explored": "text_dim",
+    }
+
     def level_color(level: str) -> str:
-        mapping = data["theme"]["patterns"]["table_row"]["level_colors"]
-        # fall-back keys
-        if level == "expert-legacy":
-            level = "expert"
-        return mapping.get(level, "paper")
+        override = (
+            data["theme"].get("patterns", {}).get("table_row", {}).get("level_colors")
+        )
+        if override and level in override:
+            return override[level]
+        return _LEVEL_PALETTE.get(level, "text")
 
     def level_label(level: str) -> str:
         mapping = {
             "expert": "Expert",
-            "expert-legacy": "Expert (legacy)",
-            "intermediate": "Intermediate",
-            "notions": "Notions",
-            "operational": "Operational",
+            "advanced": "Advanced",
+            "professional": "Professional",
+            "working": "Working knowledge",
+            "explored": "Explored",
         }
         return mapping.get(level, level.title())
 
@@ -161,6 +198,7 @@ SVG_TARGETS: list[tuple[str, str, dict]] = [
 
 def main() -> int:
     data = load_data()
+    data = enrich(data, date.today())
     env = make_env(data)
     SVG_OUT.mkdir(parents=True, exist_ok=True)
 

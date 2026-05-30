@@ -5,7 +5,10 @@
     "github_url": "https://github.com/Rinzler78/NetExtension",
     "domain": "backend",
     "category": "csharp",
-    "tech_ids": ["csharp", "dotnet_10"],
+    "tech_ids": [
+      "csharp-dotnet",
+      "dotnet_10"
+    ],
     "stack_label": "C# · .NET 10",
     "description": "Reusable .NET extensions: MVVM helpers, JSON utilities, HTTP abstractions. Actively maintained.",
     "state": "active",
@@ -17,7 +20,9 @@
     "github_url": "https://github.com/Rinzler78/Here.Sdk.Common",
     "domain": "backend",
     "category": "csharp",
-    "tech_ids": ["csharp", "dotnet"],
+    "tech_ids": [
+      "csharp-dotnet"
+    ],
     "stack_label": "C# · .NET",
     "description": "Minimal shared vocabulary for the `Here.Sdk.*` ecosystem: geography, units, error model.",
     "state": "active",
@@ -29,7 +34,10 @@
     "github_url": "https://github.com/Rinzler78/CometBFT.Client",
     "domain": "blockchain",
     "category": "csharp",
-    "tech_ids": ["csharp", "cometbft", "dotnet"],
+    "tech_ids": [
+      "csharp-dotnet",
+      "cometbft"
+    ],
     "stack_label": "C# · .NET",
     "description": ".NET client library for CometBFT nodes — REST, WebSocket and gRPC transports, generic block model.",
     "state": "active",
@@ -41,7 +49,10 @@
     "github_url": "https://github.com/Rinzler78/FFBBApiClientV2_Python",
     "domain": "backend",
     "category": "python",
-    "tech_ids": ["python", "github-actions"],
+    "tech_ids": [
+      "python",
+      "github-actions"
+    ],
     "stack_label": "Python · PyScaffold · pytest · GitHub Actions",
     "description": "Python client for the French Basketball Federation (FFBB) v2 API. Reverse-engineered, packaged, published to PyPI, full CI.",
     "state": "active",
@@ -54,7 +65,9 @@
     "github_url": "https://github.com/Rinzler78/FFBBApiClient_Python",
     "domain": "backend",
     "category": "python",
-    "tech_ids": ["python"],
+    "tech_ids": [
+      "python"
+    ],
     "stack_label": "Python",
     "description": "Legacy client for the previous FFBB API generation, kept for reference.",
     "state": "legacy",
@@ -66,7 +79,11 @@
     "github_url": "https://github.com/Rinzler78/osmosis-launcher",
     "domain": "blockchain",
     "category": "python",
-    "tech_ids": ["python", "bash", "osmosis"],
+    "tech_ids": [
+      "python",
+      "bash",
+      "osmosis"
+    ],
     "stack_label": "Python · Shell",
     "description": "Modified Osmosis launcher tuned for server-side `osmosisd` execution.",
     "state": "active",
@@ -78,7 +95,12 @@
     "github_url": "https://github.com/Rinzler78/docker.idena-node",
     "domain": "devops",
     "category": "docker",
-    "tech_ids": ["docker", "bash", "github-actions", "idena"],
+    "tech_ids": [
+      "docker",
+      "bash",
+      "github-actions",
+      "idena"
+    ],
     "stack_label": "Docker · Shell · GitHub Actions",
     "description": "Dockerized Idena blockchain node with monitoring and update automation. Adopted by the Idena community.",
     "state": "active",
@@ -91,7 +113,11 @@
     "github_url": "https://github.com/Rinzler78/aioz-node-docker",
     "domain": "devops",
     "category": "docker",
-    "tech_ids": ["docker", "bash", "aioz"],
+    "tech_ids": [
+      "docker",
+      "bash",
+      "aioz"
+    ],
     "stack_label": "Docker · Shell",
     "description": "Docker image for AIOZ blockchain node deployment (decentralized content delivery).",
     "state": "active",
@@ -103,7 +129,11 @@
     "github_url": "https://github.com/Rinzler78/aioz-node-auto-withdraw-reward-docker",
     "domain": "devops",
     "category": "docker",
-    "tech_ids": ["docker", "bash", "aioz"],
+    "tech_ids": [
+      "docker",
+      "bash",
+      "aioz"
+    ],
     "stack_label": "Docker · Shell",
     "description": "Autonomous reward withdrawal for AIOZ nodes, packaged as a Docker workload.",
     "state": "active",
@@ -115,7 +145,10 @@
     "github_url": "https://github.com/Rinzler78/docker-cleaner",
     "domain": "devops",
     "category": "docker",
-    "tech_ids": ["bash", "docker"],
+    "tech_ids": [
+      "bash",
+      "docker"
+    ],
     "stack_label": "Shell",
     "description": "Disposable Docker cleanup tool.",
     "state": "active",

@@ -1,19 +1,16 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Tech collection",
-  "description": "Technical skills. Score and level are derived (ADR-002), never stored.",
+  "description": "Technical skills. Score/level and since/until are derived (ADR-006), never stored at tech level. since lives only inside versions[].",
   "type": "array",
   "items": {
     "type": "object",
     "additionalProperties": false,
-    "required": ["id", "label", "domain", "since", "versions"],
+    "required": ["id", "label", "domain", "versions"],
     "properties": {
       "id": { "type": "string", "pattern": "^[a-z0-9_-]+$" },
       "label": { "type": "string", "minLength": 1 },
       "domain": { "type": "string", "minLength": 1 },
-      "since": { "type": ["integer", "null"] },
-      "until": { "type": ["integer", "null"] },
-      "depth": { "type": "integer", "minimum": 0, "maximum": 3 },
       "display_version": { "type": "string" },
       "notes": { "type": "string" },
       "featured": { "type": "boolean" },

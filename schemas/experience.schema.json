@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Experience collection",
+  "description": "Dated life/work periods. Hours = span_years x 1880. Tech exposure via concurrent tiers (ADR-006). since/until of each tech are derived from these periods.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["id", "org", "role", "type", "start", "tech_weights"],
+    "properties": {
+      "id": { "type": "string", "pattern": "^[a-z0-9_-]+$" },
+      "org": { "type": "string", "minLength": 1 },
+      "role": { "type": "string", "minLength": 1 },
+      "type": {
+        "enum": ["cdi", "freelance", "mission", "education", "competition", "internship"]
+      },
+      "start": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}$" },
+      "end": {
+        "type": ["string", "null"],
+        "pattern": "^[0-9]{4}-[0-9]{2}$"
+      },
+      "location": { "type": "string" },
+      "note": { "type": "string" },
+      "tech_weights": {
+        "type": "object",
+        "minProperties": 1,
+        "additionalProperties": { "enum": ["primary", "secondary", "incident"] }
+      }
+    }
+  }
+}

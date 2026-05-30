@@ -1,17 +1,30 @@
-"""Tech score and level derivation (ADR-002).
+"""Expertise scoring: peak (max) and current, from exposure hours (ADR-006).
 
 Public surface:
 - ``Level`` enum (5 paliers).
-- ``Skill`` dataclass (tech_id, score, level, override_applied).
-- ``compute_skill(tech, projects, today)`` pure function.
+- ``Skill`` dataclass (tech_id, score_max, level_max, score_current,
+  level_current, override_applied).
+- ``compute_skill(tech, tech_hours, today)`` pure function.
 
-Formula coefficients live as module-level constants so the ADR is readable
-in code. Any coefficient change must update ADR-002.
+The additive formula of ADR-002 was superseded by ADR-006: expertise now
+derives from exposure hours with a peak (diminishing returns) and a current
+value (Ebbinghaus-style forgetting toward a residual floor).
 """
 
+import math
 from dataclasses import dataclass
 from datetime import date
 from enum import Enum
+
+from scripts.hours_calculator import TechHours
+
+# ADR-006 constants
+H0 = 3000  # hours scale for diminishing returns
+ALPHA = 0.30  # residual floor fraction of peak
+HALFLIFE_MIN = 2  # years (low peak forgets fast)
+HALFLIFE_MAX = 18  # years (deep mastery forgets slowly)
+MIN_SCORE = 0
+MAX_SCORE = 99
 
 
 class Level(str, Enum):
@@ -25,33 +38,13 @@ class Level(str, Enum):
 @dataclass(frozen=True)
 class Skill:
     tech_id: str
-    score: int
-    level: Level
+    score_max: int
+    level_max: Level
+    score_current: int
+    level_current: Level
     override_applied: bool
 
 
-# Formula coefficients — ADR-002.
-POINTS_PER_ACTIVE_YEAR = 3
-MAX_BASE_POINTS = 60
-
-POINTS_PER_VERSION = 3
-MAX_VERSIONS_POINTS = 15
-
-POINTS_PER_PROJECT = 3
-MAX_PROJECTS_POINTS = 15
-
-POINTS_PER_EXTRA_DOMAIN = 5
-MAX_CENTRALITY_POINTS = 10
-
-POINTS_PER_DEPTH_LEVEL = 20  # depth 0..3 -> 0/20/40/60
-
-OUBLI_PENALTY_PER_YEAR = 6
-FEATURED_BONUS = 15
-
-MIN_SCORE = 0
-MAX_SCORE = 99
-
-# Level thresholds — ADR-002.
 _LEVEL_THRESHOLDS: tuple[tuple[int, Level], ...] = (
     (85, Level.EXPERT),
     (70, Level.ADVANCED),
@@ -67,7 +60,20 @@ def _level_from_score(score: int) -> Level:
     return Level.EXPLORED
 
 
-def _extract_overrides(tech: dict) -> tuple[int | None, Level | None]:
+def _peak(hours: float) -> float:
+    return MAX_SCORE * (1 - math.exp(-hours / H0))
+
+
+def _decay(peak: float, years_inactive: int) -> float:
+    if years_inactive <= 0 or peak <= 0:
+        return peak
+    floor = ALPHA * peak
+    halflife = HALFLIFE_MIN + (HALFLIFE_MAX - HALFLIFE_MIN) * (peak / 100)
+    lam = math.log(2) / halflife
+    return floor + (peak - floor) * math.exp(-lam * years_inactive)
+
+
+def _extract_overrides(tech: dict) -> tuple[int | None, "Level | None"]:
     score_override = tech.get("score_override")
     level_override_raw = tech.get("level_override")
     level_override = (
@@ -84,52 +90,29 @@ def _extract_overrides(tech: dict) -> tuple[int | None, Level | None]:
     return score_override, level_override
 
 
-def _compute_raw_score(tech: dict, projects: list[dict], today: date) -> int:
-    tech_id = tech["id"]
-    since = tech.get("since")
-    if since is None:
-        # No measurable adoption year (read-level / never really used).
-        years_active = 0
-        recency_oubli = 0
-    else:
-        until = tech.get("until")
-        last_active_year = until if until is not None else today.year
-        years_active = last_active_year - since
-        recency_oubli = max(0, today.year - last_active_year)
-
-    base = min(MAX_BASE_POINTS, years_active * POINTS_PER_ACTIVE_YEAR)
-    versions_pts = min(
-        MAX_VERSIONS_POINTS, len(tech.get("versions", [])) * POINTS_PER_VERSION
-    )
-
-    projects_using = [p for p in projects if tech_id in p.get("tech_ids", [])]
-    projets_pts = min(MAX_PROJECTS_POINTS, len(projects_using) * POINTS_PER_PROJECT)
-    nb_domains = len({p["domain"] for p in projects_using})
-    centralite_pts = min(
-        MAX_CENTRALITY_POINTS, max(0, nb_domains - 1) * POINTS_PER_EXTRA_DOMAIN
-    )
-
-    depth_pts = tech.get("depth", 0) * POINTS_PER_DEPTH_LEVEL
-    bonus_featured = FEATURED_BONUS if tech.get("featured") else 0
-
-    raw = base + versions_pts + projets_pts + centralite_pts + depth_pts
-    oubli = recency_oubli * OUBLI_PENALTY_PER_YEAR
-    return max(MIN_SCORE, min(MAX_SCORE, raw - oubli + bonus_featured))
-
-
-def compute_skill(tech: dict, projects: list[dict], today: date) -> Skill:
+def compute_skill(tech: dict, tech_hours: TechHours, today: date) -> Skill:
     score_override, level_override = _extract_overrides(tech)
-    computed_score = _compute_raw_score(tech, projects, today)
 
-    final_score = score_override if score_override is not None else computed_score
-    final_level = (
-        level_override if level_override is not None else _level_from_score(final_score)
+    peak = _peak(tech_hours.hours)
+    years_inactive = 0 if tech_hours.until is None else today.year - tech_hours.until
+    current = _decay(peak, years_inactive)
+
+    score_max = max(MIN_SCORE, min(MAX_SCORE, round(peak)))
+    computed_current = max(MIN_SCORE, min(MAX_SCORE, round(current)))
+
+    score_current = score_override if score_override is not None else computed_current
+    level_current = (
+        level_override
+        if level_override is not None
+        else _level_from_score(score_current)
     )
     override_applied = score_override is not None or level_override is not None
 
     return Skill(
         tech_id=tech["id"],
-        score=final_score,
-        level=final_level,
+        score_max=score_max,
+        level_max=_level_from_score(score_max),
+        score_current=score_current,
+        level_current=level_current,
         override_applied=override_applied,
     )
