@@ -1,0 +1,1 @@
+Un code sans test n'est pas fini, il est seulement écrit. Les tests décrivent le comportement et survivent aux refactors.

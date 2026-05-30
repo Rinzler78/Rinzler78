@@ -1,0 +1,1 @@
+Porter un produit de l'idée à la mise en marché : architecture pragmatique, choix de stack, livraison itérative qui tient la charge.

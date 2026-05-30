@@ -1,0 +1,1 @@
+Les comportements cachés coûtent cher en debug. Je rends les intentions, les contrats et les dépendances visibles.

@@ -1,6 +1,8 @@
 {
   "version": "0.2",
-  "language": "fr",
+  "language": "fr,en",
+  "import": ["@cspell/dict-fr-fr/cspell-ext.json"],
+  "dictionaries": ["fr-fr", "en_US"],
   "ignorePaths": [
     ".git/**",
     ".venv/**",

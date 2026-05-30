@@ -1,0 +1,1 @@
+Concevoir ou réparer des systèmes maintenables, testables et évolutifs. Sortir une codebase de la dette technique sans tout réécrire.

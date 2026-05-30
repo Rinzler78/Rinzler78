@@ -1,0 +1,1 @@
+Stabiliser la chaîne de livraison : Docker, GitHub Actions, releases reproductibles, environnements de dev normalisés.

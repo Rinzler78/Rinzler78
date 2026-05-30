@@ -1,0 +1,1 @@
+Tout ce qui est manuel finit par être oublié ou bâclé. Lint, build, release, qualité : les quality gates font foi, pas la bonne volonté.

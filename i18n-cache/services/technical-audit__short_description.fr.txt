@@ -1,0 +1,1 @@
+État des lieux honnête : code, architecture, tests, CI/CD, sécurité, documentation. Un rapport actionnable, priorisé par impact.

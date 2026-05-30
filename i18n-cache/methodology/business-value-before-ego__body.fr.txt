@@ -1,0 +1,1 @@
+Comprendre le problème métier avant d'écrire la moindre ligne. La meilleure architecture est celle qui sert l'objectif, pas la démonstration.

@@ -1,0 +1,1 @@
+Créer les outils qui font gagner du temps à l'équipe : CLI, générateurs, scripts, APIs internes, automatisations sur mesure.

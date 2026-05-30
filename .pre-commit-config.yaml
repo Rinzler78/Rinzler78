@@ -61,6 +61,7 @@ repos:
         name: cspell (fr)
         args: ["--config", ".cspell-fr.json", "--no-must-find-files"]
         files: \.fr\.(json|md|txt)$
+        additional_dependencies: ["@cspell/dict-fr-fr@^2"]
 
   # --- Local hooks: data → generation → validation -----------------------
   - repo: local

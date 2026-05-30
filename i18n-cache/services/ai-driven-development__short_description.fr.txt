@@ -1,0 +1,1 @@
+Structurer l'usage des agents IA pour livrer vite sans chaos : specs, règles, mémoire, quality gates, contexte maîtrisé.

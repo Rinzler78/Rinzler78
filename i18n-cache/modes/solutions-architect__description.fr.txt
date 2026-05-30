@@ -1,0 +1,1 @@
+Mission courte (1 à 3 semaines) : audit, choix de stack, refonte d'architecture, plan de migration.

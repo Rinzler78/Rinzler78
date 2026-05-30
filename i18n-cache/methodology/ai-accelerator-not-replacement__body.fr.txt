@@ -1,0 +1,1 @@
+J'utilise l'IA comme accélérateur d'ingénierie, pas comme substitut. Sans specs claires, architecture solide, tests et contexte maîtrisé, l'IA ne fait que générer du chaos plus vite.
