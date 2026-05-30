@@ -1,48 +1,48 @@
-# 0001 — Architecture data-driven : JSON sources + Jinja2 + pre-commit hook
+# 0001 — Data-driven architecture: JSON sources + Jinja2 + pre-commit hook
 
-**Statut :** Accepted · 2026-05-26
+**Status:** Accepted · 2026-05-26
 
-## Contexte
+## Context
 
-Le README et les ~14 SVG du profil contenaient les mêmes faits dupliqués à plusieurs endroits (versions de techs, années d'adoption, descriptions de projets…). À chaque itération de design — changer la palette, le format d'un terminal, la disposition d'une section — toutes les copies devaient être maintenues en cohérence à la main. Le design est destiné à évoluer plusieurs fois ; les faits, rarement.
+The README and the ~14 profile SVGs contained the same facts duplicated in several places (tech versions, adoption years, project descriptions, etc.). With each design iteration — changing the palette, the format of a terminal, the layout of a section — every copy had to be kept consistent by hand. The design is expected to evolve several times; the facts, rarely.
 
-Le coût d'une refonte design était donc disproportionné au regard de la valeur ajoutée, et les divergences entre vues étaient probables à terme (`Python 3.11+` vs `Python 3.11` à deux endroits, par exemple).
+The cost of a design overhaul was therefore disproportionate relative to the added value, and divergences between views were likely over time (`Python 3.11+` vs `Python 3.11` in two places, for example).
 
-## Décision
+## Decision
 
-Séparer **data** (faits, change peu) et **présentation** (rendu, itère souvent) :
+Separate **data** (facts, change rarely) from **presentation** (rendering, iterates often):
 
-- Stocker les **faits** dans `data/*.json` — 7 fichiers correspondant à 7 concepts atomiques : `profile`, `domains`, `techs`, `timeline`, `projects`, `theme`, `content`. Aucune duplication entre fichiers ; les liens sont des références par `id`.
-- Générer les **SVG et le README** via des templates Jinja2 (`scripts/templates/*.jinja`) qui consomment les JSON.
-- Déclencher la régénération automatiquement via un **pre-commit hook git**. Les fichiers générés (`assets/svg/`, `README.md`) sont versionnés (pour que GitHub les serve sans étape CI) mais le hook garantit qu'ils restent en phase avec les data au moment du commit.
+- Store the **facts** in `data/*.json` — 7 files corresponding to 7 atomic concepts: `profile`, `domains`, `techs`, `timeline`, `projects`, `theme`, `content`. No duplication between files; links are references by `id`.
+- Generate the **SVGs and the README** via Jinja2 templates (`scripts/templates/*.jinja`) that consume the JSON.
+- Trigger regeneration automatically via a **git pre-commit hook**. The generated files (`assets/svg/`, `README.md`) are versioned (so that GitHub serves them without a CI step) but the hook guarantees they stay in sync with the data at commit time.
 
-Convention IDs : **snake_case sans version pour la tech racine** (`csharp`), **versions imbriquées avec id complet** (`csharp_2_0`, `csharp_12`). Le référencement entre concepts est **hybride** : IDs pour les liens forts (timeline → techs, projects → techs), texte libre pour la narration uniquement.
+ID convention: **snake_case without version for the root tech** (`csharp`), **nested versions with full id** (`csharp_2_0`, `csharp_12`). Referencing between concepts is **hybrid**: IDs for strong links (timeline → techs, projects → techs), free text for narration only.
 
-## Alternatives écartées
+## Rejected alternatives
 
-- **README dynamique en client JS** : impossible, GitHub markdown n'exécute pas de JavaScript.
-- **10 fichiers JSON par vue** (un fichier par SVG) : créait à nouveau de la redondance entre fichiers (les mêmes techs apparaîssent dans timeline, id-card, et stacks). Réfuté par l'utilisateur : « autant de JSON ne me semble pas correct ».
-- **Un fichier monolithique `data.json`** : édition pénible, conflits git fréquents. Compromis avec 7 fichiers concepts.
-- **f-strings ou DOM builder Python au lieu de Jinja2** : pas assez expressif pour les boucles imbriquées (techs × versions, timeline events × techs-added). Jinja2 est un dépendance triviale (`pip install jinja2`) qui simplifie nettement les templates.
-- **GitHub Actions au lieu de pre-commit hook** : ajoute du délai entre push et rendu, et nécessite que la branche d'output soit poussée par un bot. Le pre-commit hook local garantit la synchronisation au moment du commit, sans aller-retour CI.
-- **README pas généré, juste les SVG** : laisse les textes narratifs (modes d'intervention, easter eggs, prose) couplés à la structure markdown. Tout générer rend le `content.json` la source unique des textes éditables.
+- **Dynamic README in client-side JS**: impossible, GitHub markdown does not execute JavaScript.
+- **10 JSON files per view** (one file per SVG): created redundancy between files again (the same techs appear in timeline, id-card, and stacks). Rejected by the user: "that many JSON files doesn't seem right to me".
+- **A single monolithic `data.json` file**: painful to edit, frequent git conflicts. Trade-off settled with 7 concept files.
+- **f-strings or a Python DOM builder instead of Jinja2**: not expressive enough for nested loops (techs × versions, timeline events × techs-added). Jinja2 is a trivial dependency (`pip install jinja2`) that significantly simplifies the templates.
+- **GitHub Actions instead of a pre-commit hook**: adds delay between push and rendering, and requires the output branch to be pushed by a bot. The local pre-commit hook guarantees synchronization at commit time, without a CI round-trip.
+- **README not generated, only the SVGs**: leaves the narrative text (intervention modes, easter eggs, prose) coupled to the markdown structure. Generating everything makes `content.json` the single source of editable text.
 
-## Conséquences
+## Consequences
 
-**Positives**
-- Une valeur factuelle apparaît dans un et un seul fichier.
-- Refonte design = modif des templates Jinja2 + theme.json, sans toucher aux faits.
-- Cohérence inter-vues garantie (un `update` de `dotnet.version` met à jour id-card, timeline, stack-backend, projects en un seul build).
-- Réutilisable pour d'autres formats (CV PDF, page perso, JSON-resume) à partir des mêmes data.
+**Positive**
+- A factual value appears in one and only one file.
+- Design overhaul = editing the Jinja2 templates + theme.json, without touching the facts.
+- Cross-view consistency guaranteed (a single `update` of `dotnet.version` updates id-card, timeline, stack-backend, projects in a single build).
+- Reusable for other formats (PDF CV, personal page, JSON-resume) from the same data.
 
-**Négatives**
-- Setup initial coûteux : ~1-2 h pour extraire les data, écrire `generate.py` et les templates.
-- Dépendance Python + Jinja2 sur la machine de Boris (et sur tout autre contributeur).
-- Le pre-commit hook ralentit chaque commit qui touche `data/` (de quelques secondes).
-- Les fichiers générés doublent le nombre de fichiers versionnés. Mitigé par leur taille modeste (< 100 Ko total).
+**Negative**
+- Costly initial setup: ~1-2 h to extract the data, write `generate.py` and the templates.
+- Python + Jinja2 dependency on Boris's machine (and on any other contributor's).
+- The pre-commit hook slows down every commit that touches `data/` (by a few seconds).
+- The generated files double the number of versioned files. Mitigated by their modest size (< 100 KB total).
 
-## Critères de réussite
+## Success criteria
 
-- Régénération entièrement reproductible : `python scripts/generate.py` produit toujours la même sortie depuis les mêmes data.
-- Pas de divergence entre data et SVG/README versionnés (le hook empêche ce cas).
-- Une refonte de palette = un seul commit éditant `theme.json` (+ les SVG/README régénérés).
+- Fully reproducible regeneration: `python scripts/generate.py` always produces the same output from the same data.
+- No divergence between data and the versioned SVGs/README (the hook prevents this case).
+- A palette overhaul = a single commit editing `theme.json` (+ the regenerated SVGs/README).

@@ -1,55 +1,55 @@
-# ADR-005 — Quality gates, CI GitHub Actions et protection de main
+# ADR-005 — Quality gates, GitHub Actions CI and main protection
 
-- **Statut** : Accepted
-- **Date** : 2026-05-27
-- **Lié à** : [ADR-001](0001-data-driven-svg-generation.md), [ADR-003](0003-data-schema-collections-and-derived-views.md), [ADR-004](0004-i18n-bilingual-readme.md)
+- **Status**: Accepted
+- **Date**: 2026-05-27
+- **Related to**: [ADR-001](0001-data-driven-svg-generation.md), [ADR-003](0003-data-schema-collections-and-derived-views.md), [ADR-004](0004-i18n-bilingual-readme.md)
 
-## Contexte
+## Context
 
-Le repo doit être gouverné comme un vrai projet logiciel : pre-commit framework standard, tests TDD obligatoires, CI rejouant l'intégralité des contrôles locaux, protection de `main` empêchant les commits directs et les rebases destructifs. La règle CLAUDE.md globale impose 4 catégories de checks (vulnerability scan, package up-to-date, linter, cspell en) couvrant tout le code y compris tests.
+The repo must be governed like a real software project: standard pre-commit framework, mandatory TDD tests, CI replaying the entirety of the local checks, protection of `main` preventing direct commits and destructive rebases. The global CLAUDE.md rule mandates 4 categories of checks (vulnerability scan, package up-to-date, linter, cspell en) covering all the code including tests.
 
-## Décision
+## Decision
 
-### 1. Pre-commit framework officiel
+### 1. Official pre-commit framework
 
-Remplace le shell hook custom (`scripts/install-hook.sh` + `.git/hooks/pre-commit`) par `.pre-commit-config.yaml`. Installation via `pre-commit install --hook-type pre-commit --hook-type pre-push`.
+Replaces the custom shell hook (`scripts/install-hook.sh` + `.git/hooks/pre-commit`) with `.pre-commit-config.yaml`. Installation via `pre-commit install --hook-type pre-commit --hook-type pre-push`.
 
-Hooks **pre-commit** (rapides) :
+**pre-commit** hooks (fast):
 - `ruff` (lint + format)
 - `bandit` (security scan)
-- `detect-secrets` ou `gitleaks` (anti-leak)
-- `cspell` configuré `language: en` sur les artefacts EN (templates, schemas, code)
-- `jsonschema-validate` sur `data/*.json`
-- `referential-integrity-check` (script local : chaque FK pointe sur une entité existante)
-- `i18n-translate` (DeepL si champs i18n changés, voir ADR-004)
-- `generate-and-diff` (régénère SVG+README, fail si diff)
+- `detect-secrets` or `gitleaks` (anti-leak)
+- `cspell` configured `language: en` on EN artifacts (templates, schemas, code)
+- `jsonschema-validate` on `data/*.json`
+- `referential-integrity-check` (local script: each FK points to an existing entity)
+- `i18n-translate` (DeepL if i18n fields changed, see ADR-004)
+- `generate-and-diff` (regenerates SVG+README, fails if diff)
 - `svg-well-formed` (xmllint)
 
-Hooks **pre-push** (lourds) :
+**pre-push** hooks (heavy):
 - `pytest --cov=scripts --cov-fail-under=90`
 - `pip-audit` (CVE deps)
-- `link-checker` sur README.md + README.en.md
-- `svg-schema-validate` (validation contre XSD SVG si besoin)
+- `link-checker` on README.md + README.en.md
+- `svg-schema-validate` (validation against SVG XSD if needed)
 
-### 2. Stratégie TDD
+### 2. TDD strategy
 
-- Framework : `pytest` + `pytest-cov` + `jsonschema` + `responses` (mock DeepL).
-- Couverture cible **≥ 90%** bloquante en pre-push et CI.
-- Ordre d'écriture des tests : data validation → formule score (ADR-002) → overrides → i18n → vues dérivées → génération → déterminisme → SVG well-formed → DeepL cache.
-- Chaque feature commence par un test rouge (règle CLAUDE.md `tdd` skill).
+- Framework: `pytest` + `pytest-cov` + `jsonschema` + `responses` (mock DeepL).
+- Target coverage **≥ 90%** blocking in pre-push and CI.
+- Test writing order: data validation → score formula (ADR-002) → overrides → i18n → derived views → generation → determinism → SVG well-formed → DeepL cache.
+- Each feature starts with a red test (CLAUDE.md `tdd` skill rule).
 
 ### 3. Packaging
 
-- `pyproject.toml` (PEP 621) : remplace `scripts/requirements.txt`.
-  - `[project]` (nom, version, python ≥ 3.11)
-  - `[project.optional-dependencies]` : `dev` (ruff, bandit, pre-commit, pip-audit), `test` (pytest, pytest-cov, responses, jsonschema, lxml)
-- `Makefile` : `setup`, `validate`, `generate`, `test`, `coverage`, `lint`, `format`, `format-check`, `security`, `audit`, `check`.
+- `pyproject.toml` (PEP 621): replaces `scripts/requirements.txt`.
+  - `[project]` (name, version, python ≥ 3.11)
+  - `[project.optional-dependencies]`: `dev` (ruff, bandit, pre-commit, pip-audit), `test` (pytest, pytest-cov, responses, jsonschema, lxml)
+- `Makefile`: `setup`, `validate`, `generate`, `test`, `coverage`, `lint`, `format`, `format-check`, `security`, `audit`, `check`.
 
-### 4. CI GitHub Actions
+### 4. GitHub Actions CI
 
-Trois workflows, permissions minimales par défaut (`contents: read`), élévation isolée.
+Three workflows, minimal permissions by default (`contents: read`), isolated elevation.
 
-**`.github/workflows/ci.yml`** (push + PR) :
+**`.github/workflows/ci.yml`** (push + PR):
 ```yaml
 permissions: { contents: read }
 jobs:
@@ -59,54 +59,54 @@ jobs:
   linkcheck:    # lychee ou markdown-link-check
 ```
 
-**`.github/workflows/update-profile.yml`** (cron `0 6 * * 1` + workflow_dispatch) :
+**`.github/workflows/update-profile.yml`** (cron `0 6 * * 1` + workflow_dispatch):
 ```yaml
-permissions: { contents: write }   # ISOLÉ
+permissions: { contents: write }   # ISOLATED
 jobs:
-  refresh:      # fetch GitHub metrics → data/metrics.json → generate → commit si diff
+  refresh:      # fetch GitHub metrics → data/metrics.json → generate → commit if diff
 ```
 
-**`.github/workflows/translate-check.yml`** (PR si diff sur `data/`) :
+**`.github/workflows/translate-check.yml`** (PR if diff on `data/`):
 ```yaml
 permissions: { contents: read }
 secrets: [DEEPL_API_KEY]
 jobs:
-  check:        # cache i18n cohérent avec FR courant, warning si reviewed=false
+  check:        # i18n cache consistent with current FR, warning if reviewed=false
 ```
 
-### 5. Protection de `main` (Repository Ruleset)
+### 5. Protection of `main` (Repository Ruleset)
 
-- Pull Request obligatoire (même solo : force le workflow PR + CI).
-- Status checks requis : `ci/precommit`, `ci/test`, `ci/diff-check`.
-- Branch up-to-date avant merge.
-- Linear history (pas de merge commits, rebase only).
-- Conversation resolution requise.
-- Force push interdit.
-- Suppression de branche interdite.
-- Signed commits requis (gratuit puisque la règle CLAUDE.md interdit déjà `--no-gpg-sign`).
+- Pull Request mandatory (even solo: forces the PR + CI workflow).
+- Required status checks: `ci/precommit`, `ci/test`, `ci/diff-check`.
+- Branch up-to-date before merge.
+- Linear history (no merge commits, rebase only).
+- Conversation resolution required.
+- Force push forbidden.
+- Branch deletion forbidden.
+- Signed commits required (free since the CLAUDE.md rule already forbids `--no-gpg-sign`).
 
 ### 6. Branching
 
-- `main` protégée, source de vérité.
-- Branches features sous forme `feature/<slug>` créées dans `.worktrees/<slug>/` (règle CLAUDE.md).
-- Trunk-based (pas de `develop`) — le repo est solo, git flow serait sur-ingénierie.
-- Conventional commits : `feat(profile)`, `fix(svg)`, `chore(deps)`, `docs(adr)`, `test(generator)`.
+- `main` protected, source of truth.
+- Feature branches in the form `feature/<slug>` created in `.worktrees/<slug>/` (CLAUDE.md rule).
+- Trunk-based (no `develop`) — the repo is solo, git flow would be over-engineering.
+- Conventional commits: `feat(profile)`, `fix(svg)`, `chore(deps)`, `docs(adr)`, `test(generator)`.
 
-### 7. Anti-attribution IA
+### 7. AI anti-attribution
 
-Pas de hook spécifique au repo : le hook global Claude `~/.claude/hooks/block-ai-attribution.sh` bloque déjà les commits qui mentionnent Claude/IA/Copilot dans le message. Pas de duplication.
+No repo-specific hook: the global Claude hook `~/.claude/hooks/block-ai-attribution.sh` already blocks commits that mention Claude/AI/Copilot in the message. No duplication.
 
-## Conséquences
+## Consequences
 
-### Positives
+### Positive
 
-- Aligne avec la règle CLAUDE.md globale.
-- Toute défaillance détectée localement avant push (gain de cycle CI).
-- Protection de `main` empêche les écrasements accidentels et force la traçabilité PR.
-- Permissions GitHub Actions minimales = surface d'attaque réduite.
+- Aligns with the global CLAUDE.md rule.
+- Any failure detected locally before push (CI cycle gain).
+- Protection of `main` prevents accidental overwrites and forces PR traceability.
+- Minimal GitHub Actions permissions = reduced attack surface.
 
-### Négatives
+### Negative
 
-- PR obligatoire en solo = friction supplémentaire (peut être contournée par auto-merge sur green checks).
-- Pre-commit lent au premier run (download des venvs hooks). Cache GitHub Actions amortit en CI.
-- Couverture 90% bloquante peut être pénible sur les templates Jinja2 (parser/render rapide à couvrir mais branches conditionnelles dans les templates plus subtiles à atteindre). Stratégie : tester via fixtures de data variées plutôt que d'exporter chaque branche.
+- Mandatory PR when solo = additional friction (can be worked around with auto-merge on green checks).
+- Pre-commit slow on the first run (download of the hooks' venvs). GitHub Actions cache amortizes this in CI.
+- Blocking 90% coverage can be painful on the Jinja2 templates (parser/render quick to cover, but conditional branches in the templates more subtle to reach). Strategy: test via varied data fixtures rather than exercising each branch.

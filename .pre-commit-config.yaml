@@ -1,10 +1,10 @@
-# Quality gates (ADR-005). Remplace l'ancien hook shell install-hook.sh.
-# Installer : pre-commit install --install-hooks
-#             pre-commit install --hook-type pre-push
+# Quality gates (ADR-005). Replaces the old install-hook.sh shell hook.
+# Install: pre-commit install --install-hooks
+#          pre-commit install --hook-type pre-push
 default_install_hook_types: [pre-commit, pre-push]
 
 repos:
-  # --- Hygiène fichiers --------------------------------------------------
+  # --- File hygiene ------------------------------------------------------
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v6.0.0
     hooks:
@@ -18,7 +18,7 @@ repos:
       - id: detect-private-key
       - id: check-merge-conflict
 
-  # --- Lint + format Python ---------------------------------------------
+  # --- Python lint + format ---------------------------------------------
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.15.15
     hooks:
@@ -26,7 +26,7 @@ repos:
         args: [--fix]
       - id: ruff-format
 
-  # --- Sécurité ----------------------------------------------------------
+  # --- Security ----------------------------------------------------------
   - repo: https://github.com/PyCQA/bandit
     rev: 1.9.4
     hooks:
@@ -40,18 +40,20 @@ repos:
     hooks:
       - id: gitleaks
 
-  # --- Orthographe (EN uniquement, surfaces anglaises) -------------------
+  # --- Spelling (EN over the whole codebase; FR profile content is
+  #     excluded via .cspell.json ignorePaths and handled per-language
+  #     by the i18n track) --------------------------------------------------
   - repo: https://github.com/streetsidesoftware/cspell-cli
     rev: v10.0.0
     hooks:
       - id: cspell
-        files: ^(schemas/.*\.json|.*\.toml|\.pre-commit-config\.yaml)$
+        files: \.(py|md|toml|ya?ml|json)$|^Makefile$|^\.gitignore$
 
-  # --- Hooks locaux : data → génération → validation ---------------------
+  # --- Local hooks: data → generation → validation -----------------------
   - repo: local
     hooks:
       - id: validate-data
-        name: validate data (schemas + référentiel)
+        name: validate data (schemas + referential integrity)
         entry: python scripts/validate_data.py
         language: python
         additional_dependencies: ["jsonschema>=4.0"]
@@ -74,9 +76,9 @@ repos:
         pass_filenames: false
         files: ^(README\.md|assets/svg/|data/|scripts/)
 
-      # --- pre-push : tests + audit deps --------------------------------
+      # --- pre-push: tests + deps audit ---------------------------------
       - id: pytest
-        name: pytest + couverture (>=90% moteur)
+        name: pytest + coverage (>=90% engine)
         entry: pytest -q --cov --cov-fail-under=90
         language: python
         additional_dependencies:
@@ -86,7 +88,7 @@ repos:
         stages: [pre-push]
 
       - id: pip-audit
-        name: pip-audit (CVE dépendances)
+        name: pip-audit (dependency CVEs)
         entry: pip-audit
         language: python
         additional_dependencies: ["pip-audit>=2.7"]

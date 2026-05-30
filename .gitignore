@@ -1,9 +1,9 @@
-# Secrets — JAMAIS committer
+# Secrets — NEVER commit
 .env
 .env.*
 !.env.example
 
-# Worktrees Claude (règle globale CLAUDE.md)
+# Claude worktrees (global CLAUDE.md rule)
 .worktrees/
 
 # Python

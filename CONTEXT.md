@@ -1,129 +1,129 @@
-# CONTEXT — Glossaire du repo `Rinzler78/Rinzler78`
+# CONTEXT — Glossary of the `Rinzler78/Rinzler78` repo
 
-Ce repo est le profil GitHub de Boris Leclere. Le README et les SVG décoratifs sont **générés** depuis des données structurées en JSON (séparation data / présentation). Ce fichier définit le vocabulaire utilisé dans le code et les données.
+This repo is Boris Leclere's GitHub profile. The README and the decorative SVGs are **generated** from structured JSON data (data / presentation separation). This file defines the vocabulary used in the code and the data.
 
-> Ce fichier est un **glossaire**, pas une spécification. Pour les choix d'implémentation, voir [docs/adr/](docs/adr/).
+> This file is a **glossary**, not a specification. For implementation choices, see [docs/adr/](docs/adr/).
 
 ---
 
-## Concepts data (sources de vérité dans `data/`)
+## Data concepts (sources of truth in `data/`)
 
 ### Profile
 
-`data/profile.json` — Identité de Boris : nom, rôle, contacts (email, téléphone), liens (LinkedIn, Malt, GitHub, PyPI, Discord, YouTube, X) et **location** (city, region, country, lat, lon, zone administrative, fuseau horaire). La location est inline dans Profile, pas un fichier séparé, car elle ne change qu'en cas de déménagement.
+`data/profile.json` — Boris's identity: name, role, contacts (email, phone), links (LinkedIn, Malt, GitHub, PyPI, Discord, YouTube, X) and **location** (city, region, country, lat, lon, administrative zone, time zone). The location is inline in Profile, not a separate file, because it only changes when he moves.
 
 ### Domain
 
-`data/domains.json` — Taxonomie des domaines d'expertise. Chaque domaine a un `id` snake_case stable, un `label` humain et un `order` (rang d'affichage). Les domaines actuels : `embedded`, `mobile`, `backend`, `devops`, `ai-llm`, `blockchain`. **Embarqué est en premier** par convention (parcours signature).
+`data/domains.json` — Taxonomy of areas of expertise. Each domain has a stable snake_case `id`, a human `label` and an `order` (display rank). The current domains: `embedded`, `mobile`, `backend`, `devops`, `ai-llm`, `blockchain`. **Embedded comes first** by convention (signature track record).
 
 ### Tech
 
-`data/techs.json` — Une « tech » est une compétence technique avec un identifiant racine **stable dans le temps** (ex `csharp`, jamais `csharp-12`). Chaque tech porte : `id` (snake_case sans version), `label`, `domain-id`, `since` (année d'adoption obligatoire), `until` (année de dernier usage si abandonnée, optionnel), `notes`. Elle contient un tableau `versions[]` : chaque version a son propre `id` snake_case complet (ex `csharp_2_0`, `csharp_12`) + `version` (label) + `since` (année de cette version).
+`data/techs.json` — A "tech" is a technical skill with a root identifier that is **stable over time** (e.g. `csharp`, never `csharp-12`). Each tech carries: `id` (snake_case without version), `label`, `domain-id`, `since` (mandatory adoption year), `until` (year of last use if abandoned, optional), `notes`. It contains a `versions[]` array: each version has its own full snake_case `id` (e.g. `csharp_2_0`, `csharp_12`) + `version` (label) + `since` (year of that version).
 
-**Niveau et score** sont des **valeurs dérivées**, jamais saisies directement (sauf override). Le generator calcule `score` ∈ [0, 99] depuis les faits saisis et déduit `level` parmi 5 paliers (`expert` / `advanced` / `professional` / `working` / `explored`) via des seuils figés. Voir [ADR-002](docs/adr/0002-tech-score-derivation.md) pour la formule et les paliers.
+**Level and score** are **derived values**, never entered directly (except via override). The generator computes `score` ∈ [0, 99] from the entered facts and infers `level` among 5 tiers (`expert` / `advanced` / `professional` / `working` / `explored`) via fixed thresholds. See [ADR-002](docs/adr/0002-tech-score-derivation.md) for the formula and the tiers.
 
-Champ `depth` (0–3) : profondeur d'usage en production, **auto-évaluation factuelle** (y compris missions privées invisibles sur GitHub). 0 = read-level, 3 = expertise cœur. Additif (+20/niveau). Corrige le biais « la formule ne voit que le public ». Voir [ADR-002](docs/adr/0002-tech-score-derivation.md).
+`depth` field (0–3): depth of production usage, **factual self-assessment** (including private engagements invisible on GitHub). 0 = read-level, 3 = core expertise. Additive (+20/level). Corrects the bias "the formula only sees what is public". See [ADR-002](docs/adr/0002-tech-score-derivation.md).
 
-Champs d'override (optionnels, à utiliser quand la formule sous-évalue, par ex. usage privé non listé dans `projects.json`) :
-- `level_override` — force le level qualitatif (s'applique au level **actuel**)
-- `score_override` — force le score numérique actuel
-- `featured` — booléen **d'affichage seul** (sélection hero / core expertise). N'influence **plus** le score depuis [ADR-006](docs/adr/0006-hours-based-expertise-model.md).
+Override fields (optional, to be used when the formula underrates, e.g. private usage not listed in `projects.json`):
+- `level_override` — forces the qualitative level (applies to the **current** level)
+- `score_override` — forces the current numeric score
+- `featured` — **display-only** boolean (hero / core expertise selection). It **no longer** influences the score since [ADR-006](docs/adr/0006-hours-based-expertise-model.md).
 
-**Score et niveaux dérivés des heures** (ADR-006) : `since`, `until`, `score_max`/`level_max` (pic atteint) et `score_current`/`level_current` (après oubli) sont **calculés** par le pipeline `HoursCalculator → ScoreEngine → ViewBuilder` à partir des **heures d'exposition**. Les heures viennent de deux sources : les **Experience** (durée × 1880 h/an) et les **Project** (`active_days` × 9 h), réparties par tiers concurrents `primary 0.70 / secondary 0.35 / incident 0.10` (cumulables, non normalisés — sur un projet C#+Xamarin+Bluetooth les trois comptent en plein). `peak = 99·(1−e^(−h/3000))` ; décroissance vers un plancher `0.30·peak` selon le temps d'inactivité.
+**Score and levels derived from hours** (ADR-006): `since`, `until`, `score_max`/`level_max` (peak reached) and `score_current`/`level_current` (after decay) are **computed** by the `HoursCalculator → ScoreEngine → ViewBuilder` pipeline from **exposure hours**. The hours come from two sources: **Experience** (duration × 1880 h/year) and **Project** (`active_days` × 9 h), distributed across concurrent tiers `primary 0.70 / secondary 0.35 / incident 0.10` (cumulative, not normalized — on a C#+Xamarin+Bluetooth project all three count in full). `peak = 99·(1−e^(−h/3000))`; decay toward a `0.30·peak` floor based on time of inactivity.
 
-**Invariant temporel** : `since`/`until` d'une tech sont **dérivés** des Experience et Project qui l'utilisent (`until = null` si une source courante l'emploie encore, sinon la dernière fin). Le principe « une compétence s'arrête à la fin de sa dernière période » est donc implémenté structurellement — plus de saisie manuelle de `until`.
+**Temporal invariant**: a tech's `since`/`until` are **derived** from the Experience and Project that use it (`until = null` if a current source still employs it, otherwise the latest end). The principle "a skill stops at the end of its last period" is thus implemented structurally — no more manual entry of `until`.
 
 ### Experience
 
-`data/experiences.json` — Une **période datée** du parcours (emploi, études, mission, compétition, stage) : `id`, `org`, `role`, `type` (`cdi`/`freelance`/`mission`/`education`/`competition`/`internship`), `start` (`YYYY-MM`), `end` (`YYYY-MM` ou `null` si courante), `tech_weights` (map `tech_id → tier`). Source d'heures n°1 (durée × 1880 h/an répartie par tiers). Bornes datées du CV (LinkedIn). Good Angel / My Good Life (parallèles, télétravail) sont modélisés comme **une** période en deux phases pour ne pas double-compter les heures.
+`data/experiences.json` — A **dated period** of the track record (employment, studies, mission, competition, internship): `id`, `org`, `role`, `type` (`cdi`/`freelance`/`mission`/`education`/`competition`/`internship`), `start` (`YYYY-MM`), `end` (`YYYY-MM` or `null` if current), `tech_weights` (map `tech_id → tier`). Hours source #1 (duration × 1880 h/year distributed across tiers). Dated bounds from the résumé (LinkedIn). Good Angel / My Good Life (parallel, remote work) are modeled as **one** period in two phases so as not to double-count the hours.
 
 ### Timeline Event
 
-`data/timeline.json` — La **couche narrative** du parcours : une frise éditoriale de jalons pour le storytelling (rendu par le SVG `timeline-mini`). Chaque event : `year` (ou `year-range`, ex `"2024-25"`, `"~1990s"`), `label`, `description`, `techs_added` (ids — réf vers Tech ou tech-version, **métadonnée non rendue**), `techs_summary` (prose display), `highlight` (jalons majeurs : 2006 premier code, 2009 Master, 2014 CTO, 2020 .NET Core, 2023 freelance, 2026 now), et drapeaux optionnels `is_now` / `is_milestone` / `is_origin`.
+`data/timeline.json` — The **narrative layer** of the track record: an editorial timeline of milestones for storytelling (rendered by the `timeline-mini` SVG). Each event: `year` (or `year-range`, e.g. `"2024-25"`, `"~1990s"`), `label`, `description`, `techs_added` (ids — ref to Tech or tech-version, **non-rendered metadata**), `techs_summary` (display prose), `highlight` (major milestones: 2006 first code, 2009 Master's, 2014 CTO, 2020 .NET Core, 2023 freelance, 2026 now), and optional flags `is_now` / `is_milestone` / `is_origin`.
 
-**Timeline ≠ Experience.** Timeline est éditorial (highlights, prose, jalons non-pros comme « 2006 premier code » ou « ~1990s premier ordinateur ») ; **Experience** (`data/experiences.json`) est la source d'heures structurée et datée (toutes les périodes). Les deux coexistent et ne doivent pas dériver l'une de l'autre — leurs rôles diffèrent (raconter vs calculer). `techs_added` ne sert qu'à garder une trace des techs introduites par jalon ; il référence des ids valides (vérifié par l'intégrité référentielle) mais n'alimente **pas** le calcul des heures.
+**Timeline ≠ Experience.** Timeline is editorial (highlights, prose, non-professional milestones like "2006 first code" or "~1990s first computer"); **Experience** (`data/experiences.json`) is the structured and dated hours source (all periods). The two coexist and must not derive from one another — their roles differ (narrate vs compute). `techs_added` only serves to keep a record of the techs introduced per milestone; it references valid ids (verified by referential integrity) but does **not** feed the hours computation.
 
 ### Project
 
-`data/projects.json` — Un dépôt public. Double rôle : **vitrine** (`highlight`, `description`, `stack_label` — les ~8 montrés) ET **source d'heures n°2** (`active_days` × 9 h, réparties par `tech_weights` tiers concurrents). `active_days` = nombre de jours distincts avec commits (objectif, depuis GitHub) ; `start`/`end` = années création/dernier push (`end: null` = encore actif → contribue à `until = null` des techs). Champs : `id`, `name`, `github_url`, `domain`, `tech_ids[]`, `active_days`, `start`, `end`, `tech_weights`, `state` (`active`/`legacy`/`archive`), `highlight`. Tous les dépôts significatifs (≥ 3 commit-days) sont présents pour les heures ; `highlight=true` sélectionne la vitrine.
+`data/projects.json` — A public repository. Dual role: **showcase** (`highlight`, `description`, `stack_label` — the ~8 shown) AND **hours source #2** (`active_days` × 9 h, distributed by `tech_weights` concurrent tiers). `active_days` = number of distinct days with commits (objective, from GitHub); `start`/`end` = creation/last push years (`end: null` = still active → contributes to the techs' `until = null`). Fields: `id`, `name`, `github_url`, `domain`, `tech_ids[]`, `active_days`, `start`, `end`, `tech_weights`, `state` (`active`/`legacy`/`archive`), `highlight`. All significant repositories (≥ 3 commit-days) are present for the hours; `highlight=true` selects the showcase.
 
 ### Service
 
-`data/services.json` — Une **prestation vendable** que Boris propose à un client : `id` (kebab-case), `title`, `short_description`, `keywords[]`, `priority` (ordre d'affichage), `visible` (booléen). Services actuels : Architecture & refonte logicielle, Audit technique, Conception & livraison de MVP, Industrialisation CI/CD & delivery, AI-Driven Development, Developer tooling & automatisation.
+`data/services.json` — A **sellable offering** that Boris proposes to a client: `id` (kebab-case), `title`, `short_description`, `keywords[]`, `priority` (display order), `visible` (boolean). Current services: Architecture & software overhaul, Technical audit, MVP design & delivery, CI/CD industrialization & delivery, AI-Driven Development, Developer tooling & automation.
 
-Service répond à la question « **qu'est-ce que je peux acheter à Boris** ». À ne pas confondre avec **Mode**.
+Service answers the question "**what can I buy from Boris**". Not to be confused with **Mode**.
 
 ### Mode
 
-`data/modes.json` — Un **mode d'intervention** : `id` (kebab-case), `label`, `description`, `order`. Modes actuels : `cto-temps-partiel`, `architecte-solutions`, `renfort-urgence` (le pompier — incident prod, dette critique, équipe submergée), `cofondateur-technique`.
+`data/modes.json` — An **engagement mode**: `id` (kebab-case), `label`, `description`, `order`. Current modes: `cto-temps-partiel`, `architecte-solutions`, `renfort-urgence` (the firefighter — prod incident, critical debt, overwhelmed team), `cofondateur-technique`.
 
-Mode répond à la question « **comment je peux engager Boris** ». Extrait depuis `content.modes_intervention[]` historique — promotion en entité de premier ordre.
+Mode answers the question "**how can I engage Boris**". Extracted from the historical `content.modes_intervention[]` — promoted to a first-class entity.
 
 ### Methodology
 
-`data/methodology.json` — Collection de **principes de travail** : `id` (kebab-case), `title`, `body`, `order`. Exemples : « Simple avant malin », « Testé avant validé », « Valeur métier avant ego technique », « L'IA accélère, elle ne remplace pas la discipline ».
+`data/methodology.json` — Collection of **working principles**: `id` (kebab-case), `title`, `body`, `order`. Examples: "Simple before clever", "Tested before validated", "Business value before technical ego", "AI accelerates, it does not replace discipline".
 
-> **i18n** : les champs narratifs de Service / Mode / Methodology sont en **FR brut** pour l'instant (comme le reste de `content`). Ils seront wrappés `{fr, en}` uniformément quand le track i18n (DeepL, [ADR-004](docs/adr/0004-i18n-bilingual-readme.md)) sera implémenté — pas de demi-i18n maintenant.
+> **i18n**: the narrative fields of Service / Mode / Methodology are in **raw FR** for now (like the rest of `content`). They will be wrapped `{fr, en}` uniformly when the i18n track (DeepL, [ADR-004](docs/adr/0004-i18n-bilingual-readme.md)) is implemented — no half-i18n for now.
 
 ### Config
 
-`data/config.json` — Singleton-collection (1 entrée `id: "main"`) qui pointe le **theme actif** (`theme_id`) et le **profile actif** (`profile_id`) si plusieurs sont définis. Permet de faire évoluer le design ou de versionner un test A/B sans toucher aux autres fichiers.
+`data/config.json` — Singleton-collection (1 entry `id: "main"`) that points to the **active theme** (`theme_id`) and the **active profile** (`profile_id`) if several are defined. Allows the design to evolve or an A/B test to be versioned without touching the other files.
 
 ### Theme
 
-`data/theme.json` — Le « design system » du repo. Trois sous-blocs :
-- **palette** : couleurs nommées (`paper`, `ink`, `accent`, `term-bg`, `term-fg`, `info`, …)
-- **fonts** : `display` (Fraunces), `body` (Geist), `mono` (JetBrains Mono)
-- **patterns** : composants réutilisables avec leurs constantes — `terminal_window` (boutons macOS, header, padding), `ecg_divider` (couleurs, durée d'anim), `prompt` (style $/prompt), `cursor` (clignotement)
+`data/theme.json` — The repo's "design system". Three sub-blocks:
+- **palette**: named colors (`paper`, `ink`, `accent`, `term-bg`, `term-fg`, `info`, …)
+- **fonts**: `display` (Fraunces), `body` (Geist), `mono` (JetBrains Mono)
+- **patterns**: reusable components with their constants — `terminal_window` (macOS buttons, header, padding), `ecg_divider` (colors, animation duration), `prompt` ($/prompt style), `cursor` (blinking)
 
-Le Theme est éditable séparément des autres data — change-le et tous les SVG se rethémenisent.
+The Theme is editable separately from the other data — change it and all the SVGs re-theme themselves.
 
 ### Content
 
-`data/content.json` — Collection de modules narratifs résiduels (ceux qui ne sont pas devenus des entités propres) : easter eggs `//` par section, `boot_log[]` (lignes du `<details>`), `blockquote_autodidacte`, `footer_eof`, prose `beyond_code`. Chaque module a `id`, `kind`, `payload` (i18n quand prose).
+`data/content.json` — Collection of residual narrative modules (those that have not become their own entities): `//` easter eggs per section, `boot_log[]` (lines of the `<details>`), `blockquote_autodidacte`, `footer_eof`, `beyond_code` prose. Each module has `id`, `kind`, `payload` (i18n when prose).
 
-**Promotions** depuis content.json historique :
-- `modes_intervention[]` → entité **Mode** (data/modes.json)
-- principes de travail / prose `mon_approche` → entité **Methodology** (data/methodology.json)
+**Promotions** from the historical content.json:
+- `modes_intervention[]` → **Mode** entity (data/modes.json)
+- working principles / `mon_approche` prose → **Methodology** entity (data/methodology.json)
 
 ---
 
-## Concepts génération (dans `scripts/`)
+## Generation concepts (in `scripts/`)
 
 ### Template
 
-Fichier `.jinja` dans `scripts/templates/` qui décrit le rendu d'un SVG ou du README à partir des data. Utilise la syntaxe Jinja2. Un template peut hériter d'un partial (ex `_terminal_window.svg.jinja` réutilisé par tous les terminaux).
+A `.jinja` file in `scripts/templates/` that describes the rendering of an SVG or of the README from the data. Uses Jinja2 syntax. A template can inherit from a partial (e.g. `_terminal_window.svg.jinja` reused by all the terminals).
 
 ### Generate
 
-`scripts/generate.py` — Script Python qui charge `data/*.json`, charge `theme.json` (constantes design), résout les références par id, et produit `assets/svg/*.svg` + `README.md` via les templates Jinja2.
+`scripts/generate.py` — Python script that loads `data/*.json`, loads `theme.json` (design constants), resolves the references by id, and produces `assets/svg/*.svg` + `README.md` via the Jinja2 templates.
 
-### Vue (view)
+### View (view)
 
-Une vue est un SVG ou une section du README qui **agrège** plusieurs concepts data. Exemples :
-- *id-card* = projection de Profile + filter de Techs (par domain)
-- *timeline-life* = Timeline Events triés
-- *stack-{domain}* = Techs filtrés par domain
-- *featured* = Projects groupés par domain
-- *parcours* = Timeline Events filtrés (highlight=true)
+A view is an SVG or a section of the README that **aggregates** several data concepts. Examples:
+- *id-card* = projection of Profile + filter of Techs (by domain)
+- *timeline-life* = sorted Timeline Events
+- *stack-{domain}* = Techs filtered by domain
+- *featured* = Projects grouped by domain
+- *parcours* = Timeline Events filtered (highlight=true)
 
-Les vues sont **dérivées**, jamais stockées. C'est l'invariant qui garantit la cohérence inter-vues.
+Views are **derived**, never stored. This is the invariant that guarantees inter-view consistency.
 
 ---
 
-## Internationalisation (i18n)
+## Internationalization (i18n)
 
-Les **champs narratifs** (titres, descriptions courtes, pitch, prose) sont saisis en FR dans `data/*.json` et **traduits automatiquement en EN par DeepL** au pre-commit. Chaque champ i18n a la forme `{ "fr": "..." }` à la saisie ; la traduction EN est stockée dans un **cache committé** sous `data/i18n-cache/<entity>/<id>.<field>.en.json`.
+The **narrative fields** (titles, short descriptions, pitch, prose) are entered in FR in `data/*.json` and **translated automatically into EN by DeepL** at pre-commit. Each i18n field has the form `{ "fr": "..." }` at entry; the EN translation is stored in a **committed cache** under `data/i18n-cache/<entity>/<id>.<field>.en.json`.
 
-Le cache porte `{ fr_hash, en, manual: bool, reviewed: bool }`. Si `manual: true`, le hook ne touche jamais à `en`. Si `reviewed: false`, le hook affiche un warning mais la génération de `README.en.md` procède.
+The cache carries `{ fr_hash, en, manual: bool, reviewed: bool }`. If `manual: true`, the hook never touches `en`. If `reviewed: false`, the hook shows a warning but the generation of `README.en.md` proceeds.
 
-Les **champs factuels** (id, name, dates, tech labels, URLs, score) ne sont pas i18n — string/number simples.
+The **factual fields** (id, name, dates, tech labels, URLs, score) are not i18n — plain string/number.
 
-Voir [ADR-004](docs/adr/0004-i18n-bilingual-readme.md).
+See [ADR-004](docs/adr/0004-i18n-bilingual-readme.md).
 
-## Affichage adaptatif
+## Adaptive display
 
-Les SVG sont générés en **deux variantes** (`assets/svg/dark/*` et `assets/svg/light/*`). Le README utilise `<picture>` avec `prefers-color-scheme` pour servir la bonne variante selon la préférence GitHub du visiteur.
+The SVGs are generated in **two variants** (`assets/svg/dark/*` and `assets/svg/light/*`). The README uses `<picture>` with `prefers-color-scheme` to serve the right variant according to the visitor's GitHub preference.
 
 ```md
 <picture>
@@ -132,23 +132,23 @@ Les SVG sont générés en **deux variantes** (`assets/svg/dark/*` et `assets/sv
 </picture>
 ```
 
-Voir [ADR-003](docs/adr/0003-data-schema-collections-and-derived-views.md).
+See [ADR-003](docs/adr/0003-data-schema-collections-and-derived-views.md).
 
 ## Workflow
 
-Les quality gates passent par le **framework pre-commit** (`.pre-commit-config.yaml`, voir [ADR-005](docs/adr/0005-quality-gates-ci-branch-protection.md)) — plus l'ancien hook shell.
+The quality gates run through the **pre-commit framework** (`.pre-commit-config.yaml`, see [ADR-005](docs/adr/0005-quality-gates-ci-branch-protection.md)) — replacing the old shell hook.
 
-1. Éditer un ou plusieurs fichiers dans `data/`
+1. Edit one or more files in `data/`
 2. `git add data/...`
-3. `git commit` — le stage **pre-commit** valide les schemas + l'intégrité référentielle (`validate_data.py`), régénère `assets/svg/*.svg` + `README.md` (`generate.py`), valide les artefacts (`validate.py`), et passe ruff / bandit / gitleaks / cspell / hygiène fichiers. Si la génération modifie des fichiers, le commit échoue : re-stage puis re-commit (flux pre-commit standard).
-4. `git push` — le stage **pre-push** lance `pytest --cov` (≥ 90 % moteur) + `pip-audit`.
+3. `git commit` — the **pre-commit** stage validates the schemas + the referential integrity (`validate_data.py`), regenerates `assets/svg/*.svg` + `README.md` (`generate.py`), validates the artifacts (`validate.py`), and runs ruff / bandit / gitleaks / cspell / file hygiene. If the generation modifies files, the commit fails: re-stage then re-commit (standard pre-commit flow).
+4. `git push` — the **pre-push** stage runs `pytest --cov` (≥ 90 % engine) + `pip-audit`.
 
-Cela garantit que **les SVG/README versionnés sont toujours en phase avec les data** au même commit, et que tout passe les gates avant d'être poussé.
+This guarantees that **the versioned SVGs/README are always in sync with the data** at the same commit, and that everything passes the gates before being pushed.
 
 ---
 
 ## Invariants
 
-- Une **valeur factuelle** (ex « Python 3.11+ Expert depuis 2023 ») apparaît dans **exactement un** fichier data — jamais répliquée.
-- Les **IDs de techs et domains** sont stables dans le temps : un ID n'est jamais réutilisé pour autre chose, et on n'introduit pas la version dans l'ID racine (sinon les références cassent au moindre upgrade).
-- Les fichiers générés (`assets/svg/`, `README.md`) sont **commitables** mais **jamais édités à la main** — toute modif passe par les data ou les templates.
+- A **factual value** (e.g. "Python 3.11+ Expert since 2023") appears in **exactly one** data file — never replicated.
+- The **tech and domain IDs** are stable over time: an ID is never reused for something else, and the version is not introduced into the root ID (otherwise the references break at the slightest upgrade).
+- The generated files (`assets/svg/`, `README.md`) are **committable** but **never edited by hand** — any change goes through the data or the templates.

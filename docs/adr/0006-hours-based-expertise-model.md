@@ -1,66 +1,66 @@
-# ADR-006 — Modèle d'expertise basé sur les heures (max vs actuelle)
+# ADR-006 — Hours-based expertise model (max vs current)
 
-- **Statut** : Accepted
-- **Date** : 2026-05-29
-- **Supersede** : la **formule** d'[ADR-002](0002-tech-score-derivation.md) (base années + versions + projets + centralité + depth). Les paliers (5 niveaux) et le mécanisme d'override d'ADR-002 sont **conservés**.
+- **Status**: Accepted
+- **Date**: 2026-05-29
+- **Supersedes**: the **formula** from [ADR-002](0002-tech-score-derivation.md) (base years + versions + projects + centrality + depth). The tiers (5 levels) and the override mechanism from ADR-002 are **kept**.
 
-## Contexte
+## Context
 
-La formule additive d'ADR-002, même amendée du facteur `depth`, restait un assemblage de proxies (« combien j'ai bossé »). Trois passes de validation sur les 41 techs réelles ont montré qu'elle ne capturait ni l'**expertise privée** (missions client invisibles sur GitHub), ni les **outils ambiants** (git/docker/AI-tooling jamais « le sujet » mais omniprésents), ni la **distinction entre le pic atteint et ce qu'il en reste aujourd'hui**.
+The additive formula from ADR-002, even amended with the `depth` factor, remained an assembly of proxies ("how much I worked"). Three validation passes over the 41 real techs showed that it captured neither **private expertise** (client missions invisible on GitHub), nor **ambient tooling** (git/docker/AI-tooling never "the topic" but omnipresent), nor the **distinction between the peak reached and what remains of it today**.
 
-Boris a formulé le bon modèle : estimer un **nombre d'heures** par sujet, en tirer une **expertise max** (le pic, absolu, ne baisse jamais), puis une **expertise actuelle** = max après une **courbe d'oubli** dont la vitesse dépend du niveau atteint et qui ne retombe jamais à zéro (il reste toujours des traces).
+Boris formulated the right model: estimate a **number of hours** per topic, derive from it a **max expertise** (the peak, absolute, never decreases), then a **current expertise** = max after a **forgetting curve** whose speed depends on the level reached and which never drops back to zero (some traces always remain).
 
-## Décision
+## Decision
 
-### 1. Les heures sont la seule donnée d'entrée du score
+### 1. Hours are the only input to the score
 
-Deux sources, agrégées par `HoursCalculator` :
+Two sources, aggregated by `HoursCalculator`:
 
-- **Experience** (emploi, études, mission, compétition) — `data/experiences.json` :
-  `hours = span_années × HEURES_PAR_AN`, `HEURES_PAR_AN = 1880` (40 h × 47 sem). Les études comptent **temps plein** (1880).
-- **Project** perso — `data/projects.json` :
-  `hours = jours_actifs × HEURES_PAR_JOUR_PERSO`, `HEURES_PAR_JOUR_PERSO = 9` (journée perso type 8h–18h −1h pause). `jours_actifs` = nombre de jours avec commits (dérivé de GitHub, stocké et rafraîchissable).
+- **Experience** (employment, studies, mission, competition) — `data/experiences.json`:
+  `hours = span_years × HEURES_PAR_AN`, `HEURES_PAR_AN = 1880` (40 h × 47 weeks). Studies count as **full time** (1880).
+- **Project** personal — `data/projects.json`:
+  `hours = active_days × HEURES_PAR_JOUR_PERSO`, `HEURES_PAR_JOUR_PERSO = 9` (typical personal day 8am–6pm −1h break). `active_days` = number of days with commits (derived from GitHub, stored and refreshable).
 
-### 2. Allocation par tiers concurrents (heures d'exposition, cumulables)
+### 2. Allocation by concurrent tiers (exposure hours, cumulative)
 
-Chaque source porte **une** map `tech_weights : {tech_id: tier}`. Un tier est une **affirmation factuelle** (« sur ce travail, cette tech était primaire / secondaire / incidente »), pas une décimale devinée.
+Each source carries **one** map `tech_weights : {tech_id: tier}`. A tier is a **factual assertion** ("on this work, this tech was primary / secondary / incidental"), not a guessed decimal.
 
-Chaque tech reçoit `fraction(tier) × source_hours`, **cumulable et non normalisée** :
+Each tech receives `fraction(tier) × source_hours`, **cumulative and not normalized**:
 
-| tier | fraction | sens |
+| tier | fraction | meaning |
 |---|---|---|
-| `primary` | 0.70 | en jeu sur l'essentiel de la période |
-| `secondary` | 0.35 | en jeu sur une part significative |
-| `incident` | 0.10 | touché ponctuellement |
+| `primary` | 0.70 | in play across most of the period |
+| `secondary` | 0.35 | in play over a significant portion |
+| `incident` | 0.10 | touched occasionally |
 
-**Pas de normalisation, pas de partage.** Sur un projet mêlant C#/.NET + Xamarin + Bluetooth, les trois sont utilisés **en même temps** : chacun reçoit `0.70 × source_hours`, pas un tiers. La somme des allocations d'une période peut donc dépasser ses heures — c'est correct : ce sont des **heures d'exposition** (la courbe d'oubli d'Ebbinghaus mesure la pratique, pas le temps exclusif). Utiliser Xamarin, c'est aussi pratiquer C#.
+**No normalization, no sharing.** On a project combining C#/.NET + Xamarin + Bluetooth, all three are used **at the same time**: each receives `0.70 × source_hours`, not one third. The sum of a period's allocations can therefore exceed its hours — that is correct: these are **exposure hours** (the Ebbinghaus forgetting curve measures practice, not exclusive time). Using Xamarin also means practicing C#.
 
-Les outils transverses (git, docker, Claude Code, github-actions) sont simplement des techs `secondary`/`primary` selon leur présence — pas une catégorie à part.
+Cross-cutting tools (git, docker, Claude Code, github-actions) are simply `secondary`/`primary` techs depending on their presence — not a separate category.
 
-### 3. `since` / `until` sont dérivés des sources
+### 3. `since` / `until` are derived from the sources
 
-- `since(tech)` = plus ancienne date de début parmi les sources qui l'utilisent.
-- `until(tech)` = `null` si une source **courante** (end = null) l'utilise, sinon la plus récente date de fin.
+- `since(tech)` = earliest start date among the sources that use it.
+- `until(tech)` = `null` if a **current** source (end = null) uses it, otherwise the most recent end date.
 
-Conséquence : une tech s'arrête automatiquement quand sa dernière période s'arrête — l'invariant temporel de Boris est implémenté structurellement, plus aucune saisie manuelle de `until`.
+Consequence: a tech automatically stops when its last period stops — Boris's temporal invariant is implemented structurally, no more manual entry of `until`.
 
-### 4. Expertise max et actuelle
+### 4. Max and current expertise
 
 ```
-total_hours(tech)  = Σ sources [ fraction(tier) × source_hours ]   # cumulable
+total_hours(tech)  = Σ sources [ fraction(tier) × source_hours ]   # cumulative
 
 peak    = 99 · (1 − exp(−total_hours / H0))          # H0 = 3000
-t       = today.year − until.year                     # 0 si until est null (actif)
-F       = α · peak                                    # plancher résiduel, α = 0.30
-halflife(peak) = HL_MIN + (HL_MAX − HL_MIN)·(peak/100)   # 2 → 18 ans
+t       = today.year − until.year                     # 0 if until is null (active)
+F       = α · peak                                    # residual floor, α = 0.30
+halflife(peak) = HL_MIN + (HL_MAX − HL_MIN)·(peak/100)   # 2 → 18 years
 λ       = ln(2) / halflife(peak)
 current = F + (peak − F) · exp(−λ · t)
 ```
 
-- **peak** (= expertise max) : absolu, monotone, ne baisse jamais. Rendements décroissants (la 1ʳᵉ heure apprend plus que la 10 000ᵉ ; ~6000 h ⇒ expert).
-- **current** (= expertise actuelle) : ≤ peak, ≥ plancher `α·peak`. Décroît d'autant plus vite que le pic est bas (exploré = oubli rapide ; maîtrise profonde = oubli lent). Ne retombe jamais à 0.
+- **peak** (= max expertise): absolute, monotonic, never decreases. Diminishing returns (the 1st hour teaches more than the 10,000th; ~6000 h ⇒ expert).
+- **current** (= current expertise): ≤ peak, ≥ floor `α·peak`. Decreases all the faster as the peak is low (explored = fast forgetting; deep mastery = slow forgetting). Never drops back to 0.
 
-### 5. Paliers (conservés d'ADR-002)
+### 5. Tiers (kept from ADR-002)
 
 | Score | level |
 |---|---|
@@ -70,28 +70,28 @@ current = F + (peak − F) · exp(−λ · t)
 | 35–54 | working |
 | < 35 | explored |
 
-Appliqués **deux fois** : `level_max` (sur peak) et `level_current` (sur current). Le view model `Skill` expose les deux paires (score + level).
+Applied **twice**: `level_max` (on peak) and `level_current` (on current). The `Skill` view model exposes both pairs (score + level).
 
-### 6. Overrides (conservés)
+### 6. Overrides (kept)
 
-`score_override` / `level_override` sur une tech remplacent la valeur **actuelle** calculée, avec le même contrôle de cohérence qu'ADR-002. `featured` redevient un simple flag d'affichage (sélection hero), **plus un input de score**.
+`score_override` / `level_override` on a tech replace the computed **current** value, with the same consistency check as ADR-002. `featured` becomes once again a simple display flag (hero selection), **no longer a score input**.
 
-### 7. Constantes
+### 7. Constants
 
-`HEURES_PAR_AN = 1880` · `HEURES_PAR_JOUR_PERSO = 9` · `H0 = 3000` · `α = 0.30` · `HL_MIN = 2 ans` · `HL_MAX = 18 ans` · tiers `primary 0.70 / secondary 0.35 / incident 0.10`. Tout changement de ces constantes nécessite une nouvelle ADR.
+`HEURES_PAR_AN = 1880` · `HEURES_PAR_JOUR_PERSO = 9` · `H0 = 3000` · `α = 0.30` · `HL_MIN = 2 years` · `HL_MAX = 18 years` · tiers `primary 0.70 / secondary 0.35 / incident 0.10`. Any change to these constants requires a new ADR.
 
-## Conséquences
+## Consequences
 
-### Positives
+### Positive
 
-- Tout (heures, since, until, max, actuelle) **dérive** de sources factuelles — zéro chiffre saisi arbitrairement. Aligné avec la règle anti-gonflage.
-- La couche **ambient** capture enfin l'AI-driven development et les outils transverses.
-- **max vs actuelle** raconte la trajectoire embarqué→cloud→IA (un C++ pic advanced redescend professional ; un Windows CE working redescend explored).
-- Corriger un score = éditer un **tier** dans un fichier data + relancer le moteur (déterministe). Plus de devinette.
+- Everything (hours, since, until, max, current) **derives** from factual sources — zero arbitrarily entered number. Aligned with the anti-inflation rule.
+- The **ambient** layer finally captures AI-driven development and cross-cutting tools.
+- **max vs current** tells the embedded→cloud→AI trajectory (a C++ advanced peak drops back to professional; a Windows CE working drops back to explored).
+- Correcting a score = editing a **tier** in a data file + re-running the engine (deterministic). No more guessing.
 
-### Négatives
+### Negative
 
-- Modèle plus riche : plusieurs constantes, des heures d'exposition cumulables (non intuitives : la somme par période dépasse les heures réelles). Seul le *résultat* (les levels affichés) est public, donc la défendabilité tient au réalisme, pas à la simplicité.
-- Dépend de la qualité des tiers et de l'estimation des heures de période. Les tiers sont des affirmations honnêtes mais subjectives ; le code (linguist/cloc) sert de cross-check là où il existe.
-- `jours_actifs` perso dépend d'un refresh GitHub (workflow update-profile).
-- Refonte de `ScoreEngine` (le modèle a changé) + nouveau module `HoursCalculator`. Les tests de la formule additive sont retirés.
+- Richer model: several constants, cumulative exposure hours (not intuitive: the per-period sum exceeds the real hours). Only the *result* (the displayed levels) is public, so defensibility rests on realism, not simplicity.
+- Depends on the quality of the tiers and the estimation of period hours. The tiers are honest but subjective assertions; the code (linguist/cloc) serves as a cross-check where it exists.
+- Personal `active_days` depends on a GitHub refresh (update-profile workflow).
+- Overhaul of `ScoreEngine` (the model changed) + new `HoursCalculator` module. The additive-formula tests are removed.

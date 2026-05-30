@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
-generate.py — Génère assets/svg/*.svg et README.md
-depuis data/*.json + scripts/templates/*.jinja.
+generate.py — Generates assets/svg/*.svg and README.md
+from data/*.json + scripts/templates/*.jinja.
 
-Lance depuis n'importe où :
+Run from anywhere:
     python3 scripts/generate.py
 
-Le script est aussi appelé par le pre-commit hook (voir scripts/install-hook.sh).
+The script is also called by the pre-commit hook (see scripts/install-hook.sh).
 """
 
 from __future__ import annotations
@@ -22,14 +22,14 @@ try:
     from jinja2 import Environment, FileSystemLoader
 except ImportError:
     sys.stderr.write(
-        "[generate.py] jinja2 manquant. Installe-le avec :\n"
+        "[generate.py] jinja2 missing. Install it with:\n"
         "    pip install -r scripts/requirements.txt\n"
     )
     sys.exit(1)
 
-# Bootstrap : rend le package `scripts` importable même lancé en
-# `python3 scripts/generate.py` avec un interpréteur sans install editable
-# (cas du pre-commit hook git-natif).
+# Bootstrap: makes the `scripts` package importable even when run as
+# `python3 scripts/generate.py` with an interpreter without an editable install
+# (the case of the native-git pre-commit hook).
 _REPO_ROOT = pathlib.Path(__file__).resolve().parent.parent
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
@@ -47,12 +47,12 @@ _AMP_RE = re.compile(r"&(?!(?:amp|lt|gt|quot|apos|#\d+|#x[0-9a-fA-F]+);)")
 
 
 def _escape_amp(obj: Any) -> Any:
-    """Échappe récursivement `&` -> `&amp;` (idempotent : ne ré-échappe pas).
+    """Recursively escapes `&` -> `&amp;` (idempotent: does not re-escape).
 
-    Appliqué à toutes les strings des data au chargement. Le résultat est
-    valide XML (utilisé dans les SVG) ET valide markdown (le moteur GitHub
-    décode `&amp;` -> `&` à l'affichage). Pas de doublonnage si la string
-    est déjà échappée.
+    Applied to all data strings at load time. The result is valid XML
+    (used in the SVGs) AND valid markdown (the GitHub engine decodes
+    `&amp;` -> `&` on display). No doubling if the string is already
+    escaped.
     """
     if isinstance(obj, str):
         return _AMP_RE.sub("&amp;", obj)
@@ -64,7 +64,7 @@ def _escape_amp(obj: Any) -> Any:
 
 
 def load_data() -> dict[str, Any]:
-    """Charge les fichiers data/*.json et échappe les `&` pour usage XML/markdown."""
+    """Loads the data/*.json files and escapes `&` for XML/markdown use."""
     raw = {
         "profile": json.loads((DATA / "profile.json").read_text(encoding="utf-8")),
         "domains": json.loads((DATA / "domains.json").read_text(encoding="utf-8")),
@@ -86,11 +86,11 @@ def load_data() -> dict[str, Any]:
 
 
 def enrich(data: dict[str, Any], today: date) -> dict[str, Any]:
-    """Remplace `techs` brut par les Skills enrichis (hours + max/current).
+    """Replaces raw `techs` with the enriched Skills (hours + max/current).
 
-    Les templates consomment des techs enrichis : chaque tech porte `since`,
+    The templates consume enriched techs: each tech carries `since`,
     `until`, `score_max`, `level_max`, `score_current`, `level_current`
-    dérivés des expériences (ADR-006). Voir scripts/view_builder.py.
+    derived from the experiences (ADR-006). See scripts/view_builder.py.
     """
     data["techs"] = build_skills(
         data["techs"], data["experiences"], data["projects"], today
@@ -99,13 +99,13 @@ def enrich(data: dict[str, Any], today: date) -> dict[str, Any]:
 
 
 def make_env(data: dict[str, Any]) -> Environment:
-    """Crée l'environnement Jinja2 avec helpers exposés aux templates."""
-    # autoescape=False est intentionnel : générateur statique SVG/Markdown,
-    # pas un serveur HTML. Les data sont auto-rédigées (pas d'input externe),
-    # `&` est échappé globalement (_escape_amp), un `<`/`>` brut dans une data
-    # produirait du XML malformé que validate.py rejette (well-formedness).
-    # Autoescaper casserait les balises SVG voulues. Faux positif B701 en
-    # contexte génération statique.
+    """Creates the Jinja2 environment with helpers exposed to the templates."""
+    # autoescape=False is intentional: static SVG/Markdown generator,
+    # not an HTML server. The data is self-authored (no external input),
+    # `&` is escaped globally (_escape_amp), a raw `<`/`>` in the data
+    # would produce malformed XML that validate.py rejects (well-formedness).
+    # Autoescaping would break the intended SVG tags. False positive B701 in
+    # a static-generation context.
     env = Environment(  # nosec B701
         loader=FileSystemLoader(TEMPLATES),
         autoescape=False,
@@ -125,11 +125,11 @@ def make_env(data: dict[str, Any]) -> Environment:
         return next((d for d in domains if d["id"] == domain_id), None)
 
     def tech_by_id(tech_id: str) -> dict | None:
-        # cherche d'abord par id racine
+        # look first by root id
         match = next((t for t in techs if t["id"] == tech_id), None)
         if match:
             return match
-        # sinon cherche par id de version
+        # otherwise look by version id
         for t in techs:
             for v in t.get("versions", []):
                 if v["id"] == tech_id:
@@ -177,7 +177,7 @@ def make_env(data: dict[str, Any]) -> Environment:
         return mapping.get(level, level.title())
 
     def xml_escape(s: str | None) -> str:
-        """Échappe &, <, > pour usage dans contenu SVG (entre balises)."""
+        """Escapes &, <, > for use in SVG content (between tags)."""
         if s is None:
             return ""
         return str(s).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")

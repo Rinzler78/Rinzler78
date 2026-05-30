@@ -1,71 +1,71 @@
-# ADR-002 — Dérivation du score et du level d'une Tech
+# ADR-002 — Deriving the score and level of a Tech
 
-- **Statut** : Accepted
-- **Date** : 2026-05-27
-- **Supersede** : —
-- **Lié à** : [ADR-001](0001-data-driven-svg-generation.md)
+- **Status**: Accepted
+- **Date**: 2026-05-27
+- **Supersedes**: —
+- **Related to**: [ADR-001](0001-data-driven-svg-generation.md)
 
-## Contexte
+## Context
 
-Le profil affiche un radar et des barres de compétences. Pour rester crédible et défendable publiquement, les niveaux affichés ne peuvent pas être des notes arbitraires (« C# 87/100 ») saisies à la main : c'est exactement le red flag « chiffres inventés » qu'on refuse.
+The profile displays a radar chart and skill bars. To stay credible and publicly defensible, the displayed levels cannot be arbitrary hand-entered ratings ("C# 87/100"): that is exactly the "made-up numbers" red flag we reject.
 
-Deux modèles ont été écartés :
+Two models were ruled out:
 
-1. **Note libre saisie** (Spec V1, `skill.score: 95`) — invérifiable, gonflable, non maintenable.
-2. **3 paliers qualitatifs purs** (modèle d'origine du repo : `expert` / `intermediate` / `notions`) — robuste mais trop grossier : ne distingue pas « livré en prod » (Professional) de « bidouillé en proto » (Working/Explored).
+1. **Free-entry rating** (Spec V1, `skill.score: 95`) — unverifiable, inflatable, unmaintainable.
+2. **3 purely qualitative tiers** (the repo's original model: `expert` / `intermediate` / `notions`) — robust but too coarse: it does not distinguish "shipped to production" (Professional) from "tinkered with in a prototype" (Working/Explored).
 
-## Décision
+## Decision
 
-Le `score` et le `level` d'une Tech sont **dérivés** par le generator depuis les faits saisis dans `data/techs.json` et `data/projects.json`. Ils ne sont pas stockés.
+The `score` and `level` of a Tech are **derived** by the generator from the facts entered in `data/techs.json` and `data/projects.json`. They are not stored.
 
-### Faits saisis (techs.json)
+### Entered facts (techs.json)
 
-- `since` — année de premier usage (**nullable** ; `null` = jamais réellement adoptée, ex. read-level)
-- `until` — année de dernier usage si abandonnée (optionnel ; absent = encore actif)
-- `versions[]` — liste des versions traversées (obligatoire, peut être vide)
-- `depth` — profondeur d'usage en production, **0 à 3** (optionnel, défaut 0) — voir amendement ci-dessous
-- `featured` — booléen, override commercial (optionnel)
-- `level_override` — force le palier qualitatif (optionnel)
-- `score_override` — force le score numérique (optionnel)
+- `since` — year of first use (**nullable**; `null` = never actually adopted, e.g. read-level)
+- `until` — year of last use if abandoned (optional; absent = still active)
+- `versions[]` — list of versions worked through (required, may be empty)
+- `depth` — depth of production usage, **0 to 3** (optional, defaults to 0) — see amendment below
+- `featured` — boolean, commercial override (optional)
+- `level_override` — forces the qualitative tier (optional)
+- `score_override` — forces the numeric score (optional)
 
-### Formule
+### Formula
 
 ```
-années_actives  = (until ou aujourd'hui) − since   # 0 si since est null
-récence_oubli   = max(0, aujourd'hui − (until ou aujourd'hui))   # 0 si since est null
-nb_versions     = len(tech.versions)
-nb_projets      = count(p ∈ projects.json où tech.id ∈ p.tech_ids)
-nb_domains      = count(distinct p.domain pour ces projets)
+active_years    = (until or today) − since   # 0 if since is null
+recency_gap     = max(0, today − (until or today))   # 0 if since is null
+n_versions      = len(tech.versions)
+n_projects      = count(p ∈ projects.json where tech.id ∈ p.tech_ids)
+n_domains       = count(distinct p.domain for those projects)
 
-base            = min(60, années_actives × 3)
-versions_pts    = min(15, nb_versions × 3)
-projets_pts     = min(15, nb_projets × 3)
-centralité_pts  = min(10, max(0, nb_domains − 1) × 5)
+base            = min(60, active_years × 3)
+versions_pts    = min(15, n_versions × 3)
+projects_pts    = min(15, n_projects × 3)
+centrality_pts  = min(10, max(0, n_domains − 1) × 5)
 depth_pts       = depth × 20                       # 0 / 20 / 40 / 60
 
-raw             = base + versions_pts + projets_pts + centralité_pts + depth_pts
-oubli           = récence_oubli × 6
-bonus_featured  = 15 si featured else 0
+raw             = base + versions_pts + projects_pts + centrality_pts + depth_pts
+forgetting      = recency_gap × 6
+featured_bonus  = 15 if featured else 0
 
-score = clamp(0, 99, raw − oubli + bonus_featured)
+score = clamp(0, 99, raw − forgetting + featured_bonus)
 ```
 
-### Le facteur `depth` (amendement post-migration, 2026-05-28)
+### The `depth` factor (post-migration amendment, 2026-05-28)
 
-La formule d'origine ne récompensait que les **preuves publiques** (projets GitHub, versions loggées, années). Or l'expertise réelle vient largement de **missions client privées** invisibles sur GitHub. Sur les 41 techs réelles, seules 2 (`csharp`, `dotnet`) atteignaient leur niveau réel ; `python`, `docker`, `asp-net-core` etc. tombaient en `explored` malgré une expertise prod.
+The original formula only rewarded **public evidence** (GitHub projects, logged versions, years). Yet real expertise largely comes from **private client engagements** that are invisible on GitHub. Of the 41 real techs, only 2 (`csharp`, `dotnet`) reached their real level; `python`, `docker`, `asp-net-core`, etc. dropped to `explored` despite production expertise.
 
-`depth` corrige ce biais. C'est une **auto-évaluation factuelle** de la profondeur d'usage en production, pas un chiffre arbitraire :
+`depth` corrects this bias. It is a **factual self-assessment** of the depth of production usage, not an arbitrary number:
 
-| depth | Sens |
+| depth | Meaning |
 |---|---|
-| 0 | Read-level, expérimental, jamais shippé (défaut) |
-| 1 | Shippé ponctuellement, secondaire sur certaines missions |
-| 2 | Utilisé régulièrement en production sur plusieurs missions |
-| 3 | Expertise cœur, maîtrise profonde, outil primaire en prod depuis des années |
+| 0 | Read-level, experimental, never shipped (default) |
+| 1 | Shipped occasionally, secondary on some engagements |
+| 2 | Used regularly in production across several engagements |
+| 3 | Core expertise, deep mastery, primary tool in production for years |
 
-`depth` est **additif** (`+20` par niveau) et passe dans `raw`, donc la pénalité d'oubli le dégrade aussi (un `depth=3` abandonné depuis longtemps redescend correctement). `since: null` est désormais toléré (years_active = 0).
+`depth` is **additive** (`+20` per level) and feeds into `raw`, so the forgetting penalty degrades it too (a `depth=3` abandoned long ago drops back down correctly). `since: null` is now tolerated (years_active = 0).
 
-### Paliers
+### Tiers
 
 | Score | `level` |
 |---|---|
@@ -75,24 +75,24 @@ La formule d'origine ne récompensait que les **preuves publiques** (projets Git
 | 35–54 | `working` |
 | < 35 | `explored` |
 
-### Règles d'override
+### Override rules
 
-- Si `score_override` est posé, il remplace le score calculé.
-- Si `level_override` est posé, il remplace le level dérivé du score.
-- Si les deux sont posés, ils doivent être cohérents (le `score_override` doit tomber dans la fourchette du `level_override`). Un test garantit cette cohérence.
-- Un override ne masque jamais le score brut dans le code : les deux sont visibles dans le view model pour audit.
+- If `score_override` is set, it replaces the computed score.
+- If `level_override` is set, it replaces the level derived from the score.
+- If both are set, they must be consistent (the `score_override` must fall within the range of the `level_override`). A test enforces this consistency.
+- An override never hides the raw score in the code: both are visible in the view model for audit.
 
-## Conséquences
+## Consequences
 
-### Positives
+### Positive
 
-- Le score est **défendable** : on peut justifier chaque chiffre par la formule + les faits.
-- L'évolution dans le temps est **automatique** : un an de plus → score recalculé sans saisie.
-- Les overrides forcent à se demander « pourquoi la formule ne capture pas ce cas » → documentation implicite via `notes`.
-- 5 paliers permettent de distinguer prod / proto / veille.
+- The score is **defensible**: every number can be justified by the formula + the facts.
+- Evolution over time is **automatic**: one more year → score recomputed with no data entry.
+- Overrides force you to ask "why doesn't the formula capture this case" → implicit documentation via `notes`.
+- 5 tiers make it possible to distinguish production / prototype / watching.
 
-### Négatives
+### Negative
 
-- La formule dépend de `projects.json` étant honnête : projets manquants → score sous-évalué → besoin d'override. Demande de la discipline.
-- Les coefficients (3 pts/an, plafonds 60/15/15/10, pénalité 6/an oubli, bonus featured 15) sont des choix éditoriaux : un futur ajustement déplacera toutes les frontières. Tout changement de coefficients nécessite une nouvelle ADR.
-- La formule ne capture pas l'**intensité** (mission temps plein vs side-project) : seul l'override le compense.
+- The formula depends on `projects.json` being honest: missing projects → underrated score → need for an override. It requires discipline.
+- The coefficients (3 pts/year, caps 60/15/15/10, forgetting penalty 6/year, featured bonus 15) are editorial choices: a future adjustment will shift all the boundaries. Any change to the coefficients requires a new ADR.
+- The formula does not capture **intensity** (full-time engagement vs side-project): only the override compensates for that.

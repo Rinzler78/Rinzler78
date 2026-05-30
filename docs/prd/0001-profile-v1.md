@@ -1,146 +1,146 @@
-# PRD-001 — Profile V1 : data-driven, bilingue, adaptatif, gouverné
+# PRD-001 — Profile V1: data-driven, bilingual, adaptive, governed
 
-> Statut : ready-for-agent
-> Date : 2026-05-27
-> Liens : [ADR-001](../adr/0001-data-driven-svg-generation.md), [ADR-002](../adr/0002-tech-score-derivation.md), [ADR-003](../adr/0003-data-schema-collections-and-derived-views.md), [ADR-004](../adr/0004-i18n-bilingual-readme.md), [ADR-005](../adr/0005-quality-gates-ci-branch-protection.md)
+> Status: ready-for-agent
+> Date: 2026-05-27
+> Links: [ADR-001](../adr/0001-data-driven-svg-generation.md), [ADR-002](../adr/0002-tech-score-derivation.md), [ADR-003](../adr/0003-data-schema-collections-and-derived-views.md), [ADR-004](../adr/0004-i18n-bilingual-readme.md), [ADR-005](../adr/0005-quality-gates-ci-branch-protection.md)
 
 ## Problem Statement
 
-Boris est freelance CTO/architecte logiciel ciblant à la fois des startups, scaleups et entreprises matures, en France et à l'international. Son profil GitHub actuel (`Rinzler78/Rinzler78`) est un README data-driven (ADR-001) mais limité : mono-langue FR, schéma data simple (3 paliers Tech sans dérivation), mode visuel unique non adaptatif au thème GitHub du visiteur, pas de catalogue de services structuré, pas de tests, pre-commit shell custom non aligné sur les règles de qualité standards, pas de protection de branche.
+Boris is a freelance CTO/software architect targeting startups, scaleups, and mature companies alike, in France and internationally. His current GitHub profile (`Rinzler78/Rinzler78`) is a data-driven README (ADR-001) but a limited one: single-language FR, a simple data schema (3 Tech tiers without derivation), a single visual mode that does not adapt to the visitor's GitHub theme, no structured services catalog, no tests, a custom shell pre-commit not aligned with standard quality rules, and no branch protection.
 
-Sans évolution, le profil :
-- coupe le marché EN-only (recruteurs anglophones, clients internationaux qui ne basculent pas la langue) ;
-- ne distingue pas « livré en prod » de « bidouillé en proto », ce qui floute le signal de séniorité ;
-- ne montre pas l'offre commerciale (services vendables) à un prospect qui scanne 30 secondes ;
-- jure visuellement avec le mode GitHub light/dark choisi par le visiteur ;
-- ne prouve pas la méthode de travail (tests, CI, gouvernance) qu'un client CTO chercherait à valider.
+Without evolving, the profile:
+- cuts off the EN-only market (English-speaking recruiters, international clients who do not switch language);
+- does not distinguish "shipped to production" from "hacked together as a prototype", which blurs the seniority signal;
+- does not surface the commercial offering (sellable services) to a prospect scanning for 30 seconds;
+- clashes visually with the GitHub light/dark mode chosen by the visitor;
+- does not prove the working method (tests, CI, governance) that a client CTO would seek to validate.
 
 ## Solution
 
-Refondre le repo `Rinzler78/Rinzler78` comme un **GitHub Profile Generator** : un projet logiciel à part entière, gouverné comme tel, qui prend en entrée des données JSON normalisées et produit en sortie deux README (FR + EN), des assets SVG en double variante (dark + light) servis via `<picture>` selon la préférence du visiteur, et un ensemble d'animations dynamiques sobres. Le pipeline est testé (couverture ≥ 90%), valide les schémas, vérifie l'intégrité référentielle, traduit via DeepL avec cache committé, et tourne sous CI GitHub Actions avec `main` protégée par ruleset.
+Rebuild the `Rinzler78/Rinzler78` repo as a **GitHub Profile Generator**: a software project in its own right, governed as such, that takes normalized JSON data as input and produces as output two READMEs (FR + EN), SVG assets in two variants (dark + light) served via `<picture>` according to the visitor's preference, and a set of subtle dynamic animations. The pipeline is tested (coverage ≥ 90%), validates the schemas, checks referential integrity, translates via DeepL with a committed cache, and runs under GitHub Actions CI with `main` protected by a ruleset.
 
-Le profil V1 démontre simultanément deux choses : (1) qui est Boris et ce qu'on peut lui acheter, (2) comment Boris construit du logiciel — le repo lui-même étant la preuve.
+The V1 profile demonstrates two things simultaneously: (1) who Boris is and what you can buy from him, (2) how Boris builds software — the repo itself being the proof.
 
 ## User Stories
 
-### Visiteur du profil
+### Profile visitor
 
-1. En tant que recruteur anglophone qui visite `github.com/Rinzler78`, je vois immédiatement un lien vers la version EN du README, afin de basculer sans avoir à comprendre le FR.
-2. En tant que client potentiel français, je lis un pitch FR clair en haut du profil, afin de saisir l'offre de Boris en 10 secondes.
-3. En tant que client en GitHub Dark Mode, les SVG embarqués apparaissent en variante sombre cohérente avec le reste de la page, afin que la lecture soit confortable.
-4. En tant que client en GitHub Light Mode, les SVG embarqués apparaissent en variante claire WCAG AA, afin que la lecture soit confortable.
-5. En tant que prospect scannant en 30 secondes, je vois en premier les **services vendables** (Architecture, Audit, AI-Driven Dev, etc.) avant les détails techniques, afin de savoir ce que je peux acheter.
-6. En tant que prospect, je vois également les **modes d'intervention** (pompier, accompagnement long, audit one-shot, mentor) pour comprendre comment engager Boris.
-7. En tant que CTO en évaluation, je consulte les niveaux de maîtrise des technos avec un score défendable (dérivé, pas arbitraire), afin de valider l'expertise réelle de Boris.
-8. En tant que CTO en évaluation, je distingue clairement les technos `expert` (utilisées en prod critique), `advanced` (autonome en prod), `professional` (usage prod non central), `working` (proto livré), `explored` (veille), afin de calibrer mes attentes.
-9. En tant que visiteur curieux, je consulte une timeline visuelle du parcours qui mêle premier code (2006), diplômes, postes successifs et jalons techniques, afin de comprendre la trajectoire de Boris.
-10. En tant que visiteur, je vois les projets featured regroupés par domaine avec une explication du « pourquoi ce projet compte », afin de comprendre la valeur de ce qui est en repo public.
-11. En tant que recruteur, je consulte la section « How I work » qui formalise les principes de travail (Simple before clever, Tested before trusted, etc.), afin de juger la philosophie d'ingénierie.
-12. En tant que visiteur, je vois le « Profile as Code » (snippet C# inspiré qui présente Boris comme un objet), pour le clin d'œil dev et le signal geek.
-13. En tant que client B2B, je vois en bas un bloc contact pyramidal (résumé en hero rappelé + détail complet avec email, LinkedIn, Malt, etc.), afin de prendre contact rapidement.
-14. En tant que visiteur, je distingue le « ton humain » via les easter eggs `~bashrc` collapsibles (basketball, papa) qui personnalisent sans casser le sérieux pro.
+1. As an English-speaking recruiter visiting `github.com/Rinzler78`, I immediately see a link to the EN version of the README, so that I can switch without having to understand FR.
+2. As a potential French client, I read a clear FR pitch at the top of the profile, so that I grasp Boris's offering in 10 seconds.
+3. As a client in GitHub Dark Mode, the embedded SVGs appear in a dark variant consistent with the rest of the page, so that reading is comfortable.
+4. As a client in GitHub Light Mode, the embedded SVGs appear in a WCAG AA light variant, so that reading is comfortable.
+5. As a prospect scanning in 30 seconds, I see the **sellable services** first (Architecture, Audit, AI-Driven Dev, etc.) before the technical details, so that I know what I can buy.
+6. As a prospect, I also see the **intervention modes** (firefighter, long-term support, one-shot audit, mentor) to understand how to engage Boris.
+7. As a CTO doing an evaluation, I review the technology mastery levels with a defensible score (derived, not arbitrary), so that I can validate Boris's real expertise.
+8. As a CTO doing an evaluation, I clearly distinguish `expert` techs (used in critical production), `advanced` (autonomous in production), `professional` (non-central production use), `working` (shipped prototype), `explored` (watching), so that I can calibrate my expectations.
+9. As a curious visitor, I review a visual timeline of the journey that blends first code (2006), degrees, successive positions, and technical milestones, so that I understand Boris's trajectory.
+10. As a visitor, I see the featured projects grouped by domain with an explanation of "why this project matters", so that I understand the value of what is in the public repo.
+11. As a recruiter, I review the "How I work" section that formalizes the working principles (Simple before clever, Tested before trusted, etc.), so that I can judge the engineering philosophy.
+12. As a visitor, I see the "Profile as Code" (a C#-inspired snippet that presents Boris as an object), for the dev wink and the geek signal.
+13. As a B2B client, I see at the bottom a pyramidal contact block (the hero summary restated + full detail with email, LinkedIn, Malt, etc.), so that I can get in touch quickly.
+14. As a visitor, I perceive the "human tone" through the collapsible `~bashrc` easter eggs (basketball, dad) that add personality without breaking the professional seriousness.
 
-### Boris (utilisateur du système)
+### Boris (system user)
 
-15. En tant que Boris, je saisis ou modifie un fait dans `data/*.json` et je commit ; le pipeline régénère automatiquement tous les artefacts (SVG, README FR, README EN) dans le même commit, afin d'éviter toute désynchronisation entre data et rendu.
-16. En tant que Boris, je saisis uniquement la version FR des champs narratifs ; DeepL produit automatiquement la version EN au pre-commit, afin de ne pas doubler l'effort éditorial.
-17. En tant que Boris, je peux overrider manuellement une traduction EN (flag `manual: true` dans le cache), afin de corriger un cas où DeepL a mal traduit.
-18. En tant que Boris, je sais quelles traductions EN n'ont pas encore été reviewées (flag `reviewed: false`) car le hook affiche un warning, afin de savoir où porter mon attention.
-19. En tant que Boris, je peux overrider le score ou le level d'une tech (`score_override`, `level_override`) quand la formule sous-évalue (par ex. usage privé non listé), afin de garder un signal honnête sans tricher.
-20. En tant que Boris, j'ai un Makefile avec des cibles claires (`make setup`, `make test`, `make check`), afin d'agir sans mémoriser les commandes longues.
-21. En tant que Boris, je commit sur `main` ne passe pas : je dois ouvrir une PR. Cela force la traçabilité et la CI complète, afin d'éviter les écrasements accidentels.
-22. En tant que Boris, mes commits sont signés GPG (déjà mon usage standard), et `main` rejette tout commit non signé, afin de prouver l'authenticité.
-23. En tant que Boris, je vois en local toutes les erreurs de schéma, lint, sécurité, audit deps, traduction manquante AVANT de pousser, grâce à pre-commit + pre-push, afin de ne pas dépendre de la CI pour les retours.
-24. En tant que Boris, le workflow `update-profile.yml` tourne tous les lundis matin, récupère les métriques GitHub publiques et commit s'il y a un diff, afin que le profil reste à jour sans intervention.
-25. En tant que Boris, j'ajoute une nouvelle tech, projet ou service en éditant un seul fichier `data/*.json` ; le radar, les barres, les sections du README, la version EN se mettent à jour automatiquement.
-26. En tant que Boris, je peux changer la palette ou le thème en éditant `data/themes.json` et `data/config.json`, sans toucher aux templates, afin de tester des variantes sans risquer de casser le rendu.
-27. En tant que Boris, le coût DeepL reste à 0€ (free tier 500k chars/mois) tant que je ne dépasse pas le quota, afin de garder la solution autofinancée.
-28. En tant que Boris, si DeepL est indisponible ou la clé absente, le hook échoue clairement (pas de fallback silencieux), afin que je sache que la trad EN n'a pas été produite.
-29. En tant que Boris, je teste mes modifications data via `make test` et `make coverage` (≥ 90%), afin de garantir que la formule de score et les vues dérivées restent cohérentes.
-30. En tant que Boris, je consulte les ADRs (`docs/adr/`) pour comprendre pourquoi telle décision a été prise, afin de faire évoluer le système sans rejouer les débats passés.
-31. En tant que Boris, je peux ajouter un nouveau thème (par exemple `solarized`) en créant une entrée dans `data/themes.json` et en pointant `data/config.json` dessus, afin de pivoter le design sans refonte.
+15. As Boris, I enter or modify a fact in `data/*.json` and I commit; the pipeline automatically regenerates all artifacts (SVG, README FR, README EN) in the same commit, so as to avoid any desynchronization between data and rendering.
+16. As Boris, I enter only the FR version of the narrative fields; DeepL automatically produces the EN version at pre-commit, so as not to double the editorial effort.
+17. As Boris, I can manually override an EN translation (flag `manual: true` in the cache), so as to fix a case where DeepL translated poorly.
+18. As Boris, I know which EN translations have not yet been reviewed (flag `reviewed: false`) because the hook displays a warning, so that I know where to focus my attention.
+19. As Boris, I can override a tech's score or level (`score_override`, `level_override`) when the formula underrates it (e.g. unlisted private use), so as to keep an honest signal without cheating.
+20. As Boris, I have a Makefile with clear targets (`make setup`, `make test`, `make check`), so that I can act without memorizing long commands.
+21. As Boris, my commit to `main` does not go through: I must open a PR. This forces traceability and full CI, so as to avoid accidental overwrites.
+22. As Boris, my commits are GPG-signed (already my standard practice), and `main` rejects any unsigned commit, so as to prove authenticity.
+23. As Boris, I see locally all schema, lint, security, deps audit, and missing-translation errors BEFORE pushing, thanks to pre-commit + pre-push, so as not to depend on CI for feedback.
+24. As Boris, the `update-profile.yml` workflow runs every Monday morning, fetches the public GitHub metrics, and commits if there is a diff, so that the profile stays up to date without intervention.
+25. As Boris, I add a new tech, project, or service by editing a single `data/*.json` file; the radar, the bars, the README sections, and the EN version update automatically.
+26. As Boris, I can change the palette or the theme by editing `data/themes.json` and `data/config.json`, without touching the templates, so as to test variants without risking breaking the rendering.
+27. As Boris, the DeepL cost stays at €0 (free tier 500k chars/month) as long as I do not exceed the quota, so as to keep the solution self-funded.
+28. As Boris, if DeepL is unavailable or the key is missing, the hook fails clearly (no silent fallback), so that I know the EN translation was not produced.
+29. As Boris, I test my data changes via `make test` and `make coverage` (≥ 90%), so as to guarantee that the score formula and the derived views remain consistent.
+30. As Boris, I consult the ADRs (`docs/adr/`) to understand why a given decision was made, so as to evolve the system without replaying past debates.
+31. As Boris, I can add a new theme (for example `solarized`) by creating an entry in `data/themes.json` and pointing `data/config.json` at it, so as to pivot the design without a rewrite.
 
-### Mainteneur futur / contributeur ouvert
+### Future maintainer / open contributor
 
-32. En tant que mainteneur futur du repo (ou agent autonome), je trouve dans `CONTEXT.md` un glossaire complet du vocabulaire data, afin de comprendre les concepts sans lire le code.
-33. En tant que mainteneur, je trouve dans `docs/adr/` les décisions structurantes datées et motivées, afin de savoir quoi modifier ou superseder.
-34. En tant que contributeur, je clone le repo, je lance `make setup`, et tout est installé (deps, pre-commit, pre-push) en une commande, afin de démarrer en moins de 5 minutes.
+32. As a future maintainer of the repo (or an autonomous agent), I find in `CONTEXT.md` a complete glossary of the data vocabulary, so as to understand the concepts without reading the code.
+33. As a maintainer, I find in `docs/adr/` the structuring decisions, dated and motivated, so as to know what to modify or supersede.
+34. As a contributor, I clone the repo, I run `make setup`, and everything is installed (deps, pre-commit, pre-push) in one command, so as to get started in under 5 minutes.
 
 ## Implementation Decisions
 
-### Modules à construire / modifier
+### Modules to build / modify
 
-Le pipeline est éclaté en modules deep encapsulant chacun une responsabilité testable en isolation. Tous ont des tests dédiés (validation Q16).
+The pipeline is broken down into deep modules, each encapsulating one responsibility testable in isolation. All have dedicated tests (validation Q16).
 
-- **DataLoader** : charge `data/*.json`, valide chaque fichier contre son JSON Schema, vérifie l'intégrité référentielle (chaque FK pointe sur une entité existante), résout le profil et le thème actif via `data/config.json`. Interface : `load() → typed entities`. Exposera une exception structurée par catégorie d'erreur (schema, FK, missing required field).
-- **ScoreEngine** : implémente la formule ADR-002. Inputs : une `Tech`, la collection `Projects`, la date courante. Outputs : `(score: int, level: enum)`. Applique les overrides (`score_override`, `level_override`) en vérifiant leur cohérence (override level doit tomber dans la fourchette du score override si les deux posés). Fonction pure, déterministe, sans I/O.
-- **ViewBuilder** : construit les vues dérivées à partir des entités chargées. Exposera des fonctions séparées pour `build_skills`, `build_experience`, `build_education`, `build_tech_radar`, `build_core_expertise`, `build_featured_projects`, `build_stack_by_domain`, `build_parcours_story`. Chaque vue est un view model immutable.
-- **I18nTranslator** : gère le cycle traduction. Lit/écrit `data/i18n-cache/<entity>/<id>.<field>.en.json`. Calcule le hash SHA-256 du FR, détecte les besoins de retraduction, appelle l'API DeepL via le client officiel, respecte `manual: true` (jamais retraduit) et `reviewed: false` (warning seulement). Interface : `translate(entity, id, field, fr) → en`. Mockable en test.
-- **ThemeResolver** : résout le thème actif depuis `config.json` et `themes.json`. Pour le thème actif, expose deux palettes : `dark` (saisie directement) et `light` (dérivée par inversion contrôlée avec garanties WCAG AA). Pure, sans I/O.
-- **TemplateRenderer** : charge les templates Jinja2 (existants étendus). Produit les artefacts pour les deux langues × deux variantes (FR×dark, FR×light, EN×dark, EN×light si SVG ; FR et EN pour les README qui référencent les SVG). Déterministe : pas de timestamp, pas d'ordre instable, pas de hash random.
-- **OutputWriter** : écrit atomiquement les fichiers générés (`README.md`, `README.en.md`, `assets/svg/dark/*`, `assets/svg/light/*`). Expose une fonction `diff_against_committed() → bool` utilisée par le hook generate-and-diff.
-- **MetricsFetcher** (V2 anticipé V1) : récupère via l'API GitHub des métriques publiques (count stars, count public repos, dernier push). Écrit `data/metrics.json`. Mockable en test.
-- **Hooks scripts** (`scripts/hooks/`) : un script par hook custom (`validate_data.py`, `check_referential_integrity.py`, `translate.py`, `generate_and_diff.py`, `validate_svg.py`). Chaque script est un wrapper court qui orchestre les modules ci-dessus.
+- **DataLoader**: loads `data/*.json`, validates each file against its JSON Schema, checks referential integrity (each FK points to an existing entity), resolves the active profile and theme via `data/config.json`. Interface: `load() → typed entities`. Will expose a structured exception per error category (schema, FK, missing required field).
+- **ScoreEngine**: implements the ADR-002 formula. Inputs: a `Tech`, the `Projects` collection, the current date. Outputs: `(score: int, level: enum)`. Applies the overrides (`score_override`, `level_override`) while verifying their consistency (the override level must fall within the range of the override score if both are set). Pure function, deterministic, no I/O.
+- **ViewBuilder**: builds the derived views from the loaded entities. Will expose separate functions for `build_skills`, `build_experience`, `build_education`, `build_tech_radar`, `build_core_expertise`, `build_featured_projects`, `build_stack_by_domain`, `build_parcours_story`. Each view is an immutable view model.
+- **I18nTranslator**: manages the translation cycle. Reads/writes `data/i18n-cache/<entity>/<id>.<field>.en.json`. Computes the SHA-256 hash of the FR, detects retranslation needs, calls the DeepL API via the official client, respects `manual: true` (never retranslated) and `reviewed: false` (warning only). Interface: `translate(entity, id, field, fr) → en`. Mockable in tests.
+- **ThemeResolver**: resolves the active theme from `config.json` and `themes.json`. For the active theme, exposes two palettes: `dark` (entered directly) and `light` (derived by controlled inversion with WCAG AA guarantees). Pure, no I/O.
+- **TemplateRenderer**: loads the Jinja2 templates (existing ones, extended). Produces the artifacts for the two languages × two variants (FR×dark, FR×light, EN×dark, EN×light for SVG; FR and EN for the READMEs that reference the SVGs). Deterministic: no timestamp, no unstable ordering, no random hash.
+- **OutputWriter**: atomically writes the generated files (`README.md`, `README.en.md`, `assets/svg/dark/*`, `assets/svg/light/*`). Exposes a `diff_against_committed() → bool` function used by the generate-and-diff hook.
+- **MetricsFetcher** (V2 anticipated in V1): fetches public metrics via the GitHub API (star count, public repo count, last push). Writes `data/metrics.json`. Mockable in tests.
+- **Hook scripts** (`scripts/hooks/`): one script per custom hook (`validate_data.py`, `check_referential_integrity.py`, `translate.py`, `generate_and_diff.py`, `validate_svg.py`). Each script is a short wrapper that orchestrates the modules above.
 
-### Schéma data (ADR-003)
+### Data schema (ADR-003)
 
-Tous les fichiers `data/*.json` sont des tableaux. Chaque entrée porte un `id` snake_case stable. Inventaire :
+All `data/*.json` files are arrays. Each entry carries a stable snake_case `id`. Inventory:
 
-| Fichier | Concept |
+| File | Concept |
 |---|---|
-| `data/config.json` | Pointeur theme/profile actifs |
-| `data/profile.json` | Identité (nom, role, contacts, location, links) |
+| `data/config.json` | Active theme/profile pointer |
+| `data/profile.json` | Identity (name, role, contacts, location, links) |
 | `data/themes.json` | Design systems (palette, fonts, patterns) |
-| `data/domains.json` | Taxonomie d'expertise |
-| `data/techs.json` | Compétences avec `since`/`until`/`versions[]`/`featured`/overrides ; `level` retiré (dérivé) |
-| `data/projects.json` | Projets publics référençant techs et domain |
-| `data/timeline.json` | Events enrichis avec `role`/`employer`/`kind` |
-| `data/services.json` | Prestations vendables (i18n title/description) |
-| `data/modes.json` | Modes d'intervention (i18n) — extrait de `content` |
-| `data/methodology.json` | Principes de travail (i18n) — extrait de `content` |
-| `data/content.json` | Modules narratifs résiduels (easter eggs, boot_log, footer_eof) |
+| `data/domains.json` | Expertise taxonomy |
+| `data/techs.json` | Skills with `since`/`until`/`versions[]`/`featured`/overrides; `level` removed (derived) |
+| `data/projects.json` | Public projects referencing techs and domain |
+| `data/timeline.json` | Events enriched with `role`/`employer`/`kind` |
+| `data/services.json` | Sellable offerings (i18n title/description) |
+| `data/modes.json` | Intervention modes (i18n) — extracted from `content` |
+| `data/methodology.json` | Working principles (i18n) — extracted from `content` |
+| `data/content.json` | Residual narrative modules (easter eggs, boot_log, footer_eof) |
 
-Et `data/i18n-cache/` : structure miroir avec les traductions EN.
+And `data/i18n-cache/`: mirror structure with the EN translations.
 
-### Formule de score (ADR-002)
+### Score formula (ADR-002)
 
 ```
-années_actives  = (until ou aujourd'hui) − since
-récence_oubli   = max(0, aujourd'hui − (until ou aujourd'hui))
-nb_versions     = len(tech.versions)
-nb_projets      = count(p ∈ projects où tech.id ∈ p.tech_ids)
-nb_domains      = count(distinct p.domain pour ces projets)
+active_years    = (until or today) − since
+recency_gap     = max(0, today − (until or today))
+n_versions      = len(tech.versions)
+n_projects      = count(p ∈ projects where tech.id ∈ p.tech_ids)
+n_domains       = count(distinct p.domain for those projects)
 
-base            = min(60, années_actives × 3)
-versions_pts    = min(15, nb_versions × 3)
-projets_pts     = min(15, nb_projets × 3)
-centralité_pts  = min(10, max(0, nb_domains − 1) × 5)
+base            = min(60, active_years × 3)
+versions_pts    = min(15, n_versions × 3)
+projects_pts    = min(15, n_projects × 3)
+centrality_pts  = min(10, max(0, n_domains − 1) × 5)
 
-raw             = base + versions_pts + projets_pts + centralité_pts
-oubli           = récence_oubli × 6
-bonus_featured  = 15 si featured else 0
+raw             = base + versions_pts + projects_pts + centrality_pts
+forgetting      = recency_gap × 6
+featured_bonus  = 15 if featured else 0
 
-score = clamp(0, 99, raw − oubli + bonus_featured)
+score = clamp(0, 99, raw − forgetting + featured_bonus)
 ```
 
-Mapping vers level :
+Mapping to level:
 - `score ≥ 85` → `expert`
 - `70–84` → `advanced`
 - `55–69` → `professional`
 - `35–54` → `working`
 - `< 35` → `explored`
 
-### Multi-langue (ADR-004)
+### Multi-language (ADR-004)
 
-- README.md (FR, défaut) + README.en.md (EN), lien réciproque en tête.
-- Champs narratifs : `{ "fr": "..." }` à la saisie. EN dans cache committé `data/i18n-cache/...`.
-- Traduction DeepL Free (clé `DEEPL_API_KEY` en `.env` local + GitHub Secret).
-- Cache porte `{ fr_hash, en, manual: bool, reviewed: bool }`.
-- `manual: true` → jamais retraduit. `reviewed: false` → warning, pas bloquant.
+- README.md (FR, default) + README.en.md (EN), reciprocal link at the top.
+- Narrative fields: `{ "fr": "..." }` on entry. EN in the committed cache `data/i18n-cache/...`.
+- DeepL Free translation (key `DEEPL_API_KEY` in local `.env` + GitHub Secret).
+- The cache carries `{ fr_hash, en, manual: bool, reviewed: bool }`.
+- `manual: true` → never retranslated. `reviewed: false` → warning, not blocking.
 
-### Affichage adaptatif (ADR-003)
+### Adaptive display (ADR-003)
 
-Deux jeux de SVG (`assets/svg/dark/` et `assets/svg/light/`). README utilise :
+Two sets of SVGs (`assets/svg/dark/` and `assets/svg/light/`). The README uses:
 
 ```html
 <picture>
@@ -149,158 +149,158 @@ Deux jeux de SVG (`assets/svg/dark/` et `assets/svg/light/`). README utilise :
 </picture>
 ```
 
-Palette dark = `AI Architect Dark` (background `#0D1117`, primary cyan `#00E5FF`, etc.). Palette light dérivée par inversion contrôlée WCAG AA.
+Dark palette = `AI Architect Dark` (background `#0D1117`, primary cyan `#00E5FF`, etc.). Light palette derived by controlled WCAG AA inversion.
 
-### Layout README — 11 sections
+### README layout — 11 sections
 
-1. Hero SVG (identité + dispo + contact pyramide)
-2. Pitch FR + bandeau Services (cartes horizontales)
-3. Featured projects (table par domain)
-4. Tech radar + Core expertise (SVG combiné)
-5. Experience timeline (vue dérivée)
-6. How I work + AI-driven (fusionné)
-7. Profile as Code (snippet C# inspiré, généré)
-8. Detailed stack (table par domain, repliable)
-9. Quality standards (badges horizontaux + lien docs/quality-gates.md)
-10. Beyond code (~bashrc easter egg actuel préservé)
-11. Footer contact pyramidal
+1. Hero SVG (identity + availability + pyramidal contact)
+2. FR pitch + Services banner (horizontal cards)
+3. Featured projects (table by domain)
+4. Tech radar + Core expertise (combined SVG)
+5. Experience timeline (derived view)
+6. How I work + AI-driven (merged)
+7. Profile as Code (C#-inspired snippet, generated)
+8. Detailed stack (table by domain, collapsible)
+9. Quality standards (horizontal badges + link to docs/quality-gates.md)
+10. Beyond code (current ~bashrc easter egg preserved)
+11. Pyramidal contact footer
 
-### Animations dynamiques
+### Dynamic animations
 
-- **Snake** : conservé (workflow `snake.yml` existant).
-- **Activity graph** (Ashutosh00710) : ajouté, dark theme aligné palette.
-- **Typing banner** (DenverCoder1) : ajouté en hero, cycle les accroches (Freelance CTO / Software Architect / AI-Driven Development).
-- **GitHub readme stats card** (anuraghazra) : ajouté, **rank/grade désactivés** (anti-gonflage), palette custom.
-- **Time-of-day endpoint Vercel** : reporté V2.
+- **Snake**: kept (existing `snake.yml` workflow).
+- **Activity graph** (Ashutosh00710): added, dark theme aligned with the palette.
+- **Typing banner** (DenverCoder1): added in the hero, cycles the taglines (Freelance CTO / Software Architect / AI-Driven Development).
+- **GitHub readme stats card** (anuraghazra): added, **rank/grade disabled** (anti-inflation), custom palette.
+- **Time-of-day Vercel endpoint**: deferred to V2.
 
 ### Quality gates (ADR-005)
 
-- `pyproject.toml` (PEP 621) remplace `scripts/requirements.txt`. Sections `dev` et `test`.
-- `Makefile` avec cibles `setup`/`validate`/`generate`/`test`/`coverage`/`lint`/`format`/`security`/`audit`/`check`.
-- `.pre-commit-config.yaml` orchestrant :
-  - pre-commit : ruff (lint+format), bandit, detect-secrets, cspell (en), jsonschema, referential-integrity, i18n-translate, generate-and-diff, xmllint.
-  - pre-push : pytest (cov ≥ 90), pip-audit, link-checker.
-- Le shell hook `install-hook.sh` historique est **supprimé**, remplacé par `pre-commit install --hook-type pre-commit --hook-type pre-push`.
+- `pyproject.toml` (PEP 621) replaces `scripts/requirements.txt`. `dev` and `test` sections.
+- `Makefile` with `setup`/`validate`/`generate`/`test`/`coverage`/`lint`/`format`/`security`/`audit`/`check` targets.
+- `.pre-commit-config.yaml` orchestrating:
+  - pre-commit: ruff (lint+format), bandit, detect-secrets, cspell (en), jsonschema, referential-integrity, i18n-translate, generate-and-diff, xmllint.
+  - pre-push: pytest (cov ≥ 90), pip-audit, link-checker.
+- The legacy `install-hook.sh` shell hook is **removed**, replaced by `pre-commit install --hook-type pre-commit --hook-type pre-push`.
 
-### CI GitHub Actions (ADR-005)
+### GitHub Actions CI (ADR-005)
 
-- `ci.yml` (push + PR), `permissions: contents: read` : pre-commit run all + pytest cov + diff-check + linkcheck.
-- `update-profile.yml` (cron `0 6 * * 1` + workflow_dispatch), `permissions: contents: write` (isolé) : fetch metrics + regenerate + commit si diff.
-- `translate-check.yml` (PR si data/ touché), `permissions: contents: read`, secret `DEEPL_API_KEY` : check cache i18n cohérent.
+- `ci.yml` (push + PR), `permissions: contents: read`: pre-commit run all + pytest cov + diff-check + linkcheck.
+- `update-profile.yml` (cron `0 6 * * 1` + workflow_dispatch), `permissions: contents: write` (isolated): fetch metrics + regenerate + commit if diff.
+- `translate-check.yml` (PR if data/ touched), `permissions: contents: read`, secret `DEEPL_API_KEY`: check that the i18n cache is consistent.
 
-### Branch protection — Repository Ruleset `main`
+### Branch protection — `main` Repository Ruleset
 
-- PR obligatoire.
-- Status checks requis : `ci/precommit`, `ci/test`, `ci/diff-check`.
-- Branch up-to-date avant merge.
+- PR required.
+- Required status checks: `ci/precommit`, `ci/test`, `ci/diff-check`.
+- Branch up-to-date before merge.
 - Linear history.
 - Conversation resolution.
-- Force push interdit.
-- Suppression de branche interdite.
-- Signed commits requis.
+- Force push forbidden.
+- Branch deletion forbidden.
+- Signed commits required.
 
-### Migration depuis l'état actuel
+### Migration from the current state
 
-L'implémentation se fait en branche `feature/profile-v1` dans `.worktrees/profile-v1/` (règle workflow). Ordre :
-1. Bootstrap : `pyproject.toml`, `Makefile`, `.pre-commit-config.yaml`, suppression `install-hook.sh`, premiers tests.
-2. JSON Schemas : un schema par fichier `data/*.json` (collection avec items typés).
-3. Migration `data/techs.json` : retrait `level`, ajout `until`/`featured`/`level_override`/`score_override`.
-4. Création `data/services.json`, `data/modes.json`, `data/methodology.json`, `data/config.json`, `data/themes.json` (depuis `data/theme.json`).
-5. Enrichissement `data/timeline.json` : `role`/`employer`/`kind`.
-6. Migration `data/content.json` (allégé après extraction).
-7. Implémentation `ScoreEngine` + tests.
-8. Implémentation `ViewBuilder` + tests.
-9. Implémentation `I18nTranslator` + tests (DeepL mocké).
-10. Refonte `TemplateRenderer` pour dark/light + EN.
-11. Production des SVG dark + light pour les 11 sections.
-12. Génération `README.md` + `README.en.md`.
-13. Mise en place CI, workflows update-profile et translate-check.
-14. Configuration ruleset `main` (manuel via gh CLI ou UI).
+The implementation is done on the `feature/profile-v1` branch in `.worktrees/profile-v1/` (workflow rule). Order:
+1. Bootstrap: `pyproject.toml`, `Makefile`, `.pre-commit-config.yaml`, removal of `install-hook.sh`, first tests.
+2. JSON Schemas: one schema per `data/*.json` file (collection with typed items).
+3. Migrate `data/techs.json`: remove `level`, add `until`/`featured`/`level_override`/`score_override`.
+4. Create `data/services.json`, `data/modes.json`, `data/methodology.json`, `data/config.json`, `data/themes.json` (from `data/theme.json`).
+5. Enrich `data/timeline.json`: `role`/`employer`/`kind`.
+6. Migrate `data/content.json` (slimmed down after extraction).
+7. Implement `ScoreEngine` + tests.
+8. Implement `ViewBuilder` + tests.
+9. Implement `I18nTranslator` + tests (DeepL mocked).
+10. Rework `TemplateRenderer` for dark/light + EN.
+11. Produce the dark + light SVGs for the 11 sections.
+12. Generate `README.md` + `README.en.md`.
+13. Set up CI, the update-profile and translate-check workflows.
+14. Configure the `main` ruleset (manually via gh CLI or UI).
 
 ## Testing Decisions
 
-### Qu'est-ce qu'un bon test ici
+### What makes a good test here
 
-Tester le **comportement externe**, pas l'implémentation interne. Critères :
-- Un test ne doit pas casser quand on refactore le corps d'une fonction sans en changer le contrat.
-- Les inputs/outputs sont les seules surfaces stables. On teste `score(tech, projects, today) → (score, level)`, pas `_compute_base()` private.
-- Préférer les **tests-table** (input → expected output) pour les modules purs (ScoreEngine, ViewBuilder, ThemeResolver).
-- Préférer les **golden file tests** (snapshot d'un README/SVG attendu) pour les modules de rendu, avec stratégie de mise à jour explicite.
-- Mocker les I/O externes (DeepL, GitHub API, filesystem write) — ne jamais hit le réseau en test.
+Test the **external behavior**, not the internal implementation. Criteria:
+- A test must not break when the body of a function is refactored without changing its contract.
+- The inputs/outputs are the only stable surfaces. We test `score(tech, projects, today) → (score, level)`, not the private `_compute_base()`.
+- Prefer **table tests** (input → expected output) for the pure modules (ScoreEngine, ViewBuilder, ThemeResolver).
+- Prefer **golden file tests** (snapshot of an expected README/SVG) for the rendering modules, with an explicit update strategy.
+- Mock the external I/O (DeepL, GitHub API, filesystem writes) — never hit the network in tests.
 
-### Modules testés
+### Modules tested
 
-Tous (Q16) :
+All (Q16):
 
-- **DataLoader** : tests sur JSON valide/invalide, schema valide/invalide, FK pointant sur une entité absente, FK valide, fichier absent, fichier vide, config absente, config pointant sur un theme inexistant.
-- **ScoreEngine** : table de cas couvrant chaque palier (expert / advanced / professional / working / explored), cas limites (years=0, featured=true seul, oubli total, versions vides, projets vides). Cohérence overrides (level + score posés, l'un seul, incohérence détectée).
-- **ViewBuilder** : chaque vue testée séparément avec fixtures contrôlées (Experience filtre `role != null`, Education filtre `kind == 'education'`, FeaturedProjects filtre `highlight == true`, etc.). Tests sur ordre stable (tri déterministe), regroupements par domain corrects.
-- **I18nTranslator** : DeepL mocké via `responses` ou `respx`. Cas : cache absent → appel API + écriture cache ; cache présent et hash identique → 0 appel API ; hash différent et `manual: false` → retraduction ; `manual: true` → aucun appel API ; clé API absente → exception structurée.
-- **ThemeResolver** : table de cas dark → light dérivé. Vérification du contraste WCAG AA via une lib (par exemple `wcag-contrast`).
-- **TemplateRenderer** : golden file pour chaque section × langue × variante. Détection de placeholder Jinja non remplacé (regex `{{.*}}` interdit dans output). Vérification que tous les liens internes pointent sur un fichier existant.
-- **OutputWriter** : tests sur écriture atomique (pas de fichier partiel sur échec), diff vs committed (cas diff vide, cas diff présent).
-- **MetricsFetcher** : GitHub API mockée. Cas : API OK → metrics écrit ; API 404 sur repo absent ; API timeout.
+- **DataLoader**: tests on valid/invalid JSON, valid/invalid schema, FK pointing to an absent entity, valid FK, absent file, empty file, absent config, config pointing to a nonexistent theme.
+- **ScoreEngine**: a table of cases covering each tier (expert / advanced / professional / working / explored), edge cases (years=0, featured=true alone, total forgetting, empty versions, empty projects). Override consistency (level + score both set, only one set, detected inconsistency).
+- **ViewBuilder**: each view tested separately with controlled fixtures (Experience filters `role != null`, Education filters `kind == 'education'`, FeaturedProjects filters `highlight == true`, etc.). Tests on stable ordering (deterministic sort), correct groupings by domain.
+- **I18nTranslator**: DeepL mocked via `responses` or `respx`. Cases: cache absent → API call + cache write; cache present and identical hash → 0 API call; different hash and `manual: false` → retranslation; `manual: true` → no API call; absent API key → structured exception.
+- **ThemeResolver**: a table of cases dark → derived light. Verification of WCAG AA contrast via a lib (for example `wcag-contrast`).
+- **TemplateRenderer**: golden file for each section × language × variant. Detection of an unfilled Jinja placeholder (regex `{{.*}}` forbidden in output). Verification that all internal links point to an existing file.
+- **OutputWriter**: tests on atomic writing (no partial file on failure), diff vs committed (empty diff case, present diff case).
+- **MetricsFetcher**: GitHub API mocked. Cases: API OK → metrics written; API 404 on absent repo; API timeout.
 
-### Tests d'intégration
+### Integration tests
 
-- **Pipeline complet** : depuis `data/` propre → `generate()` → produit `README.md` + `README.en.md` + SVG cohérents.
-- **Déterminisme** : `generate()` × 2 → `diff` vide sur tous les fichiers produits.
-- **Référentielle ronde** : modifier un id dans techs → projects qui le référence doit être détecté comme rompu.
+- **Full pipeline**: from a clean `data/` → `generate()` → produces consistent `README.md` + `README.en.md` + SVG.
+- **Determinism**: `generate()` × 2 → empty `diff` on all produced files.
+- **Referential round-trip**: modifying an id in techs → the project referencing it must be detected as broken.
 
 ### Prior art
 
-Aucun test existant dans le repo. Inspiration possible : structure de tests Python standard pytest, fixtures partagées via `conftest.py`, snapshot tests via `pytest-regressions` ou `syrupy`.
+No existing tests in the repo. Possible inspiration: standard Python pytest test structure, shared fixtures via `conftest.py`, snapshot tests via `pytest-regressions` or `syrupy`.
 
-### Couverture
+### Coverage
 
-≥ 90% bloquante en pre-push et CI. Configurée dans `pyproject.toml` via `[tool.coverage]`. Lignes templates Jinja2 difficiles à couvrir : stratégie = tester via fixtures de data variées qui exercent chaque branche conditionnelle du template.
+≥ 90% blocking in pre-push and CI. Configured in `pyproject.toml` via `[tool.coverage]`. Jinja2 template lines hard to cover: strategy = test via varied data fixtures that exercise each conditional branch of the template.
 
 ## Out of Scope
 
-- **Time-of-day endpoint Vercel** : reporté V2. Repo séparé ou sous-dossier endpoints/ à décider à ce moment.
-- **Thèmes alternatifs** (Solarized, etc.) : la mécanique multi-thème est prête (collection `themes.json` + pointeur `config.json`) mais V1 livre uniquement `AI Architect Dark`.
-- **CLI complet** : `scripts/generate.py` reste un entry point unique. Pas de CLI multi-commandes type Click/Typer en V1 (V3 spec).
-- **Export portfolio web** : non livré (V3 spec).
-- **Métriques GitHub avancées** : V1 commence avec stars + repos public + dernier push. Wakatime, codetime, langage breakdown via API : V2.
-- **Bilingue au-delà de FR/EN** : pas d'ES, DE, etc. Modèle i18n extensible mais V1 livre 2 langues seulement.
-- **Animations DOM/JS** : impossibles sur GitHub README (pas de JS). Toute animation passe par SVG SMIL ou endpoint serverless dynamique.
-- **Détection de langue navigateur côté serveur** : impossible avec GitHub README. Le visiteur clique pour switcher.
-- **Tests E2E browser** (Playwright) sur le rendu GitHub : non livré V1. Vérification visuelle manuelle après push initial.
+- **Time-of-day Vercel endpoint**: deferred to V2. Separate repo or endpoints/ subfolder to be decided at that point.
+- **Alternative themes** (Solarized, etc.): the multi-theme mechanism is ready (`themes.json` collection + `config.json` pointer) but V1 ships only `AI Architect Dark`.
+- **Full CLI**: `scripts/generate.py` remains a single entry point. No multi-command CLI à la Click/Typer in V1 (V3 spec).
+- **Web portfolio export**: not shipped (V3 spec).
+- **Advanced GitHub metrics**: V1 starts with stars + public repos + last push. Wakatime, codetime, language breakdown via API: V2.
+- **Bilingual beyond FR/EN**: no ES, DE, etc. The i18n model is extensible but V1 ships 2 languages only.
+- **DOM/JS animations**: impossible on a GitHub README (no JS). Any animation goes through SVG SMIL or a dynamic serverless endpoint.
+- **Server-side browser language detection**: impossible with a GitHub README. The visitor clicks to switch.
+- **Browser E2E tests** (Playwright) on the GitHub rendering: not shipped in V1. Manual visual verification after the initial push.
 
 ## Further Notes
 
-### Risques
+### Risks
 
-- **Dépendance DeepL** : si le service est down ou la clé révoquée, le pre-commit échoue. Mitigation : DeepL a SLA très stable (~99.9%), clé régénérable. En cas de panne prolongée, possibilité d'override temporaire par script qui marque toutes les entrées `manual: true` avec valeur EN identique au FR (à utiliser exceptionnellement).
-- **Couverture 90% sur Jinja** : peut être pénible. Mitigation : fixtures variées qui exercent chaque branche `{% if %}`. Si vraiment infaisable sur une portion, exclure ligne par ligne avec `# pragma: no cover` justifié.
-- **`<picture>` HTML inline** : viole strictement « Markdown uniquement » de la spec V1 initiale. Décision : accepté car standard GitHub, sans alternative équivalente. Documenté dans ADR-003.
-- **Migration des données existantes** : retrait `level` de `techs.json`, ajout de champs. Risque de perte d'info si mauvais mapping. Mitigation : tests référentiels post-migration + revue visuelle du README avant merge.
-- **Régression visuelle du profil pendant l'impl** : pendant la branche `feature/profile-v1`, le profil public reste sur `main` (état actuel). Le merge final remplace tout d'un coup. Mitigation : preview locale via `make generate` avant push final.
+- **DeepL dependency**: if the service is down or the key is revoked, pre-commit fails. Mitigation: DeepL has a very stable SLA (~99.9%), the key is regenerable. In case of a prolonged outage, it is possible to temporarily override via a script that marks all entries `manual: true` with an EN value identical to the FR (to be used exceptionally).
+- **90% coverage on Jinja**: can be painful. Mitigation: varied fixtures that exercise each `{% if %}` branch. If truly infeasible on a portion, exclude line by line with a justified `# pragma: no cover`.
+- **Inline `<picture>` HTML**: strictly violates the "Markdown only" rule of the initial V1 spec. Decision: accepted because it is GitHub standard, with no equivalent alternative. Documented in ADR-003.
+- **Migration of existing data**: removal of `level` from `techs.json`, addition of fields. Risk of information loss on a bad mapping. Mitigation: post-migration referential tests + visual review of the README before merge.
+- **Visual regression of the profile during implementation**: during the `feature/profile-v1` branch, the public profile stays on `main` (current state). The final merge replaces everything at once. Mitigation: local preview via `make generate` before the final push.
 
-### Variables d'environnement requises
+### Required environment variables
 
-- `DEEPL_API_KEY` : clé DeepL Free (suffixe `:fx`). Local : `.env`. CI : GitHub Secret.
-- `GITHUB_TOKEN` : fourni automatiquement par GitHub Actions pour `update-profile.yml`.
+- `DEEPL_API_KEY`: DeepL Free key (`:fx` suffix). Local: `.env`. CI: GitHub Secret.
+- `GITHUB_TOKEN`: provided automatically by GitHub Actions for `update-profile.yml`.
 
 ### Conventions
 
 - Conventional commits (`feat(profile):`, `fix(svg):`, `chore(deps):`, `docs(adr):`, `test(generator):`).
-- Branches sous `.worktrees/<slug>/` (règle workflow).
-- Branche feature unique pour cette refonte : `feature/profile-v1`.
-- Trunk-based : pas de `develop`.
+- Branches under `.worktrees/<slug>/` (workflow rule).
+- Single feature branch for this rebuild: `feature/profile-v1`.
+- Trunk-based: no `develop`.
 
-### Estimation
+### Estimate
 
-Implémentation TDD strict : ordre de grandeur 2–3 jours de travail focalisé. Le plus long sera (a) la rédaction des JSON Schemas et tests data, (b) la refonte des templates Jinja2 pour produire les variantes dark + light + i18n.
+Strict TDD implementation: order of magnitude 2–3 days of focused work. The longest parts will be (a) writing the JSON Schemas and data tests, (b) reworking the Jinja2 templates to produce the dark + light + i18n variants.
 
-### Définition of Done
+### Definition of Done
 
-- `make check` passe en local (validate + generate + lint + format-check + security + audit + coverage 90%).
-- CI verte sur PR.
-- `main` ruleset configuré.
-- README.md (FR) et README.en.md (EN) rendus visuellement OK en local et après merge.
-- Snake + Activity graph + Typing banner + Stats card sobre apparaissent et se mettent à jour.
-- `pre-commit install` est suffisant pour qu'un fork tourne immédiatement (à condition d'avoir une clé DeepL).
-- 5 ADRs (002-005 + l'existante 001) à jour et liées entre elles.
-- CONTEXT.md à jour avec tous les concepts.
-- Cette PRD fermée.
+- `make check` passes locally (validate + generate + lint + format-check + security + audit + coverage 90%).
+- CI green on the PR.
+- `main` ruleset configured.
+- README.md (FR) and README.en.md (EN) render visually OK locally and after merge.
+- Snake + Activity graph + Typing banner + subtle Stats card appear and update.
+- `pre-commit install` is sufficient for a fork to run immediately (provided a DeepL key is available).
+- 5 ADRs (002-005 + the existing 001) up to date and linked to each other.
+- CONTEXT.md up to date with all the concepts.
+- This PRD closed.

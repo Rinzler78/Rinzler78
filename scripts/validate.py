@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
-validate.py — Vérifie l'intégrité des artéfacts générés par generate.py.
+validate.py — Checks the integrity of the artifacts produced by generate.py.
 
-Contrôles :
-1. Toutes les ressources locales (`<img src="..."`, `srcset="..."`) référencées
-   dans README.md pointent vers un fichier qui existe.
-2. Tous les SVG de `assets/svg/` sont XML well-formed.
+Checks:
+1. All local resources (`<img src="..."`, `srcset="..."`) referenced
+   in README.md point to a file that exists.
+2. All SVGs in `assets/svg/` are well-formed XML.
 
-Exit 0 si tout est OK, non-zero sinon. Utilisé par le pre-commit hook.
+Exit 0 if everything is OK, non-zero otherwise. Used by the pre-commit hook.
 """
 
 from __future__ import annotations
@@ -24,12 +24,12 @@ SVG_DIR = REPO / "assets" / "svg"
 
 
 def validate_readme_refs() -> list[str]:
-    """Retourne la liste des ressources locales manquantes (vide si OK)."""
+    """Return the list of missing local resources (empty if OK)."""
     if not README.exists():
         return [f"README.md introuvable : {README}"]
 
     text = README.read_text(encoding="utf-8")
-    # Capture src="..." et srcset="..."
+    # Capture src="..." and srcset="..."
     pattern = re.compile(r'(?:src|srcset)\s*=\s*"([^"]+)"')
 
     missing: list[str] = []
@@ -40,16 +40,16 @@ def validate_readme_refs() -> list[str]:
             continue
         seen.add(path_str)
 
-        # Ignorer URLs distantes (http/https/data/mailto) et ancres
+        # Ignore remote URLs (http/https/data/mailto) and anchors
         if "://" in path_str or path_str.startswith(("mailto:", "data:", "#", "//")):
             continue
 
-        # Résolution relative au repo
+        # Resolution relative to the repo
         target = (REPO / path_str).resolve()
         try:
             target.relative_to(REPO.resolve())
         except ValueError:
-            # Hors du repo — on signale par sécurité
+            # Outside the repo — we flag it as a safety measure
             missing.append(f"{path_str} (hors repo : {target})")
             continue
 
@@ -60,7 +60,7 @@ def validate_readme_refs() -> list[str]:
 
 
 def validate_svgs() -> list[str]:
-    """Retourne la liste des SVG mal formés (vide si OK)."""
+    """Return the list of malformed SVGs (empty if OK)."""
     if not SVG_DIR.exists():
         return ["assets/svg/ introuvable"]
 
@@ -79,20 +79,19 @@ def main() -> int:
 
     if missing_refs:
         print(
-            f"[validate.py] ✗ {len(missing_refs)} ressource(s) manquante(s) "
-            "dans README.md :",
+            f"[validate.py] ✗ {len(missing_refs)} missing resource(s) in README.md:",
             file=sys.stderr,
         )
         for m in missing_refs:
             print(f"    - {m}", file=sys.stderr)
 
     if bad_svgs:
-        print(f"[validate.py] ✗ {len(bad_svgs)} SVG mal formé(s) :", file=sys.stderr)
+        print(f"[validate.py] ✗ {len(bad_svgs)} malformed SVG(s):", file=sys.stderr)
         for e in bad_svgs:
             print(f"    - {e}", file=sys.stderr)
 
     if missing_refs or bad_svgs:
-        print("[validate.py] ÉCHEC", file=sys.stderr)
+        print("[validate.py] FAILED", file=sys.stderr)
         return 1
 
     print("[validate.py] OK — README references and SVGs validated")

@@ -1,61 +1,61 @@
-# ADR-003 — Schéma data : tout en collections, vues dérivées, affichage adaptatif
+# ADR-003 — Data schema: everything as collections, derived views, adaptive display
 
-- **Statut** : Accepted
-- **Date** : 2026-05-27
-- **Lié à** : [ADR-001](0001-data-driven-svg-generation.md), [ADR-002](0002-tech-score-derivation.md), [ADR-004](0004-i18n-bilingual-readme.md)
+- **Status**: Accepted
+- **Date**: 2026-05-27
+- **Related to**: [ADR-001](0001-data-driven-svg-generation.md), [ADR-002](0002-tech-score-derivation.md), [ADR-004](0004-i18n-bilingual-readme.md)
 
-## Contexte
+## Context
 
-ADR-001 a posé le principe data-driven. L'évolution du périmètre (services structurés, multi-langue, mode dark/light, animations, time-of-day) et la volonté de traiter les data comme une **base de données** imposent un schéma plus normalisé que la version initiale.
+ADR-001 established the data-driven principle. The expansion of scope (structured services, multi-language, dark/light mode, animations, time-of-day) and the desire to treat the data as a **database** call for a more normalized schema than the initial version.
 
-## Décision
+## Decision
 
-### 1. Tous les fichiers `data/` sont des collections
+### 1. All `data/` files are collections
 
-Chaque fichier `data/*.json` est un **tableau JSON** ; chaque entrée porte un `id` snake_case stable. Les singletons d'origine (`profile`, `theme`) deviennent des collections à une (ou plusieurs) entrée, ce qui permet la coexistence de plusieurs profils ou thèmes sans refonte.
+Each `data/*.json` file is a **JSON array**; each entry carries a stable snake_case `id`. The original singletons (`profile`, `theme`) become collections with one (or several) entries, which allows multiple profiles or themes to coexist without a redesign.
 
-### 2. Inventaire des collections
+### 2. Inventory of collections
 
-| Fichier | Cardinalité usuelle | Rôle |
+| File | Usual cardinality | Role |
 |---|---|---|
-| `data/config.json` | 1 | Pointe `theme_id` et `profile_id` actifs |
-| `data/profile.json` | 1 (extensible) | Identité, contacts, links, location |
-| `data/themes.json` | 1+ | Design systems disponibles |
-| `data/domains.json` | 6–10 | Taxonomie expertise |
-| `data/techs.json` | 50+ | Compétences techniques (FK → domain) |
-| `data/projects.json` | 10–20 | Projets publics (FK → domain, M:N → techs) |
-| `data/timeline.json` | 10–20 | Events chronologiques (M:N → techs) |
-| `data/services.json` | 4–8 | Prestations vendables |
-| `data/modes.json` | 3–5 | Modes d'intervention |
-| `data/methodology.json` | 5–10 | Principes de travail |
-| `data/content.json` | 5–10 | Modules narratifs résiduels |
+| `data/config.json` | 1 | Points to the active `theme_id` and `profile_id` |
+| `data/profile.json` | 1 (extensible) | Identity, contacts, links, location |
+| `data/themes.json` | 1+ | Available design systems |
+| `data/domains.json` | 6–10 | Expertise taxonomy |
+| `data/techs.json` | 50+ | Technical skills (FK → domain) |
+| `data/projects.json` | 10–20 | Public projects (FK → domain, M:N → techs) |
+| `data/timeline.json` | 10–20 | Chronological events (M:N → techs) |
+| `data/services.json` | 4–8 | Sellable offerings |
+| `data/modes.json` | 3–5 | Engagement modes |
+| `data/methodology.json` | 5–10 | Working principles |
+| `data/content.json` | 5–10 | Residual narrative modules |
 
-### 3. Vues dérivées (jamais stockées)
+### 3. Derived views (never stored)
 
-Calculées par `scripts/generate.py`, jamais persistées dans `data/` :
+Computed by `scripts/generate.py`, never persisted in `data/`:
 
-| Vue | Dérivation |
+| View | Derivation |
 |---|---|
-| `Skill` | `Tech` + score (formule ADR-002) + level |
-| `Experience` | `TimelineEvent.filter(role != null)`, périodes calculées |
+| `Skill` | `Tech` + score (ADR-002 formula) + level |
+| `Experience` | `TimelineEvent.filter(role != null)`, computed periods |
 | `Education` | `TimelineEvent.filter(kind == 'education')` |
-| `TechRadar` | `Skills` agrégés par cluster (Core/Advanced/Working/Explored) |
+| `TechRadar` | `Skills` aggregated by cluster (Core/Advanced/Working/Explored) |
 | `CoreExpertise` | `Skills.filter(featured == true)` |
 | `FeaturedProjects` | `Projects.filter(highlight == true).group_by(domain)` |
 | `StackByDomain` | `Techs.group_by(domain)` |
 | `ParcoursStory` | `TimelineEvents.filter(highlight == true).sort(year)` |
 
-Invariant : si une valeur factuelle peut être calculée depuis l'existant, on la **dérive** au lieu de la dupliquer.
+Invariant: if a factual value can be computed from existing data, we **derive** it instead of duplicating it.
 
-### 4. IDs stables et intégrité référentielle
+### 4. Stable IDs and referential integrity
 
-- Chaque entrée a un `id` snake_case fixé à la création, **jamais modifié**.
-- Les références sont par id (`domain_id`, `tech_ids[]`, etc.).
-- Un test pre-commit vérifie que chaque référence pointe sur une entité existante.
+- Each entry has a snake_case `id` set at creation, **never modified**.
+- References are by id (`domain_id`, `tech_ids[]`, etc.).
+- A pre-commit test verifies that each reference points to an existing entity.
 
-### 5. Affichage adaptatif dark/light
+### 5. Adaptive dark/light display
 
-Le generator produit deux jeux de SVG : `assets/svg/dark/*` et `assets/svg/light/*`. Le README utilise la balise HTML `<picture>` (acceptable car standard GitHub, pas du SVG inline) :
+The generator produces two sets of SVGs: `assets/svg/dark/*` and `assets/svg/light/*`. The README uses the HTML `<picture>` tag (acceptable because it is GitHub standard, not inline SVG):
 
 ```html
 <picture>
@@ -64,28 +64,28 @@ Le generator produit deux jeux de SVG : `assets/svg/dark/*` et `assets/svg/light
 </picture>
 ```
 
-La palette de base **dark** (`AI Architect Dark`) :
+The base **dark** palette (`AI Architect Dark`):
 - background `#0D1117`, surface `#161B22`
 - primary `#00E5FF`, secondary `#7C3AED`, accent `#22C55E`
 - text `#E6EDF3`, muted `#8B949E`
 
-La palette **light** est dérivée par inversion contrôlée (pas un simple flip) : fond clair, primary/secondary/accent conservés mais ajustés pour le contraste WCAG AA.
+The **light** palette is derived through controlled inversion (not a simple flip): light background, primary/secondary/accent preserved but adjusted for WCAG AA contrast.
 
 ### 6. Profile as Code
 
-Une section du README affiche une représentation **code** du profil (C# inspiré de la spec V1 §5.2), générée elle aussi depuis `data/` pour rester en phase. Pas de duplication entre le code affiché et les data sources.
+A README section displays a **code** representation of the profile (C# inspired by spec V1 §5.2), also generated from `data/` to stay in sync. No duplication between the displayed code and the data sources.
 
-## Conséquences
+## Consequences
 
-### Positives
+### Positive
 
-- Schéma normalisé, lisible comme une BDD, évolutif sans refonte.
-- Pas de duplication entre data et vues.
-- Affichage adaptatif dark/light sans JS, respecte les conventions GitHub.
-- Permet plusieurs thèmes / profils via `config.json`.
+- Normalized schema, readable like a database, extensible without a redesign.
+- No duplication between data and views.
+- Adaptive dark/light display without JS, respecting GitHub conventions.
+- Allows multiple themes / profiles via `config.json`.
 
-### Négatives
+### Negative
 
-- Migration depuis l'état actuel : extraction de `Mode`/`Methodology` depuis `content`, ajout `services`/`config`/`themes`, refonte de `techs` (suppression `level`, ajout `until`/`featured`/`overrides`), enrichissement `timeline` (`role`/`employer`/`kind`).
-- Doublement des SVG (dark + light) — coût stockage négligeable, coût génération doublé mais reste rapide.
-- Acceptation de la balise `<picture>` HTML — pas du Markdown pur strict.
+- Migration from the current state: extraction of `Mode`/`Methodology` from `content`, addition of `services`/`config`/`themes`, overhaul of `techs` (removal of `level`, addition of `until`/`featured`/`overrides`), enrichment of `timeline` (`role`/`employer`/`kind`).
+- Doubling of the SVGs (dark + light) — negligible storage cost, doubled generation cost but still fast.
+- Acceptance of the HTML `<picture>` tag — not strict pure Markdown.

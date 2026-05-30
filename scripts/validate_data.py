@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-validate_data.py — Valide les data/*.json contre leurs JSON Schemas et
-vérifie l'intégrité référentielle (toutes les FK pointent sur une entité
-existante). Utilisé par le hook pre-commit.
+validate_data.py — Validate the data/*.json files against their JSON Schemas
+and check referential integrity (all FKs point to an existing entity). Used by
+the pre-commit hook.
 
-Exit 0 si tout est OK, 1 sinon.
+Exit 0 if everything is OK, 1 otherwise.
 """
 
 from __future__ import annotations
@@ -65,12 +65,12 @@ def main() -> int:
             errors.append(str(e))
 
     if errors:
-        print("[validate_data.py] ✗ erreurs de données :", file=sys.stderr)
+        print("[validate_data.py] ✗ data errors:", file=sys.stderr)
         for err in errors:
             print(f"    - {err}", file=sys.stderr)
         return 1
 
-    print("[validate_data.py] OK — schemas + intégrité référentielle validés")
+    print("[validate_data.py] OK — schemas + referential integrity validated")
     return 0
 
 
