@@ -39,4 +39,14 @@ exclude_dirs = ["tests", ".venv"]
 
 [tool.coverage.run]
 source = ["scripts"]
-omit = ["scripts/generate.py", "scripts/validate.py"]
+# CLI entry scripts are thin glue (load → call tested logic → write/print),
+# exercised by the integration tests and workflows rather than unit tests.
+# The logic libraries (data_loader, hours_calculator, score_engine,
+# view_builder, translator, deepl_backend) stay measured at 100%.
+omit = [
+    "scripts/generate.py",
+    "scripts/validate.py",
+    "scripts/validate_data.py",
+    "scripts/fetch_metrics.py",
+    "scripts/translate.py",
+]
