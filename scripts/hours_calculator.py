@@ -11,7 +11,7 @@ from dataclasses import dataclass
 from datetime import date
 
 HOURS_PER_YEAR = 1880
-HOURS_PER_PERSO_DAY = 9
+HOURS_PER_PERSONAL_DAY = 9
 
 TIER_FRACTION = {"primary": 0.70, "secondary": 0.35, "incident": 0.10}
 
@@ -68,7 +68,7 @@ def compute_tech_hours(
             _absorb(tech_id, exp_hours * TIER_FRACTION[tier], sy, ey)
 
     for proj in projects:
-        proj_hours = proj.get("active_days", 0) * HOURS_PER_PERSO_DAY
+        proj_hours = proj.get("active_days", 0) * HOURS_PER_PERSONAL_DAY
         sy = _year(proj["start"]) if "start" in proj else today.year
         end = proj.get("end")
         ey = _year(end) if end is not None else None

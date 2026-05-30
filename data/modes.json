@@ -1,24 +1,24 @@
 [
   {
-    "id": "cto-temps-partiel",
+    "id": "part-time-cto",
     "label": "CTO temps partiel",
     "description": "Direction technique externalisée sur la durée — décisions d'architecture, recrutement, roadmap, mentoring.",
     "order": 1
   },
   {
-    "id": "architecte-solutions",
+    "id": "solutions-architect",
     "label": "Architecte de solutions",
     "description": "Mission courte (1 à 3 semaines) : audit, choix de stack, refonte d'architecture, plan de migration.",
     "order": 2
   },
   {
-    "id": "renfort-urgence",
+    "id": "emergency-support",
     "label": "Renfort technique d'urgence",
     "description": "Incident production, dette critique, déploiement bloqué, équipe submergée. J'éteins l'incendie et je documente le retour à la stabilité.",
     "order": 3
   },
   {
-    "id": "cofondateur-technique",
+    "id": "technical-cofounder",
     "label": "Cofondateur technique freelance",
     "description": "Porter un produit de zéro à mise en marché, en s'engageant aux côtés du fondateur non-tech.",
     "order": 4

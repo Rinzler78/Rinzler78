@@ -55,7 +55,7 @@ permissions: { contents: read }
 jobs:
   precommit:    # pre-commit run --all-files
   test:         # pytest --cov --cov-fail-under=90
-  diff-check:   # git diff --exit-code après generate
+  diff-check:   # git diff --exit-code after generate
   linkcheck:    # lychee ou markdown-link-check
 ```
 

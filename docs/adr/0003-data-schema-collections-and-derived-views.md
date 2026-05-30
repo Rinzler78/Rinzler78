@@ -43,7 +43,7 @@ Computed by `scripts/generate.py`, never persisted in `data/`:
 | `CoreExpertise` | `Skills.filter(featured == true)` |
 | `FeaturedProjects` | `Projects.filter(highlight == true).group_by(domain)` |
 | `StackByDomain` | `Techs.group_by(domain)` |
-| `ParcoursStory` | `TimelineEvents.filter(highlight == true).sort(year)` |
+| `CareerStory` | `TimelineEvents.filter(highlight == true).sort(year)` |
 
 Invariant: if a factual value can be computed from existing data, we **derive** it instead of duplicating it.
 

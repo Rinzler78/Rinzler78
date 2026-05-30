@@ -141,7 +141,7 @@ def test_check_referential_integrity_ignores_collections_without_foreign_keys():
     # Services, modes, methodology have no FKs — checker must not error
     bag = {
         "services": [{"id": "architecture"}],
-        "modes": [{"id": "pompier"}],
+        "modes": [{"id": "emergency-support"}],
         "methodology": [{"id": "simple-before-clever"}],
     }
     check_referential_integrity(bag)

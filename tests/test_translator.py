@@ -1,3 +1,5 @@
+# cspell:ignore Bonjour Bonsoir Salut Texte logicielle complètement différent
+# French fixtures below are deliberate translation inputs.
 import json
 
 from scripts.translator import Translator, _hash

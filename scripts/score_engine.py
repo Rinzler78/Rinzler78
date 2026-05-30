@@ -1,7 +1,7 @@
 """Expertise scoring: peak (max) and current, from exposure hours (ADR-006).
 
 Public surface:
-- ``Level`` enum (5 paliers).
+- ``Level`` enum (5 tiers).
 - ``Skill`` dataclass (tech_id, score_max, level_max, score_current,
   level_current, override_applied).
 - ``compute_skill(tech, tech_hours, today)`` pure function.

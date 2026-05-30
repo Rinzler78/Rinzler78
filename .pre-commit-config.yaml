@@ -40,14 +40,27 @@ repos:
     hooks:
       - id: gitleaks
 
-  # --- Spelling (EN over the whole codebase; FR profile content is
-  #     excluded via .cspell.json ignorePaths and handled per-language
-  #     by the i18n track) --------------------------------------------------
+  # --- Spelling, per language --------------------------------------------
+  #  cspell (en): the whole English codebase (code/docs/schemas) + the EN
+  #               translation artifacts (*.en.{json,md}) produced by i18n.
+  #  cspell (fr): the pure-FR translation artifacts (*.fr.{json,md}) only.
+  #  Mixed data/template files (FR content + EN ids) are excluded from both
+  #  via the per-config ignorePaths; the i18n pipeline emits pure-language
+  #  files so each dictionary checks only its own language.
   - repo: https://github.com/streetsidesoftware/cspell-cli
     rev: v10.0.0
     hooks:
       - id: cspell
+        alias: cspell-en
+        name: cspell (en)
+        args: ["--config", ".cspell.json", "--no-must-find-files"]
         files: \.(py|md|toml|ya?ml|json)$|^Makefile$|^\.gitignore$
+        exclude: \.fr\.(json|md|txt)$
+      - id: cspell
+        alias: cspell-fr
+        name: cspell (fr)
+        args: ["--config", ".cspell-fr.json", "--no-must-find-files"]
+        files: \.fr\.(json|md|txt)$
 
   # --- Local hooks: data → generation → validation -----------------------
   - repo: local

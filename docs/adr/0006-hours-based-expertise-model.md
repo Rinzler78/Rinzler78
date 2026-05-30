@@ -17,9 +17,9 @@ Boris formulated the right model: estimate a **number of hours** per topic, deri
 Two sources, aggregated by `HoursCalculator`:
 
 - **Experience** (employment, studies, mission, competition) — `data/experiences.json`:
-  `hours = span_years × HEURES_PAR_AN`, `HEURES_PAR_AN = 1880` (40 h × 47 weeks). Studies count as **full time** (1880).
+  `hours = span_years × HOURS_PER_YEAR`, `HOURS_PER_YEAR = 1880` (40 h × 47 weeks). Studies count as **full time** (1880).
 - **Project** personal — `data/projects.json`:
-  `hours = active_days × HEURES_PAR_JOUR_PERSO`, `HEURES_PAR_JOUR_PERSO = 9` (typical personal day 8am–6pm −1h break). `active_days` = number of days with commits (derived from GitHub, stored and refreshable).
+  `hours = active_days × HOURS_PER_PERSONAL_DAY`, `HOURS_PER_PERSONAL_DAY = 9` (typical personal day 8am–6pm −1h break). `active_days` = number of days with commits (derived from GitHub, stored and refreshable).
 
 ### 2. Allocation by concurrent tiers (exposure hours, cumulative)
 
@@ -78,7 +78,7 @@ Applied **twice**: `level_max` (on peak) and `level_current` (on current). The `
 
 ### 7. Constants
 
-`HEURES_PAR_AN = 1880` · `HEURES_PAR_JOUR_PERSO = 9` · `H0 = 3000` · `α = 0.30` · `HL_MIN = 2 years` · `HL_MAX = 18 years` · tiers `primary 0.70 / secondary 0.35 / incident 0.10`. Any change to these constants requires a new ADR.
+`HOURS_PER_YEAR = 1880` · `HOURS_PER_PERSONAL_DAY = 9` · `H0 = 3000` · `α = 0.30` · `HL_MIN = 2 years` · `HL_MAX = 18 years` · tiers `primary 0.70 / secondary 0.35 / incident 0.10`. Any change to these constants requires a new ADR.
 
 ## Consequences
 

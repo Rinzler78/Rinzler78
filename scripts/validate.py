@@ -26,7 +26,7 @@ SVG_DIR = REPO / "assets" / "svg"
 def validate_readme_refs() -> list[str]:
     """Return the list of missing local resources (empty if OK)."""
     if not README.exists():
-        return [f"README.md introuvable : {README}"]
+        return [f"README.md not found: {README}"]
 
     text = README.read_text(encoding="utf-8")
     # Capture src="..." and srcset="..."
@@ -55,14 +55,14 @@ def validate_readme_refs() -> list[str]:
 
         if not target.exists():
             rel = target.relative_to(REPO.resolve())
-            missing.append(f"{path_str}  →  attendu : {rel}")
+            missing.append(f"{path_str}  →  expected: {rel}")
     return missing
 
 
 def validate_svgs() -> list[str]:
     """Return the list of malformed SVGs (empty if OK)."""
     if not SVG_DIR.exists():
-        return ["assets/svg/ introuvable"]
+        return ["assets/svg/ not found"]
 
     errors: list[str] = []
     for svg in sorted(SVG_DIR.glob("*.svg")):

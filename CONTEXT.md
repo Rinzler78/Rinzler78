@@ -35,7 +35,7 @@ Override fields (optional, to be used when the formula underrates, e.g. private 
 
 ### Experience
 
-`data/experiences.json` — A **dated period** of the track record (employment, studies, mission, competition, internship): `id`, `org`, `role`, `type` (`cdi`/`freelance`/`mission`/`education`/`competition`/`internship`), `start` (`YYYY-MM`), `end` (`YYYY-MM` or `null` if current), `tech_weights` (map `tech_id → tier`). Hours source #1 (duration × 1880 h/year distributed across tiers). Dated bounds from the résumé (LinkedIn). Good Angel / My Good Life (parallel, remote work) are modeled as **one** period in two phases so as not to double-count the hours.
+`data/experiences.json` — A **dated period** of the track record (employment, studies, mission, competition, internship): `id`, `org`, `role`, `type` (`cdi`/`freelance`/`mission`/`education`/`competition`/`internship`), `start` (`YYYY-MM`), `end` (`YYYY-MM` or `null` if current), `tech_weights` (map `tech_id → tier`). Hours source #1 (duration × 1880 h/year distributed across tiers). Dated bounds from the CV (LinkedIn). Good Angel / My Good Life (parallel, remote work) are modeled as **one** period in two phases so as not to double-count the hours.
 
 ### Timeline Event
 
@@ -55,7 +55,7 @@ Service answers the question "**what can I buy from Boris**". Not to be confused
 
 ### Mode
 
-`data/modes.json` — An **engagement mode**: `id` (kebab-case), `label`, `description`, `order`. Current modes: `cto-temps-partiel`, `architecte-solutions`, `renfort-urgence` (the firefighter — prod incident, critical debt, overwhelmed team), `cofondateur-technique`.
+`data/modes.json` — An **engagement mode**: `id` (kebab-case, English), `label`/`description` (FR content), `order`. Current modes: `part-time-cto`, `solutions-architect`, `emergency-support` (the firefighter — prod incident, critical debt, overwhelmed team), `technical-cofounder`.
 
 Mode answers the question "**how can I engage Boris**". Extracted from the historical `content.modes_intervention[]` — promoted to a first-class entity.
 
@@ -80,11 +80,11 @@ The Theme is editable separately from the other data — change it and all the S
 
 ### Content
 
-`data/content.json` — Collection of residual narrative modules (those that have not become their own entities): `//` easter eggs per section, `boot_log[]` (lines of the `<details>`), `blockquote_autodidacte`, `footer_eof`, `beyond_code` prose. Each module has `id`, `kind`, `payload` (i18n when prose).
+`data/content.json` — Collection of residual narrative modules (those that have not become their own entities): `//` easter eggs per section, `boot_log[]` (lines of the `<details>`), the self-taught blockquote, `footer_eof`, `beyond_code` prose. Each module has `id`, `kind`, `payload` (i18n when prose).
 
 **Promotions** from the historical content.json:
 - `modes_intervention[]` → **Mode** entity (data/modes.json)
-- working principles / `mon_approche` prose → **Methodology** entity (data/methodology.json)
+- working principles / the approach prose → **Methodology** entity (data/methodology.json)
 
 ---
 
@@ -105,7 +105,7 @@ A view is an SVG or a section of the README that **aggregates** several data con
 - *timeline-life* = sorted Timeline Events
 - *stack-{domain}* = Techs filtered by domain
 - *featured* = Projects grouped by domain
-- *parcours* = Timeline Events filtered (highlight=true)
+- *career* = Timeline Events filtered (highlight=true)
 
 Views are **derived**, never stored. This is the invariant that guarantees inter-view consistency.
 

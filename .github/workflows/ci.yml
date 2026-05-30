@@ -5,8 +5,8 @@ name: CI
   pull_request:
     branches: [master]
 
-# Lecture seule : aucun job de CI ne doit écrire dans le repo.
-# Le seul workflow en écriture est update-profile (commit auto des métriques).
+# Read-only: no CI job may write to the repo.
+# The only write-scoped workflow is update-profile (auto-commit of metrics).
 permissions:
   contents: read
 
@@ -32,9 +32,9 @@ jobs:
         run: pip install pre-commit
       - name: Run all hooks
         run: pre-commit run --all-files --show-diff-on-failure
-      # Filet de sécurité : les artefacts générés (SVG/README) committés sont
-      # en phase avec les data. La génération ne dépend que de l'année courante
-      # (décroissance ADR-006) — stable au sein d'une année civile.
+      # Safety net: the committed generated artifacts (SVG/README) are in
+      # sync with the data. Generation only depends on the current year
+      # (ADR-006 decay) — stable within a calendar year.
       - name: Generated artifacts up-to-date
         run: git diff --exit-code
 

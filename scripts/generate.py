@@ -214,8 +214,8 @@ def main() -> int:
     env = make_env(data)
     SVG_OUT.mkdir(parents=True, exist_ok=True)
 
-    print(f"[generate.py] data : {len(data)} concepts chargés")
-    print(f"[generate.py] cible : {SVG_OUT}/, {README_OUT}")
+    print(f"[generate.py] data: {len(data)} concepts loaded")
+    print(f"[generate.py] target: {SVG_OUT}/, {README_OUT}")
     print()
 
     # SVG single-output
