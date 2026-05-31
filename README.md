@@ -66,6 +66,75 @@ public sealed class BorisLeclere : FreelanceCto
 
 </details>
 
+<details>
+<summary><code>$ ./stack --detailed  # technical stack, all skills</code></summary>
+
+<br/>
+
+**Embedded &amp; Systems**
+
+| Skill | Now | Peak | Active | Versions |
+|---|---|---|---|---|
+| Bluetooth / BLE / GATT | expert | expert | 2011–2023 | Classic + BLE 4.x · custom GATT |
+| Linux / Ubuntu | advanced | advanced | 2020–now | 22.04 LTS |
+| Windows | professional | professional | 2011–now | 3.11 → 11 + Server |
+| Windows CE | working | professional | 2006–2012 | 5.0 / 6.0 |
+| NFC | explored | working | 2011–2014 | ISO 14443 / 15693 (Mifare) |
+| GPS | explored | working | 2009–2012 | NMEA · A-GPS |
+| Computer Vision (embedded) | explored | explored | 2008–2009 | Industrial camera · PIC16F1938 |
+**Mobile**
+
+| Skill | Now | Peak | Active | Versions |
+|---|---|---|---|---|
+| Xamarin (Forms, iOS, Android) | expert | expert | 2014–now | Forms 2.3 → 4.7 · Essentials 1.x |
+| Windows Mobile | explored | explored | 2013–2014 | 6.x |
+**Languages**
+
+| Skill | Now | Peak | Active | Versions |
+|---|---|---|---|---|
+| C# / .NET | expert | expert | 2006–now | C# 2.0 → 13 · .NET Framework 2.0 → .NET 10 |
+| Python | advanced | advanced | 2022–now | 3.11+ |
+| C / C++ | professional | expert | 2006–2013 | C99 · C++11 · C++/CLI |
+| Bash / Shell | professional | professional | 2014–now | Bash 5.x |
+| Objective-C | working | working | 2011–2020 | iOS 5 → 10 |
+| TypeScript | explored | explored | 2023–now | 5.x |
+**Backend &amp; Web**
+
+| Skill | Now | Peak | Active | Versions |
+|---|---|---|---|---|
+| ASP.NET Web API 2 | professional | advanced | 2014–2020 | Framework 4.x |
+| Microsoft Azure | working | working | 2014–now | App Insights · Notification Hubs |
+| ASP.NET Core | working | working | 2020–2023 | 2.2 → 8 |
+| Entity Framework | working | working | 2020–2023 | EF6 → EF Core 3.1+ |
+| Blazor (WASM &amp; Server) | working | working | 2020–2023 | .NET 6+ |
+| Node.js | explored | explored | 2019–now | 20 / 22 / 24 |
+| FastAPI | explored | explored | 2023–now | 0.110+ |
+| React + Next.js | explored | explored | 2023–now | React 18+, Next 14+ |
+**DevOps &amp; Infrastructure**
+
+| Skill | Now | Peak | Active | Versions |
+|---|---|---|---|---|
+| Git | expert | expert | 2009–now | 2.x |
+| Docker | advanced | advanced | 2020–now | 24.x+ · Compose v2 |
+| GitHub Actions | professional | professional | 2014–now | — |
+**AI &amp; LLM**
+
+| Skill | Now | Peak | Active | Versions |
+|---|---|---|---|---|
+| AI-Driven Development | advanced | advanced | 2023–now | Claude Code (primary) · Codex · OpenCode · ChatGPT |
+| LiteLLM | explored | explored | 2023–now | — |
+| Anthropic Claude API / SDK | explored | explored | 2023–now | SDK 0.x |
+**Blockchain**
+
+| Skill | Now | Peak | Active | Versions |
+|---|---|---|---|---|
+| Cosmos SDK | explored | explored | 2022–now | Client integration |
+| Osmosis (OSMO) | explored | explored | 2022–now | Node ops · launcher tuning |
+| CometBFT | explored | explored | 2023–now | REST · WebSocket · gRPC |
+| Idena | explored | explored | 2020–now | Node ops |
+| AIOZ Network | explored | explored | 2023–now | Node ops |
+</details>
+
 <div align="center">
 
 <img src="assets/svg/modes.svg" width="100%" alt="Modes d'intervention : CTO temps partiel · Architecte de solutions · Renfort technique d'urgence · Cofondateur technique freelance." />
@@ -75,6 +144,12 @@ public sealed class BorisLeclere : FreelanceCto
 <div align="center">
 
 <img src="assets/svg/map.svg" width="100%" alt="Localisation — Senas, Provence-Alpes-Côte d'Azur, France. Coordonnées 43.74° N, 5.06° E." />
+
+</div>
+
+<div align="center">
+
+<sub><b>Built like a product.</b> This profile is generated from JSON, validated against schemas, scored from real exposure hours, tested (90%+ coverage), linted, security-scanned, spell-checked (en + fr), and regenerated on every commit — pre-commit + pre-push gates, GitHub Actions CI, branch protection. <b>The repo is the proof.</b></sub>
 
 </div>
 

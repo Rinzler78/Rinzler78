@@ -61,6 +61,22 @@
 
 </details>
 
+<details>
+<summary><code>$ ./stack --detailed  # technical stack, all skills</code></summary>
+
+<br/>
+
+{% for d in domains | sort(attribute='order') %}
+{%- set ds = techs_by_domain(d.id) | sort(attribute='score_current', reverse=true) | list %}
+**{{ d.label }}**
+
+| Skill | Now | Peak | Active | Versions |
+|---|---|---|---|---|
+{% for t in ds %}| {{ t.label }} | {{ t.level_current }} | {{ t.level_max }} | {{ t.since or '—' }}{% if t.since %}–{{ t.until or 'now' }}{% endif %} | {{ t.display_version | default('—') }} |
+{% endfor %}
+{% endfor %}
+</details>
+
 <div align="center">
 
 <img src="assets/svg/modes.svg" width="100%" alt="Modes d'intervention : {% for m in modes | sort(attribute='order') %}{{ m.label }}{% if not loop.last %} · {% endif %}{% endfor %}." />
@@ -70,6 +86,12 @@
 <div align="center">
 
 <img src="assets/svg/map.svg" width="100%" alt="Localisation — {{ profile.location.city }}, {{ profile.location.region }}, {{ profile.location.country }}. Coordonnées {{ profile.location.lat }}° N, {{ profile.location.lon }}° E." />
+
+</div>
+
+<div align="center">
+
+<sub><b>Built like a product.</b> This profile is generated from JSON, validated against schemas, scored from real exposure hours, tested (90%+ coverage), linted, security-scanned, spell-checked (en + fr), and regenerated on every commit — pre-commit + pre-push gates, GitHub Actions CI, branch protection. <b>The repo is the proof.</b></sub>
 
 </div>
 
