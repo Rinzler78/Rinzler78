@@ -1,0 +1,1 @@
+Dockerized Idena blockchain node with monitoring and update automation. Adopted by the Idena community.

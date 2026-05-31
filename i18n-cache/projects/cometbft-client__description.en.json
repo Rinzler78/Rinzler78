@@ -1,0 +1,6 @@
+{
+  "fr_hash": "eff46c597003aefd903c615981a63466400743d17b86cefed3ec6a86e186a8d9",
+  "en": ".NET client library for CometBFT nodes - REST, WebSocket and gRPC transports, generic block model.",
+  "manual": false,
+  "reviewed": false
+}

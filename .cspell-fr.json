@@ -2,24 +2,15 @@
   "version": "0.2",
   "language": "fr,en",
   "import": ["@cspell/dict-fr-fr/cspell-ext.json"],
-  "dictionaries": ["fr-fr", "en_US"],
+  "dictionaryDefinitions": [
+    { "name": "project-words", "path": ".cspell-words.txt", "addWords": false }
+  ],
+  "dictionaries": ["fr-fr", "en_US", "project-words"],
   "ignorePaths": [
     ".git/**",
     ".venv/**",
     "**/__pycache__/**",
     "assets/**",
     "*.lock"
-  ],
-  "words": [
-    "Rinzler",
-    "Leclere",
-    "DeepL",
-    "Xamarin",
-    "Blazor",
-    "FastAPI",
-    "Docker",
-    "GitHub",
-    "Bluetooth",
-    "Provence"
   ]
 }

@@ -1,0 +1,1 @@
+Entités parallèles. Éthylotest connecté (Bluetooth/GATT custom), santé connectée. Xamarin cross-platform, API REST JWT, marque blanche AXA/LVMH/Sodexo.

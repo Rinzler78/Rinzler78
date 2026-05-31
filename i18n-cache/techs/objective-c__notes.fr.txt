@@ -1,0 +1,1 @@
+Native iOS NFC libraries (Ingenico, used downstream by Nespresso) and early Xamarin.iOS bindings.

@@ -1,0 +1,1 @@
+Daily driver since 2006. Cross-era: Framework 2.0 to .NET 10, desktop, mobile, backend, tooling.

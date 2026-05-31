@@ -1,0 +1,1 @@
+Python client for the French Basketball Federation (FFBB) v2 API. Reverse-engineered, packaged, published to PyPI, full CI.

@@ -1,0 +1,1 @@
+Legacy client for the previous FFBB API generation, kept for reference.

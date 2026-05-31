@@ -1,0 +1,1 @@
+Ondeo Gazpar meter configuration chain (NFC under Windows Mobile 6).

@@ -1,0 +1,1 @@
+Librairie Objective-C NFC (Mifare) iOS — utilisée downstream par Nespresso. Protocole Bluetooth, app Android.

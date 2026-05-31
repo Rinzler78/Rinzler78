@@ -1,0 +1,1 @@
+.NET client library for CometBFT nodes — REST, WebSocket and gRPC transports, generic block model.

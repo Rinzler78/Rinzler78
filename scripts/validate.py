@@ -19,43 +19,40 @@ import sys
 import defusedxml.ElementTree as ET  # secure XML parsing (bandit B314/B405)
 
 REPO = pathlib.Path(__file__).resolve().parent.parent
-README = REPO / "README.md"
+READMES = [REPO / "README.md", REPO / "README.en.md"]
 SVG_DIR = REPO / "assets" / "svg"
 
 
 def validate_readme_refs() -> list[str]:
-    """Return the list of missing local resources (empty if OK)."""
-    if not README.exists():
-        return [f"README.md not found: {README}"]
-
-    text = README.read_text(encoding="utf-8")
-    # Capture src="..." and srcset="..."
+    """Return the list of missing local resources across all READMEs."""
     pattern = re.compile(r'(?:src|srcset)\s*=\s*"([^"]+)"')
-
     missing: list[str] = []
-    seen: set[str] = set()
-    for match in pattern.finditer(text):
-        path_str = match.group(1).strip()
-        if not path_str or path_str in seen:
-            continue
-        seen.add(path_str)
 
-        # Ignore remote URLs (http/https/data/mailto) and anchors
-        if "://" in path_str or path_str.startswith(("mailto:", "data:", "#", "//")):
+    for readme in READMES:
+        if not readme.exists():
+            missing.append(f"{readme.name} not found: {readme}")
             continue
-
-        # Resolution relative to the repo
-        target = (REPO / path_str).resolve()
-        try:
-            target.relative_to(REPO.resolve())
-        except ValueError:
-            # Outside the repo — we flag it as a safety measure
-            missing.append(f"{path_str} (hors repo : {target})")
-            continue
-
-        if not target.exists():
-            rel = target.relative_to(REPO.resolve())
-            missing.append(f"{path_str}  →  expected: {rel}")
+        text = readme.read_text(encoding="utf-8")
+        seen: set[str] = set()
+        for match in pattern.finditer(text):
+            path_str = match.group(1).strip()
+            if not path_str or path_str in seen:
+                continue
+            seen.add(path_str)
+            # Ignore remote URLs (http/https/data/mailto) and anchors
+            if "://" in path_str or path_str.startswith(
+                ("mailto:", "data:", "#", "//")
+            ):
+                continue
+            target = (REPO / path_str).resolve()
+            try:
+                target.relative_to(REPO.resolve())
+            except ValueError:
+                missing.append(f"{readme.name}: {path_str} (outside repo: {target})")
+                continue
+            if not target.exists():
+                rel = target.relative_to(REPO.resolve())
+                missing.append(f"{readme.name}: {path_str}  →  expected: {rel}")
     return missing
 
 
@@ -65,7 +62,7 @@ def validate_svgs() -> list[str]:
         return ["assets/svg/ not found"]
 
     errors: list[str] = []
-    for svg in sorted(SVG_DIR.glob("*.svg")):
+    for svg in sorted(SVG_DIR.rglob("*.svg")):
         try:
             ET.parse(svg)
         except ET.ParseError as e:
@@ -79,7 +76,7 @@ def main() -> int:
 
     if missing_refs:
         print(
-            f"[validate.py] ✗ {len(missing_refs)} missing resource(s) in README.md:",
+            f"[validate.py] ✗ {len(missing_refs)} missing resource(s) in READMEs:",
             file=sys.stderr,
         )
         for m in missing_refs:

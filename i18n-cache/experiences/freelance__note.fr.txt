@@ -1,0 +1,1 @@
+Architecture, AI-driven development (Claude Code en outil principal), tooling Python, nodes blockchain, libs .NET (Here.Sdk, CometBFT.Client).

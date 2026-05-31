@@ -1,0 +1,1 @@
+Trunk-based, worktrees, conventional commits. Used since gitosis in 2010.

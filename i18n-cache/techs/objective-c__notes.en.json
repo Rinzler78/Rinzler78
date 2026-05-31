@@ -1,0 +1,6 @@
+{
+  "fr_hash": "53a64c8fb0a94ea3e93161f25389aa070a6bf45012add37388e8a4bb59733e60",
+  "en": "Native iOS NFC libraries (Ingenico, used downstream by Nespresso) and early Xamarin.iOS bindings.",
+  "manual": false,
+  "reviewed": false
+}

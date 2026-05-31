@@ -1,0 +1,1 @@
+DDD-friendly data layer; migrated EF6 to EF Core on health and FFBB projects.

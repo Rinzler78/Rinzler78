@@ -1,0 +1,1 @@
+Reusable .NET extensions: MVVM helpers, JSON utilities, HTTP abstractions. Actively maintained.

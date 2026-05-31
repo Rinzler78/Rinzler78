@@ -1,0 +1,1 @@
+Good Angel platform — JWT-secured REST API. SOAP web services at GoodKap/Ondeo.

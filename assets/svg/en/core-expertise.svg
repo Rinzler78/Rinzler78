@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 220" width="900" height="220" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Core expertise — 4 signature skills with current level (filled) and peak reached (ghost): C# / .NET expert, Bluetooth / BLE / GATT expert, Python advanced, AI-Driven Development advanced.">
+  <title>Core expertise</title>
+  <desc>Double bars per signature skill: the solid bar is the current level, the outlined extension is the peak ever reached.</desc>
+
+  <rect width="900" height="220" fill="#0d1117"/>
+  <rect x="0" y="0" width="900" height="220" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1"/>  <text x="24" y="22" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="11" font-weight="600" letter-spacing="0.08em" fill="#8b949e">CORE EXPERTISE</text>
+
+  <!-- legend -->
+  <g transform="translate(650 18)" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="9.5" fill="#6e7681">
+    <rect x="0" y="-7" width="16" height="7" rx="2" fill="#f78166"/>
+    <text x="22" y="-1">now</text>
+    <rect x="62" y="-7" width="16" height="7" rx="2" fill="none" stroke="#8b949e" stroke-width="1" stroke-dasharray="2 1.5"/>
+    <text x="84" y="-1">peak</text>
+  </g>
+    <!-- label -->
+    <text x="24" y="64" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="13" font-weight="600" fill="#f0f6fc">C# / .NET</text>
+
+    <!-- track -->
+    <rect x="204" y="55" width="522" height="12" rx="3" fill="#21262d"/>
+    <!-- peak ghost (outline up to score_max) -->    <!-- current fill -->
+    <rect x="204" y="55" width="517" height="12" rx="3" fill="#f78166"/>
+
+    <!-- value -->    <text x="876" y="64" text-anchor="end" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="11" fill="#8b949e">99 · <tspan fill="#f78166">expert</tspan></text>
+    <!-- label -->
+    <text x="24" y="102" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="13" font-weight="600" fill="#f0f6fc">Bluetooth / BLE / GATT</text>
+
+    <!-- track -->
+    <rect x="204" y="93" width="522" height="12" rx="3" fill="#21262d"/>
+    <!-- peak ghost (outline up to score_max) -->    <rect x="204" y="93" width="501" height="12" rx="3" fill="none" stroke="#8b949e" stroke-width="1" stroke-dasharray="3 2"/>    <!-- current fill -->
+    <rect x="204" y="93" width="459" height="12" rx="3" fill="#f78166"/>
+
+    <!-- value -->    <text x="876" y="102" text-anchor="end" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="11" fill="#8b949e">88 <tspan fill="#6e7681">/ 96</tspan> · expert</text>
+    <!-- label -->
+    <text x="24" y="140" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="13" font-weight="600" fill="#f0f6fc">Python</text>
+
+    <!-- track -->
+    <rect x="204" y="131" width="522" height="12" rx="3" fill="#21262d"/>
+    <!-- peak ghost (outline up to score_max) -->    <!-- current fill -->
+    <rect x="204" y="131" width="423" height="12" rx="3" fill="#f78166"/>
+
+    <!-- value -->    <text x="876" y="140" text-anchor="end" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="11" fill="#8b949e">81 · <tspan fill="#f78166">advanced</tspan></text>
+    <!-- label -->
+    <text x="24" y="178" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="13" font-weight="600" fill="#f0f6fc">AI-Driven Development</text>
+
+    <!-- track -->
+    <rect x="204" y="169" width="522" height="12" rx="3" fill="#21262d"/>
+    <!-- peak ghost (outline up to score_max) -->    <!-- current fill -->
+    <rect x="204" y="169" width="386" height="12" rx="3" fill="#f78166"/>
+
+    <!-- value -->    <text x="876" y="178" text-anchor="end" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="11" fill="#8b949e">74 · <tspan fill="#f78166">advanced</tspan></text></svg>

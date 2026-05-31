@@ -1,0 +1,1 @@
+Embedded era — robotics (PIC), Windows CE, NFC drivers, AIX monitoring, augmented reality (C++/CLI).

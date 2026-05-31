@@ -13,13 +13,12 @@ import scripts.generate as gen
 
 ROOT = Path(__file__).resolve().parent.parent
 SVG_DIR = ROOT / "assets" / "svg"
-README = ROOT / "README.md"
+READMES = [ROOT / "README.md", ROOT / "README.en.md"]
 
 
 def _read_all() -> dict[str, str]:
-    # Recursive: covers both the dark set (assets/svg/) and the light set
-    # (assets/svg/light/) produced by the dual-palette render.
-    out = {"README.md": README.read_text(encoding="utf-8")}
+    # Recursive: covers all SVG variants (fr/en × dark/light) plus both READMEs.
+    out = {r.name: r.read_text(encoding="utf-8") for r in READMES}
     for svg in sorted(SVG_DIR.rglob("*.svg")):
         out[str(svg.relative_to(SVG_DIR))] = svg.read_text(encoding="utf-8")
     return out

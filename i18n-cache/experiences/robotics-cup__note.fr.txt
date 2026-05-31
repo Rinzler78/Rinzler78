@@ -1,0 +1,1 @@
+Vision embarquée, positionnement robot, PIC16F1938 en C. 28e/200+ équipes.

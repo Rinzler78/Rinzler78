@@ -1,0 +1,1 @@
+C sous AIX/Power7, correction fuites mémoire C/C++ Windows, optimisation SQL, multithreading.

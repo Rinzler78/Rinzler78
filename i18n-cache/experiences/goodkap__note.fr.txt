@@ -1,0 +1,1 @@
+Startup GPS connectés. SDK C/C++ Windows CE, client/serveur TCP C# .NET, Web Services SOAP.

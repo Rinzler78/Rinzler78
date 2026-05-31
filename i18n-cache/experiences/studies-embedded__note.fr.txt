@@ -1,0 +1,1 @@
+Premier code en 2006 (Licence). C/C++ embarqué, premiers pas C#/.NET.

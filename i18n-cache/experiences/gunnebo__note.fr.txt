@@ -1,0 +1,1 @@
+Driver embarqué automate de dépôt d'espèces sous Windows CE 5.0, DLL C machine à états. 100+ machines en prod.

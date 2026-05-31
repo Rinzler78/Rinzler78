@@ -9,9 +9,9 @@ repos:
     rev: v6.0.0
     hooks:
       - id: trailing-whitespace
-        exclude: ^(assets/|README\.md$)
+        exclude: ^(assets/|README(\.en)?\.md$)
       - id: end-of-file-fixer
-        exclude: ^(assets/|README\.md$)
+        exclude: ^(assets/|README(\.en)?\.md$)
       - id: check-json
       - id: check-yaml
       - id: check-added-large-files
@@ -41,12 +41,13 @@ repos:
       - id: gitleaks
 
   # --- Spelling, per language --------------------------------------------
-  #  cspell (en): the whole English codebase (code/docs/schemas) + the EN
-  #               translation artifacts (*.en.{json,md}) produced by i18n.
-  #  cspell (fr): the pure-FR translation artifacts (*.fr.{json,md}) only.
-  #  Mixed data/template files (FR content + EN ids) are excluded from both
-  #  via the per-config ignorePaths; the i18n pipeline emits pure-language
-  #  files so each dictionary checks only its own language.
+  #  cspell (en): the hand-written English codebase (code/docs/schemas).
+  #  cspell (fr): the pure-FR source translation artifacts (*.fr.txt) only.
+  #  Machine-translated EN output (i18n-cache/**/*.en.json) is generated, not
+  #  authored, and is excluded from cspell-en via .cspell.json ignorePaths —
+  #  translation quality is governed by the `reviewed` flag (ADR-004), not by
+  #  a spell-checker fighting place names and DeepL artifacts. Mixed
+  #  data/template files (FR content + EN ids) are excluded from both.
   - repo: https://github.com/streetsidesoftware/cspell-cli
     rev: v10.0.0
     hooks:
@@ -60,7 +61,7 @@ repos:
         alias: cspell-fr
         name: cspell (fr)
         args: ["--config", ".cspell-fr.json", "--no-must-find-files"]
-        files: \.fr\.(json|md|txt)$
+        files: ^i18n-cache/.*\.fr\.txt$
         additional_dependencies: ["@cspell/dict-fr-fr@^2"]
 
   # --- Local hooks: data → generation → validation -----------------------
@@ -88,7 +89,7 @@ repos:
         language: python
         additional_dependencies: ["defusedxml>=0.7"]
         pass_filenames: false
-        files: ^(README\.md|assets/svg/|data/|scripts/)
+        files: ^(README(\.en)?\.md|assets/svg/|data/|scripts/)
 
       # --- pre-push: tests + deps audit ---------------------------------
       - id: pytest

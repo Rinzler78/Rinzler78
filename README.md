@@ -1,3 +1,7 @@
+<div align="right">
+<sub><b>🇫🇷 Français</b> · <a href="README.en.md">🇬🇧 English</a></sub>
+</div>
+
 <div align="center">
 
 <a href="mailto:borisleclere.pro@gmail.com">

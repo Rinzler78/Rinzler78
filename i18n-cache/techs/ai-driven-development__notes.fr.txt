@@ -1,0 +1,1 @@
+Daily agent-assisted development since 2022. Evaluated the landscape (Copilot, Cursor) and settled on Claude Code (Max) as primary tool, Codex as over-quota backup, Copilot via OpenCode.

@@ -1,0 +1,1 @@
+Reprise technique GoodKap. Service embarqué C/C++ vitesse-limite GPS, service Windows C# API SOGENACTIF, VMware, AD.

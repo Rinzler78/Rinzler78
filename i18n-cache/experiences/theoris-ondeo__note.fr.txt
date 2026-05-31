@@ -1,0 +1,1 @@
+Chaîne logicielle de configuration NFC sous Windows Mobile 6. Librairie C# .NET NFC, driver USB, trousseau de clés.

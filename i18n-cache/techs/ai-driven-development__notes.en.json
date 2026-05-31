@@ -1,0 +1,6 @@
+{
+  "fr_hash": "c6f97d14cce673a26a062eedf43c96a426dd991c4805be4333d54f79625c4bd4",
+  "en": "Daily agent-assisted development since 2022. Evaluated the landscape (Copilot, Cursor) and settled on Claude Code (Max) as primary tool, Codex as over-quota backup, Copilot via OpenCode.",
+  "manual": false,
+  "reviewed": false
+}
