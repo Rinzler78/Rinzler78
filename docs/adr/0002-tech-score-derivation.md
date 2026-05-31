@@ -1,8 +1,9 @@
 # ADR-002 — Deriving the score and level of a Tech
 
-- **Status**: Accepted
+- **Status**: Partially superseded — the scoring **formula** is replaced by [ADR-006](0006-hours-based-expertise-model.md); the 5-level tiers and override mechanism remain in force.
 - **Date**: 2026-05-27
 - **Supersedes**: —
+- **Superseded by**: [ADR-006](0006-hours-based-expertise-model.md) (formula only)
 - **Related to**: [ADR-001](0001-data-driven-svg-generation.md)
 
 ## Context
