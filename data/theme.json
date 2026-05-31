@@ -21,6 +21,25 @@
     "code_bg": "#0a0d12"
   },
 
+  "palette_light": {
+    "bg": "#faf7f2",
+    "panel": "#ffffff",
+    "panel_alt": "#f4eee6",
+    "border": "#e0d6c8",
+    "border_muted": "#ece4d8",
+    "text": "#1a1a1f",
+    "text_muted": "#6b6256",
+    "text_dim": "#9a8f80",
+    "accent": "#c75d3e",
+    "accent_dark": "#a8452b",
+    "accent_light": "#e07a5a",
+    "success": "#2da44e",
+    "info": "#3a6db5",
+    "warn": "#bf8700",
+    "danger": "#cf222e",
+    "code_bg": "#f4eee6"
+  },
+
   "fonts": {
     "display": "Inter",
     "body": "Inter",

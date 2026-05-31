@@ -214,27 +214,40 @@ SVG_TARGETS: list[tuple[str, str, dict]] = [
 ]
 
 
+def _render_svgs(env: Environment, out_dir: pathlib.Path) -> None:
+    out_dir.mkdir(parents=True, exist_ok=True)
+    for tpl_name, out_name, ctx in SVG_TARGETS:
+        result = env.get_template(tpl_name).render(**ctx)
+        (out_dir / out_name).write_text(result, encoding="utf-8")
+
+
 def main() -> int:
     data = load_data()
     data = enrich(data, date.today())
     env = make_env(data)
-    SVG_OUT.mkdir(parents=True, exist_ok=True)
+
+    theme = data["theme"]
+    dark_palette = theme["palette"]
+    light_palette = theme.get("palette_light", dark_palette)
 
     print(f"[generate.py] data: {len(data)} concepts loaded")
-    print(f"[generate.py] target: {SVG_OUT}/, {README_OUT}")
+    print(f"[generate.py] target: {SVG_OUT}/ (dark + light), {README_OUT}")
     print()
 
-    # SVG single-output
-    for tpl_name, out_name, ctx in SVG_TARGETS:
-        tpl = env.get_template(tpl_name)
-        result = tpl.render(**ctx)
-        (SVG_OUT / out_name).write_text(result, encoding="utf-8")
-        print(f"  ✓ assets/svg/{out_name}")
+    # Dark variant (default location) — swap the active palette and render.
+    theme["palette"] = dark_palette
+    _render_svgs(env, SVG_OUT)
+    print(f"  ✓ assets/svg/*.svg (dark, {len(SVG_TARGETS)})")
 
-    # README
-    readme_tpl = env.get_template("README.md.jinja")
-    result = readme_tpl.render()
-    README_OUT.write_text(result, encoding="utf-8")
+    # Light variant — same templates, light palette, under assets/svg/light/.
+    theme["palette"] = light_palette
+    _render_svgs(env, SVG_OUT / "light")
+    print(f"  ✓ assets/svg/light/*.svg (light, {len(SVG_TARGETS)})")
+
+    # README references both via <picture>; restore dark for the badge colors.
+    theme["palette"] = dark_palette
+    readme = env.get_template("README.md.jinja").render()
+    README_OUT.write_text(readme, encoding="utf-8")
     print("  ✓ README.md")
 
     print()

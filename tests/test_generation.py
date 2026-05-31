@@ -17,9 +17,11 @@ README = ROOT / "README.md"
 
 
 def _read_all() -> dict[str, str]:
+    # Recursive: covers both the dark set (assets/svg/) and the light set
+    # (assets/svg/light/) produced by the dual-palette render.
     out = {"README.md": README.read_text(encoding="utf-8")}
-    for svg in sorted(SVG_DIR.glob("*.svg")):
-        out[svg.name] = svg.read_text(encoding="utf-8")
+    for svg in sorted(SVG_DIR.rglob("*.svg")):
+        out[str(svg.relative_to(SVG_DIR))] = svg.read_text(encoding="utf-8")
     return out
 
 
@@ -32,7 +34,9 @@ def test_generation_leaves_no_unrendered_jinja():
 
 def test_generated_svgs_are_well_formed_xml():
     gen.main()
-    for svg in sorted(SVG_DIR.glob("*.svg")):
+    svgs = sorted(SVG_DIR.rglob("*.svg"))
+    assert any(s.parent.name == "light" for s in svgs)  # both variants present
+    for svg in svgs:
         ET.fromstring(svg.read_text(encoding="utf-8"))  # raises on malformed XML
 
 

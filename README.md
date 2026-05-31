@@ -1,7 +1,10 @@
 <div align="center">
 
 <a href="mailto:borisleclere.pro@gmail.com">
-  <img src="assets/svg/header.svg" width="100%" alt="Header — Boris Leclere, Freelance CTO · Architecte de Solutions. Statut : available. Basé à Senas, France. Langues : fr / en. 20 années de code." />
+  <picture>
+    <source media="(prefers-color-scheme: light)" srcset="assets/svg/light/header.svg" />
+    <img src="assets/svg/header.svg" width="100%" alt="Header — Boris Leclere, Freelance CTO · Architecte de Solutions. Statut : available. Basé à Senas, France. Langues : fr / en. 20 années de code." />
+  </picture>
 </a>
 
 </div>
@@ -14,20 +17,29 @@ J'accompagne les équipes techniques — **startups en construction comme struct
 
 <div align="center">
 
-<img src="assets/svg/services.svg" width="100%" alt="Services : Architecture &amp; refonte logicielle · Audit technique · Conception &amp; livraison de MVP · Industrialisation CI/CD &amp; delivery · AI-Driven Development · Developer tooling &amp; automatisation." />
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="assets/svg/light/services.svg" />
+  <img src="assets/svg/services.svg" width="100%" alt="Services : Architecture &amp; refonte logicielle · Audit technique · Conception &amp; livraison de MVP · Industrialisation CI/CD &amp; delivery · AI-Driven Development · Developer tooling &amp; automatisation." />
+</picture>
 
 </div>
 
 <div align="center">
 
-<img src="assets/svg/core-expertise.svg" width="100%" alt="Core expertise — niveau actuel et pic atteint pour les compétences signature : C# / .NET (expert), Python (advanced), Bluetooth / BLE / GATT (expert), AI-Driven Development (advanced)." />
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="assets/svg/light/core-expertise.svg" />
+  <img src="assets/svg/core-expertise.svg" width="100%" alt="Core expertise — niveau actuel et pic atteint pour les compétences signature : C# / .NET (expert), Python (advanced), Bluetooth / BLE / GATT (expert), AI-Driven Development (advanced)." />
+</picture>
 
 </div>
 
 <div align="center">
 
 <a href="https://github.com/Rinzler78?tab=repositories">
-  <img src="assets/svg/featured-projects.svg" width="100%" alt="Featured projects — 8 dépôts publics phares avec stack et description." />
+  <picture>
+    <source media="(prefers-color-scheme: light)" srcset="assets/svg/light/featured-projects.svg" />
+    <img src="assets/svg/featured-projects.svg" width="100%" alt="Featured projects — 8 dépôts publics phares avec stack et description." />
+  </picture>
 </a>
 
 </div>
@@ -35,20 +47,32 @@ J'accompagne les équipes techniques — **startups en construction comme struct
 <table align="center">
   <tr>
     <td valign="top" width="52%">
-      <img src="assets/svg/stack-summary.svg" width="100%" alt="Stack summary — ancienneté par domaine : Embedded &amp; Systems, Mobile, Languages, Backend &amp; Web, DevOps &amp; Infrastructure, AI &amp; LLM, Blockchain." />
+      <picture>
+        <source media="(prefers-color-scheme: light)" srcset="assets/svg/light/stack-summary.svg" />
+        <img src="assets/svg/stack-summary.svg" width="100%" alt="Stack summary — ancienneté par domaine : Embedded &amp; Systems, Mobile, Languages, Backend &amp; Web, DevOps &amp; Infrastructure, AI &amp; LLM, Blockchain." />
+      </picture>
     </td>
     <td valign="top" width="26%">
-      <img src="assets/svg/activity-stats.svg" width="100%" alt="Activity stats — années de code, technologies, dépôts publics, projets actifs." />
+      <picture>
+        <source media="(prefers-color-scheme: light)" srcset="assets/svg/light/activity-stats.svg" />
+        <img src="assets/svg/activity-stats.svg" width="100%" alt="Activity stats — années de code, technologies, dépôts publics, projets actifs." />
+      </picture>
     </td>
     <td valign="top" width="22%">
-      <img src="assets/svg/timeline-mini.svg" width="100%" alt="Timeline mini — jalons de carrière de 2026 à ~1990s." />
+      <picture>
+        <source media="(prefers-color-scheme: light)" srcset="assets/svg/light/timeline-mini.svg" />
+        <img src="assets/svg/timeline-mini.svg" width="100%" alt="Timeline mini — jalons de carrière de 2026 à ~1990s." />
+      </picture>
     </td>
   </tr>
 </table>
 
 <div align="center">
 
-<img src="assets/svg/methodology.svg" width="100%" alt="How I work — principes d'ingénierie : Simple avant malin · Explicite avant implicite · Testé avant validé · Automatisé avant manuel · Maintenable avant tendance · Valeur métier avant ego technique · L'IA accélère, elle ne remplace pas la discipline." />
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="assets/svg/light/methodology.svg" />
+  <img src="assets/svg/methodology.svg" width="100%" alt="How I work — principes d'ingénierie : Simple avant malin · Explicite avant implicite · Testé avant validé · Automatisé avant manuel · Maintenable avant tendance · Valeur métier avant ego technique · L'IA accélère, elle ne remplace pas la discipline." />
+</picture>
 
 </div>
 
@@ -137,13 +161,19 @@ public sealed class BorisLeclere : FreelanceCto
 
 <div align="center">
 
-<img src="assets/svg/modes.svg" width="100%" alt="Modes d'intervention : CTO temps partiel · Architecte de solutions · Renfort technique d'urgence · Cofondateur technique freelance." />
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="assets/svg/light/modes.svg" />
+  <img src="assets/svg/modes.svg" width="100%" alt="Modes d'intervention : CTO temps partiel · Architecte de solutions · Renfort technique d'urgence · Cofondateur technique freelance." />
+</picture>
 
 </div>
 
 <div align="center">
 
-<img src="assets/svg/map.svg" width="100%" alt="Localisation — Senas, Provence-Alpes-Côte d'Azur, France. Coordonnées 43.74° N, 5.06° E." />
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="assets/svg/light/map.svg" />
+  <img src="assets/svg/map.svg" width="100%" alt="Localisation — Senas, Provence-Alpes-Côte d'Azur, France. Coordonnées 43.74° N, 5.06° E." />
+</picture>
 
 </div>
 
