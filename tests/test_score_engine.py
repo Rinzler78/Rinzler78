@@ -96,7 +96,7 @@ def test_level_override_replaces_current_level():
 
 
 def test_incoherent_overrides_raise():
-    with pytest.raises(ValueError, match="ncoherent|coherent"):
+    with pytest.raises(ValueError, match="overrides"):
         compute_skill(
             {"id": "x", "score_override": 90, "level_override": "working"},
             TechHours(0, None, None),

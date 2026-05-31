@@ -141,3 +141,7 @@ setuptools
 pycache
 linkcheck
 Alph
+respx
+Typer
+desynchronization
+pypi
