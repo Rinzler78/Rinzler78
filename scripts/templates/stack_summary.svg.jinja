@@ -32,7 +32,7 @@
       {%- set first_year = since_values | min %}
       {%- set years = 2026 - first_year %}
       {%- set pct = (years * 100 / max_years) | round | int %}
-      {%- set value_text = years ~ 'y · since ' ~ first_year %}
+      {%- set value_text = 'since ' ~ first_year %}
     {%- else %}
       {%- set pct = 10 %}
       {%- set value_text = '—' %}

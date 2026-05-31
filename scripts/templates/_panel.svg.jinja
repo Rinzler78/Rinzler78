@@ -35,8 +35,8 @@
 {#- Barre horizontale avec label, valeur, et fill animé -#}
 {% macro bar(x, y, w, label, value_text, fill_pct, color='accent') -%}
   {%- set b = theme.patterns.bar -%}
-  {%- set label_w = 130 -%}
-  {%- set value_w = 60 -%}
+  {%- set label_w = 168 -%}
+  {%- set value_w = 84 -%}
   {%- set bar_w = w - label_w - value_w -%}
   <text x="{{ x }}" y="{{ y + 4 }}" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="{{ b.label_font_size }}" fill="{{ theme.palette[b.label_color] }}" font-weight="500">{{ label }}</text>
   <rect x="{{ x + label_w }}" y="{{ y - 6 }}" width="{{ bar_w }}" height="{{ b.height }}" rx="{{ b.corner_radius }}" fill="{{ theme.palette[b.track_color] }}"/>
