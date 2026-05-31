@@ -6,25 +6,49 @@
 
 </div>
 
-<table align="center">
-  <tr>
-    <td valign="top" width="52%">
-      <img src="assets/svg/stack-summary.svg" width="100%" alt="Stack summary — barres de progression représentant l'ancienneté par domaine : {% for d in domains | sort(attribute='order') %}{{ d.label }}{% if not loop.last %}, {% endif %}{% endfor %}." />
-    </td>
-    <td valign="top" width="26%">
-      <img src="assets/svg/activity-stats.svg" width="100%" alt="Activity stats — années de code, technologies maîtrisées, dépôts publics, projets actifs." />
-    </td>
-    <td valign="top" width="22%">
-      <img src="assets/svg/timeline-mini.svg" width="100%" alt="Timeline mini — jalons de carrière du plus récent ({{ (timeline | first).year }}) au plus ancien ({{ (timeline | last).year }})." />
-    </td>
-  </tr>
-</table>
+<p align="center">
+
+{{ content.approach.paragraph }}
+
+</p>
+
+<div align="center">
+
+<img src="assets/svg/services.svg" width="100%" alt="Services : {% for s in services | selectattr('visible') | sort(attribute='priority') %}{{ s.title }}{% if not loop.last %} · {% endif %}{% endfor %}." />
+
+</div>
+
+<div align="center">
+
+<img src="assets/svg/core-expertise.svg" width="100%" alt="Core expertise — niveau actuel et pic atteint pour les compétences signature : {% for s in techs | selectattr('featured') %}{{ s.label }} ({{ s.level_current }}){% if not loop.last %}, {% endif %}{% endfor %}." />
+
+</div>
 
 <div align="center">
 
 <a href="https://github.com/{{ profile.username }}?tab=repositories">
   <img src="assets/svg/featured-projects.svg" width="100%" alt="Featured projects — {{ projects_highlighted() | length }} dépôts publics phares avec stack et description." />
 </a>
+
+</div>
+
+<table align="center">
+  <tr>
+    <td valign="top" width="52%">
+      <img src="assets/svg/stack-summary.svg" width="100%" alt="Stack summary — ancienneté par domaine : {% for d in domains | sort(attribute='order') %}{{ d.label }}{% if not loop.last %}, {% endif %}{% endfor %}." />
+    </td>
+    <td valign="top" width="26%">
+      <img src="assets/svg/activity-stats.svg" width="100%" alt="Activity stats — années de code, technologies, dépôts publics, projets actifs." />
+    </td>
+    <td valign="top" width="22%">
+      <img src="assets/svg/timeline-mini.svg" width="100%" alt="Timeline mini — jalons de carrière de {{ (timeline | first).year }} à {{ (timeline | last).year }}." />
+    </td>
+  </tr>
+</table>
+
+<div align="center">
+
+<img src="assets/svg/methodology.svg" width="100%" alt="How I work — principes d'ingénierie : {% for m in methodology | sort(attribute='order') %}{{ m.title }}{% if not loop.last %} · {% endif %}{% endfor %}." />
 
 </div>
 
@@ -36,7 +60,7 @@
 
 <div align="center">
 
-<img src="assets/svg/map.svg" width="100%" alt="Localisation — basé à {{ profile.location.city }}, {{ profile.location.region }}, {{ profile.location.country }}. Coordonnées {{ profile.location.lat }}° N, {{ profile.location.lon }}° E." />
+<img src="assets/svg/map.svg" width="100%" alt="Localisation — {{ profile.location.city }}, {{ profile.location.region }}, {{ profile.location.country }}. Coordonnées {{ profile.location.lat }}° N, {{ profile.location.lon }}° E." />
 
 </div>
 

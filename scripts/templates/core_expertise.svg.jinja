@@ -1,0 +1,56 @@
+{%- import '_panel.svg.jinja' as p -%}
+{%- set width = 900 -%}
+{%- set pal = theme.palette -%}
+{%- set skills = techs | selectattr('featured') | sort(attribute='score_current', reverse=true) | list -%}
+{%- set row_h = 38 -%}
+{%- set header_h = 52 -%}
+{%- set height = header_h + skills | length * row_h + 16 -%}
+
+{%- set label_w = 180 -%}
+{%- set bar_x = 24 + label_w -%}
+{%- set value_w = 150 -%}
+{%- set bar_w = width - bar_x - value_w - 24 -%}
+
+{%- set level_fill = {'expert': pal.accent, 'advanced': pal.accent, 'professional': pal.info, 'working': pal.info, 'explored': pal.text_dim} -%}
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {{ width }} {{ height }}" width="{{ width }}" height="{{ height }}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Core expertise — {{ skills | length }} signature skills with current level (filled) and peak reached (ghost): {% for s in skills %}{{ s.label }} {{ s.level_current }}{% if not loop.last %}, {% endif %}{% endfor %}.">
+  <title>Core expertise</title>
+  <desc>Double bars per signature skill: the solid bar is the current level, the outlined extension is the peak ever reached.</desc>
+
+  <rect width="{{ width }}" height="{{ height }}" fill="{{ pal.bg }}"/>
+  {{ p.panel(0, 0, width, height, 'CORE EXPERTISE') }}
+
+  <!-- legend -->
+  <g transform="translate({{ width - 250 }} 18)" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="9.5" fill="{{ pal.text_dim }}">
+    <rect x="0" y="-7" width="16" height="7" rx="2" fill="{{ pal.accent }}"/>
+    <text x="22" y="-1">now</text>
+    <rect x="62" y="-7" width="16" height="7" rx="2" fill="none" stroke="{{ pal.text_muted }}" stroke-width="1" stroke-dasharray="2 1.5"/>
+    <text x="84" y="-1">peak</text>
+  </g>
+
+  {%- for s in skills %}
+    {%- set y = header_h + loop.index0 * row_h %}
+    {%- set fill = level_fill[s.level_current] | default(pal.text_dim) %}
+    {%- set cur_w = (bar_w * s.score_current / 100) | round | int %}
+    {%- set max_w = (bar_w * s.score_max / 100) | round | int %}
+
+    <!-- label -->
+    <text x="24" y="{{ y + 12 }}" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="13" font-weight="600" fill="{{ pal.text }}">{{ s.label }}</text>
+
+    <!-- track -->
+    <rect x="{{ bar_x }}" y="{{ y + 3 }}" width="{{ bar_w }}" height="12" rx="3" fill="{{ pal.border_muted }}"/>
+    <!-- peak ghost (outline up to score_max) -->
+    {%- if max_w > cur_w %}
+    <rect x="{{ bar_x }}" y="{{ y + 3 }}" width="{{ max_w }}" height="12" rx="3" fill="none" stroke="{{ pal.text_muted }}" stroke-width="1" stroke-dasharray="3 2"/>
+    {%- endif %}
+    <!-- current fill -->
+    <rect x="{{ bar_x }}" y="{{ y + 3 }}" width="{{ cur_w }}" height="12" rx="3" fill="{{ fill }}"/>
+
+    <!-- value -->
+    {%- if s.score_max > s.score_current %}
+    <text x="{{ width - 24 }}" y="{{ y + 12 }}" text-anchor="end" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="11" fill="{{ pal.text_muted }}">{{ s.score_current }} <tspan fill="{{ pal.text_dim }}">/ {{ s.score_max }}</tspan> · {{ s.level_current }}</text>
+    {%- else %}
+    <text x="{{ width - 24 }}" y="{{ y + 12 }}" text-anchor="end" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="11" fill="{{ pal.text_muted }}">{{ s.score_current }} · <tspan fill="{{ fill }}">{{ s.level_current }}</tspan></text>
+    {%- endif %}
+  {%- endfor %}
+</svg>

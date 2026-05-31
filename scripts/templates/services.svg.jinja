@@ -1,0 +1,62 @@
+{%- import '_panel.svg.jinja' as p -%}
+{%- set width = 1000 -%}
+{%- set pal = theme.palette -%}
+{%- set services = services | selectattr('visible') | sort(attribute='priority') | list -%}
+{%- set cols = 3 -%}
+{%- set gap = 16 -%}
+{%- set pad = 24 -%}
+{%- set card_w = (width - 2 * pad - (cols - 1) * gap) / cols -%}
+{%- set card_h = 150 -%}
+{%- set header_h = 50 -%}
+{%- set rows = (services | length + cols - 1) // cols -%}
+{%- set height = header_h + rows * card_h + (rows - 1) * gap + 20 -%}
+
+{%- macro wrap(text, x, y, maxchars, lh, cls_fill, maxlines=3) -%}
+  {%- set words = text.split(' ') -%}
+  {%- set ns = namespace(line='', n=0) -%}
+  {%- for w in words -%}
+    {%- if (ns.line ~ ' ' ~ w) | trim | length > maxchars and ns.line -%}
+      {%- if ns.n < maxlines -%}
+  <text x="{{ x }}" y="{{ y + ns.n * lh }}" font-family="'{{ theme.fonts.body }}', {{ theme.fonts.body_fallback }}" font-size="11" fill="{{ cls_fill }}">{{ ns.line }}</text>
+      {%- endif -%}
+      {%- set ns.n = ns.n + 1 -%}
+      {%- set ns.line = w -%}
+    {%- else -%}
+      {%- set ns.line = (ns.line ~ ' ' ~ w) | trim -%}
+    {%- endif -%}
+  {%- endfor -%}
+  {%- if ns.line and ns.n < maxlines -%}
+  <text x="{{ x }}" y="{{ y + ns.n * lh }}" font-family="'{{ theme.fonts.body }}', {{ theme.fonts.body_fallback }}" font-size="11" fill="{{ cls_fill }}">{{ ns.line }}</text>
+  {%- endif -%}
+{%- endmacro -%}
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {{ width }} {{ height }}" width="{{ width }}" height="{{ height }}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Services — {{ services | length }} sellable offerings: {% for s in services %}{{ s.title }}{% if not loop.last %}, {% endif %}{% endfor %}.">
+  <title>Services</title>
+  <desc>Cards presenting the sellable services.</desc>
+
+  <rect width="{{ width }}" height="{{ height }}" fill="{{ pal.bg }}"/>
+  {{ p.panel(0, 0, width, height, 'SERVICES') }}
+
+  {%- for s in services %}
+    {%- set col = loop.index0 % cols %}
+    {%- set row = loop.index0 // cols %}
+    {%- set x = pad + col * (card_w + gap) %}
+    {%- set y = header_h + row * (card_h + gap) %}
+
+    <rect x="{{ x }}" y="{{ y }}" width="{{ card_w }}" height="{{ card_h }}" rx="6" fill="{{ pal.panel_alt }}" stroke="{{ pal.border }}" stroke-width="1"/>
+    <rect x="{{ x }}" y="{{ y }}" width="{{ card_w }}" height="3" rx="1.5" fill="{{ pal.accent }}"/>
+
+    <text x="{{ x + 16 }}" y="{{ y + 30 }}" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="12" font-weight="700" fill="{{ pal.text }}">{{ s.title }}</text>
+
+    {{ wrap(s.short_description, x + 16, y + 52, 38, 15, pal.text_muted, 4) }}
+
+    {%- set kw = s.keywords[:3] %}
+    {%- set ns2 = namespace(cx = x + 16) %}
+    {%- for k in kw %}
+      {%- set kw_w = k | length * 6.2 + 16 %}
+      <rect x="{{ ns2.cx }}" y="{{ y + card_h - 28 }}" width="{{ kw_w }}" height="18" rx="9" fill="{{ pal.panel }}" stroke="{{ pal.border_muted }}" stroke-width="1"/>
+      <text x="{{ ns2.cx + kw_w / 2 }}" y="{{ y + card_h - 15 }}" text-anchor="middle" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="9" fill="{{ pal.text_dim }}">{{ k }}</text>
+      {%- set ns2.cx = ns2.cx + kw_w + 6 %}
+    {%- endfor %}
+  {%- endfor %}
+</svg>

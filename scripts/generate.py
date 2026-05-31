@@ -200,6 +200,9 @@ def make_env(data: dict[str, Any]) -> Environment:
 SVG_TARGETS: list[tuple[str, str, dict]] = [
     ("header.svg.jinja", "header.svg", {}),
     ("stack_summary.svg.jinja", "stack-summary.svg", {}),
+    ("core_expertise.svg.jinja", "core-expertise.svg", {}),
+    ("services.svg.jinja", "services.svg", {}),
+    ("methodology.svg.jinja", "methodology.svg", {}),
     ("activity_stats.svg.jinja", "activity-stats.svg", {}),
     ("timeline_mini.svg.jinja", "timeline-mini.svg", {}),
     ("featured_projects.svg.jinja", "featured-projects.svg", {}),

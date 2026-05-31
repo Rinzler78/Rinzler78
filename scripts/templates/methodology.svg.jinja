@@ -1,0 +1,50 @@
+{%- import '_panel.svg.jinja' as p -%}
+{%- set width = 1000 -%}
+{%- set pal = theme.palette -%}
+{%- set principles = methodology | sort(attribute='order') | list -%}
+{%- set cols = 2 -%}
+{%- set pad = 24 -%}
+{%- set gap = 24 -%}
+{%- set col_w = (width - 2 * pad - gap) / cols -%}
+{%- set item_h = 70 -%}
+{%- set header_h = 50 -%}
+{%- set rows = (principles | length + cols - 1) // cols -%}
+{%- set height = header_h + rows * item_h + 16 -%}
+
+{%- macro wrap(text, x, y, maxchars, lh, fill, maxlines) -%}
+  {%- set words = text.split(' ') -%}
+  {%- set ns = namespace(line='', n=0) -%}
+  {%- for w in words -%}
+    {%- if (ns.line ~ ' ' ~ w) | trim | length > maxchars and ns.line -%}
+      {%- if ns.n < maxlines -%}
+  <text x="{{ x }}" y="{{ y + ns.n * lh }}" font-family="'{{ theme.fonts.body }}', {{ theme.fonts.body_fallback }}" font-size="10.5" fill="{{ fill }}">{{ ns.line }}</text>
+      {%- endif -%}
+      {%- set ns.n = ns.n + 1 -%}
+      {%- set ns.line = w -%}
+    {%- else -%}
+      {%- set ns.line = (ns.line ~ ' ' ~ w) | trim -%}
+    {%- endif -%}
+  {%- endfor -%}
+  {%- if ns.line and ns.n < maxlines -%}
+  <text x="{{ x }}" y="{{ y + ns.n * lh }}" font-family="'{{ theme.fonts.body }}', {{ theme.fonts.body_fallback }}" font-size="10.5" fill="{{ fill }}">{{ ns.line }}</text>
+  {%- endif -%}
+{%- endmacro -%}
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {{ width }} {{ height }}" width="{{ width }}" height="{{ height }}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="How I work — {{ principles | length }} engineering principles: {% for m in principles %}{{ m.title }}{% if not loop.last %}, {% endif %}{% endfor %}.">
+  <title>How I work</title>
+  <desc>Engineering principles that guide how the work is done.</desc>
+
+  <rect width="{{ width }}" height="{{ height }}" fill="{{ pal.bg }}"/>
+  {{ p.panel(0, 0, width, height, 'HOW I WORK') }}
+
+  {%- for m in principles %}
+    {%- set col = loop.index0 % cols %}
+    {%- set row = loop.index0 // cols %}
+    {%- set x = pad + col * (col_w + gap) %}
+    {%- set y = header_h + row * item_h %}
+
+    <text x="{{ x }}" y="{{ y + 14 }}" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="11" font-weight="700" fill="{{ pal.accent }}">{{ '%02d' | format(loop.index) }}</text>
+    <text x="{{ x + 30 }}" y="{{ y + 14 }}" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="12.5" font-weight="600" fill="{{ pal.text }}">{{ m.title }}</text>
+    {{ wrap(m.body, x + 30, y + 31, 60, 14, pal.text_muted, 3) }}
+  {%- endfor %}
+</svg>
