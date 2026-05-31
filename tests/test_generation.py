@@ -45,3 +45,16 @@ def test_generation_is_deterministic():
     gen.main()
     second = _read_all()
     assert first == second
+
+
+def test_readmes_embed_the_live_github_widgets():
+    # PRD-001 animations: typing banner, stats card (rank hidden), activity
+    # graph and the contribution snake must appear in both language READMEs.
+    gen.main()
+    for readme in READMES:
+        text = readme.read_text(encoding="utf-8")
+        assert "readme-typing-svg.demolab.com" in text
+        assert "github-readme-stats.vercel.app" in text
+        assert "hide_rank=true" in text  # anti-inflation: no grade circle
+        assert "github-readme-activity-graph.vercel.app" in text
+        assert "github-contribution-grid-snake" in text

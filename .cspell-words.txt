@@ -145,3 +145,5 @@ respx
 Typer
 desynchronization
 pypi
+demolab
+vercel

@@ -11,6 +11,11 @@
   </picture>
 </a>
 
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="https://readme-typing-svg.demolab.com/?font=JetBrains+Mono&weight=600&size=20&pause=1200&center=true&vCenter=true&width=600&height=45&color=c75d3e&lines=Freelance+CTO;Software+Architect;AI-Driven+Development" />
+  <img src="https://readme-typing-svg.demolab.com/?font=JetBrains+Mono&weight=600&size=20&pause=1200&center=true&vCenter=true&width=600&height=45&color=f78166&lines=Freelance+CTO;Software+Architect;AI-Driven+Development" alt="Freelance CTO · Software Architect · AI-Driven Development" />
+</picture>
+
 </div>
 
 <p align="center">
@@ -76,6 +81,27 @@ I support technical teams - both startups and more mature structures** - in thei
 <picture>
   <source media="(prefers-color-scheme: light)" srcset="assets/svg/en/light/methodology.svg" />
   <img src="assets/svg/en/methodology.svg" width="100%" alt="How I work — principes d'ingénierie : Simple before clever · Explicit before implicit · Tested before validated · Automated before manual · Maintainable before trend · Business value before technical ego · AI accelerates, but does not replace discipline." />
+</picture>
+
+</div>
+
+<div align="center">
+
+<sub><b>Live GitHub activity</b></sub>
+
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="https://github-readme-stats.vercel.app/api?username=Rinzler78&show_icons=true&hide_rank=true&hide_border=true&bg_color=ffffff&title_color=c75d3e&text_color=1a1a1f&icon_color=c75d3e" />
+  <img src="https://github-readme-stats.vercel.app/api?username=Rinzler78&show_icons=true&hide_rank=true&hide_border=true&bg_color=161b22&title_color=f78166&text_color=f0f6fc&icon_color=f78166" width="60%" alt="GitHub stats for Rinzler78 (rank hidden — no inflated grade)." />
+</picture>
+
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="https://github-readme-activity-graph.vercel.app/graph?username=Rinzler78&hide_border=true&area=true&bg_color=ffffff&color=1a1a1f&line=c75d3e&point=c75d3e&title_color=c75d3e" />
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=Rinzler78&hide_border=true&area=true&bg_color=161b22&color=f0f6fc&line=f78166&point=f78166&title_color=f78166" width="100%" alt="Contribution activity graph for Rinzler78." />
+</picture>
+
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Rinzler78/Rinzler78/output/github-contribution-grid-snake.svg" />
+  <img src="https://raw.githubusercontent.com/Rinzler78/Rinzler78/output/github-contribution-grid-snake-dark.svg" width="100%" alt="Contribution snake eating the activity grid for Rinzler78." />
 </picture>
 
 </div>
