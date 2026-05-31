@@ -1,6 +1,55 @@
 from datetime import date
 
-from scripts.view_builder import build_skills
+from scripts.view_builder import build_profile_as_code, build_skills
+
+
+def test_profile_as_code_declares_a_class_named_after_the_profile():
+    profile = {"name": "Boris Leclere", "role": "Freelance CTO", "status": "available"}
+
+    code = build_profile_as_code(profile, skills=[], services=[])
+
+    assert "class BorisLeclere" in code
+
+
+def test_profile_as_code_core_skills_are_the_featured_labels():
+    profile = {"name": "Boris", "role": "CTO", "status": "available"}
+    skills = [
+        {"label": "C# / .NET", "featured": True, "score_current": 99},
+        {"label": "Python", "featured": True, "score_current": 78},
+        {"label": "Git", "featured": False, "score_current": 96},
+    ]
+
+    code = build_profile_as_code(profile, skills, services=[])
+
+    assert "CoreSkills" in code
+    assert '"C# / .NET"' in code
+    assert '"Python"' in code
+    assert '"Git"' not in code  # not featured
+
+
+def test_profile_as_code_services_are_the_visible_titles_by_priority():
+    profile = {"name": "Boris", "role": "CTO", "status": "available"}
+    services = [
+        {"title": "Audit", "visible": True, "priority": 2},
+        {"title": "Architecture", "visible": True, "priority": 1},
+        {"title": "Hidden", "visible": False, "priority": 3},
+    ]
+
+    code = build_profile_as_code(profile, skills=[], services=services)
+
+    assert "Services" in code
+    # ordered by priority, hidden excluded
+    assert code.index('"Architecture"') < code.index('"Audit"')
+    assert '"Hidden"' not in code
+
+
+def test_profile_as_code_exposes_status_and_compiles_to_balanced_braces():
+    profile = {"name": "Boris", "role": "CTO", "status": "available"}
+
+    code = build_profile_as_code(profile, skills=[], services=[])
+
+    assert '"available"' in code
+    assert code.count("{") == code.count("}")
 
 
 def test_build_skills_enriches_tech_with_derived_fields():

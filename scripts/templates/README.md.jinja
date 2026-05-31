@@ -52,6 +52,15 @@
 
 </div>
 
+<details>
+<summary><code>$ cat Boris.cs  # profile as code</code></summary>
+
+```csharp
+{{ profile_as_code | replace('&amp;', '&') }}
+```
+
+</details>
+
 <div align="center">
 
 <img src="assets/svg/modes.svg" width="100%" alt="Modes d'intervention : {% for m in modes | sort(attribute='order') %}{{ m.label }}{% if not loop.last %} · {% endif %}{% endfor %}." />

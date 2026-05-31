@@ -8,12 +8,44 @@ Public surface (V1, incremental):
 Skills are *derived*, never stored: the enrichment composes HoursCalculator
 (hours + since/until per tech) and ScoreEngine (peak/decay) over the raw
 tech collection.
+
+- ``build_profile_as_code(profile, skills, services)`` renders the profile as
+  a small C# class (the "Profile as Code" section).
 """
 
+import re
 from datetime import date
 
 from scripts.hours_calculator import TechHours, compute_tech_hours
 from scripts.score_engine import compute_skill
+
+
+def build_profile_as_code(
+    profile: dict, skills: list[dict], services: list[dict]
+) -> str:
+    class_name = re.sub(r"[^A-Za-z0-9]", "", profile["name"])
+    featured = sorted(
+        (s for s in skills if s.get("featured")),
+        key=lambda s: s.get("score_current", 0),
+        reverse=True,
+    )
+    core = ", ".join(f'"{s["label"]}"' for s in featured)
+
+    shown = sorted(
+        (s for s in services if s.get("visible")),
+        key=lambda s: s.get("priority", 0),
+    )
+    svc = ", ".join(f'"{s["title"]}"' for s in shown)
+
+    status = profile.get("status", "")
+    return (
+        f"public sealed class {class_name} : FreelanceCto\n"
+        f"{{\n"
+        f"    public string[] CoreSkills => [{core}];\n"
+        f"    public string[] Services   => [{svc}];\n"
+        f'    public string   Status     => "{status}";\n'
+        f"}}"
+    )
 
 
 def build_skills(

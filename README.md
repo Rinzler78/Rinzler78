@@ -52,6 +52,20 @@ J'accompagne les équipes techniques — **startups en construction comme struct
 
 </div>
 
+<details>
+<summary><code>$ cat Boris.cs  # profile as code</code></summary>
+
+```csharp
+public sealed class BorisLeclere : FreelanceCto
+{
+    public string[] CoreSkills => ["C# / .NET", "Bluetooth / BLE / GATT", "Python", "AI-Driven Development"];
+    public string[] Services   => ["Architecture & refonte logicielle", "Audit technique", "Conception & livraison de MVP", "Industrialisation CI/CD & delivery", "AI-Driven Development", "Developer tooling & automatisation"];
+    public string   Status     => "available";
+}
+```
+
+</details>
+
 <div align="center">
 
 <img src="assets/svg/modes.svg" width="100%" alt="Modes d'intervention : CTO temps partiel · Architecte de solutions · Renfort technique d'urgence · Cofondateur technique freelance." />

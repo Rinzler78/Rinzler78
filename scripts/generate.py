@@ -34,7 +34,7 @@ _REPO_ROOT = pathlib.Path(__file__).resolve().parent.parent
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
 
-from scripts.view_builder import build_skills  # noqa: E402
+from scripts.view_builder import build_profile_as_code, build_skills  # noqa: E402
 
 REPO = pathlib.Path(__file__).resolve().parent.parent
 DATA = REPO / "data"
@@ -94,6 +94,9 @@ def enrich(data: dict[str, Any], today: date) -> dict[str, Any]:
     """
     data["techs"] = build_skills(
         data["techs"], data["experiences"], data["projects"], today
+    )
+    data["profile_as_code"] = build_profile_as_code(
+        data["profile"], data["techs"], data["services"]
     )
     return data
 
