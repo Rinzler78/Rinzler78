@@ -20,8 +20,8 @@
   <rect x="192" y="156" width="272" height="8" rx="2" fill="#c75d3e"/>
   <text x="522" y="166" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="12" fill="#6b6256">since 2009</text>    <text x="24" y="194" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="12" fill="#1a1a1f" font-weight="500">AI &amp; LLM</text>
   <rect x="192" y="184" width="320" height="8" rx="2" fill="#ece4d8"/>
-  <rect x="192" y="184" width="48" height="8" rx="2" fill="#3a6db5"/>
-  <text x="522" y="194" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="12" fill="#6b6256">since 2023</text>    <text x="24" y="222" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="12" fill="#1a1a1f" font-weight="500">Blockchain</text>
+  <rect x="192" y="184" width="64" height="8" rx="2" fill="#3a6db5"/>
+  <text x="522" y="194" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="12" fill="#6b6256">since 2022</text>    <text x="24" y="222" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="12" fill="#1a1a1f" font-weight="500">Blockchain</text>
   <rect x="192" y="212" width="320" height="8" rx="2" fill="#ece4d8"/>
   <rect x="192" y="212" width="96" height="8" rx="2" fill="#9a8f80"/>
   <text x="522" y="222" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="12" fill="#6b6256">since 2020</text></svg>

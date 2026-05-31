@@ -1,3 +1,4 @@
+# cspell:ignore Conçu produit jalons carrière carriere parcours
 """Generation pipeline guards (PRD: test_generation / test_determinism).
 
 These run the real generator into the repo's output files. Generation is
@@ -45,6 +46,24 @@ def test_generation_is_deterministic():
     gen.main()
     second = _read_all()
     assert first == second
+
+
+def test_quality_manifesto_is_localized_per_readme():
+    # Bilingual rule: prose is French in README.md, English in README.en.md.
+    gen.main()
+    fr = (ROOT / "README.md").read_text(encoding="utf-8")
+    en = (ROOT / "README.en.md").read_text(encoding="utf-8")
+    assert "Conçu comme un produit" in fr
+    assert "Built like a product" not in fr
+    assert "Built like a product" in en
+
+
+def test_timeline_alt_says_parcours_not_carriere():
+    # 1990s milestones are personal (basketball), not career — use "parcours".
+    gen.main()
+    fr = (ROOT / "README.md").read_text(encoding="utf-8")
+    assert "jalons de parcours" in fr
+    assert "jalons de carrière" not in fr
 
 
 def test_readmes_embed_the_live_github_widgets():

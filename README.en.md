@@ -70,7 +70,7 @@ I support technical teams - both startups and more mature structures** - in thei
     <td valign="top" width="22%">
       <picture>
         <source media="(prefers-color-scheme: light)" srcset="assets/svg/en/light/timeline-mini.svg" />
-        <img src="assets/svg/en/timeline-mini.svg" width="100%" alt="Timeline mini — jalons de carrière de 2026 à ~1990s." />
+        <img src="assets/svg/en/timeline-mini.svg" width="100%" alt="Timeline mini — jalons de parcours de 2026 à ~1990s." />
       </picture>
     </td>
   </tr>
@@ -90,19 +90,26 @@ I support technical teams - both startups and more mature structures** - in thei
 <sub><b>Live GitHub activity</b></sub>
 
 <picture>
-  <source media="(prefers-color-scheme: light)" srcset="https://github-readme-stats.vercel.app/api?username=Rinzler78&show_icons=true&hide_rank=true&hide_border=true&bg_color=ffffff&title_color=c75d3e&text_color=1a1a1f&icon_color=c75d3e" />
-  <img src="https://github-readme-stats.vercel.app/api?username=Rinzler78&show_icons=true&hide_rank=true&hide_border=true&bg_color=161b22&title_color=f78166&text_color=f0f6fc&icon_color=f78166" width="60%" alt="GitHub stats for Rinzler78 (rank hidden — no inflated grade)." />
-</picture>
-
-<picture>
   <source media="(prefers-color-scheme: light)" srcset="https://github-readme-activity-graph.vercel.app/graph?username=Rinzler78&hide_border=true&area=true&bg_color=ffffff&color=1a1a1f&line=c75d3e&point=c75d3e&title_color=c75d3e" />
   <img src="https://github-readme-activity-graph.vercel.app/graph?username=Rinzler78&hide_border=true&area=true&bg_color=161b22&color=f0f6fc&line=f78166&point=f78166&title_color=f78166" width="100%" alt="Contribution activity graph for Rinzler78." />
 </picture>
 
-<picture>
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Rinzler78/Rinzler78/output/github-contribution-grid-snake.svg" />
-  <img src="https://raw.githubusercontent.com/Rinzler78/Rinzler78/output/github-contribution-grid-snake-dark.svg" width="100%" alt="Contribution snake eating the activity grid for Rinzler78." />
-</picture>
+<table>
+  <tr>
+    <td valign="middle" width="40%">
+      <picture>
+        <source media="(prefers-color-scheme: light)" srcset="https://github-readme-stats.vercel.app/api?username=Rinzler78&show_icons=true&hide_rank=true&hide_border=true&bg_color=ffffff&title_color=c75d3e&text_color=1a1a1f&icon_color=c75d3e" />
+        <img src="https://github-readme-stats.vercel.app/api?username=Rinzler78&show_icons=true&hide_rank=true&hide_border=true&bg_color=161b22&title_color=f78166&text_color=f0f6fc&icon_color=f78166" width="100%" alt="GitHub stats for Rinzler78 (rank hidden — no inflated grade)." />
+      </picture>
+    </td>
+    <td valign="middle" width="60%">
+      <picture>
+        <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Rinzler78/Rinzler78/output/github-contribution-grid-snake.svg" />
+        <img src="https://raw.githubusercontent.com/Rinzler78/Rinzler78/output/github-contribution-grid-snake-dark.svg" width="100%" alt="Contribution snake eating the activity grid for Rinzler78." />
+      </picture>
+    </td>
+  </tr>
+</table>
 
 </div>
 
@@ -112,7 +119,7 @@ I support technical teams - both startups and more mature structures** - in thei
 ```csharp
 public sealed class BorisLeclere : FreelanceCto
 {
-    public string[] CoreSkills => ["C# / .NET", "Bluetooth / BLE / GATT", "Python", "AI-Driven Development"];
+    public string[] CoreSkills => ["C# / .NET", "Bluetooth / BLE / GATT", "AI-Driven Development", "Python"];
     public string[] Services   => ["Software architecture & redesign", "Technical audit", "MVP design & delivery", "CI/CD industrialization & delivery", "AI-Driven Development", "Developer tooling & automation"];
     public string   Status     => "available";
 }
@@ -175,7 +182,7 @@ public sealed class BorisLeclere : FreelanceCto
 
 | Skill | Now | Peak | Active | Versions |
 |---|---|---|---|---|
-| AI-Driven Development | advanced | advanced | 2023–now | Claude Code (primary) · Codex · OpenCode · ChatGPT |
+| AI-Driven Development | advanced | advanced | 2022–now | Claude Code (primary) · Codex · OpenCode · ChatGPT |
 | LiteLLM | explored | explored | 2023–now | — |
 | Anthropic Claude API / SDK | explored | explored | 2023–now | SDK 0.x |
 **Blockchain**
@@ -210,7 +217,6 @@ public sealed class BorisLeclere : FreelanceCto
 <div align="center">
 
 <sub><b>Built like a product.</b> This profile is generated from JSON, validated against schemas, scored from real exposure hours, tested (90%+ coverage), linted, security-scanned, spell-checked (en + fr), and regenerated on every commit — pre-commit + pre-push gates, GitHub Actions CI, branch protection. <b>The repo is the proof.</b></sub>
-
 </div>
 
 <div align="center">
@@ -235,9 +241,9 @@ public sealed class BorisLeclere : FreelanceCto
 [OK] basketball.so  … loaded since 1991
 [WARN] imposter.sys … signal ignored
 [OK] embedded.ko    … 2006 → 2013
-[OK] mobile.ko      … 2014 → 2023
+[OK] mobile.ko      … 2014 →
 [OK] cloud.ko       … 2020 →
-[OK] llm.ko         … 2023 →
+[OK] llm.ko         … 2022 →
 [OK] provence.env   … exported PATH=$PATH:/sunlight
 ```
 

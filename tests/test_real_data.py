@@ -110,6 +110,24 @@ def test_validate_data_cli_passes_on_real_data():
     assert vd.main() == 0
 
 
+def test_ai_driven_development_anchored_2022_and_at_least_advanced():
+    # All projects since 2022 are AI-assisted: AI-Driven Development must derive
+    # `since == 2022` and rate at least `advanced` (>= 70). Guards the data tag.
+    techs = load_collection(DATA / "techs.json")
+    experiences = load_collection(DATA / "experiences.json")
+    projects = load_collection(DATA / "projects.json")
+    today = date(2026, 5, 31)
+    tech_hours = compute_tech_hours(experiences, projects, today)
+
+    th = tech_hours["ai-driven-development"]
+    assert th.since == 2022, f"expected AI since 2022, got {th.since}"
+
+    tech = next(t for t in techs if t["id"] == "ai-driven-development")
+    skill = compute_skill(tech, th, today)
+    assert skill.score_current >= 70, skill.score_current
+    assert skill.level_current.value in ("advanced", "expert")
+
+
 def test_every_featured_tech_has_hours():
     techs = load_collection(DATA / "techs.json")
     experiences = load_collection(DATA / "experiences.json")

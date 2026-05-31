@@ -46,9 +46,9 @@
       "[OK] basketball.so  … loaded since 1991",
       "[WARN] imposter.sys … signal ignored",
       "[OK] embedded.ko    … 2006 → 2013",
-      "[OK] mobile.ko      … 2014 → 2023",
+      "[OK] mobile.ko      … 2014 →",
       "[OK] cloud.ko       … 2020 →",
-      "[OK] llm.ko         … 2023 →",
+      "[OK] llm.ko         … 2022 →",
       "[OK] provence.env   … exported PATH=$PATH:/sunlight"
     ]
   },
