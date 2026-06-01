@@ -35,7 +35,11 @@ if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
 
 from scripts.translate import CACHE, localize_data  # noqa: E402
-from scripts.view_builder import build_profile_as_code, build_skills  # noqa: E402
+from scripts.view_builder import (  # noqa: E402
+    build_profile_as_code,
+    build_signature_arc,
+    build_skills,
+)
 
 REPO = pathlib.Path(__file__).resolve().parent.parent
 DATA = REPO / "data"
@@ -100,6 +104,7 @@ def enrich(data: dict[str, Any], today: date) -> dict[str, Any]:
     data["profile_as_code"] = build_profile_as_code(
         data["profile"], data["techs"], data["services"]
     )
+    data["signature_arc"] = build_signature_arc(data["domains"])
     return data
 
 
@@ -224,14 +229,14 @@ def _render_svgs(env: Environment, out_dir: pathlib.Path) -> None:
 
 
 def _render_both_palettes(env: Environment, theme: dict, svg_dir: pathlib.Path) -> None:
-    """Render the SVG set twice (dark default + light/) for one language."""
+    """Render the SVG set twice — light-first: light default + dark/ override."""
     dark = theme["palette"]
     light = theme.get("palette_light", dark)
-    theme["palette"] = dark
-    _render_svgs(env, svg_dir)
     theme["palette"] = light
-    _render_svgs(env, svg_dir / "light")
-    theme["palette"] = dark  # restore for the README badge colors
+    _render_svgs(env, svg_dir)  # light is primary → root dir
+    theme["palette"] = dark
+    _render_svgs(env, svg_dir / "dark")  # dark is the prefers-color-scheme override
+    theme["palette"] = light  # restore: README badges use the light/default palette
 
 
 def main() -> int:
@@ -245,15 +250,15 @@ def main() -> int:
     env_en = make_env(en_data)
 
     print(f"[generate.py] data: {len(fr_data)} concepts loaded")
-    print("[generate.py] target: assets/svg/{,light,en,en/light}, README(.en).md")
+    print("[generate.py] target: assets/svg/{,dark,en,en/dark}, README(.en).md")
     print()
 
     # 4 SVG sets: fr×{dark,light} and en×{dark,light}.
     _render_both_palettes(env_fr, fr_data["theme"], SVG_OUT)
     _render_both_palettes(env_en, en_data["theme"], SVG_OUT / "en")
-    print(f"  ✓ assets/svg/(light|en|en/light)/*.svg ({len(SVG_TARGETS)} × 4)")
+    print(f"  ✓ assets/svg/(dark|en|en/dark)/*.svg ({len(SVG_TARGETS)} × 4)")
 
-    # FR README (dark default, light via <picture>) + reciprocal EN link.
+    # FR README (light default, dark via <picture>) + reciprocal EN link.
     README_OUT.write_text(
         env_fr.get_template("README.md.jinja").render(svg="", lang="fr"),
         encoding="utf-8",

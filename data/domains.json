@@ -5,7 +5,11 @@
     "order": 1,
     "show_in_id_card": true,
     "id_card_summary": "Windows CE 5.0/6.0 · NFC ISO 14443/15693 · BLE · GPS",
-    "id_card_daterange": "2009 → 2023"
+    "id_card_daterange": "2009 → 2023",
+    "arc_order": 1,
+    "arc_label": "embedded",
+    "arc_year": 2006,
+    "arc_signature": "C · Windows CE · drivers"
   },
   {
     "id": "mobile",
@@ -13,7 +17,11 @@
     "order": 2,
     "show_in_id_card": true,
     "id_card_summary": ".NET MAUI · Xamarin.Forms 5.x · iOS Objective-C",
-    "id_card_daterange": "2011 → today"
+    "id_card_daterange": "2011 → today",
+    "arc_order": 2,
+    "arc_label": "mobile",
+    "arc_year": 2011,
+    "arc_signature": "iOS · NFC · Xamarin"
   },
   {
     "id": "languages",
@@ -35,7 +43,11 @@
     "order": 5,
     "show_in_id_card": true,
     "id_card_summary": "Docker 24.x · Compose v2 · GitHub Actions · Linux Ubuntu LTS",
-    "id_card_daterange": null
+    "id_card_daterange": null,
+    "arc_order": 3,
+    "arc_label": "cloud",
+    "arc_year": 2020,
+    "arc_signature": "Docker · CI/CD · .NET Core"
   },
   {
     "id": "ai-llm",
@@ -43,7 +55,11 @@
     "order": 6,
     "show_in_id_card": true,
     "id_card_summary": "Claude API SDK · OpenAI v1.x · LangChain 0.2.x · LiteLLM",
-    "id_card_daterange": null
+    "id_card_daterange": null,
+    "arc_order": 4,
+    "arc_label": "ai",
+    "arc_year": 2023,
+    "arc_signature": "LLM · RAG"
   },
   {
     "id": "blockchain",

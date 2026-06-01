@@ -46,9 +46,9 @@
       "[OK] basketball.so  … loaded since 1991",
       "[WARN] imposter.sys … signal ignored",
       "[OK] embedded.ko    … 2006 → 2013",
-      "[OK] mobile.ko      … 2014 →",
+      "[OK] mobile.ko      … 2011 →",
       "[OK] cloud.ko       … 2020 →",
-      "[OK] llm.ko         … 2022 →",
+      "[OK] llm.ko         … 2023 →",
       "[OK] provence.env   … exported PATH=$PATH:/sunlight"
     ]
   },
@@ -61,7 +61,7 @@
   "connect": {
     "easter_egg": "// open socket",
     "phone_label": "Tél. (sur demande sérieuse)",
-    "footer_eof": "EOF · boris@github · 2026 — still curious, still shipping_"
+    "footer_eof": "EOF · github.com/Rinzler78 · 2026 — still curious, still shipping_"
   },
 
   "id_card_terminal": {

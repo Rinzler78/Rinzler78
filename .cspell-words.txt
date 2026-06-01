@@ -147,3 +147,8 @@ desynchronization
 pypi
 demolab
 vercel
+multipage
+collapsibles
+camo
+fonttools
+résumé

@@ -48,6 +48,29 @@ def build_profile_as_code(
     )
 
 
+def build_signature_arc(domains: list[dict]) -> list[dict]:
+    """The curated `embedded → mobile → cloud → ai` narrative arc.
+
+    Selects the domains carrying ``arc_order`` (a curated subset — the years
+    and signature words are editorial, user-validated), ordered by it, and
+    projects each to ``{label, year, signature, domain_id}``. Single source
+    of truth for the hero hook and for ``content.boot_log`` consistency.
+    """
+    nodes = sorted(
+        (d for d in domains if d.get("arc_order") is not None),
+        key=lambda d: d["arc_order"],
+    )
+    return [
+        {
+            "label": d["arc_label"],
+            "year": d["arc_year"],
+            "signature": d["arc_signature"],
+            "domain_id": d["id"],
+        }
+        for d in nodes
+    ]
+
+
 def build_skills(
     techs: list[dict],
     experiences: list[dict],

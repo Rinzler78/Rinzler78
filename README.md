@@ -6,14 +6,14 @@
 
 <a href="mailto:borisleclere.pro@gmail.com">
   <picture>
-    <source media="(prefers-color-scheme: light)" srcset="assets/svg/light/header.svg" />
+    <source media="(prefers-color-scheme: dark)" srcset="assets/svg/dark/header.svg" />
     <img src="assets/svg/header.svg" width="100%" alt="Header — Boris Leclere, Freelance CTO · Architecte de Solutions. Statut : available. Basé à Senas, France. Langues : fr / en. 20 années de code." />
   </picture>
 </a>
 
 <picture>
   <source media="(prefers-color-scheme: light)" srcset="https://readme-typing-svg.demolab.com/?font=JetBrains+Mono&weight=600&size=20&pause=1200&center=true&vCenter=true&width=600&height=45&color=c75d3e&lines=Freelance+CTO;Software+Architect;AI-Driven+Development" />
-  <img src="https://readme-typing-svg.demolab.com/?font=JetBrains+Mono&weight=600&size=20&pause=1200&center=true&vCenter=true&width=600&height=45&color=f78166&lines=Freelance+CTO;Software+Architect;AI-Driven+Development" alt="Freelance CTO · Software Architect · AI-Driven Development" />
+  <img src="https://readme-typing-svg.demolab.com/?font=JetBrains+Mono&weight=600&size=20&pause=1200&center=true&vCenter=true&width=600&height=45&color=c75d3e&lines=Freelance+CTO;Software+Architect;AI-Driven+Development" alt="Freelance CTO · Software Architect · AI-Driven Development" />
 </picture>
 
 </div>
@@ -27,7 +27,7 @@ J'accompagne les équipes techniques — **startups en construction comme struct
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: light)" srcset="assets/svg/light/services.svg" />
+  <source media="(prefers-color-scheme: dark)" srcset="assets/svg/dark/services.svg" />
   <img src="assets/svg/services.svg" width="100%" alt="Services : Architecture &amp; refonte logicielle · Audit technique · Conception &amp; livraison de MVP · Industrialisation CI/CD &amp; delivery · AI-Driven Development · Developer tooling &amp; automatisation." />
 </picture>
 
@@ -36,7 +36,7 @@ J'accompagne les équipes techniques — **startups en construction comme struct
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: light)" srcset="assets/svg/light/core-expertise.svg" />
+  <source media="(prefers-color-scheme: dark)" srcset="assets/svg/dark/core-expertise.svg" />
   <img src="assets/svg/core-expertise.svg" width="100%" alt="Core expertise — niveau actuel et pic atteint pour les compétences signature : C# / .NET (expert), Python (advanced), Bluetooth / BLE / GATT (expert), AI-Driven Development (advanced)." />
 </picture>
 
@@ -46,7 +46,7 @@ J'accompagne les équipes techniques — **startups en construction comme struct
 
 <a href="https://github.com/Rinzler78?tab=repositories">
   <picture>
-    <source media="(prefers-color-scheme: light)" srcset="assets/svg/light/featured-projects.svg" />
+    <source media="(prefers-color-scheme: dark)" srcset="assets/svg/dark/featured-projects.svg" />
     <img src="assets/svg/featured-projects.svg" width="100%" alt="Featured projects — 8 dépôts publics phares avec stack et description." />
   </picture>
 </a>
@@ -57,19 +57,19 @@ J'accompagne les équipes techniques — **startups en construction comme struct
   <tr>
     <td valign="top" width="52%">
       <picture>
-        <source media="(prefers-color-scheme: light)" srcset="assets/svg/light/stack-summary.svg" />
+        <source media="(prefers-color-scheme: dark)" srcset="assets/svg/dark/stack-summary.svg" />
         <img src="assets/svg/stack-summary.svg" width="100%" alt="Stack summary — ancienneté par domaine : Embedded &amp; Systems, Mobile, Languages, Backend &amp; Web, DevOps &amp; Infrastructure, AI &amp; LLM, Blockchain." />
       </picture>
     </td>
     <td valign="top" width="26%">
       <picture>
-        <source media="(prefers-color-scheme: light)" srcset="assets/svg/light/activity-stats.svg" />
+        <source media="(prefers-color-scheme: dark)" srcset="assets/svg/dark/activity-stats.svg" />
         <img src="assets/svg/activity-stats.svg" width="100%" alt="Activity stats — années de code, technologies, dépôts publics, projets actifs." />
       </picture>
     </td>
     <td valign="top" width="22%">
       <picture>
-        <source media="(prefers-color-scheme: light)" srcset="assets/svg/light/timeline-mini.svg" />
+        <source media="(prefers-color-scheme: dark)" srcset="assets/svg/dark/timeline-mini.svg" />
         <img src="assets/svg/timeline-mini.svg" width="100%" alt="Timeline mini — jalons de parcours de 2026 à ~1990s." />
       </picture>
     </td>
@@ -79,7 +79,7 @@ J'accompagne les équipes techniques — **startups en construction comme struct
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: light)" srcset="assets/svg/light/methodology.svg" />
+  <source media="(prefers-color-scheme: dark)" srcset="assets/svg/dark/methodology.svg" />
   <img src="assets/svg/methodology.svg" width="100%" alt="How I work — principes d'ingénierie : Simple avant malin · Explicite avant implicite · Testé avant validé · Automatisé avant manuel · Maintenable avant tendance · Valeur métier avant ego technique · L'IA accélère, elle ne remplace pas la discipline." />
 </picture>
 
@@ -91,7 +91,7 @@ J'accompagne les équipes techniques — **startups en construction comme struct
 
 <picture>
   <source media="(prefers-color-scheme: light)" srcset="https://github-readme-activity-graph.vercel.app/graph?username=Rinzler78&hide_border=true&area=true&bg_color=ffffff&color=1a1a1f&line=c75d3e&point=c75d3e&title_color=c75d3e" />
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=Rinzler78&hide_border=true&area=true&bg_color=161b22&color=f0f6fc&line=f78166&point=f78166&title_color=f78166" width="100%" alt="Contribution activity graph for Rinzler78." />
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=Rinzler78&hide_border=true&area=true&bg_color=ffffff&color=1a1a1f&line=c75d3e&point=c75d3e&title_color=c75d3e" width="100%" alt="Contribution activity graph for Rinzler78." />
 </picture>
 
 <table>
@@ -99,7 +99,7 @@ J'accompagne les équipes techniques — **startups en construction comme struct
     <td valign="middle" width="40%">
       <picture>
         <source media="(prefers-color-scheme: light)" srcset="https://github-readme-stats.vercel.app/api?username=Rinzler78&show_icons=true&hide_rank=true&hide_border=true&bg_color=ffffff&title_color=c75d3e&text_color=1a1a1f&icon_color=c75d3e" />
-        <img src="https://github-readme-stats.vercel.app/api?username=Rinzler78&show_icons=true&hide_rank=true&hide_border=true&bg_color=161b22&title_color=f78166&text_color=f0f6fc&icon_color=f78166" width="100%" alt="GitHub stats for Rinzler78 (rank hidden — no inflated grade)." />
+        <img src="https://github-readme-stats.vercel.app/api?username=Rinzler78&show_icons=true&hide_rank=true&hide_border=true&bg_color=ffffff&title_color=c75d3e&text_color=1a1a1f&icon_color=c75d3e" width="100%" alt="GitHub stats for Rinzler78 (rank hidden — no inflated grade)." />
       </picture>
     </td>
     <td valign="middle" width="60%">
@@ -199,7 +199,7 @@ public sealed class BorisLeclere : FreelanceCto
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: light)" srcset="assets/svg/light/modes.svg" />
+  <source media="(prefers-color-scheme: dark)" srcset="assets/svg/dark/modes.svg" />
   <img src="assets/svg/modes.svg" width="100%" alt="Modes d'intervention : CTO temps partiel · Architecte de solutions · Renfort technique d'urgence · Cofondateur technique freelance." />
 </picture>
 
@@ -208,7 +208,7 @@ public sealed class BorisLeclere : FreelanceCto
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: light)" srcset="assets/svg/light/map.svg" />
+  <source media="(prefers-color-scheme: dark)" srcset="assets/svg/dark/map.svg" />
   <img src="assets/svg/map.svg" width="100%" alt="Localisation — Senas, Provence-Alpes-Côte d'Azur, France. Coordonnées 43.74° N, 5.06° E." />
 </picture>
 
@@ -221,14 +221,14 @@ public sealed class BorisLeclere : FreelanceCto
 
 <div align="center">
 
-<a href="mailto:borisleclere.pro@gmail.com"><img alt="Email pro" src="https://img.shields.io/badge/borisleclere.pro%40gmail.com-f78166?style=for-the-badge&logo=gmail&logoColor=white&labelColor=161b22" /></a>
-<a href="https://www.linkedin.com/in/borisleclere"><img alt="LinkedIn" src="https://img.shields.io/badge/in-LinkedIn-f78166?style=for-the-badge&logo=linkedin&logoColor=white&labelColor=161b22" /></a>
-<a href="https://www.malt.fr/profile/borisleclere"><img alt="Malt" src="https://img.shields.io/badge/Malt-f78166?style=for-the-badge&logo=malt&logoColor=white&labelColor=161b22" /></a>
-<a href="https://pypi.org/user/Rinzler78"><img alt="PyPI" src="https://img.shields.io/badge/PyPI-8b949e?style=for-the-badge&logo=pypi&logoColor=white&labelColor=161b22" /></a>
-<a href="https://discordapp.com/users/rinzler84"><img alt="Discord" src="https://img.shields.io/badge/Discord-8b949e?style=for-the-badge&logo=discord&logoColor=white&labelColor=161b22" /></a>
-<a href="https://twitter.com/BorisLeclere"><img alt="X" src="https://img.shields.io/badge/X-8b949e?style=for-the-badge&logo=x&logoColor=white&labelColor=161b22" /></a>
+<a href="mailto:borisleclere.pro@gmail.com"><img alt="Email pro" src="https://img.shields.io/badge/borisleclere.pro%40gmail.com-c75d3e?style=for-the-badge&logo=gmail&logoColor=white&labelColor=ffffff" /></a>
+<a href="https://www.linkedin.com/in/borisleclere"><img alt="LinkedIn" src="https://img.shields.io/badge/in-LinkedIn-c75d3e?style=for-the-badge&logo=linkedin&logoColor=white&labelColor=ffffff" /></a>
+<a href="https://www.malt.fr/profile/borisleclere"><img alt="Malt" src="https://img.shields.io/badge/Malt-c75d3e?style=for-the-badge&logo=malt&logoColor=white&labelColor=ffffff" /></a>
+<a href="https://pypi.org/user/Rinzler78"><img alt="PyPI" src="https://img.shields.io/badge/PyPI-6b6256?style=for-the-badge&logo=pypi&logoColor=white&labelColor=ffffff" /></a>
+<a href="https://discordapp.com/users/rinzler84"><img alt="Discord" src="https://img.shields.io/badge/Discord-6b6256?style=for-the-badge&logo=discord&logoColor=white&labelColor=ffffff" /></a>
+<a href="https://twitter.com/BorisLeclere"><img alt="X" src="https://img.shields.io/badge/X-6b6256?style=for-the-badge&logo=x&logoColor=white&labelColor=ffffff" /></a>
 
-<sub>tel · +33 6 26 26 34 61  &nbsp;·&nbsp;  <code>EOF · boris@github · 2026 — still curious, still shipping_</code></sub>
+<sub>tel · +33 6 26 26 34 61  &nbsp;·&nbsp;  <code>EOF · github.com/Rinzler78 · 2026 — still curious, still shipping_</code></sub>
 
 </div>
 
@@ -241,9 +241,9 @@ public sealed class BorisLeclere : FreelanceCto
 [OK] basketball.so  … loaded since 1991
 [WARN] imposter.sys … signal ignored
 [OK] embedded.ko    … 2006 → 2013
-[OK] mobile.ko      … 2014 →
+[OK] mobile.ko      … 2011 →
 [OK] cloud.ko       … 2020 →
-[OK] llm.ko         … 2022 →
+[OK] llm.ko         … 2023 →
 [OK] provence.env   … exported PATH=$PATH:/sunlight
 ```
 

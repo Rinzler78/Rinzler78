@@ -35,9 +35,22 @@ def test_generation_leaves_no_unrendered_jinja():
 def test_generated_svgs_are_well_formed_xml():
     gen.main()
     svgs = sorted(SVG_DIR.rglob("*.svg"))
-    assert any(s.parent.name == "light" for s in svgs)  # both variants present
+    assert any(s.parent.name == "dark" for s in svgs)  # both variants present
     for svg in svgs:
         ET.fromstring(svg.read_text(encoding="utf-8"))  # raises on malformed XML
+
+
+def test_readme_is_light_first():
+    # Light-first: the <img> default is the light (root-dir) SVG; dark is the
+    # prefers-color-scheme override. The old light/ subdir must be gone.
+    gen.main()
+    for readme in READMES:
+        text = readme.read_text(encoding="utf-8")
+        assert 'media="(prefers-color-scheme: dark)"' in text
+        assert "dark/header.svg" in text
+        assert "light/header.svg" not in text  # light is now the default, not a source
+    assert not (SVG_DIR / "light").exists()
+    assert (SVG_DIR / "dark").is_dir()
 
 
 def test_generation_is_deterministic():
@@ -64,6 +77,15 @@ def test_timeline_alt_says_parcours_not_carriere():
     fr = (ROOT / "README.md").read_text(encoding="utf-8")
     assert "jalons de parcours" in fr
     assert "jalons de carrière" not in fr
+
+
+def test_footer_exposes_no_fake_email():
+    # `boris@github` reads as a non-viable email in the footer; use a real ref.
+    gen.main()
+    for readme in READMES:
+        text = readme.read_text(encoding="utf-8")
+        assert "boris@github" not in text, f"fake email-like token in {readme.name}"
+        assert "github.com/Rinzler78" in text
 
 
 def test_readmes_embed_the_live_github_widgets():

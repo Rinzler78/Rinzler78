@@ -16,6 +16,10 @@ This repo is Boris Leclere's GitHub profile. The README and the decorative SVGs 
 
 `data/domains.json` — Taxonomy of areas of expertise. Each domain has a stable snake_case `id`, a human `label` and an `order` (display rank). The current domains: `embedded`, `mobile`, `backend`, `devops`, `ai-llm`, `blockchain`. **Embedded comes first** by convention (signature track record).
 
+### Signature arc
+
+A first-class narrative concept: the **ordered progression of domains** `embedded → mobile → cloud → ai` that summarizes Boris's track record (2006 → now). Derived from `domains.order` bounded to the major active domains — never hand-entered. It is the **hero's hook** (see *Hero* under Views) and the central differentiator of the positioning (low-level versatility → AI). Each arc step carries a switch year (single source of truth derived from `timeline.json` / `experiences.json`, **not** replicated in `content.boot_log`) and a factual signature word (e.g. `NFC drivers`, `Xamarin`, `Docker/K8s`, `LLM/RAG`).
+
 ### Tech
 
 `data/techs.json` — A "tech" is a technical skill with a root identifier that is **stable over time** (e.g. `csharp`, never `csharp-12`). Each tech carries: `id` (snake_case without version), `label`, `domain-id`, `since` (mandatory adoption year), `until` (year of last use if abandoned, optional), `notes`. It contains a `versions[]` array: each version has its own full snake_case `id` (e.g. `csharp_2_0`, `csharp_12`) + `version` (label) + `since` (year of that version).
@@ -71,10 +75,10 @@ Mode answers the question "**how can I engage Boris**". Extracted from the histo
 
 ### Theme
 
-`data/theme.json` — The repo's "design system". Three sub-blocks:
-- **palette**: named colors (`paper`, `ink`, `accent`, `term-bg`, `term-fg`, `info`, …)
-- **fonts**: `display` (Fraunces), `body` (Geist), `mono` (JetBrains Mono)
-- **patterns**: reusable components with their constants — `terminal_window` (macOS buttons, header, padding), `ecg_divider` (colors, animation duration), `prompt` ($/prompt style), `cursor` (blinking)
+`data/theme.json` — The repo's "design system". Sub-blocks:
+- **palette** (dark) and **palette_light** (the **primary**, light-first variant — paper/ink with a warm "Feu" accent). Same named keys (`bg`, `panel`, `accent`, `text`, …); the generator renders each view once per palette into `assets/svg/{,light/}`.
+- **fonts**: `display` (**Fraunces**, outlined to paths for the hero — see [ADR-007](docs/adr/0007-display-type-outlined-to-paths.md)); `body` and `mono` are **system-safe** (`system-ui` / `monospace`) since GitHub loads no web font in `<img>` SVG.
+- **patterns**: reusable components with their constants — `panel`, `bar`, `chip`, `stat_card`, `status_dot`, level-color maps.
 
 The Theme is editable separately from the other data — change it and all the SVGs re-theme themselves.
 
@@ -100,7 +104,8 @@ A `.jinja` file in `scripts/templates/` that describes the rendering of an SVG o
 
 ### View (view)
 
-A view is an SVG or a section of the README that **aggregates** several data concepts. Examples:
+A view is an SVG, a markdown **Page**, or a section that **aggregates** several data concepts. Examples:
+- *hero* = identity banner: `Profile.name` (title) + **Signature arc** (hero visual) + "who-for" subtitle + scale line + contact cluster. **Light-first** (primary variant) with a dark mirror via `<picture>`. The arc ribbon's gradient **encodes the arc** (warm at the origin `embedded` → cool at the end `ai`). Display text (name + arc) is outlined to paths (see [ADR-007](docs/adr/0007-display-type-outlined-to-paths.md)).
 - *id-card* = projection of Profile + filter of Techs (by domain)
 - *timeline-life* = sorted Timeline Events
 - *stack-{domain}* = Techs filtered by domain
@@ -108,6 +113,10 @@ A view is an SVG or a section of the README that **aggregates** several data con
 - *career* = Timeline Events filtered (highlight=true)
 
 Views are **derived**, never stored. This is the invariant that guarantees inter-view consistency.
+
+### Page
+
+A generated markdown file that is a view at document scale. `README.md` is the **front** Page (concise: hero + quick résumé + full contact cluster + links out); detail Pages live under `pages/` (e.g. `pages/stack.md`, `pages/journey.md`, `pages/projects.md`, `pages/toolbox.md`), each an aggregated view of the same `data/`. Pages are a first-class generation target alongside SVG views, rendered for FR + EN (`pages/en/*`) with the same dual-palette `<picture>` mechanism. See [ADR-008](docs/adr/0008-in-repo-multipage.md).
 
 ---
 
@@ -123,12 +132,12 @@ See [ADR-004](docs/adr/0004-i18n-bilingual-readme.md).
 
 ## Adaptive display
 
-The SVGs are generated in **two variants** (`assets/svg/dark/*` and `assets/svg/light/*`). The README uses `<picture>` with `prefers-color-scheme` to serve the right variant according to the visitor's GitHub preference.
+The SVGs are generated in **two variants**, **light-first**: the **light** variant is primary and lives in the **root** dir (`assets/svg/*`), served by the `<img>` fallback; the **dark** variant lives in `assets/svg/dark/*` and is the `prefers-color-scheme: dark` override. The README uses `<picture>` so the visitor's GitHub preference picks the right one, but **light is the default**.
 
 ```md
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/svg/dark/hero.svg">
-  <img src="assets/svg/light/hero.svg" alt="...">
+  <img src="assets/svg/hero.svg" alt="...">
 </picture>
 ```
 

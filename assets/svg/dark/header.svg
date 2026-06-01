@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" width="1200" height="200" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Header — Boris Leclere, Freelance CTO · Architecte de Solutions. Disponible. Basé en Provence-Alpes-Côte d'Azur.">
+  <title>Boris Leclere — header</title>
+  <desc>Bandeau d'identité du dashboard : nom, rôle, statut, langues, location.</desc>
+
+  <rect width="1200" height="200" fill="#0d1117"/>
+
+  <rect x="0" y="0" width="1200" height="200" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+
+  <!-- accent stroke gauche -->
+  <rect x="0" y="0" width="4" height="200" rx="2" fill="#f78166"/>
+
+  <!-- name -->
+  <text x="40" y="68" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="42" font-weight="700" fill="#f0f6fc" letter-spacing="-0.02em">Boris Leclere</text>
+
+  <!-- role -->
+  <text x="40" y="98" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="14" fill="#f78166" letter-spacing="0.02em">Freelance CTO · Architecte de Solutions</text>
+
+  <!-- status row -->
+  <g transform="translate(40 130)">
+    <circle cx="6" cy="8" r="4" fill="#3fb950">
+    <animate attributeName="fill-opacity" values="1;0.4;1" dur="1.8s" repeatCount="indefinite"/>
+  </circle>
+    <text x="20" y="12" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="12" fill="#3fb950" font-weight="600">available</text>
+
+    <text x="120" y="12" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="12" fill="#8b949e">·</text>
+    <text x="135" y="12" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="12" fill="#f0f6fc">Senas, France</text>
+
+    <text x="380" y="12" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="12" fill="#8b949e">·</text>
+    <text x="395" y="12" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="12" fill="#f0f6fc">fr / en</text>
+
+    <text x="465" y="12" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="12" fill="#8b949e">·</text>
+    <text x="480" y="12" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="12" fill="#f0f6fc">20 years of code</text>
+  </g>
+
+  <!-- contact CTAs en haut à droite -->
+  <g transform="translate(820 36)">
+    <a href="mailto:borisleclere.pro@gmail.com">
+      <rect x="0" y="0" width="170" height="36" rx="6" fill="#f78166" stroke="#f78166" stroke-width="1"/>
+      <text x="85" y="23" text-anchor="middle" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#0d1117">✉  email</text>
+    </a>
+    <a href="https://www.linkedin.com/in/borisleclere">
+      <rect x="180" y="0" width="170" height="36" rx="6" fill="#1c2128" stroke="#30363d" stroke-width="1"/>
+      <text x="265" y="23" text-anchor="middle" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#f0f6fc">in  linkedin</text>
+    </a>
+  </g>
+
+  <!-- tagline en bas -->
+  <text x="40" y="178" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="11" fill="#8b949e" font-style="italic">// still curious · embedded → cloud → ai</text>
+</svg>
