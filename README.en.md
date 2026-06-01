@@ -7,7 +7,7 @@
 <a href="mailto:borisleclere.pro@gmail.com">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/svg/en/dark/header.svg" />
-    <img src="assets/svg/en/header.svg" width="100%" alt="Header — Boris Leclere, Freelance CTO - Solutions Architect. Statut : available. Basé à Senas, France. Langues : fr / en. 20 années de code." />
+    <img src="assets/svg/en/header.svg" width="100%" alt="Header — Boris Leclere, Freelance CTO - Solutions Architect. Status: available. Based in Senas, France. Languages: fr / en. 20 years of code." />
   </picture>
 </a>
 

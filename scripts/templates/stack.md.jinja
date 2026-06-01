@@ -32,6 +32,7 @@
 |---|---|---|---|---|
 {% for t in ds %}| {{ t.label }} | {{ t.level_current }} | {{ t.level_max }} | {{ t.since or '—' }}{% if t.since %}–{{ t.until or 'now' }}{% endif %} | {{ t.display_version | default('—') }} |
 {% endfor %}
+
 {% endif %}
 {% endfor %}
 

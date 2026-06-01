@@ -37,12 +37,14 @@
 | NFC | explored | working | 2011–2014 | ISO 14443 / 15693 (Mifare) |
 | GPS | explored | working | 2009–2012 | NMEA · A-GPS |
 | Computer Vision (embedded) | explored | explored | 2008–2009 | Industrial camera · PIC16F1938 |
+
 **Mobile**
 
 | Compétence | Actuel | Pic | Période | Versions |
 |---|---|---|---|---|
 | Xamarin (Forms, iOS, Android) | expert | expert | 2014–now | Forms 2.3 → 4.7 · Essentials 1.x |
 | Windows Mobile | explored | explored | 2013–2014 | 6.x |
+
 **Languages**
 
 | Compétence | Actuel | Pic | Période | Versions |
@@ -53,6 +55,7 @@
 | Bash / Shell | professional | professional | 2014–now | Bash 5.x |
 | Objective-C | working | working | 2011–2020 | iOS 5 → 10 |
 | TypeScript | explored | explored | 2023–now | 5.x |
+
 **Backend &amp; Web**
 
 | Compétence | Actuel | Pic | Période | Versions |
@@ -65,6 +68,7 @@
 | Node.js | explored | explored | 2019–now | 20 / 22 / 24 |
 | FastAPI | explored | explored | 2023–now | 0.110+ |
 | React + Next.js | explored | explored | 2023–now | React 18+, Next 14+ |
+
 **DevOps &amp; Infrastructure**
 
 | Compétence | Actuel | Pic | Période | Versions |
@@ -72,6 +76,7 @@
 | Git | expert | expert | 2009–now | 2.x |
 | Docker | advanced | advanced | 2020–now | 24.x+ · Compose v2 |
 | GitHub Actions | professional | professional | 2014–now | — |
+
 **AI &amp; LLM**
 
 | Compétence | Actuel | Pic | Période | Versions |
@@ -79,6 +84,7 @@
 | AI-Driven Development | advanced | advanced | 2022–now | Claude Code (primary) · Codex · OpenCode · ChatGPT |
 | LiteLLM | explored | explored | 2023–now | — |
 | Anthropic Claude API / SDK | explored | explored | 2023–now | SDK 0.x |
+
 **Blockchain**
 
 | Compétence | Actuel | Pic | Période | Versions |
@@ -88,6 +94,7 @@
 | CometBFT | explored | explored | 2023–now | REST · WebSocket · gRPC |
 | Idena | explored | explored | 2020–now | Node ops |
 | AIOZ Network | explored | explored | 2023–now | Node ops |
+
 
 <details>
 <summary><code>$ cat Boris.cs  # profile as code</code></summary>

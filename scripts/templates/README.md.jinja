@@ -10,7 +10,7 @@
 <a href="mailto:{{ profile.contacts.email_pro }}">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/svg/{{ svg }}dark/header.svg" />
-    <img src="assets/svg/{{ svg }}header.svg" width="100%" alt="Header — {{ profile.name }}, {{ profile.role }}. Statut : {{ profile.status }}. Basé à {{ profile.location.city }}, {{ profile.location.country }}. Langues : {{ profile.languages | join(' / ') }}. {{ 2026 - profile.since_coding }} années de code." />
+    <img src="assets/svg/{{ svg }}header.svg" width="100%" alt="{% if lang == 'en' %}Header — {{ profile.name }}, {{ profile.role }}. Status: {{ profile.status }}. Based in {{ profile.location.city }}, {{ profile.location.country }}. Languages: {{ profile.languages | join(' / ') }}. {{ 2026 - profile.since_coding }} years of code.{% else %}Header — {{ profile.name }}, {{ profile.role }}. Statut : {{ profile.status }}. Basé à {{ profile.location.city }}, {{ profile.location.country }}. Langues : {{ profile.languages | join(' / ') }}. {{ 2026 - profile.since_coding }} années de code.{% endif %}" />
   </picture>
 </a>
 

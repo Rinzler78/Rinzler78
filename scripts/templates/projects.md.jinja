@@ -15,14 +15,15 @@
 ## {% if lang == 'en' %}All public repositories, by domain{% else %}Tous les dépôts publics, par domaine{% endif %}
 
 {% for d in domains | sort(attribute='order') %}
-{%- set dp = projects | selectattr('domain', 'equalto', d.id) | list %}
+{%- set dp = projects | selectattr('domain', 'equalto', d.id) | selectattr('description') | list %}
 {% if dp %}
 **{{ d.label }}**
 
 | {% if lang == 'en' %}Project | Stack | State | Description{% else %}Projet | Stack | État | Description{% endif %} |
 |---|---|---|---|
-{% for p in dp %}| [{{ p.name }}]({{ p.github_url }}) | {{ p.stack_label | default('—') }} | {{ p.state }} | {{ p.description }} |
+{% for p in dp | sort(attribute='highlight', reverse=true) %}| [{{ p.name }}]({{ p.github_url }}) | {{ p.stack_label | default('—') }} | {{ p.state }} | {{ p.description }} |
 {% endfor %}
+
 {% endif %}
 {% endfor %}
 
