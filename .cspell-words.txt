@@ -152,3 +152,12 @@ collapsibles
 camo
 fonttools
 résumé
+Fraunces
+upem
+hmtx
+cmap
+glyphs
+glyph
+outlined
+gname
+hhea

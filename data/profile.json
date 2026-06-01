@@ -7,6 +7,8 @@
   "since_coding": 2006,
   "tagline": "still curious",
   "taglines": ["Freelance CTO", "Software Architect", "AI-Driven Development"],
+  "hero_subtitle": "des startups en construction aux structures établies",
+  "hero_scale": "~20 ans de code — de l'embarqué bas-niveau aux LLM en production",
 
   "location": {
     "city": "Senas",

@@ -1,51 +1,67 @@
 {%- import '_panel.svg.jinja' as p -%}
-{%- set width = 1200 -%}
-{%- set height = 200 -%}
+{#- Hero banner — light-first. Name + arc set in Fraunces, outlined to paths
+    (ADR-007); the arc ribbon gradient encodes embedded(warm) -> ai(cool). -#}
 {%- set pal = theme.palette -%}
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {{ width }} {{ height }}" width="{{ width }}" height="{{ height }}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Header — {{ profile.name }}, {{ profile.role }}. Disponible. Basé en {{ profile.location.region }}.">
-  <title>{{ profile.name }} — header</title>
-  <desc>Bandeau d'identité du dashboard : nom, rôle, statut, langues, location.</desc>
+{%- set stops = theme.patterns.arc.stops -%}
+{%- set width = 1200 -%}
+{%- set height = 300 -%}
+{%- set arc_x0 = 140 -%}
+{%- set arc_x1 = 1060 -%}
+{%- set n_arc = signature_arc | length -%}
+{%- set step = (arc_x1 - arc_x0) / (n_arc - 1) -%}
+{%- set name = outline(profile.name, 66) -%}
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {{ width }} {{ height }}" width="{{ width }}" height="{{ height }}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="{{ profile.name }} — {{ profile.role }}. {{ profile.hero_subtitle }}. Arc : {% for n in signature_arc %}{{ n.label }} {{ n.year }}{{ ', ' if not loop.last else '' }}{% endfor %}. {{ profile.hero_scale }}.">
+  <title>{{ profile.name }} — hero</title>
+  <desc>Bandeau d'identité : nom, rôle, arc de carrière embedded → mobile → cloud → ai, et échelle d'expérience.</desc>
+
+  <defs>
+    <linearGradient id="arc-h" x1="0" y1="0" x2="1" y2="0">
+      {% for key in stops %}
+      <stop offset="{{ (loop.index0 / (n_arc - 1)) | round(3) }}" stop-color="{{ pal[key] }}"/>
+      {% endfor %}
+    </linearGradient>
+    <linearGradient id="arc-v" x1="0" y1="0" x2="0" y2="1">
+      {% for key in stops %}
+      <stop offset="{{ (loop.index0 / (n_arc - 1)) | round(3) }}" stop-color="{{ pal[key] }}"/>
+      {% endfor %}
+    </linearGradient>
+  </defs>
 
   <rect width="{{ width }}" height="{{ height }}" fill="{{ pal.bg }}"/>
+  <rect x="1" y="1" width="{{ width - 2 }}" height="{{ height - 2 }}" rx="14" fill="{{ pal.panel }}" stroke="{{ pal.border }}" stroke-width="1"/>
+  <rect x="0" y="0" width="6" height="{{ height }}" rx="3" fill="url(#arc-v)"/>
 
-  {{ p.panel(0, 0, width, height, '') }}
-
-  <!-- accent stroke gauche -->
-  <rect x="0" y="0" width="4" height="{{ height }}" rx="2" fill="{{ pal.accent }}"/>
-
-  <!-- name -->
-  <text x="40" y="68" font-family="'{{ theme.fonts.display }}', {{ theme.fonts.display_fallback }}" font-size="42" font-weight="700" fill="{{ pal.text }}" letter-spacing="-0.02em">{{ profile.name }}</text>
-
-  <!-- role -->
-  <text x="40" y="98" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="14" fill="{{ pal.accent }}" letter-spacing="0.02em">{{ profile.role }}</text>
-
-  <!-- status row -->
-  <g transform="translate(40 130)">
-    {{ p.status_dot(6, 8) }}
-    <text x="20" y="12" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="12" fill="{{ pal.success }}" font-weight="600">{{ profile.status }}</text>
-
-    <text x="120" y="12" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="12" fill="{{ pal.text_muted }}">·</text>
-    <text x="135" y="12" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="12" fill="{{ pal.text }}">{{ profile.location.city }}, {{ profile.location.country }}</text>
-
-    <text x="380" y="12" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="12" fill="{{ pal.text_muted }}">·</text>
-    <text x="395" y="12" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="12" fill="{{ pal.text }}">{{ profile.languages | join(' / ') }}</text>
-
-    <text x="465" y="12" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="12" fill="{{ pal.text_muted }}">·</text>
-    <text x="480" y="12" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="12" fill="{{ pal.text }}">{{ 2026 - profile.since_coding }} years of code</text>
+  {#- status row, top-right -#}
+  <g transform="translate(872 38)">
+    {{ p.status_dot(8, 8, 'success') }}
+    <text x="22" y="12" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="12" fill="{{ pal.success }}" font-weight="600">{{ profile.status }}</text>
+    <text x="{{ 22 + (profile.status | length) * 7 + 8 }}" y="12" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="12" fill="{{ pal.text_muted }}">· {{ profile.location.city }}, {{ profile.location.country }} · {{ profile.languages | join(' / ') }}</text>
   </g>
 
-  <!-- contact CTAs en haut à droite -->
-  <g transform="translate({{ width - 380 }} 36)">
-    <a href="mailto:{{ profile.contacts.email_pro }}">
-      <rect x="0" y="0" width="170" height="36" rx="6" fill="{{ pal.accent }}" stroke="{{ pal.accent }}" stroke-width="1"/>
-      <text x="85" y="23" text-anchor="middle" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="12" font-weight="600" fill="{{ pal.bg }}">✉  email</text>
-    </a>
-    <a href="{{ profile.links.linkedin }}">
-      <rect x="180" y="0" width="170" height="36" rx="6" fill="{{ pal.panel_alt }}" stroke="{{ pal.border }}" stroke-width="1"/>
-      <text x="265" y="23" text-anchor="middle" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="12" font-weight="600" fill="{{ pal.text }}">in  linkedin</text>
-    </a>
-  </g>
+  {#- name — Fraunces, outlined to a path (ADR-007) -#}
+  <g transform="translate(56 96)" fill="{{ pal.text }}"><path d="{{ name.path }}"/></g>
 
-  <!-- tagline en bas -->
-  <text x="40" y="178" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="11" fill="{{ pal.text_muted }}" font-style="italic">// {{ profile.tagline }} · embedded → cloud → ai</text>
+  {#- role + who-for subtitle -#}
+  <text x="58" y="132" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="15" font-weight="600" fill="{{ pal.accent }}">{{ profile.role }}</text>
+  <text x="58" y="156" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="13" fill="{{ pal.text_muted }}">— {{ profile.hero_subtitle }}</text>
+
+  {#- signature arc ribbon -#}
+  <line x1="{{ arc_x0 }}" y1="216" x2="{{ arc_x1 }}" y2="216" stroke="url(#arc-h)" stroke-width="2.5" stroke-linecap="round"/>
+  {% for n in signature_arc %}
+  {%- set nx = (arc_x0 + loop.index0 * step) | round(1) -%}
+  {%- set col = pal[stops[loop.index0]] -%}
+  {%- set lab = outline(n.label, 17) -%}
+  <g>
+    <circle cx="{{ nx }}" cy="216" r="13" fill="{{ col }}" opacity="0.16">
+      <animate attributeName="opacity" values="0.16;0.34;0.16" dur="3s" begin="{{ loop.index0 * 0.45 }}s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="{{ nx }}" cy="216" r="6.5" fill="{{ col }}"/>
+    <g transform="translate({{ (nx - lab.width / 2) | round(1) }} 198)" fill="{{ col }}"><path d="{{ lab.path }}"/></g>
+    <text x="{{ nx }}" y="242" text-anchor="middle" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="14" font-weight="700" fill="{{ pal.text }}">{{ n.year }}</text>
+    <text x="{{ nx }}" y="260" text-anchor="middle" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="10.5" fill="{{ pal.text_muted }}">{{ n.signature | xml }}</text>
+  </g>
+  {% endfor %}
+
+  {#- experience scale -#}
+  <text x="58" y="288" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="11" font-style="italic" fill="{{ pal.text_dim }}">// {{ profile.hero_scale }}</text>
 </svg>

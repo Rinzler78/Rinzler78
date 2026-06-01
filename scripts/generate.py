@@ -34,6 +34,7 @@ _REPO_ROOT = pathlib.Path(__file__).resolve().parent.parent
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
 
+from scripts.font_outline import outline_text  # noqa: E402
 from scripts.translate import CACHE, localize_data  # noqa: E402
 from scripts.view_builder import (  # noqa: E402
     build_profile_as_code,
@@ -45,6 +46,7 @@ REPO = pathlib.Path(__file__).resolve().parent.parent
 DATA = REPO / "data"
 TEMPLATES = REPO / "scripts" / "templates"
 SVG_OUT = REPO / "assets" / "svg"
+FONT_DISPLAY = str(REPO / "assets" / "fonts" / "Fraunces-Display.ttf")
 README_OUT = REPO / "README.md"
 README_EN_OUT = REPO / "README.en.md"
 
@@ -194,7 +196,12 @@ def make_env(data: dict[str, Any]) -> Environment:
 
     env.filters["xml"] = xml_escape
 
+    def outline(text: str, size: float) -> dict:
+        """Outline display text (name, arc labels) to an SVG path — ADR-007."""
+        return outline_text(text, FONT_DISPLAY, size)
+
     env.globals.update(data)
+    env.globals["outline"] = outline
     env.globals["techs_by_domain"] = techs_by_domain
     env.globals["domain_by_id"] = domain_by_id
     env.globals["tech_by_id"] = tech_by_id
