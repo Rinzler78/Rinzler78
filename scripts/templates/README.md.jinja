@@ -1,5 +1,6 @@
 {%- set svg = svg | default('') -%}
 {%- set lang = lang | default('fr') -%}
+{%- set pages = 'pages/' ~ ('en/' if lang == 'en' else '') -%}
 <div align="right">
 <sub>{% if lang == 'en' %}<a href="README.md">🇫🇷 Français</a> · <b>🇬🇧 English</b>{% else %}<b>🇫🇷 Français</b> · <a href="README.en.md">🇬🇧 English</a>{% endif %}</sub>
 </div>
@@ -29,62 +30,9 @@
 
 <div align="center">
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/svg/{{ svg }}dark/services.svg" />
-  <img src="assets/svg/{{ svg }}services.svg" width="100%" alt="Services : {% for s in services | selectattr('visible') | sort(attribute='priority') %}{{ s.title }}{% if not loop.last %} · {% endif %}{% endfor %}." />
-</picture>
+### {% if lang == 'en' %}Explore{% else %}Explorer{% endif %}
 
-</div>
-
-<div align="center">
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/svg/{{ svg }}dark/core-expertise.svg" />
-  <img src="assets/svg/{{ svg }}core-expertise.svg" width="100%" alt="Core expertise — niveau actuel et pic atteint pour les compétences signature : {% for s in techs | selectattr('featured') %}{{ s.label }} ({{ s.level_current }}){% if not loop.last %}, {% endif %}{% endfor %}." />
-</picture>
-
-</div>
-
-<div align="center">
-
-<a href="https://github.com/{{ profile.username }}?tab=repositories">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/svg/{{ svg }}dark/featured-projects.svg" />
-    <img src="assets/svg/{{ svg }}featured-projects.svg" width="100%" alt="Featured projects — {{ projects_highlighted() | length }} dépôts publics phares avec stack et description." />
-  </picture>
-</a>
-
-</div>
-
-<table align="center">
-  <tr>
-    <td valign="top" width="52%">
-      <picture>
-        <source media="(prefers-color-scheme: dark)" srcset="assets/svg/{{ svg }}dark/stack-summary.svg" />
-        <img src="assets/svg/{{ svg }}stack-summary.svg" width="100%" alt="Stack summary — ancienneté par domaine : {% for d in domains | sort(attribute='order') %}{{ d.label }}{% if not loop.last %}, {% endif %}{% endfor %}." />
-      </picture>
-    </td>
-    <td valign="top" width="26%">
-      <picture>
-        <source media="(prefers-color-scheme: dark)" srcset="assets/svg/{{ svg }}dark/activity-stats.svg" />
-        <img src="assets/svg/{{ svg }}activity-stats.svg" width="100%" alt="Activity stats — années de code, technologies, dépôts publics, projets actifs." />
-      </picture>
-    </td>
-    <td valign="top" width="22%">
-      <picture>
-        <source media="(prefers-color-scheme: dark)" srcset="assets/svg/{{ svg }}dark/timeline-mini.svg" />
-        <img src="assets/svg/{{ svg }}timeline-mini.svg" width="100%" alt="Timeline mini — jalons de parcours de {{ (timeline | first).year }} à {{ (timeline | last).year }}." />
-      </picture>
-    </td>
-  </tr>
-</table>
-
-<div align="center">
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/svg/{{ svg }}dark/methodology.svg" />
-  <img src="assets/svg/{{ svg }}methodology.svg" width="100%" alt="How I work — principes d'ingénierie : {% for m in methodology | sort(attribute='order') %}{{ m.title }}{% if not loop.last %} · {% endif %}{% endfor %}." />
-</picture>
+**[{% if lang == 'en' %}Stack{% else %}Stack{% endif %}]({{ pages }}stack.md)**  ·  **[{% if lang == 'en' %}Journey{% else %}Parcours{% endif %}]({{ pages }}journey.md)**  ·  **[{% if lang == 'en' %}Projects{% else %}Projets{% endif %}]({{ pages }}projects.md)**  ·  **[{% if lang == 'en' %}Working with me{% else %}Travailler avec moi{% endif %}]({{ pages }}working-with-me.md)**
 
 </div>
 
@@ -113,40 +61,6 @@
     </td>
   </tr>
 </table>
-
-</div>
-
-<details>
-<summary><code>$ cat Boris.cs  # profile as code</code></summary>
-
-```csharp
-{{ profile_as_code | replace('&amp;', '&') }}
-```
-
-</details>
-
-<details>
-<summary><code>$ ./stack --detailed  # technical stack, all skills</code></summary>
-
-<br/>
-
-{% for d in domains | sort(attribute='order') %}
-{%- set ds = techs_by_domain(d.id) | sort(attribute='score_current', reverse=true) | list %}
-**{{ d.label }}**
-
-| Skill | Now | Peak | Active | Versions |
-|---|---|---|---|---|
-{% for t in ds %}| {{ t.label }} | {{ t.level_current }} | {{ t.level_max }} | {{ t.since or '—' }}{% if t.since %}–{{ t.until or 'now' }}{% endif %} | {{ t.display_version | default('—') }} |
-{% endfor %}
-{% endfor %}
-</details>
-
-<div align="center">
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/svg/{{ svg }}dark/modes.svg" />
-  <img src="assets/svg/{{ svg }}modes.svg" width="100%" alt="Modes d'intervention : {% for m in modes | sort(attribute='order') %}{{ m.label }}{% if not loop.last %} · {% endif %}{% endfor %}." />
-</picture>
 
 </div>
 

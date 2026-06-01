@@ -1,0 +1,47 @@
+{%- import '_pieces.md.jinja' as pc -%}
+{%- set svg = svg | default('') -%}
+{%- set root = root | default('../') -%}
+{%- set lang = lang | default('fr') -%}
+{{ pc.back(root, lang) }}
+
+# {% if lang == 'en' %}Technical stack{% else %}Stack technique{% endif %}
+
+<div align="center">
+{{ pc.fig(root, svg, 'core-expertise.svg', 'Core expertise — current level and peak reached') }}
+</div>
+
+<table align="center">
+  <tr>
+    <td valign="top" width="70%">
+      {{ pc.fig(root, svg, 'stack-summary.svg', 'Seniority per domain') }}
+    </td>
+    <td valign="top" width="30%">
+      {{ pc.fig(root, svg, 'activity-stats.svg', 'Activity stats') }}
+    </td>
+  </tr>
+</table>
+
+## {% if lang == 'en' %}All skills, by domain{% else %}Toutes les compétences, par domaine{% endif %}
+
+{% for d in domains | sort(attribute='order') %}
+{%- set ds = techs_by_domain(d.id) | sort(attribute='score_current', reverse=true) | list %}
+{% if ds %}
+**{{ d.label }}**
+
+| {% if lang == 'en' %}Skill | Now | Peak | Active | Versions{% else %}Compétence | Actuel | Pic | Période | Versions{% endif %} |
+|---|---|---|---|---|
+{% for t in ds %}| {{ t.label }} | {{ t.level_current }} | {{ t.level_max }} | {{ t.since or '—' }}{% if t.since %}–{{ t.until or 'now' }}{% endif %} | {{ t.display_version | default('—') }} |
+{% endfor %}
+{% endif %}
+{% endfor %}
+
+<details>
+<summary><code>$ cat Boris.cs  # profile as code</code></summary>
+
+```csharp
+{{ profile_as_code | replace('&amp;', '&') }}
+```
+
+</details>
+
+{{ pc.back(root, lang) }}

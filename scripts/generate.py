@@ -49,6 +49,13 @@ SVG_OUT = REPO / "assets" / "svg"
 FONT_DISPLAY = str(REPO / "assets" / "fonts" / "Fraunces-Display.ttf")
 README_OUT = REPO / "README.md"
 README_EN_OUT = REPO / "README.en.md"
+PAGES_OUT = REPO / "pages"
+PAGE_TEMPLATES = [
+    "stack.md.jinja",
+    "journey.md.jinja",
+    "projects.md.jinja",
+    "working-with-me.md.jinja",
+]
 
 
 _AMP_RE = re.compile(r"&(?!(?:amp|lt|gt|quot|apos|#\d+|#x[0-9a-fA-F]+);)")
@@ -245,6 +252,16 @@ def _render_both_palettes(env: Environment, theme: dict, svg_dir: pathlib.Path) 
     theme["palette"] = light  # restore: README badges use the light/default palette
 
 
+def _render_pages(
+    env: Environment, svg: str, root: str, out_dir: pathlib.Path, lang: str
+) -> None:
+    """Render the detail pages for one language (ADR-008)."""
+    out_dir.mkdir(parents=True, exist_ok=True)
+    for tpl in PAGE_TEMPLATES:
+        result = env.get_template(tpl).render(svg=svg, root=root, lang=lang)
+        (out_dir / tpl[: -len(".jinja")]).write_text(result, encoding="utf-8")
+
+
 def main() -> int:
     raw = load_data()
     # EN data: localize the translatable fields from the committed cache, then
@@ -274,6 +291,12 @@ def main() -> int:
         encoding="utf-8",
     )
     print("  ✓ README.md + README.en.md")
+
+    # Detail pages (ADR-008): README is the concise front, the deep content
+    # lives in linked pages, generated for FR (pages/) and EN (pages/en/).
+    _render_pages(env_fr, svg="", root="../", out_dir=PAGES_OUT, lang="fr")
+    _render_pages(env_en, svg="en/", root="../../", out_dir=PAGES_OUT / "en", lang="en")
+    print(f"  ✓ pages/(en/){{{', '.join(t[:-6] for t in PAGE_TEMPLATES)}}}")
 
     print()
     print("[generate.py] OK")

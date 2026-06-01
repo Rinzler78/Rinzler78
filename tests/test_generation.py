@@ -18,11 +18,50 @@ READMES = [ROOT / "README.md", ROOT / "README.en.md"]
 
 
 def _read_all() -> dict[str, str]:
-    # Recursive: covers all SVG variants (fr/en × dark/light) plus both READMEs.
+    # Recursive: covers all SVG variants (fr/en × dark/light), both READMEs,
+    # and every generated detail page (fr + en).
     out = {r.name: r.read_text(encoding="utf-8") for r in READMES}
     for svg in sorted(SVG_DIR.rglob("*.svg")):
         out[str(svg.relative_to(SVG_DIR))] = svg.read_text(encoding="utf-8")
+    for page in sorted((ROOT / "pages").rglob("*.md")):
+        out[str(page.relative_to(ROOT))] = page.read_text(encoding="utf-8")
     return out
+
+
+def test_front_links_to_the_four_detail_pages():
+    gen.main()
+    fr = (ROOT / "README.md").read_text(encoding="utf-8")
+    for page in ("stack", "journey", "projects", "working-with-me"):
+        assert f"(pages/{page}.md)" in fr
+        assert (ROOT / "pages" / f"{page}.md").exists()
+    en = (ROOT / "README.en.md").read_text(encoding="utf-8")
+    for page in ("stack", "journey", "projects", "working-with-me"):
+        assert f"(pages/en/{page}.md)" in en
+        assert (ROOT / "pages" / "en" / f"{page}.md").exists()
+
+
+def test_front_is_lean_with_dashboards_moved_to_pages():
+    gen.main()
+    fr = (ROOT / "README.md").read_text(encoding="utf-8")
+    for moved in ("services.svg", "core-expertise.svg", "featured-projects.svg"):
+        assert moved not in fr
+    assert "core-expertise.svg" in (ROOT / "pages" / "stack.md").read_text(
+        encoding="utf-8"
+    )
+    assert "featured-projects.svg" in (
+        (ROOT / "pages" / "projects.md").read_text(encoding="utf-8")
+    )
+    assert "services.svg" in (
+        (ROOT / "pages" / "working-with-me.md").read_text(encoding="utf-8")
+    )
+
+
+def test_pages_back_link_resolves_per_language():
+    gen.main()
+    assert "../README.md" in (ROOT / "pages" / "stack.md").read_text(encoding="utf-8")
+    assert "../../README.en.md" in (
+        (ROOT / "pages" / "en" / "stack.md").read_text(encoding="utf-8")
+    )
 
 
 def test_generation_leaves_no_unrendered_jinja():
@@ -85,9 +124,10 @@ def test_quality_manifesto_is_localized_per_readme():
 
 def test_timeline_alt_says_parcours_not_carriere():
     # 1990s milestones are personal (basketball), not career — use "parcours".
+    # The timeline now lives on the journey page.
     gen.main()
-    fr = (ROOT / "README.md").read_text(encoding="utf-8")
-    assert "jalons de parcours" in fr
+    fr = (ROOT / "pages" / "journey.md").read_text(encoding="utf-8")
+    assert "jalons de parcours" in fr.lower()
     assert "jalons de carrière" not in fr
 
 

@@ -1,0 +1,39 @@
+{%- import '_pieces.md.jinja' as pc -%}
+{%- set svg = svg | default('') -%}
+{%- set root = root | default('../') -%}
+{%- set lang = lang | default('fr') -%}
+{{ pc.back(root, lang) }}
+
+# {% if lang == 'en' %}Working with me{% else %}Travailler avec moi{% endif %}
+
+<div align="center">
+{{ pc.fig(root, svg, 'services.svg', 'Services: ' ~ (services | selectattr('visible') | map(attribute='title') | join(' · '))) }}
+</div>
+
+## {% if lang == 'en' %}What you can buy{% else %}Ce que vous pouvez acheter{% endif %}
+
+{% for s in services | selectattr('visible') | sort(attribute='priority') %}
+- **{{ s.title }}** — {{ s.short_description }}
+{% endfor %}
+
+<div align="center">
+{{ pc.fig(root, svg, 'modes.svg', 'Engagement modes') }}
+</div>
+
+## {% if lang == 'en' %}How to engage me{% else %}Comment m'engager{% endif %}
+
+{% for m in modes | sort(attribute='order') %}
+- **{{ m.label }}** — {{ m.description }}
+{% endfor %}
+
+<div align="center">
+{{ pc.fig(root, svg, 'methodology.svg', 'Engineering principles') }}
+</div>
+
+## {% if lang == 'en' %}How I work{% else %}Méthode{% endif %}
+
+{% for m in methodology | sort(attribute='order') %}
+- **{{ m.title }}** — {{ m.body }}
+{% endfor %}
+
+{{ pc.back(root, lang) }}

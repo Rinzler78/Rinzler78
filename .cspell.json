@@ -16,6 +16,7 @@
     "scripts/templates/**",
     "README.md",
     "README.en.md",
+    "pages/**",
     "spec-github-profile-md-only.md",
     ".cspell.json",
     ".cspell-fr.json",

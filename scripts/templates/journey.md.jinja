@@ -1,0 +1,26 @@
+{%- import '_pieces.md.jinja' as pc -%}
+{%- set svg = svg | default('') -%}
+{%- set root = root | default('../') -%}
+{%- set lang = lang | default('fr') -%}
+{{ pc.back(root, lang) }}
+
+# {% if lang == 'en' %}Journey{% else %}Parcours{% endif %}
+
+<div align="center">
+{% if lang == 'en' %}{{ pc.fig(root, svg, 'timeline-mini.svg', 'Career milestones from ' ~ (timeline | first).year ~ ' to ' ~ (timeline | last).year) }}{% else %}{{ pc.fig(root, svg, 'timeline-mini.svg', 'Jalons de parcours de ' ~ (timeline | first).year ~ ' à ' ~ (timeline | last).year) }}{% endif %}
+</div>
+
+## {% if lang == 'en' %}Milestones{% else %}Jalons{% endif %}
+
+| {% if lang == 'en' %}Year | Milestone | Stack{% else %}Année | Jalon | Stack{% endif %} |
+|---|---|---|
+{% for e in timeline %}| **{{ e.year }}** | {{ e.label }}{% if e.description %} — {{ e.description }}{% endif %} | {{ e.techs_summary or '' }} |
+{% endfor %}
+
+## {% if lang == 'en' %}Professional experience{% else %}Expérience professionnelle{% endif %}
+
+{% for x in experiences | sort(attribute='start', reverse=true) %}
+- **{{ x.start }} → {{ x.end or ('now' if lang == 'en' else "aujourd'hui") }}** · {{ x.role }} — {{ x.org }}{{ (' _(' ~ x.type ~ ')_') if x.type else '' }}
+{% endfor %}
+
+{{ pc.back(root, lang) }}

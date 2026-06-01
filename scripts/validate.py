@@ -19,40 +19,47 @@ import sys
 import defusedxml.ElementTree as ET  # secure XML parsing (bandit B314/B405)
 
 REPO = pathlib.Path(__file__).resolve().parent.parent
-READMES = [REPO / "README.md", REPO / "README.en.md"]
 SVG_DIR = REPO / "assets" / "svg"
+
+# src/srcset/href attributes + markdown links `](target)`. Refs are resolved
+# relative to each document's own directory (pages/ use ../assets/... paths).
+_REF_RE = re.compile(r'(?:src|srcset|href)\s*=\s*"([^"]+)"|\]\(([^)]+)\)')
+_SKIP_PREFIXES = ("mailto:", "tel:", "data:", "#", "//")
+
+
+def _docs() -> list[pathlib.Path]:
+    docs = [REPO / "README.md", REPO / "README.en.md"]
+    docs += sorted((REPO / "pages").rglob("*.md"))
+    return docs
 
 
 def validate_readme_refs() -> list[str]:
-    """Return the list of missing local resources across all READMEs."""
-    pattern = re.compile(r'(?:src|srcset)\s*=\s*"([^"]+)"')
+    """Return the list of missing local resources across READMEs and pages."""
     missing: list[str] = []
 
-    for readme in READMES:
-        if not readme.exists():
-            missing.append(f"{readme.name} not found: {readme}")
+    for doc in _docs():
+        if not doc.exists():
+            missing.append(f"{doc.name} not found: {doc}")
             continue
-        text = readme.read_text(encoding="utf-8")
+        text = doc.read_text(encoding="utf-8")
         seen: set[str] = set()
-        for match in pattern.finditer(text):
-            path_str = match.group(1).strip()
+        for match in _REF_RE.finditer(text):
+            path_str = (match.group(1) or match.group(2) or "").strip()
+            path_str = path_str.split("#", 1)[0]  # drop anchor fragment
             if not path_str or path_str in seen:
                 continue
             seen.add(path_str)
-            # Ignore remote URLs (http/https/data/mailto) and anchors
-            if "://" in path_str or path_str.startswith(
-                ("mailto:", "data:", "#", "//")
-            ):
+            if "://" in path_str or path_str.startswith(_SKIP_PREFIXES):
                 continue
-            target = (REPO / path_str).resolve()
+            rel_name = doc.relative_to(REPO)
+            target = (doc.parent / path_str).resolve()
             try:
                 target.relative_to(REPO.resolve())
             except ValueError:
-                missing.append(f"{readme.name}: {path_str} (outside repo: {target})")
+                missing.append(f"{rel_name}: {path_str} (outside repo: {target})")
                 continue
             if not target.exists():
-                rel = target.relative_to(REPO.resolve())
-                missing.append(f"{readme.name}: {path_str}  →  expected: {rel}")
+                missing.append(f"{rel_name}: {path_str}  →  not found")
     return missing
 
 
