@@ -161,3 +161,6 @@ glyph
 outlined
 gname
 hhea
+WhatsApp
+borisleclere
+discordapp

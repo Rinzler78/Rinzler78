@@ -222,13 +222,15 @@ public sealed class BorisLeclere : FreelanceCto
 <div align="center">
 
 <a href="mailto:borisleclere.pro@gmail.com"><img alt="Email pro" src="https://img.shields.io/badge/borisleclere.pro%40gmail.com-c75d3e?style=for-the-badge&logo=gmail&logoColor=white&labelColor=ffffff" /></a>
+<a href="tel:+33626263461"><img alt="Téléphone" src="https://img.shields.io/badge/call-c75d3e?style=for-the-badge&logo=phone&logoColor=white&labelColor=ffffff" /></a>
+<a href="https://wa.me/33626263461"><img alt="WhatsApp" src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white&labelColor=ffffff" /></a>
 <a href="https://www.linkedin.com/in/borisleclere"><img alt="LinkedIn" src="https://img.shields.io/badge/in-LinkedIn-c75d3e?style=for-the-badge&logo=linkedin&logoColor=white&labelColor=ffffff" /></a>
 <a href="https://www.malt.fr/profile/borisleclere"><img alt="Malt" src="https://img.shields.io/badge/Malt-c75d3e?style=for-the-badge&logo=malt&logoColor=white&labelColor=ffffff" /></a>
 <a href="https://pypi.org/user/Rinzler78"><img alt="PyPI" src="https://img.shields.io/badge/PyPI-6b6256?style=for-the-badge&logo=pypi&logoColor=white&labelColor=ffffff" /></a>
 <a href="https://discordapp.com/users/rinzler84"><img alt="Discord" src="https://img.shields.io/badge/Discord-6b6256?style=for-the-badge&logo=discord&logoColor=white&labelColor=ffffff" /></a>
 <a href="https://twitter.com/BorisLeclere"><img alt="X" src="https://img.shields.io/badge/X-6b6256?style=for-the-badge&logo=x&logoColor=white&labelColor=ffffff" /></a>
 
-<sub>tel · +33 6 26 26 34 61  &nbsp;·&nbsp;  <code>EOF · github.com/Rinzler78 · 2026 — still curious, still shipping_</code></sub>
+<sub><a href="tel:+33626263461">+33 6 26 26 34 61</a>  &nbsp;·&nbsp;  <a href="https://wa.me/33626263461">WhatsApp</a>  &nbsp;·&nbsp;  <code>EOF · github.com/Rinzler78 · 2026 — still curious, still shipping_</code></sub>
 
 </div>
 

@@ -100,6 +100,22 @@ def test_footer_exposes_no_fake_email():
         assert "github.com/Rinzler78" in text
 
 
+def test_front_contact_cluster_has_phone_and_whatsapp():
+    # All communication channels live on the front, phone actionable via tel:
+    # and WhatsApp (wa.me, digits derived from profile.contacts.phone).
+    gen.main()
+    for readme in READMES:
+        t = readme.read_text(encoding="utf-8")
+        assert "mailto:borisleclere.pro@gmail.com" in t
+        assert "linkedin.com/in/borisleclere" in t
+        assert "malt.fr/profile/borisleclere" in t
+        assert "pypi.org/user/Rinzler78" in t
+        assert "discordapp.com/users/rinzler84" in t
+        assert "twitter.com/BorisLeclere" in t
+        assert "tel:+33626263461" in t
+        assert "https://wa.me/33626263461" in t
+
+
 def test_readmes_embed_the_live_github_widgets():
     # PRD-001 animations: typing banner, stats card (rank hidden), activity
     # graph and the contribution snake must appear in both language READMEs.
