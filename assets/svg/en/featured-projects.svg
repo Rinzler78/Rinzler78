@@ -20,7 +20,7 @@
     <text x="40.0" y="100" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="11" fill="#6b6256">Python · PyScaffold · pytest · GitHub Actions</text>
 
     <!-- description -->
-    <text x="40.0" y="124" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="11" fill="#1a1a1f" opacity="0.85">Python client for the French Basketball Federation (FFBB) v2 API. Rev…</text>
+    <text x="40.0" y="124" font-family="'system-ui', system-ui, -apple-system, sans-serif" font-size="11" fill="#1a1a1f" opacity="0.85">Python client for the French Basketball Federation (FFBB) v2 API. Rev…</text>
 
     <!-- footer : extra metric ou state -->    <text x="381.3333333333333" y="156" text-anchor="end" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="10" fill="#6b6256">→ github</text>
     <!-- card -->
@@ -39,7 +39,7 @@
     <text x="429.3333333333333" y="100" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="11" fill="#6b6256">C# · .NET</text>
 
     <!-- description -->
-    <text x="429.3333333333333" y="124" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="11" fill="#1a1a1f" opacity="0.85">.NET client library for CometBFT nodes - REST, WebSocket and gRPC tra…</text>
+    <text x="429.3333333333333" y="124" font-family="'system-ui', system-ui, -apple-system, sans-serif" font-size="11" fill="#1a1a1f" opacity="0.85">.NET client library for CometBFT nodes - REST, WebSocket and gRPC tra…</text>
 
     <!-- footer : extra metric ou state -->    <text x="770.6666666666666" y="156" text-anchor="end" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="10" fill="#6b6256">→ github</text>
     <!-- card -->
@@ -58,7 +58,7 @@
     <text x="818.6666666666666" y="100" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="11" fill="#6b6256">Python · Shell</text>
 
     <!-- description -->
-    <text x="818.6666666666666" y="124" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="11" fill="#1a1a1f" opacity="0.85">Modified Osmosis launcher tuned for server-side `osmosisd` execution.</text>
+    <text x="818.6666666666666" y="124" font-family="'system-ui', system-ui, -apple-system, sans-serif" font-size="11" fill="#1a1a1f" opacity="0.85">Modified Osmosis launcher tuned for server-side `osmosisd` execution.</text>
 
     <!-- footer : extra metric ou state -->    <text x="1160.0" y="156" text-anchor="end" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="10" fill="#6b6256">→ github</text>
     <!-- card -->
@@ -77,7 +77,7 @@
     <text x="40.0" y="236" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="11" fill="#6b6256">Docker · Shell · GitHub Actions</text>
 
     <!-- description -->
-    <text x="40.0" y="260" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="11" fill="#1a1a1f" opacity="0.85">Dockerized Idena blockchain node with monitoring and update automatio…</text>
+    <text x="40.0" y="260" font-family="'system-ui', system-ui, -apple-system, sans-serif" font-size="11" fill="#1a1a1f" opacity="0.85">Dockerized Idena blockchain node with monitoring and update automatio…</text>
 
     <!-- footer : extra metric ou state -->    <text x="40.0" y="292" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="10" fill="#bf8700">★ 470+ Docker Hub pulls</text>    <text x="381.3333333333333" y="292" text-anchor="end" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="10" fill="#6b6256">→ github</text>
     <!-- card -->
@@ -96,7 +96,7 @@
     <text x="429.3333333333333" y="236" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="11" fill="#6b6256">Docker · Shell</text>
 
     <!-- description -->
-    <text x="429.3333333333333" y="260" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="11" fill="#1a1a1f" opacity="0.85">Docker image for AIOZ blockchain node deployment (decentralized conte…</text>
+    <text x="429.3333333333333" y="260" font-family="'system-ui', system-ui, -apple-system, sans-serif" font-size="11" fill="#1a1a1f" opacity="0.85">Docker image for AIOZ blockchain node deployment (decentralized conte…</text>
 
     <!-- footer : extra metric ou state -->    <text x="770.6666666666666" y="292" text-anchor="end" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="10" fill="#6b6256">→ github</text>
     <!-- card -->
@@ -115,7 +115,7 @@
     <text x="818.6666666666666" y="236" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="11" fill="#6b6256">C# · .NET</text>
 
     <!-- description -->
-    <text x="818.6666666666666" y="260" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="11" fill="#1a1a1f" opacity="0.85">Minimal shared vocabulary for the `Here.Sdk.*` ecosystem: geography, …</text>
+    <text x="818.6666666666666" y="260" font-family="'system-ui', system-ui, -apple-system, sans-serif" font-size="11" fill="#1a1a1f" opacity="0.85">Minimal shared vocabulary for the `Here.Sdk.*` ecosystem: geography, …</text>
 
     <!-- footer : extra metric ou state -->    <text x="1160.0" y="292" text-anchor="end" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="10" fill="#6b6256">→ github</text>
     <!-- card -->
@@ -134,7 +134,7 @@
     <text x="40.0" y="372" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="11" fill="#6b6256">C# · .NET 10</text>
 
     <!-- description -->
-    <text x="40.0" y="396" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="11" fill="#1a1a1f" opacity="0.85">Reusable .NET extensions: MVVM helpers, JSON utilities, HTTP abstract…</text>
+    <text x="40.0" y="396" font-family="'system-ui', system-ui, -apple-system, sans-serif" font-size="11" fill="#1a1a1f" opacity="0.85">Reusable .NET extensions: MVVM helpers, JSON utilities, HTTP abstract…</text>
 
     <!-- footer : extra metric ou state -->    <text x="381.3333333333333" y="428" text-anchor="end" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="10" fill="#6b6256">→ github</text>
     <!-- card -->
@@ -153,6 +153,6 @@
     <text x="429.3333333333333" y="372" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="11" fill="#6b6256">Shell</text>
 
     <!-- description -->
-    <text x="429.3333333333333" y="396" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="11" fill="#1a1a1f" opacity="0.85">Disposable Docker cleanup tool.</text>
+    <text x="429.3333333333333" y="396" font-family="'system-ui', system-ui, -apple-system, sans-serif" font-size="11" fill="#1a1a1f" opacity="0.85">Disposable Docker cleanup tool.</text>
 
     <!-- footer : extra metric ou state -->    <text x="770.6666666666666" y="428" text-anchor="end" font-family="'JetBrains Mono', ui-monospace, SF Mono, Menlo, Consolas, monospace" font-size="10" fill="#6b6256">→ github</text></svg>

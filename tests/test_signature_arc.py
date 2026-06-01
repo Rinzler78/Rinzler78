@@ -81,6 +81,17 @@ _BOOT_LOG_TO_ARC = {
 }
 
 
+def test_arc_gradient_stops_are_valid_palette_keys():
+    # The hero ribbon gradient encodes the arc (warm origin -> cool ai). Stops
+    # are palette keys so they resolve per-palette (light + dark).
+    theme = json.loads((DATA / "theme.json").read_text(encoding="utf-8"))
+    stops = theme["patterns"]["arc"]["stops"]
+    assert len(stops) == 4  # one warm->cool step per arc node
+    for key in stops:
+        assert key in theme["palette"], f"{key} missing from dark palette"
+        assert key in theme["palette_light"], f"{key} missing from light palette"
+
+
 def test_boot_log_years_match_the_signature_arc():
     domains = json.loads((DATA / "domains.json").read_text(encoding="utf-8"))
     content = json.loads((DATA / "content.json").read_text(encoding="utf-8"))

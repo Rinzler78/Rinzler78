@@ -15,8 +15,8 @@
 
 {% set typing_lines = profile.taglines | join(';') | replace(' ', '+') %}
 <picture>
-  <source media="(prefers-color-scheme: light)" srcset="https://readme-typing-svg.demolab.com/?font=JetBrains+Mono&weight=600&size=20&pause=1200&center=true&vCenter=true&width=600&height=45&color={{ theme.palette_light.accent | replace('#', '') }}&lines={{ typing_lines }}" />
-  <img src="https://readme-typing-svg.demolab.com/?font=JetBrains+Mono&weight=600&size=20&pause=1200&center=true&vCenter=true&width=600&height=45&color={{ theme.palette.accent | replace('#', '') }}&lines={{ typing_lines }}" alt="{{ profile.taglines | join(' · ') }}" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://readme-typing-svg.demolab.com/?font=JetBrains+Mono&weight=600&size=20&pause=1200&center=true&vCenter=true&width=600&height=45&color={{ theme.palette.accent | replace('#', '') }}&lines={{ typing_lines }}" />
+  <img src="https://readme-typing-svg.demolab.com/?font=JetBrains+Mono&weight=600&size=20&pause=1200&center=true&vCenter=true&width=600&height=45&color={{ theme.palette_light.accent | replace('#', '') }}&lines={{ typing_lines }}" alt="{{ profile.taglines | join(' · ') }}" />
 </picture>
 
 </div>
@@ -93,22 +93,22 @@
 <sub><b>{% if lang == 'en' %}Live GitHub activity{% else %}Activité GitHub en direct{% endif %}</b></sub>
 
 <picture>
-  <source media="(prefers-color-scheme: light)" srcset="https://github-readme-activity-graph.vercel.app/graph?username={{ profile.username }}&hide_border=true&area=true&bg_color={{ theme.palette_light.panel | replace('#', '') }}&color={{ theme.palette_light.text | replace('#', '') }}&line={{ theme.palette_light.accent | replace('#', '') }}&point={{ theme.palette_light.accent | replace('#', '') }}&title_color={{ theme.palette_light.accent | replace('#', '') }}" />
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username={{ profile.username }}&hide_border=true&area=true&bg_color={{ theme.palette.panel | replace('#', '') }}&color={{ theme.palette.text | replace('#', '') }}&line={{ theme.palette.accent | replace('#', '') }}&point={{ theme.palette.accent | replace('#', '') }}&title_color={{ theme.palette.accent | replace('#', '') }}" width="100%" alt="Contribution activity graph for {{ profile.username }}." />
+  <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-activity-graph.vercel.app/graph?username={{ profile.username }}&hide_border=true&area=true&bg_color={{ theme.palette.panel | replace('#', '') }}&color={{ theme.palette.text | replace('#', '') }}&line={{ theme.palette.accent | replace('#', '') }}&point={{ theme.palette.accent | replace('#', '') }}&title_color={{ theme.palette.accent | replace('#', '') }}" />
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username={{ profile.username }}&hide_border=true&area=true&bg_color={{ theme.palette_light.panel | replace('#', '') }}&color={{ theme.palette_light.text | replace('#', '') }}&line={{ theme.palette_light.accent | replace('#', '') }}&point={{ theme.palette_light.accent | replace('#', '') }}&title_color={{ theme.palette_light.accent | replace('#', '') }}" width="100%" alt="Contribution activity graph for {{ profile.username }}." />
 </picture>
 
 <table>
   <tr>
     <td valign="middle" width="40%">
       <picture>
-        <source media="(prefers-color-scheme: light)" srcset="https://github-readme-stats.vercel.app/api?username={{ profile.username }}&show_icons=true&hide_rank=true&hide_border=true&bg_color={{ theme.palette_light.panel | replace('#', '') }}&title_color={{ theme.palette_light.accent | replace('#', '') }}&text_color={{ theme.palette_light.text | replace('#', '') }}&icon_color={{ theme.palette_light.accent | replace('#', '') }}" />
-        <img src="https://github-readme-stats.vercel.app/api?username={{ profile.username }}&show_icons=true&hide_rank=true&hide_border=true&bg_color={{ theme.palette.panel | replace('#', '') }}&title_color={{ theme.palette.accent | replace('#', '') }}&text_color={{ theme.palette.text | replace('#', '') }}&icon_color={{ theme.palette.accent | replace('#', '') }}" width="100%" alt="GitHub stats for {{ profile.username }} (rank hidden — no inflated grade)." />
+        <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api?username={{ profile.username }}&show_icons=true&hide_rank=true&hide_border=true&bg_color={{ theme.palette.panel | replace('#', '') }}&title_color={{ theme.palette.accent | replace('#', '') }}&text_color={{ theme.palette.text | replace('#', '') }}&icon_color={{ theme.palette.accent | replace('#', '') }}" />
+        <img src="https://github-readme-stats.vercel.app/api?username={{ profile.username }}&show_icons=true&hide_rank=true&hide_border=true&bg_color={{ theme.palette_light.panel | replace('#', '') }}&title_color={{ theme.palette_light.accent | replace('#', '') }}&text_color={{ theme.palette_light.text | replace('#', '') }}&icon_color={{ theme.palette_light.accent | replace('#', '') }}" width="100%" alt="GitHub stats for {{ profile.username }} (rank hidden — no inflated grade)." />
       </picture>
     </td>
     <td valign="middle" width="60%">
       <picture>
-        <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/{{ profile.username }}/{{ profile.username }}/output/github-contribution-grid-snake.svg" />
-        <img src="https://raw.githubusercontent.com/{{ profile.username }}/{{ profile.username }}/output/github-contribution-grid-snake-dark.svg" width="100%" alt="Contribution snake eating the activity grid for {{ profile.username }}." />
+        <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/{{ profile.username }}/{{ profile.username }}/output/github-contribution-grid-snake-dark.svg" />
+        <img src="https://raw.githubusercontent.com/{{ profile.username }}/{{ profile.username }}/output/github-contribution-grid-snake.svg" width="100%" alt="Contribution snake eating the activity grid for {{ profile.username }}." />
       </picture>
     </td>
   </tr>

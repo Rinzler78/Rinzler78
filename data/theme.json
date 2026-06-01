@@ -42,7 +42,7 @@
 
   "fonts": {
     "display": "Inter",
-    "body": "Inter",
+    "body": "system-ui",
     "mono": "JetBrains Mono",
     "mono_fallback": "ui-monospace, SF Mono, Menlo, Consolas, monospace",
     "display_fallback": "system-ui, -apple-system, sans-serif",
@@ -97,6 +97,10 @@
       "radius": 4,
       "color": "success",
       "pulse_duration": "1.8s"
+    },
+
+    "arc": {
+      "stops": ["accent_dark", "accent", "warn", "info"]
     },
 
     "level_colors": {

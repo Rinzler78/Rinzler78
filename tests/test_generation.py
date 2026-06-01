@@ -40,6 +40,18 @@ def test_generated_svgs_are_well_formed_xml():
         ET.fromstring(svg.read_text(encoding="utf-8"))  # raises on malformed XML
 
 
+def test_external_widgets_are_light_first():
+    # After the flip, NOTHING defaults to dark: every <picture> serves light by
+    # default and uses prefers-color-scheme:dark as the override (local + widgets).
+    gen.main()
+    for readme in READMES:
+        text = readme.read_text(encoding="utf-8")
+        assert "(prefers-color-scheme: light)" not in text
+        assert "(prefers-color-scheme: dark)" in text
+        # a widget's default <img> uses the light panel (palette_light.panel).
+        assert "bg_color=ffffff" in text
+
+
 def test_readme_is_light_first():
     # Light-first: the <img> default is the light (root-dir) SVG; dark is the
     # prefers-color-scheme override. The old light/ subdir must be gone.
