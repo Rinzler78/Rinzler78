@@ -18,6 +18,7 @@ dev = [
     "bandit>=1.7",
     "pip-audit>=2.7",
     "pre-commit>=3.7",
+    "pillow>=10.0",
 ]
 
 [tool.setuptools]
@@ -48,5 +49,6 @@ omit = [
     "scripts/validate.py",
     "scripts/validate_data.py",
     "scripts/fetch_metrics.py",
+    "scripts/fetch_map.py",
     "scripts/translate.py",
 ]

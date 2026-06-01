@@ -224,7 +224,6 @@ SVG_TARGETS: list[tuple[str, str, dict]] = [
     ("timeline_mini.svg.jinja", "timeline-mini.svg", {}),
     ("featured_projects.svg.jinja", "featured-projects.svg", {}),
     ("modes.svg.jinja", "modes.svg", {}),
-    ("map.svg.jinja", "map.svg", {}),
 ]
 
 

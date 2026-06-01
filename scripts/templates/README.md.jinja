@@ -152,10 +152,12 @@
 
 <div align="center">
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/svg/{{ svg }}dark/map.svg" />
-  <img src="assets/svg/{{ svg }}map.svg" width="100%" alt="Localisation — {{ profile.location.city }}, {{ profile.location.region }}, {{ profile.location.country }}. Coordonnées {{ profile.location.lat }}° N, {{ profile.location.lon }}° E." />
-</picture>
+<a href="https://www.openstreetmap.org/?mlat={{ profile.location.lat }}&mlon={{ profile.location.lon }}#map=9/{{ profile.location.lat }}/{{ profile.location.lon }}">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/map-dark.png" />
+    <img src="assets/map.png" width="640" alt="Localisation — {{ profile.location.city }}, {{ profile.location.region }}, {{ profile.location.country }}. Coordonnées {{ profile.location.lat }}° N, {{ profile.location.lon }}° E. Carte OpenStreetMap, cliquer pour ouvrir." />
+  </picture>
+</a>
 
 </div>
 

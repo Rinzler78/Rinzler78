@@ -207,10 +207,12 @@ public sealed class BorisLeclere : FreelanceCto
 
 <div align="center">
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/svg/dark/map.svg" />
-  <img src="assets/svg/map.svg" width="100%" alt="Localisation — Senas, Provence-Alpes-Côte d'Azur, France. Coordonnées 43.74° N, 5.06° E." />
-</picture>
+<a href="https://www.openstreetmap.org/?mlat=43.74&mlon=5.06#map=9/43.74/5.06">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/map-dark.png" />
+    <img src="assets/map.png" width="640" alt="Localisation — Senas, Provence-Alpes-Côte d'Azur, France. Coordonnées 43.74° N, 5.06° E. Carte OpenStreetMap, cliquer pour ouvrir." />
+  </picture>
+</a>
 
 </div>
 

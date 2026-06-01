@@ -164,3 +164,9 @@ hhea
 WhatsApp
 borisleclere
 discordapp
+openstreetmap
+mlat
+mlon
+Carto
+tmpl
+MEDIANCUT

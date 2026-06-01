@@ -116,6 +116,20 @@ def test_front_contact_cluster_has_phone_and_whatsapp():
         assert "https://wa.me/33626263461" in t
 
 
+def test_location_uses_committed_osm_map_linked_to_live():
+    # Real OSM raster (light + dark), committed for reliability, linked to the
+    # live OpenStreetMap page. The hand-drawn map.svg is retired.
+    gen.main()
+    for readme in READMES:
+        t = readme.read_text(encoding="utf-8")
+        assert "assets/map.png" in t
+        assert "assets/map-dark.png" in t
+        assert "openstreetmap.org/?mlat=43.74&mlon=5.06" in t
+        assert "map.svg" not in t
+    assert (ROOT / "assets" / "map.png").exists()
+    assert (ROOT / "assets" / "map-dark.png").exists()
+
+
 def test_readmes_embed_the_live_github_widgets():
     # PRD-001 animations: typing banner, stats card (rank hidden), activity
     # graph and the contribution snake must appear in both language READMEs.
