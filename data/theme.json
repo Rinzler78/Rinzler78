@@ -110,5 +110,24 @@
       "operational": "warn",
       "notions": "text_dim"
     }
+  },
+
+  "//series": "Categorical colors for data series, validated for color-vision deficiency. Deliberately NOT the brand accent: an indigo/coral-led set measures deltaE 1.5 between coral and aqua under protanopia. Indigo and coral stay as interface accents.",
+  "series": {
+    "embedded": "#d95926",
+    "mobile": "#d55181",
+    "backend": "#3987e5",
+    "devops": "#199e70",
+    "blockchain": "#c98500",
+    "ai-llm": "#9085e9"
+  },
+
+  "series_light": {
+    "embedded": "#eb6834",
+    "mobile": "#e87ba4",
+    "backend": "#2a78d6",
+    "devops": "#1baf7a",
+    "blockchain": "#eda100",
+    "ai-llm": "#4a3aa7"
   }
 }

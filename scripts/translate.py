@@ -59,6 +59,13 @@ SINGLETONS: dict[str, list[str]] = {
         "beyond_code.paragraph",
         "parcours.blockquote",
         "map.subheader",
+        # Chart captions become the aria-label and <title> of a generated SVG.
+        # They are the only text a screen reader gets from a chart, so leaving
+        # them untranslated makes README.en.md inaccessible in English.
+        "charts.journey_share.aria",
+        "charts.domain_split.aria",
+        "charts.domain_split.center",
+        "charts.top_skills.aria",
     ],
 }
 
