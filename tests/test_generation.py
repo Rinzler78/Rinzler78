@@ -39,10 +39,11 @@ def test_front_links_to_the_four_detail_pages():
         assert (ROOT / "pages" / "en" / f"{page}.md").exists()
 
 
-def test_front_is_lean_with_dashboards_moved_to_pages():
-    fr = (ROOT / "README.md").read_text(encoding="utf-8")
-    for moved in ("services.svg", "core-expertise.svg", "featured-projects.svg"):
-        assert moved not in fr
+def test_detail_pages_still_carry_their_own_view():
+    # ADR-009 reversed ADR-008's lean front: the figures below are now on the
+    # front page as well. What the detail pages must keep is their own copy —
+    # they go deeper, they are not emptied by the front page carrying the
+    # headline.
     assert "core-expertise.svg" in (ROOT / "pages" / "stack.md").read_text(
         encoding="utf-8"
     )
@@ -223,3 +224,39 @@ def test_the_contact_row_is_generated_from_the_declared_chips():
     text = (ROOT / "README.md").read_text(encoding="utf-8")
     for chip_id in declared:
         assert f"chip-{chip_id}.svg" in text, f"chip {chip_id} never reaches the page"
+
+
+def test_the_front_page_carries_the_substance_not_just_links():
+    # ADR-009: the front page had drifted to one section — a hero above a list
+    # of four links — against the thirteen of the page it replaces. A showcase
+    # visitor does not click, so anything behind a link is effectively absent.
+    import re
+
+    for readme in READMES:
+        text = readme.read_text(encoding="utf-8")
+        headings = re.findall(r"^#{2,3} |<sub><b>", text, flags=re.MULTILINE)
+        assert len(headings) >= 13, (
+            f"{readme.name} is down to {len(headings)} sections; the page it "
+            "replaces carries 13"
+        )
+
+
+def test_every_generated_figure_appears_on_the_front_page():
+    # A view nobody links is a view nobody sees. Detail pages go deeper; they
+    # no longer stand in for the front.
+    text = (ROOT / "README.md").read_text(encoding="utf-8")
+    for name in (
+        "header.svg",
+        "core-expertise.svg",
+        "stack-summary.svg",
+        "featured-projects.svg",
+        "timeline-mini.svg",
+        "services.svg",
+        "modes.svg",
+        "methodology.svg",
+        "activity-stats.svg",
+        "journey-share.svg",
+        "top-skills.svg",
+        "domain-split.svg",
+    ):
+        assert name in text, f"{name} is generated but never shown on the front page"

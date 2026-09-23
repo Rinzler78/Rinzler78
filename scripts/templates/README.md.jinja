@@ -1,3 +1,4 @@
+{%- import '_pieces.md.jinja' as pc -%}
 {%- set svg = svg | default('') -%}
 {%- set lang = lang | default('fr') -%}
 {%- set pages = 'pages/' ~ ('en/' if lang == 'en' else '') -%}
@@ -54,6 +55,40 @@
 <sub><b>{{ content.charts.domain_split.title }}</b></sub>
 
 {{ chart('domain-split', content.charts.domain_split) }}
+
+<sub><b>{% if lang == 'en' %}Core expertise{% else %}Expertise centrale{% endif %}</b></sub>
+
+{{ pc.fig('', svg, 'core-expertise.svg', 'Core expertise — current level and peak reached') }}
+
+<sub><b>{% if lang == 'en' %}Stack by domain{% else %}Stack par domaine{% endif %}</b></sub>
+
+{{ pc.fig('', svg, 'stack-summary.svg', 'Seniority per domain') }}
+
+<sub>{% if lang == 'en' %}The full table, version by version, is on the **[stack page]({{ pages }}stack.md)**.{% else %}Le tableau complet, version par version, est sur la **[page stack]({{ pages }}stack.md)**.{% endif %}</sub>
+
+<sub><b>{% if lang == 'en' %}Public projects{% else %}Projets publics{% endif %}</b></sub>
+
+{{ pc.fig('', svg, 'featured-projects.svg', 'Featured public repositories') }}
+
+<sub><b>{% if lang == 'en' %}Milestones{% else %}Jalons{% endif %}</b></sub>
+
+{{ pc.fig('', svg, 'timeline-mini.svg', 'Career milestones') }}
+
+<sub><b>{% if lang == 'en' %}What you can buy{% else %}Ce que vous pouvez acheter{% endif %}</b></sub>
+
+{{ pc.fig('', svg, 'services.svg', 'Services: ' ~ (services | selectattr('visible') | map(attribute='title') | join(' · '))) }}
+
+<sub><b>{% if lang == 'en' %}How to engage me{% else %}Comment m'engager{% endif %}</b></sub>
+
+{{ pc.fig('', svg, 'modes.svg', 'Engagement modes') }}
+
+<sub><b>{% if lang == 'en' %}How I work{% else %}Comment je travaille{% endif %}</b></sub>
+
+{{ pc.fig('', svg, 'methodology.svg', 'Engineering principles') }}
+
+<sub><b>{% if lang == 'en' %}Activity{% else %}Activité{% endif %}</b></sub>
+
+{{ pc.fig('', svg, 'activity-stats.svg', 'Activity stats') }}
 
 </div>
 
