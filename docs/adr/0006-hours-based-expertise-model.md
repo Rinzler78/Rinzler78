@@ -1,8 +1,21 @@
 # ADR-006 — Hours-based expertise model (max vs current)
 
-- **Status**: Accepted
+- **Status**: Accepted (extended by [ADR-009](0009-visual-redesign-devtool-direction.md))
 - **Date**: 2026-05-29
 - **Supersedes**: the **formula** from [ADR-002](0002-tech-score-derivation.md) (base years + versions + projects + centrality + depth). The tiers (5 levels) and the override mechanism from ADR-002 are **kept**.
+
+> **Extended 2026-09-23:** the same exposure hours are now also split **per calendar
+> year** (`compute_tech_hours_by_year`) and aggregated per domain
+> (`build_domain_year_hours`) to feed the journey charts. The split is a *partition* of
+> the totals below — a test pins the two together, so a chart and a score drawn from
+> this model can never disagree. Experiences carry months and are pro-rated exactly;
+> projects carry `active_days` and a year range with no months, so their hours are
+> spread **uniformly** over that range — an explicit approximation, since `active_days`
+> records how many distinct days saw commits, never which ones. The `languages` domain
+> is excluded from the per-domain timeline: it is used inside every other domain, so it
+> would be lit every year while flattening the scale of the rows that carry
+> information. Tier fractions remain cumulative, so summing across domains
+> double-counts: these values are rendered as **shares**, never as hours worked.
 
 ## Context
 

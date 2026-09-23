@@ -1,7 +1,14 @@
 # ADR-008 — In-repo multipage profile (README as front, detail pages generated)
 
-- **Status**: Accepted
+- **Status**: Accepted (front-page scope superseded by [ADR-009](0009-visual-redesign-devtool-direction.md))
 - **Date**: 2026-06-01
+
+> **Amended 2026-09-23 ([ADR-009](0009-visual-redesign-devtool-direction.md)):** the
+> multipage structure stands — four generated detail pages, one front page, both
+> languages. What is superseded is the **lean front**. Measured against the live page
+> it replaced, the lean front carried 1 section against 13: the substance sat behind
+> clicks that a showcase visitor does not make. The front page now carries the
+> substance; the detail pages go deeper rather than standing in for it.
 
 ## Context
 

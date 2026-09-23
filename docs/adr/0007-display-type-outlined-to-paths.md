@@ -1,7 +1,15 @@
 # ADR-007 — Display type outlined to vector paths
 
-- **Status**: Accepted
+- **Status**: Accepted (typeface amended by [ADR-009](0009-visual-redesign-devtool-direction.md))
 - **Date**: 2026-06-01
+
+> **Amended 2026-09-23 ([ADR-009](0009-visual-redesign-devtool-direction.md)):** the
+> font→path outlining described below is **kept**; only the typeface changes, from
+> Fraunces to **Inter Display** (OFL-1.1). An earlier draft of ADR-009 proposed
+> dropping the outlining along with the serif — which would have been
+> self-defeating, since the constraint analyzed in *Context* is exactly why it exists:
+> GitHub loads no web font inside an `<img>`, so an un-outlined "Inter" renders as
+> whatever sans the visitor's OS supplies. Body text stays system-safe.
 
 ## Context
 
