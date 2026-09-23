@@ -41,6 +41,26 @@ def test_hero_carries_subtitle_and_scale():
     assert "20 ans de code" in svg  # experience scale line
 
 
-def test_hero_is_light_first_with_dark_mirror():
-    assert 'fill="#faf7f2"' in _header()  # root = light primary
-    assert 'fill="#0d1117"' in _header("dark")  # dark mirror
+def test_hero_is_dark_first_with_light_mirror():
+    # ADR-009 reverses the posture: the <img> fallback serves dark, and the
+    # background matches the GitHub canvas so the banner sits in the page.
+    assert 'fill="#0d1117"' in _header()  # root = dark primary
+    assert 'fill="#ffffff"' in _header("light")  # light mirror
+
+
+def test_the_arc_gradient_runs_warm_to_cool():
+    # The arc encodes the career direction: coral at `embedded` (2006), indigo
+    # at `ai` (2023). Coral survives the indigo re-theme as the arc's origin —
+    # it is what makes the gradient readable as a direction rather than
+    # decoration (ADR-009).
+    svg = _header()
+    first = svg.index('stop-color="#f78166"')  # coral origin
+    indigo = svg.index('stop-color="#818cf8"')
+    assert first < indigo, "the arc no longer starts warm"
+
+
+def test_the_accent_is_indigo_not_coral():
+    # Coral is demoted to the arc origin and geek microcopy; it must no longer
+    # be the interface accent, or the re-theme is only half applied.
+    svg = _header()
+    assert "#818cf8" in svg

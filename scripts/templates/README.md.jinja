@@ -10,7 +10,7 @@
 
 <a href="mailto:{{ profile.contacts.email_pro }}">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/svg/{{ svg }}dark/header.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="assets/svg/{{ svg }}light/header.svg" />
     <img src="assets/svg/{{ svg }}header.svg" width="100%" alt="{% if lang == 'en' %}Header — {{ profile.name }}, {{ profile.role }}. Status: {{ profile.status }}. Based in {{ profile.location.city }}, {{ profile.location.country }}. Languages: {{ profile.languages | join(' / ') }}. {{ 2026 - profile.since_coding }} years of code.{% else %}Header — {{ profile.name }}, {{ profile.role }}. Statut : {{ profile.status }}. Basé à {{ profile.location.city }}, {{ profile.location.country }}. Langues : {{ profile.languages | join(' / ') }}. {{ 2026 - profile.since_coding }} années de code.{% endif %}" />
   </picture>
 </a>
@@ -37,7 +37,7 @@
 
 {% macro chart(name, block) -%}
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/svg/{{ svg }}dark/{{ name }}.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="assets/svg/{{ svg }}light/{{ name }}.svg" />
   <img src="assets/svg/{{ svg }}{{ name }}.svg" width="100%" alt="{{ block.aria }}" />
 </picture>
 
@@ -96,7 +96,7 @@
 
 <a href="https://www.openstreetmap.org/?mlat={{ profile.location.lat }}&mlon={{ profile.location.lon }}#map=9/{{ profile.location.lat }}/{{ profile.location.lon }}">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/map-dark.png" />
+    <source media="(prefers-color-scheme: light)" srcset="assets/map-dark.png" />
     <img src="assets/map.png" width="640" alt="Localisation — {{ profile.location.city }}, {{ profile.location.region }}, {{ profile.location.country }}. Coordonnées {{ profile.location.lat }}° N, {{ profile.location.lon }}° E. Carte OpenStreetMap, cliquer pour ouvrir." />
   </picture>
 </a>
@@ -113,7 +113,7 @@
 
 {% set phone_digits = profile.contacts.phone | replace('+', '') | replace(' ', '') %}
 {% for c in contact_chips %}
-<a href="{{ c.href }}"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/svg/{{ svg }}dark/chip-{{ c.id }}.svg" /><img alt="{{ c.label }}{% if c.value %} — {{ c.value }}{% endif %}" src="assets/svg/{{ svg }}chip-{{ c.id }}.svg" /></picture></a>
+<a href="{{ c.href }}"><picture><source media="(prefers-color-scheme: light)" srcset="assets/svg/{{ svg }}light/chip-{{ c.id }}.svg" /><img alt="{{ c.label }}{% if c.value %} — {{ c.value }}{% endif %}" src="assets/svg/{{ svg }}chip-{{ c.id }}.svg" /></picture></a>
 {%- endfor %}
 
 <sub><a href="tel:+{{ phone_digits }}">{{ profile.contacts.phone }}</a>  &nbsp;·&nbsp;  <a href="https://wa.me/{{ phone_digits }}">WhatsApp</a>  &nbsp;·&nbsp;  <code>{{ content.connect.footer_eof }}</code></sub>

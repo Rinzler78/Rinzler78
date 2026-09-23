@@ -3,6 +3,8 @@
   "version": "2.0",
 
   "palette": {
+    "arc_origin": "#f78166",
+    "arc_mid": "#c98bd8",
     "bg": "#0d1117",
     "panel": "#161b22",
     "panel_alt": "#1c2128",
@@ -11,9 +13,9 @@
     "text": "#f0f6fc",
     "text_muted": "#8b949e",
     "text_dim": "#6e7681",
-    "accent": "#f78166",
-    "accent_dark": "#bb4f37",
-    "accent_light": "#ffa28b",
+    "accent": "#818cf8",
+    "accent_dark": "#4f46e5",
+    "accent_light": "#a5b4fc",
     "success": "#3fb950",
     "info": "#58a6ff",
     "warn": "#d29922",
@@ -22,17 +24,19 @@
   },
 
   "palette_light": {
-    "bg": "#faf7f2",
-    "panel": "#ffffff",
-    "panel_alt": "#f4eee6",
-    "border": "#e0d6c8",
-    "border_muted": "#ece4d8",
+    "arc_origin": "#c2410c",
+    "arc_mid": "#8b5cf6",
+    "bg": "#ffffff",
+    "panel": "#f6f8fa",
+    "panel_alt": "#eff2f5",
+    "border": "#d0d7de",
+    "border_muted": "#e6eaef",
     "text": "#1a1a1f",
     "text_muted": "#6b6256",
     "text_dim": "#9a8f80",
-    "accent": "#c75d3e",
-    "accent_dark": "#a8452b",
-    "accent_light": "#e07a5a",
+    "accent": "#4f46e5",
+    "accent_dark": "#3730a3",
+    "accent_light": "#6366f1",
     "success": "#2da44e",
     "info": "#3a6db5",
     "warn": "#bf8700",
@@ -100,7 +104,7 @@
     },
 
     "arc": {
-      "stops": ["accent_dark", "accent", "warn", "info"]
+      "stops": ["arc_origin", "arc_mid", "accent", "accent_dark"]
     },
 
     "level_colors": {

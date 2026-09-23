@@ -3,7 +3,7 @@
 # Travailler avec moi
 <div align="center">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="../assets/svg/dark/services.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="../assets/svg/light/services.svg" />
   <img src="../assets/svg/services.svg" width="100%" alt="Services: Architecture &amp; refonte logicielle · Audit technique · Conception &amp; livraison de MVP · Industrialisation CI/CD &amp; delivery · AI-Driven Development · Developer tooling &amp; automatisation" />
 </picture>
 </div>
@@ -18,7 +18,7 @@
 
 <div align="center">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="../assets/svg/dark/modes.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="../assets/svg/light/modes.svg" />
   <img src="../assets/svg/modes.svg" width="100%" alt="Engagement modes" />
 </picture>
 </div>
@@ -31,7 +31,7 @@
 
 <div align="center">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="../assets/svg/dark/methodology.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="../assets/svg/light/methodology.svg" />
   <img src="../assets/svg/methodology.svg" width="100%" alt="Engineering principles" />
 </picture>
 </div>

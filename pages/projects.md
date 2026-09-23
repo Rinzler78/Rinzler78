@@ -4,7 +4,7 @@
 <div align="center">
 <a href="https://github.com/Rinzler78?tab=repositories">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="../assets/svg/dark/featured-projects.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="../assets/svg/light/featured-projects.svg" />
   <img src="../assets/svg/featured-projects.svg" width="100%" alt="Featured public repositories" />
 </picture>
 </a>

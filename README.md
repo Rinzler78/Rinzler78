@@ -6,7 +6,7 @@
 
 <a href="mailto:borisleclere.pro@gmail.com">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/svg/dark/header.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="assets/svg/light/header.svg" />
     <img src="assets/svg/header.svg" width="100%" alt="Header — Boris Leclere, Freelance CTO · Architecte de Solutions. Statut : available. Basé à Senas, France. Langues : fr / en. 20 années de code." />
   </picture>
 </a>
@@ -34,7 +34,7 @@ J'accompagne les équipes techniques — **startups en construction comme struct
 <sub><b>Où le temps est passé</b></sub>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/svg/dark/journey-share.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="assets/svg/light/journey-share.svg" />
   <img src="assets/svg/journey-share.svg" width="100%" alt="Part de l'effort par domaine, chaque année ramenée à 100 %" />
 </picture>
 
@@ -43,7 +43,7 @@ J'accompagne les équipes techniques — **startups en construction comme struct
 <sub><b>Compétences les mieux ancrées</b></sub>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/svg/dark/top-skills.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="assets/svg/light/top-skills.svg" />
   <img src="assets/svg/top-skills.svg" width="100%" alt="Compétences les mieux ancrées, score sur 99 dérivé des heures d'exposition" />
 </picture>
 
@@ -52,7 +52,7 @@ J'accompagne les équipes techniques — **startups en construction comme struct
 <sub><b>Un profil large</b></sub>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/svg/dark/domain-split.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="assets/svg/light/domain-split.svg" />
   <img src="assets/svg/domain-split.svg" width="100%" alt="Répartition de l'exposition cumulée par domaine, en parts" />
 </picture>
 
@@ -61,14 +61,14 @@ J'accompagne les équipes techniques — **startups en construction comme struct
 <sub><b>Expertise centrale</b></sub>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/svg/dark/core-expertise.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="assets/svg/light/core-expertise.svg" />
   <img src="assets/svg/core-expertise.svg" width="100%" alt="Core expertise — current level and peak reached" />
 </picture>
 
 <sub><b>Stack par domaine</b></sub>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/svg/dark/stack-summary.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="assets/svg/light/stack-summary.svg" />
   <img src="assets/svg/stack-summary.svg" width="100%" alt="Seniority per domain" />
 </picture>
 
@@ -77,42 +77,42 @@ J'accompagne les équipes techniques — **startups en construction comme struct
 <sub><b>Projets publics</b></sub>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/svg/dark/featured-projects.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="assets/svg/light/featured-projects.svg" />
   <img src="assets/svg/featured-projects.svg" width="100%" alt="Featured public repositories" />
 </picture>
 
 <sub><b>Jalons</b></sub>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/svg/dark/timeline-mini.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="assets/svg/light/timeline-mini.svg" />
   <img src="assets/svg/timeline-mini.svg" width="100%" alt="Career milestones" />
 </picture>
 
 <sub><b>Ce que vous pouvez acheter</b></sub>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/svg/dark/services.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="assets/svg/light/services.svg" />
   <img src="assets/svg/services.svg" width="100%" alt="Services: Architecture &amp; refonte logicielle · Audit technique · Conception &amp; livraison de MVP · Industrialisation CI/CD &amp; delivery · AI-Driven Development · Developer tooling &amp; automatisation" />
 </picture>
 
 <sub><b>Comment m'engager</b></sub>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/svg/dark/modes.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="assets/svg/light/modes.svg" />
   <img src="assets/svg/modes.svg" width="100%" alt="Engagement modes" />
 </picture>
 
 <sub><b>Comment je travaille</b></sub>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/svg/dark/methodology.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="assets/svg/light/methodology.svg" />
   <img src="assets/svg/methodology.svg" width="100%" alt="Engineering principles" />
 </picture>
 
 <sub><b>Activité</b></sub>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/svg/dark/activity-stats.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="assets/svg/light/activity-stats.svg" />
   <img src="assets/svg/activity-stats.svg" width="100%" alt="Activity stats" />
 </picture>
 
@@ -122,7 +122,7 @@ J'accompagne les équipes techniques — **startups en construction comme struct
 
 <a href="https://www.openstreetmap.org/?mlat=43.74&mlon=5.06#map=9/43.74/5.06">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/map-dark.png" />
+    <source media="(prefers-color-scheme: light)" srcset="assets/map-dark.png" />
     <img src="assets/map.png" width="640" alt="Localisation — Senas, Provence-Alpes-Côte d'Azur, France. Coordonnées 43.74° N, 5.06° E. Carte OpenStreetMap, cliquer pour ouvrir." />
   </picture>
 </a>
@@ -136,7 +136,7 @@ J'accompagne les équipes techniques — **startups en construction comme struct
 
 <div align="center">
 
-<a href="mailto:borisleclere.pro@gmail.com"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/svg/dark/chip-email.svg" /><img alt="Email — borisleclere.pro@gmail.com" src="assets/svg/chip-email.svg" /></picture></a><a href="tel:+33626263461"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/svg/dark/chip-phone.svg" /><img alt="Téléphone — +33 6 26 26 34 61" src="assets/svg/chip-phone.svg" /></picture></a><a href="https://wa.me/33626263461"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/svg/dark/chip-whatsapp.svg" /><img alt="WhatsApp" src="assets/svg/chip-whatsapp.svg" /></picture></a><a href="https://www.linkedin.com/in/borisleclere"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/svg/dark/chip-linkedin.svg" /><img alt="LinkedIn" src="assets/svg/chip-linkedin.svg" /></picture></a><a href="https://www.malt.fr/profile/borisleclere"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/svg/dark/chip-malt.svg" /><img alt="Malt" src="assets/svg/chip-malt.svg" /></picture></a><a href="https://pypi.org/user/Rinzler78"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/svg/dark/chip-pypi.svg" /><img alt="PyPI" src="assets/svg/chip-pypi.svg" /></picture></a><a href="https://discordapp.com/users/rinzler84"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/svg/dark/chip-discord.svg" /><img alt="Discord" src="assets/svg/chip-discord.svg" /></picture></a><a href="https://twitter.com/BorisLeclere"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/svg/dark/chip-twitter.svg" /><img alt="X" src="assets/svg/chip-twitter.svg" /></picture></a>
+<a href="mailto:borisleclere.pro@gmail.com"><picture><source media="(prefers-color-scheme: light)" srcset="assets/svg/light/chip-email.svg" /><img alt="Email — borisleclere.pro@gmail.com" src="assets/svg/chip-email.svg" /></picture></a><a href="tel:+33626263461"><picture><source media="(prefers-color-scheme: light)" srcset="assets/svg/light/chip-phone.svg" /><img alt="Téléphone — +33 6 26 26 34 61" src="assets/svg/chip-phone.svg" /></picture></a><a href="https://wa.me/33626263461"><picture><source media="(prefers-color-scheme: light)" srcset="assets/svg/light/chip-whatsapp.svg" /><img alt="WhatsApp" src="assets/svg/chip-whatsapp.svg" /></picture></a><a href="https://www.linkedin.com/in/borisleclere"><picture><source media="(prefers-color-scheme: light)" srcset="assets/svg/light/chip-linkedin.svg" /><img alt="LinkedIn" src="assets/svg/chip-linkedin.svg" /></picture></a><a href="https://www.malt.fr/profile/borisleclere"><picture><source media="(prefers-color-scheme: light)" srcset="assets/svg/light/chip-malt.svg" /><img alt="Malt" src="assets/svg/chip-malt.svg" /></picture></a><a href="https://pypi.org/user/Rinzler78"><picture><source media="(prefers-color-scheme: light)" srcset="assets/svg/light/chip-pypi.svg" /><img alt="PyPI" src="assets/svg/chip-pypi.svg" /></picture></a><a href="https://discordapp.com/users/rinzler84"><picture><source media="(prefers-color-scheme: light)" srcset="assets/svg/light/chip-discord.svg" /><img alt="Discord" src="assets/svg/chip-discord.svg" /></picture></a><a href="https://twitter.com/BorisLeclere"><picture><source media="(prefers-color-scheme: light)" srcset="assets/svg/light/chip-twitter.svg" /><img alt="X" src="assets/svg/chip-twitter.svg" /></picture></a>
 <sub><a href="tel:+33626263461">+33 6 26 26 34 61</a>  &nbsp;·&nbsp;  <a href="https://wa.me/33626263461">WhatsApp</a>  &nbsp;·&nbsp;  <code>EOF · github.com/Rinzler78 · 2026 — still curious, still shipping_</code></sub>
 
 </div>

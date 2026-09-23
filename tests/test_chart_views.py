@@ -17,7 +17,7 @@ import defusedxml.ElementTree as ET
 ROOT = Path(__file__).resolve().parent.parent
 SVG_DIR = ROOT / "assets" / "svg"
 CHARTS = ("journey-share.svg", "domain-split.svg", "top-skills.svg")
-VARIANTS = ("", "dark", "en", "en/dark")
+VARIANTS = ("", "light", "en", "en/light")
 
 
 def _read(variant: str, name: str) -> str:
@@ -47,11 +47,13 @@ def test_captions_are_translated_per_language():
 
 
 def test_dark_and_light_use_their_own_series_colors():
-    light = _read("", "journey-share.svg")
-    dark = _read("dark", "journey-share.svg")
+    # Dark-first (ADR-009): the root holds the dark variant, light/ the
+    # prefers-color-scheme override.
+    dark = _read("", "journey-share.svg")
+    light = _read("light", "journey-share.svg")
     assert light != dark
-    assert "#eb6834" in light  # light step of the first categorical slot
-    assert "#d95926" in dark  # its dark step
+    assert "#d95926" in dark  # dark step of the first categorical slot
+    assert "#eb6834" in light  # its light step
 
 
 def test_no_chart_carries_a_script_or_an_event_handler():

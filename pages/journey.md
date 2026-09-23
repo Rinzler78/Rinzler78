@@ -3,7 +3,7 @@
 # Parcours
 <div align="center">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="../assets/svg/dark/timeline-mini.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="../assets/svg/light/timeline-mini.svg" />
   <img src="../assets/svg/timeline-mini.svg" width="100%" alt="Jalons de parcours de 2026 à ~1990s" />
 </picture></div>
 

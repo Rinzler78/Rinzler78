@@ -3,7 +3,7 @@
 # Technical stack
 <div align="center">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="../../assets/svg/en/dark/core-expertise.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="../../assets/svg/en/light/core-expertise.svg" />
   <img src="../../assets/svg/en/core-expertise.svg" width="100%" alt="Core expertise — current level and peak reached" />
 </picture>
 </div>
@@ -12,13 +12,13 @@
   <tr>
     <td valign="top" width="70%">
       <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="../../assets/svg/en/dark/stack-summary.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="../../assets/svg/en/light/stack-summary.svg" />
   <img src="../../assets/svg/en/stack-summary.svg" width="100%" alt="Seniority per domain" />
 </picture>
     </td>
     <td valign="top" width="30%">
       <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="../../assets/svg/en/dark/activity-stats.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="../../assets/svg/en/light/activity-stats.svg" />
   <img src="../../assets/svg/en/activity-stats.svg" width="100%" alt="Activity stats" />
 </picture>
     </td>
