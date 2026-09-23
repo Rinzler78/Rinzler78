@@ -209,7 +209,7 @@
   {
     "id": "linux-ubuntu",
     "label": "Linux / Ubuntu",
-    "domain": "embedded",
+    "domain": "devops",
     "display_version": "22.04 LTS",
     "notes": "Production servers, Docker hosts, dev environment.",
     "versions": []
@@ -217,7 +217,7 @@
   {
     "id": "windows",
     "label": "Windows",
-    "domain": "embedded",
+    "domain": "devops",
     "display_version": "3.11 → 11 + Server",
     "notes": "Daily driver since Windows 3.11; Windows Server administration (AD, VMware) in embedded era.",
     "versions": []

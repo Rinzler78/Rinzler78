@@ -14,7 +14,9 @@ This repo is Boris Leclere's GitHub profile. The README and the decorative SVGs 
 
 ### Domain
 
-`data/domains.json` — Taxonomy of areas of expertise. Each domain has a stable snake_case `id`, a human `label` and an `order` (display rank). The current domains: `embedded`, `mobile`, `backend`, `devops`, `ai-llm`, `blockchain`. **Embedded comes first** by convention (signature track record).
+`data/domains.json` — Taxonomy of areas of expertise. Each domain has a stable snake_case `id`, a human `label` and an `order` (display rank). The current domains: `embedded`, `mobile`, `languages`, `backend`, `devops`, `ai-llm`, `blockchain`. **Embedded comes first** by convention (signature track record).
+
+A domain is read as a **timeline** by every per-domain view, so membership is decided by what a tech *is used for*, not by where it was first met. General-purpose operating systems (`linux-ubuntu`, `windows`) therefore sit in `devops`, not `embedded`: they run under every engagement, and filing them as embedded kept that domain lit to the present day while the profile states professional embedded work stopped. `windows-ce` — a real embedded target — stays. Pinned by `tests/test_domain_taxonomy.py`.
 
 ### Signature arc
 
