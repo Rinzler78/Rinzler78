@@ -77,14 +77,9 @@
 <div align="center">
 
 {% set phone_digits = profile.contacts.phone | replace('+', '') | replace(' ', '') %}
-<a href="mailto:{{ profile.contacts.email_pro }}"><img alt="Email pro" src="https://img.shields.io/badge/{{ profile.contacts.email_pro | replace('@', '%40') }}-{{ theme.palette.accent | replace('#', '') }}?style=for-the-badge&logo=gmail&logoColor=white&labelColor={{ theme.palette.panel | replace('#', '') }}" /></a>
-<a href="tel:+{{ phone_digits }}"><img alt="Téléphone" src="https://img.shields.io/badge/call-{{ theme.palette.accent | replace('#', '') }}?style=for-the-badge&logo=phone&logoColor=white&labelColor={{ theme.palette.panel | replace('#', '') }}" /></a>
-<a href="https://wa.me/{{ phone_digits }}"><img alt="WhatsApp" src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white&labelColor={{ theme.palette.panel | replace('#', '') }}" /></a>
-<a href="{{ profile.links.linkedin }}"><img alt="LinkedIn" src="https://img.shields.io/badge/in-LinkedIn-{{ theme.palette.accent | replace('#', '') }}?style=for-the-badge&logo=linkedin&logoColor=white&labelColor={{ theme.palette.panel | replace('#', '') }}" /></a>
-<a href="{{ profile.links.malt }}"><img alt="Malt" src="https://img.shields.io/badge/Malt-{{ theme.palette.accent | replace('#', '') }}?style=for-the-badge&logo=malt&logoColor=white&labelColor={{ theme.palette.panel | replace('#', '') }}" /></a>
-<a href="{{ profile.links.pypi }}"><img alt="PyPI" src="https://img.shields.io/badge/PyPI-{{ theme.palette.text_muted | replace('#', '') }}?style=for-the-badge&logo=pypi&logoColor=white&labelColor={{ theme.palette.panel | replace('#', '') }}" /></a>
-<a href="{{ profile.links.discord }}"><img alt="Discord" src="https://img.shields.io/badge/Discord-{{ theme.palette.text_muted | replace('#', '') }}?style=for-the-badge&logo=discord&logoColor=white&labelColor={{ theme.palette.panel | replace('#', '') }}" /></a>
-<a href="{{ profile.links.twitter }}"><img alt="X" src="https://img.shields.io/badge/X-{{ theme.palette.text_muted | replace('#', '') }}?style=for-the-badge&logo=x&logoColor=white&labelColor={{ theme.palette.panel | replace('#', '') }}" /></a>
+{% for c in contact_chips %}
+<a href="{{ c.href }}"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/svg/{{ svg }}dark/chip-{{ c.id }}.svg" /><img alt="{{ c.label }}{% if c.value %} — {{ c.value }}{% endif %}" src="assets/svg/{{ svg }}chip-{{ c.id }}.svg" /></picture></a>
+{%- endfor %}
 
 <sub><a href="tel:+{{ phone_digits }}">{{ profile.contacts.phone }}</a>  &nbsp;·&nbsp;  <a href="https://wa.me/{{ phone_digits }}">WhatsApp</a>  &nbsp;·&nbsp;  <code>{{ content.connect.footer_eof }}</code></sub>
 

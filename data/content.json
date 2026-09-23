@@ -78,6 +78,16 @@
   },
 
   "connect": {
+    "chips": [
+      { "id": "email", "label": "Email", "primary": true },
+      { "id": "phone", "label": "Téléphone" },
+      { "id": "whatsapp", "label": "WhatsApp" },
+      { "id": "linkedin", "label": "LinkedIn" },
+      { "id": "malt", "label": "Malt" },
+      { "id": "pypi", "label": "PyPI" },
+      { "id": "discord", "label": "Discord" },
+      { "id": "twitter", "label": "X" }
+    ],
     "easter_egg": "// open socket",
     "phone_label": "Tél. (sur demande sérieuse)",
     "footer_eof": "EOF · github.com/Rinzler78 · 2026 — still curious, still shipping_"
