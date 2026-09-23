@@ -1,8 +1,16 @@
 # ADR-005 — Quality gates, GitHub Actions CI and main protection
 
-- **Status**: Accepted
+- **Status**: Accepted (gate placement amended by [ADR-012](0012-tiered-quality-gates.md))
 - **Date**: 2026-05-27
 - **Related to**: [ADR-001](0001-data-driven-svg-generation.md), [ADR-003](0003-data-schema-collections-and-derived-views.md), [ADR-004](0004-i18n-bilingual-readme.md)
+
+> **Amended 2026-09-23 ([ADR-012](0012-tiered-quality-gates.md)):** the set of checks
+> below stands; **where each one runs** is superseded. They are now tiered by
+> responsibility — `pre-commit` carries only the tests the staged files can affect,
+> `pre-push` the full suite and the coverage floor, `pre-merge-commit` the dependency
+> audit. `pip-audit` also moves to `language: system`: declared with an isolated
+> environment it audited pre-commit's own placeholder package, never this project's
+> dependencies.
 
 ## Context
 

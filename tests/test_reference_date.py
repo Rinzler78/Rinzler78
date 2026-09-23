@@ -43,7 +43,7 @@ def test_reference_date_comes_from_config():
 
 
 def test_generation_ignores_the_system_clock(monkeypatch):
-    gen.main()
+    # The session fixture already rendered against the real clock.
     before = _read_outputs()
 
     class _Clock(datetime.date):
