@@ -130,16 +130,6 @@ For over 14 years, I have been building my expertise as a developer and CTO. Tod
 
 ---
 
-## 🏆 GitHub Trophies
-
-<div align="center">
-
-<img src="https://github-profile-trophy.vercel.app/?username=Rinzler78&theme=darkhub" alt="GitHub profile trophies." />
-
-</div>
-
----
-
 ## 🐍 Contribution Graph
 
 <div align="center">
