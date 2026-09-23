@@ -1,14 +1,20 @@
 {
   "charts": {
     "journey_share": {
-      "aria": "Part de l'effort par domaine, chaque année ramenée à 100 %"
+      "aria": "Part de l'effort par domaine, chaque année ramenée à 100 %",
+      "title": "Où le temps est passé",
+      "conclusion": "**L'arc se lit directement.** L'embarqué occupe l'essentiel de 2006 à 2013, le mobile prend le relais jusqu'en 2019, le cloud domine à partir de 2020, l'IA apparaît en 2023. Chaque année est ramenée à 100 % : c'est une répartition, pas un volume."
     },
     "domain_split": {
       "aria": "Répartition de l'exposition cumulée par domaine, en parts",
-      "center": "domaines"
+      "center": "domaines",
+      "title": "Un profil large",
+      "conclusion": "**Polyvalent, pas dispersé.** Le DevOps concentre un tiers de l'exposition, mais quatre domaines dépassent chacun 13 %. Les parts se recoupent volontairement — une mission compte dans chaque domaine qu'elle touche — donc seuls les pourcentages sont affichés, jamais un total d'heures."
     },
     "top_skills": {
-      "aria": "Compétences les mieux ancrées, score sur 99 dérivé des heures d'exposition"
+      "aria": "Compétences les mieux ancrées, score sur 99 dérivé des heures d'exposition",
+      "title": "Compétences les mieux ancrées",
+      "conclusion": "**Le score vient des heures d'exposition réelles** — expériences datées et jours de commits — jamais d'une auto-évaluation. C# / .NET à 99 sur vingt ans ; l'AI-Driven Development déjà à 83 en trois ans."
     }
   },
 

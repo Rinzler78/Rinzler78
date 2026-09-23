@@ -11,10 +11,7 @@
   </picture>
 </a>
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://readme-typing-svg.demolab.com/?font=JetBrains+Mono&weight=600&size=20&pause=1200&center=true&vCenter=true&width=600&height=45&color=c75d3e&lines=Freelance+CTO;Software+Architect;AI-Driven+Development" />
-  <img src="https://readme-typing-svg.demolab.com/?font=JetBrains+Mono&weight=600&size=20&pause=1200&center=true&vCenter=true&width=600&height=45&color=c75d3e&lines=Freelance+CTO;Software+Architect;AI-Driven+Development" alt="Freelance CTO · Software Architect · AI-Driven Development" />
-</picture>
+**Freelance CTO**&nbsp;&nbsp;·&nbsp;&nbsp;**Software Architect**&nbsp;&nbsp;·&nbsp;&nbsp;**AI-Driven Development**
 
 </div>
 
@@ -33,29 +30,33 @@ I support technical teams - both startups and more mature structures** - in thei
 
 <div align="center">
 
-<sub><b>Live GitHub activity</b></sub>
+
+<sub><b>Où le temps est passé</b></sub>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-activity-graph.vercel.app/graph?username=Rinzler78&hide_border=true&area=true&bg_color=ffffff&color=1a1a1f&line=c75d3e&point=c75d3e&title_color=c75d3e" />
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=Rinzler78&hide_border=true&area=true&bg_color=ffffff&color=1a1a1f&line=c75d3e&point=c75d3e&title_color=c75d3e" width="100%" alt="Contribution activity graph for Rinzler78." />
+  <source media="(prefers-color-scheme: dark)" srcset="assets/svg/en/dark/journey-share.svg" />
+  <img src="assets/svg/en/journey-share.svg" width="100%" alt="Share of effort per domain, each year normalized to 100%" />
 </picture>
 
-<table>
-  <tr>
-    <td valign="middle" width="40%">
-      <picture>
-        <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api?username=Rinzler78&show_icons=true&hide_rank=true&hide_border=true&bg_color=ffffff&title_color=c75d3e&text_color=1a1a1f&icon_color=c75d3e" />
-        <img src="https://github-readme-stats.vercel.app/api?username=Rinzler78&show_icons=true&hide_rank=true&hide_border=true&bg_color=ffffff&title_color=c75d3e&text_color=1a1a1f&icon_color=c75d3e" width="100%" alt="GitHub stats for Rinzler78 (rank hidden — no inflated grade)." />
-      </picture>
-    </td>
-    <td valign="middle" width="60%">
-      <picture>
-        <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Rinzler78/Rinzler78/output/github-contribution-grid-snake-dark.svg" />
-        <img src="https://raw.githubusercontent.com/Rinzler78/Rinzler78/output/github-contribution-grid-snake.svg" width="100%" alt="Contribution snake eating the activity grid for Rinzler78." />
-      </picture>
-    </td>
-  </tr>
-</table>
+<sub>**L'arc se lit directement.** L'embarqué occupe l'essentiel de 2006 à 2013, le mobile prend le relais jusqu'en 2019, le cloud domine à partir de 2020, l'IA apparaît en 2023. Chaque année est ramenée à 100 % : c'est une répartition, pas un volume.</sub>
+
+<sub><b>Compétences les mieux ancrées</b></sub>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/svg/en/dark/top-skills.svg" />
+  <img src="assets/svg/en/top-skills.svg" width="100%" alt="Strongest skills, scored out of 99 from exposure hours" />
+</picture>
+
+<sub>**Le score vient des heures d'exposition réelles** — expériences datées et jours de commits — jamais d'une auto-évaluation. C# / .NET à 99 sur vingt ans ; l'AI-Driven Development déjà à 83 en trois ans.</sub>
+
+<sub><b>Un profil large</b></sub>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/svg/en/dark/domain-split.svg" />
+  <img src="assets/svg/en/domain-split.svg" width="100%" alt="Lifetime exposure split by domain, as shares" />
+</picture>
+
+<sub>**Polyvalent, pas dispersé.** Le DevOps concentre un tiers de l'exposition, mais quatre domaines dépassent chacun 13 %. Les parts se recoupent volontairement — une mission compte dans chaque domaine qu'elle touche — donc seuls les pourcentages sont affichés, jamais un total d'heures.</sub>
 
 </div>
 
