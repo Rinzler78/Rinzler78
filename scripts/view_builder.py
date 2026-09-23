@@ -16,8 +16,17 @@ tech collection.
 import re
 from datetime import date
 
-from scripts.hours_calculator import TechHours, compute_tech_hours
+from scripts.hours_calculator import (
+    TechHours,
+    compute_tech_hours,
+    compute_tech_hours_by_year,
+)
 from scripts.score_engine import compute_skill
+
+# Cross-cutting domains, excluded from the per-domain timeline. Languages are
+# used inside every other domain, so the row is lit every year and only
+# flattens the scale of the rows that carry information.
+TIMELINE_EXCLUDED_DOMAINS = frozenset({"languages"})
 
 
 def build_profile_as_code(
@@ -69,6 +78,40 @@ def build_signature_arc(domains: list[dict]) -> list[dict]:
         }
         for d in nodes
     ]
+
+
+def build_domain_year_hours(
+    techs: list[dict],
+    experiences: list[dict],
+    projects: list[dict],
+    today: date,
+) -> dict[str, dict[int, int]]:
+    """Exposure hours per domain, per calendar year — the journey series.
+
+    Aggregates the per-tech split up to domains, skipping
+    :data:`TIMELINE_EXCLUDED_DOMAINS`. A tech referenced by an experience but
+    absent from the collection is ignored rather than guessed at: referential
+    integrity is validated upstream, so a miss here means the reference is
+    genuinely dangling and inventing a domain for it would fabricate a row.
+
+    Tier fractions are cumulative, not normalized (ADR-006): one engagement
+    counts its hours in full under each domain it touches. Summing across
+    domains therefore double-counts — these values carry *shares*, never a
+    total that can be shown as hours worked.
+    """
+    domain_of = {tech["id"]: tech["domain"] for tech in techs}
+    by_tech = compute_tech_hours_by_year(experiences, projects, today)
+
+    series: dict[str, dict[int, int]] = {}
+    for tech_id, years in by_tech.items():
+        domain = domain_of.get(tech_id)
+        if domain is None or domain in TIMELINE_EXCLUDED_DOMAINS:
+            continue
+        row = series.setdefault(domain, {})
+        for year, hours in years.items():
+            row[year] = row.get(year, 0) + hours
+
+    return {d: dict(sorted(years.items())) for d, years in series.items()}
 
 
 def build_skills(
