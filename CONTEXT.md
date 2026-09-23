@@ -71,7 +71,7 @@ Mode answers the question "**how can I engage Boris**". Extracted from the histo
 
 ### Config
 
-`data/config.json` — Singleton-collection (1 entry `id: "main"`) that points to the **active theme** (`theme_id`) and the **active profile** (`profile_id`) if several are defined. Allows the design to evolve or an A/B test to be versioned without touching the other files.
+`data/config.json` — Singleton object holding the generation settings. Its only field today is **`as_of`** (`YYYY-MM-DD`): the **reference date** the whole derivation runs against. Hours accrue for every ongoing Experience, so scores, levels and row order move with this date — reading the system clock instead would make the same revision regenerate differently tomorrow. `scripts/bump_as_of.py`, called by the weekly refresh workflow, is the one place that moves it. See [ADR-011](docs/adr/0011-committed-reference-date.md).
 
 ### Theme
 

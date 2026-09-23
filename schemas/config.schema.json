@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Generation config",
+  "description": "Singleton generation settings. `as_of` is the reference date the whole derivation pipeline runs against, so a revision pins its own output instead of drifting with the system clock.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["as_of"],
+  "properties": {
+    "as_of": {
+      "type": "string",
+      "format": "date",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+      "description": "Reference date (YYYY-MM-DD) for hours, scores and recency. Bumped deliberately by the weekly refresh workflow, never read from the clock."
+    }
+  }
+}
