@@ -116,6 +116,18 @@ A view is an SVG, a markdown **Page**, or a section that **aggregates** several 
 
 Views are **derived**, never stored. This is the invariant that guarantees inter-view consistency.
 
+### Journey series
+
+`domain_years` — exposure hours **per domain, per calendar year**, built by `build_domain_year_hours` from the same hours that produce the Tech scores, so a chart and a score can never disagree. The `languages` domain is excluded: it is used inside every other domain, so its row would be lit every year while flattening the scale of the rows that carry information. Tier fractions are cumulative, so summing across domains double-counts — these values are rendered as **shares**, never as hours worked. See [ADR-006](docs/adr/0006-hours-based-expertise-model.md).
+
+### Chart
+
+A static SVG figure emitted by `scripts/charts.py`: `stacked_area` (share of effort per year), `donut` (lifetime split), `bar_rows` (ranked values). One form per question — never the same device twice.
+
+GitHub serves README SVGs inside an `<img>`, so **no JavaScript runs**: there is no hover, no tooltip and no second render. Every chart therefore bakes in its own direct labels, a `<title>` and an `aria-label` listing the values, and is doubled in the page by a line of prose stating the conclusion.
+
+Series colors are **injected by the caller** from a palette validated for color-vision deficiency, not from the brand accent — an indigo/coral-led set measures ΔE 1.5 between coral and aqua under protanopia. Accessibility captions are injected too: the module writes markup and carries no prose, or `README.en.md` would inherit French labels. See [ADR-009](docs/adr/0009-visual-redesign-devtool-direction.md).
+
 ### Page
 
 A generated markdown file that is a view at document scale. `README.md` is the **front** Page (concise: hero + quick résumé + full contact cluster + links out); detail Pages live under `pages/` (e.g. `pages/stack.md`, `pages/journey.md`, `pages/projects.md`, `pages/toolbox.md`), each an aggregated view of the same `data/`. Pages are a first-class generation target alongside SVG views, rendered for FR + EN (`pages/en/*`) with the same dual-palette `<picture>` mechanism. See [ADR-008](docs/adr/0008-in-repo-multipage.md).

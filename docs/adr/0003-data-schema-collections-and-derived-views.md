@@ -1,8 +1,17 @@
 # ADR-003 — Data schema: everything as collections, derived views, adaptive display
 
-- **Status**: Accepted
+- **Status**: Accepted (display posture amended by [ADR-009](0009-visual-redesign-devtool-direction.md))
 - **Date**: 2026-05-27
 - **Related to**: [ADR-001](0001-data-driven-svg-generation.md), [ADR-002](0002-tech-score-derivation.md), [ADR-004](0004-i18n-bilingual-readme.md)
+
+> **Amended 2026-09-23 ([ADR-009](0009-visual-redesign-devtool-direction.md)):** the
+> schema, collections and derived-views design stands. The **display** decisions are
+> superseded: the profile is **dark-first** (dark primary at the root, light as the
+> `prefers-color-scheme: light` override), SVG backgrounds match the GitHub canvas, and
+> the interface accent is indigo with coral kept as the arc origin. Data-series colors
+> are a separate concern, drawn from a CVD-validated palette rather than the brand.
+> The `<picture>` dual-render mechanism is unchanged; only the default variant and the
+> palette change.
 
 ## Context
 
