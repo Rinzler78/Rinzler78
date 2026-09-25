@@ -1,0 +1,3 @@
+{#- Lifetime split by domain. Shares only: cumulative tiers make the raw totals
+    double-count, so an absolute figure would overstate the work. -#}
+{{ chart_domain_split(content.charts.domain_split.aria, content.charts.domain_split.center) }}

@@ -34,6 +34,7 @@ _REPO_ROOT = pathlib.Path(__file__).resolve().parent.parent
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
 
+from scripts import charts  # noqa: E402
 from scripts.font_outline import outline_text  # noqa: E402
 from scripts.translate import CACHE, localize_data  # noqa: E402
 from scripts.view_builder import (  # noqa: E402
@@ -236,6 +237,78 @@ def make_env(data: dict[str, Any]) -> Environment:
     env.globals["domains_in_id_card"] = domains_in_id_card
     env.globals["level_color"] = level_color
     env.globals["level_label"] = level_label
+
+    # --- charts (ADR-009) -------------------------------------------------
+    # Series colors and captions are injected here rather than living in
+    # scripts/charts.py: the palette flips per render pass, and the captions
+    # are display copy that must follow the language of the page.
+    def _chart_ink() -> dict[str, str]:
+        pal = data["theme"]["palette"]
+        return {
+            "text": pal["text"],
+            "muted": pal["text_muted"],
+            "dim": pal["text_dim"],
+            "surface": pal["bg"],
+            "track": pal["panel_alt"],
+        }
+
+    def _series_colors() -> dict[str, str]:
+        theme = data["theme"]
+        light = theme.get("series_light", theme["series"])
+        is_light = data["theme"]["palette"] is theme.get("palette_light")
+        return light if is_light else theme["series"]
+
+    def _domain_labels() -> dict[str, str]:
+        return {d["id"]: d["label"] for d in data["domains"]}
+
+    def chart_journey_share(caption: str = "") -> str:
+        return charts.stacked_area(
+            data["domain_years"],
+            _series_colors(),
+            _chart_ink(),
+            labels=_domain_labels(),
+            caption=caption,
+        )
+
+    def chart_domain_split(caption: str = "", center_label: str = "") -> str:
+        totals = {k: sum(v.values()) for k, v in data["domain_years"].items()}
+        grand = sum(totals.values())
+        if not grand:
+            return charts.donut([], _series_colors(), _chart_ink(), caption=caption)
+        shares = sorted(
+            ((k, round(v / grand * 100, 1)) for k, v in totals.items()),
+            key=lambda kv: -kv[1],
+        )
+        # Rounding each share independently rarely lands on 100; the donut
+        # refuses a set that does not make a whole, so the remainder goes to
+        # the smallest slice where it is least visible.
+        drift = round(100.0 - sum(pct for _, pct in shares), 1)
+        shares[-1] = (shares[-1][0], round(shares[-1][1] + drift, 1))
+        return charts.donut(
+            shares,
+            _series_colors(),
+            _chart_ink(),
+            labels=_domain_labels(),
+            caption=caption,
+            center_value=str(len(shares)),
+            center_label=center_label,
+        )
+
+    def chart_top_skills(count: int = 8, caption: str = "") -> str:
+        ranked = sorted(
+            (t for t in data["techs"] if t.get("score_current")),
+            key=lambda t: -t["score_current"],
+        )[:count]
+        return charts.bar_rows(
+            [(t["label"], t["score_current"]) for t in ranked],
+            data["theme"]["palette"]["accent"],
+            _chart_ink(),
+            caption=caption,
+        )
+
+    env.globals["chart_journey_share"] = chart_journey_share
+    env.globals["chart_domain_split"] = chart_domain_split
+    env.globals["chart_top_skills"] = chart_top_skills
     return env
 
 
@@ -250,6 +323,11 @@ SVG_TARGETS: list[tuple[str, str, dict]] = [
     ("timeline_mini.svg.jinja", "timeline-mini.svg", {}),
     ("featured_projects.svg.jinja", "featured-projects.svg", {}),
     ("modes.svg.jinja", "modes.svg", {}),
+    # Charts (ADR-009): one standard form per question, each doubled by prose
+    # in the page that embeds it.
+    ("journey_share.svg.jinja", "journey-share.svg", {}),
+    ("domain_split.svg.jinja", "domain-split.svg", {}),
+    ("top_skills.svg.jinja", "top-skills.svg", {}),
 ]
 
 

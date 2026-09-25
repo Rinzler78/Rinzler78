@@ -107,6 +107,7 @@ noqa
 nosec
 Ollama
 Ondeo
+onmouseover
 openstreetmap
 Osmosis
 osmosisd

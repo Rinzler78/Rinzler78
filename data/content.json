@@ -1,4 +1,17 @@
 {
+  "charts": {
+    "journey_share": {
+      "aria": "Part de l'effort par domaine, chaque année ramenée à 100 %"
+    },
+    "domain_split": {
+      "aria": "Répartition de l'exposition cumulée par domaine, en parts",
+      "center": "domaines"
+    },
+    "top_skills": {
+      "aria": "Compétences les mieux ancrées, score sur 99 dérivé des heures d'exposition"
+    }
+  },
+
   "approach": {
     "headline_easter_egg": "// pragma: humanity",
     "paragraph": "J'accompagne les équipes techniques — **startups en construction comme structures plus matures** — sur leur stratégie logicielle : choix de stack, architecture, dette technique, industrialisation, mise en production. J'aime autant comprendre un protocole bas niveau, orchestrer un pipeline CI/CD que brancher un LLM sur un produit existant. **Mon angle, c'est la polyvalence et une curiosité sincère pour la technologie** — pas un terrain de jeu unique."
