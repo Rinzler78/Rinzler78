@@ -78,6 +78,18 @@ def _escape_amp(obj: Any) -> Any:
     return obj
 
 
+def reference_date() -> date:
+    """The committed date the whole derivation runs against.
+
+    Hours accrue for every ongoing experience, so scores, levels and row order
+    move with the reference date. Reading the clock would make the same
+    revision regenerate differently tomorrow; `data/config.json` pins it, and
+    the weekly refresh workflow bumps it deliberately.
+    """
+    config = json.loads((DATA / "config.json").read_text(encoding="utf-8"))
+    return date.fromisoformat(config["as_of"])
+
+
 def load_data() -> dict[str, Any]:
     """Loads the data/*.json files and escapes `&` for XML/markdown use."""
     raw = {
@@ -266,8 +278,9 @@ def main() -> int:
     raw = load_data()
     # EN data: localize the translatable fields from the committed cache, then
     # re-escape (`&` in English values) — _escape_amp is idempotent.
-    en_data = enrich(_escape_amp(localize_data(raw, CACHE)), date.today())
-    fr_data = enrich(raw, date.today())
+    as_of = reference_date()
+    en_data = enrich(_escape_amp(localize_data(raw, CACHE)), as_of)
+    fr_data = enrich(raw, as_of)
 
     env_fr = make_env(fr_data)
     env_en = make_env(en_data)

@@ -33,8 +33,9 @@ jobs:
       - name: Run all hooks
         run: pre-commit run --all-files --show-diff-on-failure
       # Safety net: the committed generated artifacts (SVG/README) are in
-      # sync with the data. Generation only depends on the current year
-      # (ADR-006 decay) — stable within a calendar year.
+      # sync with the data. Generation derives its dates from the committed
+      # `as_of` in data/config.json, never from the clock, so this diff stays
+      # empty however long after the commit CI runs (ADR-011).
       - name: Generated artifacts up-to-date
         run: git diff --exit-code
 

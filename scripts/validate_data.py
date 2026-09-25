@@ -27,6 +27,7 @@ SCHEMAS = _REPO_ROOT / "schemas"
 
 # (data file, schema file or None)
 SCHEMA_MAP = {
+    "config.json": "config.schema.json",
     "techs.json": "tech.schema.json",
     "experiences.json": "experience.schema.json",
     "projects.json": "project.schema.json",

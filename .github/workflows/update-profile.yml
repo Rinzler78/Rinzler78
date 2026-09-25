@@ -33,6 +33,11 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python scripts/fetch_metrics.py
+      # The generation reads `as_of` from data/config.json rather than the
+      # clock, so a revision pins its own output. This weekly run is the one
+      # place that moves it forward.
+      - name: Bump the reference date
+        run: python scripts/bump_as_of.py
       - name: Regenerate profile
         run: python scripts/generate.py
       - name: Commit & push if changed
