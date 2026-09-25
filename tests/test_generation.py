@@ -74,15 +74,13 @@ def test_generated_svgs_are_well_formed_xml():
         ET.fromstring(svg.read_text(encoding="utf-8"))  # raises on malformed XML
 
 
-def test_external_widgets_are_light_first():
-    # After the flip, NOTHING defaults to dark: every <picture> serves light by
-    # default and uses prefers-color-scheme:dark as the override (local + widgets).
+def test_every_picture_defaults_to_light_with_a_dark_override():
+    # One dual-render mechanism for every figure: the <img> fallback carries
+    # the default variant and prefers-color-scheme:dark is the override.
     for readme in READMES:
         text = readme.read_text(encoding="utf-8")
         assert "(prefers-color-scheme: light)" not in text
         assert "(prefers-color-scheme: dark)" in text
-        # a widget's default <img> uses the light panel (palette_light.panel).
-        assert "bg_color=ffffff" in text
 
 
 def test_readme_is_light_first():
@@ -159,13 +157,46 @@ def test_location_uses_committed_osm_map_linked_to_live():
     assert (ROOT / "assets" / "map-dark.png").exists()
 
 
-def test_readmes_embed_the_live_github_widgets():
-    # PRD-001 animations: typing banner, stats card (rank hidden), activity
-    # graph and the contribution snake must appear in both language READMEs.
+def test_no_third_party_service_renders_any_figure():
+    # ADR-009: every figure is generated from this repo's own data. The
+    # replaced widgets were also a liability — two of the three were returning
+    # 503 and 402 while this was written, so the profile showed broken images.
+    RENDERERS = (
+        "readme-typing-svg.demolab.com",
+        "github-readme-stats.vercel.app",
+        "github-readme-activity-graph.vercel.app",
+        "github-contribution-grid-snake",
+        "github-profile-trophy.vercel.app",
+        "capsule-render.vercel.app",
+        "streak-stats.demolab.com",
+    )
     for readme in READMES:
         text = readme.read_text(encoding="utf-8")
-        assert "readme-typing-svg.demolab.com" in text
-        assert "github-readme-stats.vercel.app" in text
-        assert "hide_rank=true" in text  # anti-inflation: no grade circle
-        assert "github-readme-activity-graph.vercel.app" in text
-        assert "github-contribution-grid-snake" in text
+        for renderer in RENDERERS:
+            assert renderer not in text, f"{readme.name} still renders via {renderer}"
+
+
+def test_the_front_page_carries_the_charts_it_replaced_them_with():
+    # A widget is removed only when something stronger stands in its place
+    # (ADR-009): the three in-house charts are that replacement.
+    for readme in READMES:
+        text = readme.read_text(encoding="utf-8")
+        for chart in ("journey-share.svg", "top-skills.svg", "domain-split.svg"):
+            assert chart in text, f"{readme.name} is missing {chart}"
+
+
+def test_each_chart_is_doubled_by_a_text_conclusion():
+    # The charts are images: a reader who only reads prose, or who reads with a
+    # screen reader, must still get the point. The expected prose is read from
+    # the data rather than repeated here — a copy in the test would pass while
+    # the page said something else.
+    import json
+
+    charts = json.loads((ROOT / "data" / "content.json").read_text(encoding="utf-8"))[
+        "charts"
+    ]
+    text = (ROOT / "README.md").read_text(encoding="utf-8")
+    for key, block in charts.items():
+        conclusion = block.get("conclusion")
+        assert conclusion, f"{key} has no conclusion to double its chart"
+        assert conclusion in text, f"{key}: the conclusion never reaches the page"
