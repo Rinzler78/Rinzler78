@@ -58,6 +58,64 @@ I support technical teams - both startups and more mature structures** - in thei
 
 <sub>**Polyvalent, pas dispersé.** Le DevOps concentre un tiers de l'exposition, mais quatre domaines dépassent chacun 13 %. Les parts se recoupent volontairement — une mission compte dans chaque domaine qu'elle touche — donc seuls les pourcentages sont affichés, jamais un total d'heures.</sub>
 
+<sub><b>Core expertise</b></sub>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/svg/en/dark/core-expertise.svg" />
+  <img src="assets/svg/en/core-expertise.svg" width="100%" alt="Core expertise — current level and peak reached" />
+</picture>
+
+<sub><b>Stack by domain</b></sub>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/svg/en/dark/stack-summary.svg" />
+  <img src="assets/svg/en/stack-summary.svg" width="100%" alt="Seniority per domain" />
+</picture>
+
+<sub>The full table, version by version, is on the **[stack page](pages/en/stack.md)**.</sub>
+
+<sub><b>Public projects</b></sub>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/svg/en/dark/featured-projects.svg" />
+  <img src="assets/svg/en/featured-projects.svg" width="100%" alt="Featured public repositories" />
+</picture>
+
+<sub><b>Milestones</b></sub>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/svg/en/dark/timeline-mini.svg" />
+  <img src="assets/svg/en/timeline-mini.svg" width="100%" alt="Career milestones" />
+</picture>
+
+<sub><b>What you can buy</b></sub>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/svg/en/dark/services.svg" />
+  <img src="assets/svg/en/services.svg" width="100%" alt="Services: Software architecture &amp; redesign · Technical audit · MVP design &amp; delivery · CI/CD industrialization &amp; delivery · AI-Driven Development · Developer tooling &amp; automation" />
+</picture>
+
+<sub><b>How to engage me</b></sub>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/svg/en/dark/modes.svg" />
+  <img src="assets/svg/en/modes.svg" width="100%" alt="Engagement modes" />
+</picture>
+
+<sub><b>How I work</b></sub>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/svg/en/dark/methodology.svg" />
+  <img src="assets/svg/en/methodology.svg" width="100%" alt="Engineering principles" />
+</picture>
+
+<sub><b>Activity</b></sub>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/svg/en/dark/activity-stats.svg" />
+  <img src="assets/svg/en/activity-stats.svg" width="100%" alt="Activity stats" />
+</picture>
+
 </div>
 
 <div align="center">
