@@ -317,3 +317,78 @@ def bar_rows(
 
     aria = _caption(caption, ", ".join(f"{n} {round(v)}{unit}" for n, v in items))
     return _svg(width, max(height, 1), aria, "".join(parts))
+
+
+# Rough advance width per character at 1px font-size, for the sans stack. SVGs
+# are served without the web font (GitHub strips @font-face inside an <img>),
+# so no font metric is available at render time and the box has to be sized
+# from an estimate. Erring wide leaves padding; erring narrow clips the text,
+# so this is deliberately generous.
+_AVG_CHAR_WIDTH = 0.58
+
+
+def _text_width(text: str, size: float) -> float:
+    return len(text) * size * _AVG_CHAR_WIDTH
+
+
+def chip(
+    label: str,
+    ink: dict[str, str],
+    *,
+    accent: str,
+    primary: bool = False,
+    value: str = "",
+    height: float = 34,
+    font_size: float = 13,
+) -> str:
+    """A small pill: the contact row, generated instead of fetched.
+
+    One SVG per chip rather than one image for the row, because an SVG served
+    in an `<img>` carries a single link — a combined strip could not be
+    clickable per item.
+    """
+    pad_x, dot, gap = 14.0, 5.0, 8.0
+    label_w = _text_width(label, font_size)
+    value_w = _text_width(value, font_size - 1.5) + gap if value else 0.0
+    width = pad_x * 2 + dot * 2 + gap + label_w + value_w
+
+    fill = accent if primary else ink["surface"]
+    stroke = accent if primary else ink["border"]
+    text_fill = ink["on_accent"] if primary else ink["text"]
+    value_fill = ink["on_accent"] if primary else ink["muted"]
+    dot_fill = ink["on_accent"] if primary else accent
+
+    x = pad_x
+    parts = [
+        f'<rect x="0.5" y="0.5" width="{_t(width - 1)}" height="{_t(height - 1)}" '
+        f'rx="{_t(height / 2)}" fill="{fill}" stroke="{stroke}"/>',
+        f'<circle cx="{_t(x + dot)}" cy="{_t(height / 2)}" r="{_t(dot)}" '
+        f'fill="{dot_fill}"/>',
+    ]
+    x += dot * 2 + gap
+    parts.append(
+        _text(
+            x,
+            height / 2 + font_size * 0.36,
+            label,
+            size=font_size,
+            fill=text_fill,
+            weight=700,
+        )
+    )
+    if value:
+        x += label_w + gap
+        parts.append(
+            _text(
+                x,
+                height / 2 + font_size * 0.36,
+                value,
+                size=font_size - 1.5,
+                fill=value_fill,
+                weight=400,
+                family=MONO,
+            )
+        )
+
+    aria = f"{label} {value}".strip()
+    return _svg(width, height, aria, "".join(parts))

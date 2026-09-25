@@ -200,3 +200,26 @@ def test_each_chart_is_doubled_by_a_text_conclusion():
         conclusion = block.get("conclusion")
         assert conclusion, f"{key} has no conclusion to double its chart"
         assert conclusion in text, f"{key}: the conclusion never reaches the page"
+
+
+def test_no_image_in_the_readmes_is_fetched_from_another_host():
+    # Stronger than a blocklist of known widget hosts: every figure must come
+    # from this repository. A remote <img> is a rendering dependency that can
+    # go down (two of the replaced widgets were returning 503 and 402), change
+    # style, or disappear — and the profile shows the failure.
+    import re
+
+    for readme in READMES:
+        text = readme.read_text(encoding="utf-8")
+        remote = re.findall(r'(?:src|srcset)="(https?://[^"]+)"', text)
+        assert not remote, f"{readme.name} fetches images from {sorted(set(remote))}"
+
+
+def test_the_contact_row_is_generated_from_the_declared_chips():
+    import json
+
+    chips = json.loads((ROOT / "data" / "content.json").read_text(encoding="utf-8"))
+    declared = [c["id"] for c in chips["connect"]["chips"]]
+    text = (ROOT / "README.md").read_text(encoding="utf-8")
+    for chip_id in declared:
+        assert f"chip-{chip_id}.svg" in text, f"chip {chip_id} never reaches the page"

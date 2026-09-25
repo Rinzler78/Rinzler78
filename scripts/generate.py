@@ -309,6 +309,32 @@ def make_env(data: dict[str, Any]) -> Environment:
     env.globals["chart_journey_share"] = chart_journey_share
     env.globals["chart_domain_split"] = chart_domain_split
     env.globals["chart_top_skills"] = chart_top_skills
+
+    def _chip_ink() -> dict[str, str]:
+        pal = data["theme"]["palette"]
+        return {
+            "text": pal["text"],
+            "muted": pal["text_muted"],
+            "dim": pal["text_dim"],
+            "surface": pal["panel"],
+            "track": pal["panel_alt"],
+            "border": pal["border"],
+            # White reads on both accent steps; the chip fill is the accent,
+            # never a pale tint, so a fixed value is safe here.
+            "on_accent": "#ffffff",
+        }
+
+    def contact_chip(label: str, value: str = "", primary: bool = False) -> str:
+        return charts.chip(
+            label,
+            _chip_ink(),
+            accent=data["theme"]["palette"]["accent"],
+            primary=primary,
+            value=value,
+        )
+
+    env.globals["contact_chip"] = contact_chip
+    env.globals["contact_chips"] = contact_targets(data)
     return env
 
 
@@ -331,11 +357,56 @@ SVG_TARGETS: list[tuple[str, str, dict]] = [
 ]
 
 
+def contact_targets(data: dict[str, Any]) -> list[dict[str, str]]:
+    """Resolve each declared contact chip to its label, value and href.
+
+    Labels are display copy and live in `content.json`; the addresses stay in
+    `profile.json`, so neither is duplicated. A chip whose id resolves to
+    nothing is dropped rather than rendered empty — an empty pill on the
+    contact row reads as a broken link.
+    """
+    contacts = data["profile"]["contacts"]
+    links = data["profile"]["links"]
+    digits = contacts["phone"].replace("+", "").replace(" ", "")
+    resolved = {
+        "email": (contacts["email_pro"], f"mailto:{contacts['email_pro']}"),
+        "phone": (contacts["phone"], f"tel:+{digits}"),
+        "whatsapp": ("", f"https://wa.me/{digits}"),
+        "linkedin": ("", links.get("linkedin", "")),
+        "malt": ("", links.get("malt", "")),
+        "pypi": ("", links.get("pypi", "")),
+        "discord": ("", links.get("discord", "")),
+        "twitter": ("", links.get("twitter", "")),
+        "youtube": ("", links.get("youtube", "")),
+        "github": ("", links.get("github", "")),
+    }
+    out: list[dict[str, str]] = []
+    for spec in data["content"]["connect"]["chips"]:
+        value, href = resolved.get(spec["id"], ("", ""))
+        if not href:
+            continue
+        out.append(
+            {
+                "id": spec["id"],
+                "label": spec["label"],
+                "value": value,
+                "href": href,
+                "primary": spec.get("primary", False),
+            }
+        )
+    return out
+
+
 def _render_svgs(env: Environment, out_dir: pathlib.Path) -> None:
     out_dir.mkdir(parents=True, exist_ok=True)
     for tpl_name, out_name, ctx in SVG_TARGETS:
         result = env.get_template(tpl_name).render(**ctx)
         (out_dir / out_name).write_text(result, encoding="utf-8")
+    # Contact chips: one SVG per chip, because an SVG served in an <img>
+    # carries a single link and the row has to be clickable per item.
+    for spec in env.globals["contact_chips"]:
+        svg = env.globals["contact_chip"](spec["label"], spec["value"], spec["primary"])
+        (out_dir / f"chip-{spec['id']}.svg").write_text(svg, encoding="utf-8")
 
 
 def _render_both_palettes(env: Environment, theme: dict, svg_dir: pathlib.Path) -> None:
