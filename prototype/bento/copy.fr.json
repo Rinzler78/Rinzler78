@@ -1,0 +1,57 @@
+{
+  "kpi_years": "ANS DE CODE",
+  "kpi_techs": "TECHNOLOGIES",
+  "kpi_domains": "DOMAINES",
+  "kpi_projects": "PROJETS",
+  "available": "disponible",
+  "pitch": [
+    "Vingt ans de code, de l'embarqué bas niveau aux LLM en production.",
+    "J'accompagne startups et structures établies sur leur stratégie logicielle."
+  ],
+  "role_full": "Freelance CTO · Architecte de solutions · AI-Driven Development",
+  "role_short": "Freelance CTO · Architecte de solutions",
+  "hero_aria": "Boris Leclere — Freelance CTO, 20 ans de code, disponible",
+  "banner_aria": "Boris Leclere — Freelance CTO",
+  "skills": "Compétences les mieux ancrées",
+  "skills_aria": "Compétences les mieux ancrées, score sur 99",
+  "domains": "Répartition par domaine",
+  "domains_aria": "Répartition de l'exposition cumulée par domaine",
+  "domains_center": "domaines",
+  "milestones": "Jalons",
+  "milestones_aria": "Jalons de carrière",
+  "services": "Prestations",
+  "contact": "Contact",
+  "location": "Localisation",
+  "location_extra": "Remote · déplacements",
+  "languages": "Langues",
+  "languages_list": [
+    "Français",
+    "Anglais"
+  ],
+  "sidebar_aria": "Contact, localisation, langues",
+  "main_aria": "Boris Leclere — profil et compétences",
+  "nav": "[Index](README.fr.md) · [A — Bento](variant-a.fr.md) · [B — CV deux colonnes](variant-b.fr.md) · [C — Chiffres d'abord](variant-c.fr.md)",
+  "below_title": "Où le temps est passé",
+  "below_text": "L'arc se lit directement : embarqué jusqu'en 2013, mobile jusqu'en 2019, cloud ensuite, IA depuis 2023.",
+  "below_alt": "Part de l'effort par domaine",
+  "below_note": "↑ Tuile existante, gardée telle quelle pour juger le raccord avec la grille.",
+  "variant_heading": "Variante",
+  "variants": {
+    "a": [
+      "A — Bento",
+      "Hero pleine largeur avec les chiffres clés, puis une rangée de deux demi-tuiles."
+    ],
+    "b": [
+      "B — CV deux colonnes",
+      "Colonne latérale étroite (contact, langues) et colonne principale large, comme un CV papier."
+    ],
+    "c": [
+      "C — Chiffres d'abord",
+      "Bandeau fin, quatre tuiles de chiffres, puis jalons et prestations côte à côte."
+    ]
+  },
+  "index_title": "Prototype — grille bento pour la façade",
+  "index_question": "Question : quelle mise en page donne à la façade GitHub des proportions cohérentes et l'ordre de lecture d'un CV moderne ?",
+  "index_grid": "Toutes les tuiles partagent une grille commune (pleine largeur = 1200 unités, deux demi-tuiles + 20 d'écart = 1200) : affichées à 100 % ou 49 %, elles ont toutes la même échelle, et aucun texte ne descend sous 12 px.",
+  "index_table_head": "| Variante | Structure |"
+}

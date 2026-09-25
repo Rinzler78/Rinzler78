@@ -175,3 +175,7 @@ worktree
 worktrees
 Xamarin
 XamTetris
+bento
+Segoe
+Menlo
+Consolas
