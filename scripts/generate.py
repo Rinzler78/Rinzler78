@@ -37,6 +37,7 @@ if str(_REPO_ROOT) not in sys.path:
 from scripts.font_outline import outline_text  # noqa: E402
 from scripts.translate import CACHE, localize_data  # noqa: E402
 from scripts.view_builder import (  # noqa: E402
+    build_domain_year_hours,
     build_profile_as_code,
     build_signature_arc,
     build_skills,
@@ -126,6 +127,12 @@ def enrich(data: dict[str, Any], today: date) -> dict[str, Any]:
         data["profile"], data["techs"], data["services"]
     )
     data["signature_arc"] = build_signature_arc(data["domains"])
+    # The journey series: exposure hours per domain, per year. Derived from the
+    # same hours that produce the scores, so the timeline and the numbers can
+    # never disagree.
+    data["domain_years"] = build_domain_year_hours(
+        data["techs"], data["experiences"], data["projects"], today
+    )
     return data
 
 
