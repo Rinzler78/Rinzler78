@@ -31,8 +31,6 @@
 | Compétence | Actuel | Pic | Période | Versions |
 |---|---|---|---|---|
 | Bluetooth / BLE / GATT | expert | expert | 2011–2023 | Classic + BLE 4.x · custom GATT |
-| Linux / Ubuntu | advanced | advanced | 2020–now | 22.04 LTS |
-| Windows | professional | professional | 2011–now | 3.11 → 11 + Server |
 | Windows CE | working | professional | 2006–2012 | 5.0 / 6.0 |
 | NFC | explored | working | 2011–2014 | ISO 14443 / 15693 (Mifare) |
 | GPS | explored | working | 2009–2012 | NMEA · A-GPS |
@@ -75,6 +73,8 @@
 |---|---|---|---|---|
 | Git | expert | expert | 2009–now | 2.x |
 | Docker | advanced | advanced | 2020–now | 24.x+ · Compose v2 |
+| Linux / Ubuntu | advanced | advanced | 2020–now | 22.04 LTS |
+| Windows | professional | professional | 2011–now | 3.11 → 11 + Server |
 | GitHub Actions | professional | professional | 2014–now | — |
 
 **AI &amp; LLM**
