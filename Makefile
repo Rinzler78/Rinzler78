@@ -3,8 +3,9 @@
 
 setup:
 	uv pip install -e ".[dev]"
+	# default_install_hook_types in .pre-commit-config.yaml covers
+	# pre-commit, pre-push and pre-merge-commit in this one call.
 	pre-commit install --install-hooks
-	pre-commit install --hook-type pre-push
 
 validate-data:
 	python scripts/validate_data.py

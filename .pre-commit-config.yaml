@@ -1,7 +1,16 @@
-# Quality gates (ADR-005). Replaces the old install-hook.sh shell hook.
-# Install: pre-commit install --install-hooks
-#          pre-commit install --hook-type pre-push
-default_install_hook_types: [pre-commit, pre-push]
+# Quality gates (ADR-005), tiered by responsibility (ADR-012).
+#
+#   pre-commit       is what I just wrote correct?   seconds — staged files
+#                                                    only, impacted tests only
+#   pre-push         is the branch green?            full suite + coverage floor
+#   pre-merge-commit is it safe to integrate?        + dependency CVE audit
+#
+# Nothing is skipped, only placed where its cost is worth paying: a full
+# `pytest --cov` on every commit makes the red-green-refactor loop unusable,
+# and an unusable gate is the one people route around.
+#
+# Install: pre-commit install --install-hooks   (installs all three types)
+default_install_hook_types: [pre-commit, pre-push, pre-merge-commit]
 
 repos:
   # --- File hygiene ------------------------------------------------------
@@ -91,7 +100,26 @@ repos:
         pass_filenames: false
         files: ^(README(\.en)?\.md|assets/svg/|data/|scripts/)
 
-      # --- pre-push: tests + deps audit ---------------------------------
+      # --- pre-commit: only the tests the staged files can affect --------
+      # Seconds, not a minute: this gate sits inside the red-green-refactor
+      # loop. scripts/impacted_tests.py maps staged paths to guards and widens
+      # to the whole suite whenever the mapping is not certain.
+      - id: impacted-tests
+        name: pytest (impacted by the staged files)
+        entry: python scripts/impacted_tests.py
+        language: python
+        additional_dependencies:
+          ["pytest>=8.0", "jsonschema>=4.0", "jinja2>=3.1", "defusedxml>=0.7", "fonttools>=4.0"]
+        types_or: [python, json, markdown, yaml]
+        # pre-commit batches filenames across concurrent invocations by
+        # default. Every run regenerates the artifacts into the same paths, so
+        # concurrent runs truncate the files their siblings are parsing — seen
+        # as a spurious "no element found" on an SVG that is in fact valid.
+        # The generated tree is shared mutable state: one invocation only.
+        require_serial: true
+        stages: [pre-commit]
+
+      # --- pre-push: the branch as a whole -------------------------------
       - id: pytest
         name: pytest + coverage (>=90% engine)
         entry: pytest -q --cov --cov-fail-under=90
@@ -102,11 +130,30 @@ repos:
         always_run: true
         stages: [pre-push]
 
+      # --- pre-merge-commit: integration safety --------------------------
+      # Dependency CVEs are a property of the dependency set, not of a commit,
+      # and the check needs the network. It belongs on the gate that
+      # integrates work, plus CI — not on every push.
+      #
+      # `language: system` is deliberate: pip-audit audits the environment it
+      # runs in, so an isolated pre-commit venv makes it audit its own
+      # placeholder package (`pre-commit-placeholder-package 0.0.0`, not on
+      # PyPI) and fail while never looking at this project's dependencies.
+      # Here it runs in the dev environment, where the project is installed.
       - id: pip-audit
         name: pip-audit (dependency CVEs)
         entry: pip-audit
-        language: python
-        additional_dependencies: ["pip-audit>=2.7"]
+        language: system
         pass_filenames: false
         always_run: true
-        stages: [pre-push]
+        stages: [pre-merge-commit]
+
+      - id: pytest-merge
+        name: pytest + coverage before a merge lands
+        entry: pytest -q --cov --cov-fail-under=90
+        language: python
+        additional_dependencies:
+          ["pytest>=8.0", "pytest-cov>=4.0", "jsonschema>=4.0", "jinja2>=3.1", "defusedxml>=0.7", "fonttools>=4.0"]
+        pass_filenames: false
+        always_run: true
+        stages: [pre-merge-commit]

@@ -29,7 +29,6 @@ def _read_all() -> dict[str, str]:
 
 
 def test_front_links_to_the_four_detail_pages():
-    gen.main()
     fr = (ROOT / "README.md").read_text(encoding="utf-8")
     for page in ("stack", "journey", "projects", "working-with-me"):
         assert f"(pages/{page}.md)" in fr
@@ -41,7 +40,6 @@ def test_front_links_to_the_four_detail_pages():
 
 
 def test_front_is_lean_with_dashboards_moved_to_pages():
-    gen.main()
     fr = (ROOT / "README.md").read_text(encoding="utf-8")
     for moved in ("services.svg", "core-expertise.svg", "featured-projects.svg"):
         assert moved not in fr
@@ -57,7 +55,6 @@ def test_front_is_lean_with_dashboards_moved_to_pages():
 
 
 def test_pages_back_link_resolves_per_language():
-    gen.main()
     assert "../README.md" in (ROOT / "pages" / "stack.md").read_text(encoding="utf-8")
     assert "../../README.en.md" in (
         (ROOT / "pages" / "en" / "stack.md").read_text(encoding="utf-8")
@@ -65,14 +62,12 @@ def test_pages_back_link_resolves_per_language():
 
 
 def test_generation_leaves_no_unrendered_jinja():
-    gen.main()
     for name, content in _read_all().items():
         assert "{{" not in content, f"unrendered expression in {name}"
         assert "{%" not in content, f"unrendered statement in {name}"
 
 
 def test_generated_svgs_are_well_formed_xml():
-    gen.main()
     svgs = sorted(SVG_DIR.rglob("*.svg"))
     assert any(s.parent.name == "dark" for s in svgs)  # both variants present
     for svg in svgs:
@@ -82,7 +77,6 @@ def test_generated_svgs_are_well_formed_xml():
 def test_external_widgets_are_light_first():
     # After the flip, NOTHING defaults to dark: every <picture> serves light by
     # default and uses prefers-color-scheme:dark as the override (local + widgets).
-    gen.main()
     for readme in READMES:
         text = readme.read_text(encoding="utf-8")
         assert "(prefers-color-scheme: light)" not in text
@@ -94,7 +88,6 @@ def test_external_widgets_are_light_first():
 def test_readme_is_light_first():
     # Light-first: the <img> default is the light (root-dir) SVG; dark is the
     # prefers-color-scheme override. The old light/ subdir must be gone.
-    gen.main()
     for readme in READMES:
         text = readme.read_text(encoding="utf-8")
         assert 'media="(prefers-color-scheme: dark)"' in text
@@ -105,7 +98,8 @@ def test_readme_is_light_first():
 
 
 def test_generation_is_deterministic():
-    gen.main()
+    # The session fixture already rendered once; this compares that output
+    # against a second, independent run.
     first = _read_all()
     gen.main()
     second = _read_all()
@@ -114,7 +108,6 @@ def test_generation_is_deterministic():
 
 def test_quality_manifesto_is_localized_per_readme():
     # Bilingual rule: prose is French in README.md, English in README.en.md.
-    gen.main()
     fr = (ROOT / "README.md").read_text(encoding="utf-8")
     en = (ROOT / "README.en.md").read_text(encoding="utf-8")
     assert "Conçu comme un produit" in fr
@@ -125,7 +118,6 @@ def test_quality_manifesto_is_localized_per_readme():
 def test_timeline_alt_says_parcours_not_carriere():
     # 1990s milestones are personal (basketball), not career — use "parcours".
     # The timeline now lives on the journey page.
-    gen.main()
     fr = (ROOT / "pages" / "journey.md").read_text(encoding="utf-8")
     assert "jalons de parcours" in fr.lower()
     assert "jalons de carrière" not in fr
@@ -133,7 +125,6 @@ def test_timeline_alt_says_parcours_not_carriere():
 
 def test_footer_exposes_no_fake_email():
     # `boris@github` reads as a non-viable email in the footer; use a real ref.
-    gen.main()
     for readme in READMES:
         text = readme.read_text(encoding="utf-8")
         assert "boris@github" not in text, f"fake email-like token in {readme.name}"
@@ -143,7 +134,6 @@ def test_footer_exposes_no_fake_email():
 def test_front_contact_cluster_has_phone_and_whatsapp():
     # All communication channels live on the front, phone actionable via tel:
     # and WhatsApp (wa.me, digits derived from profile.contacts.phone).
-    gen.main()
     for readme in READMES:
         t = readme.read_text(encoding="utf-8")
         assert "mailto:borisleclere.pro@gmail.com" in t
@@ -159,7 +149,6 @@ def test_front_contact_cluster_has_phone_and_whatsapp():
 def test_location_uses_committed_osm_map_linked_to_live():
     # Real OSM raster (light + dark), committed for reliability, linked to the
     # live OpenStreetMap page. The hand-drawn map.svg is retired.
-    gen.main()
     for readme in READMES:
         t = readme.read_text(encoding="utf-8")
         assert "assets/map.png" in t
@@ -173,7 +162,6 @@ def test_location_uses_committed_osm_map_linked_to_live():
 def test_readmes_embed_the_live_github_widgets():
     # PRD-001 animations: typing banner, stats card (rank hidden), activity
     # graph and the contribution snake must appear in both language READMEs.
-    gen.main()
     for readme in READMES:
         text = readme.read_text(encoding="utf-8")
         assert "readme-typing-svg.demolab.com" in text
