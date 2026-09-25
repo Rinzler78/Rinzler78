@@ -3,7 +3,7 @@
 # Working with me
 <div align="center">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="../../assets/svg/en/dark/services.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="../../assets/svg/en/light/services.svg" />
   <img src="../../assets/svg/en/services.svg" width="100%" alt="Services: Software architecture &amp; redesign · Technical audit · MVP design &amp; delivery · CI/CD industrialization &amp; delivery · AI-Driven Development · Developer tooling &amp; automation" />
 </picture>
 </div>
@@ -18,7 +18,7 @@
 
 <div align="center">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="../../assets/svg/en/dark/modes.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="../../assets/svg/en/light/modes.svg" />
   <img src="../../assets/svg/en/modes.svg" width="100%" alt="Engagement modes" />
 </picture>
 </div>
@@ -31,7 +31,7 @@
 
 <div align="center">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="../../assets/svg/en/dark/methodology.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="../../assets/svg/en/light/methodology.svg" />
   <img src="../../assets/svg/en/methodology.svg" width="100%" alt="Engineering principles" />
 </picture>
 </div>

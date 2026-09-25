@@ -410,14 +410,13 @@ def _render_svgs(env: Environment, out_dir: pathlib.Path) -> None:
 
 
 def _render_both_palettes(env: Environment, theme: dict, svg_dir: pathlib.Path) -> None:
-    """Render the SVG set twice — light-first: light default + dark/ override."""
+    """Render the SVG set twice — dark-first: dark default + light/ override."""
     dark = theme["palette"]
     light = theme.get("palette_light", dark)
+    _render_svgs(env, svg_dir)  # dark is primary → root dir (ADR-009)
     theme["palette"] = light
-    _render_svgs(env, svg_dir)  # light is primary → root dir
-    theme["palette"] = dark
-    _render_svgs(env, svg_dir / "dark")  # dark is the prefers-color-scheme override
-    theme["palette"] = light  # restore: README badges use the light/default palette
+    _render_svgs(env, svg_dir / "light")  # light is the prefers-color-scheme override
+    theme["palette"] = dark  # restore: the default palette is the dark one
 
 
 def _render_pages(

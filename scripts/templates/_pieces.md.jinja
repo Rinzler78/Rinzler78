@@ -4,7 +4,7 @@
 
 {%- macro fig(root, svg, name, alt, width='100%') -%}
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="{{ root }}assets/svg/{{ svg }}dark/{{ name }}" />
+  <source media="(prefers-color-scheme: light)" srcset="{{ root }}assets/svg/{{ svg }}light/{{ name }}" />
   <img src="{{ root }}assets/svg/{{ svg }}{{ name }}" width="{{ width }}" alt="{{ alt }}" />
 </picture>
 {%- endmacro -%}

@@ -3,7 +3,7 @@
 # Journey
 <div align="center">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="../../assets/svg/en/dark/timeline-mini.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="../../assets/svg/en/light/timeline-mini.svg" />
   <img src="../../assets/svg/en/timeline-mini.svg" width="100%" alt="Career milestones from 2026 to ~1990s" />
 </picture></div>
 

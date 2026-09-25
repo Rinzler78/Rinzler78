@@ -70,30 +70,31 @@ def test_generation_leaves_no_unrendered_jinja():
 
 def test_generated_svgs_are_well_formed_xml():
     svgs = sorted(SVG_DIR.rglob("*.svg"))
-    assert any(s.parent.name == "dark" for s in svgs)  # both variants present
+    assert any(s.parent.name == "light" for s in svgs)  # both variants present
     for svg in svgs:
         ET.fromstring(svg.read_text(encoding="utf-8"))  # raises on malformed XML
 
 
-def test_every_picture_defaults_to_light_with_a_dark_override():
+def test_every_picture_defaults_to_dark_with_a_light_override():
     # One dual-render mechanism for every figure: the <img> fallback carries
-    # the default variant and prefers-color-scheme:dark is the override.
+    # the default variant and prefers-color-scheme:light is the override.
     for readme in READMES:
         text = readme.read_text(encoding="utf-8")
-        assert "(prefers-color-scheme: light)" not in text
-        assert "(prefers-color-scheme: dark)" in text
+        assert "(prefers-color-scheme: dark)" not in text
+        assert "(prefers-color-scheme: light)" in text
 
 
-def test_readme_is_light_first():
-    # Light-first: the <img> default is the light (root-dir) SVG; dark is the
-    # prefers-color-scheme override. The old light/ subdir must be gone.
+def test_readme_is_dark_first():
+    # ADR-009 reverses the posture: the <img> fallback is the dark (root-dir)
+    # SVG and light is the prefers-color-scheme override. The old dark/ subdir
+    # must be gone, or stale files from the previous posture keep shipping.
     for readme in READMES:
         text = readme.read_text(encoding="utf-8")
-        assert 'media="(prefers-color-scheme: dark)"' in text
-        assert "dark/header.svg" in text
-        assert "light/header.svg" not in text  # light is now the default, not a source
-    assert not (SVG_DIR / "light").exists()
-    assert (SVG_DIR / "dark").is_dir()
+        assert 'media="(prefers-color-scheme: light)"' in text
+        assert "light/header.svg" in text
+        assert "dark/header.svg" not in text  # dark is now the default, not a source
+    assert not (SVG_DIR / "dark").exists()
+    assert (SVG_DIR / "light").is_dir()
 
 
 def test_generation_is_deterministic():
