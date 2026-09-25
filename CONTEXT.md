@@ -79,7 +79,7 @@ Mode answers the question "**how can I engage Boris**". Extracted from the histo
 
 `data/theme.json` — The repo's "design system". Sub-blocks:
 - **palette** (dark) and **palette_light** (the **primary**, light-first variant — paper/ink with a warm "Feu" accent). Same named keys (`bg`, `panel`, `accent`, `text`, …); the generator renders each view once per palette into `assets/svg/{,light/}`.
-- **fonts**: `display` (**Fraunces**, outlined to paths for the hero — see [ADR-007](docs/adr/0007-display-type-outlined-to-paths.md)); `body` and `mono` are **system-safe** (`system-ui` / `monospace`) since GitHub loads no web font in `<img>` SVG.
+- **fonts**: `display` (**Inter Display**, OFL-1.1, outlined to paths for the hero — see [ADR-007](docs/adr/0007-display-type-outlined-to-paths.md) for the mechanism and [ADR-009](docs/adr/0009-visual-redesign-devtool-direction.md) for the typeface); `body` and `mono` are **system-safe** (`system-ui` / `monospace`) since GitHub loads no web font in `<img>` SVG.
 - **patterns**: reusable components with their constants — `panel`, `bar`, `chip`, `stat_card`, `status_dot`, level-color maps.
 
 The Theme is editable separately from the other data — change it and all the SVGs re-theme themselves.

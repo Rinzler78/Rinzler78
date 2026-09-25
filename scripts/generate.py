@@ -48,7 +48,11 @@ REPO = pathlib.Path(__file__).resolve().parent.parent
 DATA = REPO / "data"
 TEMPLATES = REPO / "scripts" / "templates"
 SVG_OUT = REPO / "assets" / "svg"
-FONT_DISPLAY = str(REPO / "assets" / "fonts" / "Fraunces-Display.ttf")
+# Inter Display, outlined to paths (ADR-007 mechanism, ADR-009 typeface).
+# GitHub loads no web font inside an <img>, so declaring "Inter" in a
+# font-family would render as whatever sans the visitor's OS supplies —
+# outlining is what makes the choice of typeface mean anything at all.
+FONT_DISPLAY = str(REPO / "assets" / "fonts" / "InterDisplay-ExtraBold.ttf")
 README_OUT = REPO / "README.md"
 README_EN_OUT = REPO / "README.en.md"
 PAGES_OUT = REPO / "pages"
