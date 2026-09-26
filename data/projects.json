@@ -69,7 +69,10 @@
     "highlight": true,
     "description": "Python client for the French Basketball Federation (FFBB) v2 API. Reverse-engineered, packaged, published to PyPI, full CI.",
     "stack_label": "Python · PyScaffold · pytest · GitHub Actions",
-    "pypi": "https://pypi.org/user/Rinzler78"
+    "pypi": "https://pypi.org/user/Rinzler78",
+    "metrics": {
+      "pypi": "ffbb-api-client-v2"
+    }
   },
   {
     "id": "cometbft-client",
@@ -168,7 +171,10 @@
     "highlight": true,
     "description": "Dockerized Idena blockchain node with monitoring and update automation. Adopted by the Idena community.",
     "stack_label": "Docker · Shell · GitHub Actions",
-    "extra_metric": "470+ Docker Hub pulls"
+    "extra_metric": "470+ Docker Hub pulls",
+    "metrics": {
+      "dockerhub": "rinzlerfr/idena-node"
+    }
   },
   {
     "id": "efextension",
@@ -231,7 +237,10 @@
     "state": "legacy",
     "highlight": false,
     "description": "Legacy client for the previous FFBB API generation, kept for reference.",
-    "stack_label": "Python"
+    "stack_label": "Python",
+    "metrics": {
+      "pypi": "ffbb-api-client"
+    }
   },
   {
     "id": "catmash",
@@ -394,7 +403,10 @@
       "ai-driven-development": "secondary"
     },
     "state": "active",
-    "highlight": false
+    "highlight": false,
+    "metrics": {
+      "dockerhub": "rinzlerfr/osmosis-fullnode"
+    }
   },
   {
     "id": "deployment",
@@ -449,7 +461,10 @@
       "csharp-dotnet": "primary"
     },
     "state": "active",
-    "highlight": false
+    "highlight": false,
+    "metrics": {
+      "dockerhub": "rinzlerfr/duedilportal"
+    }
   },
   {
     "id": "aioz-node-auto-withdraw",
@@ -474,7 +489,10 @@
     "state": "active",
     "highlight": false,
     "description": "Autonomous reward withdrawal for AIOZ nodes, packaged as a Docker workload.",
-    "stack_label": "Docker · Shell"
+    "stack_label": "Docker · Shell",
+    "metrics": {
+      "dockerhub": "rinzlerfr/aioznode-auto-withdraw-reward"
+    }
   },
   {
     "id": "aioz-node-docker",
@@ -499,7 +517,10 @@
     "state": "active",
     "highlight": true,
     "description": "Docker image for AIOZ blockchain node deployment (decentralized content delivery).",
-    "stack_label": "Docker · Shell"
+    "stack_label": "Docker · Shell",
+    "metrics": {
+      "dockerhub": "rinzlerfr/aioznode"
+    }
   },
   {
     "id": "here-sdk-common",
@@ -626,6 +647,9 @@
     "state": "active",
     "highlight": true,
     "description": "Disposable Docker cleanup tool.",
-    "stack_label": "Shell"
+    "stack_label": "Shell",
+    "metrics": {
+      "dockerhub": "rinzlerfr/docker-cleaner"
+    }
   }
 ]

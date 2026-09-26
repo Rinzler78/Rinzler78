@@ -217,3 +217,5 @@ hardlinks
 libgit
 pygit
 revparse
+dockerhub
+pypistats

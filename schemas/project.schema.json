@@ -26,7 +26,17 @@
       "stack_label": { "type": "string" },
       "category": { "type": "string" },
       "pypi": { "type": "string" },
-      "extra_metric": { "type": "string" }
+      "extra_metric": { "type": "string" },
+      "metrics": {
+        "description": "External counter sources fetched daily into data/metrics.json (never hard-coded).",
+        "type": "object",
+        "additionalProperties": false,
+        "minProperties": 1,
+        "properties": {
+          "pypi": { "type": "string", "pattern": "^[A-Za-z0-9._-]+$" },
+          "dockerhub": { "type": "string", "pattern": "^[a-z0-9._-]+/[a-z0-9._-]+$" }
+        }
+      }
     }
   }
 }
