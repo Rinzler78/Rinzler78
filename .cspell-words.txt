@@ -182,3 +182,5 @@ capsys
 construit
 produit
 remporté
+skillicons
+Devicon

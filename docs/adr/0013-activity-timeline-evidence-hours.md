@@ -1,6 +1,6 @@
 # ADR-013 — Hours from an activity timeline and commit evidence
 
-- **Status**: Accepted
+- **Status**: Accepted (tools every commit implies excluded by [ADR-016](0016-front-page-v2-content-icons-dates.md))
 - **Date**: 2026-09-26
 - **Supersedes**: [ADR-006](0006-hours-based-expertise-model.md) (tier fractions, 0–99 score, forgetting curve)
 - **Amends**: [ADR-011](0011-committed-reference-date.md) (what the committed data holds)

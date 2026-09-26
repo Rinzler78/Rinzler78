@@ -1,6 +1,6 @@
 # ADR-015 — Front page v2: pyramid order, tile grid, palette and type
 
-- **Status**: Accepted
+- **Status**: Accepted (identity band, sections and visuals amended by [ADR-016](0016-front-page-v2-content-icons-dates.md))
 - **Date**: 2026-09-26
 - **Amends**: [ADR-007](0007-display-type-outlined-to-paths.md) (what is outlined),
   [ADR-008](0008-in-repo-multipage.md) (what the front page carries),
