@@ -1,6 +1,6 @@
 # ADR-007 — Display type outlined to vector paths
 
-- **Status**: Accepted (typeface amended by [ADR-009](0009-visual-redesign-devtool-direction.md))
+- **Status**: Accepted (typeface amended by [ADR-009](0009-visual-redesign-devtool-direction.md); outlined scope extended by [ADR-015](0015-front-page-v2-grid-palette-type.md))
 - **Date**: 2026-06-01
 
 > **Amended 2026-09-23 ([ADR-009](0009-visual-redesign-devtool-direction.md)):** the
