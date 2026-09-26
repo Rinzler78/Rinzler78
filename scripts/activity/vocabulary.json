@@ -1,0 +1,129 @@
+{
+  "version": 1,
+  "excluded": [
+    "(?i)(^|/)(bin|obj|node_modules|vendor|bower_components|Pods|\\.venv|venv|site-packages|__pycache__)/",
+    "(?i)\\.designer\\.cs$",
+    "(?i)ModelSnapshot\\.cs$",
+    "(?i)\\.g(\\.i)?\\.cs$",
+    "(?i)(^|/)R\\.java$",
+    "(^|/)packages/[^/]+\\.\\d+(\\.\\d+)+[^/]*/",
+    "(^|/)Components/[^/]+-\\d[^/]*/",
+    "(?i)(^|/)(package-lock\\.json|packages\\.lock\\.json|pnpm-lock\\.yaml|npm-shrinkwrap\\.json)$",
+    "(?i)\\.lock$",
+    "(?i)\\.min\\.(js|css)$",
+    "(?i)\\.(js|css)\\.map$"
+  ],
+  "languages": {
+    ".cs": "csharp",
+    ".csx": "csharp",
+    ".fs": "fsharp",
+    ".vb": "vbnet",
+    ".xaml": "xaml",
+    ".razor": "blazor",
+    ".cshtml": "aspnet",
+    ".py": "python",
+    ".ipynb": "python",
+    ".sh": "bash",
+    ".bash": "bash",
+    ".zsh": "bash",
+    ".ts": "typescript",
+    ".tsx": "typescript",
+    ".js": "javascript",
+    ".jsx": "javascript",
+    ".mjs": "javascript",
+    ".rs": "rust",
+    ".go": "go",
+    ".mm": "objective-c",
+    ".swift": "swift",
+    ".java": "java",
+    ".kt": "kotlin",
+    ".c": "c-cpp",
+    ".cpp": "c-cpp",
+    ".cc": "c-cpp",
+    ".h": "c-cpp",
+    ".hpp": "c-cpp",
+    ".sol": "solidity",
+    ".sql": "sql",
+    ".ps1": "powershell",
+    ".tf": "terraform",
+    ".html": "web",
+    ".css": "web",
+    ".scss": "web",
+    ".php": "php",
+    ".rb": "ruby",
+    ".dart": "dart",
+    ".mlx": "matlab",
+    ".slx": "matlab",
+    ".proto": "grpc"
+  },
+  "path_rules": [
+    {"pattern": "(?i)(^|/)(dockerfile[^/]*|docker-compose[^/]*\\.ya?ml|compose\\.ya?ml|\\.dockerignore)$", "tech": "docker"},
+    {"pattern": "^\\.github/workflows/[^/]+\\.ya?ml$", "tech": "github-actions"},
+    {"pattern": "(?i)(^|/)azure-pipelines[^/]*\\.ya?ml$", "tech": "azure-devops"},
+    {"pattern": "(?i)(\\.droid|\\.android|\\.ios)/[^/]+.*\\.cs$|(^|/)(android|ios)/.*\\.cs$", "tech": "xamarin"},
+    {"pattern": "(?i)(^|/)controllers/[^/]+\\.cs$", "tech": "aspnet"},
+    {"pattern": "(?i)(^|/)migrations/[^/]+\\.cs$|dbcontext[^/]*\\.cs$", "tech": "ef"},
+    {"pattern": "(?i)(^|/)(\\.claude/|claude\\.md$|agents\\.md$|\\.cursor/|\\.cursorrules$)", "tech": "ai-assisted"},
+    {"pattern": "(?i)\\.(csproj|sln|props)$", "tech": "dotnet"},
+    {"pattern": "(?i)(^|/)(pyproject\\.toml|setup\\.py|requirements[^/]*\\.txt)$", "tech": "python"},
+    {"pattern": "(^|/)package\\.json$", "tech": "node"},
+    {"pattern": "(^|/)Cargo\\.toml$", "tech": "rust"},
+    {"pattern": "\\.sol$", "tech": "blockchain"},
+    {"pattern": "\\.m$", "tech": "objective-c", "lines": ["^\\s*(#import|@interface|@implementation|@property|@end\\b)", "\\[\\[?\\w+ alloc\\]"]},
+    {"pattern": "\\.m$", "tech": "matlab", "lines": ["^\\s*function\\s+(\\[[^\\]]*\\]|\\w+)\\s*=", "^\\s*%%", "\\b(zeros|ones|linspace|disp|fprintf|figure)\\("]}
+  ],
+  "signatures": {
+    "ble": [
+      "CoreBluetooth", "\\bCB(Peripheral|CentralManager|Characteristic|UUID)\\b", "Plugin\\.BLE",
+      "BluetoothGatt", "BluetoothLeScanner", "\\bGatt[A-Z]\\w*", "BluetoothLE",
+      "NetToolBox\\.Bluetooth", "\\bBluetooth(Adapter|Device|Characteristic|CharacteristicDescriptor|Service)\\b",
+      "^\\s*(import|from)\\s+bleak\\b", "@abandonware/noble"
+    ],
+    "nfc": [
+      "\\bNfc[A-Z]\\w*", "CoreNFC", "\\bNFC(NDEF|Tag|Reader)\\w*", "Mifare", "Iso14443", "IsoDep",
+      "\\bNdef(Message|Record)\\b", "android\\.nfc"
+    ],
+    "gps-maps": [
+      "CoreLocation", "\\bCLLocation\\w*", "Geolocation", "Geolocator", "\\bHERE\\.", "Here\\.Sdk",
+      "HereSdk", "MapKit", "\\bMKMapView\\b", "Xamarin\\.Forms\\.Maps", "GoogleMap", "\\bLocationManager\\b",
+      "\\bNMEA\\b", "\\bleaflet\\b", "openstreetmap", "Mapbox"
+    ],
+    "xamarin": [
+      "Xamarin\\.(Forms|iOS|Android|Essentials)", "\\bContentPage\\b", "Device\\.BeginInvokeOnMainThread",
+      "^\\s*using\\s+(Android|UIKit|Foundation|CoreGraphics)(\\.\\w+)*\\s*;"
+    ],
+    "maui": ["Microsoft\\.Maui"],
+    "aspnet": [
+      "Microsoft\\.AspNetCore(?!\\.Components)", "\\[ApiController\\]", "\\bControllerBase\\b",
+      "System\\.Web\\.(Http|Mvc)", "WebApplication\\.CreateBuilder", "\\bIApplicationBuilder\\b"
+    ],
+    "ef": ["Microsoft\\.EntityFrameworkCore", "\\bDbContext\\b", "System\\.Data\\.Entity", "\\bDbSet<"],
+    "blazor": ["Microsoft\\.AspNetCore\\.Components", "MudBlazor", "^\\s*@code\\s*\\{"],
+    "blockchain": [
+      "cosmos-sdk", "CosmosSdk", "Cosmos\\.Client", "cosmjs", "(?i)cosmwasm", "Osmosis", "osmosisd",
+      "CometBFT", "Tendermint", "\\b[Ww]eb3\\b", "\\bethers\\b", "Nethereum", "Solana", "Solnet",
+      "\\bIdena\\b", "\\bAIOZ\\b", "(?i)\\b(?:akash)\\b", "\\b(?:bech32)\\b", "(?i)bscscan", "(?i)etherscan",
+      "Uniswap", "\\bERC20\\b", "pragma solidity"
+    ],
+    "llm-api": [
+      "^\\s*(import|from)\\s+(anthropic|openai|litellm|langchain\\w*|langgraph|ollama|crewai|mistralai|google\\.generativeai)\\b",
+      "\\b(Async)?(Anthropic|OpenAI)\\(", "\\blitellm\\.", "@anthropic-ai/sdk",
+      "api\\.(openai|anthropic)\\.com", "Azure\\.AI\\.OpenAI", "Microsoft\\.SemanticKernel",
+      "^(anthropic|openai|litellm|langchain[\\w-]*)\\s*([<>=~!]=|[<>]|$)"
+    ],
+    "docker": ["\\bdocker(-| )compose\\b", "\\bdocker (run|build|exec|pull|push)\\b"],
+    "azure": [
+      "Microsoft\\.Azure", "\\bAzure\\.[A-Z]\\w+", "azurewebsites\\.net", "AzureFunctions", "AzureWebJobs",
+      "\\baz (login|webapp|group|functionapp|storage)\\b", "\\bazure-(functions|storage|identity)\\b"
+    ],
+    "sql": [
+      "^\\s*(CREATE|ALTER|DROP)\\s+(TABLE|VIEW|INDEX|PROCEDURE|FUNCTION|TRIGGER)\\b",
+      "\\bSELECT\\s+.+\\s+FROM\\s+\\w", "\\bINSERT\\s+INTO\\b", "\\bUPDATE\\s+\\w+\\s+SET\\b",
+      "\\bDELETE\\s+FROM\\b"
+    ],
+    "grpc": ["Grpc\\.(Core|Net|AspNetCore)", "^\\s*import\\s+grpc\\b", "\\b(?:grpcio)\\b"],
+    "kubernetes": ["^\\s*kind:\\s*(Deployment|StatefulSet|DaemonSet|Ingress)\\s*$", "\\bkubectl\\b"],
+    "mqtt": ["paho\\.mqtt", "MQTTnet"],
+    "vector-db": ["(?i)\\bqdrant", "\\b(?:chromadb)\\b", "\\b(?:pgvector)\\b", "\\b(?:faiss)\\b"]
+  }
+}
