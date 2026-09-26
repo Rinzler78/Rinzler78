@@ -1,0 +1,13 @@
+{
+  "summary": {"note": "Synthetic sample, not real data."},
+  "days": {
+    "2007-08-06": {"repos": ["git.org-b/app"], "commits": 2, "public": false, "techs": {"csharp": 0.5, "dotnet": 0.3, "ble": 0.2}, "presence": ["ble", "csharp", "dotnet"]},
+    "2007-08-11": {"repos": ["github.com/me/tool"], "commits": 1, "public": true, "techs": {"python": 1.0}, "presence": ["python"]},
+    "2007-09-03": {"repos": ["git.org-b/app", "github.com/me/tool"], "commits": 3, "public": true, "techs": {"python": 0.5, "csharp": 0.5}, "presence": ["csharp", "python"]},
+    "2008-01-15": {"repos": ["git.org-c/lib"], "commits": 1, "public": false, "techs": {"c-cpp": 0.6, "docker": 0.4}, "presence": ["c-cpp", "docker"]},
+    "2008-02-05": {"repos": ["git.org-d/web"], "commits": 1, "public": false, "techs": {"typescript": 1.0}, "presence": ["typescript"]},
+    "2008-04-10": {"repos": ["git.org-b/app"], "commits": 1, "public": false, "techs": {"csharp": 1.0}, "presence": ["csharp"]},
+    "2008-04-12": {"repos": ["unknown.host/x"], "commits": 1, "public": false, "techs": {}, "presence": []},
+    "2008-05-02": {"repos": ["github.com/me/tool"], "commits": 4, "public": true, "techs": {"python": 0.7, "ai-assisted": 0.3}, "presence": ["ai-assisted", "python"]}
+  }
+}

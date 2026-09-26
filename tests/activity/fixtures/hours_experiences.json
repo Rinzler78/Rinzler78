@@ -1,0 +1,5 @@
+[
+  {"id": "school-x", "start": "2006-09", "end": "2007-06", "tech_weights": {"c-cpp": "primary", "windows-ce": "secondary"}},
+  {"id": "freelance", "start": "2007-01", "end": null, "tech_weights": {"python": "primary", "git": "primary", "docker": "secondary"}},
+  {"id": "org-d", "start": "2008-01", "end": "2008-03", "tech_weights": {"csharp-dotnet": "primary"}}
+]

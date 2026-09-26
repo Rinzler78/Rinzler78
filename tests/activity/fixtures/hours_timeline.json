@@ -1,0 +1,12 @@
+{
+  "as_of": "2008-05",
+  "periods": [
+    {"start": "2005-09", "end": "2006-08", "context": "none", "label": "Before first code", "sources": []},
+    {"start": "2006-09", "end": "2007-06", "context": "study", "label": "School X", "sources": [{"id": "school-x", "share": 1.0}]},
+    {"start": "2007-07", "end": "2007-07", "context": "client_mission", "label": "Untraced client mission", "sources": [{"id": "freelance-client", "share": 1.0}]},
+    {"start": "2007-08", "end": "2007-12", "context": "employment", "label": "Org B", "sources": [{"id": "org-b", "share": 1.0}]},
+    {"start": "2008-01", "end": "2008-03", "context": "parallel_employment", "label": "Org C and Org D", "sources": [{"id": "org-c", "share": 0.7}, {"id": "org-d", "share": 0.3}]},
+    {"start": "2008-04", "end": "2008-05", "context": "independent_rnd", "label": "Own R&D", "sources": [{"id": "own-rnd", "share": 1.0}]}
+  ],
+  "exceptions": ["Synthetic sample, not real data."]
+}

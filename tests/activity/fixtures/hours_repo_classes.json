@@ -1,0 +1,6 @@
+{
+  "git.org-b/app": {"context": "pro", "source": "org-b"},
+  "git.org-c/lib": {"context": "pro", "source": "org-c"},
+  "git.org-d/web": {"context": "pro", "source": "org-d"},
+  "github.com/me/tool": {"context": "personal", "source": "personal"}
+}

@@ -125,6 +125,47 @@ default path):
 Publishing a new claim: add the registry entry, add the marker through the
 data/templates, `make generate`, `make claims-lock`, commit the pages and the lock.
 
+## Hours aggregates (ADR-013)
+
+`python -m scripts.activity.hours --out data/activity/aggregates.json` turns the
+private timeline and commit evidence into the committed aggregates. It runs on
+the author's machine only: it reads `$PROFILE_PRIVATE_DIR/timeline.json`,
+`evidence.json` (collector output) and `repo-classes.json` (every repository key
+mapped to `{"context": "pro" | "personal", "source": <timeline source id>}`;
+unclassified repositories count as personal).
+
+**Allocation.**
+
+- Professional hours (calendar weekdays) are split by timeline source. A
+  source's month takes the tech weights of that source's commit days in the
+  month; a month without a commit carries the source's weights over the whole
+  period, restricted to techs already seen in an own commit by then (hours with
+  nothing left count for the context, not for a tech). A source without any
+  trace in its period is allocated from the declared tiers of
+  `data/experiences.json` (primary 0.70, secondary 0.35, incident 0.10) and
+  flagged estimated; `SOURCE_EXPERIENCES` maps timeline ids to experience ids.
+- Personal hours: the period's personal budget on each commit day with at least
+  one personal repository, with that day's weights. A professional repository
+  outside its source's period counts as personal.
+- Overlap: `tech_map.json` puts each catalogue id in a layer (language,
+  platform, domain). Weights are normalized within a layer, so an hour counts
+  once per layer and no tech exceeds its period's budget. Context totals are
+  additive; tech and domain totals are not. A domain takes the largest share
+  any single layer gives it.
+- `tech_map.json` also maps collector ids to catalogue ids and excludes Git.
+  An unknown collector id is an error: extend the map, never skip it.
+
+**Output** `data/activity/aggregates.json`: `version`, `activity_as_of` (last
+evidence day), `coverage` (commit days, public days, public share),
+`context_totals`, `levels`, `by_month` (`context`, `techs`, `domains`), `techs`
+(`hours`, `display_hours` rounded down, `level`, `first`, `last`,
+`estimated_share`, `layer`, `domain`) and `notes`. No repository, identity or
+private source id is written.
+
+**Sanity checks** (the file is not written when one fails): no tech starts
+before its first commit or estimated period, nor before its release month
+(`RELEASE_MONTHS`); no tech exceeds a period's budget.
+
 ## Helpers available in the templates
 
 `generate.py` exposes in all templates: `profile`, `domains`, `techs`
