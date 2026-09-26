@@ -231,8 +231,65 @@ def test_collect_keeps_own_commits_once(make_repo, tmp_path, ids, voc) -> None:
     assert first.repo == "github.com/jane/app"
     assert first.units == {"python": 1, "llm-api": 1}
     assert first.weights == {"python": 0.5, "llm-api": 0.5}
+    assert first.files == 1
     assert first.has_patch
     assert result.failures == {}
+
+
+def test_files_count_every_analyzed_file(make_repo, ids, voc) -> None:
+    files = {
+        "a.py": "import anthropic\n",
+        "README.md": "notes\n",
+        "obj/Debug/x.cs": "generated\n",
+    }
+    repo = make_repo("files", [(OWN, "2021-03-04T10:00:00+00:00", files)])
+    (commit,) = ev.collect([repo], ids, voc, is_public=never_public).commits.values()
+    # The generated file is excluded; the README is analyzed with no tech.
+    assert commit.files == 2
+    assert commit.units == {"python": 1, "llm-api": 1}
+
+
+def test_owners_filter_drops_foreign_repos(make_repo, ids, voc) -> None:
+    day = "2021-03-04T10:00:00+00:00"
+    mine = make_repo(
+        "mine", [(OWN, day, {"a.py": "x\n"})], remote="git@github.com:jane/app.git"
+    )
+    foreign = make_repo(
+        "foreign",
+        [(OWN, day, {"b.py": "x\n"}), (OWN, day, {"c.py": "y\n"})],
+        remote="https://github.com/someone/fork.git",
+    )
+    owners = ev.Owners.from_dict({"allow": ["github.com/jane/"]})
+
+    result = ev.collect(
+        [mine, foreign], ids, voc, is_public=never_public, owned=owners.allows
+    )
+
+    assert {c.repo for c in result.commits.values()} == {"github.com/jane/app"}
+    assert result.excluded == {"github.com/someone/fork": 2}
+    out = ev.aggregate(result, vocabulary_version=1)
+    assert out["summary"]["excluded_repos"] == {"github.com/someone/fork": 2}
+
+
+def test_owners_prefix_match() -> None:
+    owners = ev.Owners.from_dict({"allow": ["github.com/jane/", "local:"]})
+    assert owners.allows("github.com/jane/app")
+    assert owners.allows("local:/tmp/x")
+    assert not owners.allows("github.com/janet/app")
+
+
+@pytest.mark.parametrize(
+    "raw", [[], {"allow": "x"}, {"allow": [1]}, {"allow": []}, {"allow": [""]}]
+)
+def test_owners_reject_malformed_config(raw: object) -> None:
+    with pytest.raises(ValueError, match="allow"):
+        ev.Owners.from_dict(raw)
+
+
+def test_load_owners_reads_json(tmp_path: Path) -> None:
+    path = tmp_path / "owners.json"
+    path.write_text(json.dumps({"allow": ["local:"]}))
+    assert ev.load_owners(path).allows("local:/x")
 
 
 def test_unreadable_repo_is_reported(tmp_path, ids, voc) -> None:
@@ -279,6 +336,7 @@ def test_merge_commits_add_no_lines(make_repo, ids, voc) -> None:
 
     assert len(result.commits) == 4
     assert result.commits[merge].units == {}
+    assert result.commits[merge].files == 0
     assert result.commits[merge].has_patch
 
 
@@ -298,6 +356,8 @@ def test_deleted_binary_and_modified_files(make_repo, ids, voc) -> None:
     commits = ev.collect([repo], ids, voc, is_public=never_public).commits
 
     assert commits[shrink].units == {"python": 1}
+    assert commits[shrink].files == 1
+    assert commits[swap].files == 0
     assert commits[swap].units == {}
 
 
@@ -364,11 +424,13 @@ def test_missing_blob_falls_back_to_names_then_full_copy_upgrades(
     (commit,) = alone.commits.values()
     assert not commit.has_patch
     assert commit.units == {"csharp": 1}
+    assert commit.files == 1  # names-only commits count their files too
 
     both = ev.collect([blobless, full], ids, voc, is_public=lambda key: True)
     (commit,) = both.commits.values()
     assert commit.has_patch
     assert commit.units == {"csharp": 1, "ble": 1}
+    assert commit.files == 1
     assert commit.public
 
 
@@ -380,6 +442,7 @@ def test_missing_tree_yields_no_units(make_repo, ids, voc) -> None:
     (commit,) = ev.collect([repo], ids, voc, is_public=never_public).commits.values()
 
     assert commit.units == {}
+    assert commit.files == 0
     assert not commit.has_patch
 
 
@@ -395,9 +458,17 @@ def test_remote_url_prefers_origin_then_any(make_repo) -> None:
 # --- aggregation -------------------------------------------------------------
 
 
-def _commit(h: str, day: str, repo: str, units: dict[str, int], public=False):
+def _commit(
+    h: str, day: str, repo: str, units: dict[str, int], public=False, files=None
+):
     return ev.CommitEvidence(
-        hash=h, day=day, repo=repo, units=units, has_patch=bool(units), public=public
+        hash=h,
+        day=day,
+        repo=repo,
+        units=units,
+        has_patch=bool(units),
+        public=public,
+        files=len(units) if files is None else files,
     )
 
 
@@ -405,7 +476,7 @@ def test_aggregate_per_day_and_summary() -> None:
     result = ev.CollectResult(
         commits={
             "a": _commit("a", "2021-01-01", "r1", {"python": 1}, public=True),
-            "b": _commit("b", "2021-01-01", "r2", {"docker": 1, "python": 1}),
+            "b": _commit("b", "2021-01-01", "r2", {"docker": 1, "python": 1}, files=3),
             "c": _commit("c", "2021-01-02", "r2", {}),
         },
         failures={"/x": "boom"},
@@ -418,6 +489,8 @@ def test_aggregate_per_day_and_summary() -> None:
     assert day["public"] is True
     assert day["techs"] == {"docker": 0.25, "python": 0.75}
     assert day["presence"] == ["docker", "python"]
+    assert day["files"] == 4
+    assert day["file_counts"] == {"docker": 1, "python": 2}
     assert out["days"]["2021-01-02"]["techs"] == {}
     assert out["summary"] == {
         "vocabulary_version": 7,
@@ -427,6 +500,7 @@ def test_aggregate_per_day_and_summary() -> None:
         "public_day_share": 0.5,
         "commits_without_patch": 1,
         "failures": {"/x": "boom"},
+        "excluded_repos": {},
     }
 
 
@@ -536,6 +610,7 @@ def _private_dir(tmp_path: Path, repo: Path) -> Path:
     private.mkdir()
     (private / "identities.json").write_text(json.dumps(IDENTITIES))
     (private / "repos.txt").write_text(f"# comment\n\n{repo}\n")
+    (private / "owners.json").write_text(json.dumps({"allow": ["local:"]}))
     return private
 
 
@@ -551,7 +626,22 @@ def test_main_uses_private_dir_defaults(
     out = json.loads((private / "evidence.json").read_text())
     assert out["summary"]["unique_commits"] == 1
     assert "2022-02-02" in out["days"]
-    assert "unique commits: 1" in capsys.readouterr().out
+    printed = capsys.readouterr().out
+    assert "unique commits: 1" in printed
+    assert "excluded repos: 0" in printed
+
+
+def test_main_lists_excluded_repos(make_repo, tmp_path, monkeypatch, capsys) -> None:
+    repo = make_repo("cli", [(OWN, "2022-02-02T10:00:00+00:00", {"a.py": "x\n"})])
+    private = _private_dir(tmp_path, repo)
+    (private / "owners.json").write_text(json.dumps({"allow": ["github.com/jane/"]}))
+    monkeypatch.setenv("PROFILE_PRIVATE_DIR", str(private))
+
+    assert ev.main([]) == 0
+
+    out = json.loads((private / "evidence.json").read_text())
+    assert out["days"] == {}
+    assert f"excluded local:{repo}: 1 commit(s)" in capsys.readouterr().out
 
 
 def test_main_accepts_explicit_paths(make_repo, tmp_path, monkeypatch) -> None:
@@ -570,6 +660,8 @@ def test_main_accepts_explicit_paths(make_repo, tmp_path, monkeypatch) -> None:
             str(target),
             "--visibility-cache",
             str(tmp_path / "vis.json"),
+            "--owners",
+            str(private / "owners.json"),
         ]
     )
 

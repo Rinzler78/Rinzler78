@@ -19,6 +19,19 @@ Weights, per commit
     several techs, so the raw units are kept alongside the weights and the
     allocation step decides how to use them.
 
+File counts
+    Each commit also records how many non-excluded files it analyzed, with or
+    without a tech (a README counts). Per day, ``files`` is that total and
+    ``file_counts`` the number of files touching each tech, so the allocation
+    can give a tech the share of the day's files that touched it (ADR-013).
+    Names-only commits count their files the same way; a merge counts none.
+
+Ownership
+    Only repositories owned by the author or by a company he worked for count.
+    ``owners.json`` lists allowed prefixes of repository keys; the commits of
+    any other repository are dropped before deduplication and reported in
+    ``summary.excluded_repos`` with their number of own commits.
+
 Reading history
     History is read in-process with libgit2 (pygit2): no child process, no
     shell. Every ref and HEAD, peeled to commits, is walked like
@@ -222,9 +235,41 @@ class Vocabulary:
         """Units per tech from file names alone (no patch content)."""
         return self._units((p, None) for p in paths)
 
+    def count_files(self, paths: Iterable[str]) -> int:
+        """Number of analyzed (non-excluded) files among ``paths``."""
+        return sum(1 for p in paths if not self.is_excluded(p))
+
 
 def load_vocabulary(path: Path = VOCABULARY_PATH) -> Vocabulary:
     return Vocabulary.from_dict(json.loads(path.read_text(encoding="utf-8")))
+
+
+# --- owners ------------------------------------------------------------------
+
+
+@dataclass(frozen=True)
+class Owners:
+    """Repository key prefixes whose commits count (author's or employers')."""
+
+    allow: tuple[str, ...]
+
+    @classmethod
+    def from_dict(cls, raw: object) -> Owners:
+        allow = raw.get("allow") if isinstance(raw, dict) else None
+        if (
+            not isinstance(allow, list)
+            or not allow
+            or not all(isinstance(p, str) and p for p in allow)
+        ):
+            raise ValueError("owners need a non-empty 'allow' list of key prefixes")
+        return cls(tuple(allow))
+
+    def allows(self, key: str) -> bool:
+        return key.startswith(self.allow)
+
+
+def load_owners(path: Path) -> Owners:
+    return Owners.from_dict(json.loads(path.read_text(encoding="utf-8")))
 
 
 def normalize(units: dict[str, int]) -> dict[str, float]:
@@ -334,6 +379,7 @@ class CommitEvidence:
     units: dict[str, int]
     has_patch: bool
     public: bool
+    files: int = 0
 
     @property
     def weights(self) -> dict[str, float]:
@@ -344,26 +390,30 @@ class CommitEvidence:
 class CollectResult:
     commits: dict[str, CommitEvidence]
     failures: dict[str, str] = field(default_factory=dict)
+    excluded: dict[str, int] = field(default_factory=dict)
 
 
 def analyze_commit(
     repo: pygit2.Repository, commit: pygit2.Commit, vocabulary: Vocabulary
-) -> tuple[dict[str, int], bool]:
-    """``(units, has_patch)`` for one commit; names only when content is gone."""
+) -> tuple[dict[str, int], bool, int]:
+    """``(units, has_patch, files)`` for one commit; names only when content
+    is gone. ``files`` counts the analyzed (non-excluded) files."""
     if len(commit.parents) > 1:
-        return {}, True  # a merge adds no lines of its own
+        return {}, True, 0  # a merge adds no lines of its own
 
     def keep(path: str) -> bool:
         return not vocabulary.is_excluded(path)
 
     try:
-        return vocabulary.analyze_patch(added_lines(repo, commit, keep)), True
+        files = added_lines(repo, commit, keep)
+        return vocabulary.analyze_patch(files), True, len(files)
     except pygit2.GitError:
         pass
     try:
-        return vocabulary.analyze_names(touched_paths(repo, commit)), False
+        paths = touched_paths(repo, commit)
     except pygit2.GitError:
-        return {}, False
+        return {}, False, 0
+    return vocabulary.analyze_names(paths), False, vocabulary.count_files(paths)
 
 
 def collect(
@@ -372,9 +422,15 @@ def collect(
     vocabulary: Vocabulary,
     is_public: Callable[[str], bool],
     progress: Callable[[str], None] | None = None,
+    owned: Callable[[str], bool] = lambda key: True,
 ) -> CollectResult:
-    """Walk every repository and keep each own commit once, analyzed."""
+    """Walk every repository and keep each own commit once, analyzed.
+
+    Commits of repositories ``owned`` rejects are dropped before dedupe and
+    counted per repository key in ``result.excluded``.
+    """
     result = CollectResult(commits={})
+    excluded: dict[str, set[str]] = defaultdict(set)
     commits = result.commits
     for path in repos:
         where = str(path)
@@ -391,6 +447,10 @@ def collect(
         except pygit2.GitError as exc:
             result.failures[where] = str(exc)
             continue
+        if not owned(key):
+            if own:
+                excluded[key].update(str(c.id) for c in own)
+            continue
         public = is_public(key) if own else False
         for commit in own:
             h = str(commit.id)
@@ -400,9 +460,10 @@ def collect(
                 commits[h] = evidence
             evidence.public = evidence.public or public
             if not evidence.has_patch:
-                evidence.units, evidence.has_patch = analyze_commit(
+                evidence.units, evidence.has_patch, evidence.files = analyze_commit(
                     repo, commit, vocabulary
                 )
+    result.excluded = {key: len(hashes) for key, hashes in sorted(excluded.items())}
     return result
 
 
@@ -485,10 +546,15 @@ def aggregate(result: CollectResult, vocabulary_version: int) -> dict:
                 "sums": defaultdict(float),
                 "signal": 0,
                 "public": False,
+                "files": 0,
+                "file_counts": defaultdict(int),
             },
         )
         day["repos"].add(commit.repo)
         day["commits"] += 1
+        day["files"] += commit.files
+        for tech, count in commit.units.items():
+            day["file_counts"][tech] += count
         day["public"] = day["public"] or commit.public
         weights = commit.weights
         if weights:
@@ -505,6 +571,8 @@ def aggregate(result: CollectResult, vocabulary_version: int) -> dict:
                 for tech, total in sorted(day["sums"].items())
             },
             "presence": sorted(day["sums"]),
+            "files": day["files"],
+            "file_counts": dict(sorted(day["file_counts"].items())),
         }
         for name, day in sorted(per_day.items())
     }
@@ -519,6 +587,7 @@ def aggregate(result: CollectResult, vocabulary_version: int) -> dict:
             1 for c in result.commits.values() if not c.has_patch
         ),
         "failures": dict(sorted(result.failures.items())),
+        "excluded_repos": dict(sorted(result.excluded.items())),
     }
     return {"summary": summary, "days": days}
 
@@ -537,6 +606,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser.add_argument("--identities", type=Path, help="identities JSON file")
     parser.add_argument("--out", type=Path, help="evidence JSON to write")
     parser.add_argument("--visibility-cache", type=Path, help="GitHub answers cache")
+    parser.add_argument("--owners", type=Path, help="allowed repository owners")
     args = parser.parse_args(argv)
 
     private = os.environ.get("PROFILE_PRIVATE_DIR")
@@ -545,6 +615,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         "identities": "identities.json",
         "out": "evidence.json",
         "visibility_cache": "visibility-cache.json",
+        "owners": "owners.json",
     }
     for attr, name in defaults.items():
         if getattr(args, attr) is None:
@@ -559,6 +630,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         vocabulary,
         is_public=GitHubVisibility(args.visibility_cache),
         progress=lambda repo: print(f"walking {repo}", file=sys.stderr),
+        owned=load_owners(args.owners).allows,
     )
     output = aggregate(result, vocabulary.version)
     args.out.parent.mkdir(parents=True, exist_ok=True)
@@ -568,8 +640,11 @@ def main(argv: Sequence[str] | None = None) -> int:
         f"unique commits: {s['unique_commits']} | distinct days: "
         f"{s['distinct_days']} | repos: {s['repos']} | public day share: "
         f"{s['public_day_share']:.1%} | without patch: "
-        f"{s['commits_without_patch']} | failures: {len(s['failures'])}"
+        f"{s['commits_without_patch']} | failures: {len(s['failures'])} | "
+        f"excluded repos: {len(s['excluded_repos'])}"
     )
+    for key, count in s["excluded_repos"].items():
+        print(f"excluded {key}: {count} commit(s)")
     return 0
 
 
