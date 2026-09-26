@@ -6,38 +6,40 @@ Inputs (private, read from ``$PROFILE_PRIVATE_DIR``, never committed):
 - ``evidence.json``: one entry per own-commit day, written by the collector::
 
       {"days": {"YYYY-MM-DD": {"repos": [...], "commits": n, "public": bool,
-                               "techs": {collector_tech: weight}, ...}}}
+                               "files": n, "file_counts": {tech: n}, ...}}}
 
+  ``files`` counts the analyzed files of the day, ``file_counts`` the files
+  touching each collector tech;
 - ``repo-classes.json``: every repository key of the evidence mapped to
   ``{"context": "pro" | "personal", "source": <timeline source id>}``.
 
 Public inputs: ``scripts/activity/tech_map.json`` (collector tech -> catalogue
-id, layer and domain of each catalogue id, excluded ids) and
+id, kind and domain of each catalogue id, excluded ids) and
 ``data/experiences.json`` (declared tiers, used only where no trace exists).
 
 Rules:
 
-1. **Professional time** (``timeline.pro_hours``) is split by source. A source's
-   month is allocated with the tech weights of that source's commit days in the
-   month. A month without a commit carries the source's weights over the whole
+1. **File share** (measured time): a tech receives the hours times the share
+   of analyzed files touching it. A C# file calling a BLE API counts for both
+   C# and BLE; each file has one language, so languages sum to about 1; no tech
+   can exceed the hours it is allocated from.
+2. **Professional time** (``timeline.pro_hours``) is split by source. A source's
+   month uses the file counts summed over that source's commit days of the
+   month. A month without a commit uses the source's counts over the whole
    period, restricted to techs already seen in an own commit by the end of that
-   month (a carried weight never predates a first commit); when nothing is
-   left, the hours count for the context but no tech. A source with no trace in
-   the period at all is allocated from the declared tiers of its experiences
-   (``TIER_WEIGHTS``) and flagged ``estimated``. Study counts the same way.
-2. **Personal time**: each commit day on which at least one repository is
-   personal counts the period's personal budget, allocated with the day's
-   weights. A day with only professional repositories adds nothing: the
-   calendar already counted it. A professional repository whose source is not
-   a source of the day's period counts as personal time (the calendar did not
-   count that day). Unclassified repositories are personal.
-3. **Overlap**: catalogue ids are grouped into layers (language, platform,
-   domain). Within a layer, the weights are normalized to 1 and share the
-   hours; across layers the same hour counts once per layer. No tech can
-   exceed its period's budget; per-context totals are additive, per-tech
-   totals are not. A domain gets, per allocation, the largest share any one
-   layer gives its techs (a lower bound of their union, never a sum).
-4. **Levels** by convention (``LEVELS``); displayed hours are rounded down
+   month (a carried share never predates a first commit). A source with no
+   trace in the period at all is estimated from the declared tiers of its
+   experiences (``estimated_shares``) and flagged ``estimated``. Study counts
+   the same way.
+3. **Personal time**: each commit day on which at least one repository is
+   personal counts the period's personal budget, with the day's file shares.
+   A day with only professional repositories adds nothing: the calendar
+   already counted it. A professional repository whose source is not a source
+   of the day's period counts as personal time (the calendar did not count
+   that day). Unclassified repositories are personal.
+4. Per-context totals are additive; per-tech and per-domain totals are not.
+   A domain gets the sum of its techs' shares, capped at 1.
+5. **Levels** by convention (``LEVELS``); displayed hours are rounded down
    (``display_hours``) so a shown figure never crosses a threshold.
 
 Usage: ``python -m scripts.activity.hours --out data/activity/aggregates.json``
@@ -66,7 +68,7 @@ DEFAULT_CATALOGUE = REPO / "data" / "techs.json"
 EVIDENCE_NAME = "evidence.json"
 CLASSES_NAME = "repo-classes.json"
 
-LAYERS = ("language", "platform", "domain")
+KINDS = ("language", "platform", "domain")
 TIER_WEIGHTS = {"primary": 0.70, "secondary": 0.35, "incident": 0.10}
 # Highest first; below the last threshold a tech has no level (not shown).
 LEVELS = (("expert", 5000), ("advanced", 1600), ("professional", 500), ("working", 50))
@@ -102,18 +104,21 @@ _TOLERANCE = 1e-6
 NOTES = (
     "Hours measure coding practice, not working time (ADR-013).",
     "Hours per context (pro, personal, study) are additive; hours per tech and "
-    "per domain are not additive: one hour counts once in each layer "
-    "(language, platform, domain), so no tech exceeds its period's budget.",
-    "A domain's hours are, per allocation, the largest share any one layer "
-    "gives its techs: a lower bound, never a sum across layers.",
+    "per domain are not additive: a tech receives the hours times the share "
+    "of analyzed files touching it, and one file may touch several techs (a C# "
+    "file calling a BLE API counts for both), so no tech exceeds its period's "
+    "budget.",
+    "A domain's hours sum its techs' file shares, capped at the hours: a file "
+    "touching two techs of one domain may count twice below that cap.",
     "Levels are a convention: working >= 50 h, professional >= 500 h, "
     "advanced >= 1,600 h, expert >= 5,000 h. display_hours is rounded down so "
     "a shown figure never crosses a threshold the raw hours do not.",
     "estimated_share is the part of a tech's hours allocated from declared "
     "tiers, for periods without any commit trace (before 2014, study, a source "
-    "without commits).",
-    "Months of a source without a commit carry that source's weights over its "
-    "period, restricted to techs already seen in an own commit by then.",
+    "without commits): primary 0.70, secondary 0.35, incident 0.10 of the "
+    "hours, declared languages sharing 100 % pro rata of their tiers.",
+    "Months of a source without a commit use that source's file counts over "
+    "its period, restricted to techs already seen in an own commit by then.",
     "Git is excluded from hours: a tool every commit implies.",
     "The collector does not distinguish native Xamarin from Xamarin.Forms: "
     "measured Xamarin hours are reported under 'xamarin'.",
@@ -128,7 +133,7 @@ NOTES = (
 
 @dataclass(frozen=True)
 class TechInfo:
-    layer: str
+    kind: str
     domain: str
 
 
@@ -139,7 +144,7 @@ class TechMap:
     techs: dict[str, TechInfo]
 
     def to_catalogue(self, weights: Mapping[str, float]) -> dict[str, float]:
-        """Collector weights -> catalogue weights, merged, excluded ids dropped."""
+        """Collector counts -> catalogue counts, merged, excluded ids dropped."""
         out: dict[str, float] = defaultdict(float)
         for tech, weight in weights.items():
             if tech not in self.collector:
@@ -169,11 +174,11 @@ def parse_tech_map(data: object) -> TechMap:
         raise ValueError("tech_map: techs must be an object")
     infos: dict[str, TechInfo] = {}
     for tech_id, info in techs.items():
-        if not isinstance(info, dict) or info.get("layer") not in LAYERS:
-            raise ValueError(f"tech_map: {tech_id!r} needs a layer among {LAYERS}")
+        if not isinstance(info, dict) or info.get("kind") not in KINDS:
+            raise ValueError(f"tech_map: {tech_id!r} needs a kind among {KINDS}")
         if not isinstance(info.get("domain"), str) or not info["domain"]:
             raise ValueError(f"tech_map: {tech_id!r} needs a domain")
-        infos[tech_id] = TechInfo(info["layer"], info["domain"])
+        infos[tech_id] = TechInfo(info["kind"], info["domain"])
     both = sorted(set(excluded) & set(infos))
     if both:
         raise ValueError(f"tech_map: excluded id(s) also in techs: {', '.join(both)}")
@@ -200,7 +205,8 @@ class Day:
     day: str
     repos: tuple[str, ...]
     public: bool
-    techs: dict[str, float]
+    files: int
+    file_counts: dict[str, int]
 
 
 @dataclass(frozen=True)
@@ -217,6 +223,10 @@ class Experience:
     tiers: dict[str, str]
 
 
+def _count(value: object) -> bool:
+    return isinstance(value, int) and not isinstance(value, bool) and value >= 0
+
+
 def parse_evidence(data: object) -> dict[str, Day]:
     """Validate the collector output and return its days by ISO date."""
     if not isinstance(data, dict) or not isinstance(data.get("days"), dict):
@@ -230,18 +240,21 @@ def parse_evidence(data: object) -> dict[str, Day]:
             date.fromisoformat(key)
         except ValueError as exc:
             raise ValueError(f"{where}: invalid date") from exc
-        if not isinstance(raw, dict) or not isinstance(raw.get("techs"), dict):
-            raise ValueError(f"{where}: techs must be an object")
+        if not isinstance(raw, dict) or not isinstance(raw.get("file_counts"), dict):
+            raise ValueError(f"{where}: file_counts must be an object")
         repos = raw.get("repos")
         if not isinstance(repos, list) or not all(isinstance(r, str) for r in repos):
             raise ValueError(f"{where}: repos must be a list of strings")
-        techs = raw["techs"]
-        for tech, weight in techs.items():
-            if isinstance(weight, bool) or not isinstance(weight, int | float):
-                raise ValueError(f"{where}: weight of {tech!r} must be a number")
-            if weight < 0:
-                raise ValueError(f"{where}: weight of {tech!r} is negative")
-        days[key] = Day(key, tuple(repos), bool(raw.get("public")), dict(techs))
+        files = raw.get("files")
+        if not _count(files):
+            raise ValueError(f"{where}: files must be a non-negative integer")
+        counts = raw["file_counts"]
+        for tech, count in counts.items():
+            if not _count(count):
+                raise ValueError(f"{where}: file count of {tech!r} must be an integer")
+            if count > files:
+                raise ValueError(f"{where}: file count of {tech!r} exceeds files")
+        days[key] = Day(key, tuple(repos), bool(raw.get("public")), files, counts)
     return days
 
 
@@ -288,15 +301,18 @@ def public_source(source_id: str) -> str:
     return PUBLIC_SOURCE_ALIASES.get(source_id, source_id)
 
 
-def tier_weights(
+def estimated_shares(
     experience_ids: Iterable[str],
     month: str,
     experiences: Mapping[str, Experience],
     tech_map: TechMap,
 ) -> dict[str, float]:
-    """Declared tiers of the experiences active in ``month``, as weights.
+    """Declared tiers of the experiences active in ``month``, as file shares.
 
-    When none of the mapped experiences covers the month, all of them count.
+    A tier is the assumed share of the hours (``TIER_WEIGHTS``); declared
+    languages share 100 % pro rata of their tiers, since each file has one
+    language. Tiers of several active experiences add up, capped at 1. When
+    none of the mapped experiences covers the month, all of them count.
     Excluded ids (git) are dropped.
     """
     mapped = [experiences[e] for e in experience_ids if e in experiences]
@@ -306,54 +322,46 @@ def tier_weights(
         for e in mapped
         if tl._index(e.start) <= index and (e.end is None or index <= tl._index(e.end))
     ]
-    weights: dict[str, float] = defaultdict(float)
+    tiers: dict[str, float] = defaultdict(float)
     for exp in active or mapped:
         for tech, tier in exp.tiers.items():
             if tech not in tech_map.excluded:
-                weights[tech] += TIER_WEIGHTS[tier]
-    return dict(weights)
+                tiers[tech] += TIER_WEIGHTS[tier]
+    languages = math.fsum(
+        w for t, w in tiers.items() if tech_map.techs[t].kind == "language"
+    )
+    return {
+        tech: weight / languages
+        if tech_map.techs[tech].kind == "language"
+        else min(weight, 1.0)
+        for tech, weight in tiers.items()
+    }
 
 
-# --- Overlap rule ----------------------------------------------------------
+# --- File shares ---------------------------------------------------------------
 
 
-def _layer_shares(
-    weights: Mapping[str, float], tech_map: TechMap
-) -> dict[str, dict[str, float]]:
-    layers: dict[str, dict[str, float]] = defaultdict(dict)
-    for tech, weight in weights.items():
-        if weight > 0:
-            layers[tech_map.techs[tech].layer][tech] = weight
-    shares: dict[str, dict[str, float]] = {}
-    for layer, members in layers.items():
-        total = math.fsum(members.values())
-        shares[layer] = {t: w / total for t, w in members.items()}
-    return shares
+def shares_from(files: int, counts: Mapping[str, float]) -> dict[str, float]:
+    """Share of the analyzed files touching each tech (at most 1)."""
+    if files <= 0:
+        return {}
+    return {t: min(c / files, 1.0) for t, c in counts.items() if c > 0}
 
 
-def allocate(
-    hours: float, weights: Mapping[str, float], tech_map: TechMap
-) -> dict[str, float]:
-    """Split ``hours`` across techs, once per layer (ADR-013 section 4)."""
-    out: dict[str, float] = {}
-    for members in _layer_shares(weights, tech_map).values():
-        for tech, share in members.items():
-            out[tech] = hours * share
-    return out
+def allocate(hours: float, shares: Mapping[str, float]) -> dict[str, float]:
+    """Hours per tech: the hours times the tech's file share."""
+    return {t: hours * s for t, s in shares.items() if s > 0}
 
 
 def domain_hours(
-    hours: float, weights: Mapping[str, float], tech_map: TechMap
+    hours: float, shares: Mapping[str, float], tech_map: TechMap
 ) -> dict[str, float]:
-    """Hours per domain: the largest share any one layer gives the domain."""
-    best: dict[str, float] = {}
-    for members in _layer_shares(weights, tech_map).values():
-        per_domain: dict[str, float] = defaultdict(float)
-        for tech, share in members.items():
+    """Hours per domain: its techs' shares summed, capped at the hours."""
+    per_domain: dict[str, float] = defaultdict(float)
+    for tech, share in shares.items():
+        if share > 0:
             per_domain[tech_map.techs[tech].domain] += share
-        for domain, share in per_domain.items():
-            best[domain] = max(best.get(domain, 0.0), share)
-    return {d: hours * min(share, 1.0) for d, share in best.items()}
+    return {d: hours * min(share, 1.0) for d, share in per_domain.items()}
 
 
 # --- Levels ------------------------------------------------------------------
@@ -377,12 +385,12 @@ def display_hours(hours: float) -> int:
 
 @dataclass(frozen=True)
 class Unit:
-    """Hours of one month and one context kind, with their tech weights."""
+    """Hours of one month and one context kind, with their tech file shares."""
 
     month: str
     kind: str  # "pro" | "personal" | "study"
     hours: float
-    weights: dict[str, float]
+    shares: dict[str, float]
     estimated: bool
     period: int
 
@@ -394,14 +402,21 @@ class Inputs:
     classes: dict[str, RepoClass]
     tech_map: TechMap
     experiences: dict[str, Experience]
-    catalogue_weights: dict[str, dict[str, float]] = field(default_factory=dict)
+    catalogue_counts: dict[str, dict[str, float]] = field(default_factory=dict)
 
-    def weights_of(self, day: str) -> dict[str, float]:
-        if day not in self.catalogue_weights:
-            self.catalogue_weights[day] = self.tech_map.to_catalogue(
-                self.days[day].techs
+    def counts_of(self, day: str) -> dict[str, float]:
+        """File counts of ``day`` per catalogue id."""
+        if day not in self.catalogue_counts:
+            self.catalogue_counts[day] = self.tech_map.to_catalogue(
+                self.days[day].file_counts
             )
-        return self.catalogue_weights[day]
+        return self.catalogue_counts[day]
+
+    def shares_of(self, days: Iterable[str]) -> dict[str, float]:
+        """File shares over several days: counts and files summed first."""
+        days = list(days)
+        files = sum(self.days[d].files for d in days)
+        return shares_from(files, _sum(self.counts_of(d) for d in days))
 
 
 def _period_index(timeline: tl.Timeline, month: str) -> int:
@@ -421,11 +436,11 @@ def _sum(dicts: Iterable[Mapping[str, float]]) -> dict[str, float]:
 
 
 def first_seen(inputs: Inputs) -> dict[str, str]:
-    """First month each catalogue tech has a positive weight in an own commit."""
+    """First month each catalogue tech touches a file in an own commit."""
     seen: dict[str, str] = {}
     for day in sorted(inputs.days):
-        for tech, weight in inputs.weights_of(day).items():
-            if weight > 0:
+        for tech, count in inputs.counts_of(day).items():
+            if count > 0:
                 seen.setdefault(tech, day[:7])
     return seen
 
@@ -456,40 +471,40 @@ def build_units(inputs: Inputs) -> list[Unit]:
         kind = "study" if period.context == "study" else "pro"
         for source in period.sources:
             traced = [
-                d for d in source_days[(index, source.id)] if inputs.weights_of(d)
+                d for d in source_days[(index, source.id)] if inputs.days[d].files
             ]
-            whole = _sum(inputs.weights_of(d) for d in traced)
+            whole = inputs.shares_of(traced)
             for month in tl.month_range(period.start, period.end):
                 hours = tl.pro_hours(period, month)[source.id]
                 if hours <= 0:
                     continue
                 if not traced:
-                    weights = tier_weights(
+                    shares = estimated_shares(
                         experiences_for(source.id),
                         month,
                         inputs.experiences,
                         inputs.tech_map,
                     )
-                    units.append(Unit(month, kind, hours, weights, True, index))
+                    units.append(Unit(month, kind, hours, shares, True, index))
                     continue
                 in_month = [d for d in traced if d[:7] == month]
                 if in_month:
-                    weights = _sum(inputs.weights_of(d) for d in in_month)
+                    shares = inputs.shares_of(in_month)
                 else:
-                    weights = {t: w for t, w in whole.items() if seen[t] <= month}
-                units.append(Unit(month, kind, hours, weights, False, index))
+                    shares = {t: v for t, v in whole.items() if seen[t] <= month}
+                units.append(Unit(month, kind, hours, shares, False, index))
 
     for index, day in personal_days:
         budget = tl.budget_for(timeline.periods[index].context)
         hours = tl.personal_hours(budget, [date.fromisoformat(day)])
         if hours > 0:
-            weights = inputs.weights_of(day)
-            units.append(Unit(day[:7], "personal", hours, weights, False, index))
+            shares = inputs.shares_of([day])
+            units.append(Unit(day[:7], "personal", hours, shares, False, index))
     return units
 
 
-def allocations(units: list[Unit], tech_map: TechMap) -> list[dict[str, float]]:
-    return [allocate(u.hours, u.weights, tech_map) for u in units]
+def allocations(units: list[Unit]) -> list[dict[str, float]]:
+    return [allocate(u.hours, u.shares) for u in units]
 
 
 # --- Aggregation -------------------------------------------------------------
@@ -514,7 +529,7 @@ def aggregate(inputs: Inputs, catalogue: list[dict]) -> dict:
     """The committed aggregates document (deterministic, no private names)."""
     tech_map = inputs.tech_map
     units = build_units(inputs)
-    allocs = allocations(units, tech_map)
+    allocs = allocations(units)
 
     context: dict[str, dict[str, list[float]]] = defaultdict(lambda: defaultdict(list))
     month_techs: dict[str, dict[str, list[float]]] = defaultdict(
@@ -534,7 +549,7 @@ def aggregate(inputs: Inputs, catalogue: list[dict]) -> dict:
             tech_months[tech].append(unit.month)
             if unit.estimated:
                 tech_estimated[tech].append(hours)
-        for domain, hours in domain_hours(unit.hours, unit.weights, tech_map).items():
+        for domain, hours in domain_hours(unit.hours, unit.shares, tech_map).items():
             month_domains[unit.month][domain].append(hours)
 
     by_month = {}
@@ -556,7 +571,7 @@ def aggregate(inputs: Inputs, catalogue: list[dict]) -> dict:
             "first": min(tech_months[tech]),
             "last": max(tech_months[tech]),
             "estimated_share": _r(math.fsum(tech_estimated[tech]) / total, 3),
-            "layer": info.layer,
+            "kind": info.kind,
             "domain": info.domain,
         }
 
@@ -595,16 +610,14 @@ def sanity_checks(
     allocations: list[dict[str, float]] | None = None,
 ) -> list[str]:
     """ADR-013 success criteria: first use and period budgets."""
-    allocs = allocations or [
-        allocate(u.hours, u.weights, inputs.tech_map) for u in units
-    ]
+    allocs = allocations or [allocate(u.hours, u.shares) for u in units]
     issues: list[str] = []
     seen = first_seen(inputs)
     earliest_estimate: dict[str, str] = {}
     for unit in units:
         if unit.estimated:
-            for tech, weight in unit.weights.items():
-                if weight > 0 and unit.month < earliest_estimate.get(tech, "9999-99"):
+            for tech, share in unit.shares.items():
+                if share > 0 and unit.month < earliest_estimate.get(tech, "9999-99"):
                     earliest_estimate[tech] = unit.month
     for tech, entry in sorted(doc["techs"].items()):
         bound = min(seen.get(tech, "9999-99"), earliest_estimate.get(tech, "9999-99"))
@@ -648,9 +661,7 @@ def dumps(doc: dict) -> str:
 def _summary(doc: dict, inputs: Inputs, issues: list[str]) -> str:
     totals = doc["context_totals"]
     unallocated = math.fsum(
-        u.hours
-        for u in build_units(inputs)
-        if not allocate(u.hours, u.weights, inputs.tech_map)
+        u.hours for u in build_units(inputs) if not allocate(u.hours, u.shares)
     )
     repos = {r for d in inputs.days.values() for r in d.repos}
     unclassified = sum(1 for r in repos if r not in inputs.classes)

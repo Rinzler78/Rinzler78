@@ -9,12 +9,12 @@
       },
       "domains": {
         "languages": 36.0,
-        "mobile": 36.0
+        "mobile": 12.6
       },
       "techs": {
         "c-cpp": 24.0,
         "csharp-dotnet": 12.0,
-        "windows-ce": 36.0
+        "windows-ce": 12.6
       }
     },
     "2006-10": {
@@ -25,12 +25,12 @@
       },
       "domains": {
         "languages": 36.0,
-        "mobile": 36.0
+        "mobile": 12.6
       },
       "techs": {
         "c-cpp": 24.0,
         "csharp-dotnet": 12.0,
-        "windows-ce": 36.0
+        "windows-ce": 12.6
       }
     },
     "2006-11": {
@@ -41,12 +41,12 @@
       },
       "domains": {
         "languages": 36.0,
-        "mobile": 36.0
+        "mobile": 12.6
       },
       "techs": {
         "c-cpp": 24.0,
         "csharp-dotnet": 12.0,
-        "windows-ce": 36.0
+        "windows-ce": 12.6
       }
     },
     "2006-12": {
@@ -57,12 +57,12 @@
       },
       "domains": {
         "languages": 36.0,
-        "mobile": 36.0
+        "mobile": 12.6
       },
       "techs": {
         "c-cpp": 24.0,
         "csharp-dotnet": 12.0,
-        "windows-ce": 36.0
+        "windows-ce": 12.6
       }
     },
     "2007-01": {
@@ -73,12 +73,12 @@
       },
       "domains": {
         "languages": 36.0,
-        "mobile": 36.0
+        "mobile": 12.6
       },
       "techs": {
         "c-cpp": 24.0,
         "csharp-dotnet": 12.0,
-        "windows-ce": 36.0
+        "windows-ce": 12.6
       }
     },
     "2007-02": {
@@ -89,12 +89,12 @@
       },
       "domains": {
         "languages": 36.0,
-        "mobile": 36.0
+        "mobile": 12.6
       },
       "techs": {
         "c-cpp": 24.0,
         "csharp-dotnet": 12.0,
-        "windows-ce": 36.0
+        "windows-ce": 12.6
       }
     },
     "2007-03": {
@@ -105,12 +105,12 @@
       },
       "domains": {
         "languages": 36.0,
-        "mobile": 36.0
+        "mobile": 12.6
       },
       "techs": {
         "c-cpp": 24.0,
         "csharp-dotnet": 12.0,
-        "windows-ce": 36.0
+        "windows-ce": 12.6
       }
     },
     "2007-04": {
@@ -121,12 +121,12 @@
       },
       "domains": {
         "languages": 36.0,
-        "mobile": 36.0
+        "mobile": 12.6
       },
       "techs": {
         "c-cpp": 24.0,
         "csharp-dotnet": 12.0,
-        "windows-ce": 36.0
+        "windows-ce": 12.6
       }
     },
     "2007-05": {
@@ -137,12 +137,12 @@
       },
       "domains": {
         "languages": 36.0,
-        "mobile": 36.0
+        "mobile": 12.6
       },
       "techs": {
         "c-cpp": 24.0,
         "csharp-dotnet": 12.0,
-        "windows-ce": 36.0
+        "windows-ce": 12.6
       }
     },
     "2007-06": {
@@ -153,12 +153,12 @@
       },
       "domains": {
         "languages": 36.0,
-        "mobile": 36.0
+        "mobile": 12.6
       },
       "techs": {
         "c-cpp": 24.0,
         "csharp-dotnet": 12.0,
-        "windows-ce": 36.0
+        "windows-ce": 12.6
       }
     },
     "2007-09": {
@@ -169,12 +169,12 @@
       },
       "domains": {
         "languages": 36.0,
-        "mobile": 36.0
+        "mobile": 12.6
       },
       "techs": {
         "c-cpp": 24.0,
         "csharp-dotnet": 12.0,
-        "windows-ce": 36.0
+        "windows-ce": 12.6
       }
     },
     "2007-10": {
@@ -185,12 +185,12 @@
       },
       "domains": {
         "languages": 36.0,
-        "mobile": 36.0
+        "mobile": 12.6
       },
       "techs": {
         "c-cpp": 24.0,
         "csharp-dotnet": 12.0,
-        "windows-ce": 36.0
+        "windows-ce": 12.6
       }
     },
     "2007-11": {
@@ -201,12 +201,12 @@
       },
       "domains": {
         "languages": 36.0,
-        "mobile": 36.0
+        "mobile": 12.6
       },
       "techs": {
         "c-cpp": 24.0,
         "csharp-dotnet": 12.0,
-        "windows-ce": 36.0
+        "windows-ce": 12.6
       }
     },
     "2007-12": {
@@ -217,12 +217,12 @@
       },
       "domains": {
         "languages": 36.0,
-        "mobile": 36.0
+        "mobile": 12.6
       },
       "techs": {
         "c-cpp": 24.0,
         "csharp-dotnet": 12.0,
-        "windows-ce": 36.0
+        "windows-ce": 12.6
       }
     },
     "2008-01": {
@@ -233,12 +233,12 @@
       },
       "domains": {
         "languages": 36.0,
-        "mobile": 36.0
+        "mobile": 12.6
       },
       "techs": {
         "c-cpp": 24.0,
         "csharp-dotnet": 12.0,
-        "windows-ce": 36.0
+        "windows-ce": 12.6
       }
     },
     "2008-02": {
@@ -249,12 +249,12 @@
       },
       "domains": {
         "languages": 36.0,
-        "mobile": 36.0
+        "mobile": 12.6
       },
       "techs": {
         "c-cpp": 24.0,
         "csharp-dotnet": 12.0,
-        "windows-ce": 36.0
+        "windows-ce": 12.6
       }
     },
     "2008-03": {
@@ -265,12 +265,12 @@
       },
       "domains": {
         "languages": 36.0,
-        "mobile": 36.0
+        "mobile": 12.6
       },
       "techs": {
         "c-cpp": 24.0,
         "csharp-dotnet": 12.0,
-        "windows-ce": 36.0
+        "windows-ce": 12.6
       }
     },
     "2008-04": {
@@ -281,12 +281,12 @@
       },
       "domains": {
         "languages": 36.0,
-        "mobile": 36.0
+        "mobile": 12.6
       },
       "techs": {
         "c-cpp": 24.0,
         "csharp-dotnet": 12.0,
-        "windows-ce": 36.0
+        "windows-ce": 12.6
       }
     },
     "2008-05": {
@@ -297,12 +297,12 @@
       },
       "domains": {
         "languages": 36.0,
-        "mobile": 36.0
+        "mobile": 12.6
       },
       "techs": {
         "c-cpp": 24.0,
         "csharp-dotnet": 12.0,
-        "windows-ce": 36.0
+        "windows-ce": 12.6
       }
     },
     "2008-06": {
@@ -313,12 +313,12 @@
       },
       "domains": {
         "languages": 36.0,
-        "mobile": 36.0
+        "mobile": 12.6
       },
       "techs": {
         "c-cpp": 24.0,
         "csharp-dotnet": 12.0,
-        "windows-ce": 36.0
+        "windows-ce": 12.6
       }
     },
     "2008-09": {
@@ -328,15 +328,15 @@
         "study": 36.0
       },
       "domains": {
-        "embedded": 36.0,
+        "embedded": 25.2,
         "languages": 36.0,
-        "mobile": 36.0
+        "mobile": 12.6
       },
       "techs": {
         "c-cpp": 28.8,
-        "computer-vision": 36.0,
+        "computer-vision": 25.2,
         "csharp-dotnet": 7.2,
-        "windows-ce": 36.0
+        "windows-ce": 12.6
       }
     },
     "2008-10": {
@@ -346,15 +346,15 @@
         "study": 36.0
       },
       "domains": {
-        "embedded": 36.0,
+        "embedded": 25.2,
         "languages": 36.0,
-        "mobile": 36.0
+        "mobile": 12.6
       },
       "techs": {
         "c-cpp": 28.8,
-        "computer-vision": 36.0,
+        "computer-vision": 25.2,
         "csharp-dotnet": 7.2,
-        "windows-ce": 36.0
+        "windows-ce": 12.6
       }
     },
     "2008-11": {
@@ -364,15 +364,15 @@
         "study": 36.0
       },
       "domains": {
-        "embedded": 36.0,
+        "embedded": 25.2,
         "languages": 36.0,
-        "mobile": 36.0
+        "mobile": 12.6
       },
       "techs": {
         "c-cpp": 28.8,
-        "computer-vision": 36.0,
+        "computer-vision": 25.2,
         "csharp-dotnet": 7.2,
-        "windows-ce": 36.0
+        "windows-ce": 12.6
       }
     },
     "2008-12": {
@@ -382,15 +382,15 @@
         "study": 36.0
       },
       "domains": {
-        "embedded": 36.0,
+        "embedded": 25.2,
         "languages": 36.0,
-        "mobile": 36.0
+        "mobile": 12.6
       },
       "techs": {
         "c-cpp": 28.8,
-        "computer-vision": 36.0,
+        "computer-vision": 25.2,
         "csharp-dotnet": 7.2,
-        "windows-ce": 36.0
+        "windows-ce": 12.6
       }
     },
     "2009-01": {
@@ -400,15 +400,15 @@
         "study": 36.0
       },
       "domains": {
-        "embedded": 36.0,
+        "embedded": 25.2,
         "languages": 36.0,
-        "mobile": 36.0
+        "mobile": 12.6
       },
       "techs": {
         "c-cpp": 28.8,
-        "computer-vision": 36.0,
+        "computer-vision": 25.2,
         "csharp-dotnet": 7.2,
-        "windows-ce": 36.0
+        "windows-ce": 12.6
       }
     },
     "2009-02": {
@@ -418,15 +418,15 @@
         "study": 36.0
       },
       "domains": {
-        "embedded": 36.0,
+        "embedded": 25.2,
         "languages": 36.0,
-        "mobile": 36.0
+        "mobile": 12.6
       },
       "techs": {
         "c-cpp": 28.8,
-        "computer-vision": 36.0,
+        "computer-vision": 25.2,
         "csharp-dotnet": 7.2,
-        "windows-ce": 36.0
+        "windows-ce": 12.6
       }
     },
     "2009-03": {
@@ -436,15 +436,15 @@
         "study": 36.0
       },
       "domains": {
-        "embedded": 36.0,
+        "embedded": 25.2,
         "languages": 36.0,
-        "mobile": 36.0
+        "mobile": 12.6
       },
       "techs": {
         "c-cpp": 28.8,
-        "computer-vision": 36.0,
+        "computer-vision": 25.2,
         "csharp-dotnet": 7.2,
-        "windows-ce": 36.0
+        "windows-ce": 12.6
       }
     },
     "2009-04": {
@@ -455,11 +455,11 @@
       },
       "domains": {
         "languages": 176.0,
-        "mobile": 176.0
+        "mobile": 123.2
       },
       "techs": {
         "c-cpp": 176.0,
-        "windows-ce": 176.0
+        "windows-ce": 123.2
       }
     },
     "2009-05": {
@@ -470,11 +470,11 @@
       },
       "domains": {
         "languages": 168.0,
-        "mobile": 168.0
+        "mobile": 117.6
       },
       "techs": {
         "c-cpp": 168.0,
-        "windows-ce": 168.0
+        "windows-ce": 117.6
       }
     },
     "2009-06": {
@@ -485,11 +485,11 @@
       },
       "domains": {
         "languages": 176.0,
-        "mobile": 176.0
+        "mobile": 123.2
       },
       "techs": {
         "c-cpp": 176.0,
-        "windows-ce": 176.0
+        "windows-ce": 123.2
       }
     },
     "2009-07": {
@@ -500,11 +500,11 @@
       },
       "domains": {
         "languages": 184.0,
-        "mobile": 184.0
+        "mobile": 128.8
       },
       "techs": {
         "c-cpp": 184.0,
-        "windows-ce": 184.0
+        "windows-ce": 128.8
       }
     },
     "2009-09": {
@@ -514,15 +514,15 @@
         "study": 36.0
       },
       "domains": {
-        "embedded": 36.0,
+        "embedded": 25.2,
         "languages": 36.0,
-        "mobile": 36.0
+        "mobile": 12.6
       },
       "techs": {
         "c-cpp": 28.8,
-        "computer-vision": 36.0,
+        "computer-vision": 25.2,
         "csharp-dotnet": 7.2,
-        "windows-ce": 36.0
+        "windows-ce": 12.6
       }
     },
     "2009-10": {
@@ -532,15 +532,15 @@
         "study": 0.0
       },
       "domains": {
-        "embedded": 176.0,
+        "embedded": 61.6,
         "languages": 176.0,
-        "mobile": 176.0
+        "mobile": 61.6
       },
       "techs": {
         "c-cpp": 88.0,
         "csharp-dotnet": 88.0,
-        "gps": 176.0,
-        "windows-ce": 176.0
+        "gps": 61.6,
+        "windows-ce": 61.6
       }
     },
     "2009-11": {
@@ -550,15 +550,15 @@
         "study": 0.0
       },
       "domains": {
-        "embedded": 168.0,
+        "embedded": 58.8,
         "languages": 168.0,
-        "mobile": 168.0
+        "mobile": 58.8
       },
       "techs": {
         "c-cpp": 84.0,
         "csharp-dotnet": 84.0,
-        "gps": 168.0,
-        "windows-ce": 168.0
+        "gps": 58.8,
+        "windows-ce": 58.8
       }
     },
     "2009-12": {
@@ -568,15 +568,15 @@
         "study": 0.0
       },
       "domains": {
-        "embedded": 184.0,
+        "embedded": 64.4,
         "languages": 184.0,
-        "mobile": 184.0
+        "mobile": 64.4
       },
       "techs": {
         "c-cpp": 92.0,
         "csharp-dotnet": 92.0,
-        "gps": 184.0,
-        "windows-ce": 184.0
+        "gps": 64.4,
+        "windows-ce": 64.4
       }
     },
     "2010-01": {
@@ -586,15 +586,15 @@
         "study": 0.0
       },
       "domains": {
-        "embedded": 168.0,
+        "embedded": 58.8,
         "languages": 168.0,
-        "mobile": 168.0
+        "mobile": 58.8
       },
       "techs": {
         "c-cpp": 84.0,
         "csharp-dotnet": 84.0,
-        "gps": 168.0,
-        "windows-ce": 168.0
+        "gps": 58.8,
+        "windows-ce": 58.8
       }
     },
     "2010-02": {
@@ -604,15 +604,15 @@
         "study": 0.0
       },
       "domains": {
-        "embedded": 160.0,
+        "embedded": 56.0,
         "languages": 160.0,
-        "mobile": 160.0
+        "mobile": 56.0
       },
       "techs": {
         "c-cpp": 80.0,
         "csharp-dotnet": 80.0,
-        "gps": 160.0,
-        "windows-ce": 160.0
+        "gps": 56.0,
+        "windows-ce": 56.0
       }
     },
     "2010-03": {
@@ -622,15 +622,15 @@
         "study": 0.0
       },
       "domains": {
-        "embedded": 184.0,
+        "embedded": 64.4,
         "languages": 184.0,
-        "mobile": 184.0
+        "mobile": 64.4
       },
       "techs": {
         "c-cpp": 92.0,
         "csharp-dotnet": 92.0,
-        "gps": 184.0,
-        "windows-ce": 184.0
+        "gps": 64.4,
+        "windows-ce": 64.4
       }
     },
     "2010-04": {
@@ -640,15 +640,15 @@
         "study": 0.0
       },
       "domains": {
-        "embedded": 176.0,
+        "embedded": 61.6,
         "languages": 176.0,
-        "mobile": 176.0
+        "mobile": 61.6
       },
       "techs": {
         "c-cpp": 88.0,
         "csharp-dotnet": 88.0,
-        "gps": 176.0,
-        "windows-ce": 176.0
+        "gps": 61.6,
+        "windows-ce": 61.6
       }
     },
     "2010-05": {
@@ -658,15 +658,15 @@
         "study": 0.0
       },
       "domains": {
-        "embedded": 168.0,
+        "embedded": 58.8,
         "languages": 168.0,
-        "mobile": 168.0
+        "mobile": 58.8
       },
       "techs": {
         "c-cpp": 84.0,
         "csharp-dotnet": 84.0,
-        "gps": 168.0,
-        "windows-ce": 168.0
+        "gps": 58.8,
+        "windows-ce": 58.8
       }
     },
     "2010-06": {
@@ -676,15 +676,15 @@
         "study": 0.0
       },
       "domains": {
-        "embedded": 176.0,
+        "embedded": 61.6,
         "languages": 176.0,
-        "mobile": 176.0
+        "mobile": 61.6
       },
       "techs": {
         "c-cpp": 88.0,
         "csharp-dotnet": 88.0,
-        "gps": 176.0,
-        "windows-ce": 176.0
+        "gps": 61.6,
+        "windows-ce": 61.6
       }
     },
     "2010-07": {
@@ -694,15 +694,15 @@
         "study": 0.0
       },
       "domains": {
-        "embedded": 176.0,
+        "embedded": 61.6,
         "languages": 176.0,
-        "mobile": 176.0
+        "mobile": 61.6
       },
       "techs": {
         "c-cpp": 88.0,
         "csharp-dotnet": 88.0,
-        "gps": 176.0,
-        "windows-ce": 176.0
+        "gps": 61.6,
+        "windows-ce": 61.6
       }
     },
     "2010-08": {
@@ -712,15 +712,15 @@
         "study": 0.0
       },
       "domains": {
-        "embedded": 176.0,
+        "embedded": 61.6,
         "languages": 176.0,
-        "mobile": 176.0
+        "mobile": 61.6
       },
       "techs": {
         "c-cpp": 88.0,
         "csharp-dotnet": 88.0,
-        "gps": 176.0,
-        "windows-ce": 176.0
+        "gps": 61.6,
+        "windows-ce": 61.6
       }
     },
     "2010-09": {
@@ -730,15 +730,15 @@
         "study": 0.0
       },
       "domains": {
-        "embedded": 176.0,
+        "embedded": 61.6,
         "languages": 176.0,
-        "mobile": 176.0
+        "mobile": 61.6
       },
       "techs": {
         "c-cpp": 88.0,
         "csharp-dotnet": 88.0,
-        "gps": 176.0,
-        "windows-ce": 176.0
+        "gps": 61.6,
+        "windows-ce": 61.6
       }
     },
     "2010-10": {
@@ -748,15 +748,15 @@
         "study": 0.0
       },
       "domains": {
-        "embedded": 168.0,
+        "embedded": 58.8,
         "languages": 168.0,
-        "mobile": 168.0
+        "mobile": 58.8
       },
       "techs": {
         "c-cpp": 84.0,
         "csharp-dotnet": 84.0,
-        "gps": 168.0,
-        "windows-ce": 168.0
+        "gps": 58.8,
+        "windows-ce": 58.8
       }
     },
     "2010-11": {
@@ -766,15 +766,15 @@
         "study": 0.0
       },
       "domains": {
-        "embedded": 176.0,
+        "embedded": 61.6,
         "languages": 176.0,
-        "mobile": 176.0
+        "mobile": 61.6
       },
       "techs": {
         "c-cpp": 88.0,
         "csharp-dotnet": 88.0,
-        "gps": 176.0,
-        "windows-ce": 176.0
+        "gps": 61.6,
+        "windows-ce": 61.6
       }
     },
     "2010-12": {
@@ -784,15 +784,15 @@
         "study": 0.0
       },
       "domains": {
-        "embedded": 184.0,
+        "embedded": 64.4,
         "languages": 184.0,
-        "mobile": 184.0
+        "mobile": 64.4
       },
       "techs": {
         "c-cpp": 92.0,
         "csharp-dotnet": 92.0,
-        "gps": 184.0,
-        "windows-ce": 184.0
+        "gps": 64.4,
+        "windows-ce": 64.4
       }
     },
     "2011-01": {
@@ -802,17 +802,17 @@
         "study": 0.0
       },
       "domains": {
-        "devops": 84.0,
-        "embedded": 168.0,
+        "devops": 58.8,
+        "embedded": 58.8,
         "languages": 168.0,
-        "mobile": 84.0
+        "mobile": 58.8
       },
       "techs": {
         "c-cpp": 112.0,
         "csharp-dotnet": 56.0,
-        "gps": 168.0,
-        "windows": 84.0,
-        "windows-ce": 84.0
+        "gps": 58.8,
+        "windows": 58.8,
+        "windows-ce": 58.8
       }
     },
     "2011-02": {
@@ -822,17 +822,17 @@
         "study": 0.0
       },
       "domains": {
-        "devops": 80.0,
-        "embedded": 160.0,
+        "devops": 56.0,
+        "embedded": 56.0,
         "languages": 160.0,
-        "mobile": 80.0
+        "mobile": 56.0
       },
       "techs": {
         "c-cpp": 106.67,
         "csharp-dotnet": 53.33,
-        "gps": 160.0,
-        "windows": 80.0,
-        "windows-ce": 80.0
+        "gps": 56.0,
+        "windows": 56.0,
+        "windows-ce": 56.0
       }
     },
     "2011-03": {
@@ -842,17 +842,17 @@
         "study": 0.0
       },
       "domains": {
-        "devops": 92.0,
-        "embedded": 184.0,
+        "devops": 64.4,
+        "embedded": 64.4,
         "languages": 184.0,
-        "mobile": 92.0
+        "mobile": 64.4
       },
       "techs": {
         "c-cpp": 122.67,
         "csharp-dotnet": 61.33,
-        "gps": 184.0,
-        "windows": 92.0,
-        "windows-ce": 92.0
+        "gps": 64.4,
+        "windows": 64.4,
+        "windows-ce": 64.4
       }
     },
     "2011-04": {
@@ -862,17 +862,17 @@
         "study": 0.0
       },
       "domains": {
-        "devops": 84.0,
-        "embedded": 168.0,
+        "devops": 58.8,
+        "embedded": 58.8,
         "languages": 168.0,
-        "mobile": 84.0
+        "mobile": 58.8
       },
       "techs": {
         "c-cpp": 112.0,
         "csharp-dotnet": 56.0,
-        "gps": 168.0,
-        "windows": 84.0,
-        "windows-ce": 84.0
+        "gps": 58.8,
+        "windows": 58.8,
+        "windows-ce": 58.8
       }
     },
     "2011-05": {
@@ -882,17 +882,17 @@
         "study": 0.0
       },
       "domains": {
-        "devops": 88.0,
-        "embedded": 176.0,
+        "devops": 61.6,
+        "embedded": 61.6,
         "languages": 176.0,
-        "mobile": 88.0
+        "mobile": 61.6
       },
       "techs": {
         "c-cpp": 117.33,
         "csharp-dotnet": 58.67,
-        "gps": 176.0,
-        "windows": 88.0,
-        "windows-ce": 88.0
+        "gps": 61.6,
+        "windows": 61.6,
+        "windows-ce": 61.6
       }
     },
     "2011-06": {
@@ -902,17 +902,17 @@
         "study": 0.0
       },
       "domains": {
-        "devops": 88.0,
-        "embedded": 176.0,
+        "devops": 61.6,
+        "embedded": 61.6,
         "languages": 176.0,
-        "mobile": 88.0
+        "mobile": 61.6
       },
       "techs": {
         "c-cpp": 117.33,
         "csharp-dotnet": 58.67,
-        "gps": 176.0,
-        "windows": 88.0,
-        "windows-ce": 88.0
+        "gps": 61.6,
+        "windows": 61.6,
+        "windows-ce": 61.6
       }
     },
     "2011-07": {
@@ -922,17 +922,17 @@
         "study": 0.0
       },
       "domains": {
-        "devops": 84.0,
-        "embedded": 168.0,
+        "devops": 58.8,
+        "embedded": 58.8,
         "languages": 168.0,
-        "mobile": 84.0
+        "mobile": 58.8
       },
       "techs": {
         "c-cpp": 112.0,
         "csharp-dotnet": 56.0,
-        "gps": 168.0,
-        "windows": 84.0,
-        "windows-ce": 84.0
+        "gps": 58.8,
+        "windows": 58.8,
+        "windows-ce": 58.8
       }
     },
     "2011-08": {
@@ -942,17 +942,17 @@
         "study": 0.0
       },
       "domains": {
-        "devops": 92.0,
-        "embedded": 184.0,
+        "devops": 64.4,
+        "embedded": 64.4,
         "languages": 184.0,
-        "mobile": 92.0
+        "mobile": 64.4
       },
       "techs": {
         "c-cpp": 122.67,
         "csharp-dotnet": 61.33,
-        "gps": 184.0,
-        "windows": 92.0,
-        "windows-ce": 92.0
+        "gps": 64.4,
+        "windows": 64.4,
+        "windows-ce": 64.4
       }
     },
     "2011-09": {
@@ -962,17 +962,17 @@
         "study": 0.0
       },
       "domains": {
-        "devops": 88.0,
-        "embedded": 176.0,
+        "devops": 61.6,
+        "embedded": 61.6,
         "languages": 176.0,
-        "mobile": 88.0
+        "mobile": 61.6
       },
       "techs": {
         "c-cpp": 117.33,
         "csharp-dotnet": 58.67,
-        "gps": 176.0,
-        "windows": 88.0,
-        "windows-ce": 88.0
+        "gps": 61.6,
+        "windows": 61.6,
+        "windows-ce": 61.6
       }
     },
     "2011-10": {
@@ -982,17 +982,17 @@
         "study": 0.0
       },
       "domains": {
-        "devops": 84.0,
-        "embedded": 168.0,
+        "devops": 58.8,
+        "embedded": 58.8,
         "languages": 168.0,
-        "mobile": 84.0
+        "mobile": 58.8
       },
       "techs": {
         "c-cpp": 112.0,
         "csharp-dotnet": 56.0,
-        "gps": 168.0,
-        "windows": 84.0,
-        "windows-ce": 84.0
+        "gps": 58.8,
+        "windows": 58.8,
+        "windows-ce": 58.8
       }
     },
     "2011-11": {
@@ -1002,17 +1002,17 @@
         "study": 0.0
       },
       "domains": {
-        "devops": 88.0,
-        "embedded": 176.0,
+        "devops": 61.6,
+        "embedded": 61.6,
         "languages": 176.0,
-        "mobile": 88.0
+        "mobile": 61.6
       },
       "techs": {
         "c-cpp": 117.33,
         "csharp-dotnet": 58.67,
-        "gps": 176.0,
-        "windows": 88.0,
-        "windows-ce": 88.0
+        "gps": 61.6,
+        "windows": 61.6,
+        "windows-ce": 61.6
       }
     },
     "2011-12": {
@@ -1024,15 +1024,15 @@
       "domains": {
         "embedded": 176.0,
         "languages": 58.67,
-        "mobile": 176.0
+        "mobile": 134.93
       },
       "techs": {
-        "bluetooth": 53.57,
+        "bluetooth": 61.6,
         "c-cpp": 58.67,
-        "gps": 15.3,
-        "nfc": 107.13,
+        "gps": 17.6,
+        "nfc": 123.2,
         "objective-c": 117.33,
-        "windows-ce": 176.0
+        "windows-ce": 17.6
       }
     },
     "2012-01": {
@@ -1044,15 +1044,15 @@
       "domains": {
         "embedded": 176.0,
         "languages": 58.67,
-        "mobile": 176.0
+        "mobile": 134.93
       },
       "techs": {
-        "bluetooth": 53.57,
+        "bluetooth": 61.6,
         "c-cpp": 58.67,
-        "gps": 15.3,
-        "nfc": 107.13,
+        "gps": 17.6,
+        "nfc": 123.2,
         "objective-c": 117.33,
-        "windows-ce": 176.0
+        "windows-ce": 17.6
       }
     },
     "2012-02": {
@@ -1064,15 +1064,15 @@
       "domains": {
         "embedded": 168.0,
         "languages": 56.0,
-        "mobile": 168.0
+        "mobile": 128.8
       },
       "techs": {
-        "bluetooth": 51.13,
+        "bluetooth": 58.8,
         "c-cpp": 56.0,
-        "gps": 14.61,
-        "nfc": 102.26,
+        "gps": 16.8,
+        "nfc": 117.6,
         "objective-c": 112.0,
-        "windows-ce": 168.0
+        "windows-ce": 16.8
       }
     },
     "2012-03": {
@@ -1084,15 +1084,15 @@
       "domains": {
         "embedded": 176.0,
         "languages": 58.67,
-        "mobile": 176.0
+        "mobile": 134.93
       },
       "techs": {
-        "bluetooth": 53.57,
+        "bluetooth": 61.6,
         "c-cpp": 58.67,
-        "gps": 15.3,
-        "nfc": 107.13,
+        "gps": 17.6,
+        "nfc": 123.2,
         "objective-c": 117.33,
-        "windows-ce": 176.0
+        "windows-ce": 17.6
       }
     },
     "2012-04": {
@@ -1104,15 +1104,15 @@
       "domains": {
         "embedded": 168.0,
         "languages": 56.0,
-        "mobile": 168.0
+        "mobile": 128.8
       },
       "techs": {
-        "bluetooth": 51.13,
+        "bluetooth": 58.8,
         "c-cpp": 56.0,
-        "gps": 14.61,
-        "nfc": 102.26,
+        "gps": 16.8,
+        "nfc": 117.6,
         "objective-c": 112.0,
-        "windows-ce": 168.0
+        "windows-ce": 16.8
       }
     },
     "2012-05": {
@@ -1124,15 +1124,15 @@
       "domains": {
         "embedded": 184.0,
         "languages": 61.33,
-        "mobile": 184.0
+        "mobile": 141.07
       },
       "techs": {
-        "bluetooth": 56.0,
+        "bluetooth": 64.4,
         "c-cpp": 61.33,
-        "gps": 16.0,
-        "nfc": 112.0,
+        "gps": 18.4,
+        "nfc": 128.8,
         "objective-c": 122.67,
-        "windows-ce": 184.0
+        "windows-ce": 18.4
       }
     },
     "2012-06": {
@@ -1144,15 +1144,15 @@
       "domains": {
         "embedded": 168.0,
         "languages": 56.0,
-        "mobile": 168.0
+        "mobile": 128.8
       },
       "techs": {
-        "bluetooth": 51.13,
+        "bluetooth": 58.8,
         "c-cpp": 56.0,
-        "gps": 14.61,
-        "nfc": 102.26,
+        "gps": 16.8,
+        "nfc": 117.6,
         "objective-c": 112.0,
-        "windows-ce": 168.0
+        "windows-ce": 16.8
       }
     },
     "2012-07": {
@@ -1164,15 +1164,15 @@
       "domains": {
         "embedded": 176.0,
         "languages": 58.67,
-        "mobile": 176.0
+        "mobile": 134.93
       },
       "techs": {
-        "bluetooth": 53.57,
+        "bluetooth": 61.6,
         "c-cpp": 58.67,
-        "gps": 15.3,
-        "nfc": 107.13,
+        "gps": 17.6,
+        "nfc": 123.2,
         "objective-c": 117.33,
-        "windows-ce": 176.0
+        "windows-ce": 17.6
       }
     },
     "2012-08": {
@@ -1184,15 +1184,15 @@
       "domains": {
         "embedded": 184.0,
         "languages": 61.33,
-        "mobile": 184.0
+        "mobile": 141.07
       },
       "techs": {
-        "bluetooth": 56.0,
+        "bluetooth": 64.4,
         "c-cpp": 61.33,
-        "gps": 16.0,
-        "nfc": 112.0,
+        "gps": 18.4,
+        "nfc": 128.8,
         "objective-c": 122.67,
-        "windows-ce": 184.0
+        "windows-ce": 18.4
       }
     },
     "2012-09": {
@@ -1204,15 +1204,15 @@
       "domains": {
         "embedded": 160.0,
         "languages": 53.33,
-        "mobile": 160.0
+        "mobile": 122.67
       },
       "techs": {
-        "bluetooth": 48.7,
+        "bluetooth": 56.0,
         "c-cpp": 53.33,
-        "gps": 13.91,
-        "nfc": 97.39,
+        "gps": 16.0,
+        "nfc": 112.0,
         "objective-c": 106.67,
-        "windows-ce": 160.0
+        "windows-ce": 16.0
       }
     },
     "2012-10": {
@@ -1222,12 +1222,12 @@
         "study": 0.0
       },
       "domains": {
-        "devops": 184.0,
+        "devops": 64.4,
         "languages": 184.0
       },
       "techs": {
         "c-cpp": 184.0,
-        "windows": 184.0
+        "windows": 64.4
       }
     },
     "2012-11": {
@@ -1237,12 +1237,12 @@
         "study": 0.0
       },
       "domains": {
-        "devops": 176.0,
+        "devops": 61.6,
         "languages": 176.0
       },
       "techs": {
         "c-cpp": 176.0,
-        "windows": 176.0
+        "windows": 61.6
       }
     },
     "2012-12": {
@@ -1252,12 +1252,12 @@
         "study": 0.0
       },
       "domains": {
-        "devops": 168.0,
+        "devops": 58.8,
         "languages": 168.0
       },
       "techs": {
         "c-cpp": 168.0,
-        "windows": 168.0
+        "windows": 58.8
       }
     },
     "2013-01": {
@@ -1267,12 +1267,12 @@
         "study": 0.0
       },
       "domains": {
-        "devops": 184.0,
+        "devops": 64.4,
         "languages": 184.0
       },
       "techs": {
         "c-cpp": 184.0,
-        "windows": 184.0
+        "windows": 64.4
       }
     },
     "2013-02": {
@@ -1282,12 +1282,12 @@
         "study": 0.0
       },
       "domains": {
-        "devops": 160.0,
+        "devops": 56.0,
         "languages": 160.0
       },
       "techs": {
         "c-cpp": 160.0,
-        "windows": 160.0
+        "windows": 56.0
       }
     },
     "2013-03": {
@@ -1297,12 +1297,12 @@
         "study": 0.0
       },
       "domains": {
-        "devops": 168.0,
+        "devops": 58.8,
         "languages": 168.0
       },
       "techs": {
         "c-cpp": 168.0,
-        "windows": 168.0
+        "windows": 58.8
       }
     },
     "2013-04": {
@@ -1312,12 +1312,12 @@
         "study": 0.0
       },
       "domains": {
-        "devops": 176.0,
+        "devops": 17.6,
         "languages": 176.0
       },
       "techs": {
         "c-cpp": 176.0,
-        "windows": 176.0
+        "windows": 17.6
       }
     },
     "2013-05": {
@@ -1327,879 +1327,17 @@
         "study": 0.0
       },
       "domains": {
-        "embedded": 184.0,
+        "embedded": 128.8,
         "languages": 184.0,
-        "mobile": 184.0
+        "mobile": 128.8
       },
       "techs": {
         "csharp-dotnet": 184.0,
-        "nfc": 184.0,
-        "windows-mobile": 184.0
+        "nfc": 128.8,
+        "windows-mobile": 128.8
       }
     },
     "2013-06": {
-      "context": {
-        "personal": 0.0,
-        "pro": 160.0,
-        "study": 0.0
-      },
-      "domains": {
-        "embedded": 160.0,
-        "languages": 160.0,
-        "mobile": 160.0
-      },
-      "techs": {
-        "csharp-dotnet": 160.0,
-        "nfc": 160.0,
-        "windows-mobile": 160.0
-      }
-    },
-    "2013-07": {
-      "context": {
-        "personal": 0.0,
-        "pro": 184.0,
-        "study": 0.0
-      },
-      "domains": {
-        "embedded": 184.0,
-        "languages": 184.0,
-        "mobile": 184.0
-      },
-      "techs": {
-        "csharp-dotnet": 184.0,
-        "nfc": 184.0,
-        "windows-mobile": 184.0
-      }
-    },
-    "2013-08": {
-      "context": {
-        "personal": 0.0,
-        "pro": 176.0,
-        "study": 0.0
-      },
-      "domains": {
-        "embedded": 176.0,
-        "languages": 176.0,
-        "mobile": 176.0
-      },
-      "techs": {
-        "csharp-dotnet": 176.0,
-        "nfc": 176.0,
-        "windows-mobile": 176.0
-      }
-    },
-    "2013-09": {
-      "context": {
-        "personal": 0.0,
-        "pro": 168.0,
-        "study": 0.0
-      },
-      "domains": {
-        "embedded": 168.0,
-        "languages": 168.0,
-        "mobile": 168.0
-      },
-      "techs": {
-        "csharp-dotnet": 168.0,
-        "nfc": 168.0,
-        "windows-mobile": 168.0
-      }
-    },
-    "2013-10": {
-      "context": {
-        "personal": 0.0,
-        "pro": 184.0,
-        "study": 0.0
-      },
-      "domains": {
-        "embedded": 184.0,
-        "languages": 184.0,
-        "mobile": 184.0
-      },
-      "techs": {
-        "csharp-dotnet": 184.0,
-        "nfc": 184.0,
-        "windows-mobile": 184.0
-      }
-    },
-    "2013-11": {
-      "context": {
-        "personal": 0.0,
-        "pro": 168.0,
-        "study": 0.0
-      },
-      "domains": {
-        "embedded": 168.0,
-        "languages": 168.0,
-        "mobile": 168.0
-      },
-      "techs": {
-        "csharp-dotnet": 168.0,
-        "nfc": 168.0,
-        "windows-mobile": 168.0
-      }
-    },
-    "2013-12": {
-      "context": {
-        "personal": 0.0,
-        "pro": 176.0,
-        "study": 0.0
-      },
-      "domains": {
-        "embedded": 176.0,
-        "languages": 176.0,
-        "mobile": 176.0
-      },
-      "techs": {
-        "csharp-dotnet": 176.0,
-        "nfc": 176.0,
-        "windows-mobile": 176.0
-      }
-    },
-    "2014-01": {
-      "context": {
-        "personal": 0.0,
-        "pro": 184.0,
-        "study": 0.0
-      },
-      "domains": {
-        "embedded": 184.0,
-        "languages": 184.0,
-        "mobile": 184.0
-      },
-      "techs": {
-        "csharp-dotnet": 184.0,
-        "nfc": 184.0,
-        "windows-mobile": 184.0
-      }
-    },
-    "2014-02": {
-      "context": {
-        "personal": 0.0,
-        "pro": 160.0,
-        "study": 0.0
-      },
-      "domains": {
-        "embedded": 160.0,
-        "languages": 160.0,
-        "mobile": 160.0
-      },
-      "techs": {
-        "csharp-dotnet": 160.0,
-        "nfc": 160.0,
-        "windows-mobile": 160.0
-      }
-    },
-    "2014-04": {
-      "context": {
-        "personal": 0.0,
-        "pro": 176.0,
-        "study": 0.0
-      },
-      "domains": {
-        "embedded": 176.0,
-        "languages": 176.0
-      },
-      "techs": {
-        "bluetooth": 176.0,
-        "c-cpp": 176.0
-      }
-    },
-    "2014-05": {
-      "context": {
-        "personal": 0.0,
-        "pro": 176.0,
-        "study": 0.0
-      },
-      "domains": {
-        "embedded": 176.0,
-        "languages": 74.49,
-        "mobile": 101.51
-      },
-      "techs": {
-        "bluetooth": 11.23,
-        "c-cpp": 74.49,
-        "gps": 164.77,
-        "objective-c": 101.51
-      }
-    },
-    "2014-06": {
-      "context": {
-        "personal": 2.0,
-        "pro": 168.0,
-        "study": 0.0
-      },
-      "domains": {
-        "embedded": 168.0,
-        "languages": 102.12,
-        "mobile": 67.88
-      },
-      "techs": {
-        "bash": 2.0,
-        "bluetooth": 29.95,
-        "c-cpp": 100.12,
-        "gps": 138.05,
-        "objective-c": 67.88
-      }
-    },
-    "2014-07": {
-      "context": {
-        "personal": 0.0,
-        "pro": 184.0,
-        "study": 0.0
-      },
-      "domains": {
-        "embedded": 184.0,
-        "languages": 121.74,
-        "mobile": 62.26
-      },
-      "techs": {
-        "bluetooth": 11.74,
-        "c-cpp": 121.74,
-        "gps": 172.26,
-        "objective-c": 62.26
-      }
-    },
-    "2014-08": {
-      "context": {
-        "personal": 1.0,
-        "pro": 168.0,
-        "study": 0.0
-      },
-      "domains": {
-        "embedded": 168.0,
-        "languages": 107.28,
-        "mobile": 61.72
-      },
-      "techs": {
-        "bash": 1.0,
-        "bluetooth": 10.72,
-        "c-cpp": 106.28,
-        "gps": 157.28,
-        "objective-c": 61.72
-      }
-    },
-    "2014-09": {
-      "context": {
-        "personal": 0.0,
-        "pro": 176.0,
-        "study": 0.0
-      },
-      "domains": {
-        "embedded": 176.0,
-        "languages": 116.8,
-        "mobile": 59.2
-      },
-      "techs": {
-        "bluetooth": 11.23,
-        "c-cpp": 116.8,
-        "gps": 164.77,
-        "objective-c": 59.2
-      }
-    },
-    "2014-10": {
-      "context": {
-        "personal": 0.0,
-        "pro": 184.0,
-        "study": 0.0
-      },
-      "domains": {
-        "embedded": 184.0,
-        "languages": 109.58,
-        "mobile": 74.42
-      },
-      "techs": {
-        "bluetooth": 19.1,
-        "c-cpp": 109.38,
-        "gps": 164.9,
-        "objective-c": 74.42,
-        "web": 0.2
-      }
-    },
-    "2014-11": {
-      "context": {
-        "personal": 0.0,
-        "pro": 160.0,
-        "study": 0.0
-      },
-      "domains": {
-        "embedded": 160.0,
-        "languages": 110.11,
-        "mobile": 49.89
-      },
-      "techs": {
-        "bluetooth": 10.21,
-        "c-cpp": 110.11,
-        "gps": 149.79,
-        "objective-c": 49.89
-      }
-    },
-    "2014-12": {
-      "context": {
-        "personal": 0.0,
-        "pro": 184.0,
-        "study": 0.0
-      },
-      "domains": {
-        "embedded": 184.0,
-        "languages": 129.18,
-        "mobile": 54.82
-      },
-      "techs": {
-        "bluetooth": 11.74,
-        "c-cpp": 129.18,
-        "gps": 172.26,
-        "objective-c": 54.82
-      }
-    },
-    "2015-01": {
-      "context": {
-        "personal": 0.0,
-        "pro": 176.0,
-        "study": 0.0
-      },
-      "domains": {
-        "embedded": 176.0,
-        "languages": 116.18,
-        "mobile": 59.82
-      },
-      "techs": {
-        "bluetooth": 11.23,
-        "c-cpp": 116.18,
-        "gps": 164.77,
-        "objective-c": 59.82
-      }
-    },
-    "2015-02": {
-      "context": {
-        "personal": 1.0,
-        "pro": 160.0,
-        "study": 0.0
-      },
-      "domains": {
-        "embedded": 160.0,
-        "languages": 132.58,
-        "mobile": 160.0
-      },
-      "techs": {
-        "bash": 1.0,
-        "bluetooth": 10.21,
-        "c-cpp": 57.28,
-        "csharp-dotnet": 64.14,
-        "gps": 149.79,
-        "java": 10.16,
-        "objective-c": 28.42,
-        "xamarin": 160.0
-      }
-    },
-    "2015-03": {
-      "context": {
-        "personal": 0.0,
-        "pro": 176.0,
-        "study": 0.0
-      },
-      "domains": {
-        "embedded": 176.0,
-        "languages": 174.9,
-        "mobile": 176.0
-      },
-      "techs": {
-        "bluetooth": 25.1,
-        "c-cpp": 1.9,
-        "csharp-dotnet": 173.0,
-        "gps": 150.9,
-        "objective-c": 1.1,
-        "xamarin": 176.0
-      }
-    },
-    "2015-04": {
-      "context": {
-        "personal": 0.0,
-        "pro": 176.0,
-        "study": 0.0
-      },
-      "domains": {
-        "embedded": 52.8,
-        "languages": 156.7,
-        "mobile": 176.0
-      },
-      "techs": {
-        "bluetooth": 11.23,
-        "c-cpp": 12.53,
-        "csharp-dotnet": 144.07,
-        "gps": 41.57,
-        "objective-c": 19.3,
-        "xamarin": 176.0,
-        "xaml": 0.1
-      }
-    },
-    "2015-05": {
-      "context": {
-        "personal": 0.0,
-        "pro": 168.0,
-        "study": 0.0
-      },
-      "domains": {
-        "embedded": 168.0,
-        "languages": 138.83,
-        "mobile": 168.0
-      },
-      "techs": {
-        "bluetooth": 25.48,
-        "c-cpp": 46.9,
-        "csharp-dotnet": 90.92,
-        "gps": 142.52,
-        "objective-c": 29.17,
-        "xamarin": 168.0,
-        "xaml": 1.0
-      }
-    },
-    "2015-06": {
-      "context": {
-        "personal": 0.0,
-        "pro": 176.0,
-        "study": 0.0
-      },
-      "domains": {
-        "embedded": 52.8,
-        "languages": 133.8,
-        "mobile": 93.9
-      },
-      "techs": {
-        "bluetooth": 11.23,
-        "c-cpp": 84.0,
-        "csharp-dotnet": 49.8,
-        "gps": 41.57,
-        "objective-c": 42.2,
-        "xamarin": 52.8
-      }
-    },
-    "2015-07": {
-      "context": {
-        "personal": 0.0,
-        "pro": 184.0,
-        "study": 0.0
-      },
-      "domains": {
-        "embedded": 184.0,
-        "languages": 140.64,
-        "mobile": 97.41
-      },
-      "techs": {
-        "bluetooth": 11.74,
-        "c-cpp": 88.58,
-        "csharp-dotnet": 52.06,
-        "gps": 172.26,
-        "objective-c": 43.36,
-        "xamarin": 55.2
-      }
-    },
-    "2015-08": {
-      "context": {
-        "personal": 0.0,
-        "pro": 168.0,
-        "study": 0.0
-      },
-      "domains": {
-        "embedded": 168.0,
-        "languages": 148.42,
-        "mobile": 168.0
-      },
-      "techs": {
-        "bluetooth": 41.6,
-        "c-cpp": 45.43,
-        "csharp-dotnet": 102.99,
-        "gps": 126.4,
-        "objective-c": 19.58,
-        "xamarin": 168.0
-      }
-    },
-    "2015-09": {
-      "context": {
-        "personal": 0.0,
-        "pro": 176.0,
-        "study": 0.0
-      },
-      "domains": {
-        "embedded": 176.0,
-        "languages": 160.38,
-        "mobile": 176.0
-      },
-      "techs": {
-        "bluetooth": 18.96,
-        "c-cpp": 35.45,
-        "csharp-dotnet": 124.92,
-        "gps": 157.04,
-        "objective-c": 15.62,
-        "xamarin": 176.0
-      }
-    },
-    "2015-10": {
-      "context": {
-        "personal": 0.0,
-        "pro": 176.0,
-        "study": 0.0
-      },
-      "domains": {
-        "embedded": 176.0,
-        "languages": 159.29,
-        "mobile": 176.0
-      },
-      "techs": {
-        "bluetooth": 134.43,
-        "c-cpp": 32.17,
-        "csharp-dotnet": 122.73,
-        "gps": 41.57,
-        "objective-c": 16.71,
-        "web": 2.7,
-        "xamarin": 176.0,
-        "xaml": 1.69
-      }
-    },
-    "2015-11": {
-      "context": {
-        "personal": 0.0,
-        "pro": 168.0,
-        "study": 0.0
-      },
-      "domains": {
-        "embedded": 168.0,
-        "languages": 125.76,
-        "mobile": 168.0
-      },
-      "techs": {
-        "bluetooth": 22.79,
-        "c-cpp": 44.32,
-        "csharp-dotnet": 81.45,
-        "gps": 145.21,
-        "objective-c": 42.24,
-        "xamarin": 168.0
-      }
-    },
-    "2015-12": {
-      "context": {
-        "personal": 0.0,
-        "pro": 184.0,
-        "study": 0.0
-      },
-      "domains": {
-        "embedded": 184.0,
-        "languages": 166.24,
-        "mobile": 184.0
-      },
-      "techs": {
-        "bluetooth": 33.16,
-        "c-cpp": 39.3,
-        "csharp-dotnet": 126.94,
-        "gps": 150.84,
-        "objective-c": 17.76,
-        "xamarin": 184.0
-      }
-    },
-    "2016-01": {
-      "context": {
-        "personal": 0.0,
-        "pro": 168.0,
-        "study": 0.0
-      },
-      "domains": {
-        "embedded": 168.0,
-        "languages": 129.87,
-        "mobile": 168.0
-      },
-      "techs": {
-        "bluetooth": 10.72,
-        "c-cpp": 54.14,
-        "csharp-dotnet": 75.73,
-        "gps": 157.28,
-        "objective-c": 38.13,
-        "xamarin": 168.0
-      }
-    },
-    "2016-02": {
-      "context": {
-        "personal": 0.0,
-        "pro": 168.0,
-        "study": 0.0
-      },
-      "domains": {
-        "embedded": 168.0,
-        "languages": 166.16,
-        "mobile": 168.0
-      },
-      "techs": {
-        "bluetooth": 38.91,
-        "c-cpp": 10.73,
-        "csharp-dotnet": 155.43,
-        "gps": 129.09,
-        "objective-c": 1.84,
-        "xamarin": 168.0
-      }
-    },
-    "2016-03": {
-      "context": {
-        "personal": 0.0,
-        "pro": 184.0,
-        "study": 0.0
-      },
-      "domains": {
-        "embedded": 184.0,
-        "languages": 142.91,
-        "mobile": 184.0
-      },
-      "techs": {
-        "c-cpp": 10.93,
-        "csharp-dotnet": 131.98,
-        "gps": 184.0,
-        "objective-c": 41.09,
-        "xamarin": 184.0
-      }
-    },
-    "2016-04": {
-      "context": {
-        "personal": 0.0,
-        "pro": 168.0,
-        "study": 0.0
-      },
-      "domains": {
-        "embedded": 117.6,
-        "languages": 148.95,
-        "mobile": 168.0
-      },
-      "techs": {
-        "bluetooth": 17.68,
-        "c-cpp": 59.73,
-        "csharp-dotnet": 89.21,
-        "gps": 99.92,
-        "objective-c": 19.05,
-        "xamarin": 168.0
-      }
-    },
-    "2016-05": {
-      "context": {
-        "personal": 0.0,
-        "pro": 176.0,
-        "study": 0.0
-      },
-      "domains": {
-        "embedded": 52.8,
-        "languages": 174.9,
-        "mobile": 176.0
-      },
-      "techs": {
-        "bluetooth": 11.23,
-        "c-cpp": 1.9,
-        "csharp-dotnet": 173.0,
-        "gps": 41.57,
-        "objective-c": 1.1,
-        "xamarin": 176.0
-      }
-    },
-    "2016-06": {
-      "context": {
-        "personal": 0.0,
-        "pro": 176.0,
-        "study": 0.0
-      },
-      "domains": {
-        "embedded": 176.0,
-        "languages": 176.0,
-        "mobile": 176.0
-      },
-      "techs": {
-        "csharp-dotnet": 176.0,
-        "gps": 176.0,
-        "xamarin": 176.0
-      }
-    },
-    "2016-07": {
-      "context": {
-        "personal": 0.0,
-        "pro": 168.0,
-        "study": 0.0
-      },
-      "domains": {
-        "embedded": 168.0,
-        "languages": 124.9,
-        "mobile": 168.0
-      },
-      "techs": {
-        "bluetooth": 10.72,
-        "c-cpp": 55.87,
-        "csharp-dotnet": 69.03,
-        "gps": 157.28,
-        "objective-c": 43.1,
-        "xamarin": 168.0
-      }
-    },
-    "2016-08": {
-      "context": {
-        "personal": 0.0,
-        "pro": 184.0,
-        "study": 0.0
-      },
-      "domains": {
-        "languages": 172.56,
-        "mobile": 184.0
-      },
-      "techs": {
-        "c-cpp": 22.87,
-        "csharp-dotnet": 149.69,
-        "objective-c": 11.44,
-        "xamarin": 184.0
-      }
-    },
-    "2016-09": {
-      "context": {
-        "personal": 0.0,
-        "pro": 176.0,
-        "study": 0.0
-      },
-      "domains": {
-        "embedded": 176.0,
-        "languages": 143.28,
-        "mobile": 176.0
-      },
-      "techs": {
-        "bluetooth": 11.23,
-        "c-cpp": 30.54,
-        "csharp-dotnet": 112.74,
-        "gps": 164.77,
-        "objective-c": 32.72,
-        "xamarin": 176.0
-      }
-    },
-    "2016-10": {
-      "context": {
-        "personal": 0.0,
-        "pro": 168.0,
-        "study": 0.0
-      },
-      "domains": {
-        "embedded": 168.0,
-        "languages": 166.95,
-        "mobile": 168.0
-      },
-      "techs": {
-        "bluetooth": 121.95,
-        "c-cpp": 1.81,
-        "csharp-dotnet": 165.14,
-        "gps": 46.05,
-        "objective-c": 1.05,
-        "xamarin": 168.0
-      }
-    },
-    "2016-11": {
-      "context": {
-        "personal": 0.0,
-        "pro": 176.0,
-        "study": 0.0
-      },
-      "domains": {
-        "embedded": 176.0,
-        "languages": 174.9,
-        "mobile": 176.0
-      },
-      "techs": {
-        "bluetooth": 134.43,
-        "c-cpp": 1.9,
-        "csharp-dotnet": 173.0,
-        "gps": 41.57,
-        "objective-c": 1.1,
-        "xamarin": 176.0
-      }
-    },
-    "2016-12": {
-      "context": {
-        "personal": 0.0,
-        "pro": 176.0,
-        "study": 0.0
-      },
-      "domains": {
-        "backend": 27.16,
-        "embedded": 123.2,
-        "languages": 169.61,
-        "mobile": 148.84
-      },
-      "techs": {
-        "bluetooth": 123.2,
-        "c-cpp": 31.93,
-        "csharp-dotnet": 137.69,
-        "ef-core": 27.16,
-        "objective-c": 4.97,
-        "swift": 1.42,
-        "xamarin": 148.84
-      }
-    },
-    "2017-01": {
-      "context": {
-        "personal": 0.0,
-        "pro": 176.0,
-        "study": 0.0
-      },
-      "domains": {
-        "backend": 10.26,
-        "embedded": 176.0,
-        "languages": 165.8,
-        "mobile": 165.74
-      },
-      "techs": {
-        "bluetooth": 97.45,
-        "c-cpp": 21.44,
-        "csharp-dotnet": 144.21,
-        "ef-core": 10.26,
-        "gps": 78.55,
-        "objective-c": 10.2,
-        "xamarin": 165.74,
-        "xaml": 0.15
-      }
-    },
-    "2017-02": {
-      "context": {
-        "personal": 0.0,
-        "pro": 160.0,
-        "study": 0.0
-      },
-      "domains": {
-        "backend": 0.96,
-        "embedded": 160.0,
-        "languages": 159.0,
-        "mobile": 159.04
-      },
-      "techs": {
-        "bluetooth": 122.21,
-        "c-cpp": 1.73,
-        "csharp-dotnet": 157.15,
-        "ef-core": 0.96,
-        "gps": 37.79,
-        "objective-c": 1.0,
-        "xamarin": 159.04,
-        "xaml": 0.12
-      }
-    },
-    "2017-03": {
-      "context": {
-        "personal": 0.0,
-        "pro": 184.0,
-        "study": 0.0
-      },
-      "domains": {
-        "backend": 1.1,
-        "embedded": 184.0,
-        "languages": 182.85,
-        "mobile": 182.9
-      },
-      "techs": {
-        "bluetooth": 11.74,
-        "c-cpp": 1.99,
-        "csharp-dotnet": 180.86,
-        "ef-core": 1.1,
-        "gps": 172.26,
-        "objective-c": 1.15,
-        "xamarin": 182.9
-      }
-    },
-    "2017-04": {
       "context": {
         "personal": 0.0,
         "pro": 160.0,
@@ -2211,11 +1349,873 @@
         "mobile": 112.0
       },
       "techs": {
-        "bluetooth": 84.98,
-        "c-cpp": 3.91,
-        "csharp-dotnet": 156.09,
-        "gps": 27.02,
-        "xamarin": 112.0
+        "csharp-dotnet": 160.0,
+        "nfc": 112.0,
+        "windows-mobile": 112.0
+      }
+    },
+    "2013-07": {
+      "context": {
+        "personal": 0.0,
+        "pro": 184.0,
+        "study": 0.0
+      },
+      "domains": {
+        "embedded": 128.8,
+        "languages": 184.0,
+        "mobile": 128.8
+      },
+      "techs": {
+        "csharp-dotnet": 184.0,
+        "nfc": 128.8,
+        "windows-mobile": 128.8
+      }
+    },
+    "2013-08": {
+      "context": {
+        "personal": 0.0,
+        "pro": 176.0,
+        "study": 0.0
+      },
+      "domains": {
+        "embedded": 123.2,
+        "languages": 176.0,
+        "mobile": 123.2
+      },
+      "techs": {
+        "csharp-dotnet": 176.0,
+        "nfc": 123.2,
+        "windows-mobile": 123.2
+      }
+    },
+    "2013-09": {
+      "context": {
+        "personal": 0.0,
+        "pro": 168.0,
+        "study": 0.0
+      },
+      "domains": {
+        "embedded": 117.6,
+        "languages": 168.0,
+        "mobile": 117.6
+      },
+      "techs": {
+        "csharp-dotnet": 168.0,
+        "nfc": 117.6,
+        "windows-mobile": 117.6
+      }
+    },
+    "2013-10": {
+      "context": {
+        "personal": 0.0,
+        "pro": 184.0,
+        "study": 0.0
+      },
+      "domains": {
+        "embedded": 128.8,
+        "languages": 184.0,
+        "mobile": 128.8
+      },
+      "techs": {
+        "csharp-dotnet": 184.0,
+        "nfc": 128.8,
+        "windows-mobile": 128.8
+      }
+    },
+    "2013-11": {
+      "context": {
+        "personal": 0.0,
+        "pro": 168.0,
+        "study": 0.0
+      },
+      "domains": {
+        "embedded": 117.6,
+        "languages": 168.0,
+        "mobile": 117.6
+      },
+      "techs": {
+        "csharp-dotnet": 168.0,
+        "nfc": 117.6,
+        "windows-mobile": 117.6
+      }
+    },
+    "2013-12": {
+      "context": {
+        "personal": 0.0,
+        "pro": 176.0,
+        "study": 0.0
+      },
+      "domains": {
+        "embedded": 123.2,
+        "languages": 176.0,
+        "mobile": 123.2
+      },
+      "techs": {
+        "csharp-dotnet": 176.0,
+        "nfc": 123.2,
+        "windows-mobile": 123.2
+      }
+    },
+    "2014-01": {
+      "context": {
+        "personal": 0.0,
+        "pro": 184.0,
+        "study": 0.0
+      },
+      "domains": {
+        "embedded": 128.8,
+        "languages": 184.0,
+        "mobile": 128.8
+      },
+      "techs": {
+        "csharp-dotnet": 184.0,
+        "nfc": 128.8,
+        "windows-mobile": 128.8
+      }
+    },
+    "2014-02": {
+      "context": {
+        "personal": 0.0,
+        "pro": 160.0,
+        "study": 0.0
+      },
+      "domains": {
+        "embedded": 112.0,
+        "languages": 160.0,
+        "mobile": 112.0
+      },
+      "techs": {
+        "csharp-dotnet": 160.0,
+        "nfc": 112.0,
+        "windows-mobile": 112.0
+      }
+    },
+    "2014-04": {
+      "context": {
+        "personal": 0.0,
+        "pro": 176.0,
+        "study": 0.0
+      },
+      "domains": {
+        "embedded": 41.14,
+        "languages": 123.81
+      },
+      "techs": {
+        "bluetooth": 41.14,
+        "c-cpp": 123.81
+      }
+    },
+    "2014-05": {
+      "context": {
+        "personal": 0.0,
+        "pro": 176.0,
+        "study": 0.0
+      },
+      "domains": {
+        "embedded": 6.08,
+        "languages": 10.87,
+        "mobile": 20.76
+      },
+      "techs": {
+        "bluetooth": 0.08,
+        "c-cpp": 10.87,
+        "gps": 6.0,
+        "objective-c": 20.76
+      }
+    },
+    "2014-06": {
+      "context": {
+        "personal": 2.0,
+        "pro": 168.0,
+        "study": 0.0
+      },
+      "domains": {
+        "embedded": 9.67,
+        "languages": 45.34,
+        "mobile": 33.09
+      },
+      "techs": {
+        "bash": 1.67,
+        "bluetooth": 0.8,
+        "c-cpp": 43.67,
+        "gps": 8.87,
+        "objective-c": 33.09
+      }
+    },
+    "2014-07": {
+      "context": {
+        "personal": 0.0,
+        "pro": 184.0,
+        "study": 0.0
+      },
+      "domains": {
+        "embedded": 2.47,
+        "languages": 38.87,
+        "mobile": 16.94
+      },
+      "techs": {
+        "bluetooth": 0.08,
+        "c-cpp": 38.87,
+        "gps": 2.4,
+        "objective-c": 16.94
+      }
+    },
+    "2014-08": {
+      "context": {
+        "personal": 1.0,
+        "pro": 168.0,
+        "study": 0.0
+      },
+      "domains": {
+        "embedded": 4.03,
+        "languages": 22.52,
+        "mobile": 16.26
+      },
+      "techs": {
+        "bash": 1.0,
+        "bluetooth": 0.07,
+        "c-cpp": 21.52,
+        "gps": 3.96,
+        "objective-c": 16.26
+      }
+    },
+    "2014-09": {
+      "context": {
+        "personal": 0.0,
+        "pro": 176.0,
+        "study": 0.0
+      },
+      "domains": {
+        "embedded": 1.75,
+        "languages": 17.21,
+        "mobile": 10.67
+      },
+      "techs": {
+        "bluetooth": 0.08,
+        "c-cpp": 17.21,
+        "gps": 1.67,
+        "objective-c": 10.67
+      }
+    },
+    "2014-10": {
+      "context": {
+        "personal": 0.0,
+        "pro": 184.0,
+        "study": 0.0
+      },
+      "domains": {
+        "embedded": 2.53,
+        "languages": 31.13,
+        "mobile": 23.98
+      },
+      "techs": {
+        "bluetooth": 0.55,
+        "c-cpp": 30.66,
+        "gps": 1.98,
+        "objective-c": 23.98,
+        "web": 0.47
+      }
+    },
+    "2014-11": {
+      "context": {
+        "personal": 0.0,
+        "pro": 160.0,
+        "study": 0.0
+      },
+      "domains": {
+        "embedded": 5.01,
+        "languages": 27.93,
+        "mobile": 15.69
+      },
+      "techs": {
+        "bluetooth": 0.07,
+        "c-cpp": 27.93,
+        "gps": 4.94,
+        "objective-c": 15.69
+      }
+    },
+    "2014-12": {
+      "context": {
+        "personal": 0.0,
+        "pro": 184.0,
+        "study": 0.0
+      },
+      "domains": {
+        "embedded": 6.23,
+        "languages": 38.62,
+        "mobile": 28.18
+      },
+      "techs": {
+        "bluetooth": 0.08,
+        "c-cpp": 38.62,
+        "gps": 6.15,
+        "objective-c": 28.18
+      }
+    },
+    "2015-01": {
+      "context": {
+        "personal": 0.0,
+        "pro": 176.0,
+        "study": 0.0
+      },
+      "domains": {
+        "embedded": 2.49,
+        "languages": 37.63,
+        "mobile": 21.53
+      },
+      "techs": {
+        "bluetooth": 0.08,
+        "c-cpp": 37.63,
+        "gps": 2.42,
+        "objective-c": 21.53
+      }
+    },
+    "2015-02": {
+      "context": {
+        "personal": 1.0,
+        "pro": 160.0,
+        "study": 0.0
+      },
+      "domains": {
+        "embedded": 3.3,
+        "languages": 69.35,
+        "mobile": 25.38
+      },
+      "techs": {
+        "bash": 1.0,
+        "bluetooth": 0.07,
+        "c-cpp": 16.19,
+        "csharp-dotnet": 51.29,
+        "gps": 3.23,
+        "java": 0.87,
+        "objective-c": 8.87,
+        "xamarin": 16.51
+      }
+    },
+    "2015-03": {
+      "context": {
+        "personal": 0.0,
+        "pro": 176.0,
+        "study": 0.0
+      },
+      "domains": {
+        "embedded": 2.7,
+        "languages": 137.63,
+        "mobile": 73.97
+      },
+      "techs": {
+        "bluetooth": 0.27,
+        "c-cpp": 0.61,
+        "csharp-dotnet": 137.02,
+        "gps": 2.43,
+        "objective-c": 0.23,
+        "xamarin": 73.74
+      }
+    },
+    "2015-04": {
+      "context": {
+        "personal": 0.0,
+        "pro": 176.0,
+        "study": 0.0
+      },
+      "domains": {
+        "embedded": 0.95,
+        "languages": 106.89,
+        "mobile": 56.24
+      },
+      "techs": {
+        "bluetooth": 0.08,
+        "c-cpp": 25.49,
+        "csharp-dotnet": 81.24,
+        "gps": 0.87,
+        "objective-c": 20.79,
+        "xamarin": 35.45,
+        "xaml": 0.15
+      }
+    },
+    "2015-05": {
+      "context": {
+        "personal": 0.0,
+        "pro": 168.0,
+        "study": 0.0
+      },
+      "domains": {
+        "embedded": 3.84,
+        "languages": 97.79,
+        "mobile": 43.4
+      },
+      "techs": {
+        "bluetooth": 0.5,
+        "c-cpp": 10.84,
+        "csharp-dotnet": 86.0,
+        "gps": 3.33,
+        "objective-c": 8.15,
+        "xamarin": 35.25,
+        "xaml": 0.95
+      }
+    },
+    "2015-06": {
+      "context": {
+        "personal": 0.0,
+        "pro": 176.0,
+        "study": 0.0
+      },
+      "domains": {
+        "embedded": 0.95,
+        "languages": 68.3,
+        "mobile": 29.87
+      },
+      "techs": {
+        "bluetooth": 0.08,
+        "c-cpp": 30.49,
+        "csharp-dotnet": 37.8,
+        "gps": 0.87,
+        "objective-c": 17.14,
+        "xamarin": 12.73
+      }
+    },
+    "2015-07": {
+      "context": {
+        "personal": 0.0,
+        "pro": 184.0,
+        "study": 0.0
+      },
+      "domains": {
+        "embedded": 2.19,
+        "languages": 77.7,
+        "mobile": 40.14
+      },
+      "techs": {
+        "bluetooth": 0.08,
+        "c-cpp": 38.18,
+        "csharp-dotnet": 39.52,
+        "gps": 2.11,
+        "objective-c": 26.84,
+        "xamarin": 13.31
+      }
+    },
+    "2015-08": {
+      "context": {
+        "personal": 0.0,
+        "pro": 168.0,
+        "study": 0.0
+      },
+      "domains": {
+        "embedded": 3.34,
+        "languages": 90.59,
+        "mobile": 34.27
+      },
+      "techs": {
+        "bluetooth": 0.46,
+        "c-cpp": 13.52,
+        "csharp-dotnet": 77.08,
+        "gps": 2.88,
+        "objective-c": 5.85,
+        "xamarin": 28.42
+      }
+    },
+    "2015-09": {
+      "context": {
+        "personal": 0.0,
+        "pro": 176.0,
+        "study": 0.0
+      },
+      "domains": {
+        "embedded": 3.57,
+        "languages": 79.69,
+        "mobile": 29.94
+      },
+      "techs": {
+        "bluetooth": 0.47,
+        "c-cpp": 5.45,
+        "csharp-dotnet": 74.24,
+        "gps": 3.09,
+        "objective-c": 2.45,
+        "xamarin": 27.49
+      }
+    },
+    "2015-10": {
+      "context": {
+        "personal": 0.0,
+        "pro": 176.0,
+        "study": 0.0
+      },
+      "domains": {
+        "embedded": 1.64,
+        "languages": 87.74,
+        "mobile": 30.18
+      },
+      "techs": {
+        "bluetooth": 0.76,
+        "c-cpp": 11.36,
+        "csharp-dotnet": 75.15,
+        "gps": 0.87,
+        "objective-c": 6.29,
+        "web": 0.55,
+        "xamarin": 23.89,
+        "xaml": 0.69
+      }
+    },
+    "2015-11": {
+      "context": {
+        "personal": 0.0,
+        "pro": 168.0,
+        "study": 0.0
+      },
+      "domains": {
+        "embedded": 3.94,
+        "languages": 81.06,
+        "mobile": 34.89
+      },
+      "techs": {
+        "bluetooth": 0.36,
+        "c-cpp": 20.94,
+        "csharp-dotnet": 60.12,
+        "gps": 3.57,
+        "objective-c": 15.67,
+        "xamarin": 19.22
+      }
+    },
+    "2015-12": {
+      "context": {
+        "personal": 0.0,
+        "pro": 184.0,
+        "study": 0.0
+      },
+      "domains": {
+        "embedded": 6.38,
+        "languages": 117.93,
+        "mobile": 36.91
+      },
+      "techs": {
+        "bluetooth": 2.98,
+        "c-cpp": 8.79,
+        "csharp-dotnet": 109.14,
+        "gps": 3.4,
+        "objective-c": 6.32,
+        "xamarin": 30.59
+      }
+    },
+    "2016-01": {
+      "context": {
+        "personal": 0.0,
+        "pro": 168.0,
+        "study": 0.0
+      },
+      "domains": {
+        "embedded": 4.51,
+        "languages": 89.2,
+        "mobile": 23.08
+      },
+      "techs": {
+        "bluetooth": 0.07,
+        "c-cpp": 18.52,
+        "csharp-dotnet": 70.68,
+        "gps": 4.44,
+        "objective-c": 7.54,
+        "xamarin": 15.54
+      }
+    },
+    "2016-02": {
+      "context": {
+        "personal": 0.0,
+        "pro": 168.0,
+        "study": 0.0
+      },
+      "domains": {
+        "embedded": 6.35,
+        "languages": 107.25,
+        "mobile": 32.4
+      },
+      "techs": {
+        "bluetooth": 0.88,
+        "c-cpp": 1.98,
+        "csharp-dotnet": 105.27,
+        "gps": 5.47,
+        "objective-c": 0.44,
+        "xamarin": 31.97
+      }
+    },
+    "2016-03": {
+      "context": {
+        "personal": 0.0,
+        "pro": 184.0,
+        "study": 0.0
+      },
+      "domains": {
+        "embedded": 2.66,
+        "languages": 130.31,
+        "mobile": 43.49
+      },
+      "techs": {
+        "c-cpp": 0.93,
+        "csharp-dotnet": 129.38,
+        "gps": 2.66,
+        "objective-c": 3.05,
+        "xamarin": 40.44
+      }
+    },
+    "2016-04": {
+      "context": {
+        "personal": 0.0,
+        "pro": 168.0,
+        "study": 0.0
+      },
+      "domains": {
+        "embedded": 2.37,
+        "languages": 72.77,
+        "mobile": 26.85
+      },
+      "techs": {
+        "bluetooth": 0.39,
+        "c-cpp": 15.52,
+        "csharp-dotnet": 57.25,
+        "gps": 1.97,
+        "objective-c": 6.84,
+        "xamarin": 20.01
+      }
+    },
+    "2016-05": {
+      "context": {
+        "personal": 0.0,
+        "pro": 176.0,
+        "study": 0.0
+      },
+      "domains": {
+        "embedded": 0.95,
+        "languages": 127.44,
+        "mobile": 23.31
+      },
+      "techs": {
+        "bluetooth": 0.08,
+        "c-cpp": 0.61,
+        "csharp-dotnet": 126.84,
+        "gps": 0.87,
+        "objective-c": 0.23,
+        "xamarin": 23.08
+      }
+    },
+    "2016-06": {
+      "context": {
+        "personal": 0.0,
+        "pro": 176.0,
+        "study": 0.0
+      },
+      "domains": {
+        "embedded": 2.23,
+        "languages": 123.1,
+        "mobile": 57.26
+      },
+      "techs": {
+        "csharp-dotnet": 123.1,
+        "gps": 2.23,
+        "xamarin": 57.26
+      }
+    },
+    "2016-07": {
+      "context": {
+        "personal": 0.0,
+        "pro": 168.0,
+        "study": 0.0
+      },
+      "domains": {
+        "embedded": 3.14,
+        "languages": 65.78,
+        "mobile": 20.2
+      },
+      "techs": {
+        "bluetooth": 0.07,
+        "c-cpp": 10.66,
+        "csharp-dotnet": 55.12,
+        "gps": 3.07,
+        "objective-c": 5.82,
+        "xamarin": 14.39
+      }
+    },
+    "2016-08": {
+      "context": {
+        "personal": 0.0,
+        "pro": 184.0,
+        "study": 0.0
+      },
+      "domains": {
+        "languages": 116.87,
+        "mobile": 45.36
+      },
+      "techs": {
+        "c-cpp": 6.53,
+        "csharp-dotnet": 110.35,
+        "objective-c": 3.26,
+        "xamarin": 42.1
+      }
+    },
+    "2016-09": {
+      "context": {
+        "personal": 0.0,
+        "pro": 176.0,
+        "study": 0.0
+      },
+      "domains": {
+        "embedded": 3.35,
+        "languages": 89.09,
+        "mobile": 39.0
+      },
+      "techs": {
+        "bluetooth": 0.08,
+        "c-cpp": 19.84,
+        "csharp-dotnet": 69.25,
+        "gps": 3.28,
+        "objective-c": 9.84,
+        "xamarin": 29.15
+      }
+    },
+    "2016-10": {
+      "context": {
+        "personal": 0.0,
+        "pro": 168.0,
+        "study": 0.0
+      },
+      "domains": {
+        "embedded": 27.55,
+        "languages": 134.46,
+        "mobile": 54.78
+      },
+      "techs": {
+        "bluetooth": 26.23,
+        "c-cpp": 0.58,
+        "csharp-dotnet": 133.88,
+        "gps": 1.32,
+        "objective-c": 0.22,
+        "xamarin": 54.57
+      }
+    },
+    "2016-11": {
+      "context": {
+        "personal": 0.0,
+        "pro": 176.0,
+        "study": 0.0
+      },
+      "domains": {
+        "embedded": 29.35,
+        "languages": 153.54,
+        "mobile": 49.09
+      },
+      "techs": {
+        "bluetooth": 28.48,
+        "c-cpp": 0.61,
+        "csharp-dotnet": 152.93,
+        "gps": 0.87,
+        "objective-c": 0.23,
+        "xamarin": 48.86
+      }
+    },
+    "2016-12": {
+      "context": {
+        "personal": 0.0,
+        "pro": 176.0,
+        "study": 0.0
+      },
+      "domains": {
+        "backend": 5.81,
+        "embedded": 2.34,
+        "languages": 83.47,
+        "mobile": 18.63
+      },
+      "techs": {
+        "bluetooth": 2.34,
+        "c-cpp": 14.84,
+        "csharp-dotnet": 68.63,
+        "ef-core": 5.81,
+        "objective-c": 5.47,
+        "swift": 1.56,
+        "xamarin": 11.61
+      }
+    },
+    "2017-01": {
+      "context": {
+        "personal": 0.0,
+        "pro": 176.0,
+        "study": 0.0
+      },
+      "domains": {
+        "backend": 1.83,
+        "embedded": 6.97,
+        "languages": 133.68,
+        "mobile": 28.88
+      },
+      "techs": {
+        "bluetooth": 4.3,
+        "c-cpp": 8.97,
+        "csharp-dotnet": 124.53,
+        "ef-core": 1.83,
+        "gps": 2.67,
+        "objective-c": 3.3,
+        "xamarin": 25.58,
+        "xaml": 0.19
+      }
+    },
+    "2017-02": {
+      "context": {
+        "personal": 0.0,
+        "pro": 160.0,
+        "study": 0.0
+      },
+      "domains": {
+        "backend": 0.21,
+        "embedded": 1.9,
+        "languages": 110.12,
+        "mobile": 35.32
+      },
+      "techs": {
+        "bluetooth": 1.11,
+        "c-cpp": 0.55,
+        "csharp-dotnet": 107.8,
+        "ef-core": 0.21,
+        "gps": 0.79,
+        "objective-c": 0.21,
+        "xamarin": 35.11,
+        "xaml": 1.78
+      }
+    },
+    "2017-03": {
+      "context": {
+        "personal": 0.0,
+        "pro": 184.0,
+        "study": 0.0
+      },
+      "domains": {
+        "backend": 0.24,
+        "embedded": 1.86,
+        "languages": 129.81,
+        "mobile": 44.81
+      },
+      "techs": {
+        "bluetooth": 0.08,
+        "c-cpp": 0.63,
+        "csharp-dotnet": 129.18,
+        "ef-core": 0.24,
+        "gps": 1.79,
+        "objective-c": 0.24,
+        "xamarin": 44.58
+      }
+    },
+    "2017-04": {
+      "context": {
+        "personal": 0.0,
+        "pro": 160.0,
+        "study": 0.0
+      },
+      "domains": {
+        "embedded": 3.24,
+        "languages": 92.94,
+        "mobile": 34.34
+      },
+      "techs": {
+        "bluetooth": 2.7,
+        "c-cpp": 0.54,
+        "csharp-dotnet": 92.4,
+        "gps": 0.54,
+        "xamarin": 34.34
       }
     },
     "2017-05": {
@@ -2225,21 +2225,21 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 1.1,
-        "embedded": 184.0,
-        "languages": 182.85,
-        "mobile": 182.9
+        "backend": 0.24,
+        "embedded": 2.3,
+        "languages": 128.89,
+        "mobile": 40.88
       },
       "techs": {
-        "bash": 2.0,
-        "bluetooth": 140.54,
-        "c-cpp": 1.99,
-        "csharp-dotnet": 178.61,
-        "ef-core": 1.1,
-        "gps": 43.46,
-        "objective-c": 1.15,
-        "xamarin": 182.9,
-        "xaml": 0.25
+        "bash": 0.9,
+        "bluetooth": 1.39,
+        "c-cpp": 0.63,
+        "csharp-dotnet": 126.86,
+        "ef-core": 0.24,
+        "gps": 0.91,
+        "objective-c": 0.24,
+        "xamarin": 40.64,
+        "xaml": 0.49
       }
     },
     "2017-06": {
@@ -2249,19 +2249,19 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 1.05,
-        "embedded": 176.0,
-        "languages": 171.96,
-        "mobile": 174.95
+        "backend": 0.23,
+        "embedded": 4.05,
+        "languages": 141.43,
+        "mobile": 36.47
       },
       "techs": {
-        "bluetooth": 23.04,
-        "c-cpp": 1.9,
-        "csharp-dotnet": 170.06,
-        "ef-core": 1.05,
-        "gps": 152.96,
-        "objective-c": 4.04,
-        "xamarin": 174.95
+        "bluetooth": 0.31,
+        "c-cpp": 0.61,
+        "csharp-dotnet": 140.83,
+        "ef-core": 0.23,
+        "gps": 3.74,
+        "objective-c": 0.59,
+        "xamarin": 35.89
       }
     },
     "2017-07": {
@@ -2271,19 +2271,19 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 1.01,
-        "embedded": 168.0,
-        "languages": 166.95,
-        "mobile": 166.99
+        "backend": 0.22,
+        "embedded": 7.16,
+        "languages": 121.04,
+        "mobile": 50.78
       },
       "techs": {
-        "bluetooth": 42.58,
-        "c-cpp": 1.81,
-        "csharp-dotnet": 165.14,
-        "ef-core": 1.01,
-        "gps": 125.42,
-        "objective-c": 1.05,
-        "xamarin": 166.99
+        "bluetooth": 3.91,
+        "c-cpp": 0.58,
+        "csharp-dotnet": 120.46,
+        "ef-core": 0.22,
+        "gps": 3.25,
+        "objective-c": 0.22,
+        "xamarin": 50.57
       }
     },
     "2017-08": {
@@ -2293,19 +2293,19 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 1.1,
-        "embedded": 184.0,
-        "languages": 182.85,
-        "mobile": 182.9
+        "backend": 0.24,
+        "embedded": 6.68,
+        "languages": 150.45,
+        "mobile": 37.79
       },
       "techs": {
-        "bluetooth": 135.09,
-        "c-cpp": 1.99,
-        "csharp-dotnet": 180.86,
-        "ef-core": 1.1,
-        "gps": 48.91,
-        "objective-c": 1.15,
-        "xamarin": 182.9
+        "bluetooth": 4.96,
+        "c-cpp": 0.63,
+        "csharp-dotnet": 149.82,
+        "ef-core": 0.24,
+        "gps": 1.72,
+        "objective-c": 0.24,
+        "xamarin": 37.55
       }
     },
     "2017-09": {
@@ -2315,19 +2315,19 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 1.01,
-        "embedded": 168.0,
-        "languages": 166.95,
-        "mobile": 166.99
+        "backend": 0.22,
+        "embedded": 6.54,
+        "languages": 114.26,
+        "mobile": 39.48
       },
       "techs": {
-        "bluetooth": 128.32,
-        "c-cpp": 1.81,
-        "csharp-dotnet": 165.14,
-        "ef-core": 1.01,
-        "gps": 39.68,
-        "objective-c": 1.05,
-        "xamarin": 166.99
+        "bluetooth": 5.71,
+        "c-cpp": 0.58,
+        "csharp-dotnet": 113.68,
+        "ef-core": 0.22,
+        "gps": 0.83,
+        "objective-c": 0.22,
+        "xamarin": 39.27
       }
     },
     "2017-10": {
@@ -2337,21 +2337,21 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 2.05,
-        "embedded": 176.0,
-        "languages": 177.9,
-        "mobile": 175.95
+        "backend": 0.25,
+        "embedded": 9.9,
+        "languages": 131.84,
+        "mobile": 32.59
       },
       "techs": {
-        "asp-net-core": 1.0,
-        "bluetooth": 70.69,
-        "c-cpp": 1.9,
-        "csharp-dotnet": 175.15,
-        "ef-core": 1.05,
-        "gps": 105.31,
-        "objective-c": 1.1,
-        "xamarin": 175.95,
-        "xaml": 0.85
+        "asp-net-core": 0.02,
+        "bluetooth": 6.67,
+        "c-cpp": 0.61,
+        "csharp-dotnet": 130.54,
+        "ef-core": 0.23,
+        "gps": 3.24,
+        "objective-c": 0.23,
+        "xamarin": 32.36,
+        "xaml": 0.7
       }
     },
     "2017-11": {
@@ -2361,21 +2361,21 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 2.55,
-        "embedded": 52.8,
-        "languages": 180.9,
-        "mobile": 175.45
+        "backend": 0.33,
+        "embedded": 0.95,
+        "languages": 142.11,
+        "mobile": 37.61
       },
       "techs": {
-        "asp-net-core": 0.24,
-        "bluetooth": 11.23,
-        "c-cpp": 1.9,
-        "csharp-dotnet": 177.45,
-        "ef-core": 2.32,
-        "gps": 41.57,
-        "objective-c": 1.1,
-        "xamarin": 175.45,
-        "xaml": 1.55
+        "asp-net-core": 0.02,
+        "bluetooth": 0.08,
+        "c-cpp": 0.61,
+        "csharp-dotnet": 140.34,
+        "ef-core": 0.31,
+        "gps": 0.87,
+        "objective-c": 0.23,
+        "xamarin": 37.38,
+        "xaml": 1.17
       }
     },
     "2017-12": {
@@ -2385,21 +2385,21 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 2.01,
-        "embedded": 168.0,
-        "languages": 167.95,
-        "mobile": 166.99
+        "backend": 0.35,
+        "embedded": 5.53,
+        "languages": 108.21,
+        "mobile": 27.8
       },
       "techs": {
-        "bash": 0.48,
-        "bluetooth": 105.13,
-        "c-cpp": 1.81,
-        "csharp-dotnet": 165.58,
-        "ef-core": 2.01,
-        "gps": 62.87,
-        "objective-c": 1.05,
-        "xamarin": 166.99,
-        "xaml": 0.08
+        "bash": 0.93,
+        "bluetooth": 2.85,
+        "c-cpp": 0.58,
+        "csharp-dotnet": 106.64,
+        "ef-core": 0.35,
+        "gps": 2.68,
+        "objective-c": 0.22,
+        "xamarin": 27.58,
+        "xaml": 0.07
       }
     },
     "2018-01": {
@@ -2409,19 +2409,19 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 1.1,
-        "embedded": 184.0,
-        "languages": 182.85,
-        "mobile": 182.9
+        "backend": 0.24,
+        "embedded": 26.64,
+        "languages": 130.47,
+        "mobile": 48.28
       },
       "techs": {
-        "bluetooth": 11.74,
-        "c-cpp": 1.99,
-        "csharp-dotnet": 180.86,
-        "ef-core": 1.1,
-        "gps": 172.26,
-        "objective-c": 1.15,
-        "xamarin": 182.9
+        "bluetooth": 0.08,
+        "c-cpp": 0.63,
+        "csharp-dotnet": 129.84,
+        "ef-core": 0.24,
+        "gps": 26.56,
+        "objective-c": 0.24,
+        "xamarin": 48.04
       }
     },
     "2018-02": {
@@ -2431,19 +2431,19 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 0.96,
-        "embedded": 160.0,
-        "languages": 159.0,
-        "mobile": 159.04
+        "backend": 0.21,
+        "embedded": 7.91,
+        "languages": 141.72,
+        "mobile": 30.34
       },
       "techs": {
-        "bluetooth": 99.88,
-        "c-cpp": 1.73,
-        "csharp-dotnet": 157.27,
-        "ef-core": 0.96,
-        "gps": 60.12,
-        "objective-c": 1.0,
-        "xamarin": 159.04
+        "bluetooth": 5.64,
+        "c-cpp": 0.55,
+        "csharp-dotnet": 141.17,
+        "ef-core": 0.21,
+        "gps": 2.27,
+        "objective-c": 0.21,
+        "xamarin": 30.13
       }
     },
     "2018-03": {
@@ -2453,20 +2453,20 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 1.05,
-        "embedded": 176.0,
-        "languages": 174.9,
-        "mobile": 174.95
+        "backend": 0.23,
+        "embedded": 1.22,
+        "languages": 113.83,
+        "mobile": 46.08
       },
       "techs": {
-        "bluetooth": 134.43,
-        "c-cpp": 1.9,
-        "csharp-dotnet": 171.57,
-        "ef-core": 1.05,
-        "gps": 41.57,
-        "objective-c": 1.1,
-        "xamarin": 174.95,
-        "xaml": 1.43
+        "bluetooth": 0.35,
+        "c-cpp": 0.61,
+        "csharp-dotnet": 111.31,
+        "ef-core": 0.23,
+        "gps": 0.87,
+        "objective-c": 0.23,
+        "xamarin": 45.85,
+        "xaml": 1.92
       }
     },
     "2018-04": {
@@ -2476,25 +2476,25 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 37.31,
-        "embedded": 168.0,
-        "languages": 166.95,
-        "mobile": 130.69
+        "backend": 7.04,
+        "embedded": 9.42,
+        "languages": 108.83,
+        "mobile": 26.52
       },
       "techs": {
-        "asp-net-core": 17.56,
-        "azure": 0.26,
-        "bash": 2.23,
-        "bluetooth": 40.83,
-        "c-cpp": 1.81,
-        "csharp-dotnet": 161.71,
-        "ef-core": 19.49,
-        "gps": 127.17,
-        "java": 0.83,
-        "javascript": 0.26,
-        "objective-c": 1.05,
-        "web": 0.11,
-        "xamarin": 130.69
+        "asp-net-core": 4.66,
+        "azure": 0.17,
+        "bash": 0.76,
+        "bluetooth": 5.67,
+        "c-cpp": 0.58,
+        "csharp-dotnet": 104.4,
+        "ef-core": 2.21,
+        "gps": 3.76,
+        "java": 1.4,
+        "javascript": 1.19,
+        "objective-c": 0.22,
+        "web": 0.51,
+        "xamarin": 26.3
       }
     },
     "2018-05": {
@@ -2504,22 +2504,22 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 30.39,
-        "embedded": 184.0,
-        "languages": 182.85,
-        "mobile": 153.61
+        "backend": 2.18,
+        "embedded": 2.26,
+        "languages": 112.61,
+        "mobile": 30.33
       },
       "techs": {
-        "asp-net-core": 6.94,
-        "bash": 0.18,
-        "bluetooth": 11.74,
-        "c-cpp": 1.99,
-        "csharp-dotnet": 178.12,
-        "ef-core": 23.46,
-        "gps": 172.26,
-        "objective-c": 1.15,
-        "xamarin": 153.61,
-        "xaml": 2.57
+        "asp-net-core": 0.76,
+        "bash": 1.27,
+        "bluetooth": 0.08,
+        "c-cpp": 0.63,
+        "csharp-dotnet": 109.02,
+        "ef-core": 1.42,
+        "gps": 2.18,
+        "objective-c": 0.24,
+        "xamarin": 30.09,
+        "xaml": 1.69
       }
     },
     "2018-06": {
@@ -2529,20 +2529,20 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 38.23,
-        "embedded": 168.0,
-        "languages": 166.95,
-        "mobile": 129.77
+        "backend": 3.41,
+        "embedded": 9.53,
+        "languages": 130.5,
+        "mobile": 26.78
       },
       "techs": {
-        "bluetooth": 127.08,
-        "c-cpp": 1.81,
-        "csharp-dotnet": 161.61,
-        "ef-core": 38.23,
-        "gps": 40.92,
-        "objective-c": 1.05,
-        "xamarin": 129.77,
-        "xaml": 3.52
+        "bluetooth": 8.58,
+        "c-cpp": 0.58,
+        "csharp-dotnet": 126.85,
+        "ef-core": 3.41,
+        "gps": 0.95,
+        "objective-c": 0.22,
+        "xamarin": 26.57,
+        "xaml": 3.07
       }
     },
     "2018-07": {
@@ -2552,22 +2552,22 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 58.99,
-        "embedded": 176.0,
-        "languages": 175.9,
-        "mobile": 118.01
+        "backend": 9.98,
+        "embedded": 3.38,
+        "languages": 138.52,
+        "mobile": 42.89
       },
       "techs": {
-        "asp-net-core": 6.28,
-        "bash": 0.62,
-        "bluetooth": 64.69,
-        "c-cpp": 1.9,
-        "csharp-dotnet": 165.59,
-        "ef-core": 52.71,
-        "gps": 111.31,
-        "objective-c": 1.1,
-        "xamarin": 118.01,
-        "xaml": 7.79
+        "asp-net-core": 1.59,
+        "bash": 0.37,
+        "bluetooth": 1.95,
+        "c-cpp": 0.61,
+        "csharp-dotnet": 122.76,
+        "ef-core": 8.39,
+        "gps": 1.43,
+        "objective-c": 0.23,
+        "xamarin": 42.66,
+        "xaml": 14.78
       }
     },
     "2018-08": {
@@ -2577,23 +2577,23 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 27.06,
-        "embedded": 184.0,
-        "languages": 183.85,
-        "mobile": 156.94
+        "backend": 4.24,
+        "embedded": 1.28,
+        "languages": 154.71,
+        "mobile": 41.82
       },
       "techs": {
         "bash": 1.0,
-        "bluetooth": 135.5,
-        "c-cpp": 1.99,
-        "csharp-dotnet": 180.53,
-        "ef-core": 27.06,
-        "gps": 48.5,
-        "javascript": 0.18,
-        "objective-c": 1.15,
-        "web": 0.11,
-        "xamarin": 156.94,
-        "xaml": 0.05
+        "bluetooth": 0.2,
+        "c-cpp": 0.63,
+        "csharp-dotnet": 150.65,
+        "ef-core": 4.24,
+        "gps": 1.08,
+        "javascript": 0.87,
+        "objective-c": 0.24,
+        "web": 0.52,
+        "xamarin": 41.58,
+        "xaml": 1.04
       }
     },
     "2018-09": {
@@ -2603,20 +2603,20 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 0.96,
-        "embedded": 160.0,
-        "languages": 159.0,
-        "mobile": 159.04
+        "backend": 0.21,
+        "embedded": 1.32,
+        "languages": 107.43,
+        "mobile": 57.96
       },
       "techs": {
-        "bluetooth": 122.21,
-        "c-cpp": 1.73,
-        "csharp-dotnet": 152.02,
-        "ef-core": 0.96,
-        "gps": 37.79,
-        "objective-c": 1.0,
-        "xamarin": 159.04,
-        "xaml": 5.25
+        "bluetooth": 0.53,
+        "c-cpp": 0.55,
+        "csharp-dotnet": 102.95,
+        "ef-core": 0.21,
+        "gps": 0.79,
+        "objective-c": 0.21,
+        "xamarin": 57.76,
+        "xaml": 3.93
       }
     },
     "2018-10": {
@@ -2626,21 +2626,21 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 1.1,
-        "embedded": 184.0,
-        "languages": 184.85,
-        "mobile": 182.9
+        "backend": 0.24,
+        "embedded": 2.07,
+        "languages": 142.56,
+        "mobile": 46.75
       },
       "techs": {
-        "bash": 0.47,
-        "bluetooth": 81.2,
-        "c-cpp": 1.99,
-        "csharp-dotnet": 179.88,
-        "ef-core": 1.1,
-        "gps": 102.8,
-        "objective-c": 1.15,
-        "xamarin": 182.9,
-        "xaml": 2.51
+        "bash": 0.69,
+        "bluetooth": 0.96,
+        "c-cpp": 0.63,
+        "csharp-dotnet": 139.87,
+        "ef-core": 0.24,
+        "gps": 1.11,
+        "objective-c": 0.24,
+        "xamarin": 46.51,
+        "xaml": 1.38
       }
     },
     "2018-11": {
@@ -2650,24 +2650,24 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 12.64,
-        "embedded": 176.0,
-        "languages": 174.9,
-        "mobile": 163.36
+        "backend": 0.71,
+        "embedded": 12.93,
+        "languages": 155.25,
+        "mobile": 42.7
       },
       "techs": {
-        "bash": 3.54,
-        "bluetooth": 112.91,
-        "c-cpp": 1.9,
-        "csharp-dotnet": 162.46,
-        "ef-core": 12.64,
-        "gps": 63.09,
-        "javascript": 0.04,
-        "objective-c": 1.1,
-        "python": 0.78,
-        "web": 0.11,
-        "xamarin": 163.36,
-        "xaml": 6.06
+        "bash": 0.12,
+        "bluetooth": 10.19,
+        "c-cpp": 0.61,
+        "csharp-dotnet": 66.1,
+        "ef-core": 0.71,
+        "gps": 2.74,
+        "javascript": 23.72,
+        "objective-c": 0.23,
+        "python": 0.04,
+        "web": 63.74,
+        "xamarin": 42.48,
+        "xaml": 0.94
       }
     },
     "2018-12": {
@@ -2677,25 +2677,25 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 12.06,
-        "embedded": 168.0,
-        "languages": 167.95,
-        "mobile": 156.94
+        "backend": 0.45,
+        "embedded": 6.45,
+        "languages": 107.82,
+        "mobile": 37.16
       },
       "techs": {
-        "bash": 0.81,
-        "bluetooth": 59.36,
-        "c-cpp": 1.81,
-        "csharp-dotnet": 152.21,
-        "ef-core": 12.06,
-        "gps": 108.64,
-        "java": 1.48,
-        "javascript": 0.14,
-        "objective-c": 1.05,
-        "python": 3.23,
-        "web": 1.99,
-        "xamarin": 156.94,
-        "xaml": 6.28
+        "bash": 0.06,
+        "bluetooth": 4.64,
+        "c-cpp": 0.58,
+        "csharp-dotnet": 56.77,
+        "ef-core": 0.45,
+        "gps": 1.81,
+        "java": 0.19,
+        "javascript": 3.23,
+        "objective-c": 0.22,
+        "python": 0.03,
+        "web": 45.93,
+        "xamarin": 36.94,
+        "xaml": 1.03
       }
     },
     "2019-01": {
@@ -2705,25 +2705,25 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 30.92,
-        "embedded": 184.0,
-        "languages": 182.85,
-        "mobile": 153.08
+        "backend": 1.84,
+        "embedded": 2.19,
+        "languages": 160.74,
+        "mobile": 19.67
       },
       "techs": {
-        "asp-net-core": 3.34,
-        "azure": 2.57,
-        "bash": 3.24,
-        "bluetooth": 17.3,
-        "c-cpp": 1.99,
-        "csharp-dotnet": 173.03,
-        "ef-core": 25.01,
-        "gps": 166.7,
-        "objective-c": 1.15,
-        "python": 4.37,
-        "web": 0.07,
-        "xamarin": 153.08,
-        "xaml": 0.15
+        "asp-net-core": 0.17,
+        "azure": 0.12,
+        "bash": 0.52,
+        "bluetooth": 0.29,
+        "c-cpp": 0.63,
+        "csharp-dotnet": 158.73,
+        "ef-core": 1.55,
+        "gps": 1.9,
+        "objective-c": 0.24,
+        "python": 0.59,
+        "web": 0.17,
+        "xamarin": 19.43,
+        "xaml": 0.1
       }
     },
     "2019-02": {
@@ -2733,22 +2733,22 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 25.16,
-        "embedded": 160.0,
-        "languages": 159.0,
-        "mobile": 134.84
+        "backend": 4.79,
+        "embedded": 9.6,
+        "languages": 124.34,
+        "mobile": 23.04
       },
       "techs": {
-        "bash": 12.54,
-        "bluetooth": 15.88,
-        "c-cpp": 1.73,
-        "csharp-dotnet": 142.85,
-        "ef-core": 25.16,
-        "gps": 144.12,
-        "objective-c": 1.0,
-        "python": 1.51,
-        "xamarin": 134.84,
-        "xaml": 0.38
+        "bash": 2.52,
+        "bluetooth": 2.3,
+        "c-cpp": 0.55,
+        "csharp-dotnet": 120.49,
+        "ef-core": 4.79,
+        "gps": 7.3,
+        "objective-c": 0.21,
+        "python": 0.56,
+        "xamarin": 22.83,
+        "xaml": 0.22
       }
     },
     "2019-03": {
@@ -2758,21 +2758,21 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 38.07,
-        "embedded": 168.0,
-        "languages": 166.95,
-        "mobile": 129.93
+        "backend": 1.36,
+        "embedded": 8.99,
+        "languages": 128.03,
+        "mobile": 42.44
       },
       "techs": {
-        "bash": 6.58,
-        "bluetooth": 24.39,
-        "c-cpp": 1.81,
-        "csharp-dotnet": 158.33,
-        "ef-core": 38.07,
-        "gps": 143.61,
-        "objective-c": 1.05,
-        "web": 0.23,
-        "xamarin": 129.93
+        "bash": 1.06,
+        "bluetooth": 1.71,
+        "c-cpp": 0.58,
+        "csharp-dotnet": 124.43,
+        "ef-core": 1.36,
+        "gps": 7.29,
+        "objective-c": 0.22,
+        "web": 1.96,
+        "xamarin": 42.22
       }
     },
     "2019-04": {
@@ -2782,20 +2782,20 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 19.54,
-        "embedded": 176.0,
-        "languages": 174.9,
-        "mobile": 156.46
+        "backend": 1.3,
+        "embedded": 4.05,
+        "languages": 145.37,
+        "mobile": 24.81
       },
       "techs": {
-        "bluetooth": 26.35,
-        "c-cpp": 1.9,
-        "csharp-dotnet": 172.59,
-        "ef-core": 19.54,
-        "gps": 149.65,
-        "objective-c": 1.1,
-        "xamarin": 156.46,
-        "xaml": 0.41
+        "bluetooth": 1.04,
+        "c-cpp": 0.61,
+        "csharp-dotnet": 143.48,
+        "ef-core": 1.3,
+        "gps": 3.01,
+        "objective-c": 0.23,
+        "xamarin": 24.59,
+        "xaml": 1.28
       }
     },
     "2019-05": {
@@ -2805,24 +2805,24 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 38.17,
-        "embedded": 185.0,
-        "languages": 187.85,
-        "mobile": 148.83
+        "backend": 3.11,
+        "embedded": 6.01,
+        "languages": 150.8,
+        "mobile": 29.72
       },
       "techs": {
-        "asp-net-core": 36.13,
-        "bluetooth": 138.88,
-        "c-cpp": 1.99,
-        "csharp-dotnet": 180.09,
-        "ef-core": 2.03,
-        "gps": 46.12,
-        "javascript": 4.04,
-        "objective-c": 1.15,
-        "python": 0.01,
-        "web": 1.13,
-        "xamarin": 148.83,
-        "xaml": 0.6
+        "asp-net-core": 2.47,
+        "bluetooth": 4.7,
+        "c-cpp": 0.63,
+        "csharp-dotnet": 140.09,
+        "ef-core": 0.64,
+        "gps": 1.31,
+        "javascript": 6.54,
+        "objective-c": 0.24,
+        "python": 0.2,
+        "web": 2.34,
+        "xamarin": 29.48,
+        "xaml": 1.0
       }
     },
     "2019-06": {
@@ -2832,22 +2832,22 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 2.46,
-        "embedded": 160.0,
-        "languages": 159.0,
-        "mobile": 157.54
+        "backend": 0.66,
+        "embedded": 6.35,
+        "languages": 123.83,
+        "mobile": 42.4
       },
       "techs": {
-        "bash": 0.48,
-        "bluetooth": 67.63,
-        "c-cpp": 1.73,
-        "csharp-dotnet": 150.92,
-        "ef-core": 2.46,
-        "gps": 92.37,
-        "objective-c": 1.0,
-        "python": 0.17,
-        "xamarin": 157.54,
-        "xaml": 5.71
+        "bash": 1.37,
+        "bluetooth": 1.44,
+        "c-cpp": 0.55,
+        "csharp-dotnet": 116.65,
+        "ef-core": 0.66,
+        "gps": 4.91,
+        "objective-c": 0.21,
+        "python": 0.46,
+        "xamarin": 42.2,
+        "xaml": 4.8
       }
     },
     "2019-07": {
@@ -2857,22 +2857,22 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 29.89,
-        "embedded": 184.0,
-        "languages": 182.85,
-        "mobile": 154.11
+        "backend": 1.28,
+        "embedded": 9.58,
+        "languages": 154.25,
+        "mobile": 49.45
       },
       "techs": {
-        "bash": 1.11,
-        "bluetooth": 11.74,
-        "c-cpp": 1.99,
-        "csharp-dotnet": 177.09,
-        "ef-core": 29.89,
-        "gps": 172.26,
-        "objective-c": 1.15,
-        "python": 0.16,
-        "xamarin": 154.11,
-        "xaml": 2.5
+        "bash": 0.65,
+        "bluetooth": 0.08,
+        "c-cpp": 0.63,
+        "csharp-dotnet": 151.41,
+        "ef-core": 1.28,
+        "gps": 9.5,
+        "objective-c": 0.24,
+        "python": 0.65,
+        "xamarin": 49.21,
+        "xaml": 0.91
       }
     },
     "2019-08": {
@@ -2882,21 +2882,21 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 33.6,
-        "embedded": 176.0,
-        "languages": 174.9,
-        "mobile": 142.4
+        "backend": 3.12,
+        "embedded": 8.42,
+        "languages": 144.01,
+        "mobile": 41.4
       },
       "techs": {
-        "azure": 2.8,
-        "bluetooth": 79.54,
-        "c-cpp": 1.9,
-        "csharp-dotnet": 162.49,
-        "ef-core": 30.8,
-        "gps": 96.46,
-        "objective-c": 1.1,
-        "xamarin": 142.4,
-        "xaml": 10.51
+        "azure": 0.48,
+        "bluetooth": 2.97,
+        "c-cpp": 0.61,
+        "csharp-dotnet": 128.45,
+        "ef-core": 2.64,
+        "gps": 5.45,
+        "objective-c": 0.23,
+        "xamarin": 41.18,
+        "xaml": 14.95
       }
     },
     "2019-09": {
@@ -2906,21 +2906,21 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 30.28,
-        "embedded": 168.0,
-        "languages": 166.95,
-        "mobile": 137.72
+        "backend": 4.33,
+        "embedded": 7.58,
+        "languages": 132.18,
+        "mobile": 48.83
       },
       "techs": {
-        "bash": 1.56,
-        "bluetooth": 10.72,
-        "c-cpp": 1.81,
-        "csharp-dotnet": 151.1,
-        "ef-core": 30.28,
-        "gps": 157.28,
-        "objective-c": 1.05,
-        "xamarin": 137.72,
-        "xaml": 12.47
+        "bash": 0.51,
+        "bluetooth": 0.07,
+        "c-cpp": 0.58,
+        "csharp-dotnet": 115.68,
+        "ef-core": 4.33,
+        "gps": 7.51,
+        "objective-c": 0.22,
+        "xamarin": 48.61,
+        "xaml": 15.41
       }
     },
     "2019-10": {
@@ -2930,21 +2930,21 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 10.56,
-        "embedded": 184.0,
-        "languages": 182.85,
-        "mobile": 173.44
+        "backend": 2.03,
+        "embedded": 3.27,
+        "languages": 138.79,
+        "mobile": 39.79
       },
       "techs": {
-        "bluetooth": 28.45,
-        "c-cpp": 1.99,
-        "csharp-dotnet": 170.83,
-        "ef-core": 10.56,
-        "gps": 155.55,
-        "objective-c": 1.15,
-        "python": 1.54,
-        "xamarin": 173.44,
-        "xaml": 8.49
+        "bluetooth": 1.06,
+        "c-cpp": 0.63,
+        "csharp-dotnet": 127.4,
+        "ef-core": 2.03,
+        "gps": 2.22,
+        "objective-c": 0.24,
+        "python": 0.49,
+        "xamarin": 39.55,
+        "xaml": 10.27
       }
     },
     "2019-11": {
@@ -2954,26 +2954,26 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 10.86,
-        "devops": 43.72,
-        "embedded": 169.0,
-        "languages": 170.95,
-        "mobile": 118.42
+        "backend": 1.01,
+        "devops": 7.5,
+        "embedded": 2.39,
+        "languages": 123.66,
+        "mobile": 35.05
       },
       "techs": {
-        "asp-net-core": 0.13,
-        "azure-devops": 43.72,
-        "bash": 0.03,
-        "bluetooth": 40.48,
-        "c-cpp": 1.81,
-        "csharp-dotnet": 153.69,
-        "ef-core": 10.74,
-        "gps": 128.52,
-        "java": 0.7,
-        "objective-c": 1.05,
-        "web": 0.85,
-        "xamarin": 118.42,
-        "xaml": 13.86
+        "asp-net-core": 0.06,
+        "azure-devops": 7.5,
+        "bash": 0.12,
+        "bluetooth": 1.07,
+        "c-cpp": 0.58,
+        "csharp-dotnet": 109.62,
+        "ef-core": 0.95,
+        "gps": 1.32,
+        "java": 0.24,
+        "objective-c": 0.22,
+        "web": 0.5,
+        "xamarin": 34.84,
+        "xaml": 12.6
       }
     },
     "2019-12": {
@@ -2983,23 +2983,23 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 36.1,
-        "embedded": 52.8,
-        "languages": 177.9,
-        "mobile": 142.9
+        "backend": 7.71,
+        "embedded": 0.95,
+        "languages": 114.11,
+        "mobile": 44.19
       },
       "techs": {
-        "asp-net-core": 1.35,
-        "bash": 3.39,
-        "bluetooth": 11.23,
-        "c-cpp": 1.9,
-        "csharp-dotnet": 170.31,
-        "ef-core": 34.74,
-        "gps": 41.57,
-        "javascript": 0.88,
-        "objective-c": 1.1,
-        "xamarin": 142.9,
-        "xaml": 1.41
+        "asp-net-core": 0.2,
+        "bash": 1.79,
+        "bluetooth": 0.08,
+        "c-cpp": 0.61,
+        "csharp-dotnet": 108.7,
+        "ef-core": 7.51,
+        "gps": 0.87,
+        "javascript": 0.4,
+        "objective-c": 0.23,
+        "xamarin": 43.96,
+        "xaml": 2.6
       }
     },
     "2020-01": {
@@ -3009,22 +3009,22 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 1.1,
-        "embedded": 184.0,
-        "languages": 188.85,
-        "mobile": 186.9
+        "backend": 0.24,
+        "embedded": 1.77,
+        "languages": 122.47,
+        "mobile": 19.53
       },
       "techs": {
         "bash": 0.0,
-        "bluetooth": 140.54,
-        "c-cpp": 1.99,
-        "csharp-dotnet": 167.88,
-        "ef-core": 1.1,
-        "gps": 43.46,
-        "objective-c": 1.15,
-        "python": 0.09,
-        "xamarin": 186.9,
-        "xaml": 18.89
+        "bluetooth": 0.86,
+        "c-cpp": 0.63,
+        "csharp-dotnet": 111.51,
+        "ef-core": 0.24,
+        "gps": 0.91,
+        "objective-c": 0.24,
+        "python": 0.39,
+        "xamarin": 19.3,
+        "xaml": 9.93
       }
     },
     "2020-02": {
@@ -3034,19 +3034,19 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 0.96,
-        "embedded": 160.0,
-        "languages": 159.0,
-        "mobile": 159.04
+        "backend": 0.21,
+        "embedded": 24.3,
+        "languages": 135.45,
+        "mobile": 36.61
       },
       "techs": {
-        "bluetooth": 92.2,
-        "c-cpp": 1.73,
-        "csharp-dotnet": 157.27,
-        "ef-core": 0.96,
-        "gps": 67.8,
-        "objective-c": 1.0,
-        "xamarin": 159.04
+        "bluetooth": 19.0,
+        "c-cpp": 0.55,
+        "csharp-dotnet": 134.9,
+        "ef-core": 0.21,
+        "gps": 5.31,
+        "objective-c": 0.21,
+        "xamarin": 36.4
       }
     },
     "2020-03": {
@@ -3056,21 +3056,21 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 12.18,
-        "embedded": 176.0,
-        "languages": 177.9,
-        "mobile": 164.82
+        "backend": 1.72,
+        "embedded": 5.81,
+        "languages": 152.63,
+        "mobile": 43.81
       },
       "techs": {
-        "bash": 1.0,
-        "bluetooth": 20.31,
-        "c-cpp": 1.9,
-        "csharp-dotnet": 173.94,
-        "ef-core": 12.18,
-        "gps": 155.69,
-        "objective-c": 1.1,
-        "xamarin": 164.82,
-        "xaml": 1.06
+        "bash": 0.86,
+        "bluetooth": 3.32,
+        "c-cpp": 0.61,
+        "csharp-dotnet": 150.36,
+        "ef-core": 1.72,
+        "gps": 2.49,
+        "objective-c": 0.23,
+        "xamarin": 43.58,
+        "xaml": 0.8
       }
     },
     "2020-04": {
@@ -3080,17 +3080,17 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 2.6,
-        "embedded": 22.0,
-        "languages": 99.0,
-        "mobile": 85.4
+        "backend": 0.67,
+        "embedded": 0.44,
+        "languages": 87.23,
+        "mobile": 25.92
       },
       "techs": {
-        "bash": 3.38,
-        "csharp-dotnet": 91.61,
-        "ef-core": 2.6,
-        "gps": 22.0,
-        "xamarin": 85.4,
+        "bash": 0.93,
+        "csharp-dotnet": 82.29,
+        "ef-core": 0.67,
+        "gps": 0.44,
+        "xamarin": 25.92,
         "xaml": 4.01
       }
     },
@@ -3101,17 +3101,17 @@
         "study": 0.0
       },
       "domains": {
-        "devops": 33.0,
-        "languages": 66.0,
-        "mobile": 44.0
+        "devops": 12.96,
+        "languages": 58.7,
+        "mobile": 16.24
       },
       "techs": {
-        "bash": 13.2,
-        "c-cpp": 8.4,
-        "csharp-dotnet": 36.1,
-        "docker": 33.0,
-        "xamarin": 44.0,
-        "xaml": 8.29
+        "bash": 5.56,
+        "c-cpp": 9.46,
+        "csharp-dotnet": 35.25,
+        "docker": 12.96,
+        "xamarin": 16.24,
+        "xaml": 8.43
       }
     },
     "2020-06": {
@@ -3121,15 +3121,15 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 11.0,
-        "devops": 11.0,
-        "languages": 22.0
+        "backend": 1.57,
+        "devops": 2.75,
+        "languages": 16.5
       },
       "techs": {
-        "bash": 11.0,
+        "bash": 5.5,
         "csharp-dotnet": 7.86,
-        "docker": 11.0,
-        "ef-core": 11.0,
+        "docker": 2.75,
+        "ef-core": 1.57,
         "javascript": 3.14
       }
     },
@@ -3140,12 +3140,12 @@
         "study": 0.0
       },
       "domains": {
-        "devops": 11.0,
-        "languages": 11.0
+        "devops": 2.75,
+        "languages": 5.5
       },
       "techs": {
-        "bash": 11.0,
-        "docker": 11.0
+        "bash": 5.5,
+        "docker": 2.75
       }
     },
     "2020-08": {
@@ -3155,12 +3155,12 @@
         "study": 0.0
       },
       "domains": {
-        "devops": 11.0,
-        "languages": 11.0
+        "devops": 2.75,
+        "languages": 8.25
       },
       "techs": {
-        "bash": 11.0,
-        "docker": 11.0
+        "bash": 8.25,
+        "docker": 2.75
       }
     },
     "2020-10": {
@@ -3171,16 +3171,16 @@
       },
       "domains": {
         "devops": 11.0,
-        "embedded": 11.0,
-        "languages": 22.0,
-        "mobile": 22.0
+        "embedded": 1.38,
+        "languages": 19.12,
+        "mobile": 9.8
       },
       "techs": {
-        "csharp-dotnet": 19.05,
+        "csharp-dotnet": 16.45,
         "docker": 11.0,
-        "gps": 11.0,
-        "xamarin": 22.0,
-        "xaml": 2.95
+        "gps": 1.38,
+        "xamarin": 9.8,
+        "xaml": 2.68
       }
     },
     "2020-11": {
@@ -3190,16 +3190,16 @@
         "study": 0.0
       },
       "domains": {
-        "embedded": 33.0,
-        "languages": 66.0,
-        "mobile": 44.0
+        "embedded": 3.64,
+        "languages": 64.21,
+        "mobile": 15.23
       },
       "techs": {
-        "csharp-dotnet": 58.5,
-        "gps": 33.0,
-        "python": 3.9,
-        "xamarin": 44.0,
-        "xaml": 3.6
+        "csharp-dotnet": 57.5,
+        "gps": 3.64,
+        "python": 2.01,
+        "xamarin": 15.23,
+        "xaml": 4.71
       }
     },
     "2021-01": {
@@ -3209,17 +3209,17 @@
         "study": 0.0
       },
       "domains": {
-        "devops": 7.82,
-        "embedded": 33.0,
-        "languages": 44.0,
-        "mobile": 36.18
+        "devops": 0.09,
+        "embedded": 2.2,
+        "languages": 37.79,
+        "mobile": 15.97
       },
       "techs": {
-        "azure-devops": 7.82,
-        "csharp-dotnet": 40.39,
-        "gps": 33.0,
-        "xamarin": 36.18,
-        "xaml": 3.61
+        "azure-devops": 0.09,
+        "csharp-dotnet": 33.54,
+        "gps": 2.2,
+        "xamarin": 15.97,
+        "xaml": 4.24
       }
     },
     "2021-02": {
@@ -3229,15 +3229,15 @@
         "study": 0.0
       },
       "domains": {
-        "embedded": 11.0,
-        "languages": 22.0,
-        "mobile": 22.0
+        "embedded": 2.39,
+        "languages": 14.66,
+        "mobile": 10.13
       },
       "techs": {
-        "csharp-dotnet": 21.32,
-        "gps": 11.0,
-        "xamarin": 22.0,
-        "xaml": 0.68
+        "csharp-dotnet": 14.03,
+        "gps": 2.39,
+        "xamarin": 10.13,
+        "xaml": 0.63
       }
     },
     "2021-03": {
@@ -3247,12 +3247,12 @@
         "study": 0.0
       },
       "domains": {
-        "languages": 11.0,
-        "mobile": 11.0
+        "languages": 8.8,
+        "mobile": 6.6
       },
       "techs": {
-        "csharp-dotnet": 11.0,
-        "xamarin": 11.0
+        "csharp-dotnet": 8.8,
+        "xamarin": 6.6
       }
     },
     "2021-06": {
@@ -3262,15 +3262,15 @@
         "study": 0.0
       },
       "domains": {
-        "embedded": 11.0,
-        "languages": 33.0,
-        "mobile": 22.0
+        "embedded": 0.41,
+        "languages": 32.15,
+        "mobile": 6.44
       },
       "techs": {
-        "csharp-dotnet": 32.72,
-        "gps": 11.0,
-        "xamarin": 22.0,
-        "xaml": 0.28
+        "csharp-dotnet": 31.07,
+        "gps": 0.41,
+        "xamarin": 6.44,
+        "xaml": 1.09
       }
     },
     "2021-08": {
@@ -3280,14 +3280,14 @@
         "study": 0.0
       },
       "domains": {
-        "blockchain": 55.0,
-        "devops": 22.0,
-        "languages": 55.0
+        "blockchain": 28.56,
+        "devops": 1.85,
+        "languages": 52.44
       },
       "techs": {
-        "bash": 55.0,
-        "blockchain": 55.0,
-        "docker": 22.0
+        "bash": 52.44,
+        "blockchain": 28.56,
+        "docker": 1.85
       }
     },
     "2021-09": {
@@ -3297,16 +3297,16 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 55.0,
-        "languages": 77.0
+        "backend": 31.63,
+        "languages": 48.5
       },
       "techs": {
-        "asp-net-core": 14.69,
-        "bash": 22.78,
-        "blazor": 37.71,
-        "csharp-dotnet": 54.08,
-        "ef-core": 2.6,
-        "web": 0.13
+        "asp-net-core": 8.77,
+        "bash": 15.61,
+        "blazor": 20.89,
+        "csharp-dotnet": 32.67,
+        "ef-core": 1.98,
+        "web": 0.22
       }
     },
     "2021-10": {
@@ -3316,15 +3316,15 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 77.0,
-        "languages": 77.0
+        "backend": 26.04,
+        "languages": 58.08
       },
       "techs": {
-        "asp-net-core": 16.5,
-        "blazor": 56.83,
-        "csharp-dotnet": 76.62,
-        "ef-core": 3.67,
-        "web": 0.38
+        "asp-net-core": 6.84,
+        "blazor": 18.64,
+        "csharp-dotnet": 57.76,
+        "ef-core": 0.56,
+        "web": 0.32
       }
     },
     "2021-11": {
@@ -3334,14 +3334,14 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 44.0,
-        "languages": 55.0
+        "backend": 14.99,
+        "languages": 46.3
       },
       "techs": {
-        "asp-net-core": 9.87,
-        "blazor": 34.13,
-        "csharp-dotnet": 53.45,
-        "web": 1.55
+        "asp-net-core": 5.5,
+        "blazor": 9.49,
+        "csharp-dotnet": 44.86,
+        "web": 1.43
       }
     },
     "2021-12": {
@@ -3351,19 +3351,19 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 68.48,
-        "devops": 8.52,
-        "languages": 88.0
+        "backend": 34.31,
+        "devops": 2.77,
+        "languages": 60.1
       },
       "techs": {
-        "asp-net-core": 13.83,
-        "bash": 1.02,
-        "blazor": 34.49,
-        "csharp-dotnet": 84.35,
-        "docker": 3.6,
-        "ef-core": 20.16,
-        "github-actions": 4.92,
-        "web": 2.63
+        "asp-net-core": 9.55,
+        "bash": 1.04,
+        "blazor": 15.18,
+        "csharp-dotnet": 56.85,
+        "docker": 2.01,
+        "ef-core": 9.58,
+        "github-actions": 0.76,
+        "web": 2.21
       }
     },
     "2022-01": {
@@ -3373,23 +3373,23 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 156.3,
-        "devops": 8.7,
-        "languages": 187.0
+        "backend": 52.84,
+        "devops": 1.6,
+        "languages": 140.1
       },
       "techs": {
-        "asp-net-core": 29.59,
-        "azure": 0.24,
-        "bash": 2.85,
-        "blazor": 74.35,
-        "csharp-dotnet": 180.35,
-        "docker": 1.74,
-        "ef-core": 52.11,
-        "github-actions": 6.96,
-        "javascript": 0.26,
-        "python": 0.2,
+        "asp-net-core": 20.96,
+        "azure": 0.34,
+        "bash": 2.61,
+        "blazor": 18.76,
+        "csharp-dotnet": 133.2,
+        "docker": 0.38,
+        "ef-core": 12.78,
+        "github-actions": 1.22,
+        "javascript": 0.43,
+        "python": 0.25,
         "sql": 0.01,
-        "web": 3.33
+        "web": 3.59
       }
     },
     "2022-02": {
@@ -3399,88 +3399,85 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 187.0,
-        "embedded": 11.0,
-        "languages": 198.0
+        "backend": 50.25,
+        "embedded": 0.32,
+        "languages": 171.21
       },
       "techs": {
-        "asp-net-core": 53.79,
-        "bash": 2.0,
-        "blazor": 64.74,
-        "csharp-dotnet": 194.4,
-        "ef-core": 68.47,
-        "gps": 11.0,
-        "javascript": 1.02,
-        "web": 0.58
+        "asp-net-core": 15.09,
+        "bash": 1.63,
+        "blazor": 20.12,
+        "csharp-dotnet": 166.75,
+        "ef-core": 17.4,
+        "gps": 0.32,
+        "javascript": 1.66,
+        "web": 1.16
       }
     },
     "2022-03": {
+      "context": {
+        "personal": 176.0,
+        "pro": 0.0,
+        "study": 0.0
+      },
+      "domains": {
+        "backend": 20.61,
+        "blockchain": 17.55,
+        "devops": 20.79,
+        "embedded": 0.01,
+        "languages": 134.13
+      },
+      "techs": {
+        "asp-net-core": 3.3,
+        "azure": 0.01,
+        "bash": 64.43,
+        "blazor": 12.18,
+        "blockchain": 17.55,
+        "csharp-dotnet": 69.46,
+        "docker": 20.1,
+        "ef-core": 5.11,
+        "github-actions": 0.69,
+        "gps": 0.01,
+        "javascript": 0.04,
+        "sql": 0.11,
+        "web": 0.09
+      }
+    },
+    "2022-04": {
+      "context": {
+        "personal": 33.0,
+        "pro": 0.0,
+        "study": 0.0
+      },
+      "domains": {
+        "blockchain": 9.85,
+        "devops": 6.19,
+        "languages": 26.35
+      },
+      "techs": {
+        "bash": 26.35,
+        "blockchain": 9.85,
+        "docker": 6.19
+      }
+    },
+    "2022-05": {
       "context": {
         "personal": 220.0,
         "pro": 0.0,
         "study": 0.0
       },
       "domains": {
-        "backend": 92.3,
-        "blockchain": 77.0,
-        "devops": 83.7,
-        "embedded": 11.0,
-        "languages": 220.0
+        "blockchain": 60.43,
+        "devops": 7.6,
+        "languages": 200.49
       },
       "techs": {
-        "asp-net-core": 7.24,
-        "azure": 0.01,
-        "bash": 56.33,
-        "blazor": 55.94,
-        "blockchain": 77.0,
-        "csharp-dotnet": 90.22,
-        "docker": 80.95,
-        "ef-core": 29.1,
-        "github-actions": 2.75,
-        "gps": 11.0,
-        "javascript": 0.03,
-        "python": 73.3,
-        "sql": 0.07,
-        "web": 0.06
-      }
-    },
-    "2022-04": {
-      "context": {
-        "personal": 209.0,
-        "pro": 0.0,
-        "study": 0.0
-      },
-      "domains": {
-        "blockchain": 55.0,
-        "devops": 33.0,
-        "languages": 198.0
-      },
-      "techs": {
-        "bash": 13.66,
-        "blockchain": 55.0,
-        "docker": 33.0,
-        "python": 184.34
-      }
-    },
-    "2022-05": {
-      "context": {
-        "personal": 297.0,
-        "pro": 0.0,
-        "study": 0.0
-      },
-      "domains": {
-        "blockchain": 209.0,
-        "devops": 33.0,
-        "languages": 286.0
-      },
-      "techs": {
-        "bash": 6.65,
-        "blockchain": 209.0,
-        "csharp-dotnet": 174.65,
-        "docker": 27.5,
-        "github-actions": 5.5,
-        "go": 0.08,
-        "python": 104.62
+        "bash": 26.67,
+        "blockchain": 60.43,
+        "csharp-dotnet": 173.32,
+        "docker": 7.1,
+        "github-actions": 0.5,
+        "python": 0.5
       }
     },
     "2022-06": {
@@ -3490,12 +3487,12 @@
         "study": 0.0
       },
       "domains": {
-        "blockchain": 110.0,
-        "languages": 187.0
+        "blockchain": 20.74,
+        "languages": 173.83
       },
       "techs": {
-        "blockchain": 110.0,
-        "csharp-dotnet": 187.0
+        "blockchain": 20.74,
+        "csharp-dotnet": 173.83
       }
     },
     "2022-07": {
@@ -3505,12 +3502,12 @@
         "study": 0.0
       },
       "domains": {
-        "blockchain": 110.0,
-        "languages": 143.0
+        "blockchain": 35.85,
+        "languages": 140.91
       },
       "techs": {
-        "blockchain": 110.0,
-        "csharp-dotnet": 143.0
+        "blockchain": 35.85,
+        "csharp-dotnet": 140.91
       }
     },
     "2022-08": {
@@ -3520,29 +3517,28 @@
         "study": 0.0
       },
       "domains": {
-        "blockchain": 11.0,
-        "languages": 22.0
+        "blockchain": 1.83,
+        "languages": 21.89
       },
       "techs": {
-        "bash": 4.03,
-        "blockchain": 11.0,
-        "csharp-dotnet": 17.97
+        "bash": 0.44,
+        "blockchain": 1.83,
+        "csharp-dotnet": 21.44
       }
     },
     "2022-09": {
       "context": {
-        "personal": 132.0,
+        "personal": 99.0,
         "pro": 0.0,
         "study": 0.0
       },
       "domains": {
-        "blockchain": 88.0,
-        "languages": 132.0
+        "blockchain": 18.53,
+        "languages": 98.68
       },
       "techs": {
-        "blockchain": 88.0,
-        "csharp-dotnet": 89.83,
-        "python": 42.17
+        "blockchain": 18.53,
+        "csharp-dotnet": 98.68
       }
     },
     "2022-10": {
@@ -3552,12 +3548,12 @@
         "study": 0.0
       },
       "domains": {
-        "blockchain": 143.0,
-        "languages": 176.0
+        "blockchain": 36.46,
+        "languages": 172.48
       },
       "techs": {
-        "blockchain": 143.0,
-        "csharp-dotnet": 176.0
+        "blockchain": 36.46,
+        "csharp-dotnet": 172.48
       }
     },
     "2022-11": {
@@ -3567,16 +3563,16 @@
         "study": 0.0
       },
       "domains": {
-        "blockchain": 66.0,
-        "devops": 11.0,
-        "languages": 88.0
+        "blockchain": 12.14,
+        "devops": 2.69,
+        "languages": 82.11
       },
       "techs": {
-        "bash": 10.22,
-        "blockchain": 66.0,
-        "csharp-dotnet": 77.78,
-        "docker": 9.5,
-        "github-actions": 1.5
+        "bash": 6.32,
+        "blockchain": 12.14,
+        "csharp-dotnet": 75.8,
+        "docker": 2.44,
+        "github-actions": 0.24
       }
     },
     "2022-12": {
@@ -3586,16 +3582,16 @@
         "study": 0.0
       },
       "domains": {
-        "blockchain": 121.0,
-        "devops": 11.0,
-        "languages": 154.0
+        "blockchain": 31.72,
+        "devops": 0.71,
+        "languages": 142.88
       },
       "techs": {
-        "bash": 22.74,
-        "blockchain": 121.0,
-        "csharp-dotnet": 130.31,
-        "docker": 11.0,
-        "go": 0.95
+        "bash": 18.19,
+        "blockchain": 31.72,
+        "csharp-dotnet": 124.06,
+        "docker": 0.71,
+        "go": 0.63
       }
     },
     "2023-01": {
@@ -3605,13 +3601,13 @@
         "study": 0.0
       },
       "domains": {
-        "blockchain": 66.0,
-        "languages": 99.0
+        "blockchain": 15.74,
+        "languages": 97.45
       },
       "techs": {
-        "bash": 5.5,
-        "blockchain": 66.0,
-        "csharp-dotnet": 93.5
+        "bash": 1.38,
+        "blockchain": 15.74,
+        "csharp-dotnet": 96.08
       }
     },
     "2023-02": {
@@ -3621,16 +3617,15 @@
         "study": 0.0
       },
       "domains": {
-        "blockchain": 132.0,
-        "devops": 22.0,
-        "languages": 165.0
+        "blockchain": 39.99,
+        "devops": 2.84,
+        "languages": 161.03
       },
       "techs": {
-        "bash": 32.66,
-        "blockchain": 132.0,
-        "csharp-dotnet": 130.37,
-        "docker": 22.0,
-        "python": 1.97
+        "bash": 30.88,
+        "blockchain": 39.99,
+        "csharp-dotnet": 130.15,
+        "docker": 2.84
       }
     },
     "2023-03": {
@@ -3640,13 +3635,13 @@
         "study": 0.0
       },
       "domains": {
-        "blockchain": 66.0,
-        "languages": 154.0
+        "blockchain": 6.2,
+        "languages": 150.89
       },
       "techs": {
-        "blockchain": 66.0,
-        "csharp-dotnet": 143.0,
-        "python": 11.0
+        "blockchain": 6.2,
+        "csharp-dotnet": 140.42,
+        "python": 10.48
       }
     },
     "2023-04": {
@@ -3656,14 +3651,14 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 33.0,
-        "blockchain": 132.0,
-        "languages": 165.0
+        "backend": 15.43,
+        "blockchain": 36.16,
+        "languages": 148.89
       },
       "techs": {
-        "blockchain": 132.0,
-        "csharp-dotnet": 165.0,
-        "grpc": 33.0
+        "blockchain": 36.16,
+        "csharp-dotnet": 148.89,
+        "grpc": 15.43
       }
     },
     "2023-05": {
@@ -3673,17 +3668,16 @@
         "study": 0.0
       },
       "domains": {
-        "blockchain": 11.0,
-        "devops": 33.0,
-        "languages": 33.0
+        "blockchain": 3.67,
+        "devops": 20.03,
+        "languages": 16.5
       },
       "techs": {
-        "bash": 26.01,
-        "blockchain": 11.0,
-        "csharp-dotnet": 1.64,
-        "docker": 14.18,
-        "github-actions": 18.82,
-        "python": 5.35
+        "bash": 10.63,
+        "blockchain": 3.67,
+        "csharp-dotnet": 5.87,
+        "docker": 12.5,
+        "github-actions": 13.03
       }
     },
     "2023-06": {
@@ -3693,14 +3687,14 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 11.0,
-        "blockchain": 11.0,
-        "languages": 22.0
+        "backend": 0.72,
+        "blockchain": 4.23,
+        "languages": 21.76
       },
       "techs": {
-        "blockchain": 11.0,
-        "csharp-dotnet": 22.0,
-        "grpc": 11.0
+        "blockchain": 4.23,
+        "csharp-dotnet": 21.76,
+        "grpc": 0.72
       }
     },
     "2023-11": {
@@ -3710,14 +3704,14 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 11.0,
-        "blockchain": 11.0,
-        "languages": 22.0
+        "backend": 0.25,
+        "blockchain": 0.41,
+        "languages": 21.83
       },
       "techs": {
-        "blockchain": 11.0,
-        "csharp-dotnet": 22.0,
-        "grpc": 11.0
+        "blockchain": 0.41,
+        "csharp-dotnet": 21.83,
+        "grpc": 0.25
       }
     },
     "2023-12": {
@@ -3727,13 +3721,13 @@
         "study": 0.0
       },
       "domains": {
-        "devops": 55.0,
-        "languages": 55.0
+        "devops": 26.72,
+        "languages": 24.2
       },
       "techs": {
-        "bash": 55.0,
-        "docker": 50.09,
-        "github-actions": 4.91
+        "bash": 24.2,
+        "docker": 25.78,
+        "github-actions": 0.94
       }
     },
     "2024-01": {
@@ -3743,13 +3737,13 @@
         "study": 0.0
       },
       "domains": {
-        "devops": 33.0,
-        "languages": 77.0
+        "devops": 2.94,
+        "languages": 50.07
       },
       "techs": {
-        "bash": 12.11,
-        "github-actions": 33.0,
-        "python": 64.89
+        "bash": 11.76,
+        "github-actions": 2.94,
+        "python": 38.31
       }
     },
     "2024-02": {
@@ -3759,15 +3753,15 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 11.0,
-        "blockchain": 11.0,
-        "languages": 132.0
+        "backend": 0.56,
+        "blockchain": 0.37,
+        "languages": 122.65
       },
       "techs": {
-        "blockchain": 11.0,
-        "csharp-dotnet": 11.0,
-        "grpc": 11.0,
-        "python": 121.0
+        "blockchain": 0.37,
+        "csharp-dotnet": 10.81,
+        "grpc": 0.56,
+        "python": 111.83
       }
     },
     "2024-03": {
@@ -3777,15 +3771,15 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 3.67,
-        "blockchain": 7.33,
-        "languages": 55.0
+        "ai-llm": 1.38,
+        "blockchain": 2.75,
+        "languages": 47.1
       },
       "techs": {
-        "bash": 0.46,
-        "blockchain": 7.33,
-        "llm-api": 3.67,
-        "python": 54.54
+        "bash": 0.92,
+        "blockchain": 2.75,
+        "llm-api": 1.38,
+        "python": 46.19
       }
     },
     "2024-04": {
@@ -3795,14 +3789,14 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 11.0,
-        "embedded": 11.0,
-        "languages": 44.0
+        "ai-llm": 0.92,
+        "embedded": 1.22,
+        "languages": 37.42
       },
       "techs": {
-        "llm-api": 11.0,
-        "nfc": 11.0,
-        "python": 44.0
+        "llm-api": 0.92,
+        "nfc": 1.22,
+        "python": 37.42
       }
     },
     "2024-05": {
@@ -3812,13 +3806,13 @@
         "study": 0.0
       },
       "domains": {
-        "devops": 11.0,
-        "languages": 77.0
+        "devops": 0.36,
+        "languages": 67.77
       },
       "techs": {
-        "bash": 4.1,
-        "github-actions": 11.0,
-        "python": 72.9
+        "bash": 5.57,
+        "github-actions": 0.36,
+        "python": 62.19
       }
     },
     "2024-06": {
@@ -3828,13 +3822,13 @@
         "study": 0.0
       },
       "domains": {
-        "devops": 22.0,
-        "languages": 143.0
+        "devops": 1.56,
+        "languages": 126.0
       },
       "techs": {
-        "bash": 2.38,
-        "github-actions": 22.0,
-        "python": 140.62
+        "bash": 2.22,
+        "github-actions": 1.56,
+        "python": 123.78
       }
     },
     "2024-07": {
@@ -3857,13 +3851,13 @@
         "study": 0.0
       },
       "domains": {
-        "devops": 11.0,
-        "languages": 88.0
+        "devops": 0.55,
+        "languages": 82.91
       },
       "techs": {
-        "bash": 7.86,
-        "github-actions": 11.0,
-        "python": 80.14
+        "bash": 6.11,
+        "github-actions": 0.55,
+        "python": 76.79
       }
     },
     "2024-09": {
@@ -3873,11 +3867,11 @@
         "study": 0.0
       },
       "domains": {
-        "languages": 33.0
+        "languages": 29.33
       },
       "techs": {
         "bash": 2.75,
-        "python": 30.25
+        "python": 26.58
       }
     },
     "2025-02": {
@@ -3887,12 +3881,12 @@
         "study": 0.0
       },
       "domains": {
-        "devops": 11.0,
-        "languages": 22.0
+        "devops": 0.59,
+        "languages": 11.99
       },
       "techs": {
-        "github-actions": 11.0,
-        "python": 22.0
+        "github-actions": 0.59,
+        "python": 11.99
       }
     },
     "2025-03": {
@@ -3902,16 +3896,16 @@
         "study": 0.0
       },
       "domains": {
-        "blockchain": 11.0,
-        "devops": 22.0,
-        "languages": 66.0
+        "blockchain": 0.49,
+        "devops": 1.25,
+        "languages": 45.1
       },
       "techs": {
-        "bash": 1.22,
-        "blockchain": 11.0,
-        "docker": 7.33,
-        "github-actions": 14.67,
-        "python": 64.78
+        "bash": 0.28,
+        "blockchain": 0.49,
+        "docker": 0.56,
+        "github-actions": 0.69,
+        "python": 44.82
       }
     },
     "2025-04": {
@@ -3921,29 +3915,29 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 55.0,
-        "devops": 22.0,
-        "languages": 153.82,
-        "mobile": 0.18
+        "ai-llm": 7.27,
+        "devops": 0.79,
+        "languages": 118.87,
+        "mobile": 0.27
       },
       "techs": {
-        "ai-driven-development": 55.0,
-        "bash": 0.74,
-        "c-cpp": 0.11,
-        "csharp-dotnet": 0.06,
-        "dart": 0.06,
-        "github-actions": 22.0,
-        "go": 0.06,
-        "java": 0.06,
-        "javascript": 0.06,
-        "kotlin": 0.09,
-        "objective-c": 0.09,
-        "php": 0.09,
-        "python": 152.04,
-        "ruby": 0.09,
-        "rust": 0.09,
-        "swift": 0.09,
-        "typescript": 0.28
+        "ai-driven-development": 7.27,
+        "bash": 0.66,
+        "c-cpp": 0.27,
+        "csharp-dotnet": 0.14,
+        "dart": 0.14,
+        "github-actions": 0.79,
+        "go": 0.14,
+        "java": 0.14,
+        "javascript": 0.14,
+        "kotlin": 0.14,
+        "objective-c": 0.14,
+        "php": 0.14,
+        "python": 116.3,
+        "ruby": 0.14,
+        "rust": 0.14,
+        "swift": 0.14,
+        "typescript": 0.41
       }
     },
     "2025-05": {
@@ -3953,12 +3947,12 @@
         "study": 0.0
       },
       "domains": {
-        "languages": 22.0
+        "languages": 18.05
       },
       "techs": {
-        "bash": 4.17,
-        "csharp-dotnet": 11.0,
-        "python": 6.83
+        "bash": 3.27,
+        "csharp-dotnet": 9.43,
+        "python": 5.35
       }
     },
     "2025-06": {
@@ -3968,19 +3962,19 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 55.0,
-        "blockchain": 77.0,
-        "devops": 99.0,
-        "languages": 165.0
+        "ai-llm": 3.68,
+        "blockchain": 29.88,
+        "devops": 18.03,
+        "languages": 129.68
       },
       "techs": {
-        "ai-driven-development": 55.0,
-        "bash": 75.98,
-        "blockchain": 77.0,
-        "docker": 60.84,
-        "github-actions": 38.16,
-        "go": 1.83,
-        "python": 87.19
+        "ai-driven-development": 3.68,
+        "bash": 54.41,
+        "blockchain": 29.88,
+        "docker": 13.55,
+        "github-actions": 4.48,
+        "go": 1.0,
+        "python": 74.27
       }
     },
     "2025-07": {
@@ -3990,21 +3984,21 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 71.79,
-        "blockchain": 5.21,
-        "devops": 33.0,
-        "languages": 77.0
+        "ai-llm": 15.48,
+        "blockchain": 5.46,
+        "devops": 2.42,
+        "languages": 41.53
       },
       "techs": {
-        "ai-driven-development": 71.79,
-        "bash": 8.24,
-        "blockchain": 5.21,
-        "csharp-dotnet": 45.49,
-        "docker": 11.0,
-        "github-actions": 22.0,
-        "go": 0.21,
-        "python": 22.96,
-        "web": 0.1
+        "ai-driven-development": 15.48,
+        "bash": 7.25,
+        "blockchain": 5.46,
+        "csharp-dotnet": 22.45,
+        "docker": 0.54,
+        "github-actions": 1.89,
+        "go": 0.27,
+        "python": 11.48,
+        "web": 0.08
       }
     },
     "2025-08": {
@@ -4014,147 +4008,144 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 58.73,
-        "backend": 22.0,
-        "devops": 99.0,
-        "embedded": 40.27,
-        "languages": 154.0
+        "ai-llm": 1.44,
+        "backend": 0.4,
+        "devops": 2.68,
+        "embedded": 0.89,
+        "languages": 113.96
       },
       "techs": {
-        "ai-driven-development": 47.73,
-        "bash": 4.13,
-        "docker": 67.68,
-        "github-actions": 31.32,
-        "gps": 40.27,
-        "javascript": 2.3,
-        "llm-api": 11.0,
-        "nodejs": 22.0,
-        "python": 131.31,
-        "sql": 1.7,
-        "typescript": 10.78,
-        "web": 3.78
+        "ai-driven-development": 1.38,
+        "bash": 1.2,
+        "docker": 2.38,
+        "github-actions": 0.29,
+        "gps": 0.89,
+        "javascript": 1.98,
+        "llm-api": 0.06,
+        "nodejs": 0.4,
+        "python": 97.59,
+        "sql": 0.97,
+        "typescript": 9.91,
+        "web": 2.31
       }
     },
     "2025-09": {
+      "context": {
+        "personal": 66.0,
+        "pro": 0.0,
+        "study": 0.0
+      },
+      "domains": {
+        "ai-llm": 2.35,
+        "backend": 0.67,
+        "devops": 3.07,
+        "languages": 48.74
+      },
+      "techs": {
+        "ai-driven-development": 2.35,
+        "bash": 6.78,
+        "docker": 2.94,
+        "github-actions": 0.12,
+        "javascript": 1.21,
+        "nodejs": 0.67,
+        "python": 35.8,
+        "sql": 0.14,
+        "typescript": 4.44,
+        "web": 0.37
+      }
+    },
+    "2025-10": {
+      "context": {
+        "personal": 110.0,
+        "pro": 0.0,
+        "study": 0.0
+      },
+      "domains": {
+        "ai-llm": 9.37,
+        "backend": 0.96,
+        "blockchain": 11.32,
+        "devops": 7.76,
+        "languages": 56.27
+      },
+      "techs": {
+        "ai-driven-development": 9.37,
+        "bash": 7.89,
+        "blockchain": 11.32,
+        "csharp-dotnet": 9.7,
+        "docker": 6.87,
+        "github-actions": 0.84,
+        "javascript": 0.96,
+        "kubernetes": 0.05,
+        "nodejs": 0.96,
+        "python": 30.1,
+        "sql": 0.48,
+        "typescript": 5.7,
+        "web": 1.43
+      }
+    },
+    "2025-11": {
+      "context": {
+        "personal": 198.0,
+        "pro": 0.0,
+        "study": 0.0
+      },
+      "domains": {
+        "ai-llm": 11.02,
+        "backend": 22.29,
+        "blockchain": 44.78,
+        "devops": 36.87,
+        "languages": 123.46
+      },
+      "techs": {
+        "ai-driven-development": 10.64,
+        "asp-net-core": 4.75,
+        "bash": 63.38,
+        "blazor": 13.11,
+        "blockchain": 44.78,
+        "csharp-dotnet": 52.05,
+        "docker": 35.52,
+        "ef-core": 4.04,
+        "github-actions": 1.19,
+        "grpc": 0.4,
+        "javascript": 0.1,
+        "kubernetes": 0.15,
+        "llm-api": 0.15,
+        "powershell": 0.39,
+        "python": 6.58,
+        "sql": 0.45,
+        "vector-db": 0.23,
+        "web": 0.51
+      }
+    },
+    "2025-12": {
       "context": {
         "personal": 121.0,
         "pro": 0.0,
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 55.0,
-        "backend": 22.98,
-        "devops": 43.02,
-        "languages": 121.0
+        "ai-llm": 3.18,
+        "backend": 12.74,
+        "blockchain": 13.1,
+        "devops": 2.98,
+        "languages": 89.79,
+        "mobile": 9.97
       },
       "techs": {
-        "ai-driven-development": 55.0,
-        "bash": 15.77,
-        "docker": 31.63,
-        "github-actions": 11.39,
-        "javascript": 0.48,
-        "nodejs": 22.98,
-        "python": 96.1,
-        "sql": 0.14,
-        "typescript": 8.24,
-        "web": 0.27
-      }
-    },
-    "2025-10": {
-      "context": {
-        "personal": 187.0,
-        "pro": 0.0,
-        "study": 0.0
-      },
-      "domains": {
-        "ai-llm": 109.36,
-        "backend": 64.61,
-        "blockchain": 33.64,
-        "devops": 67.39,
-        "languages": 187.0
-      },
-      "techs": {
-        "ai-driven-development": 109.36,
-        "asp-net-core": 18.01,
-        "bash": 44.47,
-        "blazor": 13.69,
-        "blockchain": 33.64,
-        "csharp-dotnet": 87.43,
-        "docker": 46.65,
-        "ef-core": 21.54,
-        "github-actions": 20.54,
-        "javascript": 1.69,
-        "kubernetes": 0.2,
-        "nodejs": 11.37,
-        "python": 40.99,
-        "sql": 1.56,
-        "typescript": 8.32,
-        "web": 2.54
-      }
-    },
-    "2025-11": {
-      "context": {
-        "personal": 220.0,
-        "pro": 0.0,
-        "study": 0.0
-      },
-      "domains": {
-        "ai-llm": 96.52,
-        "backend": 71.14,
-        "blockchain": 112.48,
-        "devops": 148.86,
-        "languages": 220.0
-      },
-      "techs": {
-        "ai-driven-development": 92.47,
-        "asp-net-core": 18.8,
-        "bash": 112.82,
-        "blazor": 27.31,
-        "blockchain": 112.48,
-        "csharp-dotnet": 95.03,
-        "docker": 140.08,
-        "ef-core": 24.83,
-        "github-actions": 8.65,
-        "grpc": 0.19,
-        "javascript": 0.17,
-        "kubernetes": 0.13,
-        "llm-api": 0.4,
-        "powershell": 1.09,
-        "python": 8.82,
-        "sql": 1.71,
-        "vector-db": 3.65,
-        "web": 0.36
-      }
-    },
-    "2025-12": {
-      "context": {
-        "personal": 143.0,
-        "pro": 0.0,
-        "study": 0.0
-      },
-      "domains": {
-        "ai-llm": 56.78,
-        "backend": 67.59,
-        "blockchain": 20.22,
-        "devops": 31.58,
-        "languages": 143.0,
-        "mobile": 43.84
-      },
-      "techs": {
-        "ai-driven-development": 56.78,
-        "asp-net-core": 21.87,
-        "bash": 53.61,
-        "blazor": 34.78,
-        "blockchain": 20.22,
-        "csharp-dotnet": 81.87,
-        "docker": 28.0,
-        "ef-core": 10.94,
-        "github-actions": 3.58,
-        "javascript": 0.76,
-        "maui": 2.53,
-        "web": 4.3,
-        "xamarin": 41.3,
-        "xaml": 2.46
+        "ai-driven-development": 3.18,
+        "asp-net-core": 1.75,
+        "bash": 31.17,
+        "blazor": 5.01,
+        "blockchain": 13.1,
+        "csharp-dotnet": 52.49,
+        "docker": 2.56,
+        "ef-core": 5.98,
+        "github-actions": 0.42,
+        "javascript": 0.63,
+        "maui": 0.38,
+        "web": 2.34,
+        "xamarin": 9.59,
+        "xaml": 3.16
       }
     },
     "2026-01": {
@@ -4164,33 +4155,33 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 76.15,
-        "backend": 101.27,
-        "blockchain": 6.35,
-        "devops": 19.49,
-        "embedded": 5.5,
-        "languages": 143.0,
-        "mobile": 0.24
+        "ai-llm": 2.35,
+        "backend": 24.93,
+        "blockchain": 0.81,
+        "devops": 1.76,
+        "embedded": 0.69,
+        "languages": 100.02,
+        "mobile": 0.3
       },
       "techs": {
-        "ai-driven-development": 76.15,
-        "asp-net-core": 12.08,
-        "azure": 0.03,
-        "bash": 3.73,
-        "blazor": 56.69,
-        "blockchain": 6.35,
-        "csharp-dotnet": 102.29,
-        "docker": 8.49,
-        "ef-core": 32.46,
-        "github-actions": 11.0,
-        "javascript": 0.04,
-        "nfc": 5.5,
-        "powershell": 1.22,
-        "python": 33.68,
-        "sql": 0.44,
-        "web": 1.32,
-        "xamarin": 0.24,
-        "xaml": 0.28
+        "ai-driven-development": 2.35,
+        "asp-net-core": 5.08,
+        "azure": 0.04,
+        "bash": 2.44,
+        "blazor": 9.7,
+        "blockchain": 0.81,
+        "csharp-dotnet": 69.93,
+        "docker": 1.02,
+        "ef-core": 10.11,
+        "github-actions": 0.73,
+        "javascript": 0.15,
+        "nfc": 0.69,
+        "powershell": 0.92,
+        "python": 21.54,
+        "sql": 0.37,
+        "web": 4.23,
+        "xamarin": 0.3,
+        "xaml": 0.45
       }
     },
     "2026-02": {
@@ -4200,26 +4191,26 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 44.0,
-        "backend": 61.9,
-        "devops": 70.1,
-        "embedded": 11.0,
-        "languages": 220.0
+        "ai-llm": 1.54,
+        "backend": 19.27,
+        "devops": 7.9,
+        "embedded": 0.38,
+        "languages": 176.76
       },
       "techs": {
-        "ai-driven-development": 44.0,
-        "asp-net-core": 20.01,
-        "bash": 22.25,
-        "blazor": 26.92,
-        "csharp-dotnet": 67.52,
-        "docker": 22.51,
-        "ef-core": 14.97,
-        "github-actions": 47.59,
-        "gps": 11.0,
-        "javascript": 1.16,
-        "python": 129.04,
-        "sql": 0.01,
-        "web": 0.03
+        "ai-driven-development": 1.54,
+        "asp-net-core": 7.62,
+        "bash": 3.98,
+        "blazor": 6.47,
+        "csharp-dotnet": 56.22,
+        "docker": 4.18,
+        "ef-core": 5.18,
+        "github-actions": 3.72,
+        "gps": 0.38,
+        "javascript": 0.16,
+        "python": 116.29,
+        "sql": 0.05,
+        "web": 0.06
       }
     },
     "2026-03": {
@@ -4229,31 +4220,31 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 211.58,
-        "backend": 63.66,
-        "blockchain": 18.3,
-        "devops": 200.34,
-        "embedded": 1.12,
-        "languages": 275.0
+        "ai-llm": 16.38,
+        "backend": 13.46,
+        "blockchain": 3.11,
+        "devops": 21.34,
+        "embedded": 0.02,
+        "languages": 152.05
       },
       "techs": {
-        "ai-driven-development": 153.68,
-        "asp-net-core": 10.01,
-        "bash": 115.65,
-        "blazor": 39.11,
-        "blockchain": 18.3,
-        "csharp-dotnet": 36.35,
-        "docker": 180.09,
-        "ef-core": 12.46,
-        "github-actions": 20.24,
-        "gps": 1.12,
-        "javascript": 4.16,
-        "llm-api": 57.9,
-        "nodejs": 2.08,
-        "python": 88.76,
-        "sql": 4.11,
-        "typescript": 24.99,
-        "web": 0.98
+        "ai-driven-development": 13.73,
+        "asp-net-core": 3.68,
+        "bash": 30.2,
+        "blazor": 5.76,
+        "blockchain": 3.11,
+        "csharp-dotnet": 35.0,
+        "docker": 19.77,
+        "ef-core": 3.75,
+        "github-actions": 1.57,
+        "gps": 0.02,
+        "javascript": 2.93,
+        "llm-api": 2.66,
+        "nodejs": 0.27,
+        "python": 65.9,
+        "sql": 2.79,
+        "typescript": 14.47,
+        "web": 0.76
       }
     },
     "2026-04": {
@@ -4263,34 +4254,34 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 35.23,
-        "backend": 53.45,
-        "blockchain": 217.03,
-        "devops": 159.06,
-        "embedded": 0.75,
-        "languages": 253.0,
-        "mobile": 29.49
+        "ai-llm": 8.49,
+        "backend": 7.26,
+        "blockchain": 72.87,
+        "devops": 12.18,
+        "embedded": 0.18,
+        "languages": 150.59,
+        "mobile": 4.06
       },
       "techs": {
-        "ai-driven-development": 31.05,
-        "azure-devops": 0.39,
-        "bash": 51.69,
-        "blazor": 12.66,
-        "blockchain": 217.03,
-        "csharp-dotnet": 158.32,
-        "docker": 79.86,
-        "github-actions": 78.82,
-        "go": 0.88,
-        "grpc": 29.72,
-        "javascript": 2.28,
-        "llm-api": 4.18,
-        "nfc": 0.75,
-        "nodejs": 11.07,
-        "python": 28.98,
-        "sql": 1.63,
-        "typescript": 7.79,
-        "web": 1.41,
-        "xamarin": 29.49
+        "ai-driven-development": 7.96,
+        "azure-devops": 0.02,
+        "bash": 26.65,
+        "blazor": 0.07,
+        "blockchain": 72.87,
+        "csharp-dotnet": 98.56,
+        "docker": 8.14,
+        "github-actions": 4.02,
+        "go": 0.71,
+        "grpc": 6.83,
+        "javascript": 0.26,
+        "llm-api": 0.53,
+        "nfc": 0.18,
+        "nodejs": 0.36,
+        "python": 14.74,
+        "sql": 0.47,
+        "typescript": 8.51,
+        "web": 0.71,
+        "xamarin": 4.06
       }
     },
     "2026-05": {
@@ -4300,37 +4291,37 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 115.17,
-        "backend": 47.5,
-        "blockchain": 65.7,
-        "devops": 142.31,
-        "embedded": 17.14,
-        "languages": 242.0,
-        "mobile": 19.19
+        "ai-llm": 6.58,
+        "backend": 6.95,
+        "blockchain": 8.53,
+        "devops": 11.86,
+        "embedded": 2.43,
+        "languages": 152.2,
+        "mobile": 0.8
       },
       "techs": {
-        "ai-driven-development": 48.96,
-        "asp-net-core": 6.88,
-        "bash": 51.23,
-        "blazor": 26.85,
-        "blockchain": 65.7,
-        "bluetooth": 0.37,
-        "csharp-dotnet": 38.62,
-        "docker": 115.92,
-        "ef-core": 10.07,
-        "github-actions": 26.39,
-        "gps": 10.57,
-        "grpc": 0.49,
-        "javascript": 0.18,
-        "llm-api": 61.73,
-        "nfc": 6.19,
-        "nodejs": 3.21,
-        "python": 123.8,
-        "sql": 4.86,
-        "typescript": 22.68,
-        "vector-db": 4.48,
-        "web": 0.63,
-        "xamarin": 19.19
+        "ai-driven-development": 4.66,
+        "asp-net-core": 1.93,
+        "bash": 21.5,
+        "blazor": 1.87,
+        "blockchain": 8.53,
+        "bluetooth": 0.1,
+        "csharp-dotnet": 22.97,
+        "docker": 10.7,
+        "ef-core": 2.81,
+        "github-actions": 1.15,
+        "gps": 1.79,
+        "grpc": 0.06,
+        "javascript": 0.17,
+        "llm-api": 1.57,
+        "nfc": 0.54,
+        "nodejs": 0.28,
+        "python": 84.36,
+        "sql": 3.65,
+        "typescript": 19.37,
+        "vector-db": 0.36,
+        "web": 0.19,
+        "xamarin": 0.8
       }
     },
     "2026-06": {
@@ -4340,39 +4331,39 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 156.0,
-        "backend": 48.42,
-        "blockchain": 33.22,
-        "devops": 136.3,
-        "embedded": 1.78,
-        "languages": 203.0,
-        "mobile": 0.28
+        "ai-llm": 159.48,
+        "backend": 70.43,
+        "blockchain": 35.49,
+        "devops": 176.16,
+        "embedded": 0.44,
+        "languages": 193.46,
+        "mobile": 0.04
       },
       "techs": {
-        "ai-driven-development": 118.0,
-        "azure": 11.35,
-        "bash": 46.49,
-        "blockchain": 1.22,
-        "claude-api": 16.0,
-        "cometbft": 16.0,
-        "cosmos-sdk": 16.0,
+        "ai-driven-development": 124.2,
+        "azure": 17.6,
+        "bash": 44.87,
+        "blockchain": 0.29,
+        "claude-api": 17.6,
+        "cometbft": 17.6,
+        "cosmos-sdk": 17.6,
         "csharp-dotnet": 41.07,
-        "docker": 45.01,
-        "fastapi": 11.35,
-        "github-actions": 40.19,
-        "gps": 1.7,
-        "linux-ubuntu": 39.74,
-        "litellm": 16.0,
-        "llm-api": 6.0,
-        "nfc": 0.08,
-        "nodejs": 14.35,
-        "python": 101.56,
-        "react-next": 11.35,
-        "sql": 0.25,
-        "typescript": 13.6,
-        "web": 0.03,
-        "windows": 11.35,
-        "xamarin": 0.28
+        "docker": 61.75,
+        "fastapi": 17.6,
+        "github-actions": 61.61,
+        "gps": 0.4,
+        "linux-ubuntu": 61.6,
+        "litellm": 17.6,
+        "llm-api": 0.08,
+        "nfc": 0.04,
+        "nodejs": 17.63,
+        "python": 94.29,
+        "react-next": 17.6,
+        "sql": 0.17,
+        "typescript": 13.04,
+        "web": 0.01,
+        "windows": 17.6,
+        "xamarin": 0.04
       }
     },
     "2026-07": {
@@ -4382,79 +4373,77 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 174.55,
-        "backend": 60.22,
-        "blockchain": 33.45,
-        "devops": 156.78,
-        "languages": 241.0
+        "ai-llm": 166.09,
+        "backend": 75.46,
+        "blockchain": 36.8,
+        "devops": 184.97,
+        "languages": 228.03
       },
       "techs": {
-        "ai-driven-development": 127.6,
-        "asp-net-core": 2.73,
-        "azure": 11.87,
-        "bash": 46.98,
-        "blazor": 2.28,
-        "claude-api": 16.73,
-        "cometbft": 16.73,
-        "cosmos-sdk": 16.73,
-        "csharp-dotnet": 49.33,
-        "docker": 57.91,
-        "ef-core": 4.24,
-        "fastapi": 11.87,
-        "github-actions": 45.45,
+        "ai-driven-development": 128.91,
+        "asp-net-core": 0.42,
+        "azure": 18.4,
+        "bash": 44.3,
+        "blazor": 0.33,
+        "claude-api": 18.4,
+        "cometbft": 18.4,
+        "cosmos-sdk": 18.4,
+        "csharp-dotnet": 49.8,
+        "docker": 65.24,
+        "ef-core": 0.87,
+        "fastapi": 18.4,
+        "github-actions": 64.52,
         "javascript": 0.01,
-        "linux-ubuntu": 41.55,
-        "litellm": 16.73,
-        "llm-api": 12.49,
-        "nodejs": 15.36,
-        "powershell": 0.13,
-        "python": 126.11,
-        "react-next": 11.87,
-        "sql": 0.58,
-        "typescript": 17.41,
-        "vector-db": 1.0,
+        "linux-ubuntu": 64.4,
+        "litellm": 18.4,
+        "llm-api": 0.38,
+        "nodejs": 18.64,
+        "powershell": 0.08,
+        "python": 118.0,
+        "react-next": 18.4,
+        "sql": 0.56,
+        "typescript": 14.82,
         "web": 0.46,
-        "windows": 11.87
+        "windows": 18.4
       }
     },
     "2026-08": {
       "context": {
-        "personal": 72.0,
+        "personal": 69.0,
         "pro": 168.0,
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 147.73,
-        "backend": 54.67,
-        "blockchain": 35.27,
-        "devops": 152.33,
-        "languages": 240.0
+        "ai-llm": 151.75,
+        "backend": 67.93,
+        "blockchain": 34.05,
+        "devops": 168.36,
+        "languages": 226.47
       },
       "techs": {
-        "ai-driven-development": 116.56,
-        "asp-net-core": 3.0,
-        "azure": 10.84,
-        "bash": 41.99,
-        "blazor": 1.0,
-        "blockchain": 4.72,
-        "claude-api": 15.27,
-        "cometbft": 15.27,
-        "cosmos-sdk": 15.27,
-        "csharp-dotnet": 41.07,
-        "docker": 65.62,
-        "fastapi": 10.84,
-        "github-actions": 37.94,
-        "javascript": 1.26,
-        "linux-ubuntu": 37.94,
-        "litellm": 15.27,
-        "llm-api": 0.63,
-        "nodejs": 18.15,
-        "python": 128.47,
-        "react-next": 10.84,
-        "sql": 0.84,
-        "typescript": 26.31,
-        "web": 0.05,
-        "windows": 10.84
+        "ai-driven-development": 118.12,
+        "asp-net-core": 0.71,
+        "azure": 16.8,
+        "bash": 40.36,
+        "blazor": 0.03,
+        "blockchain": 0.45,
+        "claude-api": 16.8,
+        "cometbft": 16.8,
+        "cosmos-sdk": 16.8,
+        "csharp-dotnet": 41.21,
+        "docker": 59.16,
+        "fastapi": 16.8,
+        "github-actions": 58.8,
+        "linux-ubuntu": 58.8,
+        "litellm": 16.8,
+        "llm-api": 0.03,
+        "nodejs": 16.8,
+        "python": 133.5,
+        "react-next": 16.8,
+        "sql": 0.11,
+        "typescript": 11.2,
+        "web": 0.09,
+        "windows": 16.8
       }
     },
     "2026-09": {
@@ -4464,59 +4453,59 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 151.19,
-        "backend": 47.09,
-        "blockchain": 34.61,
-        "devops": 144.3,
-        "embedded": 11.2,
-        "languages": 208.42,
-        "mobile": 3.19
+        "ai-llm": 158.99,
+        "backend": 70.52,
+        "blockchain": 35.37,
+        "devops": 176.36,
+        "embedded": 1.58,
+        "languages": 197.34,
+        "mobile": 1.38
       },
       "techs": {
-        "ai-driven-development": 118.61,
-        "azure": 11.54,
-        "bash": 43.91,
-        "blazor": 1.1,
-        "blockchain": 2.61,
-        "bluetooth": 0.23,
-        "claude-api": 16.0,
-        "cometbft": 16.0,
-        "cosmos-sdk": 16.0,
-        "csharp-dotnet": 43.15,
-        "docker": 39.93,
-        "fastapi": 11.35,
-        "github-actions": 53.27,
-        "gps": 10.62,
-        "grpc": 0.38,
-        "linux-ubuntu": 39.74,
-        "litellm": 16.0,
-        "llm-api": 0.23,
-        "maui": 0.58,
-        "mqtt": 0.12,
-        "nfc": 0.23,
-        "nodejs": 11.35,
-        "python": 109.4,
-        "react-next": 11.35,
-        "ruby": 0.05,
-        "sql": 0.07,
-        "swift": 0.58,
+        "ai-driven-development": 123.74,
+        "azure": 17.61,
+        "bash": 43.68,
+        "blazor": 0.09,
+        "blockchain": 0.17,
+        "bluetooth": 0.02,
+        "claude-api": 17.6,
+        "cometbft": 17.6,
+        "cosmos-sdk": 17.6,
+        "csharp-dotnet": 42.42,
+        "docker": 61.61,
+        "fastapi": 17.6,
+        "github-actions": 61.95,
+        "gps": 1.53,
+        "grpc": 0.02,
+        "linux-ubuntu": 61.6,
+        "litellm": 17.6,
+        "llm-api": 0.02,
+        "maui": 0.07,
+        "mqtt": 0.01,
+        "nfc": 0.02,
+        "nodejs": 17.6,
+        "python": 99.39,
+        "react-next": 17.6,
+        "ruby": 0.02,
+        "sql": 0.06,
+        "swift": 0.77,
         "typescript": 11.73,
-        "vector-db": 0.35,
-        "web": 0.1,
-        "windows": 11.35,
-        "xamarin": 2.04
+        "vector-db": 0.03,
+        "web": 0.04,
+        "windows": 17.6,
+        "xamarin": 0.53
       }
     }
   },
   "context_totals": {
-    "personal": 7012.0,
+    "personal": 6503.0,
     "pro": 23152.0,
     "study": 1008.0
   },
   "coverage": {
-    "commit_days": 1516,
-    "public_days": 269,
-    "public_share": 0.1774
+    "commit_days": 1469,
+    "public_days": 239,
+    "public_share": 0.1627
   },
   "levels": {
     "advanced": 1600,
@@ -4526,11 +4515,11 @@
   },
   "notes": [
     "Hours measure coding practice, not working time (ADR-013).",
-    "Hours per context (pro, personal, study) are additive; hours per tech and per domain are not additive: one hour counts once in each layer (language, platform, domain), so no tech exceeds its period's budget.",
-    "A domain's hours are, per allocation, the largest share any one layer gives its techs: a lower bound, never a sum across layers.",
+    "Hours per context (pro, personal, study) are additive; hours per tech and per domain are not additive: a tech receives the hours times the share of analyzed files touching it, and one file may touch several techs (a C# file calling a BLE API counts for both), so no tech exceeds its period's budget.",
+    "A domain's hours sum its techs' file shares, capped at the hours: a file touching two techs of one domain may count twice below that cap.",
     "Levels are a convention: working >= 50 h, professional >= 500 h, advanced >= 1,600 h, expert >= 5,000 h. display_hours is rounded down so a shown figure never crosses a threshold the raw hours do not.",
-    "estimated_share is the part of a tech's hours allocated from declared tiers, for periods without any commit trace (before 2014, study, a source without commits).",
-    "Months of a source without a commit carry that source's weights over its period, restricted to techs already seen in an own commit by then.",
+    "estimated_share is the part of a tech's hours allocated from declared tiers, for periods without any commit trace (before 2014, study, a source without commits): primary 0.70, secondary 0.35, incident 0.10 of the hours, declared languages sharing 100 % pro rata of their tiers.",
+    "Months of a source without a commit use that source's file counts over its period, restricted to techs already seen in an own commit by then.",
     "Git is excluded from hours: a tool every commit implies.",
     "The collector does not distinguish native Xamarin from Xamarin.Forms: measured Xamarin hours are reported under 'xamarin'.",
     "The collector does not distinguish ASP.NET Core from ASP.NET Web API 2, nor EF Core from Entity Framework 6: they are reported under 'asp-net-core' and 'ef-core'.",
@@ -4538,143 +4527,143 @@
   ],
   "techs": {
     "ai-driven-development": {
-      "display_hours": 1300,
+      "display_hours": 570,
       "domain": "ai-llm",
-      "estimated_share": 0.325,
+      "estimated_share": 0.852,
       "first": "2025-04",
-      "hours": 1377.7,
+      "hours": 578.5,
+      "kind": "domain",
       "last": "2026-09",
-      "layer": "domain",
       "level": "professional"
     },
     "asp-net-core": {
-      "display_hours": 330,
+      "display_hours": 100,
       "domain": "backend",
       "estimated_share": 0.0,
       "first": "2017-10",
-      "hours": 331.9,
+      "hours": 105.9,
+      "kind": "platform",
       "last": "2026-08",
-      "layer": "platform",
       "level": "working"
     },
     "azure": {
-      "display_hours": 50,
+      "display_hours": 70,
       "domain": "backend",
-      "estimated_share": 0.881,
+      "estimated_share": 0.984,
       "first": "2018-04",
-      "hours": 51.5,
+      "hours": 71.6,
+      "kind": "platform",
       "last": "2026-09",
-      "layer": "platform",
       "level": "working"
     },
     "azure-devops": {
-      "display_hours": 50,
+      "display_hours": 0,
       "domain": "devops",
       "estimated_share": 0.0,
       "first": "2019-11",
-      "hours": 51.9,
+      "hours": 7.6,
+      "kind": "platform",
       "last": "2026-04",
-      "layer": "platform",
-      "level": "working"
+      "level": null
     },
     "bash": {
-      "display_hours": 1100,
+      "display_hours": 790,
       "domain": "languages",
-      "estimated_share": 0.138,
+      "estimated_share": 0.208,
       "first": "2014-06",
-      "hours": 1186.1,
+      "hours": 791.4,
+      "kind": "language",
       "last": "2026-09",
-      "layer": "language",
       "level": "professional"
     },
     "blazor": {
-      "display_hours": 600,
+      "display_hours": 150,
       "domain": "backend",
       "estimated_share": 0.0,
       "first": "2021-09",
-      "hours": 600.6,
+      "hours": 157.7,
+      "kind": "platform",
       "last": "2026-09",
-      "layer": "platform",
-      "level": "professional"
+      "level": "working"
     },
     "blockchain": {
-      "display_hours": 2000,
+      "display_hours": 570,
       "domain": "blockchain",
       "estimated_share": 0.0,
       "first": "2021-08",
-      "hours": 2067.8,
+      "hours": 574.4,
+      "kind": "domain",
       "last": "2026-09",
-      "layer": "domain",
-      "level": "advanced"
+      "level": "professional"
     },
     "bluetooth": {
-      "display_hours": 4300,
+      "display_hours": 820,
       "domain": "embedded",
-      "estimated_share": 0.121,
+      "estimated_share": 0.733,
       "first": "2011-12",
-      "hours": 4358.4,
+      "hours": 828.4,
+      "kind": "domain",
       "last": "2026-09",
-      "layer": "domain",
-      "level": "advanced"
+      "level": "professional"
     },
     "c-cpp": {
-      "display_hours": 7800,
+      "display_hours": 6400,
       "domain": "languages",
-      "estimated_share": 0.74,
+      "estimated_share": 0.891,
       "first": "2006-09",
-      "hours": 7820.3,
+      "hours": 6491.0,
+      "kind": "language",
       "last": "2025-04",
-      "layer": "language",
       "level": "expert"
     },
     "claude-api": {
-      "display_hours": 60,
+      "display_hours": 70,
       "domain": "ai-llm",
       "estimated_share": 1.0,
       "first": "2026-06",
-      "hours": 64.0,
+      "hours": 70.4,
+      "kind": "domain",
       "last": "2026-09",
-      "layer": "domain",
       "level": "working"
     },
     "cometbft": {
-      "display_hours": 60,
+      "display_hours": 70,
       "domain": "blockchain",
       "estimated_share": 1.0,
       "first": "2026-06",
-      "hours": 64.0,
+      "hours": 70.4,
+      "kind": "domain",
       "last": "2026-09",
-      "layer": "domain",
       "level": "working"
     },
     "computer-vision": {
-      "display_hours": 280,
+      "display_hours": 200,
       "domain": "embedded",
       "estimated_share": 1.0,
       "first": "2008-09",
-      "hours": 288.0,
+      "hours": 201.6,
+      "kind": "domain",
       "last": "2009-09",
-      "layer": "domain",
       "level": "working"
     },
     "cosmos-sdk": {
-      "display_hours": 60,
+      "display_hours": 70,
       "domain": "blockchain",
       "estimated_share": 1.0,
       "first": "2026-06",
-      "hours": 64.0,
+      "hours": 70.4,
+      "kind": "domain",
       "last": "2026-09",
-      "layer": "domain",
       "level": "working"
     },
     "csharp-dotnet": {
-      "display_hours": 16000,
+      "display_hours": 13000,
       "domain": "languages",
-      "estimated_share": 0.248,
+      "estimated_share": 0.3,
       "first": "2006-09",
-      "hours": 16744.2,
+      "hours": 13810.3,
+      "kind": "language",
       "last": "2026-09",
-      "layer": "language",
       "level": "expert"
     },
     "dart": {
@@ -4683,98 +4672,98 @@
       "estimated_share": 0.0,
       "first": "2025-04",
       "hours": 0.1,
+      "kind": "language",
       "last": "2025-04",
-      "layer": "language",
       "level": null
     },
     "docker": {
-      "display_hours": 1300,
+      "display_hours": 470,
       "domain": "devops",
-      "estimated_share": 0.117,
+      "estimated_share": 0.524,
       "first": "2020-05",
-      "hours": 1361.1,
+      "hours": 470.6,
+      "kind": "platform",
       "last": "2026-09",
-      "layer": "platform",
-      "level": "professional"
+      "level": "working"
     },
     "ef-core": {
-      "display_hours": 830,
+      "display_hours": 140,
       "domain": "backend",
       "estimated_share": 0.0,
       "first": "2016-12",
-      "hours": 835.7,
+      "hours": 145.6,
+      "kind": "platform",
       "last": "2026-07",
-      "layer": "platform",
-      "level": "professional"
+      "level": "working"
     },
     "fastapi": {
-      "display_hours": 40,
+      "display_hours": 70,
       "domain": "backend",
       "estimated_share": 1.0,
       "first": "2026-06",
-      "hours": 45.4,
+      "hours": 70.4,
+      "kind": "platform",
       "last": "2026-09",
-      "layer": "platform",
-      "level": null
+      "level": "working"
     },
     "github-actions": {
-      "display_hours": 660,
+      "display_hours": 290,
       "domain": "devops",
-      "estimated_share": 0.238,
+      "estimated_share": 0.843,
       "first": "2021-12",
-      "hours": 666.6,
+      "hours": 292.2,
+      "kind": "platform",
       "last": "2026-09",
-      "layer": "platform",
-      "level": "professional"
+      "level": "working"
     },
     "go": {
       "display_hours": 0,
       "domain": "languages",
       "estimated_share": 0.0,
-      "first": "2022-05",
-      "hours": 4.0,
+      "first": "2022-12",
+      "hours": 2.7,
+      "kind": "language",
       "last": "2026-04",
-      "layer": "language",
       "level": null
     },
     "gps": {
-      "display_hours": 12000,
+      "display_hours": 1900,
       "domain": "embedded",
-      "estimated_share": 0.37,
+      "estimated_share": 0.881,
       "first": "2009-10",
-      "hours": 12638.6,
+      "hours": 1992.5,
+      "kind": "domain",
       "last": "2026-09",
-      "layer": "domain",
-      "level": "expert"
+      "level": "advanced"
     },
     "grpc": {
-      "display_hours": 90,
+      "display_hours": 20,
       "domain": "backend",
       "estimated_share": 0.0,
       "first": "2023-04",
-      "hours": 96.8,
+      "hours": 24.3,
+      "kind": "platform",
       "last": "2026-09",
-      "layer": "platform",
-      "level": "working"
+      "level": null
     },
     "java": {
-      "display_hours": 10,
+      "display_hours": 0,
       "domain": "languages",
       "estimated_share": 0.0,
       "first": "2015-02",
-      "hours": 13.2,
+      "hours": 2.8,
+      "kind": "language",
       "last": "2025-04",
-      "layer": "language",
       "level": null
     },
     "javascript": {
-      "display_hours": 20,
+      "display_hours": 40,
       "domain": "languages",
       "estimated_share": 0.0,
       "first": "2018-04",
-      "hours": 24.5,
-      "last": "2026-08",
-      "layer": "language",
+      "hours": 49.9,
+      "kind": "language",
+      "last": "2026-07",
       "level": null
     },
     "kotlin": {
@@ -4783,8 +4772,8 @@
       "estimated_share": 0.0,
       "first": "2025-04",
       "hours": 0.1,
+      "kind": "language",
       "last": "2025-04",
-      "layer": "language",
       "level": null
     },
     "kubernetes": {
@@ -4792,49 +4781,49 @@
       "domain": "devops",
       "estimated_share": 0.0,
       "first": "2025-10",
-      "hours": 0.3,
+      "hours": 0.2,
+      "kind": "platform",
       "last": "2025-11",
-      "layer": "platform",
       "level": null
     },
     "linux-ubuntu": {
-      "display_hours": 150,
+      "display_hours": 240,
       "domain": "devops",
       "estimated_share": 1.0,
       "first": "2026-06",
-      "hours": 159.0,
+      "hours": 246.4,
+      "kind": "platform",
       "last": "2026-09",
-      "layer": "platform",
       "level": "working"
     },
     "litellm": {
-      "display_hours": 60,
+      "display_hours": 70,
       "domain": "ai-llm",
       "estimated_share": 1.0,
       "first": "2026-06",
-      "hours": 64.0,
+      "hours": 70.4,
+      "kind": "domain",
       "last": "2026-09",
-      "layer": "domain",
       "level": "working"
     },
     "llm-api": {
-      "display_hours": 160,
+      "display_hours": 0,
       "domain": "ai-llm",
       "estimated_share": 0.0,
       "first": "2024-03",
-      "hours": 169.2,
+      "hours": 7.8,
+      "kind": "domain",
       "last": "2026-09",
-      "layer": "domain",
-      "level": "working"
+      "level": null
     },
     "maui": {
       "display_hours": 0,
       "domain": "mobile",
       "estimated_share": 0.0,
       "first": "2025-12",
-      "hours": 3.1,
+      "hours": 0.4,
+      "kind": "platform",
       "last": "2026-09",
-      "layer": "platform",
       "level": null
     },
     "mqtt": {
@@ -4842,40 +4831,40 @@
       "domain": "embedded",
       "estimated_share": 0.0,
       "first": "2026-09",
-      "hours": 0.1,
+      "hours": 0.0,
+      "kind": "domain",
       "last": "2026-09",
-      "layer": "domain",
       "level": null
     },
     "nfc": {
-      "display_hours": 2800,
+      "display_hours": 2400,
       "domain": "embedded",
-      "estimated_share": 0.992,
+      "estimated_share": 0.999,
       "first": "2011-12",
-      "hours": 2824.4,
+      "hours": 2438.7,
+      "kind": "domain",
       "last": "2026-09",
-      "layer": "domain",
       "level": "advanced"
     },
     "nodejs": {
-      "display_hours": 130,
+      "display_hours": 70,
       "domain": "backend",
-      "estimated_share": 0.344,
+      "estimated_share": 0.957,
       "first": "2025-08",
-      "hours": 131.9,
+      "hours": 73.6,
+      "kind": "platform",
       "last": "2026-09",
-      "layer": "platform",
       "level": "working"
     },
     "objective-c": {
-      "display_hours": 2200,
+      "display_hours": 1500,
       "domain": "mobile",
-      "estimated_share": 0.509,
+      "estimated_share": 0.762,
       "first": "2011-12",
-      "hours": 2273.4,
+      "hours": 1518.1,
+      "kind": "language",
       "last": "2025-04",
-      "layer": "language",
-      "level": "advanced"
+      "level": "professional"
     },
     "php": {
       "display_hours": 0,
@@ -4883,8 +4872,8 @@
       "estimated_share": 0.0,
       "first": "2025-04",
       "hours": 0.1,
+      "kind": "language",
       "last": "2025-04",
-      "layer": "language",
       "level": null
     },
     "powershell": {
@@ -4892,39 +4881,39 @@
       "domain": "languages",
       "estimated_share": 0.0,
       "first": "2025-11",
-      "hours": 2.4,
+      "hours": 1.4,
+      "kind": "language",
       "last": "2026-07",
-      "layer": "language",
       "level": null
     },
     "python": {
-      "display_hours": 2500,
+      "display_hours": 1700,
       "domain": "languages",
-      "estimated_share": 0.128,
+      "estimated_share": 0.19,
       "first": "2018-11",
-      "hours": 2560.8,
+      "hours": 1733.0,
+      "kind": "language",
       "last": "2026-09",
-      "layer": "language",
       "level": "advanced"
     },
     "react-next": {
-      "display_hours": 40,
+      "display_hours": 70,
       "domain": "backend",
       "estimated_share": 1.0,
       "first": "2026-06",
-      "hours": 45.4,
+      "hours": 70.4,
+      "kind": "platform",
       "last": "2026-09",
-      "layer": "platform",
-      "level": null
+      "level": "working"
     },
     "ruby": {
       "display_hours": 0,
       "domain": "languages",
       "estimated_share": 0.0,
       "first": "2025-04",
-      "hours": 0.1,
+      "hours": 0.2,
+      "kind": "language",
       "last": "2026-09",
-      "layer": "language",
       "level": null
     },
     "rust": {
@@ -4933,8 +4922,8 @@
       "estimated_share": 0.0,
       "first": "2025-04",
       "hours": 0.1,
+      "kind": "language",
       "last": "2025-04",
-      "layer": "language",
       "level": null
     },
     "sql": {
@@ -4942,9 +4931,9 @@
       "domain": "languages",
       "estimated_share": 0.0,
       "first": "2022-01",
-      "hours": 18.0,
+      "hours": 10.4,
+      "kind": "language",
       "last": "2026-09",
-      "layer": "language",
       "level": null
     },
     "swift": {
@@ -4952,19 +4941,19 @@
       "domain": "mobile",
       "estimated_share": 0.0,
       "first": "2016-12",
-      "hours": 2.1,
+      "hours": 2.5,
+      "kind": "language",
       "last": "2026-09",
-      "layer": "language",
       "level": null
     },
     "typescript": {
-      "display_hours": 150,
+      "display_hours": 110,
       "domain": "languages",
-      "estimated_share": 0.308,
+      "estimated_share": 0.413,
       "first": "2025-04",
-      "hours": 152.1,
+      "hours": 113.6,
+      "kind": "language",
       "last": "2026-09",
-      "layer": "language",
       "level": "working"
     },
     "vector-db": {
@@ -4972,69 +4961,69 @@
       "domain": "ai-llm",
       "estimated_share": 0.0,
       "first": "2025-11",
-      "hours": 9.5,
+      "hours": 0.6,
+      "kind": "domain",
       "last": "2026-09",
-      "layer": "domain",
       "level": null
     },
     "web": {
-      "display_hours": 30,
+      "display_hours": 130,
       "domain": "languages",
       "estimated_share": 0.0,
       "first": "2014-10",
-      "hours": 32.5,
+      "hours": 139.3,
+      "kind": "language",
       "last": "2026-09",
-      "layer": "language",
-      "level": null
+      "level": "working"
     },
     "windows": {
-      "display_hours": 2200,
+      "display_hours": 1100,
       "domain": "devops",
       "estimated_share": 1.0,
       "first": "2011-01",
-      "hours": 2213.4,
+      "hours": 1118.4,
+      "kind": "platform",
       "last": "2026-09",
-      "layer": "platform",
-      "level": "advanced"
+      "level": "professional"
     },
     "windows-ce": {
-      "display_hours": 7000,
+      "display_hours": 2600,
       "domain": "mobile",
       "estimated_share": 1.0,
       "first": "2006-09",
-      "hours": 7016.0,
+      "hours": 2601.2,
+      "kind": "platform",
       "last": "2012-09",
-      "layer": "platform",
-      "level": "expert"
+      "level": "advanced"
     },
     "windows-mobile": {
-      "display_hours": 1700,
+      "display_hours": 1200,
       "domain": "mobile",
       "estimated_share": 1.0,
       "first": "2013-05",
-      "hours": 1744.0,
+      "hours": 1220.8,
+      "kind": "platform",
       "last": "2014-02",
-      "layer": "platform",
-      "level": "advanced"
+      "level": "professional"
     },
     "xamarin": {
-      "display_hours": 10000,
+      "display_hours": 2200,
       "domain": "mobile",
       "estimated_share": 0.0,
       "first": "2015-02",
-      "hours": 10241.3,
+      "hours": 2280.4,
+      "kind": "platform",
       "last": "2026-09",
-      "layer": "platform",
-      "level": "expert"
+      "level": "advanced"
     },
     "xaml": {
       "display_hours": 140,
       "domain": "languages",
       "estimated_share": 0.0,
       "first": "2015-04",
-      "hours": 143.9,
+      "hours": 140.2,
+      "kind": "language",
       "last": "2026-01",
-      "layer": "language",
       "level": "working"
     }
   },

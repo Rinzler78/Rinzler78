@@ -58,7 +58,7 @@ def _map(**overrides) -> dict:
         "version": 1,
         "excluded": {"git": "tool"},
         "collector": {"csharp": "csharp-dotnet", "dotnet": "csharp-dotnet"},
-        "techs": {"csharp-dotnet": {"layer": "language", "domain": "languages"}},
+        "techs": {"csharp-dotnet": {"kind": "language", "domain": "languages"}},
     }
     base.update(overrides)
     return base
@@ -77,8 +77,8 @@ def test_real_tech_map_loads_and_excludes_git(tech_map):
     [
         ({"version": 2}, "version"),
         ({"collector": {"csharp": "nope"}}, "unknown catalogue id"),
-        ({"techs": {"x": {"layer": "tool", "domain": "d"}}}, "layer"),
-        ({"techs": {"x": {"layer": "language"}}}, "domain"),
+        ({"techs": {"x": {"kind": "tool", "domain": "d"}}}, "kind"),
+        ({"techs": {"x": {"kind": "language"}}}, "domain"),
         ({"excluded": {"csharp-dotnet": "why"}}, "excluded"),
         ({"collector": []}, "collector"),
         ({"excluded": []}, "excluded"),
@@ -112,33 +112,29 @@ def test_collector_excluded_id_is_dropped():
     assert mapping.to_catalogue({"git": 0.5, "csharp": 0.5}) == {"csharp-dotnet": 0.5}
 
 
-# --- Overlap rule --------------------------------------------------------
+# --- File shares ---------------------------------------------------------
 
 
-def test_allocate_normalizes_within_each_layer(tech_map):
-    weights = {"python": 0.6, "bash": 0.2, "docker": 0.1, "bluetooth": 0.1}
-    alloc = hr.allocate(10.0, weights, tech_map)
-    assert alloc["python"] == pytest.approx(7.5)
-    assert alloc["bash"] == pytest.approx(2.5)
-    # Alone in their layer, platform and domain techs take the whole hour.
-    assert alloc["docker"] == pytest.approx(10.0)
-    assert alloc["bluetooth"] == pytest.approx(10.0)
-    assert max(alloc.values()) <= 10.0
+def test_shares_are_file_fractions_and_may_overlap():
+    # 4 analyzed files: 3 C#, 2 of them calling BLE, 1 README.
+    shares = hr.shares_from(4, {"csharp-dotnet": 3, "bluetooth": 2, "python": 0})
+    assert shares == {"csharp-dotnet": 0.75, "bluetooth": 0.5}
+    assert hr.shares_from(0, {"python": 1}) == {}
+    assert hr.shares_from(1, {"python": 3}) == {"python": 1.0}  # capped
 
 
-def test_allocate_empty_or_zero_weights(tech_map):
-    assert hr.allocate(10.0, {}, tech_map) == {}
-    assert hr.allocate(10.0, {"python": 0.0}, tech_map) == {}
+def test_allocate_is_hours_times_share():
+    alloc = hr.allocate(10.0, {"csharp-dotnet": 0.75, "bluetooth": 0.5, "x": 0.0})
+    assert alloc == {"csharp-dotnet": 7.5, "bluetooth": 5.0}
+    assert hr.allocate(10.0, {}) == {}
 
 
-def test_domain_hours_take_the_largest_layer_share(tech_map):
-    # mobile: objective-c is 0.5 of the language layer, xamarin 1.0 of the
-    # platform layer -> the domain was exercised for the whole hour, not 1.5.
-    weights = {"objective-c": 0.5, "python": 0.5, "xamarin": 0.2}
-    dom = hr.domain_hours(4.0, weights, tech_map)
-    assert dom["mobile"] == pytest.approx(4.0)
+def test_domain_hours_sum_shares_capped(tech_map):
+    shares = {"objective-c": 0.5, "xamarin": 0.7, "python": 0.5}
+    dom = hr.domain_hours(4.0, shares, tech_map)
+    assert dom["mobile"] == pytest.approx(4.0)  # 1.2 capped at 1
     assert dom["languages"] == pytest.approx(2.0)
-    assert hr.domain_hours(4.0, {}, tech_map) == {}
+    assert hr.domain_hours(4.0, {"python": 0.0}, tech_map) == {}
 
 
 # --- Levels and display --------------------------------------------------
@@ -193,22 +189,43 @@ def test_display_never_crosses_a_threshold():
 # --- Experiences (declared tiers) ----------------------------------------
 
 
-def test_tier_weights_use_active_experiences_and_drop_git(tech_map):
+def test_estimated_shares_use_active_experiences_and_drop_git(tech_map):
     exps = hr.parse_experiences(_json("hours_experiences.json"))
-    weights = hr.tier_weights(["freelance"], "2007-07", exps, tech_map)
-    assert weights == {"python": 0.7, "docker": 0.35}
+    shares = hr.estimated_shares(["freelance"], "2007-07", exps, tech_map)
+    # The only declared language takes 100 %; docker keeps its tier.
+    assert shares == {"python": 1.0, "docker": 0.35}
 
 
-def test_tier_weights_fall_back_to_all_mapped_when_none_active(tech_map):
+def test_estimated_languages_share_pro_rata(tech_map):
     exps = hr.parse_experiences(_json("hours_experiences.json"))
-    weights = hr.tier_weights(["org-d", "school-x"], "2010-01", exps, tech_map)
-    assert weights == {"csharp-dotnet": 0.7, "c-cpp": 0.7, "windows-ce": 0.35}
-    active = hr.tier_weights(["org-d", "school-x"], "2008-02", exps, tech_map)
-    assert active == {"csharp-dotnet": 0.7}
+    shares = hr.estimated_shares(["org-d", "school-x"], "2010-01", exps, tech_map)
+    assert shares == {"csharp-dotnet": 0.5, "c-cpp": 0.5, "windows-ce": 0.35}
+    active = hr.estimated_shares(["org-d", "school-x"], "2008-02", exps, tech_map)
+    assert active == {"csharp-dotnet": 1.0}
 
 
-def test_tier_weights_unknown_experience_is_empty(tech_map):
-    assert hr.tier_weights(["nobody"], "2008-02", {}, tech_map) == {}
+def test_estimated_non_language_tiers_are_capped(tech_map):
+    exps = hr.parse_experiences(
+        [
+            {
+                "id": "a",
+                "start": "2008-01",
+                "end": None,
+                "tech_weights": {"nfc": "primary"},
+            },
+            {
+                "id": "b",
+                "start": "2008-01",
+                "end": None,
+                "tech_weights": {"nfc": "primary"},
+            },
+        ]
+    )
+    assert hr.estimated_shares(["a", "b"], "2008-02", exps, tech_map) == {"nfc": 1.0}
+
+
+def test_estimated_shares_unknown_experience_is_empty(tech_map):
+    assert hr.estimated_shares(["nobody"], "2008-02", {}, tech_map) == {}
 
 
 @pytest.mark.parametrize(
@@ -256,12 +273,21 @@ def test_parse_evidence_reads_days():
     [
         (lambda d: d.pop("days"), "days"),
         (lambda d: d["days"].update({"2007-13-01": d["days"]["2007-08-06"]}), "date"),
-        (lambda d: d["days"]["2007-08-06"].pop("techs"), "techs"),
-        (lambda d: d["days"]["2007-08-06"].update({"repos": "x"}), "repos"),
-        (lambda d: d["days"]["2007-08-06"].update({"techs": {"csharp": -1}}), "weight"),
+        (lambda d: d["days"]["2007-08-06"].pop("file_counts"), "file_counts"),
+        (lambda d: d["days"]["2007-08-06"].update({"files": -1}), "files"),
+        (lambda d: d["days"]["2007-08-06"].update({"files": True}), "files"),
         (
-            lambda d: d["days"]["2007-08-06"].update({"techs": {"csharp": True}}),
-            "number",
+            lambda d: d["days"]["2007-08-06"].update({"file_counts": {"ble": 9}}),
+            "exceeds",
+        ),
+        (lambda d: d["days"]["2007-08-06"].update({"repos": "x"}), "repos"),
+        (
+            lambda d: d["days"]["2007-08-06"].update({"file_counts": {"ble": -1}}),
+            "integer",
+        ),
+        (
+            lambda d: d["days"]["2007-08-06"].update({"file_counts": {"ble": 0.5}}),
+            "integer",
         ),
         (lambda d: d["days"].update({"2007-8-6": {}}), "YYYY-MM-DD"),
     ],
@@ -312,20 +338,21 @@ def test_context_totals_are_additive(doc):
 
 def test_traced_month_uses_that_month_commit_days(doc):
     aug = doc["by_month"]["2007-08"]["techs"]
-    assert aug["csharp-dotnet"] == pytest.approx(184.0)  # pro, language alone
-    assert aug["bluetooth"] == pytest.approx(184.0)  # pro, domain alone
-    assert aug["python"] == pytest.approx(3.0)  # the personal Saturday
+    # org B, 5 files: 4 C# + 1 project file (both C#/.NET), 2 calling BLE.
+    assert aug["csharp-dotnet"] == pytest.approx(184.0)
+    assert aug["bluetooth"] == pytest.approx(184 * 2 / 5)
+    assert aug["python"] == pytest.approx(3 * 1 / 2)  # personal: 1 of 2 files
 
 
-def test_untraced_month_carries_the_period_weights(doc):
-    # 2007-10: 23 weekdays; period weights csharp-dotnet 1.3, python 0.5.
+def test_untraced_month_uses_the_period_file_counts(doc):
+    # 2007-10: 23 weekdays; org B period: 9 files, 7 C#/.NET, 2 BLE, 2 Python.
     oct_ = doc["by_month"]["2007-10"]["techs"]
-    assert oct_["csharp-dotnet"] == pytest.approx(184 * 1.3 / 1.8, abs=0.01)
-    assert oct_["python"] == pytest.approx(184 * 0.5 / 1.8, abs=0.01)
-    assert oct_["bluetooth"] == pytest.approx(184.0)
+    assert oct_["csharp-dotnet"] == pytest.approx(184 * 7 / 9, abs=0.01)
+    assert oct_["python"] == pytest.approx(184 * 2 / 9, abs=0.01)
+    assert oct_["bluetooth"] == pytest.approx(184 * 2 / 9, abs=0.01)
 
 
-def test_carried_weights_never_predate_a_first_commit(doc):
+def test_carried_shares_never_predate_a_first_commit(doc):
     # org D commits TypeScript only in 2008-02: January stays unallocated.
     assert "typescript" not in doc["by_month"]["2008-01"]["techs"]
     assert doc["techs"]["typescript"]["first"] == "2008-02"
@@ -334,23 +361,25 @@ def test_carried_weights_never_predate_a_first_commit(doc):
 
 def test_parallel_sources_split_by_share(doc):
     jan = doc["by_month"]["2008-01"]
-    # org C 0.7 x 184 on its own commit day; org D's 0.3 is unallocated.
-    assert jan["techs"]["c-cpp"] == pytest.approx(128.8)
+    # org C 0.7 x 184, 3 of 5 files in C; org D's 0.3 is unallocated.
+    assert jan["techs"]["c-cpp"] == pytest.approx(128.8 * 0.6)
+    assert jan["techs"]["docker"] == pytest.approx(128.8 * 0.2)
     assert jan["context"]["pro"] == pytest.approx(184.0)
 
 
 def test_untraced_source_is_estimated_from_declared_tiers(doc):
     jul = doc["by_month"]["2007-07"]["techs"]
-    assert jul == {"docker": 176.0, "python": 176.0}
+    assert jul == {"docker": 61.6, "python": 176.0}
+    measured = 128.8 * 0.2 + 2 * 0.7 * 168 * 0.2
     assert doc["techs"]["docker"]["estimated_share"] == pytest.approx(
-        176 / (176 + 128.8 + 2 * 0.7 * 168), abs=0.001
+        61.6 / (61.6 + measured), abs=0.001
     )
 
 
 def test_study_is_estimated_and_counted_as_study(doc):
     sep = doc["by_month"]["2006-09"]
     assert sep["context"] == {"pro": 0.0, "personal": 0.0, "study": 36.0}
-    assert sep["techs"] == {"c-cpp": 36.0, "windows-ce": 36.0}
+    assert sep["techs"] == {"c-cpp": 36.0, "windows-ce": 12.6}
     assert "2007-07" in doc["by_month"]
     assert "2006-07" not in doc["by_month"]  # context none counts nothing
 
@@ -381,20 +410,20 @@ def test_git_is_never_counted(doc):
 
 def test_tech_entries_carry_level_period_and_domain(doc):
     csharp = doc["techs"]["csharp-dotnet"]
-    expected = 184 + 80 + (184 + 176 + 168) * 1.3 / 1.8 + 1.5 + 11
+    expected = 184 + 80 + (184 + 176 + 168) * 7 / 9 + 1.5 + 11
     assert csharp["hours"] == pytest.approx(expected, abs=0.1)
     assert csharp["level"] == "professional"
     assert csharp["display_hours"] == hr.display_hours(expected)
     assert (csharp["first"], csharp["last"]) == ("2007-08", "2008-04")
     assert csharp["domain"] == "languages"
-    assert csharp["layer"] == "language"
+    assert csharp["kind"] == "language"
     assert csharp["estimated_share"] == 0.0
 
 
 def test_domains_per_month(doc):
     aug = doc["by_month"]["2007-08"]["domains"]
-    assert aug["languages"] == pytest.approx(187.0)
-    assert aug["embedded"] == pytest.approx(184.0)
+    assert aug["languages"] == pytest.approx(184 + 1.5)
+    assert aug["embedded"] == pytest.approx(184 * 2 / 5)
 
 
 def test_coverage_and_as_of(doc):
@@ -464,12 +493,10 @@ def test_sanity_detects_budget_overflow(inputs, doc):
     units = hr.build_units(inputs)
     # Double the allocation only: the budgets still come from ``units``.
     inflated = [
-        hr.Unit(u.month, u.kind, u.hours * 2, u.weights, u.estimated, u.period)
+        hr.Unit(u.month, u.kind, u.hours * 2, u.shares, u.estimated, u.period)
         for u in units
     ]
-    issues = hr.sanity_checks(
-        doc, units, inputs, allocations=hr.allocations(inflated, inputs.tech_map)
-    )
+    issues = hr.sanity_checks(doc, units, inputs, allocations=hr.allocations(inflated))
     assert any("exceeds" in i for i in issues)
 
 
@@ -533,7 +560,7 @@ def test_cli_reports_invalid_input(tmp_path, monkeypatch, capsys):
 def test_cli_refuses_to_write_when_sanity_fails(tmp_path, monkeypatch, capsys):
     private = _private_dir(tmp_path)
     evidence = _json("hours_evidence.json")
-    evidence["days"]["2008-05-02"]["techs"] = {"github-actions": 1.0}
+    evidence["days"]["2008-05-02"]["file_counts"] = {"github-actions": 1}
     (private / "evidence.json").write_text(json.dumps(evidence), encoding="utf-8")
     monkeypatch.setenv("PROFILE_PRIVATE_DIR", str(private))
     out = tmp_path / "a.json"

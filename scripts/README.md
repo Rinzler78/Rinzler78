@@ -134,32 +134,41 @@ the author's machine only: it reads `$PROFILE_PRIVATE_DIR/timeline.json`,
 mapped to `{"context": "pro" | "personal", "source": <timeline source id>}`;
 unclassified repositories count as personal).
 
-**Allocation.**
+The collector (`python -m scripts.activity.evidence`) keeps only repositories
+owned by the author or by a company he worked for: `$PROFILE_PRIVATE_DIR/owners.json`
+lists allowed key prefixes (`{"allow": ["github.com/<owner>/", "local:"]}`);
+other repositories are dropped before deduplication and listed in
+`summary.excluded_repos` with their number of own commits.
 
+**Allocation (file share).**
+
+- A tech receives the hours times the share of analyzed files touching it
+  (`files` and `file_counts` per evidence day). A C# file calling a BLE API
+  counts for both; each file has one language, so languages sum to about 1 and
+  no tech exceeds its period's budget. Context totals are additive; tech and
+  domain totals are not. A domain sums its techs' shares, capped at 1.
 - Professional hours (calendar weekdays) are split by timeline source. A
-  source's month takes the tech weights of that source's commit days in the
-  month; a month without a commit carries the source's weights over the whole
-  period, restricted to techs already seen in an own commit by then (hours with
-  nothing left count for the context, not for a tech). A source without any
-  trace in its period is allocated from the declared tiers of
-  `data/experiences.json` (primary 0.70, secondary 0.35, incident 0.10) and
-  flagged estimated; `SOURCE_EXPERIENCES` maps timeline ids to experience ids.
+  source's month uses the file counts summed over that source's commit days of
+  the month; a month without a commit uses the counts over the whole period,
+  restricted to techs already seen in an own commit by then (hours with
+  nothing left count for the context, not for a tech).
+- Estimated periods (no trace: before 2014, a client whose commits are not
+  collected): declared tiers of `data/experiences.json` are assumed file
+  shares, primary 0.70, secondary 0.35, incident 0.10; declared languages share
+  100 % pro rata of their tiers. `SOURCE_EXPERIENCES` maps timeline ids to
+  experience ids.
 - Personal hours: the period's personal budget on each commit day with at least
-  one personal repository, with that day's weights. A professional repository
-  outside its source's period counts as personal.
-- Overlap: `tech_map.json` puts each catalogue id in a layer (language,
-  platform, domain). Weights are normalized within a layer, so an hour counts
-  once per layer and no tech exceeds its period's budget. Context totals are
-  additive; tech and domain totals are not. A domain takes the largest share
-  any single layer gives it.
-- `tech_map.json` also maps collector ids to catalogue ids and excludes Git.
-  An unknown collector id is an error: extend the map, never skip it.
+  one personal repository, with that day's file shares. A professional
+  repository outside its source's period counts as personal.
+- `tech_map.json` maps collector ids to catalogue ids, gives each catalogue id
+  a kind (language, platform, domain) and a domain, and excludes Git. An
+  unknown collector id is an error: extend the map, never skip it.
 
 **Output** `data/activity/aggregates.json`: `version`, `activity_as_of` (last
 evidence day), `coverage` (commit days, public days, public share),
 `context_totals`, `levels`, `by_month` (`context`, `techs`, `domains`), `techs`
 (`hours`, `display_hours` rounded down, `level`, `first`, `last`,
-`estimated_share`, `layer`, `domain`) and `notes`. No repository, identity or
+`estimated_share`, `kind`, `domain`) and `notes`. No repository, identity or
 private source id is written.
 
 **Sanity checks** (the file is not written when one fails): no tech starts
