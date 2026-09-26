@@ -1,0 +1,635 @@
+"""Own-commit evidence: identity filter, dedupe, static analysis, output.
+
+All repositories are built in ``tmp_path`` from synthetic commits; no network.
+"""
+
+from __future__ import annotations
+
+import json
+import os
+import runpy
+import sys
+from pathlib import Path
+
+import pytest
+
+from scripts.activity import evidence as ev
+from tests.activity.conftest import OTHER, OWN, git
+
+IDENTITIES = {"email_patterns": ["^jane\\.sample@"], "name_patterns": ["^sample jane$"]}
+
+
+@pytest.fixture
+def ids() -> ev.Identities:
+    return ev.Identities.from_dict(IDENTITIES)
+
+
+@pytest.fixture
+def voc() -> ev.Vocabulary:
+    return ev.load_vocabulary()
+
+
+def never_public(_key: str) -> bool:
+    return False
+
+
+# --- identities --------------------------------------------------------------
+
+
+def test_identity_match_is_case_insensitive(ids: ev.Identities) -> None:
+    assert ids.matches("Anyone", "JANE.Sample@Example.ORG")
+    assert ids.matches("Sample JANE", "unrelated@example.com")
+    assert not ids.matches(*OTHER)
+
+
+@pytest.mark.parametrize(
+    "raw",
+    [
+        [],
+        {"email_patterns": []},
+        {"email_patterns": [], "name_patterns": []},
+        {"email_patterns": "x", "name_patterns": []},
+        {"email_patterns": [1], "name_patterns": []},
+    ],
+)
+def test_identities_reject_malformed_config(raw: object) -> None:
+    with pytest.raises(ValueError):
+        ev.Identities.from_dict(raw)
+
+
+def test_load_identities_reads_json(tmp_path: Path) -> None:
+    path = tmp_path / "identities.json"
+    path.write_text(json.dumps(IDENTITIES))
+    assert ev.load_identities(path).matches(*OWN)
+
+
+# --- vocabulary --------------------------------------------------------------
+
+
+def test_shipped_vocabulary_is_versioned(voc: ev.Vocabulary) -> None:
+    assert isinstance(voc.version, int)
+    assert voc.version >= 1
+
+
+@pytest.mark.parametrize(
+    "raw",
+    [
+        [],
+        {"version": 1},
+        {
+            "version": "1",
+            "excluded": [],
+            "languages": {},
+            "path_rules": [],
+            "signatures": {},
+        },
+        {
+            "version": 1,
+            "excluded": [],
+            "languages": {},
+            "path_rules": [{}],
+            "signatures": {},
+        },
+        {
+            "version": 1,
+            "excluded": [],
+            "languages": {},
+            "path_rules": [],
+            "signatures": {"x": "not-a-list"},
+        },
+    ],
+)
+def test_vocabulary_rejects_malformed_file(raw: object) -> None:
+    with pytest.raises(ValueError):
+        ev.Vocabulary.from_dict(raw)
+
+
+@pytest.mark.parametrize(
+    "path",
+    [
+        "App/Resources/Resource.designer.cs",
+        "App/Forms/Main.Designer.cs",
+        "Data/Migrations/AppModelSnapshot.cs",
+        "src/bin/Debug/app.dll.config",
+        "src/obj/project.assets.json",
+        "web/node_modules/lib/index.js",
+        "vendor/pkg/file.go",
+        "package-lock.json",
+        "yarn.lock",
+        "poetry.lock",
+        "uv.lock",
+        "Cargo.lock",
+        "static/app.min.js",
+    ],
+)
+def test_generated_and_vendored_paths_are_excluded(
+    voc: ev.Vocabulary, path: str
+) -> None:
+    assert voc.is_excluded(path)
+
+
+def test_handwritten_paths_are_kept(voc: ev.Vocabulary) -> None:
+    assert not voc.is_excluded("src/Binder.cs")
+    assert not voc.is_excluded("lib/objects.py")
+
+
+# --- static analysis ---------------------------------------------------------
+
+
+def test_generated_android_resource_yields_no_signal(voc: ev.Vocabulary) -> None:
+    lines = [f"public const int GattCharacteristic{i} = {i};" for i in range(2000)]
+    assert voc.analyze_patch({"Droid/Resources/Resource.designer.cs": lines}) == {}
+
+
+def test_wrapper_namespace_counts_as_ble(voc: ev.Vocabulary) -> None:
+    units = voc.analyze_patch({"App/Scan.cs": ["using NetToolBox.Bluetooth;"]})
+    assert units == {"csharp": 1, "ble": 1}
+
+
+def test_signature_counts_once_per_file(voc: ev.Vocabulary) -> None:
+    lines = ["import anthropic", "client = anthropic.Anthropic()"]
+    units = voc.analyze_patch({"a.py": lines, "b.py": lines})
+    assert units == {"python": 2, "llm-api": 2}
+
+
+def test_only_root_workflow_files_are_github_actions(voc: ev.Vocabulary) -> None:
+    assert "github-actions" in voc.analyze_patch({".github/workflows/ci.yml": ["on:"]})
+    assert voc.analyze_patch({"docs/.github/workflows/ci.yml": ["on:"]}) == {}
+
+
+def test_line_scoped_rule_disambiguates_dot_m(voc: ev.Vocabulary) -> None:
+    matlab = voc.analyze_patch({"calc.m": ["function y = f(x)", "y = zeros(3);"]})
+    objective_c = voc.analyze_patch({"View.m": ["#import <UIKit/UIKit.h>"]})
+    assert matlab == {"matlab": 1}
+    assert objective_c == {"objective-c": 1}
+
+
+def test_sql_from_clause_is_not_docker(voc: ev.Vocabulary) -> None:
+    units = voc.analyze_patch({"q.py": ['rows = db.run("SELECT id FROM users")']})
+    assert units == {"python": 1, "sql": 1}
+
+
+def test_names_only_use_language_and_unscoped_path_rules(voc: ev.Vocabulary) -> None:
+    units = voc.analyze_names(["Dockerfile", "calc.m", "a.cs", "obj/x.cs", "README"])
+    assert units == {"docker": 1, "csharp": 1}
+
+
+def test_normalize_sums_to_one() -> None:
+    weights = ev.normalize({"python": 3, "docker": 1})
+    assert weights == {"python": 0.75, "docker": 0.25}
+    assert ev.normalize({}) == {}
+
+
+# --- repo keys ---------------------------------------------------------------
+
+
+@pytest.mark.parametrize(
+    ("remote", "key"),
+    [
+        ("git@github.com:Owner/Repo.git", "github.com/owner/repo"),
+        ("https://github.com/owner/repo", "github.com/owner/repo"),
+        ("https://user@github.com/Owner/Repo.git/", "github.com/owner/repo"),
+        ("ssh://git@git.example.com:2222/team/app.git", "git.example.com/team/app"),
+    ],
+)
+def test_repo_key_normalizes_remotes(remote: str, key: str) -> None:
+    assert ev.repo_key(remote, Path("/any")) == key
+
+
+def test_repo_key_falls_back_to_path(tmp_path: Path) -> None:
+    assert ev.repo_key("", tmp_path) == f"local:{tmp_path}"
+    assert ev.repo_key("/some/dir", tmp_path) == "local:/some/dir"
+
+
+# --- collection --------------------------------------------------------------
+
+
+def test_collect_keeps_own_commits_once(make_repo, tmp_path, ids, voc) -> None:
+    origin = make_repo(
+        "app",
+        [
+            (OWN, "2021-03-04T23:30:00+02:00", {"a.py": "import anthropic\n"}),
+            (OTHER, "2021-03-05T10:00:00+00:00", {"b.py": "x = 1\n"}),
+            (
+                ("SAMPLE Jane", "old@example.com"),
+                "2021-03-06T10:00:00+00:00",
+                {"Dockerfile": "FROM python:3.12\n"},
+            ),
+        ],
+        remote="git@github.com:jane/app.git",
+    )
+    copy = tmp_path / "copy"
+    git(tmp_path, "clone", "-q", str(origin), str(copy))
+
+    result = ev.collect([origin, copy], ids, voc, is_public=never_public)
+
+    assert sorted(c.day for c in result.commits.values()) == [
+        "2021-03-04",
+        "2021-03-06",
+    ]
+    first = next(c for c in result.commits.values() if c.day == "2021-03-04")
+    assert first.repo == "github.com/jane/app"
+    assert first.units == {"python": 1, "llm-api": 1}
+    assert first.weights == {"python": 0.5, "llm-api": 0.5}
+    assert first.has_patch
+    assert result.failures == {}
+
+
+def test_unreadable_repo_is_reported(tmp_path, ids, voc) -> None:
+    missing = tmp_path / "nowhere"
+    result = ev.collect([missing], ids, voc, is_public=never_public)
+    assert result.commits == {}
+    assert str(missing) in result.failures
+
+
+# --- history ----------------------------------------------------------------
+
+
+def _own_env(date: str) -> dict[str, str]:
+    return {
+        "GIT_AUTHOR_NAME": OWN[0],
+        "GIT_AUTHOR_EMAIL": OWN[1],
+        "GIT_AUTHOR_DATE": date,
+        "GIT_COMMITTER_DATE": date,
+    }
+
+
+def _drop_object(repo: Path, rev: str) -> None:
+    oid = git(repo, "rev-parse", rev).strip()
+    loose = repo / ".git" / "objects" / oid[:2] / oid[2:]
+    loose.chmod(0o644)
+    loose.unlink()
+
+
+def test_merge_commits_add_no_lines(make_repo, ids, voc) -> None:
+    day = "2021-05-05T10:00:00+00:00"
+    repo = make_repo("merge", [(OWN, day, {"a.py": "x = 1\n"})])
+    git(repo, "checkout", "-q", "-b", "side")
+    (repo / "side.py").write_text("import anthropic\n")
+    git(repo, "add", "-A")
+    git(repo, "commit", "-q", "-m", "side", env=_own_env(day))
+    git(repo, "checkout", "-q", "main")
+    (repo / "main.rs").write_text("fn main() {}\n")
+    git(repo, "add", "-A")
+    git(repo, "commit", "-q", "-m", "main", env=_own_env(day))
+    git(repo, "merge", "-q", "--no-ff", "-m", "merge", "side", env=_own_env(day))
+    merge = git(repo, "rev-parse", "HEAD").strip()
+
+    result = ev.collect([repo], ids, voc, is_public=never_public)
+
+    assert len(result.commits) == 4
+    assert result.commits[merge].units == {}
+    assert result.commits[merge].has_patch
+
+
+def test_deleted_binary_and_modified_files(make_repo, ids, voc) -> None:
+    day = "2021-05-05T10:00:00+00:00"
+    repo = make_repo("kinds", [(OWN, day, {"old.py": "a = 1\nb = 2\n"})])
+    (repo / "old.py").write_text("a = 1\n")
+    git(repo, "add", "-A")
+    git(repo, "commit", "-q", "-m", "shrink", env=_own_env(day))
+    shrink = git(repo, "rev-parse", "HEAD").strip()
+    (repo / "old.py").unlink()
+    (repo / "blob.cs").write_bytes(b"\x00\x01binary")
+    git(repo, "add", "-A")
+    git(repo, "commit", "-q", "-m", "swap", env=_own_env(day))
+    swap = git(repo, "rev-parse", "HEAD").strip()
+
+    commits = ev.collect([repo], ids, voc, is_public=never_public).commits
+
+    assert commits[shrink].units == {"python": 1}
+    assert commits[swap].units == {}
+
+
+def test_added_lines_are_bounded_and_filtered(make_repo, monkeypatch) -> None:
+    monkeypatch.setattr(ev, "MAX_LINES_PER_FILE", 2)
+    long_line = "x" * ev.MAX_LINE_LENGTH
+    repo = make_repo(
+        "bounds",
+        [
+            (
+                OWN,
+                "2021-05-05T10:00:00+00:00",
+                {
+                    "big.py": f"{long_line}\none\ntwo\nthree\n",
+                    "skip.py": "dropped\n",
+                },
+            )
+        ],
+    )
+    handle = ev.open_repository(repo)
+    commit = handle.revparse_single("HEAD")
+
+    files = ev.added_lines(handle, commit, keep=lambda path: path != "skip.py")
+
+    assert files == {"big.py": ["one", "two"]}
+
+
+def test_walk_covers_detached_head_and_ignores_tree_tags(make_repo, ids, voc) -> None:
+    day = "2021-05-05T10:00:00+00:00"
+    repo = make_repo("walk", [(OWN, day, {"a.py": "x\n"})])
+    git(repo, "tag", "tree-tag", "HEAD^{tree}")
+    git(repo, "checkout", "-q", "--detach")
+    git(repo, "commit", "-q", "--allow-empty", "-m", "detached", env=_own_env(day))
+
+    result = ev.collect([repo], ids, voc, is_public=never_public)
+
+    assert len(result.commits) == 2
+
+
+def test_empty_repo_and_nested_folder(tmp_path, ids, voc) -> None:
+    empty = tmp_path / "empty"
+    empty.mkdir()
+    git(empty, "init", "-q")
+    nested = empty / "sub"
+    nested.mkdir()
+
+    result = ev.collect([empty, nested], ids, voc, is_public=never_public)
+
+    assert result.commits == {}
+    assert list(result.failures) == [str(nested)]
+
+
+def test_missing_blob_falls_back_to_names_then_full_copy_upgrades(
+    make_repo, tmp_path, ids, voc
+) -> None:
+    day = "2020-01-01T10:00:00+00:00"
+    content = "using NetToolBox.Bluetooth;\n"
+    blobless = make_repo("blobless", [(OWN, day, {"a.cs": content})])
+    full = tmp_path / "full"
+    git(tmp_path, "clone", "-q", "--no-hardlinks", str(blobless), str(full))
+    _drop_object(blobless, "HEAD:a.cs")
+
+    alone = ev.collect([blobless], ids, voc, is_public=never_public)
+    (commit,) = alone.commits.values()
+    assert not commit.has_patch
+    assert commit.units == {"csharp": 1}
+
+    both = ev.collect([blobless, full], ids, voc, is_public=lambda key: True)
+    (commit,) = both.commits.values()
+    assert commit.has_patch
+    assert commit.units == {"csharp": 1, "ble": 1}
+    assert commit.public
+
+
+def test_missing_tree_yields_no_units(make_repo, ids, voc) -> None:
+    day = "2020-01-01T10:00:00+00:00"
+    repo = make_repo("treeless", [(OWN, day, {"a.cs": "x\n"})])
+    _drop_object(repo, "HEAD^{tree}")
+
+    (commit,) = ev.collect([repo], ids, voc, is_public=never_public).commits.values()
+
+    assert commit.units == {}
+    assert not commit.has_patch
+
+
+def test_remote_url_prefers_origin_then_any(make_repo) -> None:
+    repo = make_repo("remotes", [])
+    assert ev.remote_url(ev.open_repository(repo)) == ""
+    git(repo, "remote", "add", "upstream", "https://example.com/a/b.git")
+    assert ev.remote_url(ev.open_repository(repo)) == "https://example.com/a/b.git"
+    git(repo, "remote", "add", "origin", "https://example.com/c/d.git")
+    assert ev.remote_url(ev.open_repository(repo)) == "https://example.com/c/d.git"
+
+
+# --- aggregation -------------------------------------------------------------
+
+
+def _commit(h: str, day: str, repo: str, units: dict[str, int], public=False):
+    return ev.CommitEvidence(
+        hash=h, day=day, repo=repo, units=units, has_patch=bool(units), public=public
+    )
+
+
+def test_aggregate_per_day_and_summary() -> None:
+    result = ev.CollectResult(
+        commits={
+            "a": _commit("a", "2021-01-01", "r1", {"python": 1}, public=True),
+            "b": _commit("b", "2021-01-01", "r2", {"docker": 1, "python": 1}),
+            "c": _commit("c", "2021-01-02", "r2", {}),
+        },
+        failures={"/x": "boom"},
+    )
+    out = ev.aggregate(result, vocabulary_version=7)
+
+    day = out["days"]["2021-01-01"]
+    assert day["repos"] == ["r1", "r2"]
+    assert day["commits"] == 2
+    assert day["public"] is True
+    assert day["techs"] == {"docker": 0.25, "python": 0.75}
+    assert day["presence"] == ["docker", "python"]
+    assert out["days"]["2021-01-02"]["techs"] == {}
+    assert out["summary"] == {
+        "vocabulary_version": 7,
+        "unique_commits": 3,
+        "distinct_days": 2,
+        "repos": 2,
+        "public_day_share": 0.5,
+        "commits_without_patch": 1,
+        "failures": {"/x": "boom"},
+    }
+
+
+def test_aggregate_of_nothing() -> None:
+    out = ev.aggregate(ev.CollectResult(commits={}, failures={}), vocabulary_version=1)
+    assert out["summary"]["public_day_share"] == 0.0
+
+
+# --- visibility --------------------------------------------------------------
+
+
+def test_visibility_asks_once_and_caches(tmp_path: Path) -> None:
+    calls: list[str] = []
+
+    def lookup(slug: str) -> bool:
+        calls.append(slug)
+        return slug == "owner/pub"
+
+    cache = tmp_path / "cache.json"
+    vis = ev.GitHubVisibility(cache, lookup=lookup)
+    assert vis("github.com/owner/pub")
+    assert vis("github.com/owner/pub")
+    assert not vis("github.com/owner/priv")
+    assert not vis("local:/x")
+    assert not vis("git.example.com/team/app")
+    assert calls == ["owner/pub", "owner/priv"]
+
+    assert ev.GitHubVisibility(cache, lookup=lookup)("github.com/owner/pub")
+    assert calls == ["owner/pub", "owner/priv"]
+
+
+def test_unknown_visibility_is_private_and_not_cached(tmp_path: Path) -> None:
+    def lookup(slug: str) -> bool:
+        raise ev.VisibilityUnknown("rate limited")
+
+    cache = tmp_path / "cache.json"
+    assert not ev.GitHubVisibility(cache, lookup=lookup)("github.com/owner/x")
+    assert not cache.exists()
+
+
+class _Response:
+    def __init__(self, status: int, body: dict | None = None) -> None:
+        self.status_code = status
+        self._body = body or {}
+
+    def json(self) -> dict:
+        return self._body
+
+
+@pytest.mark.parametrize(
+    ("response", "public"),
+    [
+        (_Response(200, {"private": False}), True),
+        (_Response(200, {"private": True}), False),
+        (_Response(404), False),
+    ],
+)
+def test_github_answers(monkeypatch, response, public) -> None:
+    monkeypatch.delenv("GH_TOKEN", raising=False)
+    monkeypatch.delenv("GITHUB_TOKEN", raising=False)
+    seen: dict = {}
+
+    def fake_get(url, headers, timeout):
+        seen.update(url=url, headers=headers, timeout=timeout)
+        return response
+
+    monkeypatch.setattr(ev.requests, "get", fake_get)
+    assert ev.github_is_public("owner/repo") is public
+    assert seen["url"] == "https://api.github.com/repos/owner/repo"
+    assert "Authorization" not in seen["headers"]
+    assert seen["timeout"] == 10
+
+
+def test_github_token_is_sent(monkeypatch) -> None:
+    monkeypatch.setenv("GH_TOKEN", "t0k")
+    seen: dict = {}
+
+    def fake_get(url, headers, timeout):
+        seen.update(headers)
+        return _Response(404)
+
+    monkeypatch.setattr(ev.requests, "get", fake_get)
+    ev.github_is_public("owner/repo")
+    assert seen["Authorization"] == "Bearer t0k"
+
+
+def test_github_rate_limit_is_unknown(monkeypatch) -> None:
+    monkeypatch.setattr(ev.requests, "get", lambda *a, **k: _Response(403))
+    with pytest.raises(ev.VisibilityUnknown, match="403"):
+        ev.github_is_public("owner/repo")
+
+
+def test_github_network_error_is_unknown(monkeypatch) -> None:
+    def boom(*args, **kwargs):
+        raise ev.requests.ConnectionError("offline")
+
+    monkeypatch.setattr(ev.requests, "get", boom)
+    with pytest.raises(ev.VisibilityUnknown, match="offline"):
+        ev.github_is_public("owner/repo")
+
+
+# --- CLI ---------------------------------------------------------------------
+
+
+def _private_dir(tmp_path: Path, repo: Path) -> Path:
+    private = tmp_path / "private"
+    private.mkdir()
+    (private / "identities.json").write_text(json.dumps(IDENTITIES))
+    (private / "repos.txt").write_text(f"# comment\n\n{repo}\n")
+    return private
+
+
+def test_main_uses_private_dir_defaults(
+    make_repo, tmp_path, monkeypatch, capsys
+) -> None:
+    repo = make_repo("cli", [(OWN, "2022-02-02T10:00:00+00:00", {"a.py": "x\n"})])
+    private = _private_dir(tmp_path, repo)
+    monkeypatch.setenv("PROFILE_PRIVATE_DIR", str(private))
+
+    assert ev.main([]) == 0
+
+    out = json.loads((private / "evidence.json").read_text())
+    assert out["summary"]["unique_commits"] == 1
+    assert "2022-02-02" in out["days"]
+    assert "unique commits: 1" in capsys.readouterr().out
+
+
+def test_main_accepts_explicit_paths(make_repo, tmp_path, monkeypatch) -> None:
+    repo = make_repo("cli", [(OWN, "2022-02-02T10:00:00+00:00", {"a.py": "x\n"})])
+    private = _private_dir(tmp_path, repo)
+    monkeypatch.delenv("PROFILE_PRIVATE_DIR", raising=False)
+    target = tmp_path / "out" / "e.json"
+
+    code = ev.main(
+        [
+            "--repos",
+            str(private / "repos.txt"),
+            "--identities",
+            str(private / "identities.json"),
+            "--out",
+            str(target),
+            "--visibility-cache",
+            str(tmp_path / "vis.json"),
+        ]
+    )
+
+    assert code == 0
+    assert target.exists()
+
+
+def test_main_without_private_dir_fails(monkeypatch) -> None:
+    monkeypatch.delenv("PROFILE_PRIVATE_DIR", raising=False)
+    with pytest.raises(SystemExit) as exc:
+        ev.main([])
+    assert exc.value.code == 2
+
+
+def test_module_entry_point(make_repo, tmp_path, monkeypatch) -> None:
+    repo = make_repo("cli", [(OWN, "2022-02-02T10:00:00+00:00", {"a.py": "x\n"})])
+    private = _private_dir(tmp_path, repo)
+    monkeypatch.setenv("PROFILE_PRIVATE_DIR", str(private))
+    monkeypatch.setattr(sys, "argv", ["evidence"])
+    sys.modules.pop("scripts.activity.evidence", None)
+    with pytest.raises(SystemExit) as exc:
+        runpy.run_module("scripts.activity.evidence", run_name="__main__")
+    assert exc.value.code == 0
+    assert os.path.exists(private / "evidence.json")
+
+
+# --- remaining edges ---------------------------------------------------------
+
+
+def test_invalid_regex_is_a_value_error() -> None:
+    with pytest.raises(ValueError, match="email_patterns"):
+        ev.Identities.from_dict({"email_patterns": ["("], "name_patterns": []})
+
+
+def test_vocabulary_requires_signatures() -> None:
+    raw = {"version": 1, "excluded": [], "languages": {}, "path_rules": []}
+    with pytest.raises(ValueError, match="signatures"):
+        ev.Vocabulary.from_dict(raw)
+
+
+@pytest.mark.parametrize(
+    "path",
+    [
+        "App/packages/Xamarin.Forms.1.5.1.6471/lib/MonoAndroid10/Core.xml",
+        "App/Components/sample-sdk-13.0/lib/android/Docs.html",
+    ],
+)
+def test_nuget_and_component_stores_are_excluded(voc: ev.Vocabulary, path) -> None:
+    assert voc.is_excluded(path)
+    assert not voc.is_excluded("web/packages/ui/src/index.ts")
+
+
+def test_scoped_flags_stay_with_their_alternative() -> None:
+    raw = {
+        "version": 1,
+        "excluded": [],
+        "languages": {},
+        "path_rules": [],
+        "signatures": {"t": ["(?i)abc", "XYZ"]},
+    }
+    voc = ev.Vocabulary.from_dict(raw)
+    assert voc.analyze_patch({"f": ["ABC"]}) == {"t": 1}
+    assert voc.analyze_patch({"f": ["xyz"]}) == {}
