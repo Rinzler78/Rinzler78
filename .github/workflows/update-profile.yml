@@ -3,8 +3,9 @@ name: Update profile
 # Quote "on" so YAML does not parse it as the boolean true (ADR-005).
 "on":
   schedule:
-    # Every Monday at 06:00 UTC.
-    - cron: "0 6 * * 1"
+    # Every day at 06:00 UTC: external counters (PyPI, Docker Hub, stars) are
+    # fetched daily, never hard-coded.
+    - cron: "0 6 * * *"
   workflow_dispatch:
 
 # This is the ONLY write-scoped CI workflow: it auto-commits refreshed
@@ -12,7 +13,7 @@ name: Update profile
 permissions:
   contents: write
 
-# Serialize runs so a manual dispatch never overlaps the weekly schedule.
+# Serialize runs so a manual dispatch never overlaps the daily schedule.
 concurrency:
   group: update-profile
   cancel-in-progress: false
@@ -28,13 +29,13 @@ jobs:
           python-version: "3.12"
       - name: Install package + dev deps
         run: pip install -e ".[dev]"
-      - name: Fetch metrics
+      - name: Fetch metrics (GitHub account + PyPI + Docker Hub counters)
         # gh CLI is preinstalled on ubuntu runners; it reads GH_TOKEN.
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python scripts/fetch_metrics.py
       # The generation reads `as_of` from data/config.json rather than the
-      # clock, so a revision pins its own output. This weekly run is the one
+      # clock, so a revision pins its own output. This scheduled run is the one
       # place that moves it forward.
       - name: Bump the reference date
         run: python scripts/bump_as_of.py
