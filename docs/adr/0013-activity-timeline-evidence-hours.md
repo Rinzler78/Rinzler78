@@ -56,10 +56,13 @@ and a daily budget within a fixed grid: **08:00–22:00 minus 12:00–13:00 and
 | Context | Professional hours / day | Personal hours / day |
 |---|---|---|
 | Employment, client mission | 8 | 3 |
-| Parallel dual employment, 2014-04 → 2020-03 (50 h/week, 80 % coding, split 70/30 between the two employers) | 10 | 1 |
+| Parallel dual employment, 2014-04 → 2020-03 (50 h/week, 80 % coding, split 70/30 between the two employers) | 8 | 1 |
 | Full-time independent R&D | — | 11 |
 | Study, 2006-09 → 2009 | ≈ 12 h of coding per week, 30 weeks per year | — |
 
+- **Hours measure coding practice, not working time.** Where a period mixes coding
+  with management, only the coding share counts: 50 h/week at 80 % coding is 8 hours
+  a day, not 10.
 - **Professional time counts by the calendar.** The employment record is authoritative
   for dates and job titles. Where the timeline must differ from it, the exception is an
   explicit entry of the private registry (ADR-014), never an unrecorded edit.
