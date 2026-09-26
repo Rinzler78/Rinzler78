@@ -1,6 +1,6 @@
 # ADR-008 — In-repo multipage profile (README as front, detail pages generated)
 
-- **Status**: Accepted (front-page scope superseded by [ADR-009](0009-visual-redesign-devtool-direction.md))
+- **Status**: Accepted (front-page scope superseded by [ADR-009](0009-visual-redesign-devtool-direction.md), then by [ADR-015](0015-front-page-v2-grid-palette-type.md))
 - **Date**: 2026-06-01
 
 > **Amended 2026-09-23 ([ADR-009](0009-visual-redesign-devtool-direction.md)):** the

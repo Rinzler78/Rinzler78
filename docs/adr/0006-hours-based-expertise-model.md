@@ -1,6 +1,6 @@
 # ADR-006 — Hours-based expertise model (max vs current)
 
-- **Status**: Accepted (extended by [ADR-009](0009-visual-redesign-devtool-direction.md))
+- **Status**: Superseded by [ADR-013](0013-activity-timeline-evidence-hours.md) (previously extended by [ADR-009](0009-visual-redesign-devtool-direction.md))
 - **Date**: 2026-05-29
 - **Supersedes**: the **formula** from [ADR-002](0002-tech-score-derivation.md) (base years + versions + projects + centrality + depth). The tiers (5 levels) and the override mechanism from ADR-002 are **kept**.
 

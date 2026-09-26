@@ -1,6 +1,6 @@
 # ADR-009 — Visual redesign: a dense, chart-led showcase
 
-- **Status**: Accepted
+- **Status**: Accepted (accent color amended by [ADR-015](0015-front-page-v2-grid-palette-type.md))
 - **Date**: 2026-06-03, rewritten 2026-09-23
 - **Amends**: [ADR-003](0003-data-schema-collections-and-derived-views.md) (display posture), [ADR-007](0007-display-type-outlined-to-paths.md) (display typeface), [ADR-008](0008-in-repo-multipage.md) (what the front page carries)
 - **Related to**: [ADR-001](0001-data-driven-svg-generation.md), [ADR-006](0006-hours-based-expertise-model.md)
