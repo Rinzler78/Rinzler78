@@ -1,6 +1,6 @@
 # ADR-011 — Committed reference date for reproducible generation
 
-- **Status**: Accepted
+- **Status**: Accepted (committed data extended by [ADR-013](0013-activity-timeline-evidence-hours.md))
 - **Date**: 2026-09-23
 - **Amends**: [ADR-006](0006-hours-based-expertise-model.md) (when the hours are measured from)
 - **Related to**: [ADR-001](0001-data-driven-svg-generation.md), [ADR-005](0005-quality-gates-ci-branch-protection.md)
