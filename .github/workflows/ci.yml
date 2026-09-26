@@ -38,6 +38,10 @@ jobs:
       # empty however long after the commit CI runs (ADR-011).
       - name: Generated artifacts up-to-date
         run: git diff --exit-code
+      # Claims (ADR-014): runs on the pages just proven up to date. The private
+      # registry is never reachable here; only the committed lock is read.
+      - name: Claims match the attested lock
+        run: python -m scripts.claims check
 
   tests:
     name: pytest · coverage · pip-audit

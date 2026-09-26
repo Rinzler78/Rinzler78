@@ -100,6 +100,18 @@ repos:
         pass_filenames: false
         files: ^(README(\.en)?\.md|assets/svg/|data/|scripts/)
 
+      # Claims (ADR-014): every claim marker in the generated pages resolves
+      # in the committed lock with the hash of its attested wording. Standard
+      # library only, milliseconds; runs only when a page, the lock or the
+      # checker changes. Rewriting the lock needs the private registry and is a
+      # manual step (`make claims-lock`), never a hook.
+      - id: claims-check
+        name: claims match their attested wording (lock file)
+        entry: python -m scripts.claims check
+        language: python
+        pass_filenames: false
+        files: ^(README(\.en)?\.md|pages/.*\.md|data/claims\.lock\.json|scripts/claims\.py)$
+
       # --- pre-commit: only the tests the staged files can affect --------
       # Seconds, not a minute: this gate sits inside the red-green-refactor
       # loop. scripts/impacted_tests.py maps staged paths to guards and widens

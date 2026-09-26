@@ -1,5 +1,5 @@
 .PHONY: setup validate-data generate validate test coverage lint format \
-        format-check security audit precommit check
+        format-check security audit precommit claims claims-lock check
 
 setup:
 	uv pip install -e ".[dev]"
@@ -15,6 +15,14 @@ generate:
 
 validate:
 	python scripts/validate.py
+
+# Claims (ADR-014): `claims` needs only the committed lock; `claims-lock`
+# needs PROFILE_PRIVATE_DIR pointing at the private registry.
+claims:
+	python -m scripts.claims check
+
+claims-lock:
+	python -m scripts.claims lock
 
 test:
 	pytest -q
@@ -40,5 +48,5 @@ audit:
 precommit:
 	pre-commit run --all-files
 
-check: validate-data generate validate lint format-check security coverage
+check: validate-data generate validate claims lint format-check security coverage
 	git diff --exit-code
