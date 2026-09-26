@@ -1,0 +1,222 @@
+{
+  "prototype_banner": "**PROTOTYPE — données du spike.** Maquette jetable de la façade v2 (ADR-015). Les heures et les jours de commit viennent d'un modèle exploratoire, pas encore du pipeline.",
+  "stamp": "PROTOTYPE — données du spike",
+  "identity": {
+    "prompt": "~/boris $ whoami",
+    "role": "Freelance CTO · Architecte de solutions",
+    "arc": "embarqué → mobile → cloud → IA · code depuis 2006",
+    "available": "disponible",
+    "figures": {
+      "years": "ans de code",
+      "hours": "heures réelles",
+      "days": "jours de commit",
+      "days_extra": "depuis 2014",
+      "techs": "technos au-delà",
+      "techs_extra": "de 1 600 h"
+    },
+    "aria": "Boris Leclere, freelance CTO et architecte de solutions, disponible. {years} ans de code, {hours} heures réelles, {days} jours de commit depuis 2014, {techs} technologies au-delà de 1 600 heures.",
+    "sentence": "Freelance CTO et architecte de solutions, je code depuis 2006 — de l'embarqué aux LLM. Au compteur : {years} ans de code, environ {hours} heures réelles, {days} jours de commit depuis 2014 et {techs} technologies pratiquées plus de 1 600 heures."
+  },
+  "contact_line": "[borisleclere.pro@gmail.com](mailto:borisleclere.pro@gmail.com) · [LinkedIn](https://www.linkedin.com/in/borisleclere) · [Malt](https://www.malt.fr/profile/borisleclere) · [PyPI](https://pypi.org/user/Rinzler78)",
+  "help": {
+    "title": "Comment je peux aider",
+    "intro": "J'accompagne les équipes techniques, des startups en construction aux structures établies, sur six types d'intervention :"
+  },
+  "proofs": {
+    "title": "Preuves",
+    "intro": "Deux projets publics dont l'usage se mesure de l'extérieur, relevés le {as_of}.",
+    "sentence": "Le client Python de l'API FFBB compte {pypi_month} téléchargements le mois dernier et {pypi_releases} versions publiées ; l'image Docker du nœud Idena totalise {docker_pulls} pulls sur Docker Hub.",
+    "pypi": {
+      "eyebrow": "PyPI · paquet Python",
+      "title": "FFBB API Client v2",
+      "fig1": "téléchargements",
+      "fig1_extra": "le mois dernier",
+      "fig2": "versions",
+      "fig2_extra": "publiées",
+      "desc": "Client Python de l'API v2 de la Fédération française de basket : rétro-ingénierie, paquet PyPI, CI complète.",
+      "source": "pypistats.org · relevé {as_of}",
+      "aria": "FFBB API Client v2 : {pypi_month} téléchargements le mois dernier, {pypi_releases} versions publiées sur PyPI."
+    },
+    "docker": {
+      "eyebrow": "Docker Hub · image",
+      "title": "docker.idena-node",
+      "fig1": "pulls",
+      "fig1_extra": "sur Docker Hub",
+      "fig2": "en ligne depuis",
+      "fig2_extra": "mise à jour 2026-03",
+      "desc": "Nœud blockchain Idena conteneurisé, avec supervision et mise à jour automatisées.",
+      "source": "hub.docker.com · relevé {as_of}",
+      "aria": "docker.idena-node : {docker_pulls} pulls sur Docker Hub, image en ligne depuis 2020, mise à jour en mars 2026."
+    }
+  },
+  "skills": {
+    "title": "Compétences par domaine",
+    "intro": "Chaque technologie avec ses heures réelles, son niveau, sa période et son dernier usage.",
+    "sentence": "En tête : C# / .NET avec environ 17 800 heures depuis 2006, Xamarin avec près de 10 000 heures, et l'AI-Driven Development déjà au niveau avancé en quatre ans.",
+    "footnote": "Niveaux par convention, fixés sur les heures : opérationnel ≥ 50 h · professionnel ≥ 500 h · avancé ≥ 1 600 h · expert ≥ 5 000 h. C'est une convention de lecture, pas une certification.",
+    "active": "actif",
+    "last_use": "vu en {year}",
+    "levels": {
+      "explored": "exploré",
+      "working": "opérationnel",
+      "professional": "professionnel",
+      "advanced": "avancé",
+      "expert": "expert"
+    },
+    "groups": {
+      "languages": "Langages",
+      "mobile_embedded": "Mobile & embarqué",
+      "backend_devops": "Backend & DevOps",
+      "ai_chain": "IA & blockchain"
+    },
+    "aria": "{group} : {rows}"
+  },
+  "timeline": {
+    "title": "Parcours",
+    "intro": "Chaque activité en une ligne ; de 2014 à 2020, deux emplois menés en parallèle sur la même période.",
+    "sentence": "Trois ans d'études, puis près de cinq ans d'embarqué et de missions de conseil jusqu'en 2014 ; six ans de double poste chez Good Angel et My Good Life ; six ans de R&D personnelle ; une mission CTO freelance depuis juin 2026.",
+    "detail": "voir le détail",
+    "title_a": "2006 → 2014",
+    "sub_a": "études, embarqué, conseil",
+    "title_b": "2014 → aujourd'hui",
+    "sub_b": "produit, R&D, mission",
+    "entries_a": [
+      [
+        "2006–2009",
+        "Université de Reims",
+        "Licence → Master embarqué",
+        "study"
+      ],
+      [
+        "2008–2009",
+        "Coupe de robotique",
+        "Robot autonome · 28e / 200+",
+        "study"
+      ],
+      [
+        "2009",
+        "Gunnebo · stage",
+        "Driver Windows CE, 100+ machines",
+        "study"
+      ],
+      [
+        "2009–2010",
+        "GoodKap!",
+        "SDK C/C++ GPS · serveur C#",
+        "pro"
+      ],
+      [
+        "2011",
+        "Neurones",
+        "Service GPS embarqué en C/C++",
+        "pro"
+      ],
+      [
+        "2011–2012",
+        "Theoris · Ingenico",
+        "Librairie NFC iOS, paiement",
+        "pro"
+      ],
+      [
+        "2012–2013",
+        "Theoris · Systar",
+        "C sous AIX, monitoring",
+        "pro"
+      ],
+      [
+        "2013",
+        "Theoris · Dassault",
+        "UI C++/CLI, avionique Rafale",
+        "pro"
+      ],
+      [
+        "2013–2014",
+        "Theoris · Ondeo",
+        "Chaîne NFC, compteurs Gazpar",
+        "pro"
+      ]
+    ],
+    "dual_period": "2014 → 2020",
+    "dual": [
+      [
+        "Good Angel · 70 %",
+        "Chef de projet puis CTO",
+        "éthylotest connecté BLE, apps Xamarin"
+      ],
+      [
+        "My Good Life · 30 %",
+        "En parallèle, même période",
+        "santé connectée, API REST"
+      ]
+    ],
+    "dual_note": "deux postes · 50 h/sem au total",
+    "rnd": [
+      "2020 → 2026",
+      "R&D personnelle",
+      "nœuds blockchain, libs .NET, outils IA",
+      "{personal} jours de commit mesurés"
+    ],
+    "mission": [
+      "2026 →",
+      "Mission CTO freelance",
+      "architecture, dev assisté par IA",
+      "chez un client, en cours"
+    ],
+    "aria_a": "Parcours de 2006 à 2014 : études et stage embarqué, GoodKap, Neurones, quatre missions Theoris.",
+    "aria_b": "Parcours depuis 2014 : Good Angel et My Good Life en parallèle de 2014 à 2020, R&D personnelle de 2020 à 2026, mission CTO freelance depuis 2026."
+  },
+  "method": {
+    "title": "Méthode",
+    "body": [
+      "**Les heures viennent de deux traces, jamais d'une auto-évaluation.** Le calendrier des postes et des missions donne les heures pro (heures hebdomadaires × 47 semaines par an, 30 pour les études) ; les commits datés donnent l'activité personnelle, à 3 heures par jour de commit.",
+      "**Rien n'est compté deux fois.** Les deux emplois de 2014–2020 forment une seule source de 50 h par semaine ; un jour de commit pendant un poste salarié ne rajoute pas d'heures.",
+      "**Couverture.** Les commits couvrent avril 2014 → {as_of} ({days} jours distincts) ; avant 2014, seules les dates des postes existent. Les heures personnelles sont un plancher : un jour sans commit compte zéro."
+    ]
+  },
+  "activity": {
+    "title": "Activité",
+    "intro": "Chaque jour de commit depuis avril 2014, toutes sources confondues, coloré par contexte.",
+    "sentence": "{days} jours de commit au total : {pro} dans un contexte professionnel, {personal} en R&D personnelle ; plus la case est intense, plus la journée a touché de fichiers.",
+    "cal_title_a": "2014 → 2019",
+    "cal_sub_a": "deux employeurs en parallèle",
+    "cal_title_b": "2020 → 2026",
+    "cal_sub_b": "R&D personnelle, puis mission",
+    "cal_prompt": "$ git log --author=boris",
+    "days_unit": "j",
+    "pro": "pro",
+    "personal": "perso",
+    "study": "études",
+    "less": "moins",
+    "more": "plus",
+    "summary": [
+      "{pro} jours pro",
+      "{personal} jours perso",
+      "sur {years} années"
+    ],
+    "aria_a": "Calendrier des jours de commit de 2014 à 2019, {n} jours, contexte professionnel.",
+    "aria_b": "Calendrier des jours de commit de 2020 à 2026, {n} jours, R&D personnelle puis mission professionnelle.",
+    "history_title": "Heures réelles par an",
+    "history_sub": "empilées par contexte, sans double compte",
+    "history_total": "≈ {total} h au total",
+    "history_dual": "2 postes",
+    "history_aria": "Heures réelles par an de 2006 à 2026, empilées par contexte : études, pro, perso. Pic à {peak} heures par an de 2015 à 2019.",
+    "history_sentence": "Le volume culmine à {peak} heures par an pendant le double poste de 2015 à 2019 ; après 2020, seules les journées de commit comptent, d'où des barres basses qui sont un plancher.",
+    "weight_title": "Poids relatif",
+    "weight_sub": "part de chaque domaine dans les heures",
+    "weight_note": "heures recoupées : lire des parts",
+    "weight_aria": "Poids relatif par domaine : {rows}.",
+    "weight_sentence": "En poids relatif, {top} et {second} arrivent en tête ; les parts se lisent entre elles, car une même heure peut compter dans plusieurs domaines.",
+    "domains": {
+      "embedded": "Embarqué",
+      "mobile": "Mobile",
+      "backend": "Backend & web",
+      "devops": "DevOps & infra",
+      "ai-llm": "IA & LLM",
+      "blockchain": "Blockchain"
+    }
+  },
+  "footer": {
+    "signature": "Boris Leclere · données au {as_of} · [comment c'est mesuré](#méthode)",
+    "egg": "$ uptime --since=2006 → {years} ans, {days} jours de commit, streak max {streak} j · still curious_"
+  }
+}
