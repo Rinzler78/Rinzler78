@@ -249,7 +249,7 @@ def test_day_grid_is_eleven_hours():
     [
         ("employment", 8, 3),
         ("client_mission", 8, 3),
-        ("parallel_employment", 10, 1),
+        ("parallel_employment", 8, 1),
         ("independent_rnd", 0, 11),
         ("study", 0, 0),
         ("none", 0, 0),
@@ -303,8 +303,8 @@ def test_pro_hours_parallel_split_by_share():
         sources=(tl.Source("org-c", 0.7), tl.Source("org-d", 0.3)),
     )
     hours = tl.pro_hours(period, "2010-03")
-    assert hours == pytest.approx({"org-c": 23 * 10 * 0.7, "org-d": 23 * 10 * 0.3})
-    assert sum(hours.values()) == pytest.approx(230)
+    assert hours == pytest.approx({"org-c": 23 * 8 * 0.7, "org-d": 23 * 8 * 0.3})
+    assert sum(hours.values()) == pytest.approx(184)
 
 
 def test_pro_hours_independent_rnd_is_zero():

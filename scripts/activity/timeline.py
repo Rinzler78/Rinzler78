@@ -98,9 +98,9 @@ class Budget:
 _BUDGETS = {
     "employment": Budget(8, 3),
     "client_mission": Budget(8, 3),
-    # 50 h/week over five weekdays = 10 professional hours a day (80 % of
-    # them coding), split between the two employers by source share.
-    "parallel_employment": Budget(10, 1),
+    # 50 h/week over five weekdays = 10 working hours a day, 80 % of them
+    # coding: 8 hours of practice, split between the two employers by share.
+    "parallel_employment": Budget(8, 1),
     "independent_rnd": Budget(0, AVAILABLE_HOURS_PER_DAY),
     "study": Budget(
         0,
