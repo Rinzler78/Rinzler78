@@ -37,6 +37,18 @@ Project context (vocabulary version 2)
     Model / View / ViewModel triad counts the files of those three layers for
     mvvm.
 
+MVVM at project level (vocabulary version 4)
+    A project is MVVM when its tree defines a ViewModel (a class of a file
+    the file-level mvvm rules detect, or any class deriving from one,
+    transitively across the tree), when it references an MVVM framework, or
+    when it references a project that is (``ProjectReference``, shared-project
+    ``Import``). A reference leading outside the tree (a submodule) resolves
+    through the ``MvvmRegistry`` built from every repository's HEAD before
+    the walk. In an MVVM project the whole presentation layer
+    (``presentation``: pages, views, controls, page controllers, view models,
+    bindable models, converters, renderers) counts for mvvm; a class deriving
+    from a ViewModel counts wherever it lives.
+
 Behavior rules (vocabulary version 3)
     ``conjunctions`` need every group of signatures to match the added lines
     (a file exposing commands AND raising PropertyChanged is MVVM, whatever
@@ -88,6 +100,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import posixpath
 import re
 import sys
 from collections import defaultdict
@@ -294,6 +307,7 @@ class Vocabulary:
     conjunctions: tuple[Conjunction, ...] = ()
     context_rules: tuple[ContextRule, ...] = ()
     mobile_markers: re.Pattern[str] | None = None
+    presentation: re.Pattern[str] | None = None
     platform_sides: dict[str, re.Pattern[str]] = field(default_factory=dict)
     platform_interface_tech: str | None = None
 
@@ -336,6 +350,7 @@ class Vocabulary:
             project_rules=_project_rules(raw.get("project_rules", [])),
             conjunctions=_conjunctions(raw.get("conjunctions", [])),
             context_rules=_context_rules(raw.get("context_rules", [])),
+            presentation=_optional_pattern(raw.get("presentation"), "presentation"),
             mobile_markers=_optional_pattern(
                 raw.get("mobile_markers"), "mobile_markers"
             ),
@@ -425,6 +440,12 @@ _BUILD_ROOTS = re.compile(r"(?i)(\.xcodeproj|\.vcxproj|^CMakeLists\.txt|^Makefil
 MAX_PROJECT_FILE = 512 * 1024
 _CLASS_BASES = re.compile(r"\bclass\s+\w+(?:<[^>]*>)?\s*:\s*([^{\n]+)")
 _INTERFACE_NAME = re.compile(r"\b(I[A-Z]\w*)\b")
+_CLASS_DECL = re.compile(r"\bclass\s+(\w+)(?:<[^>]*>)?(?:\s*:\s*(?:[\w]+\.)*(\w+))?")
+_PROJECT_REF = re.compile(
+    r'<(?:ProjectReference\s+Include|Import\s+Project)\s*=\s*"([^"]+\.'
+    r'(?:csproj|fsproj|vbproj|projitems|shproj))"',
+    re.IGNORECASE,
+)
 _INTERFACE_DEF = re.compile(r"\binterface\s+(I[A-Z]\w*)\b")
 TRIAD_DIRS = {"models": "model", "views": "view", "viewmodels": "viewmodel"}
 
@@ -448,10 +469,24 @@ def _parent(path: str) -> str:
     return "" if parent == "." else parent
 
 
+@dataclass
+class MvvmRegistry:
+    """MVVM projects (lowercase file names) and ViewModel classes seen at the
+    HEAD of every repository, to resolve references into submodules."""
+
+    projects: set[str] = field(default_factory=set)
+    classes: set[str] = field(default_factory=set)
+
+
 class ContextCache:
     """Per-run caches keyed by git object id (content-addressed)."""
 
-    def __init__(self) -> None:
+    def __init__(self, registry: MvvmRegistry | None = None) -> None:
+        self.registry = registry or MvvmRegistry()
+        self.code: dict[str, tuple[dict[str, str], frozenset[str], frozenset[str]]] = {}
+        self.blob: dict[str, tuple[tuple[tuple[str, str | None], ...], bool]] = {}
+        self.viewmodels: dict[str, frozenset[str]] = {}
+        self.mvvm_projects: dict[str, bool] = {}
         self.entries: dict[str, list[tuple[str, bool, object]]] = {}
         self.objc: dict[str, bool] = {}
         self.found: dict[str, list] = {}
@@ -622,6 +657,132 @@ class ProjectContext:
                     break
         return techs
 
+    # MVVM at project level
+    def _blob_code(self, path: str, oid: object) -> tuple:
+        """``(classes, seed)`` of a C# file: ``(name, base)`` declarations and
+        whether the file-level rules see a ViewModel in it."""
+        key = f"{oid}:{path}"
+        if key not in self.cache.blob:
+            text = self._text(oid) or ""
+            lines = [ln for ln in text.splitlines() if len(ln) < MAX_LINE_LENGTH]
+            classes = tuple(
+                (m.group(1), m.group(2))
+                for ln in lines
+                for m in _CLASS_DECL.finditer(ln)
+            )
+            seed = "mvvm" in self.voc._file_techs(path, lines[:MAX_LINES_PER_FILE])
+            self.cache.blob[key] = (classes, seed)
+        return self.cache.blob[key]
+
+    def _code(self, tree: pygit2.Tree, prefix: str) -> tuple:
+        """``(bases, seeds, defined)`` of every C# class under ``tree``."""
+        key = f"{tree.id}:{prefix}"
+        if key not in self.cache.code:
+            bases: dict[str, str] = {}
+            seeds: set[str] = set()
+            defined: set[str] = set()
+            for name, is_dir, oid in self._entries(tree):
+                path = f"{prefix}{name}"
+                if is_dir:
+                    sub = self._code(self._subtree(oid), f"{path}/")
+                    bases.update(sub[0])
+                    seeds |= sub[1]
+                    defined |= sub[2]
+                elif name.endswith(".cs") and not self.voc.is_excluded(path):
+                    classes, seed = self._blob_code(path, oid)
+                    for cls, base in classes:
+                        defined.add(cls)
+                        if base:
+                            bases[cls] = base
+                        if seed:
+                            seeds.add(cls)
+            self.cache.code[key] = (bases, frozenset(seeds), frozenset(defined))
+        return self.cache.code[key]
+
+    def viewmodels(self) -> frozenset[str]:
+        """ViewModel classes of the tree: seeds, registry, and their heirs."""
+        key = str(self.tree.id)
+        if key not in self.cache.viewmodels:
+            bases, seeds, _ = self._code(self.tree, "")
+            found = set(seeds) | self.cache.registry.classes
+            grew = True
+            while grew:
+                heirs = {c for c, b in bases.items() if b in found and c not in found}
+                found |= heirs
+                grew = bool(heirs)
+            self.cache.viewmodels[key] = frozenset(found)
+        return self.cache.viewmodels[key]
+
+    def _project_files(self, tree: pygit2.Tree) -> list[tuple[str, object]]:
+        pf = self.voc.project_files
+        return [
+            (name, oid)
+            for name, is_dir, oid in self._entries(tree)
+            if not is_dir and pf is not None and pf.search(name)
+        ]
+
+    def is_mvvm_project(
+        self, directory: str, seen: frozenset[str] = frozenset()
+    ) -> bool:
+        key = f"{self.tree.id}:{directory}"
+        if key in self.cache.mvvm_projects:
+            return self.cache.mvvm_projects[key]
+        tree = self._dir(directory)
+        prefix = f"{directory}/" if directory else ""
+        found = tree is not None and bool(
+            self._code(tree, prefix)[2] & self.viewmodels()
+        )
+        frameworks = [r for r in self.voc.project_rules if r.tech == "mvvm"]
+        for _, oid in self._project_files(tree) if tree is not None else []:
+            if found:
+                break
+            text = self._text(oid) or ""
+            if any(r.content.search(text) for r in frameworks):
+                found = True
+                break
+            for ref in _PROJECT_REF.findall(text):
+                target = posixpath.normpath(
+                    posixpath.join(directory, ref.replace("\\", "/"))
+                )
+                parent = _parent(target)
+                if parent in seen or target.startswith(".."):
+                    continue
+                if self._file_exists(target):
+                    found = self.is_mvvm_project(parent, seen | {directory})
+                else:
+                    found = PurePosixPath(target).name.lower() in (
+                        self.cache.registry.projects
+                    )
+                if found:
+                    break
+        self.cache.mvvm_projects[key] = found
+        return found
+
+    def _file_exists(self, path: str) -> bool:
+        try:
+            self.tree[path]
+        except KeyError:
+            return False
+        return True
+
+    def _mvvm_techs(
+        self, path: str, directory: str, added: list[str] | None
+    ) -> set[str]:
+        presentation = self.voc.presentation
+        if (
+            presentation is not None
+            and presentation.search(path)
+            and self.is_mvvm_project(directory)
+        ):
+            return {"mvvm"}
+        if added and path.endswith(".cs"):
+            vms = self.viewmodels()
+            for line in added:
+                for match in _CLASS_DECL.finditer(line):
+                    if match.group(1) in vms:
+                        return {"mvvm"}
+        return set()
+
     def project_techs(self, path: str, added: list[str] | None = None) -> set[str]:
         """Techs a file inherits from its project, repository and platforms."""
         techs = self._context_rule_techs(path, added)
@@ -629,6 +790,7 @@ class ProjectContext:
         project = self._nearest(path, pf.search) if pf is not None else None
         directory, tree = project if project else ("", self.tree)
         relative = path[len(directory) + 1 :] if directory else path
+        techs |= self._mvvm_techs(path, directory, added)
         if len(self._triad(tree)) == len(TRIAD_DIRS):
             parts = PurePosixPath(relative).parts
             if any(TRIAD_DIRS.get(p.lower()) for p in parts[:-1]) or _triad_role(
@@ -852,6 +1014,38 @@ def analyze_commit(
     return _analysis(sets, False)
 
 
+def mvvm_registry(
+    repos: Iterable[Path],
+    vocabulary: Vocabulary,
+    owned: Callable[[str], bool] = lambda key: True,
+) -> MvvmRegistry:
+    """MVVM projects and ViewModel classes at the HEAD of every repository."""
+    registry = MvvmRegistry()
+    cache = ContextCache()
+    pf = vocabulary.project_files
+    for path in repos:
+        try:
+            repo = open_repository(path)
+            if repo.head_is_unborn or not owned(repo_key(remote_url(repo), path)):
+                continue
+            tree = repo.head.peel(pygit2.Commit).tree
+        except pygit2.GitError:
+            continue
+        context = ProjectContext(repo, tree, vocabulary, cache)
+        registry.classes |= context.viewmodels()
+        stack = [("", tree)]
+        while stack:
+            directory, sub = stack.pop()
+            for name, is_dir, oid in context._entries(sub):
+                if is_dir:
+                    child = f"{directory}/{name}" if directory else name
+                    stack.append((child, context._subtree(oid)))
+                elif pf is not None and pf.search(name):
+                    if context.is_mvvm_project(directory):
+                        registry.projects.add(name.lower())
+    return registry
+
+
 def collect(
     repos: Iterable[Path],
     identities: Identities,
@@ -859,6 +1053,7 @@ def collect(
     is_public: Callable[[str], bool],
     progress: Callable[[str], None] | None = None,
     owned: Callable[[str], bool] = lambda key: True,
+    registry: MvvmRegistry | None = None,
 ) -> CollectResult:
     """Walk every repository and keep each own commit once, analyzed.
 
@@ -867,7 +1062,7 @@ def collect(
     """
     result = CollectResult(commits={})
     excluded: dict[str, set[str]] = defaultdict(set)
-    cache = ContextCache()
+    cache = ContextCache(registry)
     commits = result.commits
     for path in repos:
         where = str(path)
@@ -1066,13 +1261,16 @@ def main(argv: Sequence[str] | None = None) -> int:
             setattr(args, attr, Path(private) / name)
 
     vocabulary = load_vocabulary()
+    repos = _read_repo_list(args.repos)
+    owners = load_owners(args.owners)
     result = collect(
-        _read_repo_list(args.repos),
+        repos,
         load_identities(args.identities),
         vocabulary,
         is_public=GitHubVisibility(args.visibility_cache),
         progress=lambda repo: print(f"walking {repo}", file=sys.stderr),
-        owned=load_owners(args.owners).allows,
+        owned=owners.allows,
+        registry=mvvm_registry(repos, vocabulary, owners.allows),
     )
     output = aggregate(result, vocabulary.version)
     args.out.parent.mkdir(parents=True, exist_ok=True)

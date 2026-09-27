@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "excluded": [
     "(?i)(^|/)(bin|obj|node_modules|vendor|bower_components|Pods|\\.venv|venv|site-packages|__pycache__)/",
     "(?i)\\.designer\\.cs$",
@@ -371,7 +371,7 @@
       ":\\s*(ContentPage|ContentView|\\w*Renderer|IValueConverter)\\b"
     ],
     "cross-platform-architecture": [
-      "DependencyService\\.(Get|Register)",
+      "DependencyService\\.Register\\b",
       "\\[assembly:\\s*(Xamarin\\.Forms\\.)?(Dependency|ExportRenderer)\\(",
       "^\\s*#\\s*(el)?if\\b.*__(IOS|ANDROID|MOBILE)__"
     ],
@@ -503,5 +503,6 @@
       "path": "(?i)(\\.(sh|ps1|bat|cake)|(^|/)Makefile|(^|/)(build|scripts)/[^/]+)$",
       "keywords": "(?i)build|archive|sign|(?<![a-z])(ipa|apk|aab)(?![a-z])|publish|deploy|testflight|play\\s*store|appcenter"
     }
-  ]
+  ],
+  "presentation": "(?i)(\\.xaml(\\.cs)?$|(^|/)(Views?|Pages?|Controls|Converters?|Renderers?|Models?|UiModels?|PageControllers?|ViewModels?|PageModels?)/|(Page|View|PageController|ViewModel|PageModel|UiModel|Converter|Renderer|Cell)\\.cs$)"
 }

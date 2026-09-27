@@ -1930,12 +1930,13 @@
         "devops": 12.32,
         "embedded": 41.14,
         "languages": 123.2,
-        "mobile": 99.14
+        "mobile": 140.21
       },
       "techs": {
         "bluetooth": 41.14,
         "c-cpp": 123.2,
         "ios": 99.14,
+        "mobile-build-release": 43.12,
         "virtual-machines": 12.32
       }
     },
@@ -1948,12 +1949,13 @@
       "domains": {
         "devops": 12.32,
         "embedded": 6.08,
-        "mobile": 69.17
+        "mobile": 112.29
       },
       "techs": {
         "bluetooth": 0.08,
         "gps": 6.0,
         "ios": 37.54,
+        "mobile-build-release": 43.12,
         "objective-c": 31.63,
         "virtual-machines": 12.32
       }
@@ -1968,13 +1970,14 @@
         "devops": 11.76,
         "embedded": 9.67,
         "languages": 1.67,
-        "mobile": 111.26
+        "mobile": 134.63
       },
       "techs": {
         "bash": 1.67,
         "bluetooth": 0.8,
         "gps": 8.87,
         "ios": 34.49,
+        "mobile-build-release": 41.16,
         "objective-c": 76.76,
         "virtual-machines": 11.76
       }
@@ -1988,12 +1991,13 @@
       "domains": {
         "devops": 12.88,
         "embedded": 2.47,
-        "mobile": 76.56
+        "mobile": 121.64
       },
       "techs": {
         "bluetooth": 0.08,
         "gps": 2.4,
         "ios": 20.75,
+        "mobile-build-release": 45.08,
         "objective-c": 55.81,
         "virtual-machines": 12.88
       }
@@ -2008,13 +2012,14 @@
         "devops": 11.76,
         "embedded": 4.03,
         "languages": 1.0,
-        "mobile": 67.71
+        "mobile": 108.87
       },
       "techs": {
         "bash": 1.0,
         "bluetooth": 0.07,
         "gps": 3.96,
         "ios": 29.93,
+        "mobile-build-release": 41.16,
         "objective-c": 37.78,
         "virtual-machines": 11.76
       }
@@ -2028,12 +2033,13 @@
       "domains": {
         "devops": 12.32,
         "embedded": 1.75,
-        "mobile": 52.12
+        "mobile": 95.24
       },
       "techs": {
         "bluetooth": 0.08,
         "gps": 1.67,
         "ios": 24.24,
+        "mobile-build-release": 43.12,
         "objective-c": 27.88,
         "virtual-machines": 12.32
       }
@@ -2048,12 +2054,13 @@
         "devops": 12.88,
         "embedded": 2.53,
         "languages": 0.47,
-        "mobile": 79.65
+        "mobile": 124.73
       },
       "techs": {
         "bluetooth": 0.55,
         "gps": 1.98,
         "ios": 25.0,
+        "mobile-build-release": 45.08,
         "objective-c": 54.64,
         "virtual-machines": 12.88,
         "web": 0.47
@@ -2068,12 +2075,13 @@
       "domains": {
         "devops": 28.0,
         "embedded": 5.01,
-        "mobile": 64.06
+        "mobile": 108.06
       },
       "techs": {
         "bluetooth": 0.07,
         "gps": 4.94,
         "ios": 20.44,
+        "mobile-build-release": 44.0,
         "objective-c": 43.62,
         "virtual-machines": 28.0
       }
@@ -2087,12 +2095,13 @@
       "domains": {
         "devops": 32.2,
         "embedded": 6.23,
-        "mobile": 96.8
+        "mobile": 147.4
       },
       "techs": {
         "bluetooth": 0.08,
         "gps": 6.15,
         "ios": 30.0,
+        "mobile-build-release": 50.6,
         "objective-c": 66.8,
         "virtual-machines": 32.2
       }
@@ -2106,12 +2115,13 @@
       "domains": {
         "devops": 30.8,
         "embedded": 2.49,
-        "mobile": 88.07
+        "mobile": 136.47
       },
       "techs": {
         "bluetooth": 0.08,
         "gps": 2.42,
         "ios": 28.91,
+        "mobile-build-release": 48.4,
         "objective-c": 59.16,
         "virtual-machines": 30.8
       }
@@ -2126,7 +2136,7 @@
         "devops": 28.0,
         "embedded": 3.3,
         "languages": 53.16,
-        "mobile": 114.99,
+        "mobile": 153.9,
         "practices": 2.87
       },
       "techs": {
@@ -2138,7 +2148,7 @@
         "gps": 3.23,
         "ios": 23.31,
         "java": 0.87,
-        "mobile-build-release": 0.77,
+        "mobile-build-release": 44.0,
         "objective-c": 25.06,
         "tests": 2.87,
         "virtual-machines": 28.0,
@@ -2166,7 +2176,7 @@
         "csharp-dotnet": 137.02,
         "gps": 2.43,
         "ios": 99.27,
-        "mobile-build-release": 0.53,
+        "mobile-build-release": 48.4,
         "objective-c": 0.83,
         "tests": 2.01,
         "virtual-machines": 30.8,
@@ -2185,7 +2195,7 @@
         "embedded": 0.95,
         "languages": 81.39,
         "mobile": 176.0,
-        "practices": 2.32
+        "practices": 2.89
       },
       "techs": {
         "android": 44.28,
@@ -2194,9 +2204,9 @@
         "csharp-dotnet": 81.24,
         "gps": 0.87,
         "ios": 53.18,
-        "mobile-build-release": 1.15,
+        "mobile-build-release": 48.4,
         "mobile-ui": 2.92,
-        "mvvm": 0.31,
+        "mvvm": 0.88,
         "objective-c": 46.28,
         "tests": 2.01,
         "virtual-machines": 30.8,
@@ -2216,7 +2226,7 @@
         "embedded": 3.84,
         "languages": 86.95,
         "mobile": 168.0,
-        "practices": 3.04
+        "practices": 11.28
       },
       "techs": {
         "android": 49.42,
@@ -2225,10 +2235,10 @@
         "csharp-dotnet": 86.0,
         "gps": 3.33,
         "ios": 41.84,
-        "mobile-build-release": 1.02,
+        "mobile-build-release": 46.2,
         "mobile-ui": 4.31,
         "mvp": 0.17,
-        "mvvm": 0.95,
+        "mvvm": 9.19,
         "objective-c": 18.99,
         "tests": 1.92,
         "virtual-machines": 29.4,
@@ -2247,8 +2257,8 @@
         "devops": 30.8,
         "embedded": 0.95,
         "languages": 37.8,
-        "mobile": 101.21,
-        "practices": 2.15
+        "mobile": 144.33,
+        "practices": 2.57
       },
       "techs": {
         "android": 17.54,
@@ -2257,9 +2267,10 @@
         "csharp-dotnet": 37.8,
         "gps": 0.87,
         "ios": 18.61,
-        "mobile-build-release": 0.53,
+        "mobile-build-release": 48.4,
         "mobile-ui": 2.61,
         "mvp": 0.15,
+        "mvvm": 0.42,
         "objective-c": 47.63,
         "tests": 2.01,
         "virtual-machines": 30.8,
@@ -2277,8 +2288,8 @@
         "devops": 32.2,
         "embedded": 2.19,
         "languages": 39.52,
-        "mobile": 126.87,
-        "practices": 2.1
+        "mobile": 171.95,
+        "practices": 2.53
       },
       "techs": {
         "android": 18.33,
@@ -2287,8 +2298,9 @@
         "csharp-dotnet": 39.52,
         "gps": 2.11,
         "ios": 25.31,
-        "mobile-build-release": 0.55,
+        "mobile-build-release": 50.6,
         "mobile-ui": 2.73,
+        "mvvm": 0.44,
         "objective-c": 65.01,
         "tests": 2.1,
         "virtual-machines": 32.2,
@@ -2307,7 +2319,7 @@
         "embedded": 3.34,
         "languages": 77.08,
         "mobile": 168.0,
-        "practices": 2.17
+        "practices": 2.7
       },
       "techs": {
         "android": 54.4,
@@ -2316,9 +2328,10 @@
         "csharp-dotnet": 77.08,
         "gps": 2.88,
         "ios": 48.26,
-        "mobile-build-release": 0.51,
+        "mobile-build-release": 46.2,
         "mobile-ui": 5.57,
         "mvp": 0.26,
+        "mvvm": 0.53,
         "objective-c": 19.37,
         "tests": 1.92,
         "virtual-machines": 29.4,
@@ -2336,8 +2349,8 @@
         "devops": 30.8,
         "embedded": 3.57,
         "languages": 74.24,
-        "mobile": 149.49,
-        "practices": 2.17
+        "mobile": 176.0,
+        "practices": 2.58
       },
       "techs": {
         "android": 48.81,
@@ -2346,9 +2359,10 @@
         "csharp-dotnet": 74.24,
         "gps": 3.09,
         "ios": 41.77,
-        "mobile-build-release": 0.69,
+        "mobile-build-release": 48.4,
         "mobile-ui": 2.61,
         "mvp": 0.16,
+        "mvvm": 0.42,
         "objective-c": 7.9,
         "tests": 2.01,
         "virtual-machines": 30.8,
@@ -2366,8 +2380,8 @@
         "devops": 30.8,
         "embedded": 1.64,
         "languages": 76.39,
-        "mobile": 146.78,
-        "practices": 2.01
+        "mobile": 176.0,
+        "practices": 2.42
       },
       "techs": {
         "android": 40.28,
@@ -2376,8 +2390,9 @@
         "csharp-dotnet": 75.15,
         "gps": 0.87,
         "ios": 39.19,
-        "mobile-build-release": 0.53,
+        "mobile-build-release": 48.4,
         "mobile-ui": 3.44,
+        "mvvm": 0.42,
         "objective-c": 17.65,
         "tests": 2.01,
         "virtual-machines": 30.8,
@@ -2397,8 +2412,8 @@
         "devops": 29.4,
         "embedded": 3.94,
         "languages": 60.12,
-        "mobile": 119.42,
-        "practices": 1.92
+        "mobile": 160.43,
+        "practices": 2.31
       },
       "techs": {
         "android": 26.63,
@@ -2407,8 +2422,9 @@
         "csharp-dotnet": 60.12,
         "gps": 3.57,
         "ios": 27.93,
-        "mobile-build-release": 0.65,
+        "mobile-build-release": 46.2,
         "mobile-ui": 2.78,
+        "mvvm": 0.4,
         "objective-c": 36.6,
         "tests": 1.92,
         "virtual-machines": 29.4,
@@ -2426,8 +2442,8 @@
         "devops": 32.2,
         "embedded": 6.38,
         "languages": 109.14,
-        "mobile": 147.22,
-        "practices": 2.44
+        "mobile": 184.0,
+        "practices": 2.88
       },
       "techs": {
         "android": 43.08,
@@ -2436,9 +2452,10 @@
         "csharp-dotnet": 109.14,
         "gps": 3.4,
         "ios": 35.55,
-        "mobile-build-release": 0.55,
+        "mobile-build-release": 50.6,
         "mobile-ui": 3.7,
         "mvp": 0.35,
+        "mvvm": 0.44,
         "objective-c": 15.11,
         "tests": 2.1,
         "virtual-machines": 32.2,
@@ -2456,8 +2473,8 @@
         "devops": 29.4,
         "embedded": 4.51,
         "languages": 70.68,
-        "mobile": 124.7,
-        "practices": 1.92
+        "mobile": 165.22,
+        "practices": 2.31
       },
       "techs": {
         "android": 32.66,
@@ -2466,8 +2483,9 @@
         "csharp-dotnet": 70.68,
         "gps": 4.44,
         "ios": 31.84,
-        "mobile-build-release": 1.14,
+        "mobile-build-release": 46.2,
         "mobile-ui": 2.49,
+        "mvvm": 0.4,
         "objective-c": 26.06,
         "tests": 1.92,
         "virtual-machines": 29.4,
@@ -2486,7 +2504,7 @@
         "embedded": 6.35,
         "languages": 105.27,
         "mobile": 168.0,
-        "practices": 10.31
+        "practices": 10.86
       },
       "techs": {
         "android": 48.69,
@@ -2496,8 +2514,9 @@
         "ddd": 2.33,
         "gps": 5.47,
         "ios": 48.68,
-        "mobile-build-release": 0.54,
+        "mobile-build-release": 46.2,
         "mobile-ui": 4.75,
+        "mvvm": 0.55,
         "objective-c": 2.42,
         "tests": 7.97,
         "virtual-machines": 29.4,
@@ -2525,7 +2544,7 @@
         "ddd": 6.35,
         "gps": 2.66,
         "ios": 55.39,
-        "mobile-build-release": 3.46,
+        "mobile-build-release": 50.6,
         "mobile-ui": 16.58,
         "objective-c": 3.98,
         "tests": 6.35,
@@ -2544,7 +2563,7 @@
         "devops": 29.4,
         "embedded": 2.37,
         "languages": 57.25,
-        "mobile": 99.99
+        "mobile": 141.02
       },
       "techs": {
         "android": 13.95,
@@ -2553,7 +2572,7 @@
         "csharp-dotnet": 57.25,
         "gps": 1.97,
         "ios": 13.0,
-        "mobile-build-release": 0.13,
+        "mobile-build-release": 46.2,
         "mobile-ui": 4.71,
         "objective-c": 22.36,
         "virtual-machines": 29.4,
@@ -2571,8 +2590,8 @@
         "devops": 30.8,
         "embedded": 0.95,
         "languages": 126.84,
-        "mobile": 104.56,
-        "practices": 2.84
+        "mobile": 145.61,
+        "practices": 3.26
       },
       "techs": {
         "android": 31.0,
@@ -2582,8 +2601,9 @@
         "ddd": 0.83,
         "gps": 0.87,
         "ios": 29.43,
-        "mobile-build-release": 2.6,
+        "mobile-build-release": 48.4,
         "mobile-ui": 3.65,
+        "mvvm": 0.42,
         "objective-c": 0.83,
         "tests": 2.01,
         "virtual-machines": 30.8,
@@ -2610,7 +2630,7 @@
         "csharp-dotnet": 123.1,
         "gps": 2.23,
         "ios": 78.48,
-        "mobile-build-release": 0.88,
+        "mobile-build-release": 48.4,
         "mobile-ui": 8.74,
         "tests": 3.42,
         "virtual-machines": 30.8,
@@ -2628,8 +2648,8 @@
         "devops": 11.76,
         "embedded": 3.14,
         "languages": 55.12,
-        "mobile": 76.16,
-        "practices": 2.71
+        "mobile": 117.32,
+        "practices": 3.11
       },
       "techs": {
         "android": 18.98,
@@ -2639,8 +2659,9 @@
         "ddd": 0.8,
         "gps": 3.07,
         "ios": 21.83,
-        "mobile-build-release": 0.51,
+        "mobile-build-release": 41.67,
         "mobile-ui": 2.49,
+        "mvvm": 0.4,
         "objective-c": 16.48,
         "tests": 1.92,
         "virtual-machines": 11.76,
@@ -2665,7 +2686,7 @@
         "cross-platform-architecture": 12.55,
         "csharp-dotnet": 110.35,
         "ios": 63.74,
-        "mobile-build-release": 1.77,
+        "mobile-build-release": 45.85,
         "mobile-ui": 2.0,
         "objective-c": 9.79,
         "tests": 11.86,
@@ -2684,8 +2705,8 @@
         "devops": 12.32,
         "embedded": 3.35,
         "languages": 69.25,
-        "mobile": 130.13,
-        "practices": 4.64
+        "mobile": 173.25,
+        "practices": 13.07
       },
       "techs": {
         "android": 22.55,
@@ -2695,8 +2716,9 @@
         "ddd": 0.83,
         "gps": 3.28,
         "ios": 22.01,
-        "mobile-build-release": 0.53,
+        "mobile-build-release": 43.65,
         "mobile-ui": 4.42,
+        "mvvm": 8.43,
         "objective-c": 29.68,
         "tests": 3.81,
         "virtual-machines": 12.32,
@@ -2715,18 +2737,19 @@
         "embedded": 27.55,
         "languages": 133.88,
         "mobile": 168.0,
-        "practices": 4.42
+        "practices": 13.5
       },
       "techs": {
         "android": 54.27,
         "bluetooth": 26.23,
-        "cross-platform-architecture": 16.73,
+        "cross-platform-architecture": 16.49,
         "csharp-dotnet": 133.88,
         "ddd": 0.8,
         "gps": 1.32,
         "ios": 52.78,
-        "mobile-build-release": 1.24,
+        "mobile-build-release": 41.67,
         "mobile-ui": 6.77,
+        "mvvm": 9.08,
         "objective-c": 0.8,
         "tests": 3.63,
         "virtual-machines": 11.76,
@@ -2745,7 +2768,7 @@
         "embedded": 29.35,
         "languages": 152.93,
         "mobile": 176.0,
-        "practices": 3.18
+        "practices": 7.63
       },
       "techs": {
         "android": 50.31,
@@ -2755,8 +2778,9 @@
         "ddd": 0.83,
         "gps": 0.87,
         "ios": 50.45,
-        "mobile-build-release": 0.87,
+        "mobile-build-release": 43.65,
         "mobile-ui": 5.13,
+        "mvvm": 4.45,
         "objective-c": 0.83,
         "tests": 2.34,
         "virtual-machines": 12.32,
@@ -2775,7 +2799,8 @@
         "devops": 12.32,
         "embedded": 2.34,
         "languages": 68.63,
-        "mobile": 78.83
+        "mobile": 121.95,
+        "practices": 7.81
       },
       "techs": {
         "android": 10.04,
@@ -2784,7 +2809,9 @@
         "csharp-dotnet": 68.63,
         "ef-core": 20.33,
         "ios": 15.12,
+        "mobile-build-release": 43.12,
         "mobile-ui": 1.95,
+        "mvvm": 7.81,
         "objective-c": 20.31,
         "swift": 1.56,
         "virtual-machines": 12.32,
@@ -2803,7 +2830,8 @@
         "devops": 12.32,
         "embedded": 6.97,
         "languages": 124.71,
-        "mobile": 157.02
+        "mobile": 176.0,
+        "practices": 8.57
       },
       "techs": {
         "android": 35.83,
@@ -2813,8 +2841,9 @@
         "ef-core": 13.47,
         "gps": 2.67,
         "ios": 31.03,
-        "mobile-build-release": 1.6,
+        "mobile-build-release": 44.16,
         "mobile-ui": 2.81,
+        "mvvm": 8.57,
         "objective-c": 12.27,
         "virtual-machines": 12.32,
         "xamarin": 43.56,
@@ -2834,20 +2863,20 @@
         "embedded": 1.9,
         "languages": 109.57,
         "mobile": 160.0,
-        "practices": 3.03
+        "practices": 14.07
       },
       "techs": {
         "android": 44.15,
         "bluetooth": 1.11,
-        "cross-platform-architecture": 8.54,
+        "cross-platform-architecture": 8.25,
         "csharp-dotnet": 107.8,
         "ddd": 0.76,
         "ef-core": 1.07,
         "gps": 0.79,
         "ios": 41.59,
-        "mobile-build-release": 1.22,
+        "mobile-build-release": 39.68,
         "mobile-ui": 7.34,
-        "mvvm": 0.44,
+        "mvvm": 11.48,
         "objective-c": 0.76,
         "tests": 1.82,
         "virtual-machines": 11.2,
@@ -2868,19 +2897,20 @@
         "embedded": 1.86,
         "languages": 129.18,
         "mobile": 184.0,
-        "practices": 2.97
+        "practices": 12.81
       },
       "techs": {
         "android": 71.91,
         "bluetooth": 0.08,
-        "cross-platform-architecture": 18.67,
+        "cross-platform-architecture": 18.24,
         "csharp-dotnet": 129.18,
         "ddd": 0.87,
         "ef-core": 1.23,
         "gps": 1.79,
         "ios": 70.7,
-        "mobile-build-release": 1.87,
+        "mobile-build-release": 45.63,
         "mobile-ui": 3.17,
+        "mvvm": 9.84,
         "objective-c": 0.87,
         "tests": 2.1,
         "virtual-machines": 12.88,
@@ -2898,7 +2928,8 @@
         "devops": 11.2,
         "embedded": 3.24,
         "languages": 92.4,
-        "mobile": 160.0
+        "mobile": 160.0,
+        "practices": 12.04
       },
       "techs": {
         "android": 83.06,
@@ -2907,7 +2938,8 @@
         "csharp-dotnet": 92.4,
         "gps": 0.54,
         "ios": 82.88,
-        "mobile-build-release": 0.36,
+        "mobile-build-release": 39.2,
+        "mvvm": 12.04,
         "objective-c": 0.54,
         "virtual-machines": 11.2,
         "xamarin": 86.47,
@@ -2926,21 +2958,21 @@
         "embedded": 2.3,
         "languages": 128.26,
         "mobile": 184.0,
-        "practices": 5.51
+        "practices": 10.22
       },
       "techs": {
         "android": 61.68,
         "bash": 0.9,
         "bluetooth": 1.39,
-        "cross-platform-architecture": 12.95,
+        "cross-platform-architecture": 12.53,
         "csharp-dotnet": 126.86,
         "ddd": 0.87,
         "ef-core": 1.23,
         "gps": 0.91,
         "ios": 58.25,
-        "mobile-build-release": 1.79,
+        "mobile-build-release": 45.63,
         "mobile-ui": 3.64,
-        "mvvm": 1.31,
+        "mvvm": 6.02,
         "objective-c": 0.87,
         "tests": 3.33,
         "virtual-machines": 12.88,
@@ -2961,7 +2993,7 @@
         "embedded": 4.05,
         "languages": 140.83,
         "mobile": 176.0,
-        "practices": 2.84
+        "practices": 13.17
       },
       "techs": {
         "android": 45.71,
@@ -2972,8 +3004,9 @@
         "ef-core": 1.17,
         "gps": 3.74,
         "ios": 45.18,
-        "mobile-build-release": 1.25,
+        "mobile-build-release": 43.65,
         "mobile-ui": 6.19,
+        "mvvm": 10.33,
         "objective-c": 1.19,
         "tests": 2.01,
         "virtual-machines": 12.32,
@@ -2993,7 +3026,7 @@
         "embedded": 7.16,
         "languages": 120.46,
         "mobile": 168.0,
-        "practices": 3.92
+        "practices": 5.46
       },
       "techs": {
         "android": 61.92,
@@ -3004,8 +3037,9 @@
         "ef-core": 1.12,
         "gps": 3.25,
         "ios": 53.58,
-        "mobile-build-release": 1.86,
+        "mobile-build-release": 41.67,
         "mobile-ui": 12.95,
+        "mvvm": 1.54,
         "objective-c": 0.8,
         "tests": 3.13,
         "virtual-machines": 11.76,
@@ -3024,8 +3058,8 @@
         "devops": 12.88,
         "embedded": 6.68,
         "languages": 149.82,
-        "mobile": 180.96,
-        "practices": 3.66
+        "mobile": 184.0,
+        "practices": 14.55
       },
       "techs": {
         "android": 42.29,
@@ -3036,8 +3070,9 @@
         "ef-core": 1.23,
         "gps": 1.72,
         "ios": 42.08,
-        "mobile-build-release": 1.3,
+        "mobile-build-release": 45.63,
         "mobile-ui": 8.48,
+        "mvvm": 10.89,
         "objective-c": 0.87,
         "tests": 2.79,
         "virtual-machines": 12.88,
@@ -3057,7 +3092,7 @@
         "embedded": 6.54,
         "languages": 113.68,
         "mobile": 168.0,
-        "practices": 2.71
+        "practices": 10.9
       },
       "techs": {
         "android": 48.69,
@@ -3068,8 +3103,9 @@
         "ef-core": 1.12,
         "gps": 0.83,
         "ios": 47.38,
-        "mobile-build-release": 1.31,
+        "mobile-build-release": 41.67,
         "mobile-ui": 15.11,
+        "mvvm": 8.18,
         "objective-c": 0.8,
         "tests": 1.92,
         "virtual-machines": 11.76,
@@ -3088,8 +3124,8 @@
         "devops": 12.32,
         "embedded": 9.9,
         "languages": 131.24,
-        "mobile": 172.72,
-        "practices": 5.51
+        "mobile": 177.45,
+        "practices": 11.84
       },
       "techs": {
         "android": 43.07,
@@ -3101,9 +3137,9 @@
         "ef-core": 1.17,
         "gps": 3.24,
         "ios": 36.81,
-        "mobile-build-release": 2.73,
+        "mobile-build-release": 43.65,
         "mobile-ui": 5.05,
-        "mvvm": 1.83,
+        "mvvm": 8.16,
         "objective-c": 0.83,
         "tests": 2.85,
         "virtual-machines": 12.32,
@@ -3124,21 +3160,21 @@
         "embedded": 0.95,
         "languages": 141.51,
         "mobile": 178.24,
-        "practices": 11.58
+        "practices": 12.0
       },
       "techs": {
         "android": 60.66,
         "asp-net-core": 0.02,
         "bluetooth": 0.08,
-        "cross-platform-architecture": 9.17,
+        "cross-platform-architecture": 3.01,
         "csharp-dotnet": 140.34,
         "ddd": 0.83,
         "ef-core": 1.26,
         "gps": 0.87,
         "ios": 60.13,
-        "mobile-build-release": 0.53,
+        "mobile-build-release": 43.65,
         "mobile-ui": 4.63,
-        "mvvm": 2.58,
+        "mvvm": 3.0,
         "objective-c": 0.83,
         "tests": 8.17,
         "virtual-machines": 12.32,
@@ -3159,7 +3195,7 @@
         "embedded": 5.53,
         "languages": 107.63,
         "mobile": 168.17,
-        "practices": 6.62
+        "practices": 11.64
       },
       "techs": {
         "android": 83.1,
@@ -3171,9 +3207,9 @@
         "ef-core": 1.25,
         "gps": 2.68,
         "ios": 76.42,
-        "mobile-build-release": 4.83,
+        "mobile-build-release": 41.67,
         "mobile-ui": 4.14,
-        "mvvm": 0.2,
+        "mvvm": 5.23,
         "objective-c": 0.8,
         "tests": 5.62,
         "virtual-machines": 11.76,
@@ -3194,7 +3230,7 @@
         "embedded": 26.64,
         "languages": 129.84,
         "mobile": 184.0,
-        "practices": 2.97
+        "practices": 3.41
       },
       "techs": {
         "android": 65.36,
@@ -3205,8 +3241,9 @@
         "ef-core": 1.23,
         "gps": 26.56,
         "ios": 25.26,
-        "mobile-build-release": 0.55,
+        "mobile-build-release": 45.63,
         "mobile-ui": 5.4,
+        "mvvm": 0.44,
         "objective-c": 0.87,
         "tests": 2.1,
         "virtual-machines": 12.88,
@@ -3225,20 +3262,21 @@
         "devops": 11.2,
         "embedded": 7.91,
         "languages": 141.17,
-        "mobile": 110.63,
-        "practices": 5.43
+        "mobile": 147.48,
+        "practices": 13.93
       },
       "techs": {
         "android": 25.92,
         "bluetooth": 5.64,
-        "cross-platform-architecture": 3.16,
+        "cross-platform-architecture": 2.9,
         "csharp-dotnet": 141.17,
         "ddd": 2.67,
         "ef-core": 1.07,
         "gps": 2.27,
         "ios": 24.92,
-        "mobile-build-release": 2.57,
+        "mobile-build-release": 39.68,
         "mobile-ui": 11.17,
+        "mvvm": 8.5,
         "objective-c": 0.76,
         "tests": 2.75,
         "virtual-machines": 11.2,
@@ -3258,7 +3296,7 @@
         "embedded": 1.22,
         "languages": 113.23,
         "mobile": 176.0,
-        "practices": 2.84
+        "practices": 14.76
       },
       "techs": {
         "android": 69.69,
@@ -3269,8 +3307,9 @@
         "ef-core": 1.17,
         "gps": 0.87,
         "ios": 69.3,
-        "mobile-build-release": 7.1,
+        "mobile-build-release": 43.65,
         "mobile-ui": 5.76,
+        "mvvm": 11.92,
         "objective-c": 0.83,
         "tests": 2.01,
         "virtual-machines": 12.32,
@@ -3290,8 +3329,8 @@
         "devops": 11.76,
         "embedded": 9.42,
         "languages": 108.25,
-        "mobile": 164.61,
-        "practices": 7.2
+        "mobile": 168.0,
+        "practices": 9.0
       },
       "techs": {
         "android": 46.15,
@@ -3307,8 +3346,9 @@
         "ios": 40.13,
         "java": 1.4,
         "javascript": 1.19,
-        "mobile-build-release": 2.63,
+        "mobile-build-release": 41.67,
         "mobile-ui": 4.53,
+        "mvvm": 1.8,
         "objective-c": 0.8,
         "tests": 6.41,
         "virtual-machines": 11.76,
@@ -3328,8 +3368,8 @@
         "devops": 12.88,
         "embedded": 2.26,
         "languages": 111.97,
-        "mobile": 132.46,
-        "practices": 33.76
+        "mobile": 176.87,
+        "practices": 93.57
       },
       "techs": {
         "android": 26.77,
@@ -3342,9 +3382,9 @@
         "ef-core": 3.42,
         "gps": 2.18,
         "ios": 25.62,
-        "mobile-build-release": 1.23,
+        "mobile-build-release": 45.63,
         "mobile-ui": 10.32,
-        "mvvm": 0.42,
+        "mvvm": 60.24,
         "objective-c": 0.87,
         "tests": 32.46,
         "virtual-machines": 12.88,
@@ -3364,8 +3404,8 @@
         "devops": 11.76,
         "embedded": 9.53,
         "languages": 129.93,
-        "mobile": 135.85,
-        "practices": 3.18
+        "mobile": 168.0,
+        "practices": 5.71
       },
       "techs": {
         "android": 27.73,
@@ -3376,9 +3416,9 @@
         "ef-core": 4.31,
         "gps": 0.95,
         "ios": 28.29,
-        "mobile-build-release": 0.74,
+        "mobile-build-release": 41.67,
         "mobile-ui": 6.28,
-        "mvvm": 0.47,
+        "mvvm": 3.0,
         "objective-c": 0.8,
         "tests": 1.92,
         "virtual-machines": 11.76,
@@ -3399,22 +3439,22 @@
         "embedded": 3.38,
         "languages": 137.91,
         "mobile": 176.09,
-        "practices": 11.94
+        "practices": 55.67
       },
       "techs": {
         "android": 28.11,
         "asp-net-core": 1.96,
         "bash": 0.37,
         "bluetooth": 1.95,
-        "cross-platform-architecture": 7.16,
+        "cross-platform-architecture": 6.79,
         "csharp-dotnet": 122.76,
         "ddd": 0.83,
         "ef-core": 12.05,
         "gps": 1.43,
         "ios": 29.38,
-        "mobile-build-release": 1.28,
+        "mobile-build-release": 43.65,
         "mobile-ui": 18.89,
-        "mvvm": 8.26,
+        "mvvm": 51.99,
         "objective-c": 0.83,
         "tests": 2.85,
         "virtual-machines": 12.32,
@@ -3435,23 +3475,23 @@
         "embedded": 1.28,
         "languages": 154.08,
         "mobile": 184.0,
-        "practices": 4.53
+        "practices": 39.56
       },
       "techs": {
         "android": 44.52,
         "asp-net-core": 5.04,
         "bash": 1.0,
         "bluetooth": 0.2,
-        "cross-platform-architecture": 4.67,
+        "cross-platform-architecture": 3.8,
         "csharp-dotnet": 150.65,
         "ddd": 0.87,
         "ef-core": 5.57,
         "gps": 1.08,
         "ios": 43.74,
         "javascript": 0.87,
-        "mobile-build-release": 1.6,
+        "mobile-build-release": 45.63,
         "mobile-ui": 3.95,
-        "mvvm": 0.35,
+        "mvvm": 35.37,
         "objective-c": 0.87,
         "tests": 3.32,
         "virtual-machines": 12.88,
@@ -3473,7 +3513,7 @@
         "embedded": 1.32,
         "languages": 106.88,
         "mobile": 160.0,
-        "practices": 3.51
+        "practices": 11.51
       },
       "techs": {
         "android": 62.13,
@@ -3484,9 +3524,9 @@
         "ef-core": 1.07,
         "gps": 0.79,
         "ios": 59.57,
-        "mobile-build-release": 8.56,
+        "mobile-build-release": 39.68,
         "mobile-ui": 7.46,
-        "mvvm": 0.92,
+        "mvvm": 8.92,
         "objective-c": 0.76,
         "tests": 1.82,
         "virtual-machines": 11.2,
@@ -3507,22 +3547,22 @@
         "embedded": 2.07,
         "languages": 141.93,
         "mobile": 184.0,
-        "practices": 3.26
+        "practices": 15.88
       },
       "techs": {
         "android": 45.45,
         "asp-net-core": 2.46,
         "bash": 0.69,
         "bluetooth": 0.96,
-        "cross-platform-architecture": 25.04,
+        "cross-platform-architecture": 24.74,
         "csharp-dotnet": 139.87,
         "ddd": 0.87,
         "ef-core": 1.62,
         "gps": 1.11,
         "ios": 45.39,
-        "mobile-build-release": 6.65,
+        "mobile-build-release": 45.63,
         "mobile-ui": 4.4,
-        "mvvm": 0.29,
+        "mvvm": 12.91,
         "objective-c": 0.87,
         "tests": 2.1,
         "virtual-machines": 12.88,
@@ -3542,24 +3582,24 @@
         "devops": 12.32,
         "embedded": 12.93,
         "languages": 154.65,
-        "mobile": 146.59,
-        "practices": 3.56
+        "mobile": 176.0,
+        "practices": 14.03
       },
       "techs": {
         "android": 23.55,
         "bash": 0.12,
         "bluetooth": 10.19,
-        "cross-platform-architecture": 3.78,
+        "cross-platform-architecture": 3.54,
         "csharp-dotnet": 66.1,
         "ddd": 0.83,
         "ef-core": 1.65,
         "gps": 2.74,
         "ios": 22.9,
         "javascript": 23.72,
-        "mobile-build-release": 0.87,
+        "mobile-build-release": 43.65,
         "mobile-ui": 4.11,
         "mvp": 0.16,
-        "mvvm": 0.42,
+        "mvvm": 10.89,
         "objective-c": 0.83,
         "python": 0.04,
         "tests": 2.15,
@@ -3581,8 +3621,8 @@
         "devops": 11.76,
         "embedded": 6.45,
         "languages": 107.24,
-        "mobile": 152.35,
-        "practices": 4.28
+        "mobile": 169.0,
+        "practices": 11.27
       },
       "techs": {
         "android": 28.61,
@@ -3596,10 +3636,10 @@
         "ios": 28.82,
         "java": 0.19,
         "javascript": 3.23,
-        "mobile-build-release": 1.15,
+        "mobile-build-release": 41.67,
         "mobile-ui": 4.38,
         "mvp": 0.3,
-        "mvvm": 1.23,
+        "mvvm": 8.23,
         "objective-c": 0.8,
         "python": 0.03,
         "tests": 1.95,
@@ -3621,8 +3661,8 @@
         "devops": 12.88,
         "embedded": 2.19,
         "languages": 160.11,
-        "mobile": 89.55,
-        "practices": 40.76
+        "mobile": 134.09,
+        "practices": 43.21
       },
       "techs": {
         "android": 24.02,
@@ -3636,9 +3676,10 @@
         "ef-core": 2.76,
         "gps": 1.9,
         "ios": 23.74,
-        "mobile-build-release": 1.09,
+        "mobile-build-release": 45.63,
         "mobile-ui": 2.83,
         "mvp": 0.03,
+        "mvvm": 2.45,
         "objective-c": 0.87,
         "python": 0.59,
         "tests": 39.71,
@@ -3660,8 +3701,8 @@
         "devops": 11.2,
         "embedded": 9.6,
         "languages": 123.79,
-        "mobile": 136.53,
-        "practices": 3.21
+        "mobile": 160.0,
+        "practices": 15.03
       },
       "techs": {
         "android": 25.31,
@@ -3674,10 +3715,10 @@
         "ef-core": 6.75,
         "gps": 7.3,
         "ios": 28.52,
-        "mobile-build-release": 1.31,
+        "mobile-build-release": 39.68,
         "mobile-ui": 2.59,
         "mvp": 0.12,
-        "mvvm": 0.29,
+        "mvvm": 12.1,
         "objective-c": 0.76,
         "python": 0.56,
         "tests": 2.04,
@@ -3699,7 +3740,7 @@
         "embedded": 8.99,
         "languages": 127.45,
         "mobile": 168.0,
-        "practices": 3.04
+        "practices": 10.22
       },
       "techs": {
         "android": 43.63,
@@ -3712,9 +3753,9 @@
         "ef-core": 2.51,
         "gps": 7.29,
         "ios": 35.52,
-        "mobile-build-release": 8.84,
+        "mobile-build-release": 41.67,
         "mobile-ui": 3.97,
-        "mvvm": 0.33,
+        "mvvm": 7.51,
         "objective-c": 0.8,
         "tests": 1.92,
         "virtual-machines": 11.76,
@@ -3734,8 +3775,8 @@
         "devops": 12.32,
         "embedded": 4.05,
         "languages": 144.76,
-        "mobile": 128.88,
-        "practices": 3.27
+        "mobile": 171.57,
+        "practices": 12.34
       },
       "techs": {
         "android": 28.33,
@@ -3747,9 +3788,9 @@
         "ef-core": 2.24,
         "gps": 3.01,
         "ios": 22.56,
-        "mobile-build-release": 0.96,
+        "mobile-build-release": 43.65,
         "mobile-ui": 3.9,
-        "mvvm": 0.43,
+        "mvvm": 9.5,
         "objective-c": 0.83,
         "tests": 2.01,
         "virtual-machines": 12.32,
@@ -3769,8 +3810,8 @@
         "devops": 12.88,
         "embedded": 6.01,
         "languages": 150.17,
-        "mobile": 144.19,
-        "practices": 4.37
+        "mobile": 184.13,
+        "practices": 11.19
       },
       "techs": {
         "android": 30.52,
@@ -3783,10 +3824,10 @@
         "gps": 1.31,
         "ios": 29.2,
         "javascript": 6.54,
-        "mobile-build-release": 2.75,
+        "mobile-build-release": 45.63,
         "mobile-ui": 4.33,
         "mvp": 0.4,
-        "mvvm": 1.0,
+        "mvvm": 7.82,
         "objective-c": 0.87,
         "python": 0.2,
         "tests": 2.1,
@@ -3809,7 +3850,7 @@
         "embedded": 6.35,
         "languages": 123.28,
         "mobile": 160.0,
-        "practices": 4.64
+        "practices": 32.22
       },
       "techs": {
         "android": 43.14,
@@ -3822,10 +3863,10 @@
         "ef-core": 1.98,
         "gps": 4.91,
         "ios": 40.15,
-        "mobile-build-release": 6.2,
+        "mobile-build-release": 39.68,
         "mobile-ui": 7.4,
         "mvp": 1.14,
-        "mvvm": 0.91,
+        "mvvm": 28.49,
         "objective-c": 0.76,
         "python": 0.46,
         "tests": 1.82,
@@ -3847,7 +3888,7 @@
         "embedded": 9.58,
         "languages": 153.62,
         "mobile": 184.0,
-        "practices": 3.62
+        "practices": 20.32
       },
       "techs": {
         "android": 41.49,
@@ -3859,10 +3900,10 @@
         "ef-core": 2.27,
         "gps": 9.5,
         "ios": 36.64,
-        "mobile-build-release": 1.33,
+        "mobile-build-release": 45.63,
         "mobile-ui": 4.03,
         "mvp": 0.13,
-        "mvvm": 0.52,
+        "mvvm": 17.22,
         "objective-c": 0.87,
         "python": 0.65,
         "tests": 2.1,
@@ -3884,7 +3925,7 @@
         "embedded": 8.42,
         "languages": 143.4,
         "mobile": 176.0,
-        "practices": 8.14
+        "practices": 37.98
       },
       "techs": {
         "android": 29.83,
@@ -3896,10 +3937,10 @@
         "ef-core": 3.59,
         "gps": 5.45,
         "ios": 25.44,
-        "mobile-build-release": 1.74,
+        "mobile-build-release": 43.65,
         "mobile-ui": 18.28,
         "mvp": 0.24,
-        "mvvm": 5.06,
+        "mvvm": 34.89,
         "objective-c": 0.83,
         "tests": 2.01,
         "virtual-machines": 12.32,
@@ -3920,7 +3961,7 @@
         "embedded": 7.58,
         "languages": 131.6,
         "mobile": 168.0,
-        "practices": 9.9
+        "practices": 49.33
       },
       "techs": {
         "android": 28.04,
@@ -3932,9 +3973,9 @@
         "ef-core": 5.23,
         "gps": 7.51,
         "ios": 32.15,
-        "mobile-build-release": 1.02,
+        "mobile-build-release": 41.67,
         "mobile-ui": 22.52,
-        "mvvm": 7.19,
+        "mvvm": 46.62,
         "objective-c": 0.8,
         "tests": 1.92,
         "virtual-machines": 11.76,
@@ -3955,7 +3996,7 @@
         "embedded": 3.27,
         "languages": 138.16,
         "mobile": 184.0,
-        "practices": 8.19
+        "practices": 29.65
       },
       "techs": {
         "android": 45.07,
@@ -3966,10 +4007,10 @@
         "ef-core": 3.02,
         "gps": 2.22,
         "ios": 39.95,
-        "mobile-build-release": 8.22,
+        "mobile-build-release": 45.63,
         "mobile-ui": 13.98,
         "mvp": 0.16,
-        "mvvm": 5.05,
+        "mvvm": 26.52,
         "objective-c": 0.87,
         "python": 0.49,
         "tests": 2.1,
@@ -3991,7 +4032,7 @@
         "embedded": 2.39,
         "languages": 123.08,
         "mobile": 171.92,
-        "practices": 9.67
+        "practices": 45.47
       },
       "techs": {
         "android": 36.8,
@@ -3999,16 +4040,16 @@
         "azure-devops": 7.5,
         "bash": 0.12,
         "bluetooth": 1.07,
-        "cross-platform-architecture": 5.28,
+        "cross-platform-architecture": 5.27,
         "csharp-dotnet": 109.62,
         "ddd": 0.8,
         "ef-core": 1.85,
         "gps": 1.32,
         "ios": 31.38,
         "java": 0.24,
-        "mobile-build-release": 1.53,
+        "mobile-build-release": 41.72,
         "mobile-ui": 17.17,
-        "mvvm": 5.36,
+        "mvvm": 41.16,
         "objective-c": 0.8,
         "tests": 3.51,
         "virtual-machines": 11.76,
@@ -4030,7 +4071,7 @@
         "embedded": 0.95,
         "languages": 113.5,
         "mobile": 176.03,
-        "practices": 7.32
+        "practices": 15.98
       },
       "techs": {
         "android": 60.92,
@@ -4044,9 +4085,9 @@
         "gps": 0.87,
         "ios": 38.7,
         "javascript": 0.4,
-        "mobile-build-release": 7.9,
+        "mobile-build-release": 43.65,
         "mobile-ui": 6.08,
-        "mvvm": 0.43,
+        "mvvm": 9.09,
         "objective-c": 0.83,
         "tests": 6.05,
         "virtual-machines": 12.32,
@@ -4066,8 +4107,8 @@
         "devops": 12.88,
         "embedded": 1.77,
         "languages": 121.83,
-        "mobile": 161.2,
-        "practices": 22.39
+        "mobile": 186.89,
+        "practices": 31.2
       },
       "techs": {
         "android": 35.51,
@@ -4079,9 +4120,9 @@
         "ef-core": 1.23,
         "gps": 0.91,
         "ios": 37.81,
-        "mobile-build-release": 0.55,
+        "mobile-build-release": 45.63,
         "mobile-ui": 12.66,
-        "mvvm": 18.18,
+        "mvvm": 26.99,
         "objective-c": 0.87,
         "python": 0.39,
         "tests": 3.34,
@@ -4103,7 +4144,7 @@
         "embedded": 24.3,
         "languages": 134.9,
         "mobile": 160.0,
-        "practices": 12.13
+        "practices": 40.99
       },
       "techs": {
         "android": 33.31,
@@ -4114,10 +4155,10 @@
         "ef-core": 1.07,
         "gps": 5.31,
         "ios": 30.74,
-        "mobile-build-release": 1.52,
+        "mobile-build-release": 39.68,
         "mobile-ui": 4.29,
         "mvp": 0.35,
-        "mvvm": 1.39,
+        "mvvm": 30.25,
         "objective-c": 0.76,
         "tests": 9.64,
         "virtual-machines": 11.2,
@@ -4137,7 +4178,7 @@
         "embedded": 5.81,
         "languages": 152.02,
         "mobile": 177.0,
-        "practices": 10.35
+        "practices": 56.4
       },
       "techs": {
         "android": 36.07,
@@ -4150,10 +4191,10 @@
         "ef-core": 2.67,
         "gps": 2.49,
         "ios": 31.73,
-        "mobile-build-release": 1.06,
+        "mobile-build-release": 43.68,
         "mobile-ui": 5.46,
         "mvp": 0.25,
-        "mvvm": 1.09,
+        "mvvm": 47.15,
         "objective-c": 0.83,
         "tests": 7.55,
         "virtual-machines": 12.32,
@@ -4174,7 +4215,7 @@
         "embedded": 0.44,
         "languages": 87.23,
         "mobile": 74.92,
-        "practices": 45.65
+        "practices": 46.53
       },
       "techs": {
         "android": 23.05,
@@ -4185,7 +4226,7 @@
         "ios": 12.7,
         "mobile-build-release": 0.37,
         "mobile-ui": 7.78,
-        "mvvm": 44.98,
+        "mvvm": 45.87,
         "tests": 0.67,
         "virtual-machines": 12.1,
         "xamarin": 50.89,
@@ -4203,7 +4244,7 @@
         "devops": 39.78,
         "languages": 58.7,
         "mobile": 42.43,
-        "practices": 11.23
+        "practices": 11.46
       },
       "techs": {
         "android": 1.57,
@@ -4214,7 +4255,7 @@
         "ios": 1.35,
         "mobile-build-release": 0.67,
         "mobile-ui": 15.41,
-        "mvvm": 11.23,
+        "mvvm": 11.46,
         "virtual-machines": 7.7,
         "xamarin": 16.24,
         "xamarin-forms": 15.45,
@@ -4286,7 +4327,7 @@
         "embedded": 1.38,
         "languages": 19.12,
         "mobile": 22.0,
-        "practices": 8.29
+        "practices": 8.39
       },
       "techs": {
         "android": 2.13,
@@ -4296,7 +4337,7 @@
         "ios": 2.23,
         "mobile-build-release": 0.65,
         "mobile-ui": 5.25,
-        "mvvm": 8.01,
+        "mvvm": 8.11,
         "tests": 0.28,
         "virtual-machines": 3.3,
         "xamarin": 9.8,
@@ -4315,7 +4356,7 @@
         "embedded": 3.64,
         "languages": 64.21,
         "mobile": 37.91,
-        "practices": 18.64
+        "practices": 19.33
       },
       "techs": {
         "android": 2.22,
@@ -4326,7 +4367,7 @@
         "ios": 3.5,
         "mobile-build-release": 0.29,
         "mobile-ui": 9.35,
-        "mvvm": 18.64,
+        "mvvm": 19.33,
         "python": 2.01,
         "virtual-machines": 6.6,
         "xamarin": 15.23,
@@ -4376,7 +4417,7 @@
         "embedded": 2.39,
         "languages": 14.66,
         "mobile": 22.0,
-        "practices": 1.57
+        "practices": 2.2
       },
       "techs": {
         "android": 5.6,
@@ -4387,7 +4428,7 @@
         "ios": 6.01,
         "mobile-build-release": 1.11,
         "mobile-ui": 1.9,
-        "mvvm": 0.63,
+        "mvvm": 1.26,
         "tests": 0.94,
         "virtual-machines": 2.2,
         "xamarin": 15.96,
@@ -4428,7 +4469,7 @@
         "embedded": 0.41,
         "languages": 32.15,
         "mobile": 16.72,
-        "practices": 4.31
+        "practices": 15.58
       },
       "techs": {
         "ai-driven-development": 11.55,
@@ -4439,7 +4480,7 @@
         "ios": 2.37,
         "mobile-build-release": 0.14,
         "mobile-ui": 1.49,
-        "mvvm": 3.73,
+        "mvvm": 15.0,
         "tests": 0.58,
         "virtual-machines": 3.3,
         "xamarin": 6.99,
@@ -4616,7 +4657,7 @@
         "embedded": 0.32,
         "languages": 171.21,
         "mobile": 0.28,
-        "practices": 5.22
+        "practices": 20.31
       },
       "techs": {
         "ai-driven-development": 69.3,
@@ -4630,7 +4671,7 @@
         "gps": 0.32,
         "javascript": 1.66,
         "mobile-ui": 0.28,
-        "mvvm": 0.37,
+        "mvvm": 15.47,
         "virtual-machines": 19.8,
         "web": 1.16
       }
@@ -4649,7 +4690,7 @@
         "embedded": 0.01,
         "languages": 134.13,
         "mobile": 0.08,
-        "practices": 7.36
+        "practices": 9.28
       },
       "techs": {
         "ai-driven-development": 61.6,
@@ -4666,7 +4707,7 @@
         "gps": 0.01,
         "javascript": 0.04,
         "mobile-ui": 0.08,
-        "mvvm": 0.24,
+        "mvvm": 2.16,
         "sql": 0.11,
         "virtual-machines": 17.6,
         "web": 0.09
@@ -4793,13 +4834,14 @@
         "blockchain": 18.53,
         "devops": 44.55,
         "languages": 98.68,
-        "practices": 13.68
+        "practices": 14.09
       },
       "techs": {
         "ai-driven-development": 34.65,
         "blockchain": 18.53,
         "csharp-dotnet": 98.68,
         "docker": 34.65,
+        "mvvm": 0.41,
         "tests": 13.68,
         "virtual-machines": 9.9
       }
@@ -4914,7 +4956,7 @@
         "devops": 74.25,
         "languages": 161.03,
         "mobile": 0.65,
-        "practices": 6.18
+        "practices": 7.55
       },
       "techs": {
         "ai-driven-development": 115.5,
@@ -4923,7 +4965,7 @@
         "csharp-dotnet": 130.15,
         "docker": 57.75,
         "mobile-ui": 0.65,
-        "mvvm": 0.65,
+        "mvvm": 2.01,
         "tests": 5.53,
         "virtual-machines": 16.5
       }
@@ -4940,7 +4982,7 @@
         "devops": 69.3,
         "languages": 150.89,
         "mobile": 1.6,
-        "practices": 7.49
+        "practices": 7.84
       },
       "techs": {
         "ai-driven-development": 107.8,
@@ -4948,6 +4990,7 @@
         "csharp-dotnet": 140.42,
         "docker": 53.9,
         "mobile-ui": 1.6,
+        "mvvm": 0.35,
         "python": 10.48,
         "tests": 7.49,
         "virtual-machines": 15.4
@@ -4966,7 +5009,7 @@
         "devops": 74.25,
         "languages": 148.89,
         "mobile": 1.35,
-        "practices": 1.92
+        "practices": 2.98
       },
       "techs": {
         "ai-driven-development": 115.5,
@@ -4975,7 +5018,7 @@
         "docker": 57.75,
         "grpc": 15.43,
         "mobile-ui": 1.35,
-        "mvvm": 0.1,
+        "mvvm": 1.17,
         "tests": 1.82,
         "virtual-machines": 16.5
       }
@@ -5105,7 +5148,7 @@
         "blockchain": 0.37,
         "devops": 26.4,
         "languages": 122.65,
-        "practices": 5.01
+        "practices": 5.19
       },
       "techs": {
         "ai-driven-development": 92.4,
@@ -5113,6 +5156,7 @@
         "csharp-dotnet": 10.81,
         "docker": 13.2,
         "grpc": 0.56,
+        "mvvm": 0.19,
         "python": 111.83,
         "tests": 5.01,
         "virtual-machines": 13.2
@@ -5415,7 +5459,7 @@
         "devops": 63.49,
         "languages": 41.53,
         "mobile": 3.37,
-        "practices": 45.22
+        "practices": 48.18
       },
       "techs": {
         "ai-driven-development": 77.0,
@@ -5427,6 +5471,7 @@
         "github-actions": 1.89,
         "go": 0.27,
         "mobile-ui": 3.37,
+        "mvvm": 2.96,
         "python": 11.48,
         "tdd": 26.95,
         "tests": 16.66,
@@ -5550,7 +5595,7 @@
         "devops": 159.74,
         "languages": 123.46,
         "mobile": 5.1,
-        "practices": 106.42
+        "practices": 106.97
       },
       "techs": {
         "ai-driven-development": 198.0,
@@ -5568,7 +5613,7 @@
         "kubernetes": 0.15,
         "llm-api": 0.15,
         "mobile-ui": 5.1,
-        "mvvm": 0.05,
+        "mvvm": 0.6,
         "powershell": 0.39,
         "python": 6.58,
         "sql": 0.45,
@@ -5592,7 +5637,7 @@
         "devops": 97.22,
         "languages": 89.79,
         "mobile": 31.57,
-        "practices": 73.29
+        "practices": 75.64
       },
       "techs": {
         "ai-driven-development": 121.0,
@@ -5612,7 +5657,7 @@
         "maui": 0.38,
         "mobile-build-release": 5.36,
         "mobile-ui": 6.6,
-        "mvvm": 2.01,
+        "mvvm": 4.36,
         "tdd": 42.35,
         "tests": 28.18,
         "virtual-machines": 12.1,
@@ -5635,7 +5680,7 @@
         "embedded": 0.69,
         "languages": 100.02,
         "mobile": 6.57,
-        "practices": 93.56
+        "practices": 94.09
       },
       "techs": {
         "ai-driven-development": 143.0,
@@ -5655,7 +5700,7 @@
         "javascript": 0.15,
         "mobile-build-release": 1.06,
         "mobile-ui": 4.0,
-        "mvvm": 0.42,
+        "mvvm": 3.7,
         "nfc": 0.69,
         "powershell": 0.92,
         "python": 21.54,
@@ -5681,7 +5726,7 @@
         "embedded": 0.38,
         "languages": 176.76,
         "mobile": 1.42,
-        "practices": 145.84
+        "practices": 146.53
       },
       "techs": {
         "ai-driven-development": 220.0,
@@ -5696,6 +5741,7 @@
         "gps": 0.38,
         "javascript": 0.16,
         "mobile-ui": 1.42,
+        "mvvm": 0.69,
         "python": 116.29,
         "sql": 0.05,
         "tdd": 77.0,
@@ -5760,7 +5806,7 @@
         "embedded": 0.18,
         "languages": 150.59,
         "mobile": 10.56,
-        "practices": 164.79
+        "practices": 166.01
       },
       "techs": {
         "ai-driven-development": 286.0,
@@ -5780,7 +5826,7 @@
         "llm-api": 0.53,
         "mobile-build-release": 1.96,
         "mobile-ui": 1.62,
-        "mvvm": 6.67,
+        "mvvm": 7.89,
         "nfc": 0.18,
         "nodejs": 0.36,
         "python": 14.74,
@@ -5808,7 +5854,7 @@
         "embedded": 2.43,
         "languages": 152.2,
         "mobile": 1.96,
-        "practices": 148.95
+        "practices": 148.98
       },
       "techs": {
         "ai-driven-development": 242.0,
@@ -5827,6 +5873,7 @@
         "javascript": 0.17,
         "llm-api": 1.57,
         "mobile-ui": 1.16,
+        "mvvm": 0.03,
         "nfc": 0.54,
         "nodejs": 0.28,
         "python": 84.36,
@@ -5854,7 +5901,7 @@
         "devops": 175.61,
         "embedded": 0.44,
         "languages": 171.46,
-        "mobile": 107.95,
+        "mobile": 154.15,
         "practices": 124.83
       },
       "techs": {
@@ -5870,6 +5917,7 @@
         "github-actions": 0.01,
         "gps": 0.4,
         "llm-api": 0.08,
+        "mobile-build-release": 107.8,
         "mobile-ui": 0.11,
         "native-cross-build": 107.8,
         "nfc": 0.04,
@@ -5975,52 +6023,52 @@
       },
       "domains": {
         "ai-llm": 190.0,
-        "backend": 54.07,
-        "blockchain": 0.24,
-        "devops": 133.13,
-        "embedded": 1.77,
-        "languages": 177.02,
-        "mobile": 78.71,
-        "practices": 129.5
+        "backend": 54.04,
+        "blockchain": 0.2,
+        "devops": 133.14,
+        "embedded": 1.7,
+        "languages": 177.3,
+        "mobile": 78.58,
+        "practices": 129.52
       },
       "techs": {
         "ai-driven-development": 190.0,
         "android": 53.9,
-        "azure": 0.03,
+        "azure": 0.02,
         "azure-devops": 53.9,
-        "bash": 106.9,
-        "blazor": 0.11,
-        "blockchain": 0.24,
-        "bluetooth": 0.04,
+        "bash": 106.78,
+        "blazor": 0.1,
+        "blockchain": 0.2,
+        "bluetooth": 0.03,
         "c-cpp": 7.7,
-        "cross-platform-architecture": 0.03,
-        "csharp-dotnet": 70.93,
-        "ddd": 0.02,
+        "cross-platform-architecture": 0.02,
+        "csharp-dotnet": 70.78,
+        "ddd": 0.01,
         "docker": 79.1,
         "dotnet-5": 53.9,
-        "github-actions": 0.38,
-        "gps": 1.67,
-        "grpc": 0.04,
-        "ios": 0.04,
-        "llm-api": 0.04,
+        "github-actions": 0.39,
+        "gps": 1.63,
+        "grpc": 0.03,
+        "ios": 0.03,
+        "llm-api": 0.03,
         "maui": 0.07,
         "mobile-build-release": 0.01,
         "mobile-ui": 0.05,
-        "mqtt": 0.03,
-        "mvp": 0.02,
+        "mqtt": 0.02,
+        "mvp": 0.01,
         "mvvm": 0.03,
-        "nfc": 0.03,
-        "python": 18.31,
+        "nfc": 0.02,
+        "python": 18.81,
         "ruby": 0.02,
-        "sql": 0.06,
+        "sql": 0.11,
         "swift": 0.77,
         "tdd": 120.4,
-        "tests": 9.03,
-        "vector-db": 0.04,
+        "tests": 9.08,
+        "vector-db": 0.03,
         "virtual-machines": 30.55,
         "web": 0.04,
-        "xamarin": 54.57,
-        "xamarin-forms": 0.06
+        "xamarin": 54.49,
+        "xamarin-forms": 0.03
       }
     }
   },
@@ -6033,7 +6081,7 @@
     "commit_days": 1470,
     "public_days": 240,
     "public_share": 0.1633,
-    "test_only_commits": 294
+    "test_only_commits": 295
   },
   "levels": {
     "advanced": 1600,
@@ -6142,7 +6190,7 @@
       "display_hours": 890,
       "domain": "languages",
       "first": "2014-06",
-      "hours": 893.1,
+      "hours": 893.0,
       "kind": "language",
       "last": "2026-09",
       "level": "professional"
@@ -6209,10 +6257,10 @@
     },
     "cross-platform-architecture": {
       "declared_share": 0.0,
-      "display_hours": 450,
+      "display_hours": 440,
       "domain": "mobile",
       "first": "2015-02",
-      "hours": 458.1,
+      "hours": 448.4,
       "kind": "domain",
       "last": "2026-09",
       "level": "working"
@@ -6222,7 +6270,7 @@
       "display_hours": 13000,
       "domain": "languages",
       "first": "2006-09",
-      "hours": 13465.1,
+      "hours": 13465.0,
       "kind": "language",
       "last": "2026-09",
       "level": "expert"
@@ -6438,14 +6486,14 @@
       "level": null
     },
     "mobile-build-release": {
-      "declared_share": 0.0,
-      "display_hours": 130,
+      "declared_share": 0.989,
+      "display_hours": 3300,
       "domain": "mobile",
-      "first": "2015-02",
-      "hours": 135.1,
+      "first": "2014-04",
+      "hours": 3317.1,
       "kind": "domain",
       "last": "2026-09",
-      "level": "working"
+      "level": "advanced"
     },
     "mobile-ui": {
       "declared_share": 0.0,
@@ -6489,13 +6537,13 @@
     },
     "mvvm": {
       "declared_share": 0.0,
-      "display_hours": 170,
+      "display_hours": 850,
       "domain": "practices",
       "first": "2015-04",
-      "hours": 177.6,
+      "hours": 857.6,
       "kind": "domain",
       "last": "2026-09",
-      "level": "working"
+      "level": "professional"
     },
     "native-cross-build": {
       "declared_share": 1.0,
@@ -6592,7 +6640,7 @@
       "display_hours": 1400,
       "domain": "languages",
       "first": "2018-11",
-      "hours": 1405.6,
+      "hours": 1406.1,
       "kind": "language",
       "last": "2026-09",
       "level": "professional"
@@ -6822,7 +6870,7 @@
       "display_hours": 4400,
       "domain": "mobile",
       "first": "2015-02",
-      "hours": 4462.9,
+      "hours": 4462.8,
       "kind": "platform",
       "last": "2026-09",
       "level": "advanced"
@@ -6832,7 +6880,7 @@
       "display_hours": 3200,
       "domain": "mobile",
       "first": "2015-02",
-      "hours": 3259.9,
+      "hours": 3259.8,
       "kind": "platform",
       "last": "2026-09",
       "level": "advanced"

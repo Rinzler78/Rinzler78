@@ -955,11 +955,6 @@ def test_unreadable_project_file_adds_nothing(make_repo, ids, voc) -> None:
         ("App/Main.cs", ["using Android.App;"], "android"),
         ("App/Conv.cs", ["class C : IValueConverter {}"], "mobile-ui"),
         (
-            "App/Api.cs",
-            ["DependencyService.Get<IApi>()"],
-            "cross-platform-architecture",
-        ),
-        (
             "App/HomePageController.cs",
             ["public ICommand Save { get; }", "OnPropertyChanged();"],
             "mvvm",
@@ -1008,6 +1003,7 @@ def test_file_level_rules(voc: ev.Vocabulary, path, lines, tech) -> None:
         ("App/Vm.cs", ["public ICommand Save { get; }"]),
         ("App/Services/Sync.cs", ["OnPropertyChanged();"]),
         ("Core/Core.csproj", ["<TargetFramework>netstandard2.0</TargetFramework>"]),
+        ("App/Api.cs", ["var api = DependencyService.Get<IApi>();"]),
     ],
 )
 def test_behavior_rules_need_their_evidence(voc: ev.Vocabulary, path, lines) -> None:
@@ -1089,3 +1085,121 @@ def test_missing_parent_tree_yields_nothing(make_repo, ids, voc) -> None:
     commits = ev.collect([repo], ids, voc, is_public=never_public).commits
     last = max(commits.values(), key=lambda c: c.day)
     assert (last.units, last.files, last.has_patch) == ({}, 0, False)
+
+
+# --- MVVM at project level ---------------------------------------------------
+
+BASE_VM = (
+    "public class BasePageController : Bindable\n{\n"
+    "    public ICommand Save { get; }\n"
+    "    void Changed() => OnPropertyChanged();\n}\n"
+)
+SDK = {
+    "Sdk/Sdk.csproj": "<Project/>\n",
+    "Sdk/Base/BasePageController.cs": BASE_VM,
+    "Sdk/Base/DefaultLoginPageController.cs": (
+        "public class DefaultLoginPageController : BasePageController {}\n"
+    ),
+}
+APP_PROJECT = (
+    '<ItemGroup><ProjectReference Include="..\\Sdk\\Sdk.csproj" /></ItemGroup>\n'
+)
+
+
+def test_presentation_layer_of_an_mvvm_project(make_repo, ids, voc) -> None:
+    control = _only(
+        make_repo, ids, voc, "p1", SDK, {"Sdk/Controls/Badge.cs": "class Badge {}\n"}
+    )
+    assert "mvvm" in control.units
+    service = _only(
+        make_repo, ids, voc, "p2", SDK, {"Sdk/Services/Api.cs": "class Api {}\n"}
+    )
+    assert "mvvm" not in service.units
+
+
+def test_presentation_of_a_project_without_viewmodel(make_repo, ids, voc) -> None:
+    commit = _only(
+        make_repo,
+        ids,
+        voc,
+        "p3",
+        {"App/App.csproj": "<Project/>\n", "App/Api.cs": "class Api {}\n"},
+        {"App/Views/Home.cs": "class Home {}\n"},
+    )
+    assert "mvvm" not in commit.units
+
+
+def test_referencing_an_mvvm_sdk_and_inheriting_its_viewmodels(
+    make_repo, ids, voc
+) -> None:
+    tree = {**SDK, "App/App.csproj": APP_PROJECT}
+    derived = _only(
+        make_repo,
+        ids,
+        voc,
+        "p4",
+        tree,
+        {
+            "App/Login/LoginFlow.cs": (
+                "public class ShopLoginFlow : DefaultLoginPageController {}\n"
+            )
+        },
+    )
+    assert "mvvm" in derived.units
+    view = _only(make_repo, ids, voc, "p5", tree, {"App/Views/X.cs": "class X {}\n"})
+    assert "mvvm" in view.units
+    network = _only(
+        make_repo, ids, voc, "p6", tree, {"App/Net/Client.cs": "class Client {}\n"}
+    )
+    assert "mvvm" not in network.units
+
+
+def test_shared_project_import_carries_mvvm(make_repo, ids, voc) -> None:
+    tree = {
+        "Shared/Shared.projitems": "<Project/>\n",
+        "Shared/Base/BasePageController.cs": BASE_VM,
+        "App/App.csproj": '<Import Project="..\\Shared\\Shared.projitems" />\n',
+    }
+    commit = _only(
+        make_repo, ids, voc, "p7", tree, {"App/Pages/Home.cs": "class Home {}\n"}
+    )
+    assert "mvvm" in commit.units
+
+
+def test_registry_carries_mvvm_across_repositories(
+    make_repo, tmp_path, ids, voc
+) -> None:
+    sdk = make_repo("sdk-repo", [(OWN, DAY, SDK)])
+    app = make_repo(
+        "app-repo",
+        [
+            (OWN, DAY, {"App/App.csproj": APP_PROJECT}),
+            (
+                OWN,
+                "2021-03-05T10:00:00+00:00",
+                {
+                    "App/Views/X.cs": "class X {}\n",
+                    "App/Flow.cs": "class Flow : DefaultLoginPageController {}\n",
+                },
+            ),
+        ],
+    )
+    registry = ev.mvvm_registry([sdk, app, tmp_path / "missing"], voc)
+    assert "sdk.csproj" in registry.projects
+    assert {"BasePageController", "DefaultLoginPageController"} <= registry.classes
+    alone = ev.collect([app], ids, voc, is_public=never_public)
+    last = max(alone.commits.values(), key=lambda c: c.day)
+    assert "mvvm" not in last.units
+    shared = ev.collect([app], ids, voc, is_public=never_public, registry=registry)
+    last = max(shared.commits.values(), key=lambda c: c.day)
+    assert last.units["mvvm"] == 2
+
+
+def test_project_references_cycles_and_escapes_terminate(make_repo, ids, voc) -> None:
+    tree = {
+        "A/A.csproj": '<ProjectReference Include="..\\B\\B.csproj" />\n'
+        '<ProjectReference Include="..\\..\\Out\\Out.csproj" />\n',
+        "B/B.csproj": '<ProjectReference Include="..\\A\\A.csproj" />\n',
+    }
+    commit = _only(make_repo, ids, voc, "cycle", tree, {"A/Views/V.cs": "class V {}\n"})
+    assert "mvvm" not in commit.units

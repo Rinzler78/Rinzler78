@@ -142,10 +142,19 @@ project counts for xamarin and ios as well as C#. Project rules can be scoped
 to some files (MVVM frameworks: views and view models). A project holding the Model / View / ViewModel triad counts those
 layers for mvvm. Vocabulary v3 adds behavior rules: a file both exposing
 commands and raising PropertyChanged, a class generic over a Page type, or a
-model raising PropertyChanged counts for mvvm whatever its name;
+model raising PropertyChanged is a ViewModel whatever its name, and so is any
+class deriving from one (resolved across the tree). Vocabulary v4 counts mvvm
+at project level: a project defining a ViewModel, referencing an MVVM
+framework, or referencing (`ProjectReference`, shared-project `Import`) such a
+project counts its whole presentation layer (`presentation`: pages, views,
+controls, page controllers, view models, bindable models, converters,
+renderers) for mvvm, not its services or platform glue. References into
+submodules resolve through a registry built from every repository's HEAD
+before the walk;
 cross-platform-architecture counts only files defining the platform
 abstraction (an interface implemented in both an iOS and an Android project,
-DependencyService / ExportRenderer / platform `#if` lines, multi-target or
+`DependencyService.Register`, `[assembly: Dependency/ExportRenderer]`,
+platform `#if` lines, multi-target or
 shared project files); in repositories holding a mobile project, build and
 publish scripts and CI pipelines count for mobile-build-release. A `.h` header is
 Objective-C when its directory or build root holds `.m`/`.mm` files. Days
