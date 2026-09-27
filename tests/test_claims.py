@@ -354,3 +354,57 @@ def test_cli_lock_without_the_env_fails_loudly(tmp_path, monkeypatch, capsys):
 def test_the_committed_pages_resolve_in_the_committed_lock():
     report = claims.check(claims.REPO, claims.LOCK)
     assert report.errors == []
+
+
+def test_author_statement_is_an_admitted_evidence_kind(tmp_path):
+    # ADR-017: a fact of the author's own career that nothing else can prove
+    # is admitted on his statement, recorded like any other attestation.
+    root = _site(tmp_path)
+    registry = _registry(
+        tmp_path / "registry.json",
+        evidence_kind="author_statement",
+        scope="career",
+        pointer="statement by the author, 2026-09-27",
+    )
+    lock = json.loads(_lock_for(root, registry).read_text())
+    assert "award-2017" in lock["claims"]
+    assert "author_statement" not in json.dumps(lock)
+
+
+def test_author_statement_needs_a_scope(tmp_path):
+    root = _site(tmp_path)
+    registry = _registry(
+        tmp_path / "registry.json",
+        evidence_kind="author_statement",
+        pointer="statement by the author, 2026-09-27",
+    )
+    with pytest.raises(claims.ClaimError, match="scope"):
+        _lock_for(root, registry)
+
+
+def test_stated_impact_figure_must_carry_the_mark_in_both_languages(tmp_path):
+    # ADR-017: an impact figure resting on the author's statement is marked on
+    # the page, so a reader can tell it from a proven one.
+    root = _site(tmp_path)
+    registry = _registry(
+        tmp_path / "registry.json",
+        evidence_kind="author_statement",
+        scope="impact",
+        pointer="statement by the author, 2026-09-27",
+    )
+    with pytest.raises(claims.ClaimError, match="mark"):
+        _lock_for(root, registry)
+
+
+def test_stated_impact_figure_with_the_mark_is_locked(tmp_path):
+    fr = f"{FR} {claims.STATED_MARK['fr']}"
+    en = f"{EN} {claims.STATED_MARK['en']}"
+    root = _site(tmp_path, fr=fr, en=en)
+    registry = _registry(
+        tmp_path / "registry.json",
+        wording={"fr": fr, "en": en},
+        evidence_kind="author_statement",
+        scope="impact",
+        pointer="statement by the author, 2026-09-27",
+    )
+    assert "award-2017" in json.loads(_lock_for(root, registry).read_text())["claims"]

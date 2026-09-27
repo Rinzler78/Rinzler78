@@ -53,7 +53,17 @@ LOCK_VERSION = 1
 PRIVATE_DIR_ENV = "PROFILE_PRIVATE_DIR"
 REGISTRY_NAME = "claims.json"
 LANGS = ("fr", "en")
-EVIDENCE_KINDS = ("public_source", "measured", "private_attestation")
+EVIDENCE_KINDS = (
+    "public_source",
+    "measured",
+    "private_attestation",
+    "author_statement",  # ADR-017: own-career facts nothing else can prove
+)
+# ADR-017: what an author statement may cover. A career fact (team size, role)
+# needs no mark; an impact figure resting on the statement alone must say so on
+# the page, in the wording itself, so the hash locks the mark too.
+STATEMENT_SCOPES = ("career", "impact")
+STATED_MARK = {"fr": "(selon l'auteur)", "en": "(per the author)"}
 
 _ID = re.compile(r"[a-z0-9][a-z0-9-]*")
 # Loose on purpose: anything that looks like a claim marker is caught, then
@@ -245,6 +255,17 @@ def _validated(claim_id: str, entry: object) -> dict:
     pointer = entry.get("pointer")
     if not isinstance(pointer, str) or not pointer.strip():
         raise fail("pointer to the evidence is missing")
+    if entry["evidence_kind"] == "author_statement":
+        scope = entry.get("scope")
+        if scope not in STATEMENT_SCOPES:
+            raise fail(f"an author statement needs a scope in {STATEMENT_SCOPES}")
+        if scope == "impact" and not all(
+            STATED_MARK[lang] in wording[lang] for lang in LANGS
+        ):
+            raise fail(
+                "a stated impact figure must carry the mark "
+                f"{STATED_MARK} in each wording"
+            )
     attested = entry.get("attested")
     try:
         date.fromisoformat(str(attested))

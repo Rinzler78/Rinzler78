@@ -109,7 +109,8 @@ default path):
 ```json
 {"version": 1, "claims": {"award-2017": {
   "wording": {"fr": "…", "en": "…"},
-  "evidence_kind": "public_source | measured | private_attestation",
+  "evidence_kind": "public_source | measured | private_attestation | author_statement",
+  "scope": "career | impact  (author_statement only; impact wordings carry \"(selon l'auteur)\" / \"(per the author)\")",
   "pointer": "where the evidence is",
   "attested": "YYYY-MM-DD"}}}
 ```
