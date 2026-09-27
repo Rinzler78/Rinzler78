@@ -161,7 +161,7 @@ def test_line_scoped_rule_disambiguates_dot_m(voc: ev.Vocabulary) -> None:
     matlab = voc.analyze_patch({"calc.m": ["function y = f(x)", "y = zeros(3);"]})
     objective_c = voc.analyze_patch({"View.m": ["#import <UIKit/UIKit.h>"]})
     assert matlab == {"matlab": 1}
-    assert objective_c == {"objective-c": 1}
+    assert objective_c == {"objective-c": 1, "ios": 1}  # UIKit import
 
 
 def test_sql_from_clause_is_not_docker(voc: ev.Vocabulary) -> None:
@@ -725,3 +725,278 @@ def test_scoped_flags_stay_with_their_alternative() -> None:
     voc = ev.Vocabulary.from_dict(raw)
     assert voc.analyze_patch({"f": ["ABC"]}) == {"t": 1}
     assert voc.analyze_patch({"f": ["xyz"]}) == {}
+
+
+# --- project context (vocabulary v2) -----------------------------------------
+
+DAY = "2021-03-04T10:00:00+00:00"
+FORMS_IOS = (
+    '<Project><ItemGroup><Reference Include="Xamarin.iOS" />'
+    '<PackageReference Include="Xamarin.Forms" /></ItemGroup></Project>\n'
+)
+
+
+def _only(make_repo, ids, voc, name: str, files: dict[str, str], extra=None):
+    """Collect a repo whose last own commit adds ``extra`` over ``files``."""
+    commits = [(OWN, DAY, files)]
+    if extra:
+        commits.append((OWN, "2021-03-05T10:00:00+00:00", extra))
+    repo = make_repo(name, commits)
+    result = ev.collect([repo], ids, voc, is_public=never_public)
+    return max(result.commits.values(), key=lambda c: c.day)
+
+
+def test_header_is_objective_c_when_its_project_has_m_files(
+    make_repo, ids, voc
+) -> None:
+    objc = _only(
+        make_repo,
+        ids,
+        voc,
+        "objc",
+        {"App/View.m": "#import <UIKit/UIKit.h>\n"},
+        {"App/Model/Item.h": "@interface Item\n"},
+    )
+    assert objc.units == {"objective-c": 1}
+    plain = _only(
+        make_repo, ids, voc, "plain", {"lib/a.c": "int a;\n"}, {"lib/a.h": "int a;\n"}
+    )
+    assert plain.units == {"c-cpp": 1}
+
+
+def test_header_in_c_directory_of_a_mixed_repo_stays_c(make_repo, ids, voc) -> None:
+    commit = _only(
+        make_repo,
+        ids,
+        voc,
+        "mixed",
+        {
+            "ios/App.xcodeproj/project.pbxproj": "x\n",
+            "ios/View.m": "#import <UIKit/UIKit.h>\n",
+            "core/Core.vcxproj.filters": "x\n",
+            "core/src/a.c": "int a;\n",
+            "core/CMakeLists.txt": "project(core)\n",
+        },
+        {"core/src/a.h": "int a;\n", "ios/View.h": "@interface V\n"},
+    )
+    # ios/View.h sits next to .m files; core/src/a.h belongs to the core/
+    # build root (CMakeLists.txt), which holds no Objective-C.
+    assert commit.units == {"objective-c": 1, "c-cpp": 1}
+
+
+def test_files_inherit_their_project_techs(make_repo, ids, voc) -> None:
+    commit = _only(
+        make_repo,
+        ids,
+        voc,
+        "forms",
+        {"App.iOS/App.iOS.csproj": FORMS_IOS},
+        {"App.iOS/Services/Clock.cs": "class Clock {}\n"},
+    )
+    assert commit.units == {
+        "csharp": 1,
+        "xamarin": 1,
+        "xamarin-forms": 1,
+        "ios": 1,
+    }
+
+
+def test_native_android_project(make_repo, ids, voc) -> None:
+    commit = _only(
+        make_repo,
+        ids,
+        voc,
+        "android",
+        {"app/build.gradle": "apply plugin: 'com.android.application'\n"},
+        {"app/src/main/java/A.java": "class A {}\n"},
+    )
+    assert commit.units == {"java": 1, "android": 1}
+
+
+def test_test_project_files_count_as_tests_and_test_only_commits(
+    make_repo, ids, voc
+) -> None:
+    commit = _only(
+        make_repo,
+        ids,
+        voc,
+        "tested",
+        {"Core.Specs/Core.Specs.csproj": '<PackageReference Include="NUnit" />\n'},
+        {"Core.Specs/ClockSpec.cs": "class ClockSpec {}\n"},
+    )
+    assert commit.units == {"csharp": 1, "tests": 1}
+    assert commit.test_only
+
+
+def test_mvvm_framework_applies_to_ui_and_viewmodel_files_only(
+    make_repo, ids, voc
+) -> None:
+    project = {"App/App.csproj": '<PackageReference Include="MvvmCross" />\n'}
+    view = _only(
+        make_repo, ids, voc, "mvx1", project, {"App/Views/Home.xaml": "<Grid/>\n"}
+    )
+    assert view.units == {"xaml": 1, "mobile-ui": 1, "mvvm": 1}
+    service = _only(
+        make_repo, ids, voc, "mvx2", project, {"App/Services/Api.cs": "class A {}\n"}
+    )
+    assert service.units == {"csharp": 1}
+
+
+def test_mvvm_triad_marks_its_three_layers(make_repo, ids, voc) -> None:
+    project = {
+        "App/App.csproj": "<Project/>\n",
+        "App/Models/Item.cs": "class Item {}\n",
+        "App/Views/ItemPage.cs": "class ItemPage {}\n",
+        "App/ViewModels/ItemViewModel.cs": "class ItemViewModel {}\n",
+    }
+    model = _only(
+        make_repo, ids, voc, "t1", project, {"App/Models/Item.cs": "class Item2 {}\n"}
+    )
+    assert model.units == {"csharp": 1, "mvvm": 1}
+    other = _only(
+        make_repo, ids, voc, "t2", project, {"App/Services/X.cs": "class X {}\n"}
+    )
+    assert other.units == {"csharp": 1}
+    no_triad = _only(
+        make_repo,
+        ids,
+        voc,
+        "t3",
+        {"App/App.csproj": "<Project/>\n", "App/Models/Item.cs": "class I {}\n"},
+        {"App/Models/Item.cs": "class Item2 {}\n"},
+    )
+    assert no_triad.units == {"csharp": 1}
+
+
+def test_shared_code_of_a_multi_platform_solution(make_repo, ids, voc) -> None:
+    core = {"Core/Core.csproj": "<TargetFramework>netstandard2.0</TargetFramework>\n"}
+    multi = _only(
+        make_repo,
+        ids,
+        voc,
+        "multi",
+        {**core, "App.Droid/App.Droid.csproj": "<Project/>\n"},
+        {"Core/Clock.cs": "class Clock {}\n"},
+    )
+    assert multi.units == {"csharp": 1, "cross-platform-architecture": 1}
+    single = _only(
+        make_repo, ids, voc, "single", core, {"Core/Clock.cs": "class C {}\n"}
+    )
+    assert single.units == {"csharp": 1}
+
+
+def test_unreadable_project_file_adds_nothing(make_repo, ids, voc) -> None:
+    repo = make_repo(
+        "blobless-project",
+        [
+            (OWN, DAY, {"App.iOS/App.iOS.csproj": FORMS_IOS}),
+            (OWN, "2021-03-05T10:00:00+00:00", {"App.iOS/A.cs": "class A {}\n"}),
+        ],
+    )
+    _drop_object(repo, "HEAD:App.iOS/App.iOS.csproj")
+    commits = ev.collect([repo], ids, voc, is_public=never_public).commits
+    last = max(commits.values(), key=lambda c: c.day)
+    assert last.units == {"csharp": 1, "ios": 1, "xamarin": 1}  # path rules only
+
+
+@pytest.mark.parametrize(
+    ("path", "lines", "tech"),
+    [
+        (
+            "App.iOS/App.iOS.csproj",
+            ["<CodesignKey>iPhone</CodesignKey>"],
+            "mobile-build-release",
+        ),
+        ("fastlane/Fastfile", ["lane :beta"], "mobile-build-release"),
+        ("azure-pipelines.yml", ["- task: XamarinAndroid@1"], "mobile-build-release"),
+        ("Core/ClockTests.cs", ["[Test]"], "tests"),
+        ("tests/test_x.py", ["x = 1"], "tests"),
+        ("web/app.spec.ts", ["x"], "tests"),
+        ("App/HomePresenter.cs", ["class P {}"], "mvp"),
+        ("App/IHome.cs", ["public interface IHomeView {}"], "mvp"),
+        ("Shop.Domain/ValueObjects/Money.cs", ["class Money {}"], "ddd"),
+        ("Shop/Entities/Order.cs", ["class OrderAggregate {}"], "ddd"),
+        ("App/Info.plist", ["<plist/>"], "ios"),
+        ("App/Main.cs", ["using UIKit;"], "ios"),
+        ("App/Main.cs", ["using Android.App;"], "android"),
+        ("App/Conv.cs", ["class C : IValueConverter {}"], "mobile-ui"),
+        (
+            "App/Api.cs",
+            ["DependencyService.Get<IApi>()"],
+            "cross-platform-architecture",
+        ),
+        ("App/Vm.cs", ["class V : INotifyPropertyChanged {}"], "mvvm"),
+        ("Shared/App.cs", ["using Xamarin.Forms;"], "xamarin-forms"),
+        ("App/Page.xaml", ['<Label Text="{Binding Name}"/>'], "mvvm"),
+    ],
+)
+def test_file_level_rules(voc: ev.Vocabulary, path, lines, tech) -> None:
+    assert tech in voc.analyze_patch({path: lines})
+
+
+def test_aggregate_counts_test_only_commits() -> None:
+    commit = _commit("a", "2021-01-01", "r1", {"tests": 1, "csharp": 1})
+    commit.test_only = True
+    out = ev.aggregate(ev.CollectResult(commits={"a": commit}), vocabulary_version=2)
+    assert out["days"]["2021-01-01"]["test_only_commits"] == 1
+
+
+@pytest.mark.parametrize(
+    "extra",
+    [
+        {"project_files": 1},
+        {"project_files": "x", "project_rules": [{"tech": "t"}]},
+        {
+            "project_files": "x",
+            "project_rules": [{"tech": "t", "content": ["x"], "requires": "moon"}],
+        },
+        {"project_files": "x", "project_rules": "no"},
+    ],
+)
+def test_vocabulary_rejects_malformed_project_rules(extra) -> None:
+    raw = {
+        "version": 2,
+        "excluded": [],
+        "languages": {},
+        "path_rules": [],
+        "signatures": {},
+        **extra,
+    }
+    with pytest.raises(ValueError):
+        ev.Vocabulary.from_dict(raw)
+
+
+def test_mvvm_triad_from_file_names(make_repo, ids, voc) -> None:
+    project = {
+        "App/App.csproj": "<Project/>\n",
+        "App/ItemModel.cs": "class ItemModel {}\n",
+        "App/ItemView.cs": "class ItemView {}\n",
+        "App/ItemViewModel.cs": "class ItemViewModel {}\n",
+    }
+    commit = _only(
+        make_repo, ids, voc, "names", project, {"App/ItemModel.cs": "class M {}\n"}
+    )
+    assert commit.units == {"csharp": 1, "mvvm": 1}
+
+
+def test_context_tolerates_missing_directories(make_repo, voc) -> None:
+    repo_path = make_repo("ctx", [(OWN, DAY, {"lib/a.c": "int a;\n"})])
+    repo = ev.open_repository(repo_path)
+    tree = repo.revparse_single("HEAD").peel(ev.pygit2.Commit).tree
+    context = ev.ProjectContext(repo, tree, voc, ev.ContextCache())
+    assert context.header_language("gone/x.h") is None
+    assert context.header_language("lib/a.c/x.h") is None  # a file, not a dir
+
+
+def test_missing_parent_tree_yields_nothing(make_repo, ids, voc) -> None:
+    repo = make_repo(
+        "orphan",
+        [
+            (OWN, DAY, {"a.py": "x = 1\n"}),
+            (OWN, "2021-03-05T10:00:00+00:00", {"b.py": "y = 2\n"}),
+        ],
+    )
+    _drop_object(repo, "HEAD~1^{tree}")
+    commits = ev.collect([repo], ids, voc, is_public=never_public).commits
+    last = max(commits.values(), key=lambda c: c.day)
+    assert (last.units, last.files, last.has_patch) == ({}, 0, False)

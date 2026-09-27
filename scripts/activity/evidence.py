@@ -26,6 +26,26 @@ File counts
     can give a tech the share of the day's files that touched it (ADR-013).
     Names-only commits count their files the same way; a merge counts none.
 
+Project context (vocabulary version 2)
+    Each changed file also inherits the techs of its nearest enclosing
+    project file in the commit's tree (``project_files``: ``.csproj``,
+    ``packages.config``, ``build.gradle``, ``package.json``,
+    ``pyproject.toml``...), read from the references and target frameworks it
+    declares (``project_rules``): a file of a Xamarin.iOS project counts for
+    xamarin and ios as well as for its language. A rule may be limited to
+    some files of the project (``scope``) or to projects of a multi-platform
+    solution (``requires: multi-platform``: a sibling ``*.iOS`` / ``*.Droid``
+    project). A project whose tree holds the Model / View / ViewModel triad
+    counts the files of those three layers for mvvm. A ``.h`` header is
+    Objective-C when its directory or its build root (nearest ``.xcodeproj``,
+    project file, ``CMakeLists.txt``, ``Makefile`` or ``.vcxproj``, else the
+    repository) holds ``.m`` / ``.mm`` files, C/C++ otherwise. Everything is
+    cached by object id, so unchanged trees and project files are read once.
+
+Test-only commits
+    A commit whose analyzed files all count for ``tests`` is test-only; days
+    record how many (``test_only_commits``), as evidence of test-first work.
+
 Ownership
     Only repositories owned by the author or by a company he worked for count.
     ``owners.json`` lists allowed prefixes of repository keys; the commits of
@@ -151,6 +171,49 @@ class PathRule:
 
 
 @dataclass(frozen=True)
+class ProjectRule:
+    tech: str
+    content: re.Pattern[str]
+    files: re.Pattern[str] | None
+    scope: re.Pattern[str] | None
+    requires: str | None
+
+
+PROJECT_REQUIREMENTS = ("multi-platform",)
+
+
+def _project_rules(raw: object) -> tuple[ProjectRule, ...]:
+    if not isinstance(raw, list):
+        raise ValueError("project_rules must be a list")
+    rules = []
+    for rule in raw:
+        if not isinstance(rule, dict) or not {"tech", "content"} <= rule.keys():
+            raise ValueError("each project rule needs a tech and content")
+        requires = rule.get("requires")
+        if requires is not None and requires not in PROJECT_REQUIREMENTS:
+            raise ValueError(f"project rule requires unknown {requires!r}")
+        files, scope = rule.get("files"), rule.get("scope")
+        rules.append(
+            ProjectRule(
+                tech=str(rule["tech"]),
+                content=_combine(rule["content"], f"project_rules.{rule['tech']}"),
+                files=None if files is None else _patterns([files], "files")[0],
+                scope=None if scope is None else _patterns([scope], "scope")[0],
+                requires=requires,
+            )
+        )
+    return tuple(rules)
+
+
+def _optional_pattern(raw: object, what: str) -> re.Pattern[str] | None:
+    if raw is None:
+        return None
+    if not isinstance(raw, str):
+        raise ValueError(f"{what} must be a regular expression")
+    return _patterns([raw], what)[0]
+
+
+@dataclass(frozen=True)
 class Vocabulary:
     """Versioned mapping from files and added lines to techs."""
 
@@ -159,6 +222,9 @@ class Vocabulary:
     languages: dict[str, str]
     path_rules: tuple[PathRule, ...]
     signatures: dict[str, re.Pattern[str]]
+    project_files: re.Pattern[str] | None = None
+    project_rules: tuple[ProjectRule, ...] = ()
+    platform_projects: re.Pattern[str] | None = None
 
     @classmethod
     def from_dict(cls, raw: object) -> Vocabulary:
@@ -195,14 +261,27 @@ class Vocabulary:
                 tech: _combine(regexes, f"signatures.{tech}")
                 for tech, regexes in signatures.items()
             },
+            project_files=_optional_pattern(raw.get("project_files"), "project_files"),
+            project_rules=_project_rules(raw.get("project_rules", [])),
+            platform_projects=_optional_pattern(
+                raw.get("platform_projects"), "platform_projects"
+            ),
         )
 
     def is_excluded(self, path: str) -> bool:
         return any(p.search(path) for p in self.excluded)
 
-    def _file_techs(self, path: str, added: list[str] | None) -> set[str]:
+    def _file_techs(
+        self,
+        path: str,
+        added: list[str] | None,
+        context: ProjectContext | None = None,
+    ) -> set[str]:
         techs: set[str] = set()
-        language = self.languages.get(PurePosixPath(path).suffix.lower())
+        suffix = PurePosixPath(path).suffix.lower()
+        language = self.languages.get(suffix)
+        if context is not None and suffix in HEADER_SUFFIXES:
+            language = context.header_language(path) or language
         if language:
             techs.add(language)
         for rule in self.path_rules:
@@ -216,28 +295,236 @@ class Vocabulary:
             for tech, regex in self.signatures.items():
                 if any(regex.search(ln) for ln in added):
                     techs.add(tech)
+        if context is not None:
+            techs |= context.project_techs(path)
         return techs
 
-    def _units(self, files: Iterable[tuple[str, list[str] | None]]) -> dict[str, int]:
-        units: dict[str, int] = defaultdict(int)
-        for path, added in files:
-            if self.is_excluded(path):
-                continue
-            for tech in self._file_techs(path, added):
-                units[tech] += 1
-        return dict(units)
+    def file_techs(
+        self,
+        files: Iterable[tuple[str, list[str] | None]],
+        context: ProjectContext | None = None,
+    ) -> list[set[str]]:
+        """The techs of each analyzed (non-excluded) file."""
+        return [
+            self._file_techs(path, added, context)
+            for path, added in files
+            if not self.is_excluded(path)
+        ]
 
-    def analyze_patch(self, files: dict[str, list[str]]) -> dict[str, int]:
+    def _units(
+        self,
+        files: Iterable[tuple[str, list[str] | None]],
+        context: ProjectContext | None = None,
+    ) -> dict[str, int]:
+        return _count_units(self.file_techs(files, context))
+
+    def analyze_patch(
+        self, files: dict[str, list[str]], context: ProjectContext | None = None
+    ) -> dict[str, int]:
         """Units per tech from the lines added to each file."""
-        return self._units(files.items())
+        return self._units(files.items(), context)
 
-    def analyze_names(self, paths: Iterable[str]) -> dict[str, int]:
+    def analyze_names(
+        self, paths: Iterable[str], context: ProjectContext | None = None
+    ) -> dict[str, int]:
         """Units per tech from file names alone (no patch content)."""
-        return self._units((p, None) for p in paths)
+        return self._units(((p, None) for p in paths), context)
 
-    def count_files(self, paths: Iterable[str]) -> int:
-        """Number of analyzed (non-excluded) files among ``paths``."""
-        return sum(1 for p in paths if not self.is_excluded(p))
+
+def _count_units(sets: Iterable[set[str]]) -> dict[str, int]:
+    units: dict[str, int] = defaultdict(int)
+    for techs in sets:
+        for tech in techs:
+            units[tech] += 1
+    return dict(units)
+
+
+# --- project context ---------------------------------------------------------
+
+HEADER_SUFFIXES = (".h",)
+OBJC_SUFFIXES = (".m", ".mm")
+_BUILD_ROOTS = re.compile(r"(?i)(\.xcodeproj|\.vcxproj|^CMakeLists\.txt|^Makefile)$")
+MAX_PROJECT_FILE = 512 * 1024
+TRIAD_DIRS = {"models": "model", "views": "view", "viewmodels": "viewmodel"}
+
+
+def _triad_role(name: str, is_dir: bool) -> str | None:
+    """The MVVM layer a file or folder name belongs to, if any."""
+    if is_dir:
+        return TRIAD_DIRS.get(name.lower())
+    stem = PurePosixPath(name).stem.lower()
+    if stem.endswith("viewmodel"):
+        return "viewmodel"
+    if stem.endswith("model"):
+        return "model"
+    if stem.endswith(("view", "page")):
+        return "view"
+    return None
+
+
+def _parent(path: str) -> str:
+    parent = str(PurePosixPath(path).parent)
+    return "" if parent == "." else parent
+
+
+class ContextCache:
+    """Per-run caches keyed by git object id (content-addressed)."""
+
+    def __init__(self) -> None:
+        self.entries: dict[str, list[tuple[str, bool, object]]] = {}
+        self.objc: dict[str, bool] = {}
+        self.platform: dict[str, bool] = {}
+        self.triad: dict[str, frozenset[str]] = {}
+        self.content: dict[str, str | None] = {}
+
+
+class ProjectContext:
+    """What a commit's tree says about the project enclosing each file."""
+
+    def __init__(
+        self,
+        repo: pygit2.Repository,
+        tree: pygit2.Tree,
+        vocabulary: Vocabulary,
+        cache: ContextCache,
+    ) -> None:
+        self.repo, self.tree, self.voc, self.cache = repo, tree, vocabulary, cache
+
+    # tree access
+    def _dir(self, path: str) -> pygit2.Tree | None:
+        if not path:
+            return self.tree
+        try:
+            obj = self.tree[path]
+        except KeyError:
+            return None
+        return obj if isinstance(obj, pygit2.Tree) else None
+
+    def _entries(self, tree: pygit2.Tree) -> list[tuple[str, bool, object]]:
+        key = str(tree.id)
+        if key not in self.cache.entries:
+            self.cache.entries[key] = [
+                (e.name, e.type_str == "tree", e.id) for e in tree
+            ]
+        return self.cache.entries[key]
+
+    def _subtree(self, oid: object) -> pygit2.Tree:
+        return self.repo[oid]
+
+    def _ancestors(self, path: str) -> list[str]:
+        parts = PurePosixPath(path).parts[:-1]
+        return ["/".join(parts[:i]) for i in range(len(parts), -1, -1)]
+
+    def _nearest(self, path: str, match) -> tuple[str, pygit2.Tree] | None:
+        for directory in self._ancestors(path):
+            tree = self._dir(directory)
+            if tree is not None and any(
+                match(name) for name, _, _ in self._entries(tree)
+            ):
+                return directory, tree
+        return None
+
+    # Objective-C headers
+    def _has_objc(self, tree: pygit2.Tree) -> bool:
+        key = str(tree.id)
+        if key not in self.cache.objc:
+            found = False
+            for name, is_dir, oid in self._entries(tree):
+                if is_dir:
+                    found = self._has_objc(self._subtree(oid))
+                else:
+                    found = name.lower().endswith(OBJC_SUFFIXES)
+                if found:
+                    break
+            self.cache.objc[key] = found
+        return self.cache.objc[key]
+
+    def _is_build_root(self, name: str) -> bool:
+        pf = self.voc.project_files
+        return bool(_BUILD_ROOTS.search(name) or (pf and pf.search(name)))
+
+    def header_language(self, path: str) -> str | None:
+        """``objective-c`` for a header of an Objective-C project, else None."""
+        here = self._dir(_parent(path))
+        if here is not None and self._has_objc(here):
+            return "objective-c"
+        root = self._nearest(path, self._is_build_root)
+        tree = root[1] if root else self.tree
+        return "objective-c" if self._has_objc(tree) else None
+
+    # project files
+    def _text(self, oid: object) -> str | None:
+        key = str(oid)
+        if key not in self.cache.content:
+            try:
+                data = self.repo[oid].data[:MAX_PROJECT_FILE]
+                self.cache.content[key] = data.decode("utf-8", "replace")
+            except (KeyError, pygit2.GitError):
+                self.cache.content[key] = None
+        return self.cache.content[key]
+
+    def _has_platform(self, tree: pygit2.Tree, depth: int = 2) -> bool:
+        key = f"{tree.id}:{depth}"
+        if key not in self.cache.platform:
+            pattern = self.voc.platform_projects
+            found = False
+            for name, is_dir, oid in self._entries(tree):
+                if pattern is not None and pattern.search(name):
+                    found = True
+                elif is_dir and depth > 0:
+                    found = self._has_platform(self._subtree(oid), depth - 1)
+                if found:
+                    break
+            self.cache.platform[key] = found
+        return self.cache.platform[key]
+
+    def _triad(self, tree: pygit2.Tree) -> frozenset[str]:
+        key = str(tree.id)
+        if key not in self.cache.triad:
+            roles: set[str] = set()
+            for name, is_dir, oid in self._entries(tree):
+                role = _triad_role(name, is_dir)
+                if role:
+                    roles.add(role)
+                if is_dir:
+                    roles |= self._triad(self._subtree(oid))
+            self.cache.triad[key] = frozenset(roles)
+        return self.cache.triad[key]
+
+    def project_techs(self, path: str) -> set[str]:
+        """Techs a file inherits from its nearest enclosing project."""
+        techs: set[str] = set()
+        pf = self.voc.project_files
+        project = self._nearest(path, pf.search) if pf is not None else None
+        directory, tree = project if project else ("", self.tree)
+        relative = path[len(directory) + 1 :] if directory else path
+        if len(self._triad(tree)) == len(TRIAD_DIRS):
+            parts = PurePosixPath(relative).parts
+            if any(TRIAD_DIRS.get(p.lower()) for p in parts[:-1]) or _triad_role(
+                parts[-1], False
+            ):
+                techs.add("mvvm")
+        if project is None:
+            return techs
+        parent = self._dir(_parent(directory))
+        for name, _, oid in self._entries(tree):
+            if not pf.search(name):
+                continue
+            text = self._text(oid)
+            if text is None:
+                continue
+            for rule in self.voc.project_rules:
+                if rule.files is not None and not rule.files.search(name):
+                    continue
+                if rule.scope is not None and not rule.scope.search(relative):
+                    continue
+                if rule.requires == "multi-platform" and not (
+                    parent is not None and self._has_platform(parent)
+                ):
+                    continue
+                if rule.content.search(text):
+                    techs.add(rule.tech)
+        return techs
 
 
 def load_vocabulary(path: Path = VOCABULARY_PATH) -> Vocabulary:
@@ -380,6 +667,7 @@ class CommitEvidence:
     has_patch: bool
     public: bool
     files: int = 0
+    test_only: bool = False
 
     @property
     def weights(self) -> dict[str, float]:
@@ -393,27 +681,49 @@ class CollectResult:
     excluded: dict[str, int] = field(default_factory=dict)
 
 
+@dataclass(frozen=True)
+class Analysis:
+    units: dict[str, int]
+    has_patch: bool
+    files: int
+    test_only: bool
+
+
+def _analysis(sets: list[set[str]], has_patch: bool) -> Analysis:
+    test_only = bool(sets) and all("tests" in techs for techs in sets)
+    return Analysis(_count_units(sets), has_patch, len(sets), test_only)
+
+
 def analyze_commit(
-    repo: pygit2.Repository, commit: pygit2.Commit, vocabulary: Vocabulary
-) -> tuple[dict[str, int], bool, int]:
-    """``(units, has_patch, files)`` for one commit; names only when content
-    is gone. ``files`` counts the analyzed (non-excluded) files."""
+    repo: pygit2.Repository,
+    commit: pygit2.Commit,
+    vocabulary: Vocabulary,
+    cache: ContextCache | None = None,
+) -> Analysis:
+    """Units, files and test-only flag for one commit; names only when
+    content is gone. ``files`` counts the analyzed (non-excluded) files."""
     if len(commit.parents) > 1:
-        return {}, True, 0  # a merge adds no lines of its own
+        return Analysis({}, True, 0, False)  # a merge adds no lines of its own
 
     def keep(path: str) -> bool:
         return not vocabulary.is_excluded(path)
 
     try:
+        tree = commit.tree
+    except pygit2.GitError:
+        return Analysis({}, False, 0, False)
+    context = ProjectContext(repo, tree, vocabulary, cache or ContextCache())
+    try:
         files = added_lines(repo, commit, keep)
-        return vocabulary.analyze_patch(files), True, len(files)
+        return _analysis(vocabulary.file_techs(files.items(), context), True)
     except pygit2.GitError:
         pass
     try:
         paths = touched_paths(repo, commit)
     except pygit2.GitError:
-        return {}, False, 0
-    return vocabulary.analyze_names(paths), False, vocabulary.count_files(paths)
+        return Analysis({}, False, 0, False)
+    sets = vocabulary.file_techs(((p, None) for p in paths), context)
+    return _analysis(sets, False)
 
 
 def collect(
@@ -431,6 +741,7 @@ def collect(
     """
     result = CollectResult(commits={})
     excluded: dict[str, set[str]] = defaultdict(set)
+    cache = ContextCache()
     commits = result.commits
     for path in repos:
         where = str(path)
@@ -460,9 +771,11 @@ def collect(
                 commits[h] = evidence
             evidence.public = evidence.public or public
             if not evidence.has_patch:
-                evidence.units, evidence.has_patch, evidence.files = analyze_commit(
-                    repo, commit, vocabulary
-                )
+                analysis = analyze_commit(repo, commit, vocabulary, cache)
+                evidence.units = analysis.units
+                evidence.has_patch = analysis.has_patch
+                evidence.files = analysis.files
+                evidence.test_only = analysis.test_only
     result.excluded = {key: len(hashes) for key, hashes in sorted(excluded.items())}
     return result
 
@@ -548,8 +861,10 @@ def aggregate(result: CollectResult, vocabulary_version: int) -> dict:
                 "public": False,
                 "files": 0,
                 "file_counts": defaultdict(int),
+                "test_only": 0,
             },
         )
+        day["test_only"] += int(commit.test_only)
         day["repos"].add(commit.repo)
         day["commits"] += 1
         day["files"] += commit.files
@@ -573,6 +888,7 @@ def aggregate(result: CollectResult, vocabulary_version: int) -> dict:
             "presence": sorted(day["sums"]),
             "files": day["files"],
             "file_counts": dict(sorted(day["file_counts"].items())),
+            "test_only_commits": day["test_only"],
         }
         for name, day in sorted(per_day.items())
     }

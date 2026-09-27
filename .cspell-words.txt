@@ -227,3 +227,17 @@ microcontroller
 pinvoke
 webservices
 winforms
+aapt
+bitrise
+codemagic
+codesign
+fastfile
+mtouch
+netstandard
+objc
+pbxproj
+projitems
+viewmodel
+viewmodels
+xcodeproj
+xunit
