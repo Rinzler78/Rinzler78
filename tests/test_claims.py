@@ -354,3 +354,17 @@ def test_cli_lock_without_the_env_fails_loudly(tmp_path, monkeypatch, capsys):
 def test_the_committed_pages_resolve_in_the_committed_lock():
     report = claims.check(claims.REPO, claims.LOCK)
     assert report.errors == []
+
+
+def test_author_statement_is_an_admitted_evidence_kind(tmp_path):
+    # ADR-017: a fact of the author's own career that nothing else can prove
+    # is admitted on his statement, recorded like any other attestation.
+    root = _site(tmp_path)
+    registry = _registry(
+        tmp_path / "registry.json",
+        evidence_kind="author_statement",
+        pointer="statement by the author, 2026-09-27",
+    )
+    lock = json.loads(_lock_for(root, registry).read_text())
+    assert "award-2017" in lock["claims"]
+    assert "author_statement" not in json.dumps(lock)

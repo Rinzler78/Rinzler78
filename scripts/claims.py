@@ -53,7 +53,12 @@ LOCK_VERSION = 1
 PRIVATE_DIR_ENV = "PROFILE_PRIVATE_DIR"
 REGISTRY_NAME = "claims.json"
 LANGS = ("fr", "en")
-EVIDENCE_KINDS = ("public_source", "measured", "private_attestation")
+EVIDENCE_KINDS = (
+    "public_source",
+    "measured",
+    "private_attestation",
+    "author_statement",  # ADR-017: own-career facts nothing else can prove
+)
 
 _ID = re.compile(r"[a-z0-9][a-z0-9-]*")
 # Loose on purpose: anything that looks like a claim marker is caught, then

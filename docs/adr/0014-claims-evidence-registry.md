@@ -1,6 +1,6 @@
 # ADR-014 — Claims admitted only with evidence the author holds
 
-- **Status**: Accepted
+- **Status**: Accepted (admission rule extended by [ADR-017](0017-author-statement-evidence-kind.md))
 - **Date**: 2026-09-26
 - **Related to**: [ADR-013](0013-activity-timeline-evidence-hours.md), [ADR-015](0015-front-page-v2-grid-palette-type.md)
 
