@@ -21,25 +21,32 @@ refutes the team size he states for it.
 
 ## Decision
 
-A fourth evidence kind, `author_statement`, is admitted in the private registry:
+A fourth evidence kind, `author_statement`, is admitted in the private registry. Each
+use is a registry entry like any other: identifier, wording in both languages, kind, a
+pointer recording when and in which context the statement was made, date. Every entry
+of this kind declares a **scope**:
 
-- it applies to facts of the author's **own career** that no document, measurement or
-  public source can establish — a team size, a role, a scope of responsibility;
-- each use is a registry entry like any other: identifier, wording in both languages,
-  kind, a pointer recording when and in which context the statement was made, date;
-- the lock file carries no kind, so the page does not distinguish it from other
-  attested claims; the method section states that some facts rest on the author's
-  statement.
+- `career` — facts of the author's own career that no document, measurement or public
+  source can establish: a team size, a role, a scope of responsibility. They carry no
+  mark on the page; the method section states once that some facts rest on the
+  author's statement.
+- `impact` — figures of impact or usage (availability, units deployed, satisfaction,
+  delivery time) for which the author holds no evidence. Each such wording **must
+  carry a visible mark** in both languages — "(selon l'auteur)" / "(per the author)" —
+  so a reader can tell it from a proven figure. The check refuses to lock an `impact`
+  statement whose wording lacks the mark; since the mark is part of the wording, the
+  lock hash then keeps it on the page.
 
-It never applies to figures of impact or usage that a measurement could establish
-(downloads, units sold, availability, satisfaction, performance ratios): those stay
-under the three original kinds.
+The lock file carries no kind and no scope.
 
 ## Considered options
 
 - **Keep ADR-014 unchanged** — removes true facts only because their evidence is lost.
-- **Mark such claims "declared" on the page** — a team size labelled as declared reads
-  as doubtful; the method section carries the caveat once instead.
+- **Mark every author statement on the page** — a team size labelled as declared reads
+  as doubtful; career facts carry the caveat once, in the method section.
+- **Admit impact figures without a mark** — nothing would tell them from measured ones;
+  a reader who checks one and finds nothing doubts the whole page. Rejected by the
+  author.
 
 ## Consequences
 
@@ -48,10 +55,10 @@ under the three original kinds.
   traceable in the registry.
 
 **Negative**
-- The guarantee weakens from "provable" to "provable or stated by the author" for
-  career facts; the exclusion of impact figures bounds that weakening.
+- The guarantee weakens from "provable" to "provable or stated by the author"; for
+  impact figures the page says so next to the figure.
 
 ## Success criteria
 
-- The claims check accepts `author_statement` and rejects unknown kinds.
-- No impact or usage figure in the registry uses `author_statement`.
+- The claims check accepts `author_statement` with a scope and rejects unknown kinds.
+- Every `impact` author statement on the page carries the mark in both languages.
