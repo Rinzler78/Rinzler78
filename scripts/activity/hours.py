@@ -27,19 +27,34 @@ Rules:
    month uses the file counts summed over that source's commit days of the
    month. A month without a commit uses the source's counts over the whole
    period, restricted to techs already seen in an own commit by the end of that
-   month (a carried share never predates a first commit). A source with no
-   trace in the period at all is estimated from the declared tiers of its
-   experiences (``estimated_shares``) and flagged ``estimated``. Study counts
-   the same way.
-3. **Personal time**: each commit day on which at least one repository is
+   month (a carried share never predates a first commit). Study counts the
+   same way.
+3. **Declared periods** (``$PROFILE_PRIVATE_DIR/declared.json``, written by
+   the author): a source with no trace in the period at all uses the declared
+   period covering the month (``end: null`` runs to ``as_of``). ``languages``
+   are explicit shares summing to 1; ``tiers`` give primary 0.70, secondary
+   0.35, incident 0.10 of the hours to each other tech. Several declared
+   periods covering the same month (an overlap between missions, or a
+   ``within_study_budget`` project inside the study budget) share its hours
+   equally. ``pro_hours_per_weekday`` overrides the context budget for those
+   months (hours = weekdays x override x source share); ``timeline.py`` keeps
+   its budgets, the override lives here. Hours are flagged ``declared``. Only
+   when a month has neither evidence nor a declared period do the tiers of
+   ``data/experiences.json`` apply (``experience_shares``, last fallback,
+   reported by the CLI).
+4. **Overlays** (declared): on personal commit days of the listed months, a
+   tech gets the tier share of the day's hours, flagged declared, unless the
+   day's measured share is higher; from ``measured_from`` on, evidence only.
+   Professional hours never receive an overlay.
+5. **Personal time**: each commit day on which at least one repository is
    personal counts the period's personal budget, with the day's file shares.
    A day with only professional repositories adds nothing: the calendar
    already counted it. A professional repository whose source is not a source
    of the day's period counts as personal time (the calendar did not count
    that day). Unclassified repositories are personal.
-4. Per-context totals are additive; per-tech and per-domain totals are not.
+6. Per-context totals are additive; per-tech and per-domain totals are not.
    A domain gets the sum of its techs' shares, capped at 1.
-5. **Levels** by convention (``LEVELS``); displayed hours are rounded down
+7. **Levels** by convention (``LEVELS``); displayed hours are rounded down
    (``display_hours``) so a shown figure never crosses a threshold.
 
 Usage: ``python -m scripts.activity.hours --out data/activity/aggregates.json``
@@ -67,6 +82,7 @@ DEFAULT_EXPERIENCES = REPO / "data" / "experiences.json"
 DEFAULT_CATALOGUE = REPO / "data" / "techs.json"
 EVIDENCE_NAME = "evidence.json"
 CLASSES_NAME = "repo-classes.json"
+DECLARED_NAME = "declared.json"
 
 KINDS = ("language", "platform", "domain")
 TIER_WEIGHTS = {"primary": 0.70, "secondary": 0.35, "incident": 0.10}
@@ -113,10 +129,16 @@ NOTES = (
     "Levels are a convention: working >= 50 h, professional >= 500 h, "
     "advanced >= 1,600 h, expert >= 5,000 h. display_hours is rounded down so "
     "a shown figure never crosses a threshold the raw hours do not.",
-    "estimated_share is the part of a tech's hours allocated from declared "
-    "tiers, for periods without any commit trace (before 2014, study, a source "
-    "without commits): primary 0.70, secondary 0.35, incident 0.10 of the "
-    "hours, declared languages sharing 100 % pro rata of their tiers.",
+    "declared_share is the part of a tech's hours declared by the author, for "
+    "periods without any collectable commit trace (before 2014, study, a "
+    "client whose commits are not collected) and for tool use that leaves no "
+    "trace: declared languages share the hours explicitly; other techs get "
+    "primary 0.70, secondary 0.35, incident 0.10 of the hours.",
+    "Declared periods covering the same month share its hours equally (an "
+    "overlap between two missions; a project inside the study budget takes "
+    "half of the study hours of the months it covers).",
+    "AI-assisted development before its first measurable trace is declared on "
+    "personal commit days only, never on employment hours.",
     "Months of a source without a commit use that source's file counts over "
     "its period, restricted to techs already seen in an own commit by then.",
     "Git is excluded from hours: a tool every commit implies.",
@@ -301,7 +323,7 @@ def public_source(source_id: str) -> str:
     return PUBLIC_SOURCE_ALIASES.get(source_id, source_id)
 
 
-def estimated_shares(
+def experience_shares(
     experience_ids: Iterable[str],
     month: str,
     experiences: Mapping[str, Experience],
@@ -336,6 +358,150 @@ def estimated_shares(
         else min(weight, 1.0)
         for tech, weight in tiers.items()
     }
+
+
+# --- Declared periods --------------------------------------------------------
+
+
+@dataclass(frozen=True)
+class DeclaredPeriod:
+    source: str
+    start: str
+    end: str | None
+    languages: dict[str, float]
+    tiers: dict[str, str]
+    pro_hours_per_weekday: float | None = None
+    within_study_budget: bool = False
+
+    def covers(self, month: str) -> bool:
+        index = tl._index(month)
+        return tl._index(self.start) <= index and (
+            self.end is None or index <= tl._index(self.end)
+        )
+
+    def shares(self) -> dict[str, float]:
+        """Declared languages as-is, plus each tier's share (at most 1)."""
+        out = dict(self.languages)
+        for tech, tier in self.tiers.items():
+            out[tech] = min(out.get(tech, 0.0) + TIER_WEIGHTS[tier], 1.0)
+        return out
+
+
+@dataclass(frozen=True)
+class Overlay:
+    tech: str
+    periods: tuple[tuple[str, str, str], ...]  # (start, end, tier)
+    measured_from: str
+
+
+@dataclass(frozen=True)
+class Declared:
+    periods: tuple[DeclaredPeriod, ...]
+    overlays: tuple[Overlay, ...]
+
+    def for_month(self, source: str, month: str, as_of: str) -> list[DeclaredPeriod]:
+        del as_of  # an open end runs to the timeline's end, which bounds months
+        return [p for p in self.periods if p.source == source and p.covers(month)]
+
+    def overlay_shares(self, month: str) -> dict[str, float]:
+        out: dict[str, float] = {}
+        for overlay in self.overlays:
+            if month >= overlay.measured_from:
+                continue
+            for start, end, tier in overlay.periods:
+                if start <= month <= end:
+                    out[overlay.tech] = TIER_WEIGHTS[tier]
+        return out
+
+
+def _month(value: object, where: str) -> str:
+    try:
+        tl.parse_month(value)
+    except ValueError as exc:
+        raise ValueError(f"{where}: {exc} (expected YYYY-MM)") from exc
+    return str(value)
+
+
+def _known(tech: str, tech_map: TechMap, where: str) -> str:
+    if tech not in tech_map.techs and tech not in tech_map.excluded:
+        raise ValueError(f"{where}: unknown tech {tech!r}: add it to tech_map")
+    return tech
+
+
+def _tier(tier: object, where: str) -> str:
+    if tier not in TIER_WEIGHTS:
+        raise ValueError(f"{where}: unknown tier {tier!r}")
+    return str(tier)
+
+
+def _parse_declared_period(raw: object, tech_map: TechMap) -> DeclaredPeriod:
+    if not isinstance(raw, dict):
+        raise ValueError("declared: each period must be an object")
+    source = raw.get("source")
+    if not isinstance(source, str) or not source:
+        raise ValueError("declared: a period needs a source")
+    where = f"declared {source} {raw.get('start')}"
+    start = _month(raw.get("start"), where)
+    end = raw.get("end")
+    if end is not None and tl._index(_month(end, where)) < tl._index(start):
+        raise ValueError(f"{where}: end is before start")
+    languages, tiers = raw.get("languages", {}), raw.get("tiers", {})
+    if not isinstance(languages, dict) or not isinstance(tiers, dict):
+        raise ValueError(f"{where}: languages and tiers must be objects")
+    for tech in [*languages, *tiers]:
+        _known(tech, tech_map, where)
+    if languages and abs(math.fsum(languages.values()) - 1.0) > _TOLERANCE:
+        raise ValueError(f"{where}: language shares must sum to 1")
+    for tier in tiers.values():
+        _tier(tier, where)
+    override = raw.get("pro_hours_per_weekday")
+    if override is not None and not (
+        isinstance(override, int | float) and 0 < override <= tl.AVAILABLE_HOURS_PER_DAY
+    ):
+        raise ValueError(f"{where}: pro_hours_per_weekday must be in (0, 11]")
+    excluded = tech_map.excluded
+    return DeclaredPeriod(
+        source=source,
+        start=start,
+        end=end,
+        languages={t: float(v) for t, v in languages.items() if t not in excluded},
+        tiers={t: v for t, v in tiers.items() if t not in excluded},
+        pro_hours_per_weekday=override,
+        within_study_budget=bool(raw.get("within_study_budget", False)),
+    )
+
+
+def _parse_overlay(raw: object, tech_map: TechMap) -> Overlay:
+    if not isinstance(raw, dict):
+        raise ValueError("declared: each overlay must be an object")
+    tech = _known(str(raw.get("tech")), tech_map, "declared overlay")
+    where = f"declared overlay {tech}"
+    periods = tuple(
+        (
+            _month(p.get("start"), where),
+            _month(p.get("end"), where),
+            _tier(p.get("tier"), where),
+        )
+        for p in raw.get("periods", [])
+    )
+    return Overlay(tech, periods, _month(raw.get("measured_from"), where))
+
+
+def parse_declared(data: object, tech_map: TechMap) -> Declared:
+    """Validate the author's declared periods and overlays."""
+    if not isinstance(data, dict):
+        raise ValueError("declared: top level must be an object")
+    if data.get("version") != 1:
+        raise ValueError("declared: version must be 1")
+    periods, overlays = data.get("periods"), data.get("overlays", [])
+    if not isinstance(periods, list):
+        raise ValueError("declared: periods must be a list")
+    if not isinstance(overlays, list):
+        raise ValueError("declared: overlays must be a list")
+    return Declared(
+        tuple(_parse_declared_period(p, tech_map) for p in periods),
+        tuple(_parse_overlay(o, tech_map) for o in overlays),
+    )
 
 
 # --- File shares ---------------------------------------------------------------
@@ -391,8 +557,9 @@ class Unit:
     kind: str  # "pro" | "personal" | "study"
     hours: float
     shares: dict[str, float]
-    estimated: bool
+    declared: frozenset[str]  # techs whose share was declared, not measured
     period: int
+    fallback: str | None = None  # source id when experiences.json tiers apply
 
 
 @dataclass
@@ -402,6 +569,7 @@ class Inputs:
     classes: dict[str, RepoClass]
     tech_map: TechMap
     experiences: dict[str, Experience]
+    declared: Declared = field(default_factory=lambda: Declared((), ()))
     catalogue_counts: dict[str, dict[str, float]] = field(default_factory=dict)
 
     def counts_of(self, day: str) -> dict[str, float]:
@@ -476,31 +644,57 @@ def build_units(inputs: Inputs) -> list[Unit]:
             whole = inputs.shares_of(traced)
             for month in tl.month_range(period.start, period.end):
                 hours = tl.pro_hours(period, month)[source.id]
-                if hours <= 0:
-                    continue
                 if not traced:
-                    shares = estimated_shares(
-                        experiences_for(source.id),
-                        month,
-                        inputs.experiences,
-                        inputs.tech_map,
+                    units.extend(
+                        _untraced_units(inputs, month, kind, hours, source, index)
                     )
-                    units.append(Unit(month, kind, hours, shares, True, index))
+                    continue
+                if hours <= 0:
                     continue
                 in_month = [d for d in traced if d[:7] == month]
                 if in_month:
                     shares = inputs.shares_of(in_month)
                 else:
                     shares = {t: v for t, v in whole.items() if seen[t] <= month}
-                units.append(Unit(month, kind, hours, shares, False, index))
+                units.append(Unit(month, kind, hours, shares, frozenset(), index))
 
     for index, day in personal_days:
         budget = tl.budget_for(timeline.periods[index].context)
         hours = tl.personal_hours(budget, [date.fromisoformat(day)])
         if hours > 0:
             shares = inputs.shares_of([day])
-            units.append(Unit(day[:7], "personal", hours, shares, False, index))
+            declared = set()
+            for tech, share in inputs.declared.overlay_shares(day[:7]).items():
+                if share > shares.get(tech, 0.0):
+                    shares[tech] = share
+                    declared.add(tech)
+            units.append(
+                Unit(day[:7], "personal", hours, shares, frozenset(declared), index)
+            )
     return units
+
+
+def _untraced_units(
+    inputs: Inputs, month: str, kind: str, hours: float, source: tl.Source, index: int
+) -> list[Unit]:
+    """Units of a source month without any trace: declared, else experiences."""
+    declared = inputs.declared.for_month(source.id, month, inputs.timeline.as_of)
+    units = []
+    for period in declared:
+        if period.pro_hours_per_weekday is not None:
+            share = tl.weekdays_in_month(month) * period.pro_hours_per_weekday
+            part = share * source.share / len(declared)
+        else:
+            part = hours / len(declared)
+        if part > 0:
+            shares = period.shares()
+            units.append(Unit(month, kind, part, shares, frozenset(shares), index))
+    if declared or hours <= 0:
+        return units
+    shares = experience_shares(
+        experiences_for(source.id), month, inputs.experiences, inputs.tech_map
+    )
+    return [Unit(month, kind, hours, shares, frozenset(shares), index, source.id)]
 
 
 def allocations(units: list[Unit]) -> list[dict[str, float]]:
@@ -539,7 +733,7 @@ def aggregate(inputs: Inputs, catalogue: list[dict]) -> dict:
         lambda: defaultdict(list)
     )
     tech_hours: dict[str, list[float]] = defaultdict(list)
-    tech_estimated: dict[str, list[float]] = defaultdict(list)
+    tech_declared: dict[str, list[float]] = defaultdict(list)
     tech_months: dict[str, list[str]] = defaultdict(list)
     for unit, alloc in zip(units, allocs, strict=True):
         context[unit.month][unit.kind].append(unit.hours)
@@ -547,8 +741,8 @@ def aggregate(inputs: Inputs, catalogue: list[dict]) -> dict:
             month_techs[unit.month][tech].append(hours)
             tech_hours[tech].append(hours)
             tech_months[tech].append(unit.month)
-            if unit.estimated:
-                tech_estimated[tech].append(hours)
+            if tech in unit.declared:
+                tech_declared[tech].append(hours)
         for domain, hours in domain_hours(unit.hours, unit.shares, tech_map).items():
             month_domains[unit.month][domain].append(hours)
 
@@ -570,7 +764,7 @@ def aggregate(inputs: Inputs, catalogue: list[dict]) -> dict:
             "level": level_for(total),
             "first": min(tech_months[tech]),
             "last": max(tech_months[tech]),
-            "estimated_share": _r(math.fsum(tech_estimated[tech]) / total, 3),
+            "declared_share": _r(math.fsum(tech_declared[tech]) / total, 3),
             "kind": info.kind,
             "domain": info.domain,
         }
@@ -615,16 +809,16 @@ def sanity_checks(
     seen = first_seen(inputs)
     earliest_estimate: dict[str, str] = {}
     for unit in units:
-        if unit.estimated:
-            for tech, share in unit.shares.items():
-                if share > 0 and unit.month < earliest_estimate.get(tech, "9999-99"):
-                    earliest_estimate[tech] = unit.month
+        for tech in unit.declared:
+            share = unit.shares.get(tech, 0)
+            if share > 0 and unit.month < earliest_estimate.get(tech, "9999-99"):
+                earliest_estimate[tech] = unit.month
     for tech, entry in sorted(doc["techs"].items()):
         bound = min(seen.get(tech, "9999-99"), earliest_estimate.get(tech, "9999-99"))
         if entry["first"] < bound:
             issues.append(
                 f"{tech}: first use {entry['first']} before its first commit or "
-                f"estimated period ({bound})"
+                f"declared period ({bound})"
             )
         release = RELEASE_MONTHS.get(tech)
         if release and entry["first"] < release:
@@ -672,15 +866,20 @@ def _summary(doc: dict, inputs: Inputs, issues: list[str]) -> str:
         f"coverage: {doc['coverage']}  activity_as_of={doc['activity_as_of']}",
         f"unclassified repositories: {unclassified}",
         f"{'tech':<24}{'hours':>9}{'shown':>8}  {'level':<13}"
-        f"{'first':<9}{'last':<9}estimated",
+        f"{'first':<9}{'last':<9}declared",
     ]
     ranked = sorted(doc["techs"].items(), key=lambda kv: (-kv[1]["hours"], kv[0]))
     for tech, entry in ranked[:25]:
         lines.append(
             f"{tech:<24}{entry['hours']:>9.0f}{entry['display_hours']:>8}  "
             f"{entry['level'] or '-':<13}{entry['first']:<9}{entry['last']:<9}"
-            f"{entry['estimated_share']:.0%}"
+            f"{entry['declared_share']:.0%}"
         )
+    for unit in build_units(inputs):
+        if unit.fallback:
+            lines.append(
+                f"experience fallback: {unit.fallback} {unit.month} {unit.hours:.1f} h"
+            )
     lines.append("sanity: OK" if not issues else f"sanity: {len(issues)} issue(s)")
     return "\n".join(lines)
 
@@ -708,6 +907,9 @@ def main(argv: list[str] | None = None) -> int:
             classes=parse_repo_classes(_read_json(private / CLASSES_NAME)),
             tech_map=load_tech_map(args.tech_map),
             experiences=parse_experiences(_read_json(args.experiences)),
+        )
+        inputs.declared = parse_declared(
+            _read_json(private / DECLARED_NAME), inputs.tech_map
         )
         catalogue = _read_json(args.catalogue)
         doc = aggregate(inputs, catalogue=catalogue)

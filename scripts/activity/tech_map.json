@@ -3,7 +3,8 @@
   "notes": [
     "kind marks the declared languages: in estimated periods they share 100 % of the hours pro rata of their tiers.",
     "The collector cannot split native Xamarin (Xamarin.iOS / Xamarin.Android) from Xamarin.Forms: its 'xamarin' id matches both and maps to 'xamarin'; 'xamarin-forms' only receives declared (estimated) hours.",
-    "The collector cannot split ASP.NET Core from ASP.NET Web API 2, nor EF Core from Entity Framework 6: 'aspnet' and 'ef' map to 'asp-net-core' and 'ef-core'."
+    "The collector cannot split ASP.NET Core from ASP.NET Web API 2, nor EF Core from Entity Framework 6: 'aspnet' and 'ef' map to 'asp-net-core' and 'ef-core'.",
+    "testlink and git-server are tools: their hours are kept, whether they are displayed as skills is decided by the page."
   ],
   "excluded": {
     "git": "A tool every commit implies: shown in the icon band, never counted as hours."
@@ -56,66 +57,349 @@
     "xaml": "xaml"
   },
   "techs": {
-    "ai-driven-development": {"kind": "domain", "domain": "ai-llm"},
-    "aioz": {"kind": "domain", "domain": "blockchain"},
-    "android": {"kind": "platform", "domain": "mobile"},
-    "asp-net-core": {"kind": "platform", "domain": "backend"},
-    "asp-net-web-api-2": {"kind": "platform", "domain": "backend"},
-    "azure": {"kind": "platform", "domain": "backend"},
-    "azure-devops": {"kind": "platform", "domain": "devops"},
-    "bash": {"kind": "language", "domain": "languages"},
-    "blazor": {"kind": "platform", "domain": "backend"},
-    "blockchain": {"kind": "domain", "domain": "blockchain"},
-    "bluetooth": {"kind": "domain", "domain": "embedded"},
-    "c-cpp": {"kind": "language", "domain": "languages"},
-    "claude-api": {"kind": "domain", "domain": "ai-llm"},
-    "cometbft": {"kind": "domain", "domain": "blockchain"},
-    "computer-vision": {"kind": "domain", "domain": "embedded"},
-    "cosmos-sdk": {"kind": "domain", "domain": "blockchain"},
-    "csharp-dotnet": {"kind": "language", "domain": "languages"},
-    "dart": {"kind": "language", "domain": "languages"},
-    "docker": {"kind": "platform", "domain": "devops"},
-    "ef-core": {"kind": "platform", "domain": "backend"},
-    "fastapi": {"kind": "platform", "domain": "backend"},
-    "fsharp": {"kind": "language", "domain": "languages"},
-    "github-actions": {"kind": "platform", "domain": "devops"},
-    "go": {"kind": "language", "domain": "languages"},
-    "gps": {"kind": "domain", "domain": "embedded"},
-    "grpc": {"kind": "platform", "domain": "backend"},
-    "idena": {"kind": "domain", "domain": "blockchain"},
-    "java": {"kind": "language", "domain": "languages"},
-    "javascript": {"kind": "language", "domain": "languages"},
-    "kotlin": {"kind": "language", "domain": "languages"},
-    "kubernetes": {"kind": "platform", "domain": "devops"},
-    "linux-ubuntu": {"kind": "platform", "domain": "devops"},
-    "litellm": {"kind": "domain", "domain": "ai-llm"},
-    "llm-api": {"kind": "domain", "domain": "ai-llm"},
-    "matlab": {"kind": "language", "domain": "languages"},
-    "maui": {"kind": "platform", "domain": "mobile"},
-    "mqtt": {"kind": "domain", "domain": "embedded"},
-    "nfc": {"kind": "domain", "domain": "embedded"},
-    "nodejs": {"kind": "platform", "domain": "backend"},
-    "objective-c": {"kind": "language", "domain": "mobile"},
-    "osmosis": {"kind": "domain", "domain": "blockchain"},
-    "php": {"kind": "language", "domain": "languages"},
-    "powershell": {"kind": "language", "domain": "languages"},
-    "python": {"kind": "language", "domain": "languages"},
-    "react-next": {"kind": "platform", "domain": "backend"},
-    "ruby": {"kind": "language", "domain": "languages"},
-    "rust": {"kind": "language", "domain": "languages"},
-    "solidity": {"kind": "language", "domain": "blockchain"},
-    "sql": {"kind": "language", "domain": "languages"},
-    "swift": {"kind": "language", "domain": "mobile"},
-    "terraform": {"kind": "platform", "domain": "devops"},
-    "typescript": {"kind": "language", "domain": "languages"},
-    "vbnet": {"kind": "language", "domain": "languages"},
-    "vector-db": {"kind": "domain", "domain": "ai-llm"},
-    "web": {"kind": "language", "domain": "languages"},
-    "windows": {"kind": "platform", "domain": "devops"},
-    "windows-ce": {"kind": "platform", "domain": "mobile"},
-    "windows-mobile": {"kind": "platform", "domain": "mobile"},
-    "xamarin": {"kind": "platform", "domain": "mobile"},
-    "xamarin-forms": {"kind": "platform", "domain": "mobile"},
-    "xaml": {"kind": "language", "domain": "languages"}
+    "active-directory": {
+      "kind": "platform",
+      "domain": "devops"
+    },
+    "ai-driven-development": {
+      "kind": "domain",
+      "domain": "ai-llm"
+    },
+    "aioz": {
+      "kind": "domain",
+      "domain": "blockchain"
+    },
+    "aix": {
+      "kind": "platform",
+      "domain": "devops"
+    },
+    "android": {
+      "kind": "platform",
+      "domain": "mobile"
+    },
+    "asp-net-core": {
+      "kind": "platform",
+      "domain": "backend"
+    },
+    "asp-net-web-api-2": {
+      "kind": "platform",
+      "domain": "backend"
+    },
+    "augmented-reality": {
+      "kind": "domain",
+      "domain": "embedded"
+    },
+    "azure": {
+      "kind": "platform",
+      "domain": "backend"
+    },
+    "azure-devops": {
+      "kind": "platform",
+      "domain": "devops"
+    },
+    "bash": {
+      "kind": "language",
+      "domain": "languages"
+    },
+    "blazor": {
+      "kind": "platform",
+      "domain": "backend"
+    },
+    "blockchain": {
+      "kind": "domain",
+      "domain": "blockchain"
+    },
+    "bluetooth": {
+      "kind": "domain",
+      "domain": "embedded"
+    },
+    "c-cpp": {
+      "kind": "language",
+      "domain": "languages"
+    },
+    "claude-api": {
+      "kind": "domain",
+      "domain": "ai-llm"
+    },
+    "cometbft": {
+      "kind": "domain",
+      "domain": "blockchain"
+    },
+    "computer-vision": {
+      "kind": "domain",
+      "domain": "embedded"
+    },
+    "cosmos-sdk": {
+      "kind": "domain",
+      "domain": "blockchain"
+    },
+    "cpp-cli": {
+      "kind": "language",
+      "domain": "languages"
+    },
+    "csharp-dotnet": {
+      "kind": "language",
+      "domain": "languages"
+    },
+    "dart": {
+      "kind": "language",
+      "domain": "languages"
+    },
+    "docker": {
+      "kind": "platform",
+      "domain": "devops"
+    },
+    "dotnet-5": {
+      "kind": "platform",
+      "domain": "backend"
+    },
+    "driver-development": {
+      "kind": "domain",
+      "domain": "embedded"
+    },
+    "ef-core": {
+      "kind": "platform",
+      "domain": "backend"
+    },
+    "fastapi": {
+      "kind": "platform",
+      "domain": "backend"
+    },
+    "fsharp": {
+      "kind": "language",
+      "domain": "languages"
+    },
+    "git-server": {
+      "kind": "platform",
+      "domain": "devops"
+    },
+    "github-actions": {
+      "kind": "platform",
+      "domain": "devops"
+    },
+    "go": {
+      "kind": "language",
+      "domain": "languages"
+    },
+    "gprs": {
+      "kind": "domain",
+      "domain": "embedded"
+    },
+    "gps": {
+      "kind": "domain",
+      "domain": "embedded"
+    },
+    "grpc": {
+      "kind": "platform",
+      "domain": "backend"
+    },
+    "idena": {
+      "kind": "domain",
+      "domain": "blockchain"
+    },
+    "ios": {
+      "kind": "platform",
+      "domain": "mobile"
+    },
+    "java": {
+      "kind": "language",
+      "domain": "languages"
+    },
+    "javascript": {
+      "kind": "language",
+      "domain": "languages"
+    },
+    "kotlin": {
+      "kind": "language",
+      "domain": "languages"
+    },
+    "kubernetes": {
+      "kind": "platform",
+      "domain": "devops"
+    },
+    "linux": {
+      "kind": "platform",
+      "domain": "devops"
+    },
+    "linux-ubuntu": {
+      "kind": "platform",
+      "domain": "devops"
+    },
+    "litellm": {
+      "kind": "domain",
+      "domain": "ai-llm"
+    },
+    "llm-api": {
+      "kind": "domain",
+      "domain": "ai-llm"
+    },
+    "matlab": {
+      "kind": "language",
+      "domain": "languages"
+    },
+    "maui": {
+      "kind": "platform",
+      "domain": "mobile"
+    },
+    "mqtt": {
+      "kind": "domain",
+      "domain": "embedded"
+    },
+    "multithreading": {
+      "kind": "domain",
+      "domain": "languages"
+    },
+    "native-cross-build": {
+      "kind": "platform",
+      "domain": "devops"
+    },
+    "nfc": {
+      "kind": "domain",
+      "domain": "embedded"
+    },
+    "nodejs": {
+      "kind": "platform",
+      "domain": "backend"
+    },
+    "objective-c": {
+      "kind": "language",
+      "domain": "mobile"
+    },
+    "osmosis": {
+      "kind": "domain",
+      "domain": "blockchain"
+    },
+    "payment-integration": {
+      "kind": "domain",
+      "domain": "backend"
+    },
+    "php": {
+      "kind": "language",
+      "domain": "languages"
+    },
+    "pic-microcontroller": {
+      "kind": "platform",
+      "domain": "embedded"
+    },
+    "pinvoke-interop": {
+      "kind": "platform",
+      "domain": "desktop"
+    },
+    "powershell": {
+      "kind": "language",
+      "domain": "languages"
+    },
+    "python": {
+      "kind": "language",
+      "domain": "languages"
+    },
+    "react-next": {
+      "kind": "platform",
+      "domain": "backend"
+    },
+    "ruby": {
+      "kind": "language",
+      "domain": "languages"
+    },
+    "rust": {
+      "kind": "language",
+      "domain": "languages"
+    },
+    "soap-webservices": {
+      "kind": "platform",
+      "domain": "backend"
+    },
+    "solidity": {
+      "kind": "language",
+      "domain": "blockchain"
+    },
+    "sql": {
+      "kind": "language",
+      "domain": "languages"
+    },
+    "swift": {
+      "kind": "language",
+      "domain": "mobile"
+    },
+    "tcp-networking": {
+      "kind": "domain",
+      "domain": "backend"
+    },
+    "terraform": {
+      "kind": "platform",
+      "domain": "devops"
+    },
+    "testlink": {
+      "kind": "platform",
+      "domain": "devops"
+    },
+    "typescript": {
+      "kind": "language",
+      "domain": "languages"
+    },
+    "usb-driver": {
+      "kind": "domain",
+      "domain": "embedded"
+    },
+    "vbnet": {
+      "kind": "language",
+      "domain": "languages"
+    },
+    "vector-db": {
+      "kind": "domain",
+      "domain": "ai-llm"
+    },
+    "virtual-machines": {
+      "kind": "platform",
+      "domain": "devops"
+    },
+    "vmware": {
+      "kind": "platform",
+      "domain": "devops"
+    },
+    "web": {
+      "kind": "language",
+      "domain": "languages"
+    },
+    "windows": {
+      "kind": "platform",
+      "domain": "devops"
+    },
+    "windows-ce": {
+      "kind": "platform",
+      "domain": "mobile"
+    },
+    "windows-mobile": {
+      "kind": "platform",
+      "domain": "mobile"
+    },
+    "windows-rt": {
+      "kind": "platform",
+      "domain": "desktop"
+    },
+    "windows-server": {
+      "kind": "platform",
+      "domain": "devops"
+    },
+    "windows-services": {
+      "kind": "platform",
+      "domain": "desktop"
+    },
+    "winforms": {
+      "kind": "platform",
+      "domain": "desktop"
+    },
+    "xamarin": {
+      "kind": "platform",
+      "domain": "mobile"
+    },
+    "xamarin-forms": {
+      "kind": "platform",
+      "domain": "mobile"
+    },
+    "xaml": {
+      "kind": "language",
+      "domain": "languages"
+    }
   }
 }

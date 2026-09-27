@@ -42,6 +42,7 @@ def inputs(tech_map) -> hr.Inputs:
         classes=hr.parse_repo_classes(_json("hours_repo_classes.json")),
         tech_map=tech_map,
         experiences=hr.parse_experiences(_json("hours_experiences.json")),
+        declared=hr.parse_declared(_json("hours_declared.json"), tech_map),
     )
 
 
@@ -189,18 +190,18 @@ def test_display_never_crosses_a_threshold():
 # --- Experiences (declared tiers) ----------------------------------------
 
 
-def test_estimated_shares_use_active_experiences_and_drop_git(tech_map):
+def test_experience_shares_use_active_experiences_and_drop_git(tech_map):
     exps = hr.parse_experiences(_json("hours_experiences.json"))
-    shares = hr.estimated_shares(["freelance"], "2007-07", exps, tech_map)
+    shares = hr.experience_shares(["freelance"], "2007-07", exps, tech_map)
     # The only declared language takes 100 %; docker keeps its tier.
     assert shares == {"python": 1.0, "docker": 0.35}
 
 
 def test_estimated_languages_share_pro_rata(tech_map):
     exps = hr.parse_experiences(_json("hours_experiences.json"))
-    shares = hr.estimated_shares(["org-d", "school-x"], "2010-01", exps, tech_map)
+    shares = hr.experience_shares(["org-d", "school-x"], "2010-01", exps, tech_map)
     assert shares == {"csharp-dotnet": 0.5, "c-cpp": 0.5, "windows-ce": 0.35}
-    active = hr.estimated_shares(["org-d", "school-x"], "2008-02", exps, tech_map)
+    active = hr.experience_shares(["org-d", "school-x"], "2008-02", exps, tech_map)
     assert active == {"csharp-dotnet": 1.0}
 
 
@@ -221,11 +222,11 @@ def test_estimated_non_language_tiers_are_capped(tech_map):
             },
         ]
     )
-    assert hr.estimated_shares(["a", "b"], "2008-02", exps, tech_map) == {"nfc": 1.0}
+    assert hr.experience_shares(["a", "b"], "2008-02", exps, tech_map) == {"nfc": 1.0}
 
 
-def test_estimated_shares_unknown_experience_is_empty(tech_map):
-    assert hr.estimated_shares(["nobody"], "2008-02", {}, tech_map) == {}
+def test_experience_shares_unknown_experience_is_empty(tech_map):
+    assert hr.experience_shares(["nobody"], "2008-02", {}, tech_map) == {}
 
 
 @pytest.mark.parametrize(
@@ -256,6 +257,110 @@ def test_experiences_for_source_maps_timeline_ids():
     assert hr.experiences_for("good-angel") == ("goodangel-mgl-p1", "goodangel-mgl-p2")
     assert hr.experiences_for("freelance-client") == ("freelance",)
     assert hr.experiences_for("gunnebo") == ("gunnebo",)
+
+
+# --- Declared periods ------------------------------------------------------
+
+
+def test_parse_declared_reads_periods_and_overlays(tech_map):
+    declared = hr.parse_declared(_json("hours_declared.json"), tech_map)
+    assert [p.source for p in declared.periods][:2] == [
+        "freelance-client",
+        "freelance-client",
+    ]
+    mission = declared.periods[0]
+    assert mission.pro_hours_per_weekday == 7
+    assert mission.shares() == {"python": 1.0, "docker": 0.35}
+    assert declared.periods[3].within_study_budget is True
+    assert [p.start for p in declared.for_month("school-x", "2007-02", "2008-05")] == [
+        "2006-09",
+        "2007-01",
+    ]
+    assert len(declared.for_month("freelance-client", "2008-05", "2008-05")) == 1
+    assert declared.overlay_shares("2007-09") == {"ai-driven-development": 0.1}
+    assert declared.overlay_shares("2008-05") == {}
+    assert declared.overlay_shares("2006-01") == {}
+
+
+def test_declared_tier_on_a_language_adds_to_its_share(tech_map):
+    raw = {
+        "version": 1,
+        "periods": [
+            {
+                "source": "s",
+                "start": "2008-01",
+                "end": None,
+                "languages": {"python": 1.0},
+                "tiers": {"python": "incident", "bash": "secondary"},
+            }
+        ],
+    }
+    period = hr.parse_declared(raw, tech_map).periods[0]
+    assert period.shares() == {"python": 1.0, "bash": 0.35}
+
+
+def _declared(**overrides) -> dict:
+    period = {
+        "source": "s",
+        "start": "2008-01",
+        "end": "2008-02",
+        "languages": {"python": 1.0},
+        "tiers": {},
+    }
+    period.update(overrides)
+    return {"version": 1, "periods": [period]}
+
+
+@pytest.mark.parametrize(
+    ("raw", "message"),
+    [
+        ([], "object"),
+        ({"version": 2, "periods": []}, "version"),
+        ({"version": 1, "periods": {}}, "periods"),
+        ({"version": 1, "periods": [1]}, "object"),
+        (_declared(source=""), "source"),
+        (_declared(start="2008"), "YYYY-MM"),
+        (_declared(end="2007-01"), "before"),
+        (_declared(languages={"python": 0.5}), "sum to 1"),
+        (_declared(languages={"cobol": 1.0}), "unknown tech"),
+        (_declared(tiers={"docker": "top"}), "tier"),
+        (_declared(tiers={"nope": "primary"}), "unknown tech"),
+        (_declared(tiers=[]), "tiers"),
+        (_declared(pro_hours_per_weekday=0), "pro_hours_per_weekday"),
+        (_declared(pro_hours_per_weekday=12), "pro_hours_per_weekday"),
+        ({"version": 1, "periods": [], "overlays": {}}, "overlays"),
+        ({"version": 1, "periods": [], "overlays": [1]}, "object"),
+        (
+            {"version": 1, "periods": [], "overlays": [{"tech": "nope"}]},
+            "unknown tech",
+        ),
+        (
+            {
+                "version": 1,
+                "periods": [],
+                "overlays": [
+                    {
+                        "tech": "docker",
+                        "periods": [
+                            {"start": "2008-01", "end": "2008-02", "tier": "x"}
+                        ],
+                        "measured_from": "2009-01",
+                    }
+                ],
+            },
+            "tier",
+        ),
+    ],
+)
+def test_parse_declared_rejects_defects(raw, message, tech_map):
+    with pytest.raises(ValueError, match=message):
+        hr.parse_declared(raw, tech_map)
+
+
+def test_empty_declared_keeps_experience_fallback(inputs):
+    inputs.declared = hr.Declared((), ())
+    units = hr.build_units(inputs)
+    assert {u.fallback for u in units if u.fallback} == {"school-x", "freelance-client"}
 
 
 # --- Evidence and classes ------------------------------------------------
@@ -328,10 +433,10 @@ def test_evidence_day_outside_timeline_is_an_error(inputs):
 
 
 def test_context_totals_are_additive(doc):
-    # study: 10 academic months x 36 h; pro: client 2007-07 (22 weekdays)
-    # + org B 2007-08..12 (23+20+23+22+21 weekdays) + parallel 2008-01..03
-    # (23+21+21 weekdays), all at 8 h; personal: 3 + 3 + 11 + 11 + 11.
-    assert doc["context_totals"] == {"pro": 1568.0, "personal": 39.0, "study": 360.0}
+    # study: 10 academic months x 36 h; pro: client 2007-07 (22 weekdays at
+    # the declared 7 h) + org B 2007-08..12 (23+20+23+22+21 weekdays) +
+    # parallel 2008-01..03 (23+21+21 weekdays) at 8 h; personal: 3+3+11+11+11.
+    assert doc["context_totals"] == {"pro": 1546.0, "personal": 39.0, "study": 360.0}
     month = doc["by_month"]["2007-08"]["context"]
     assert month == {"pro": 184.0, "personal": 3.0, "study": 0.0}
 
@@ -367,21 +472,58 @@ def test_parallel_sources_split_by_share(doc):
     assert jan["context"]["pro"] == pytest.approx(184.0)
 
 
-def test_untraced_source_is_estimated_from_declared_tiers(doc):
-    jul = doc["by_month"]["2007-07"]["techs"]
-    assert jul == {"docker": 61.6, "python": 176.0}
+def test_declared_periods_replace_experience_tiers(doc):
+    # Two declared periods overlap in 2007-07: 22 weekdays x 7 h split 50/50.
+    jul = doc["by_month"]["2007-07"]
+    assert jul["context"]["pro"] == pytest.approx(154.0)
+    # A: languages as-is, docker secondary 0.35, git excluded; B: bash only.
+    assert jul["techs"] == {"python": 77.0, "docker": 26.95, "bash": 77.0}
     measured = 128.8 * 0.2 + 2 * 0.7 * 168 * 0.2
-    assert doc["techs"]["docker"]["estimated_share"] == pytest.approx(
-        61.6 / (61.6 + measured), abs=0.001
+    assert doc["techs"]["docker"]["declared_share"] == pytest.approx(
+        26.95 / (26.95 + measured), abs=0.001
     )
 
 
-def test_study_is_estimated_and_counted_as_study(doc):
+def test_study_uses_declared_languages_and_tiers(doc):
     sep = doc["by_month"]["2006-09"]
     assert sep["context"] == {"pro": 0.0, "personal": 0.0, "study": 36.0}
-    assert sep["techs"] == {"c-cpp": 36.0, "windows-ce": 12.6}
+    assert sep["techs"] == {"c-cpp": 21.6, "sql": 14.4, "windows-ce": 12.6}
     assert "2007-07" in doc["by_month"]
     assert "2006-07" not in doc["by_month"]  # context none counts nothing
+
+
+def test_within_study_budget_splits_the_month(doc):
+    # 2007-01: school shares on 18 h, cup shares on the other 18 h.
+    jan = doc["by_month"]["2007-01"]
+    assert jan["context"]["study"] == 36.0
+    assert jan["techs"] == {
+        "c-cpp": pytest.approx(10.8 + 18.0),
+        "sql": pytest.approx(7.2),
+        "windows-ce": pytest.approx(6.3),
+        "computer-vision": pytest.approx(12.6),
+    }
+
+
+def test_months_without_declaration_fall_back_to_experiences(inputs, doc):
+    apr = doc["by_month"]["2007-04"]["techs"]
+    assert apr == {"c-cpp": 36.0, "windows-ce": 12.6}
+    fallback = [(u.fallback, u.month) for u in hr.build_units(inputs) if u.fallback]
+    assert fallback == [
+        ("school-x", "2007-04"),
+        ("school-x", "2007-05"),
+        ("school-x", "2007-06"),
+    ]
+
+
+def test_ai_overlay_on_personal_days_only(doc):
+    # Personal days: 3 h x 0.10 twice (incident), 11 h x 0.35 twice
+    # (secondary), then measured from 2008-05 (3 of 10 files).
+    ai = doc["techs"]["ai-driven-development"]
+    assert ai["hours"] == pytest.approx(0.3 + 0.3 + 3.85 + 3.85 + 3.3, abs=0.01)
+    assert ai["declared_share"] == pytest.approx(8.3 / 11.6, abs=0.001)
+    # Never on professional hours: org B's October has no AI.
+    assert "ai-driven-development" not in doc["by_month"]["2007-10"]["techs"]
+    assert doc["by_month"]["2007-08"]["techs"]["ai-driven-development"] == 0.3
 
 
 def test_pro_repo_outside_its_period_counts_as_personal(doc):
@@ -389,7 +531,14 @@ def test_pro_repo_outside_its_period_counts_as_personal(doc):
     # 2008-04-10: org B repo while org B is no source -> own R&D day (11 h);
     # 2008-04-12: unclassified repo, no tech weights -> 11 h, unallocated.
     assert apr["context"]["personal"] == pytest.approx(22.0)
-    assert apr["techs"] == {"csharp-dotnet": 11.0}
+    assert apr["techs"] == {"csharp-dotnet": 11.0, "ai-driven-development": 7.7}
+
+
+def test_source_without_pro_budget_gets_no_pro_hours(inputs):
+    # Own R&D has no professional budget, even when a repository names it.
+    inputs.classes["github.com/me/tool"] = hr.RepoClass("pro", "own-rnd")
+    units = hr.build_units(inputs)
+    assert not [u for u in units if u.month == "2008-05" and u.kind == "pro"]
 
 
 def test_pro_only_day_adds_no_personal_hours(doc):
@@ -417,7 +566,7 @@ def test_tech_entries_carry_level_period_and_domain(doc):
     assert (csharp["first"], csharp["last"]) == ("2007-08", "2008-04")
     assert csharp["domain"] == "languages"
     assert csharp["kind"] == "language"
-    assert csharp["estimated_share"] == 0.0
+    assert csharp["declared_share"] == 0.0
 
 
 def test_domains_per_month(doc):
@@ -493,7 +642,7 @@ def test_sanity_detects_budget_overflow(inputs, doc):
     units = hr.build_units(inputs)
     # Double the allocation only: the budgets still come from ``units``.
     inflated = [
-        hr.Unit(u.month, u.kind, u.hours * 2, u.shares, u.estimated, u.period)
+        hr.Unit(u.month, u.kind, u.hours * 2, u.shares, u.declared, u.period)
         for u in units
     ]
     issues = hr.sanity_checks(doc, units, inputs, allocations=hr.allocations(inflated))
@@ -510,6 +659,7 @@ def _private_dir(tmp_path: pathlib.Path) -> pathlib.Path:
         ("hours_timeline.json", "timeline.json"),
         ("hours_evidence.json", "evidence.json"),
         ("hours_repo_classes.json", "repo-classes.json"),
+        ("hours_declared.json", "declared.json"),
     ):
         (private / dst).write_text(
             (FIXTURES / src).read_text(encoding="utf-8"), encoding="utf-8"
@@ -535,9 +685,10 @@ def test_cli_writes_deterministic_aggregates(tmp_path, monkeypatch, capsys):
     assert out.read_bytes() == first
     assert first.endswith(b"\n")
     doc = json.loads(first)
-    assert doc["context_totals"]["pro"] == 1568.0
+    assert doc["context_totals"]["pro"] == 1546.0
     printed = capsys.readouterr().out
-    assert "pro=1568" in printed
+    assert "pro=1546" in printed
+    assert "experience fallback: school-x 2007-04" in printed
     assert "csharp-dotnet" in printed
     assert "unclassified repositories: 1" in printed
     assert "sanity: OK" in printed

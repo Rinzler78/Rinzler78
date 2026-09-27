@@ -152,11 +152,22 @@ other repositories are dropped before deduplication and listed in
   the month; a month without a commit uses the counts over the whole period,
   restricted to techs already seen in an own commit by then (hours with
   nothing left count for the context, not for a tech).
-- Estimated periods (no trace: before 2014, a client whose commits are not
-  collected): declared tiers of `data/experiences.json` are assumed file
-  shares, primary 0.70, secondary 0.35, incident 0.10; declared languages share
-  100 % pro rata of their tiers. `SOURCE_EXPERIENCES` maps timeline ids to
-  experience ids.
+- Declared periods (no trace: before 2014, a client whose commits are not
+  collected) come from the private `$PROFILE_PRIVATE_DIR/declared.json`,
+  written by the author: per source and month range (`end: null` runs to
+  `as_of`), explicit `languages` shares summing to 1 and `tiers` for other
+  techs (primary 0.70, secondary 0.35, incident 0.10). Periods covering the
+  same month share its hours equally (a mission overlap; a
+  `within_study_budget` project takes half of the study months it covers).
+  `pro_hours_per_weekday` overrides the context budget for those months, in
+  `hours.py` (the timeline keeps its budgets). Hours are flagged `declared`.
+- `overlays` declare a tech on personal commit days of listed months (tier
+  share of the day's hours) until `measured_from`; professional hours never
+  receive one.
+- Last fallback, for a month with neither evidence nor a declared period:
+  the tiers of `data/experiences.json` (`SOURCE_EXPERIENCES` maps timeline ids
+  to experience ids; declared languages share 100 % pro rata). The CLI lists
+  every such month.
 - Personal hours: the period's personal budget on each commit day with at least
   one personal repository, with that day's file shares. A professional
   repository outside its source's period counts as personal.
@@ -168,11 +179,11 @@ other repositories are dropped before deduplication and listed in
 evidence day), `coverage` (commit days, public days, public share),
 `context_totals`, `levels`, `by_month` (`context`, `techs`, `domains`), `techs`
 (`hours`, `display_hours` rounded down, `level`, `first`, `last`,
-`estimated_share`, `kind`, `domain`) and `notes`. No repository, identity or
+`declared_share`, `kind`, `domain`) and `notes`. No repository, identity or
 private source id is written.
 
 **Sanity checks** (the file is not written when one fails): no tech starts
-before its first commit or estimated period, nor before its release month
+before its first commit or declared period, nor before its release month
 (`RELEASE_MONTHS`); no tech exceeds a period's budget.
 
 ## Helpers available in the templates
