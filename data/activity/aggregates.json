@@ -1,5 +1,5 @@
 {
-  "activity_as_of": "2026-09-26",
+  "activity_as_of": "2026-09-27",
   "by_month": {
     "2006-09": {
       "context": {
@@ -664,15 +664,18 @@
         "study": 36.0
       },
       "domains": {
-        "embedded": 25.2,
+        "devops": 12.6,
         "languages": 36.0,
-        "mobile": 12.6
+        "mobile": 25.2
       },
       "techs": {
-        "c-cpp": 28.8,
-        "computer-vision": 25.2,
+        "c-cpp": 21.6,
         "csharp-dotnet": 7.2,
-        "windows-ce": 12.6
+        "linux": 12.6,
+        "matlab": 3.6,
+        "sql": 3.6,
+        "windows-ce": 12.6,
+        "windows-mobile": 12.6
       }
     },
     "2009-10": {
@@ -1924,12 +1927,16 @@
         "study": 0.0
       },
       "domains": {
+        "devops": 12.32,
         "embedded": 41.14,
-        "languages": 123.81
+        "languages": 123.2,
+        "mobile": 99.14
       },
       "techs": {
         "bluetooth": 41.14,
-        "c-cpp": 123.81
+        "c-cpp": 123.2,
+        "ios": 99.14,
+        "virtual-machines": 12.32
       }
     },
     "2014-05": {
@@ -1939,15 +1946,16 @@
         "study": 0.0
       },
       "domains": {
+        "devops": 12.32,
         "embedded": 6.08,
-        "languages": 10.87,
-        "mobile": 20.76
+        "mobile": 69.17
       },
       "techs": {
         "bluetooth": 0.08,
-        "c-cpp": 10.87,
         "gps": 6.0,
-        "objective-c": 20.76
+        "ios": 37.54,
+        "objective-c": 31.63,
+        "virtual-machines": 12.32
       }
     },
     "2014-06": {
@@ -1957,16 +1965,18 @@
         "study": 0.0
       },
       "domains": {
+        "devops": 11.76,
         "embedded": 9.67,
-        "languages": 45.34,
-        "mobile": 33.09
+        "languages": 1.67,
+        "mobile": 111.26
       },
       "techs": {
         "bash": 1.67,
         "bluetooth": 0.8,
-        "c-cpp": 43.67,
         "gps": 8.87,
-        "objective-c": 33.09
+        "ios": 34.49,
+        "objective-c": 76.76,
+        "virtual-machines": 11.76
       }
     },
     "2014-07": {
@@ -1976,15 +1986,16 @@
         "study": 0.0
       },
       "domains": {
+        "devops": 12.88,
         "embedded": 2.47,
-        "languages": 38.87,
-        "mobile": 16.94
+        "mobile": 76.56
       },
       "techs": {
         "bluetooth": 0.08,
-        "c-cpp": 38.87,
         "gps": 2.4,
-        "objective-c": 16.94
+        "ios": 20.75,
+        "objective-c": 55.81,
+        "virtual-machines": 12.88
       }
     },
     "2014-08": {
@@ -1994,16 +2005,18 @@
         "study": 0.0
       },
       "domains": {
+        "devops": 11.76,
         "embedded": 4.03,
-        "languages": 22.52,
-        "mobile": 16.26
+        "languages": 1.0,
+        "mobile": 67.71
       },
       "techs": {
         "bash": 1.0,
         "bluetooth": 0.07,
-        "c-cpp": 21.52,
         "gps": 3.96,
-        "objective-c": 16.26
+        "ios": 29.93,
+        "objective-c": 37.78,
+        "virtual-machines": 11.76
       }
     },
     "2014-09": {
@@ -2013,15 +2026,16 @@
         "study": 0.0
       },
       "domains": {
+        "devops": 12.32,
         "embedded": 1.75,
-        "languages": 17.21,
-        "mobile": 10.67
+        "mobile": 52.12
       },
       "techs": {
         "bluetooth": 0.08,
-        "c-cpp": 17.21,
         "gps": 1.67,
-        "objective-c": 10.67
+        "ios": 24.24,
+        "objective-c": 27.88,
+        "virtual-machines": 12.32
       }
     },
     "2014-10": {
@@ -2031,15 +2045,17 @@
         "study": 0.0
       },
       "domains": {
+        "devops": 12.88,
         "embedded": 2.53,
-        "languages": 31.13,
-        "mobile": 23.98
+        "languages": 0.47,
+        "mobile": 79.65
       },
       "techs": {
         "bluetooth": 0.55,
-        "c-cpp": 30.66,
         "gps": 1.98,
-        "objective-c": 23.98,
+        "ios": 25.0,
+        "objective-c": 54.64,
+        "virtual-machines": 12.88,
         "web": 0.47
       }
     },
@@ -2050,15 +2066,16 @@
         "study": 0.0
       },
       "domains": {
+        "devops": 28.0,
         "embedded": 5.01,
-        "languages": 27.93,
-        "mobile": 15.69
+        "mobile": 64.06
       },
       "techs": {
         "bluetooth": 0.07,
-        "c-cpp": 27.93,
         "gps": 4.94,
-        "objective-c": 15.69
+        "ios": 20.44,
+        "objective-c": 43.62,
+        "virtual-machines": 28.0
       }
     },
     "2014-12": {
@@ -2068,15 +2085,16 @@
         "study": 0.0
       },
       "domains": {
+        "devops": 32.2,
         "embedded": 6.23,
-        "languages": 38.62,
-        "mobile": 28.18
+        "mobile": 96.8
       },
       "techs": {
         "bluetooth": 0.08,
-        "c-cpp": 38.62,
         "gps": 6.15,
-        "objective-c": 28.18
+        "ios": 30.0,
+        "objective-c": 66.8,
+        "virtual-machines": 32.2
       }
     },
     "2015-01": {
@@ -2086,15 +2104,16 @@
         "study": 0.0
       },
       "domains": {
+        "devops": 30.8,
         "embedded": 2.49,
-        "languages": 37.63,
-        "mobile": 21.53
+        "mobile": 88.07
       },
       "techs": {
         "bluetooth": 0.08,
-        "c-cpp": 37.63,
         "gps": 2.42,
-        "objective-c": 21.53
+        "ios": 28.91,
+        "objective-c": 59.16,
+        "virtual-machines": 30.8
       }
     },
     "2015-02": {
@@ -2104,19 +2123,27 @@
         "study": 0.0
       },
       "domains": {
+        "devops": 28.0,
         "embedded": 3.3,
-        "languages": 69.35,
-        "mobile": 25.38
+        "languages": 53.16,
+        "mobile": 122.61,
+        "practices": 2.87
       },
       "techs": {
+        "android": 30.95,
         "bash": 1.0,
         "bluetooth": 0.07,
-        "c-cpp": 16.19,
+        "cross-platform-architecture": 37.14,
         "csharp-dotnet": 51.29,
         "gps": 3.23,
+        "ios": 23.31,
         "java": 0.87,
-        "objective-c": 8.87,
-        "xamarin": 16.51
+        "mobile-build-release": 0.77,
+        "objective-c": 25.06,
+        "tests": 2.87,
+        "virtual-machines": 28.0,
+        "xamarin": 32.86,
+        "xamarin-forms": 18.24
       }
     },
     "2015-03": {
@@ -2126,17 +2153,25 @@
         "study": 0.0
       },
       "domains": {
+        "devops": 30.8,
         "embedded": 2.7,
-        "languages": 137.63,
-        "mobile": 73.97
+        "languages": 137.02,
+        "mobile": 176.0,
+        "practices": 2.01
       },
       "techs": {
+        "android": 100.77,
         "bluetooth": 0.27,
-        "c-cpp": 0.61,
+        "cross-platform-architecture": 67.43,
         "csharp-dotnet": 137.02,
         "gps": 2.43,
-        "objective-c": 0.23,
-        "xamarin": 73.74
+        "ios": 99.27,
+        "mobile-build-release": 0.53,
+        "objective-c": 0.83,
+        "tests": 2.01,
+        "virtual-machines": 30.8,
+        "xamarin": 104.23,
+        "xamarin-forms": 100.02
       }
     },
     "2015-04": {
@@ -2146,17 +2181,27 @@
         "study": 0.0
       },
       "domains": {
+        "devops": 30.8,
         "embedded": 0.95,
-        "languages": 106.89,
-        "mobile": 56.24
+        "languages": 81.39,
+        "mobile": 176.0,
+        "practices": 2.32
       },
       "techs": {
+        "android": 44.28,
         "bluetooth": 0.08,
-        "c-cpp": 25.49,
+        "cross-platform-architecture": 53.18,
         "csharp-dotnet": 81.24,
         "gps": 0.87,
-        "objective-c": 20.79,
-        "xamarin": 35.45,
+        "ios": 53.18,
+        "mobile-build-release": 1.15,
+        "mobile-ui": 2.92,
+        "mvvm": 0.31,
+        "objective-c": 46.28,
+        "tests": 2.01,
+        "virtual-machines": 30.8,
+        "xamarin": 48.31,
+        "xamarin-forms": 23.52,
         "xaml": 0.15
       }
     },
@@ -2167,17 +2212,28 @@
         "study": 0.0
       },
       "domains": {
+        "devops": 29.4,
         "embedded": 3.84,
-        "languages": 97.79,
-        "mobile": 43.4
+        "languages": 86.95,
+        "mobile": 168.0,
+        "practices": 3.04
       },
       "techs": {
+        "android": 49.42,
         "bluetooth": 0.5,
-        "c-cpp": 10.84,
+        "cross-platform-architecture": 70.86,
         "csharp-dotnet": 86.0,
         "gps": 3.33,
-        "objective-c": 8.15,
-        "xamarin": 35.25,
+        "ios": 41.84,
+        "mobile-build-release": 1.02,
+        "mobile-ui": 4.31,
+        "mvp": 0.17,
+        "mvvm": 0.95,
+        "objective-c": 18.99,
+        "tests": 1.92,
+        "virtual-machines": 29.4,
+        "xamarin": 58.82,
+        "xamarin-forms": 27.66,
         "xaml": 0.95
       }
     },
@@ -2188,17 +2244,27 @@
         "study": 0.0
       },
       "domains": {
+        "devops": 30.8,
         "embedded": 0.95,
-        "languages": 68.3,
-        "mobile": 29.87
+        "languages": 37.8,
+        "mobile": 101.21,
+        "practices": 2.15
       },
       "techs": {
+        "android": 17.54,
         "bluetooth": 0.08,
-        "c-cpp": 30.49,
+        "cross-platform-architecture": 28.45,
         "csharp-dotnet": 37.8,
         "gps": 0.87,
-        "objective-c": 17.14,
-        "xamarin": 12.73
+        "ios": 18.61,
+        "mobile-build-release": 0.53,
+        "mobile-ui": 2.61,
+        "mvp": 0.15,
+        "objective-c": 47.63,
+        "tests": 2.01,
+        "virtual-machines": 30.8,
+        "xamarin": 20.79,
+        "xamarin-forms": 17.95
       }
     },
     "2015-07": {
@@ -2208,17 +2274,26 @@
         "study": 0.0
       },
       "domains": {
+        "devops": 32.2,
         "embedded": 2.19,
-        "languages": 77.7,
-        "mobile": 40.14
+        "languages": 39.52,
+        "mobile": 126.87,
+        "practices": 2.1
       },
       "techs": {
+        "android": 18.33,
         "bluetooth": 0.08,
-        "c-cpp": 38.18,
+        "cross-platform-architecture": 29.74,
         "csharp-dotnet": 39.52,
         "gps": 2.11,
-        "objective-c": 26.84,
-        "xamarin": 13.31
+        "ios": 25.31,
+        "mobile-build-release": 0.55,
+        "mobile-ui": 2.73,
+        "objective-c": 65.01,
+        "tests": 2.1,
+        "virtual-machines": 32.2,
+        "xamarin": 21.74,
+        "xamarin-forms": 18.77
       }
     },
     "2015-08": {
@@ -2228,17 +2303,27 @@
         "study": 0.0
       },
       "domains": {
+        "devops": 29.4,
         "embedded": 3.34,
-        "languages": 90.59,
-        "mobile": 34.27
+        "languages": 77.08,
+        "mobile": 168.0,
+        "practices": 2.17
       },
       "techs": {
+        "android": 54.4,
         "bluetooth": 0.46,
-        "c-cpp": 13.52,
+        "cross-platform-architecture": 59.56,
         "csharp-dotnet": 77.08,
         "gps": 2.88,
-        "objective-c": 5.85,
-        "xamarin": 28.42
+        "ios": 48.26,
+        "mobile-build-release": 0.51,
+        "mobile-ui": 5.57,
+        "mvp": 0.26,
+        "objective-c": 19.37,
+        "tests": 1.92,
+        "virtual-machines": 29.4,
+        "xamarin": 57.51,
+        "xamarin-forms": 18.67
       }
     },
     "2015-09": {
@@ -2248,17 +2333,27 @@
         "study": 0.0
       },
       "domains": {
+        "devops": 30.8,
         "embedded": 3.57,
-        "languages": 79.69,
-        "mobile": 29.94
+        "languages": 74.24,
+        "mobile": 176.0,
+        "practices": 2.17
       },
       "techs": {
+        "android": 48.81,
         "bluetooth": 0.47,
-        "c-cpp": 5.45,
+        "cross-platform-architecture": 59.56,
         "csharp-dotnet": 74.24,
         "gps": 3.09,
-        "objective-c": 2.45,
-        "xamarin": 27.49
+        "ios": 41.77,
+        "mobile-build-release": 0.69,
+        "mobile-ui": 2.61,
+        "mvp": 0.16,
+        "objective-c": 7.9,
+        "tests": 2.01,
+        "virtual-machines": 30.8,
+        "xamarin": 52.07,
+        "xamarin-forms": 17.95
       }
     },
     "2015-10": {
@@ -2268,18 +2363,27 @@
         "study": 0.0
       },
       "domains": {
+        "devops": 30.8,
         "embedded": 1.64,
-        "languages": 87.74,
-        "mobile": 30.18
+        "languages": 76.39,
+        "mobile": 173.93,
+        "practices": 2.01
       },
       "techs": {
+        "android": 40.28,
         "bluetooth": 0.76,
-        "c-cpp": 11.36,
+        "cross-platform-architecture": 59.31,
         "csharp-dotnet": 75.15,
         "gps": 0.87,
-        "objective-c": 6.29,
+        "ios": 39.19,
+        "mobile-build-release": 0.53,
+        "mobile-ui": 3.44,
+        "objective-c": 17.65,
+        "tests": 2.01,
+        "virtual-machines": 30.8,
         "web": 0.55,
-        "xamarin": 23.89,
+        "xamarin": 46.98,
+        "xamarin-forms": 19.47,
         "xaml": 0.69
       }
     },
@@ -2290,17 +2394,26 @@
         "study": 0.0
       },
       "domains": {
+        "devops": 29.4,
         "embedded": 3.94,
-        "languages": 81.06,
-        "mobile": 34.89
+        "languages": 60.12,
+        "mobile": 135.87,
+        "practices": 1.92
       },
       "techs": {
+        "android": 26.63,
         "bluetooth": 0.36,
-        "c-cpp": 20.94,
+        "cross-platform-architecture": 44.69,
         "csharp-dotnet": 60.12,
         "gps": 3.57,
-        "objective-c": 15.67,
-        "xamarin": 19.22
+        "ios": 27.93,
+        "mobile-build-release": 0.65,
+        "mobile-ui": 2.78,
+        "objective-c": 36.6,
+        "tests": 1.92,
+        "virtual-machines": 29.4,
+        "xamarin": 29.88,
+        "xamarin-forms": 17.21
       }
     },
     "2015-12": {
@@ -2310,17 +2423,27 @@
         "study": 0.0
       },
       "domains": {
+        "devops": 32.2,
         "embedded": 6.38,
-        "languages": 117.93,
-        "mobile": 36.91
+        "languages": 109.14,
+        "mobile": 184.0,
+        "practices": 2.44
       },
       "techs": {
+        "android": 43.08,
         "bluetooth": 2.98,
-        "c-cpp": 8.79,
+        "cross-platform-architecture": 91.06,
         "csharp-dotnet": 109.14,
         "gps": 3.4,
-        "objective-c": 6.32,
-        "xamarin": 30.59
+        "ios": 35.55,
+        "mobile-build-release": 0.55,
+        "mobile-ui": 3.7,
+        "mvp": 0.35,
+        "objective-c": 15.11,
+        "tests": 2.1,
+        "virtual-machines": 32.2,
+        "xamarin": 46.7,
+        "xamarin-forms": 20.71
       }
     },
     "2016-01": {
@@ -2330,17 +2453,26 @@
         "study": 0.0
       },
       "domains": {
+        "devops": 29.4,
         "embedded": 4.51,
-        "languages": 89.2,
-        "mobile": 23.08
+        "languages": 70.68,
+        "mobile": 155.37,
+        "practices": 1.92
       },
       "techs": {
+        "android": 32.66,
         "bluetooth": 0.07,
-        "c-cpp": 18.52,
+        "cross-platform-architecture": 58.78,
         "csharp-dotnet": 70.68,
         "gps": 4.44,
-        "objective-c": 7.54,
-        "xamarin": 15.54
+        "ios": 31.84,
+        "mobile-build-release": 1.14,
+        "mobile-ui": 2.49,
+        "objective-c": 26.06,
+        "tests": 1.92,
+        "virtual-machines": 29.4,
+        "xamarin": 35.77,
+        "xamarin-forms": 17.14
       }
     },
     "2016-02": {
@@ -2350,17 +2482,27 @@
         "study": 0.0
       },
       "domains": {
+        "devops": 29.4,
         "embedded": 6.35,
-        "languages": 107.25,
-        "mobile": 32.4
+        "languages": 105.27,
+        "mobile": 168.0,
+        "practices": 10.31
       },
       "techs": {
+        "android": 48.69,
         "bluetooth": 0.88,
-        "c-cpp": 1.98,
+        "cross-platform-architecture": 86.3,
         "csharp-dotnet": 105.27,
+        "ddd": 2.33,
         "gps": 5.47,
-        "objective-c": 0.44,
-        "xamarin": 31.97
+        "ios": 48.68,
+        "mobile-build-release": 0.54,
+        "mobile-ui": 4.75,
+        "objective-c": 2.42,
+        "tests": 7.97,
+        "virtual-machines": 29.4,
+        "xamarin": 56.14,
+        "xamarin-forms": 35.12
       }
     },
     "2016-03": {
@@ -2370,16 +2512,26 @@
         "study": 0.0
       },
       "domains": {
+        "devops": 32.2,
         "embedded": 2.66,
-        "languages": 130.31,
-        "mobile": 43.49
+        "languages": 129.38,
+        "mobile": 184.0,
+        "practices": 12.7
       },
       "techs": {
-        "c-cpp": 0.93,
+        "android": 58.28,
+        "cross-platform-architecture": 109.46,
         "csharp-dotnet": 129.38,
+        "ddd": 6.35,
         "gps": 2.66,
-        "objective-c": 3.05,
-        "xamarin": 40.44
+        "ios": 55.39,
+        "mobile-build-release": 3.46,
+        "mobile-ui": 16.58,
+        "objective-c": 3.98,
+        "tests": 6.35,
+        "virtual-machines": 32.2,
+        "xamarin": 71.49,
+        "xamarin-forms": 59.85
       }
     },
     "2016-04": {
@@ -2389,17 +2541,24 @@
         "study": 0.0
       },
       "domains": {
+        "devops": 29.4,
         "embedded": 2.37,
-        "languages": 72.77,
-        "mobile": 26.85
+        "languages": 57.25,
+        "mobile": 112.36
       },
       "techs": {
+        "android": 13.95,
         "bluetooth": 0.39,
-        "c-cpp": 15.52,
+        "cross-platform-architecture": 54.05,
         "csharp-dotnet": 57.25,
         "gps": 1.97,
-        "objective-c": 6.84,
-        "xamarin": 20.01
+        "ios": 13.0,
+        "mobile-build-release": 0.13,
+        "mobile-ui": 4.71,
+        "objective-c": 22.36,
+        "virtual-machines": 29.4,
+        "xamarin": 27.67,
+        "xamarin-forms": 25.27
       }
     },
     "2016-05": {
@@ -2409,17 +2568,27 @@
         "study": 0.0
       },
       "domains": {
+        "devops": 30.8,
         "embedded": 0.95,
-        "languages": 127.44,
-        "mobile": 23.31
+        "languages": 126.84,
+        "mobile": 176.0,
+        "practices": 2.84
       },
       "techs": {
+        "android": 31.0,
         "bluetooth": 0.08,
-        "c-cpp": 0.61,
+        "cross-platform-architecture": 110.23,
         "csharp-dotnet": 126.84,
+        "ddd": 0.83,
         "gps": 0.87,
-        "objective-c": 0.23,
-        "xamarin": 23.08
+        "ios": 29.43,
+        "mobile-build-release": 2.6,
+        "mobile-ui": 3.65,
+        "objective-c": 0.83,
+        "tests": 2.01,
+        "virtual-machines": 30.8,
+        "xamarin": 34.25,
+        "xamarin-forms": 24.17
       }
     },
     "2016-06": {
@@ -2429,14 +2598,24 @@
         "study": 0.0
       },
       "domains": {
+        "devops": 30.8,
         "embedded": 2.23,
         "languages": 123.1,
-        "mobile": 57.26
+        "mobile": 176.0,
+        "practices": 3.42
       },
       "techs": {
+        "android": 79.29,
+        "cross-platform-architecture": 75.71,
         "csharp-dotnet": 123.1,
         "gps": 2.23,
-        "xamarin": 57.26
+        "ios": 78.48,
+        "mobile-build-release": 0.88,
+        "mobile-ui": 8.74,
+        "tests": 3.42,
+        "virtual-machines": 30.8,
+        "xamarin": 86.29,
+        "xamarin-forms": 68.65
       }
     },
     "2016-07": {
@@ -2446,17 +2625,27 @@
         "study": 0.0
       },
       "domains": {
+        "devops": 11.76,
         "embedded": 3.14,
-        "languages": 65.78,
-        "mobile": 20.2
+        "languages": 55.12,
+        "mobile": 92.96,
+        "practices": 2.71
       },
       "techs": {
+        "android": 18.98,
         "bluetooth": 0.07,
-        "c-cpp": 10.66,
+        "cross-platform-architecture": 43.95,
         "csharp-dotnet": 55.12,
+        "ddd": 0.8,
         "gps": 3.07,
-        "objective-c": 5.82,
-        "xamarin": 14.39
+        "ios": 21.83,
+        "mobile-build-release": 0.51,
+        "mobile-ui": 2.49,
+        "objective-c": 16.48,
+        "tests": 1.92,
+        "virtual-machines": 11.76,
+        "xamarin": 22.09,
+        "xamarin-forms": 17.14
       }
     },
     "2016-08": {
@@ -2466,14 +2655,23 @@
         "study": 0.0
       },
       "domains": {
-        "languages": 116.87,
-        "mobile": 45.36
+        "devops": 12.88,
+        "languages": 110.35,
+        "mobile": 184.0,
+        "practices": 11.86
       },
       "techs": {
-        "c-cpp": 6.53,
+        "android": 69.0,
+        "cross-platform-architecture": 70.85,
         "csharp-dotnet": 110.35,
-        "objective-c": 3.26,
-        "xamarin": 42.1
+        "ios": 63.74,
+        "mobile-build-release": 1.77,
+        "mobile-ui": 2.0,
+        "objective-c": 9.79,
+        "tests": 11.86,
+        "virtual-machines": 12.88,
+        "xamarin": 70.0,
+        "xamarin-forms": 61.48
       }
     },
     "2016-09": {
@@ -2483,17 +2681,27 @@
         "study": 0.0
       },
       "domains": {
+        "devops": 12.32,
         "embedded": 3.35,
-        "languages": 89.09,
-        "mobile": 39.0
+        "languages": 69.25,
+        "mobile": 157.17,
+        "practices": 4.64
       },
       "techs": {
+        "android": 22.55,
         "bluetooth": 0.08,
-        "c-cpp": 19.84,
+        "cross-platform-architecture": 56.89,
         "csharp-dotnet": 69.25,
+        "ddd": 0.83,
         "gps": 3.28,
-        "objective-c": 9.84,
-        "xamarin": 29.15
+        "ios": 22.01,
+        "mobile-build-release": 0.53,
+        "mobile-ui": 4.42,
+        "objective-c": 29.68,
+        "tests": 3.81,
+        "virtual-machines": 12.32,
+        "xamarin": 39.22,
+        "xamarin-forms": 34.78
       }
     },
     "2016-10": {
@@ -2503,17 +2711,27 @@
         "study": 0.0
       },
       "domains": {
+        "devops": 11.76,
         "embedded": 27.55,
-        "languages": 134.46,
-        "mobile": 54.78
+        "languages": 133.88,
+        "mobile": 168.0,
+        "practices": 4.42
       },
       "techs": {
+        "android": 54.27,
         "bluetooth": 26.23,
-        "c-cpp": 0.58,
+        "cross-platform-architecture": 102.33,
         "csharp-dotnet": 133.88,
+        "ddd": 0.8,
         "gps": 1.32,
-        "objective-c": 0.22,
-        "xamarin": 54.57
+        "ios": 52.78,
+        "mobile-build-release": 1.24,
+        "mobile-ui": 6.77,
+        "objective-c": 0.8,
+        "tests": 3.63,
+        "virtual-machines": 11.76,
+        "xamarin": 72.54,
+        "xamarin-forms": 63.84
       }
     },
     "2016-11": {
@@ -2523,17 +2741,27 @@
         "study": 0.0
       },
       "domains": {
+        "devops": 12.32,
         "embedded": 29.35,
-        "languages": 153.54,
-        "mobile": 49.09
+        "languages": 152.93,
+        "mobile": 176.0,
+        "practices": 3.18
       },
       "techs": {
+        "android": 50.31,
         "bluetooth": 28.48,
-        "c-cpp": 0.61,
+        "cross-platform-architecture": 118.2,
         "csharp-dotnet": 152.93,
+        "ddd": 0.83,
         "gps": 0.87,
-        "objective-c": 0.23,
-        "xamarin": 48.86
+        "ios": 50.45,
+        "mobile-build-release": 0.87,
+        "mobile-ui": 5.13,
+        "objective-c": 0.83,
+        "tests": 2.34,
+        "virtual-machines": 12.32,
+        "xamarin": 61.13,
+        "xamarin-forms": 54.59
       }
     },
     "2016-12": {
@@ -2543,19 +2771,25 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 5.81,
+        "backend": 20.33,
+        "devops": 12.32,
         "embedded": 2.34,
-        "languages": 83.47,
-        "mobile": 18.63
+        "languages": 68.63,
+        "mobile": 107.51
       },
       "techs": {
+        "android": 10.04,
         "bluetooth": 2.34,
-        "c-cpp": 14.84,
+        "cross-platform-architecture": 32.19,
         "csharp-dotnet": 68.63,
-        "ef-core": 5.81,
-        "objective-c": 5.47,
+        "ef-core": 20.33,
+        "ios": 15.12,
+        "mobile-ui": 1.95,
+        "objective-c": 20.31,
         "swift": 1.56,
-        "xamarin": 11.61
+        "virtual-machines": 12.32,
+        "xamarin": 14.73,
+        "xamarin-forms": 11.61
       }
     },
     "2017-01": {
@@ -2565,19 +2799,26 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 1.83,
+        "backend": 13.47,
+        "devops": 12.32,
         "embedded": 6.97,
-        "languages": 133.68,
-        "mobile": 28.88
+        "languages": 124.71,
+        "mobile": 176.0
       },
       "techs": {
+        "android": 35.83,
         "bluetooth": 4.3,
-        "c-cpp": 8.97,
+        "cross-platform-architecture": 92.36,
         "csharp-dotnet": 124.53,
-        "ef-core": 1.83,
+        "ef-core": 13.47,
         "gps": 2.67,
-        "objective-c": 3.3,
-        "xamarin": 25.58,
+        "ios": 31.03,
+        "mobile-build-release": 1.6,
+        "mobile-ui": 2.81,
+        "objective-c": 12.27,
+        "virtual-machines": 12.32,
+        "xamarin": 43.56,
+        "xamarin-forms": 34.91,
         "xaml": 0.19
       }
     },
@@ -2588,19 +2829,30 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 0.21,
+        "backend": 1.07,
+        "devops": 11.2,
         "embedded": 1.9,
-        "languages": 110.12,
-        "mobile": 35.32
+        "languages": 109.57,
+        "mobile": 160.0,
+        "practices": 3.17
       },
       "techs": {
+        "android": 44.15,
         "bluetooth": 1.11,
-        "c-cpp": 0.55,
+        "cross-platform-architecture": 82.49,
         "csharp-dotnet": 107.8,
-        "ef-core": 0.21,
+        "ddd": 0.76,
+        "ef-core": 1.07,
         "gps": 0.79,
-        "objective-c": 0.21,
-        "xamarin": 35.11,
+        "ios": 41.59,
+        "mobile-build-release": 1.22,
+        "mobile-ui": 7.34,
+        "mvvm": 0.59,
+        "objective-c": 0.76,
+        "tests": 1.82,
+        "virtual-machines": 11.2,
+        "xamarin": 54.44,
+        "xamarin-forms": 46.45,
         "xaml": 1.78
       }
     },
@@ -2611,19 +2863,29 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 0.24,
+        "backend": 1.23,
+        "devops": 12.88,
         "embedded": 1.86,
-        "languages": 129.81,
-        "mobile": 44.81
+        "languages": 129.18,
+        "mobile": 184.0,
+        "practices": 2.97
       },
       "techs": {
+        "android": 71.91,
         "bluetooth": 0.08,
-        "c-cpp": 0.63,
+        "cross-platform-architecture": 99.28,
         "csharp-dotnet": 129.18,
-        "ef-core": 0.24,
+        "ddd": 0.87,
+        "ef-core": 1.23,
         "gps": 1.79,
-        "objective-c": 0.24,
-        "xamarin": 44.58
+        "ios": 70.7,
+        "mobile-build-release": 1.87,
+        "mobile-ui": 3.17,
+        "objective-c": 0.87,
+        "tests": 2.1,
+        "virtual-machines": 12.88,
+        "xamarin": 83.19,
+        "xamarin-forms": 78.03
       }
     },
     "2017-04": {
@@ -2633,16 +2895,23 @@
         "study": 0.0
       },
       "domains": {
+        "devops": 11.2,
         "embedded": 3.24,
-        "languages": 92.94,
-        "mobile": 34.34
+        "languages": 92.4,
+        "mobile": 160.0
       },
       "techs": {
+        "android": 83.06,
         "bluetooth": 2.7,
-        "c-cpp": 0.54,
+        "cross-platform-architecture": 68.31,
         "csharp-dotnet": 92.4,
         "gps": 0.54,
-        "xamarin": 34.34
+        "ios": 82.88,
+        "mobile-build-release": 0.36,
+        "objective-c": 0.54,
+        "virtual-machines": 11.2,
+        "xamarin": 86.47,
+        "xamarin-forms": 83.78
       }
     },
     "2017-05": {
@@ -2652,20 +2921,31 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 0.24,
+        "backend": 1.23,
+        "devops": 12.88,
         "embedded": 2.3,
-        "languages": 128.89,
-        "mobile": 40.88
+        "languages": 128.26,
+        "mobile": 184.0,
+        "practices": 5.76
       },
       "techs": {
+        "android": 61.68,
         "bash": 0.9,
         "bluetooth": 1.39,
-        "c-cpp": 0.63,
+        "cross-platform-architecture": 121.68,
         "csharp-dotnet": 126.86,
-        "ef-core": 0.24,
+        "ddd": 0.87,
+        "ef-core": 1.23,
         "gps": 0.91,
-        "objective-c": 0.24,
-        "xamarin": 40.64,
+        "ios": 58.25,
+        "mobile-build-release": 1.79,
+        "mobile-ui": 3.64,
+        "mvvm": 1.56,
+        "objective-c": 0.87,
+        "tests": 3.33,
+        "virtual-machines": 12.88,
+        "xamarin": 81.34,
+        "xamarin-forms": 72.13,
         "xaml": 0.49
       }
     },
@@ -2676,19 +2956,29 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 0.23,
+        "backend": 1.17,
+        "devops": 12.32,
         "embedded": 4.05,
-        "languages": 141.43,
-        "mobile": 36.47
+        "languages": 140.83,
+        "mobile": 176.0,
+        "practices": 2.84
       },
       "techs": {
+        "android": 45.71,
         "bluetooth": 0.31,
-        "c-cpp": 0.61,
+        "cross-platform-architecture": 127.05,
         "csharp-dotnet": 140.83,
-        "ef-core": 0.23,
+        "ddd": 0.83,
+        "ef-core": 1.17,
         "gps": 3.74,
-        "objective-c": 0.59,
-        "xamarin": 35.89
+        "ios": 45.18,
+        "mobile-build-release": 1.25,
+        "mobile-ui": 6.19,
+        "objective-c": 1.19,
+        "tests": 2.01,
+        "virtual-machines": 12.32,
+        "xamarin": 58.88,
+        "xamarin-forms": 47.92
       }
     },
     "2017-07": {
@@ -2698,19 +2988,29 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 0.22,
+        "backend": 1.12,
+        "devops": 11.76,
         "embedded": 7.16,
-        "languages": 121.04,
-        "mobile": 50.78
+        "languages": 120.46,
+        "mobile": 168.0,
+        "practices": 3.92
       },
       "techs": {
+        "android": 61.92,
         "bluetooth": 3.91,
-        "c-cpp": 0.58,
+        "cross-platform-architecture": 105.34,
         "csharp-dotnet": 120.46,
-        "ef-core": 0.22,
+        "ddd": 0.8,
+        "ef-core": 1.12,
         "gps": 3.25,
-        "objective-c": 0.22,
-        "xamarin": 50.57
+        "ios": 53.58,
+        "mobile-build-release": 1.86,
+        "mobile-ui": 12.95,
+        "objective-c": 0.8,
+        "tests": 3.13,
+        "virtual-machines": 11.76,
+        "xamarin": 79.47,
+        "xamarin-forms": 58.04
       }
     },
     "2017-08": {
@@ -2720,19 +3020,30 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 0.24,
+        "backend": 1.23,
+        "devops": 12.88,
         "embedded": 6.68,
-        "languages": 150.45,
-        "mobile": 37.79
+        "languages": 149.82,
+        "mobile": 184.0,
+        "practices": 3.77
       },
       "techs": {
+        "android": 42.29,
         "bluetooth": 4.96,
-        "c-cpp": 0.63,
+        "cross-platform-architecture": 130.45,
         "csharp-dotnet": 149.82,
-        "ef-core": 0.24,
+        "ddd": 0.87,
+        "ef-core": 1.23,
         "gps": 1.72,
-        "objective-c": 0.24,
-        "xamarin": 37.55
+        "ios": 42.08,
+        "mobile-build-release": 1.3,
+        "mobile-ui": 8.48,
+        "mvvm": 0.11,
+        "objective-c": 0.87,
+        "tests": 2.79,
+        "virtual-machines": 12.88,
+        "xamarin": 61.61,
+        "xamarin-forms": 46.4
       }
     },
     "2017-09": {
@@ -2742,19 +3053,29 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 0.22,
+        "backend": 1.12,
+        "devops": 11.76,
         "embedded": 6.54,
-        "languages": 114.26,
-        "mobile": 39.48
+        "languages": 113.68,
+        "mobile": 168.0,
+        "practices": 2.71
       },
       "techs": {
+        "android": 48.69,
         "bluetooth": 5.71,
-        "c-cpp": 0.58,
+        "cross-platform-architecture": 112.26,
         "csharp-dotnet": 113.68,
-        "ef-core": 0.22,
+        "ddd": 0.8,
+        "ef-core": 1.12,
         "gps": 0.83,
-        "objective-c": 0.22,
-        "xamarin": 39.27
+        "ios": 47.38,
+        "mobile-build-release": 1.31,
+        "mobile-ui": 15.11,
+        "objective-c": 0.8,
+        "tests": 1.92,
+        "virtual-machines": 11.76,
+        "xamarin": 70.33,
+        "xamarin-forms": 64.12
       }
     },
     "2017-10": {
@@ -2764,20 +3085,31 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 0.25,
+        "backend": 1.2,
+        "devops": 12.32,
         "embedded": 9.9,
-        "languages": 131.84,
-        "mobile": 32.59
+        "languages": 131.24,
+        "mobile": 177.34,
+        "practices": 5.51
       },
       "techs": {
+        "android": 43.07,
         "asp-net-core": 0.02,
         "bluetooth": 6.67,
-        "c-cpp": 0.61,
+        "cross-platform-architecture": 124.94,
         "csharp-dotnet": 130.54,
-        "ef-core": 0.23,
+        "ddd": 0.83,
+        "ef-core": 1.17,
         "gps": 3.24,
-        "objective-c": 0.23,
-        "xamarin": 32.36,
+        "ios": 36.81,
+        "mobile-build-release": 2.73,
+        "mobile-ui": 5.05,
+        "mvvm": 1.83,
+        "objective-c": 0.83,
+        "tests": 2.85,
+        "virtual-machines": 12.32,
+        "xamarin": 60.88,
+        "xamarin-forms": 44.99,
         "xaml": 0.7
       }
     },
@@ -2788,20 +3120,31 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 0.33,
+        "backend": 1.27,
+        "devops": 12.32,
         "embedded": 0.95,
-        "languages": 142.11,
-        "mobile": 37.61
+        "languages": 141.51,
+        "mobile": 178.7,
+        "practices": 11.58
       },
       "techs": {
+        "android": 60.66,
         "asp-net-core": 0.02,
         "bluetooth": 0.08,
-        "c-cpp": 0.61,
+        "cross-platform-architecture": 109.19,
         "csharp-dotnet": 140.34,
-        "ef-core": 0.31,
+        "ddd": 0.83,
+        "ef-core": 1.26,
         "gps": 0.87,
-        "objective-c": 0.23,
-        "xamarin": 37.38,
+        "ios": 60.13,
+        "mobile-build-release": 0.53,
+        "mobile-ui": 4.63,
+        "mvvm": 2.58,
+        "objective-c": 0.83,
+        "tests": 8.17,
+        "virtual-machines": 12.32,
+        "xamarin": 70.09,
+        "xamarin-forms": 42.59,
         "xaml": 1.17
       }
     },
@@ -2812,20 +3155,31 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 0.35,
+        "backend": 1.25,
+        "devops": 11.76,
         "embedded": 5.53,
-        "languages": 108.21,
-        "mobile": 27.8
+        "languages": 107.63,
+        "mobile": 168.1,
+        "practices": 6.62
       },
       "techs": {
+        "android": 83.1,
         "bash": 0.93,
         "bluetooth": 2.85,
-        "c-cpp": 0.58,
+        "cross-platform-architecture": 133.64,
         "csharp-dotnet": 106.64,
-        "ef-core": 0.35,
+        "ddd": 0.8,
+        "ef-core": 1.25,
         "gps": 2.68,
-        "objective-c": 0.22,
-        "xamarin": 27.58,
+        "ios": 76.42,
+        "mobile-build-release": 4.83,
+        "mobile-ui": 4.14,
+        "mvvm": 0.2,
+        "objective-c": 0.8,
+        "tests": 5.62,
+        "virtual-machines": 11.76,
+        "xamarin": 89.92,
+        "xamarin-forms": 78.25,
         "xaml": 0.07
       }
     },
@@ -2836,19 +3190,29 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 0.24,
+        "backend": 1.23,
+        "devops": 12.88,
         "embedded": 26.64,
-        "languages": 130.47,
-        "mobile": 48.28
+        "languages": 129.84,
+        "mobile": 184.0,
+        "practices": 2.97
       },
       "techs": {
+        "android": 65.36,
         "bluetooth": 0.08,
-        "c-cpp": 0.63,
+        "cross-platform-architecture": 112.58,
         "csharp-dotnet": 129.84,
-        "ef-core": 0.24,
+        "ddd": 0.87,
+        "ef-core": 1.23,
         "gps": 26.56,
-        "objective-c": 0.24,
-        "xamarin": 48.04
+        "ios": 25.26,
+        "mobile-build-release": 0.55,
+        "mobile-ui": 5.4,
+        "objective-c": 0.87,
+        "tests": 2.1,
+        "virtual-machines": 12.88,
+        "xamarin": 83.73,
+        "xamarin-forms": 26.25
       }
     },
     "2018-02": {
@@ -2858,19 +3222,30 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 0.21,
+        "backend": 1.07,
+        "devops": 11.2,
         "embedded": 7.91,
-        "languages": 141.72,
-        "mobile": 30.34
+        "languages": 141.17,
+        "mobile": 160.0,
+        "practices": 5.6
       },
       "techs": {
+        "android": 25.92,
         "bluetooth": 5.64,
-        "c-cpp": 0.55,
+        "cross-platform-architecture": 136.21,
         "csharp-dotnet": 141.17,
-        "ef-core": 0.21,
+        "ddd": 2.67,
+        "ef-core": 1.07,
         "gps": 2.27,
-        "objective-c": 0.21,
-        "xamarin": 30.13
+        "ios": 24.92,
+        "mobile-build-release": 2.57,
+        "mobile-ui": 11.17,
+        "mvvm": 0.17,
+        "objective-c": 0.76,
+        "tests": 2.75,
+        "virtual-machines": 11.2,
+        "xamarin": 40.92,
+        "xamarin-forms": 26.01
       }
     },
     "2018-03": {
@@ -2880,19 +3255,29 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 0.23,
+        "backend": 1.17,
+        "devops": 12.32,
         "embedded": 1.22,
-        "languages": 113.83,
-        "mobile": 46.08
+        "languages": 113.23,
+        "mobile": 176.0,
+        "practices": 2.84
       },
       "techs": {
+        "android": 69.69,
         "bluetooth": 0.35,
-        "c-cpp": 0.61,
+        "cross-platform-architecture": 140.15,
         "csharp-dotnet": 111.31,
-        "ef-core": 0.23,
+        "ddd": 0.83,
+        "ef-core": 1.17,
         "gps": 0.87,
-        "objective-c": 0.23,
-        "xamarin": 45.85,
+        "ios": 69.3,
+        "mobile-build-release": 7.1,
+        "mobile-ui": 5.76,
+        "objective-c": 0.83,
+        "tests": 2.01,
+        "virtual-machines": 12.32,
+        "xamarin": 88.55,
+        "xamarin-forms": 79.96,
         "xaml": 1.92
       }
     },
@@ -2903,25 +3288,35 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 7.04,
+        "backend": 14.77,
+        "devops": 11.76,
         "embedded": 9.42,
-        "languages": 108.83,
-        "mobile": 26.52
+        "languages": 108.25,
+        "mobile": 168.0,
+        "practices": 7.2
       },
       "techs": {
-        "asp-net-core": 4.66,
+        "android": 46.15,
+        "asp-net-core": 10.98,
         "azure": 0.17,
         "bash": 0.76,
         "bluetooth": 5.67,
-        "c-cpp": 0.58,
+        "cross-platform-architecture": 65.17,
         "csharp-dotnet": 104.4,
-        "ef-core": 2.21,
+        "ddd": 0.8,
+        "ef-core": 3.62,
         "gps": 3.76,
+        "ios": 40.13,
         "java": 1.4,
         "javascript": 1.19,
-        "objective-c": 0.22,
+        "mobile-build-release": 2.63,
+        "mobile-ui": 4.53,
+        "objective-c": 0.8,
+        "tests": 6.41,
+        "virtual-machines": 11.76,
         "web": 0.51,
-        "xamarin": 26.3
+        "xamarin": 48.75,
+        "xamarin-forms": 39.26
       }
     },
     "2018-05": {
@@ -2931,21 +3326,32 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 2.18,
+        "backend": 4.85,
+        "devops": 12.88,
         "embedded": 2.26,
-        "languages": 112.61,
-        "mobile": 30.33
+        "languages": 111.97,
+        "mobile": 147.31,
+        "practices": 33.67
       },
       "techs": {
-        "asp-net-core": 0.76,
+        "android": 26.77,
+        "asp-net-core": 1.43,
         "bash": 1.27,
         "bluetooth": 0.08,
-        "c-cpp": 0.63,
+        "cross-platform-architecture": 51.92,
         "csharp-dotnet": 109.02,
-        "ef-core": 1.42,
+        "ddd": 0.87,
+        "ef-core": 3.42,
         "gps": 2.18,
-        "objective-c": 0.24,
-        "xamarin": 30.09,
+        "ios": 25.62,
+        "mobile-build-release": 1.23,
+        "mobile-ui": 10.32,
+        "mvvm": 0.34,
+        "objective-c": 0.87,
+        "tests": 32.46,
+        "virtual-machines": 12.88,
+        "xamarin": 45.1,
+        "xamarin-forms": 40.78,
         "xaml": 1.69
       }
     },
@@ -2956,19 +3362,30 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 3.41,
+        "backend": 4.31,
+        "devops": 11.76,
         "embedded": 9.53,
-        "languages": 130.5,
-        "mobile": 26.78
+        "languages": 129.93,
+        "mobile": 168.0,
+        "practices": 3.66
       },
       "techs": {
+        "android": 27.73,
         "bluetooth": 8.58,
-        "c-cpp": 0.58,
+        "cross-platform-architecture": 100.9,
         "csharp-dotnet": 126.85,
-        "ef-core": 3.41,
+        "ddd": 0.8,
+        "ef-core": 4.31,
         "gps": 0.95,
-        "objective-c": 0.22,
-        "xamarin": 26.57,
+        "ios": 28.29,
+        "mobile-build-release": 0.74,
+        "mobile-ui": 6.28,
+        "mvvm": 0.95,
+        "objective-c": 0.8,
+        "tests": 1.92,
+        "virtual-machines": 11.76,
+        "xamarin": 52.23,
+        "xamarin-forms": 41.25,
         "xaml": 3.07
       }
     },
@@ -2979,21 +3396,32 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 9.98,
+        "backend": 14.01,
+        "devops": 12.32,
         "embedded": 3.38,
-        "languages": 138.52,
-        "mobile": 42.89
+        "languages": 137.91,
+        "mobile": 176.03,
+        "practices": 10.35
       },
       "techs": {
-        "asp-net-core": 1.59,
+        "android": 28.11,
+        "asp-net-core": 1.96,
         "bash": 0.37,
         "bluetooth": 1.95,
-        "c-cpp": 0.61,
+        "cross-platform-architecture": 112.36,
         "csharp-dotnet": 122.76,
-        "ef-core": 8.39,
+        "ddd": 0.83,
+        "ef-core": 12.05,
         "gps": 1.43,
-        "objective-c": 0.23,
-        "xamarin": 42.66,
+        "ios": 29.38,
+        "mobile-build-release": 1.28,
+        "mobile-ui": 18.89,
+        "mvvm": 6.67,
+        "objective-c": 0.83,
+        "tests": 2.85,
+        "virtual-machines": 12.32,
+        "xamarin": 95.16,
+        "xamarin-forms": 89.89,
         "xaml": 14.78
       }
     },
@@ -3004,22 +3432,34 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 4.24,
+        "backend": 10.61,
+        "devops": 12.88,
         "embedded": 1.28,
-        "languages": 154.71,
-        "mobile": 41.82
+        "languages": 154.08,
+        "mobile": 184.0,
+        "practices": 4.71
       },
       "techs": {
+        "android": 44.52,
+        "asp-net-core": 5.04,
         "bash": 1.0,
         "bluetooth": 0.2,
-        "c-cpp": 0.63,
+        "cross-platform-architecture": 95.73,
         "csharp-dotnet": 150.65,
-        "ef-core": 4.24,
+        "ddd": 0.87,
+        "ef-core": 5.57,
         "gps": 1.08,
+        "ios": 43.74,
         "javascript": 0.87,
-        "objective-c": 0.24,
+        "mobile-build-release": 1.6,
+        "mobile-ui": 3.95,
+        "mvvm": 0.52,
+        "objective-c": 0.87,
+        "tests": 3.32,
+        "virtual-machines": 12.88,
         "web": 0.52,
-        "xamarin": 41.58,
+        "xamarin": 84.6,
+        "xamarin-forms": 80.48,
         "xaml": 1.04
       }
     },
@@ -3030,19 +3470,30 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 0.21,
+        "backend": 1.07,
+        "devops": 11.2,
         "embedded": 1.32,
-        "languages": 107.43,
-        "mobile": 57.96
+        "languages": 106.88,
+        "mobile": 160.0,
+        "practices": 3.97
       },
       "techs": {
+        "android": 62.13,
         "bluetooth": 0.53,
-        "c-cpp": 0.55,
+        "cross-platform-architecture": 124.23,
         "csharp-dotnet": 102.95,
-        "ef-core": 0.21,
+        "ddd": 0.76,
+        "ef-core": 1.07,
         "gps": 0.79,
-        "objective-c": 0.21,
-        "xamarin": 57.76,
+        "ios": 59.57,
+        "mobile-build-release": 8.56,
+        "mobile-ui": 7.46,
+        "mvvm": 1.39,
+        "objective-c": 0.76,
+        "tests": 1.82,
+        "virtual-machines": 11.2,
+        "xamarin": 86.1,
+        "xamarin-forms": 76.13,
         "xaml": 3.93
       }
     },
@@ -3053,20 +3504,32 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 0.24,
+        "backend": 4.08,
+        "devops": 12.88,
         "embedded": 2.07,
-        "languages": 142.56,
-        "mobile": 46.75
+        "languages": 141.93,
+        "mobile": 184.0,
+        "practices": 3.26
       },
       "techs": {
+        "android": 45.45,
+        "asp-net-core": 2.46,
         "bash": 0.69,
         "bluetooth": 0.96,
-        "c-cpp": 0.63,
+        "cross-platform-architecture": 136.33,
         "csharp-dotnet": 139.87,
-        "ef-core": 0.24,
+        "ddd": 0.87,
+        "ef-core": 1.62,
         "gps": 1.11,
-        "objective-c": 0.24,
-        "xamarin": 46.51,
+        "ios": 45.39,
+        "mobile-build-release": 6.06,
+        "mobile-ui": 4.4,
+        "mvvm": 0.29,
+        "objective-c": 0.87,
+        "tests": 2.1,
+        "virtual-machines": 12.88,
+        "xamarin": 72.63,
+        "xamarin-forms": 65.53,
         "xaml": 1.38
       }
     },
@@ -3077,23 +3540,35 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 0.71,
+        "backend": 1.65,
+        "devops": 12.32,
         "embedded": 12.93,
-        "languages": 155.25,
-        "mobile": 42.7
+        "languages": 154.65,
+        "mobile": 171.54,
+        "practices": 3.44
       },
       "techs": {
+        "android": 23.55,
         "bash": 0.12,
         "bluetooth": 10.19,
-        "c-cpp": 0.61,
+        "cross-platform-architecture": 54.49,
         "csharp-dotnet": 66.1,
-        "ef-core": 0.71,
+        "ddd": 0.83,
+        "ef-core": 1.65,
         "gps": 2.74,
+        "ios": 22.9,
         "javascript": 23.72,
-        "objective-c": 0.23,
+        "mobile-build-release": 0.75,
+        "mobile-ui": 4.11,
+        "mvp": 0.16,
+        "mvvm": 0.3,
+        "objective-c": 0.83,
         "python": 0.04,
+        "tests": 2.15,
+        "virtual-machines": 12.32,
         "web": 63.74,
-        "xamarin": 42.48,
+        "xamarin": 62.07,
+        "xamarin-forms": 55.75,
         "xaml": 0.94
       }
     },
@@ -3104,24 +3579,36 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 0.45,
+        "backend": 1.36,
+        "devops": 11.76,
         "embedded": 6.45,
-        "languages": 107.82,
-        "mobile": 37.16
+        "languages": 107.24,
+        "mobile": 169.0,
+        "practices": 6.16
       },
       "techs": {
+        "android": 28.61,
         "bash": 0.06,
         "bluetooth": 4.64,
-        "c-cpp": 0.58,
+        "cross-platform-architecture": 47.93,
         "csharp-dotnet": 56.77,
-        "ef-core": 0.45,
+        "ddd": 0.8,
+        "ef-core": 1.36,
         "gps": 1.81,
+        "ios": 28.82,
         "java": 0.19,
         "javascript": 3.23,
-        "objective-c": 0.22,
+        "mobile-build-release": 1.09,
+        "mobile-ui": 4.38,
+        "mvp": 0.3,
+        "mvvm": 3.11,
+        "objective-c": 0.8,
         "python": 0.03,
+        "tests": 1.95,
+        "virtual-machines": 11.76,
         "web": 45.93,
-        "xamarin": 36.94,
+        "xamarin": 58.39,
+        "xamarin-forms": 52.79,
         "xaml": 1.03
       }
     },
@@ -3132,24 +3619,36 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 1.84,
+        "backend": 3.5,
+        "devops": 12.88,
         "embedded": 2.19,
-        "languages": 160.74,
-        "mobile": 19.67
+        "languages": 160.11,
+        "mobile": 99.69,
+        "practices": 40.8
       },
       "techs": {
-        "asp-net-core": 0.17,
+        "android": 24.02,
+        "asp-net-core": 0.62,
         "azure": 0.12,
         "bash": 0.52,
         "bluetooth": 0.29,
-        "c-cpp": 0.63,
+        "cross-platform-architecture": 40.32,
         "csharp-dotnet": 158.73,
-        "ef-core": 1.55,
+        "ddd": 1.02,
+        "ef-core": 2.76,
         "gps": 1.9,
-        "objective-c": 0.24,
+        "ios": 23.74,
+        "mobile-build-release": 1.06,
+        "mobile-ui": 2.83,
+        "mvp": 0.03,
+        "mvvm": 0.04,
+        "objective-c": 0.87,
         "python": 0.59,
+        "tests": 39.71,
+        "virtual-machines": 12.88,
         "web": 0.17,
-        "xamarin": 19.43,
+        "xamarin": 33.88,
+        "xamarin-forms": 28.28,
         "xaml": 0.1
       }
     },
@@ -3160,21 +3659,34 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 4.79,
+        "backend": 7.5,
+        "devops": 11.2,
         "embedded": 9.6,
-        "languages": 124.34,
-        "mobile": 23.04
+        "languages": 123.79,
+        "mobile": 160.0,
+        "practices": 3.58
       },
       "techs": {
+        "android": 25.31,
+        "asp-net-core": 0.75,
         "bash": 2.52,
         "bluetooth": 2.3,
-        "c-cpp": 0.55,
+        "cross-platform-architecture": 62.73,
         "csharp-dotnet": 120.49,
-        "ef-core": 4.79,
+        "ddd": 0.76,
+        "ef-core": 6.75,
         "gps": 7.3,
-        "objective-c": 0.21,
+        "ios": 28.52,
+        "mobile-build-release": 1.26,
+        "mobile-ui": 2.59,
+        "mvp": 0.12,
+        "mvvm": 0.66,
+        "objective-c": 0.76,
         "python": 0.56,
-        "xamarin": 22.83,
+        "tests": 2.04,
+        "virtual-machines": 11.2,
+        "xamarin": 53.74,
+        "xamarin-forms": 40.94,
         "xaml": 0.22
       }
     },
@@ -3185,21 +3697,32 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 1.36,
+        "backend": 2.67,
+        "devops": 11.76,
         "embedded": 8.99,
-        "languages": 128.03,
-        "mobile": 42.44
+        "languages": 127.45,
+        "mobile": 168.0,
+        "practices": 2.71
       },
       "techs": {
+        "android": 43.63,
+        "asp-net-core": 0.16,
         "bash": 1.06,
         "bluetooth": 1.71,
-        "c-cpp": 0.58,
+        "cross-platform-architecture": 90.41,
         "csharp-dotnet": 124.43,
-        "ef-core": 1.36,
+        "ddd": 0.8,
+        "ef-core": 2.51,
         "gps": 7.29,
-        "objective-c": 0.22,
+        "ios": 35.52,
+        "mobile-build-release": 8.19,
+        "mobile-ui": 3.97,
+        "objective-c": 0.8,
+        "tests": 1.92,
+        "virtual-machines": 11.76,
         "web": 1.96,
-        "xamarin": 42.22
+        "xamarin": 75.5,
+        "xamarin-forms": 51.71
       }
     },
     "2019-04": {
@@ -3209,19 +3732,31 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 1.3,
+        "backend": 3.2,
+        "devops": 12.32,
         "embedded": 4.05,
-        "languages": 145.37,
-        "mobile": 24.81
+        "languages": 144.76,
+        "mobile": 162.32,
+        "practices": 3.27
       },
       "techs": {
+        "android": 28.33,
+        "asp-net-core": 0.96,
         "bluetooth": 1.04,
-        "c-cpp": 0.61,
+        "cross-platform-architecture": 62.96,
         "csharp-dotnet": 143.48,
-        "ef-core": 1.3,
+        "ddd": 0.83,
+        "ef-core": 2.24,
         "gps": 3.01,
-        "objective-c": 0.23,
-        "xamarin": 24.59,
+        "ios": 22.56,
+        "mobile-build-release": 0.96,
+        "mobile-ui": 3.9,
+        "mvvm": 0.43,
+        "objective-c": 0.83,
+        "tests": 2.01,
+        "virtual-machines": 12.32,
+        "xamarin": 53.38,
+        "xamarin-forms": 42.32,
         "xaml": 1.28
       }
     },
@@ -3232,23 +3767,35 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 3.11,
+        "backend": 4.1,
+        "devops": 12.88,
         "embedded": 6.01,
-        "languages": 150.8,
-        "mobile": 29.72
+        "languages": 150.17,
+        "mobile": 184.4,
+        "practices": 3.97
       },
       "techs": {
+        "android": 30.52,
         "asp-net-core": 2.47,
         "bluetooth": 4.7,
-        "c-cpp": 0.63,
+        "cross-platform-architecture": 80.16,
         "csharp-dotnet": 140.09,
-        "ef-core": 0.64,
+        "ddd": 0.87,
+        "ef-core": 1.63,
         "gps": 1.31,
+        "ios": 29.2,
         "javascript": 6.54,
-        "objective-c": 0.24,
+        "mobile-build-release": 2.75,
+        "mobile-ui": 4.33,
+        "mvp": 0.4,
+        "mvvm": 0.6,
+        "objective-c": 0.87,
         "python": 0.2,
+        "tests": 2.1,
+        "virtual-machines": 12.88,
         "web": 2.34,
-        "xamarin": 29.48,
+        "xamarin": 60.12,
+        "xamarin-forms": 40.57,
         "xaml": 1.0
       }
     },
@@ -3259,21 +3806,34 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 0.66,
+        "backend": 2.44,
+        "devops": 11.2,
         "embedded": 6.35,
-        "languages": 123.83,
-        "mobile": 42.4
+        "languages": 123.28,
+        "mobile": 160.0,
+        "practices": 3.95
       },
       "techs": {
+        "android": 43.14,
+        "asp-net-core": 0.46,
         "bash": 1.37,
         "bluetooth": 1.44,
-        "c-cpp": 0.55,
+        "cross-platform-architecture": 60.15,
         "csharp-dotnet": 116.65,
-        "ef-core": 0.66,
+        "ddd": 0.76,
+        "ef-core": 1.98,
         "gps": 4.91,
-        "objective-c": 0.21,
+        "ios": 40.15,
+        "mobile-build-release": 5.28,
+        "mobile-ui": 7.4,
+        "mvp": 1.14,
+        "mvvm": 0.23,
+        "objective-c": 0.76,
         "python": 0.46,
-        "xamarin": 42.2,
+        "tests": 1.82,
+        "virtual-machines": 11.2,
+        "xamarin": 100.96,
+        "xamarin-forms": 94.49,
         "xaml": 4.8
       }
     },
@@ -3284,21 +3844,33 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 1.28,
+        "backend": 2.27,
+        "devops": 12.88,
         "embedded": 9.58,
-        "languages": 154.25,
-        "mobile": 49.45
+        "languages": 153.62,
+        "mobile": 184.0,
+        "practices": 4.14
       },
       "techs": {
+        "android": 41.49,
         "bash": 0.65,
         "bluetooth": 0.08,
-        "c-cpp": 0.63,
+        "cross-platform-architecture": 72.54,
         "csharp-dotnet": 151.41,
-        "ef-core": 1.28,
+        "ddd": 0.87,
+        "ef-core": 2.27,
         "gps": 9.5,
-        "objective-c": 0.24,
+        "ios": 36.64,
+        "mobile-build-release": 1.33,
+        "mobile-ui": 4.03,
+        "mvp": 0.13,
+        "mvvm": 1.04,
+        "objective-c": 0.87,
         "python": 0.65,
-        "xamarin": 49.21,
+        "tests": 2.1,
+        "virtual-machines": 12.88,
+        "xamarin": 86.66,
+        "xamarin-forms": 48.82,
         "xaml": 0.91
       }
     },
@@ -3309,20 +3881,32 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 3.12,
+        "backend": 4.07,
+        "devops": 12.32,
         "embedded": 8.42,
-        "languages": 144.01,
-        "mobile": 41.4
+        "languages": 143.4,
+        "mobile": 176.0,
+        "practices": 8.63
       },
       "techs": {
+        "android": 29.83,
         "azure": 0.48,
         "bluetooth": 2.97,
-        "c-cpp": 0.61,
+        "cross-platform-architecture": 89.2,
         "csharp-dotnet": 128.45,
-        "ef-core": 2.64,
+        "ddd": 0.83,
+        "ef-core": 3.59,
         "gps": 5.45,
-        "objective-c": 0.23,
-        "xamarin": 41.18,
+        "ios": 25.44,
+        "mobile-build-release": 1.74,
+        "mobile-ui": 18.28,
+        "mvp": 0.24,
+        "mvvm": 5.55,
+        "objective-c": 0.83,
+        "tests": 2.01,
+        "virtual-machines": 12.32,
+        "xamarin": 94.33,
+        "xamarin-forms": 83.29,
         "xaml": 14.95
       }
     },
@@ -3333,20 +3917,31 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 4.33,
+        "backend": 5.23,
+        "devops": 11.76,
         "embedded": 7.58,
-        "languages": 132.18,
-        "mobile": 48.83
+        "languages": 131.6,
+        "mobile": 168.0,
+        "practices": 9.9
       },
       "techs": {
+        "android": 28.04,
         "bash": 0.51,
         "bluetooth": 0.07,
-        "c-cpp": 0.58,
+        "cross-platform-architecture": 57.96,
         "csharp-dotnet": 115.68,
-        "ef-core": 4.33,
+        "ddd": 0.8,
+        "ef-core": 5.23,
         "gps": 7.51,
-        "objective-c": 0.22,
-        "xamarin": 48.61,
+        "ios": 32.15,
+        "mobile-build-release": 1.02,
+        "mobile-ui": 22.52,
+        "mvvm": 7.19,
+        "objective-c": 0.8,
+        "tests": 1.92,
+        "virtual-machines": 11.76,
+        "xamarin": 103.04,
+        "xamarin-forms": 89.03,
         "xaml": 15.41
       }
     },
@@ -3357,20 +3952,32 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 2.03,
+        "backend": 3.02,
+        "devops": 12.88,
         "embedded": 3.27,
-        "languages": 138.79,
-        "mobile": 39.79
+        "languages": 138.16,
+        "mobile": 184.0,
+        "practices": 7.53
       },
       "techs": {
+        "android": 45.07,
         "bluetooth": 1.06,
-        "c-cpp": 0.63,
+        "cross-platform-architecture": 73.92,
         "csharp-dotnet": 127.4,
-        "ef-core": 2.03,
+        "ddd": 0.87,
+        "ef-core": 3.02,
         "gps": 2.22,
-        "objective-c": 0.24,
+        "ios": 39.95,
+        "mobile-build-release": 8.22,
+        "mobile-ui": 13.98,
+        "mvp": 0.16,
+        "mvvm": 4.4,
+        "objective-c": 0.87,
         "python": 0.49,
-        "xamarin": 39.55,
+        "tests": 2.1,
+        "virtual-machines": 12.88,
+        "xamarin": 107.66,
+        "xamarin-forms": 88.55,
         "xaml": 10.27
       }
     },
@@ -3381,25 +3988,35 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 1.01,
-        "devops": 7.5,
+        "backend": 1.91,
+        "devops": 19.26,
         "embedded": 2.39,
-        "languages": 123.66,
-        "mobile": 35.05
+        "languages": 123.08,
+        "mobile": 171.93,
+        "practices": 9.02
       },
       "techs": {
+        "android": 36.8,
         "asp-net-core": 0.06,
         "azure-devops": 7.5,
         "bash": 0.12,
         "bluetooth": 1.07,
-        "c-cpp": 0.58,
+        "cross-platform-architecture": 54.73,
         "csharp-dotnet": 109.62,
-        "ef-core": 0.95,
+        "ddd": 0.8,
+        "ef-core": 1.85,
         "gps": 1.32,
+        "ios": 31.38,
         "java": 0.24,
-        "objective-c": 0.22,
+        "mobile-build-release": 1.53,
+        "mobile-ui": 17.17,
+        "mvvm": 4.72,
+        "objective-c": 0.8,
+        "tests": 3.51,
+        "virtual-machines": 11.76,
         "web": 0.5,
-        "xamarin": 34.84,
+        "xamarin": 96.86,
+        "xamarin-forms": 90.28,
         "xaml": 12.6
       }
     },
@@ -3410,22 +4027,32 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 7.71,
+        "backend": 9.96,
+        "devops": 12.32,
         "embedded": 0.95,
-        "languages": 114.11,
-        "mobile": 44.19
+        "languages": 113.5,
+        "mobile": 176.0,
+        "practices": 6.88
       },
       "techs": {
+        "android": 60.92,
         "asp-net-core": 0.2,
         "bash": 1.79,
         "bluetooth": 0.08,
-        "c-cpp": 0.61,
+        "cross-platform-architecture": 46.67,
         "csharp-dotnet": 108.7,
-        "ef-core": 7.51,
+        "ddd": 0.83,
+        "ef-core": 9.76,
         "gps": 0.87,
+        "ios": 38.7,
         "javascript": 0.4,
-        "objective-c": 0.23,
-        "xamarin": 43.96,
+        "mobile-build-release": 7.9,
+        "mobile-ui": 6.08,
+        "objective-c": 0.83,
+        "tests": 6.05,
+        "virtual-machines": 12.32,
+        "xamarin": 111.46,
+        "xamarin-forms": 106.02,
         "xaml": 2.6
       }
     },
@@ -3436,21 +4063,32 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 0.24,
+        "backend": 1.23,
+        "devops": 12.88,
         "embedded": 1.77,
-        "languages": 122.47,
-        "mobile": 19.53
+        "languages": 121.83,
+        "mobile": 167.95,
+        "practices": 22.39
       },
       "techs": {
+        "android": 35.51,
         "bash": 0.0,
         "bluetooth": 0.86,
-        "c-cpp": 0.63,
+        "cross-platform-architecture": 36.49,
         "csharp-dotnet": 111.51,
-        "ef-core": 0.24,
+        "ddd": 0.87,
+        "ef-core": 1.23,
         "gps": 0.91,
-        "objective-c": 0.24,
+        "ios": 37.81,
+        "mobile-build-release": 0.55,
+        "mobile-ui": 12.66,
+        "mvvm": 18.18,
+        "objective-c": 0.87,
         "python": 0.39,
-        "xamarin": 19.3,
+        "tests": 3.34,
+        "virtual-machines": 12.88,
+        "xamarin": 52.38,
+        "xamarin-forms": 47.0,
         "xaml": 9.93
       }
     },
@@ -3461,19 +4099,31 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 0.21,
+        "backend": 1.07,
+        "devops": 11.2,
         "embedded": 24.3,
-        "languages": 135.45,
-        "mobile": 36.61
+        "languages": 134.9,
+        "mobile": 160.0,
+        "practices": 11.26
       },
       "techs": {
+        "android": 33.31,
         "bluetooth": 19.0,
-        "c-cpp": 0.55,
+        "cross-platform-architecture": 83.34,
         "csharp-dotnet": 134.9,
-        "ef-core": 0.21,
+        "ddd": 0.76,
+        "ef-core": 1.07,
         "gps": 5.31,
-        "objective-c": 0.21,
-        "xamarin": 36.4
+        "ios": 30.74,
+        "mobile-build-release": 1.52,
+        "mobile-ui": 4.29,
+        "mvp": 0.35,
+        "mvvm": 0.52,
+        "objective-c": 0.76,
+        "tests": 9.64,
+        "virtual-machines": 11.2,
+        "xamarin": 85.58,
+        "xamarin-forms": 61.64
       }
     },
     "2020-03": {
@@ -3483,20 +4133,33 @@
         "study": 0.0
       },
       "domains": {
-        "backend": 1.72,
+        "backend": 2.92,
+        "devops": 12.32,
         "embedded": 5.81,
-        "languages": 152.63,
-        "mobile": 43.81
+        "languages": 152.02,
+        "mobile": 177.0,
+        "practices": 10.15
       },
       "techs": {
+        "android": 36.07,
+        "asp-net-core": 0.25,
         "bash": 0.86,
         "bluetooth": 3.32,
-        "c-cpp": 0.61,
+        "cross-platform-architecture": 66.6,
         "csharp-dotnet": 150.36,
-        "ef-core": 1.72,
+        "ddd": 1.46,
+        "ef-core": 2.67,
         "gps": 2.49,
-        "objective-c": 0.23,
-        "xamarin": 43.58,
+        "ios": 31.73,
+        "mobile-build-release": 1.06,
+        "mobile-ui": 5.46,
+        "mvp": 0.25,
+        "mvvm": 0.9,
+        "objective-c": 0.83,
+        "tests": 7.55,
+        "virtual-machines": 12.32,
+        "xamarin": 96.79,
+        "xamarin-forms": 81.58,
         "xaml": 0.8
       }
     },
@@ -3508,16 +4171,27 @@
       },
       "domains": {
         "backend": 0.67,
+        "devops": 12.1,
         "embedded": 0.44,
         "languages": 87.23,
-        "mobile": 25.92
+        "mobile": 74.92,
+        "practices": 46.27
       },
       "techs": {
+        "android": 23.05,
         "bash": 0.93,
+        "cross-platform-architecture": 5.39,
         "csharp-dotnet": 82.29,
         "ef-core": 0.67,
         "gps": 0.44,
-        "xamarin": 25.92,
+        "ios": 12.7,
+        "mobile-build-release": 0.19,
+        "mobile-ui": 7.78,
+        "mvvm": 45.61,
+        "tests": 0.67,
+        "virtual-machines": 12.1,
+        "xamarin": 50.89,
+        "xamarin-forms": 42.21,
         "xaml": 4.01
       }
     },
@@ -3528,16 +4202,24 @@
         "study": 0.0
       },
       "domains": {
-        "devops": 12.96,
+        "devops": 39.78,
         "languages": 58.7,
-        "mobile": 16.24
+        "mobile": 42.43,
+        "practices": 14.7
       },
       "techs": {
+        "android": 1.57,
         "bash": 5.56,
         "c-cpp": 9.46,
         "csharp-dotnet": 35.25,
-        "docker": 12.96,
+        "docker": 32.08,
+        "ios": 1.35,
+        "mobile-build-release": 0.67,
+        "mobile-ui": 15.41,
+        "mvvm": 14.7,
+        "virtual-machines": 7.7,
         "xamarin": 16.24,
+        "xamarin-forms": 15.45,
         "xaml": 8.43
       }
     },
@@ -3549,15 +4231,18 @@
       },
       "domains": {
         "backend": 1.57,
-        "devops": 2.75,
-        "languages": 16.5
+        "devops": 14.85,
+        "languages": 16.5,
+        "practices": 1.57
       },
       "techs": {
         "bash": 5.5,
         "csharp-dotnet": 7.86,
-        "docker": 2.75,
+        "docker": 11.55,
         "ef-core": 1.57,
-        "javascript": 3.14
+        "javascript": 3.14,
+        "tests": 1.57,
+        "virtual-machines": 3.3
       }
     },
     "2020-07": {
@@ -3567,12 +4252,13 @@
         "study": 0.0
       },
       "domains": {
-        "devops": 2.75,
+        "devops": 9.9,
         "languages": 5.5
       },
       "techs": {
         "bash": 5.5,
-        "docker": 2.75
+        "docker": 7.7,
+        "virtual-machines": 2.2
       }
     },
     "2020-08": {
@@ -3582,12 +4268,13 @@
         "study": 0.0
       },
       "domains": {
-        "devops": 2.75,
+        "devops": 4.95,
         "languages": 8.25
       },
       "techs": {
         "bash": 8.25,
-        "docker": 2.75
+        "docker": 3.85,
+        "virtual-machines": 1.1
       }
     },
     "2020-10": {
@@ -3597,16 +4284,25 @@
         "study": 0.0
       },
       "domains": {
-        "devops": 11.0,
+        "devops": 20.9,
         "embedded": 1.38,
         "languages": 19.12,
-        "mobile": 9.8
+        "mobile": 22.0,
+        "practices": 9.4
       },
       "techs": {
+        "android": 2.13,
         "csharp-dotnet": 16.45,
-        "docker": 11.0,
+        "docker": 18.7,
         "gps": 1.38,
+        "ios": 2.23,
+        "mobile-build-release": 0.65,
+        "mobile-ui": 5.25,
+        "mvvm": 9.12,
+        "tests": 0.28,
+        "virtual-machines": 3.3,
         "xamarin": 9.8,
+        "xamarin-forms": 7.67,
         "xaml": 2.68
       }
     },
@@ -3617,15 +4313,25 @@
         "study": 0.0
       },
       "domains": {
+        "devops": 29.7,
         "embedded": 3.64,
         "languages": 64.21,
-        "mobile": 15.23
+        "mobile": 37.91,
+        "practices": 19.37
       },
       "techs": {
+        "android": 2.22,
         "csharp-dotnet": 57.5,
+        "docker": 23.1,
         "gps": 3.64,
+        "ios": 3.5,
+        "mobile-build-release": 0.29,
+        "mobile-ui": 9.35,
+        "mvvm": 19.37,
         "python": 2.01,
+        "virtual-machines": 6.6,
         "xamarin": 15.23,
+        "xamarin-forms": 10.48,
         "xaml": 4.71
       }
     },
@@ -3636,16 +4342,26 @@
         "study": 0.0
       },
       "domains": {
-        "devops": 0.09,
+        "devops": 19.89,
         "embedded": 2.2,
         "languages": 37.79,
-        "mobile": 15.97
+        "mobile": 38.0,
+        "practices": 14.94
       },
       "techs": {
+        "android": 4.56,
         "azure-devops": 0.09,
         "csharp-dotnet": 33.54,
+        "docker": 15.4,
         "gps": 2.2,
+        "ios": 4.41,
+        "mobile-build-release": 0.76,
+        "mobile-ui": 5.69,
+        "mvvm": 13.77,
+        "tests": 1.16,
+        "virtual-machines": 4.4,
         "xamarin": 15.97,
+        "xamarin-forms": 11.81,
         "xaml": 4.24
       }
     },
@@ -3656,14 +4372,26 @@
         "study": 0.0
       },
       "domains": {
+        "devops": 9.9,
         "embedded": 2.39,
         "languages": 14.66,
-        "mobile": 10.13
+        "mobile": 22.0,
+        "practices": 1.57
       },
       "techs": {
+        "android": 5.6,
+        "cross-platform-architecture": 4.28,
         "csharp-dotnet": 14.03,
+        "docker": 7.7,
         "gps": 2.39,
-        "xamarin": 10.13,
+        "ios": 6.01,
+        "mobile-build-release": 1.11,
+        "mobile-ui": 1.9,
+        "mvvm": 0.63,
+        "tests": 0.94,
+        "virtual-machines": 2.2,
+        "xamarin": 15.96,
+        "xamarin-forms": 14.21,
         "xaml": 0.63
       }
     },
@@ -3674,12 +4402,19 @@
         "study": 0.0
       },
       "domains": {
+        "devops": 4.95,
         "languages": 8.8,
-        "mobile": 6.6
+        "mobile": 11.0
       },
       "techs": {
+        "android": 2.2,
+        "cross-platform-architecture": 6.6,
         "csharp-dotnet": 8.8,
-        "xamarin": 6.6
+        "docker": 3.85,
+        "ios": 4.4,
+        "virtual-machines": 1.1,
+        "xamarin": 11.0,
+        "xamarin-forms": 11.0
       }
     },
     "2021-06": {
@@ -3689,16 +4424,28 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 3.3,
+        "ai-llm": 11.55,
+        "devops": 14.85,
         "embedded": 0.41,
         "languages": 32.15,
-        "mobile": 6.44
+        "mobile": 16.72,
+        "practices": 16.46
       },
       "techs": {
-        "ai-driven-development": 3.3,
+        "ai-driven-development": 11.55,
+        "android": 2.37,
+        "cross-platform-architecture": 0.41,
         "csharp-dotnet": 31.07,
+        "docker": 11.55,
         "gps": 0.41,
-        "xamarin": 6.44,
+        "ios": 2.37,
+        "mobile-build-release": 0.14,
+        "mobile-ui": 1.49,
+        "mvvm": 15.88,
+        "tests": 0.58,
+        "virtual-machines": 3.3,
+        "xamarin": 6.99,
+        "xamarin-forms": 4.85,
         "xaml": 1.09
       }
     },
@@ -3709,16 +4456,17 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 5.5,
+        "ai-llm": 19.25,
         "blockchain": 28.56,
-        "devops": 1.85,
+        "devops": 24.75,
         "languages": 52.44
       },
       "techs": {
-        "ai-driven-development": 5.5,
+        "ai-driven-development": 19.25,
         "bash": 52.44,
         "blockchain": 28.56,
-        "docker": 1.85
+        "docker": 19.25,
+        "virtual-machines": 5.5
       }
     },
     "2021-09": {
@@ -3728,17 +4476,24 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 7.7,
-        "backend": 31.63,
-        "languages": 48.5
+        "ai-llm": 26.95,
+        "backend": 55.0,
+        "devops": 34.65,
+        "languages": 48.5,
+        "mobile": 26.55,
+        "practices": 4.35
       },
       "techs": {
-        "ai-driven-development": 7.7,
-        "asp-net-core": 8.77,
+        "ai-driven-development": 26.95,
+        "asp-net-core": 50.21,
         "bash": 15.61,
         "blazor": 20.89,
         "csharp-dotnet": 32.67,
-        "ef-core": 1.98,
+        "docker": 26.95,
+        "ef-core": 50.65,
+        "mobile-ui": 26.55,
+        "mvvm": 4.35,
+        "virtual-machines": 7.7,
         "web": 0.22
       }
     },
@@ -3749,16 +4504,23 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 7.7,
-        "backend": 26.04,
-        "languages": 58.08
+        "ai-llm": 26.95,
+        "backend": 61.79,
+        "devops": 34.65,
+        "languages": 58.08,
+        "mobile": 37.77,
+        "practices": 5.22
       },
       "techs": {
-        "ai-driven-development": 7.7,
-        "asp-net-core": 6.84,
+        "ai-driven-development": 26.95,
+        "asp-net-core": 49.12,
         "blazor": 18.64,
         "csharp-dotnet": 57.76,
-        "ef-core": 0.56,
+        "docker": 26.95,
+        "ef-core": 49.4,
+        "mobile-ui": 37.77,
+        "mvvm": 5.22,
+        "virtual-machines": 7.7,
         "web": 0.32
       }
     },
@@ -3769,15 +4531,23 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 5.5,
-        "backend": 14.99,
-        "languages": 46.3
+        "ai-llm": 19.25,
+        "backend": 36.29,
+        "devops": 24.75,
+        "languages": 46.3,
+        "mobile": 15.63,
+        "practices": 1.63
       },
       "techs": {
-        "ai-driven-development": 5.5,
-        "asp-net-core": 5.5,
+        "ai-driven-development": 19.25,
+        "asp-net-core": 22.3,
         "blazor": 9.49,
         "csharp-dotnet": 44.86,
+        "docker": 19.25,
+        "ef-core": 22.3,
+        "mobile-ui": 15.63,
+        "mvvm": 1.63,
+        "virtual-machines": 5.5,
         "web": 1.43
       }
     },
@@ -3788,20 +4558,25 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 8.8,
-        "backend": 34.31,
-        "devops": 2.77,
-        "languages": 60.1
+        "ai-llm": 30.8,
+        "backend": 42.04,
+        "devops": 40.36,
+        "languages": 60.1,
+        "mobile": 16.1,
+        "practices": 2.19
       },
       "techs": {
-        "ai-driven-development": 8.8,
-        "asp-net-core": 9.55,
+        "ai-driven-development": 30.8,
+        "asp-net-core": 15.49,
         "bash": 1.04,
         "blazor": 15.18,
         "csharp-dotnet": 56.85,
-        "docker": 2.01,
-        "ef-core": 9.58,
+        "docker": 30.8,
+        "ef-core": 15.83,
         "github-actions": 0.76,
+        "mobile-ui": 16.1,
+        "mvvm": 2.19,
+        "virtual-machines": 8.8,
         "web": 2.21
       }
     },
@@ -3812,24 +4587,30 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 19.8,
-        "backend": 52.84,
-        "devops": 1.6,
-        "languages": 140.1
+        "ai-llm": 69.3,
+        "backend": 105.73,
+        "devops": 90.32,
+        "languages": 140.1,
+        "mobile": 9.34,
+        "practices": 4.97
       },
       "techs": {
-        "ai-driven-development": 19.8,
-        "asp-net-core": 20.96,
+        "ai-driven-development": 69.3,
+        "asp-net-core": 52.45,
         "azure": 0.34,
         "bash": 2.61,
-        "blazor": 18.76,
+        "blazor": 39.94,
         "csharp-dotnet": 133.2,
-        "docker": 0.38,
-        "ef-core": 12.78,
+        "ddd": 1.12,
+        "docker": 69.3,
+        "ef-core": 39.6,
         "github-actions": 1.22,
         "javascript": 0.43,
+        "mobile-ui": 9.34,
+        "mvvm": 3.86,
         "python": 0.25,
         "sql": 0.01,
+        "virtual-machines": 19.8,
         "web": 3.59
       }
     },
@@ -3840,20 +4621,28 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 19.8,
-        "backend": 50.25,
+        "ai-llm": 69.3,
+        "backend": 190.26,
+        "devops": 89.1,
         "embedded": 0.32,
-        "languages": 171.21
+        "languages": 171.21,
+        "mobile": 0.28,
+        "practices": 6.47
       },
       "techs": {
-        "ai-driven-development": 19.8,
-        "asp-net-core": 15.09,
+        "ai-driven-development": 69.3,
+        "asp-net-core": 155.64,
         "bash": 1.63,
-        "blazor": 20.12,
+        "blazor": 142.42,
         "csharp-dotnet": 166.75,
-        "ef-core": 17.4,
+        "ddd": 4.84,
+        "docker": 69.3,
+        "ef-core": 123.26,
         "gps": 0.32,
         "javascript": 1.66,
+        "mobile-ui": 0.28,
+        "mvvm": 1.63,
+        "virtual-machines": 19.8,
         "web": 1.16
       }
     },
@@ -3864,27 +4653,33 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 17.6,
-        "backend": 20.61,
+        "ai-llm": 61.6,
+        "backend": 39.77,
         "blockchain": 17.55,
-        "devops": 20.79,
+        "devops": 83.37,
         "embedded": 0.01,
-        "languages": 134.13
+        "languages": 134.13,
+        "mobile": 0.08,
+        "practices": 7.18
       },
       "techs": {
-        "ai-driven-development": 17.6,
-        "asp-net-core": 3.3,
+        "ai-driven-development": 61.6,
+        "asp-net-core": 18.79,
         "azure": 0.01,
         "bash": 64.43,
-        "blazor": 12.18,
+        "blazor": 22.64,
         "blockchain": 17.55,
         "csharp-dotnet": 69.46,
-        "docker": 20.1,
-        "ef-core": 5.11,
+        "ddd": 7.12,
+        "docker": 65.08,
+        "ef-core": 16.52,
         "github-actions": 0.69,
         "gps": 0.01,
         "javascript": 0.04,
+        "mobile-ui": 0.08,
+        "mvvm": 0.06,
         "sql": 0.11,
+        "virtual-machines": 17.6,
         "web": 0.09
       }
     },
@@ -3895,16 +4690,17 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 3.3,
+        "ai-llm": 11.55,
         "blockchain": 9.85,
-        "devops": 6.19,
+        "devops": 14.85,
         "languages": 26.35
       },
       "techs": {
-        "ai-driven-development": 3.3,
+        "ai-driven-development": 11.55,
         "bash": 26.35,
         "blockchain": 9.85,
-        "docker": 6.19
+        "docker": 11.55,
+        "virtual-machines": 3.3
       }
     },
     "2022-05": {
@@ -3914,19 +4710,24 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 22.0,
+        "ai-llm": 77.0,
         "blockchain": 60.43,
-        "devops": 7.6,
-        "languages": 200.49
+        "devops": 100.05,
+        "languages": 200.49,
+        "mobile": 0.79,
+        "practices": 1.16
       },
       "techs": {
-        "ai-driven-development": 22.0,
+        "ai-driven-development": 77.0,
         "bash": 26.67,
         "blockchain": 60.43,
         "csharp-dotnet": 173.32,
-        "docker": 7.1,
+        "docker": 77.55,
         "github-actions": 0.5,
-        "python": 0.5
+        "mobile-ui": 0.79,
+        "mvvm": 1.16,
+        "python": 0.5,
+        "virtual-machines": 22.0
       }
     },
     "2022-06": {
@@ -3936,14 +4737,21 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 18.7,
+        "ai-llm": 65.45,
         "blockchain": 20.74,
-        "languages": 173.83
+        "devops": 84.15,
+        "languages": 173.83,
+        "mobile": 0.38,
+        "practices": 3.45
       },
       "techs": {
-        "ai-driven-development": 18.7,
+        "ai-driven-development": 65.45,
         "blockchain": 20.74,
-        "csharp-dotnet": 173.83
+        "csharp-dotnet": 173.83,
+        "docker": 65.45,
+        "mobile-ui": 0.38,
+        "mvvm": 3.45,
+        "virtual-machines": 18.7
       }
     },
     "2022-07": {
@@ -3953,14 +4761,19 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 14.3,
+        "ai-llm": 50.05,
         "blockchain": 35.85,
-        "languages": 140.91
+        "devops": 64.35,
+        "languages": 140.91,
+        "practices": 1.53
       },
       "techs": {
-        "ai-driven-development": 14.3,
+        "ai-driven-development": 50.05,
         "blockchain": 35.85,
-        "csharp-dotnet": 140.91
+        "csharp-dotnet": 140.91,
+        "docker": 50.05,
+        "mvvm": 1.53,
+        "virtual-machines": 14.3
       }
     },
     "2022-08": {
@@ -3970,15 +4783,20 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 2.2,
+        "ai-llm": 7.7,
         "blockchain": 1.83,
-        "languages": 21.89
+        "devops": 9.9,
+        "languages": 21.89,
+        "practices": 0.11
       },
       "techs": {
-        "ai-driven-development": 2.2,
+        "ai-driven-development": 7.7,
         "bash": 0.44,
         "blockchain": 1.83,
-        "csharp-dotnet": 21.44
+        "csharp-dotnet": 21.44,
+        "docker": 7.7,
+        "mvvm": 0.11,
+        "virtual-machines": 2.2
       }
     },
     "2022-09": {
@@ -3988,14 +4806,20 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 9.9,
+        "ai-llm": 34.65,
         "blockchain": 18.53,
-        "languages": 98.68
+        "devops": 44.55,
+        "languages": 98.68,
+        "practices": 14.69
       },
       "techs": {
-        "ai-driven-development": 9.9,
+        "ai-driven-development": 34.65,
         "blockchain": 18.53,
-        "csharp-dotnet": 98.68
+        "csharp-dotnet": 98.68,
+        "docker": 34.65,
+        "mvvm": 1.01,
+        "tests": 13.68,
+        "virtual-machines": 9.9
       }
     },
     "2022-10": {
@@ -4005,14 +4829,22 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 18.7,
+        "ai-llm": 65.45,
         "blockchain": 36.46,
-        "languages": 172.48
+        "devops": 84.15,
+        "languages": 172.48,
+        "mobile": 0.15,
+        "practices": 11.75
       },
       "techs": {
-        "ai-driven-development": 18.7,
+        "ai-driven-development": 65.45,
         "blockchain": 36.46,
-        "csharp-dotnet": 172.48
+        "csharp-dotnet": 172.48,
+        "docker": 65.45,
+        "mobile-ui": 0.15,
+        "mvvm": 1.79,
+        "tests": 9.96,
+        "virtual-machines": 18.7
       }
     },
     "2022-11": {
@@ -4022,18 +4854,22 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 8.8,
+        "ai-llm": 30.8,
         "blockchain": 12.14,
-        "devops": 2.69,
-        "languages": 82.11
+        "devops": 39.84,
+        "languages": 82.11,
+        "practices": 1.45
       },
       "techs": {
-        "ai-driven-development": 8.8,
+        "ai-driven-development": 30.8,
         "bash": 6.32,
         "blockchain": 12.14,
         "csharp-dotnet": 75.8,
-        "docker": 2.44,
-        "github-actions": 0.24
+        "docker": 30.8,
+        "github-actions": 0.24,
+        "mvvm": 0.24,
+        "tests": 1.21,
+        "virtual-machines": 8.8
       }
     },
     "2022-12": {
@@ -4043,18 +4879,24 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 53.9,
+        "ai-llm": 107.8,
         "blockchain": 31.72,
-        "devops": 0.71,
-        "languages": 142.88
+        "devops": 69.3,
+        "languages": 142.88,
+        "mobile": 1.51,
+        "practices": 6.88
       },
       "techs": {
-        "ai-driven-development": 53.9,
+        "ai-driven-development": 107.8,
         "bash": 18.19,
         "blockchain": 31.72,
         "csharp-dotnet": 124.06,
-        "docker": 0.71,
-        "go": 0.63
+        "docker": 53.9,
+        "go": 0.63,
+        "mobile-ui": 1.51,
+        "mvvm": 0.03,
+        "tests": 6.85,
+        "virtual-machines": 15.4
       }
     },
     "2023-01": {
@@ -4064,15 +4906,21 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 34.65,
+        "ai-llm": 69.3,
         "blockchain": 15.74,
-        "languages": 97.45
+        "devops": 44.55,
+        "languages": 97.45,
+        "practices": 0.94
       },
       "techs": {
-        "ai-driven-development": 34.65,
+        "ai-driven-development": 69.3,
         "bash": 1.38,
         "blockchain": 15.74,
-        "csharp-dotnet": 96.08
+        "csharp-dotnet": 96.08,
+        "docker": 34.65,
+        "mvvm": 0.23,
+        "tests": 0.71,
+        "virtual-machines": 9.9
       }
     },
     "2023-02": {
@@ -4082,17 +4930,23 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 57.75,
+        "ai-llm": 115.5,
         "blockchain": 39.99,
-        "devops": 2.84,
-        "languages": 161.03
+        "devops": 74.25,
+        "languages": 161.03,
+        "mobile": 0.65,
+        "practices": 6.29
       },
       "techs": {
-        "ai-driven-development": 57.75,
+        "ai-driven-development": 115.5,
         "bash": 30.88,
         "blockchain": 39.99,
         "csharp-dotnet": 130.15,
-        "docker": 2.84
+        "docker": 57.75,
+        "mobile-ui": 0.65,
+        "mvvm": 0.75,
+        "tests": 5.53,
+        "virtual-machines": 16.5
       }
     },
     "2023-03": {
@@ -4102,15 +4956,23 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 53.9,
+        "ai-llm": 107.8,
         "blockchain": 6.2,
-        "languages": 150.89
+        "devops": 69.3,
+        "languages": 150.89,
+        "mobile": 1.6,
+        "practices": 7.84
       },
       "techs": {
-        "ai-driven-development": 53.9,
+        "ai-driven-development": 107.8,
         "blockchain": 6.2,
         "csharp-dotnet": 140.42,
-        "python": 10.48
+        "docker": 53.9,
+        "mobile-ui": 1.6,
+        "mvvm": 0.35,
+        "python": 10.48,
+        "tests": 7.49,
+        "virtual-machines": 15.4
       }
     },
     "2023-04": {
@@ -4120,16 +4982,24 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 57.75,
+        "ai-llm": 115.5,
         "backend": 15.43,
         "blockchain": 36.16,
-        "languages": 148.89
+        "devops": 74.25,
+        "languages": 148.89,
+        "mobile": 1.35,
+        "practices": 2.06
       },
       "techs": {
-        "ai-driven-development": 57.75,
+        "ai-driven-development": 115.5,
         "blockchain": 36.16,
         "csharp-dotnet": 148.89,
-        "grpc": 15.43
+        "docker": 57.75,
+        "grpc": 15.43,
+        "mobile-ui": 1.35,
+        "mvvm": 0.24,
+        "tests": 1.82,
+        "virtual-machines": 16.5
       }
     },
     "2023-05": {
@@ -4139,18 +5009,19 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 11.55,
+        "ai-llm": 23.1,
         "blockchain": 3.67,
-        "devops": 20.03,
+        "devops": 24.77,
         "languages": 16.5
       },
       "techs": {
-        "ai-driven-development": 11.55,
+        "ai-driven-development": 23.1,
         "bash": 10.63,
         "blockchain": 3.67,
         "csharp-dotnet": 5.87,
-        "docker": 12.5,
-        "github-actions": 13.03
+        "docker": 15.03,
+        "github-actions": 13.03,
+        "virtual-machines": 3.3
       }
     },
     "2023-06": {
@@ -4160,16 +5031,21 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 7.7,
+        "ai-llm": 15.4,
         "backend": 0.72,
         "blockchain": 4.23,
-        "languages": 21.76
+        "devops": 9.9,
+        "languages": 21.76,
+        "practices": 0.24
       },
       "techs": {
-        "ai-driven-development": 7.7,
+        "ai-driven-development": 15.4,
         "blockchain": 4.23,
         "csharp-dotnet": 21.76,
-        "grpc": 0.72
+        "docker": 7.7,
+        "grpc": 0.72,
+        "tests": 0.24,
+        "virtual-machines": 2.2
       }
     },
     "2023-11": {
@@ -4179,16 +5055,23 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 7.7,
+        "ai-llm": 15.4,
         "backend": 0.25,
         "blockchain": 0.41,
-        "languages": 21.83
+        "devops": 9.9,
+        "languages": 21.83,
+        "mobile": 8.8,
+        "practices": 0.17
       },
       "techs": {
-        "ai-driven-development": 7.7,
+        "ai-driven-development": 15.4,
         "blockchain": 0.41,
         "csharp-dotnet": 21.83,
-        "grpc": 0.25
+        "docker": 7.7,
+        "grpc": 0.25,
+        "mobile-ui": 8.8,
+        "tests": 0.17,
+        "virtual-machines": 2.2
       }
     },
     "2023-12": {
@@ -4198,15 +5081,16 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 19.25,
-        "devops": 26.72,
+        "ai-llm": 38.5,
+        "devops": 33.41,
         "languages": 24.2
       },
       "techs": {
-        "ai-driven-development": 19.25,
+        "ai-driven-development": 38.5,
         "bash": 24.2,
-        "docker": 25.78,
-        "github-actions": 0.94
+        "docker": 26.96,
+        "github-actions": 0.94,
+        "virtual-machines": 5.5
       }
     },
     "2024-01": {
@@ -4216,15 +5100,19 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 30.8,
-        "devops": 2.94,
-        "languages": 50.07
+        "ai-llm": 61.6,
+        "devops": 20.54,
+        "languages": 50.07,
+        "practices": 6.64
       },
       "techs": {
-        "ai-driven-development": 30.8,
+        "ai-driven-development": 61.6,
         "bash": 11.76,
+        "docker": 8.8,
         "github-actions": 2.94,
-        "python": 38.31
+        "python": 38.31,
+        "tests": 6.64,
+        "virtual-machines": 8.8
       }
     },
     "2024-02": {
@@ -4234,17 +5122,22 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 46.2,
+        "ai-llm": 92.4,
         "backend": 0.56,
         "blockchain": 0.37,
-        "languages": 122.65
+        "devops": 26.4,
+        "languages": 122.65,
+        "practices": 5.01
       },
       "techs": {
-        "ai-driven-development": 46.2,
+        "ai-driven-development": 92.4,
         "blockchain": 0.37,
         "csharp-dotnet": 10.81,
+        "docker": 13.2,
         "grpc": 0.56,
-        "python": 111.83
+        "python": 111.83,
+        "tests": 5.01,
+        "virtual-machines": 13.2
       }
     },
     "2024-03": {
@@ -4254,16 +5147,21 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 20.62,
+        "ai-llm": 39.88,
         "blockchain": 2.75,
-        "languages": 47.1
+        "devops": 11.0,
+        "languages": 47.1,
+        "practices": 1.57
       },
       "techs": {
-        "ai-driven-development": 19.25,
+        "ai-driven-development": 38.5,
         "bash": 0.92,
         "blockchain": 2.75,
+        "docker": 5.5,
         "llm-api": 1.38,
-        "python": 46.19
+        "python": 46.19,
+        "tests": 1.57,
+        "virtual-machines": 5.5
       }
     },
     "2024-04": {
@@ -4273,15 +5171,20 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 16.32,
+        "ai-llm": 31.72,
+        "devops": 8.8,
         "embedded": 1.22,
-        "languages": 37.42
+        "languages": 37.42,
+        "practices": 1.0
       },
       "techs": {
-        "ai-driven-development": 15.4,
+        "ai-driven-development": 30.8,
+        "docker": 4.4,
         "llm-api": 0.92,
         "nfc": 1.22,
-        "python": 37.42
+        "python": 37.42,
+        "tests": 1.0,
+        "virtual-machines": 4.4
       }
     },
     "2024-05": {
@@ -4291,15 +5194,19 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 30.8,
-        "devops": 0.36,
-        "languages": 67.77
+        "ai-llm": 61.6,
+        "devops": 17.96,
+        "languages": 67.77,
+        "practices": 2.65
       },
       "techs": {
-        "ai-driven-development": 30.8,
+        "ai-driven-development": 61.6,
         "bash": 5.57,
+        "docker": 8.8,
         "github-actions": 0.36,
-        "python": 62.19
+        "python": 62.19,
+        "tests": 2.65,
+        "virtual-machines": 8.8
       }
     },
     "2024-06": {
@@ -4309,15 +5216,19 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 50.05,
-        "devops": 1.56,
-        "languages": 126.0
+        "ai-llm": 100.1,
+        "devops": 30.16,
+        "languages": 126.0,
+        "practices": 25.82
       },
       "techs": {
-        "ai-driven-development": 50.05,
+        "ai-driven-development": 100.1,
         "bash": 2.22,
+        "docker": 14.3,
         "github-actions": 1.56,
-        "python": 123.78
+        "python": 123.78,
+        "tests": 25.82,
+        "virtual-machines": 14.3
       }
     },
     "2024-07": {
@@ -4327,12 +5238,17 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 3.85,
-        "languages": 11.0
+        "ai-llm": 7.7,
+        "devops": 2.2,
+        "languages": 11.0,
+        "practices": 1.63
       },
       "techs": {
-        "ai-driven-development": 3.85,
-        "python": 11.0
+        "ai-driven-development": 7.7,
+        "docker": 1.1,
+        "python": 11.0,
+        "tests": 1.63,
+        "virtual-machines": 1.1
       }
     },
     "2024-08": {
@@ -4342,15 +5258,19 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 30.8,
-        "devops": 0.55,
-        "languages": 82.91
+        "ai-llm": 61.6,
+        "devops": 18.15,
+        "languages": 82.91,
+        "practices": 17.35
       },
       "techs": {
-        "ai-driven-development": 30.8,
+        "ai-driven-development": 61.6,
         "bash": 6.11,
+        "docker": 8.8,
         "github-actions": 0.55,
-        "python": 76.79
+        "python": 76.79,
+        "tests": 17.35,
+        "virtual-machines": 8.8
       }
     },
     "2024-09": {
@@ -4360,13 +5280,16 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 11.55,
+        "ai-llm": 23.1,
+        "devops": 6.6,
         "languages": 29.33
       },
       "techs": {
-        "ai-driven-development": 11.55,
+        "ai-driven-development": 23.1,
         "bash": 2.75,
-        "python": 26.58
+        "docker": 3.3,
+        "python": 26.58,
+        "virtual-machines": 3.3
       }
     },
     "2025-02": {
@@ -4376,12 +5299,18 @@
         "study": 0.0
       },
       "domains": {
-        "devops": 0.59,
-        "languages": 11.99
+        "ai-llm": 22.0,
+        "devops": 4.99,
+        "languages": 11.99,
+        "practices": 1.49
       },
       "techs": {
+        "ai-driven-development": 22.0,
+        "docker": 2.2,
         "github-actions": 0.59,
-        "python": 11.99
+        "python": 11.99,
+        "tests": 1.49,
+        "virtual-machines": 2.2
       }
     },
     "2025-03": {
@@ -4391,16 +5320,22 @@
         "study": 0.0
       },
       "domains": {
+        "ai-llm": 66.0,
         "blockchain": 0.49,
-        "devops": 1.25,
-        "languages": 45.1
+        "devops": 53.49,
+        "languages": 45.1,
+        "practices": 28.77
       },
       "techs": {
+        "ai-driven-development": 66.0,
         "bash": 0.28,
         "blockchain": 0.49,
-        "docker": 0.56,
+        "docker": 46.2,
         "github-actions": 0.69,
-        "python": 44.82
+        "python": 44.82,
+        "tdd": 23.1,
+        "tests": 5.67,
+        "virtual-machines": 6.6
       }
     },
     "2025-04": {
@@ -4410,19 +5345,22 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 7.27,
-        "devops": 0.79,
+        "ai-llm": 154.0,
+        "devops": 123.99,
         "languages": 118.87,
-        "mobile": 0.27
+        "mobile": 0.41,
+        "practices": 111.1
       },
       "techs": {
-        "ai-driven-development": 7.27,
+        "ai-driven-development": 154.0,
         "bash": 0.66,
         "c-cpp": 0.27,
         "csharp-dotnet": 0.14,
         "dart": 0.14,
+        "docker": 107.8,
         "github-actions": 0.79,
         "go": 0.14,
+        "ios": 0.14,
         "java": 0.14,
         "javascript": 0.14,
         "kotlin": 0.14,
@@ -4432,7 +5370,10 @@
         "ruby": 0.14,
         "rust": 0.14,
         "swift": 0.14,
-        "typescript": 0.41
+        "tdd": 53.9,
+        "tests": 57.2,
+        "typescript": 0.41,
+        "virtual-machines": 15.4
       }
     },
     "2025-05": {
@@ -4442,12 +5383,20 @@
         "study": 0.0
       },
       "domains": {
-        "languages": 18.05
+        "ai-llm": 22.0,
+        "devops": 17.6,
+        "languages": 18.05,
+        "practices": 8.0
       },
       "techs": {
+        "ai-driven-development": 22.0,
         "bash": 3.27,
         "csharp-dotnet": 9.43,
-        "python": 5.35
+        "docker": 15.4,
+        "python": 5.35,
+        "tdd": 7.7,
+        "tests": 0.3,
+        "virtual-machines": 2.2
       }
     },
     "2025-06": {
@@ -4457,19 +5406,23 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 3.68,
+        "ai-llm": 187.0,
         "blockchain": 29.88,
-        "devops": 18.03,
-        "languages": 129.68
+        "devops": 154.08,
+        "languages": 129.68,
+        "practices": 129.25
       },
       "techs": {
-        "ai-driven-development": 3.68,
+        "ai-driven-development": 187.0,
         "bash": 54.41,
         "blockchain": 29.88,
-        "docker": 13.55,
+        "docker": 130.9,
         "github-actions": 4.48,
         "go": 1.0,
-        "python": 74.27
+        "python": 74.27,
+        "tdd": 65.45,
+        "tests": 66.88,
+        "virtual-machines": 18.7
       }
     },
     "2025-07": {
@@ -4479,20 +5432,28 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 15.48,
+        "ai-llm": 77.0,
         "blockchain": 5.46,
-        "devops": 2.42,
-        "languages": 41.53
+        "devops": 63.49,
+        "languages": 41.53,
+        "mobile": 3.37,
+        "practices": 48.29
       },
       "techs": {
-        "ai-driven-development": 15.48,
+        "ai-driven-development": 77.0,
         "bash": 7.25,
         "blockchain": 5.46,
         "csharp-dotnet": 22.45,
-        "docker": 0.54,
+        "ddd": 1.61,
+        "docker": 53.9,
         "github-actions": 1.89,
         "go": 0.27,
+        "mobile-ui": 3.37,
+        "mvvm": 3.08,
         "python": 11.48,
+        "tdd": 26.95,
+        "tests": 16.66,
+        "virtual-machines": 7.7,
         "web": 0.08
       }
     },
@@ -4503,24 +5464,31 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 1.44,
+        "ai-llm": 154.0,
         "backend": 0.4,
-        "devops": 2.68,
+        "devops": 123.49,
         "embedded": 0.89,
-        "languages": 113.96
+        "languages": 113.96,
+        "mobile": 0.89,
+        "practices": 94.18
       },
       "techs": {
-        "ai-driven-development": 1.38,
+        "ai-driven-development": 154.0,
         "bash": 1.2,
-        "docker": 2.38,
+        "ddd": 14.81,
+        "docker": 107.8,
         "github-actions": 0.29,
         "gps": 0.89,
         "javascript": 1.98,
         "llm-api": 0.06,
+        "mobile-ui": 0.89,
         "nodejs": 0.4,
         "python": 97.59,
         "sql": 0.97,
+        "tdd": 53.9,
+        "tests": 25.47,
         "typescript": 9.91,
+        "virtual-machines": 15.4,
         "web": 2.31
       }
     },
@@ -4531,21 +5499,28 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 2.35,
+        "ai-llm": 66.0,
         "backend": 0.67,
-        "devops": 3.07,
-        "languages": 48.74
+        "devops": 52.92,
+        "languages": 48.74,
+        "mobile": 1.31,
+        "practices": 39.06
       },
       "techs": {
-        "ai-driven-development": 2.35,
+        "ai-driven-development": 66.0,
         "bash": 6.78,
-        "docker": 2.94,
+        "ddd": 5.14,
+        "docker": 46.2,
         "github-actions": 0.12,
         "javascript": 1.21,
+        "mobile-ui": 1.31,
         "nodejs": 0.67,
         "python": 35.8,
         "sql": 0.14,
+        "tdd": 23.1,
+        "tests": 10.82,
         "typescript": 4.44,
+        "virtual-machines": 6.6,
         "web": 0.37
       }
     },
@@ -4556,25 +5531,32 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 9.37,
+        "ai-llm": 110.0,
         "backend": 0.96,
         "blockchain": 11.32,
-        "devops": 7.76,
-        "languages": 56.27
+        "devops": 88.89,
+        "languages": 56.27,
+        "mobile": 3.2,
+        "practices": 59.37
       },
       "techs": {
-        "ai-driven-development": 9.37,
+        "ai-driven-development": 110.0,
         "bash": 7.89,
         "blockchain": 11.32,
         "csharp-dotnet": 9.7,
-        "docker": 6.87,
+        "ddd": 8.64,
+        "docker": 77.0,
         "github-actions": 0.84,
         "javascript": 0.96,
         "kubernetes": 0.05,
+        "mobile-ui": 3.2,
         "nodejs": 0.96,
         "python": 30.1,
         "sql": 0.48,
+        "tdd": 38.5,
+        "tests": 18.83,
         "typescript": 5.7,
+        "virtual-machines": 11.0,
         "web": 1.43
       }
     },
@@ -4585,30 +5567,38 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 11.02,
-        "backend": 22.29,
+        "ai-llm": 198.0,
+        "backend": 23.16,
         "blockchain": 44.78,
-        "devops": 36.87,
-        "languages": 123.46
+        "devops": 159.74,
+        "languages": 123.46,
+        "mobile": 5.1,
+        "practices": 106.86
       },
       "techs": {
-        "ai-driven-development": 10.64,
-        "asp-net-core": 4.75,
+        "ai-driven-development": 198.0,
+        "asp-net-core": 4.93,
         "bash": 63.38,
-        "blazor": 13.11,
+        "blazor": 13.67,
         "blockchain": 44.78,
         "csharp-dotnet": 52.05,
-        "docker": 35.52,
-        "ef-core": 4.04,
+        "ddd": 0.87,
+        "docker": 138.6,
+        "ef-core": 4.17,
         "github-actions": 1.19,
         "grpc": 0.4,
         "javascript": 0.1,
         "kubernetes": 0.15,
         "llm-api": 0.15,
+        "mobile-ui": 5.1,
+        "mvvm": 0.49,
         "powershell": 0.39,
         "python": 6.58,
         "sql": 0.45,
+        "tdd": 69.3,
+        "tests": 36.2,
         "vector-db": 0.23,
+        "virtual-machines": 19.8,
         "web": 0.51
       }
     },
@@ -4619,25 +5609,35 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 3.18,
-        "backend": 12.74,
+        "ai-llm": 121.0,
+        "backend": 22.76,
         "blockchain": 13.1,
-        "devops": 2.98,
+        "devops": 97.22,
         "languages": 89.79,
-        "mobile": 9.97
+        "mobile": 26.24,
+        "practices": 74.22
       },
       "techs": {
-        "ai-driven-development": 3.18,
-        "asp-net-core": 1.75,
+        "ai-driven-development": 121.0,
+        "android": 4.12,
+        "asp-net-core": 4.88,
         "bash": 31.17,
-        "blazor": 5.01,
+        "blazor": 9.61,
         "blockchain": 13.1,
         "csharp-dotnet": 52.49,
-        "docker": 2.56,
-        "ef-core": 5.98,
+        "ddd": 0.76,
+        "docker": 84.7,
+        "ef-core": 8.27,
         "github-actions": 0.42,
+        "ios": 5.27,
         "javascript": 0.63,
         "maui": 0.38,
+        "mobile-build-release": 0.28,
+        "mobile-ui": 6.6,
+        "mvvm": 2.93,
+        "tdd": 42.35,
+        "tests": 28.18,
+        "virtual-machines": 12.1,
         "web": 2.34,
         "xamarin": 9.59,
         "xaml": 3.16
@@ -4650,30 +5650,40 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 2.35,
-        "backend": 24.93,
+        "ai-llm": 143.0,
+        "backend": 25.69,
         "blockchain": 0.81,
-        "devops": 1.76,
+        "devops": 115.13,
         "embedded": 0.69,
         "languages": 100.02,
-        "mobile": 0.3
+        "mobile": 5.25,
+        "practices": 93.56
       },
       "techs": {
-        "ai-driven-development": 2.35,
-        "asp-net-core": 5.08,
+        "ai-driven-development": 143.0,
+        "android": 0.23,
+        "asp-net-core": 5.84,
         "azure": 0.04,
         "bash": 2.44,
         "blazor": 9.7,
         "blockchain": 0.81,
         "csharp-dotnet": 69.93,
-        "docker": 1.02,
+        "ddd": 1.77,
+        "docker": 100.1,
         "ef-core": 10.11,
         "github-actions": 0.73,
+        "ios": 0.6,
         "javascript": 0.15,
+        "mobile-build-release": 0.11,
+        "mobile-ui": 4.0,
+        "mvvm": 0.42,
         "nfc": 0.69,
         "powershell": 0.92,
         "python": 21.54,
         "sql": 0.37,
+        "tdd": 50.05,
+        "tests": 43.34,
+        "virtual-machines": 14.3,
         "web": 4.23,
         "xamarin": 0.3,
         "xaml": 0.45
@@ -4686,25 +5696,32 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 1.54,
+        "ai-llm": 220.0,
         "backend": 19.27,
-        "devops": 7.9,
+        "devops": 179.72,
         "embedded": 0.38,
-        "languages": 176.76
+        "languages": 176.76,
+        "mobile": 1.42,
+        "practices": 145.84
       },
       "techs": {
-        "ai-driven-development": 1.54,
+        "ai-driven-development": 220.0,
         "asp-net-core": 7.62,
         "bash": 3.98,
         "blazor": 6.47,
         "csharp-dotnet": 56.22,
-        "docker": 4.18,
+        "ddd": 1.54,
+        "docker": 154.0,
         "ef-core": 5.18,
         "github-actions": 3.72,
         "gps": 0.38,
         "javascript": 0.16,
+        "mobile-ui": 1.42,
         "python": 116.29,
         "sql": 0.05,
+        "tdd": 77.0,
+        "tests": 67.31,
+        "virtual-machines": 22.0,
         "web": 0.06
       }
     },
@@ -4715,30 +5732,39 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 16.38,
+        "ai-llm": 275.0,
         "backend": 13.46,
         "blockchain": 3.11,
-        "devops": 21.34,
+        "devops": 221.57,
         "embedded": 0.02,
-        "languages": 152.05
+        "languages": 152.05,
+        "mobile": 2.23,
+        "practices": 164.62
       },
       "techs": {
-        "ai-driven-development": 13.73,
+        "ai-driven-development": 275.0,
         "asp-net-core": 3.68,
         "bash": 30.2,
         "blazor": 5.76,
         "blockchain": 3.11,
         "csharp-dotnet": 35.0,
-        "docker": 19.77,
+        "ddd": 5.13,
+        "docker": 192.5,
         "ef-core": 3.75,
         "github-actions": 1.57,
         "gps": 0.02,
         "javascript": 2.93,
         "llm-api": 2.66,
+        "mobile-ui": 2.23,
+        "mvp": 0.12,
+        "mvvm": 0.04,
         "nodejs": 0.27,
         "python": 65.9,
         "sql": 2.79,
+        "tdd": 96.25,
+        "tests": 63.08,
         "typescript": 14.47,
+        "virtual-machines": 27.5,
         "web": 0.76
       }
     },
@@ -4749,34 +5775,45 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 8.49,
+        "ai-llm": 286.0,
         "backend": 7.26,
         "blockchain": 72.87,
-        "devops": 12.18,
+        "devops": 232.84,
         "embedded": 0.18,
         "languages": 150.59,
-        "mobile": 4.06
+        "mobile": 9.18,
+        "practices": 167.84
       },
       "techs": {
-        "ai-driven-development": 7.96,
+        "ai-driven-development": 286.0,
+        "android": 0.45,
         "azure-devops": 0.02,
         "bash": 26.65,
         "blazor": 0.07,
         "blockchain": 72.87,
         "csharp-dotnet": 98.56,
-        "docker": 8.14,
+        "ddd": 7.4,
+        "docker": 200.2,
         "github-actions": 4.02,
         "go": 0.71,
         "grpc": 6.83,
+        "ios": 0.34,
         "javascript": 0.26,
         "llm-api": 0.53,
+        "mobile-build-release": 0.57,
+        "mobile-ui": 1.62,
+        "mvvm": 9.72,
         "nfc": 0.18,
         "nodejs": 0.36,
         "python": 14.74,
         "sql": 0.47,
+        "tdd": 100.1,
+        "tests": 50.62,
         "typescript": 8.51,
+        "virtual-machines": 28.6,
         "web": 0.71,
-        "xamarin": 4.06
+        "xamarin": 4.06,
+        "xamarin-forms": 2.13
       }
     },
     "2026-05": {
@@ -4786,35 +5823,41 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 6.58,
+        "ai-llm": 242.0,
         "backend": 6.95,
         "blockchain": 8.53,
-        "devops": 11.86,
+        "devops": 194.75,
         "embedded": 2.43,
         "languages": 152.2,
-        "mobile": 0.8
+        "mobile": 1.96,
+        "practices": 148.95
       },
       "techs": {
-        "ai-driven-development": 4.66,
+        "ai-driven-development": 242.0,
         "asp-net-core": 1.93,
         "bash": 21.5,
         "blazor": 1.87,
         "blockchain": 8.53,
         "bluetooth": 0.1,
         "csharp-dotnet": 22.97,
-        "docker": 10.7,
+        "ddd": 6.5,
+        "docker": 169.4,
         "ef-core": 2.81,
         "github-actions": 1.15,
         "gps": 1.79,
         "grpc": 0.06,
         "javascript": 0.17,
         "llm-api": 1.57,
+        "mobile-ui": 1.16,
         "nfc": 0.54,
         "nodejs": 0.28,
         "python": 84.36,
         "sql": 3.65,
+        "tdd": 84.7,
+        "tests": 58.57,
         "typescript": 19.37,
         "vector-db": 0.36,
+        "virtual-machines": 24.2,
         "web": 0.19,
         "xamarin": 0.8
       }
@@ -4826,35 +5869,40 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 108.88,
+        "ai-llm": 181.0,
         "backend": 53.93,
         "blockchain": 0.29,
         "desktop": 154.0,
-        "devops": 154.16,
+        "devops": 175.61,
         "embedded": 0.44,
         "languages": 171.46,
-        "mobile": 107.84
+        "mobile": 107.95,
+        "practices": 124.83
       },
       "techs": {
-        "ai-driven-development": 108.8,
+        "ai-driven-development": 181.0,
         "android": 53.9,
         "azure-devops": 53.9,
         "bash": 57.71,
         "blockchain": 0.29,
         "c-cpp": 77.0,
         "csharp-dotnet": 77.0,
-        "docker": 0.15,
+        "docker": 18.9,
         "dotnet-5": 53.9,
         "github-actions": 0.01,
         "gps": 0.4,
         "llm-api": 0.08,
+        "mobile-ui": 0.11,
         "native-cross-build": 107.8,
         "nfc": 0.04,
         "nodejs": 0.03,
         "pinvoke-interop": 107.8,
         "python": 12.16,
         "sql": 0.17,
+        "tdd": 117.25,
+        "tests": 7.64,
         "typescript": 1.31,
+        "virtual-machines": 2.7,
         "web": 0.01,
         "winforms": 53.9,
         "xamarin": 53.94
@@ -4867,14 +5915,15 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 113.19,
+        "ai-llm": 224.0,
         "backend": 114.56,
-        "devops": 57.32,
+        "devops": 106.87,
         "languages": 205.03,
-        "mobile": 161.0
+        "mobile": 162.09,
+        "practices": 152.89
       },
       "techs": {
-        "ai-driven-development": 112.81,
+        "ai-driven-development": 224.0,
         "android": 112.7,
         "asp-net-core": 0.42,
         "azure-devops": 56.35,
@@ -4882,17 +5931,22 @@
         "blazor": 0.33,
         "c-cpp": 16.1,
         "csharp-dotnet": 151.77,
-        "docker": 0.84,
+        "ddd": 0.3,
+        "docker": 44.1,
         "dotnet-5": 112.7,
         "ef-core": 0.87,
         "github-actions": 0.12,
         "javascript": 0.01,
         "llm-api": 0.38,
+        "mobile-ui": 1.09,
         "nodejs": 0.24,
         "powershell": 0.08,
         "python": 32.14,
         "sql": 0.56,
+        "tdd": 134.75,
+        "tests": 17.89,
         "typescript": 2.55,
+        "virtual-machines": 6.3,
         "web": 0.46,
         "xamarin": 112.7
       }
@@ -4904,15 +5958,16 @@
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 103.45,
+        "ai-llm": 216.0,
         "backend": 103.63,
         "blockchain": 0.45,
-        "devops": 51.81,
+        "devops": 106.65,
         "languages": 205.47,
-        "mobile": 147.0
+        "mobile": 147.03,
+        "practices": 149.27
       },
       "techs": {
-        "ai-driven-development": 103.42,
+        "ai-driven-development": 216.0,
         "android": 102.9,
         "asp-net-core": 0.71,
         "azure-devops": 51.45,
@@ -4921,70 +5976,86 @@
         "blockchain": 0.45,
         "c-cpp": 14.7,
         "csharp-dotnet": 134.31,
-        "docker": 0.36,
+        "docker": 48.3,
         "dotnet-5": 102.9,
         "llm-api": 0.03,
+        "mobile-ui": 0.03,
         "python": 55.1,
         "sql": 0.11,
+        "tdd": 127.05,
+        "tests": 22.58,
+        "virtual-machines": 6.9,
         "web": 0.09,
         "xamarin": 102.9
       }
     },
     "2026-09": {
       "context": {
-        "personal": 33.0,
+        "personal": 36.0,
         "pro": 154.0,
         "study": 0.0
       },
       "domains": {
-        "ai-llm": 108.39,
-        "backend": 54.02,
-        "blockchain": 0.17,
-        "devops": 104.31,
-        "embedded": 1.58,
-        "languages": 175.34,
-        "mobile": 78.38
+        "ai-llm": 190.0,
+        "backend": 54.08,
+        "blockchain": 0.25,
+        "devops": 133.14,
+        "embedded": 1.77,
+        "languages": 177.29,
+        "mobile": 78.6,
+        "practices": 129.7
       },
       "techs": {
-        "ai-driven-development": 108.34,
+        "ai-driven-development": 190.0,
         "android": 53.9,
-        "azure": 0.01,
+        "azure": 0.03,
         "azure-devops": 53.9,
-        "bash": 106.56,
-        "blazor": 0.09,
-        "blockchain": 0.17,
-        "bluetooth": 0.02,
+        "bash": 106.9,
+        "blazor": 0.11,
+        "blockchain": 0.25,
+        "bluetooth": 0.04,
         "c-cpp": 7.7,
-        "csharp-dotnet": 70.65,
-        "docker": 53.91,
+        "cross-platform-architecture": 0.02,
+        "csharp-dotnet": 70.99,
+        "ddd": 0.02,
+        "docker": 79.1,
         "dotnet-5": 53.9,
-        "github-actions": 0.35,
-        "gps": 1.53,
-        "grpc": 0.02,
-        "llm-api": 0.02,
+        "github-actions": 0.39,
+        "gps": 1.65,
+        "grpc": 0.04,
+        "ios": 0.04,
+        "llm-api": 0.04,
         "maui": 0.07,
-        "mqtt": 0.01,
-        "nfc": 0.02,
-        "python": 17.26,
+        "mobile-build-release": 0.01,
+        "mobile-ui": 0.06,
+        "mqtt": 0.03,
+        "mvp": 0.02,
+        "mvvm": 0.11,
+        "nfc": 0.04,
+        "python": 18.54,
         "ruby": 0.02,
         "sql": 0.06,
         "swift": 0.77,
-        "vector-db": 0.03,
-        "virtual-machines": 26.95,
+        "tdd": 120.4,
+        "tests": 9.14,
+        "vector-db": 0.05,
+        "virtual-machines": 30.55,
         "web": 0.04,
-        "xamarin": 54.43
+        "xamarin": 54.52,
+        "xamarin-forms": 0.01
       }
     }
   },
   "context_totals": {
-    "personal": 6503.0,
+    "personal": 6506.0,
     "pro": 23064.0,
     "study": 1008.0
   },
   "coverage": {
-    "commit_days": 1469,
-    "public_days": 239,
-    "public_share": 0.1627
+    "commit_days": 1470,
+    "public_days": 240,
+    "public_share": 0.1633,
+    "test_only_commits": 294
   },
   "levels": {
     "advanced": 1600,
@@ -5002,7 +6073,8 @@
     "AI-assisted development before its first measurable trace is declared on personal commit days only, never on employment hours.",
     "Months of a source without a commit use that source's file counts over its period, restricted to techs already seen in an own commit by then.",
     "Git is excluded from hours: a tool every commit implies.",
-    "The collector does not distinguish native Xamarin from Xamarin.Forms: measured Xamarin hours are reported under 'xamarin'.",
+    "Xamarin is measured at project level: every file of a project referencing Xamarin counts for 'xamarin', and for 'xamarin-forms' too when the project references Xamarin.Forms.",
+    "tdd hours are declared only; coverage.test_only_commits counts own commits touching test files only, as evidence.",
     "The collector does not distinguish ASP.NET Core from ASP.NET Web API 2, nor EF Core from Entity Framework 6: they are reported under 'asp-net-core' and 'ef-core'.",
     "Domains that differ from data/techs.json: objective-c: languages -> mobile; windows-ce: embedded -> mobile"
   ],
@@ -5018,14 +6090,14 @@
       "level": "professional"
     },
     "ai-driven-development": {
-      "declared_share": 0.932,
-      "display_hours": 1200,
+      "declared_share": 1.0,
+      "display_hours": 4900,
       "domain": "ai-llm",
       "first": "2021-06",
-      "hours": 1253.4,
+      "hours": 4917.3,
       "kind": "domain",
       "last": "2026-09",
-      "level": "professional"
+      "level": "advanced"
     },
     "aix": {
       "declared_share": 1.0,
@@ -5038,21 +6110,21 @@
       "level": "professional"
     },
     "android": {
-      "declared_share": 1.0,
-      "display_hours": 930,
+      "declared_share": 0.254,
+      "display_hours": 3600,
       "domain": "mobile",
       "first": "2011-12",
-      "hours": 931.0,
+      "hours": 3661.1,
       "kind": "platform",
       "last": "2026-09",
-      "level": "professional"
+      "level": "advanced"
     },
     "asp-net-core": {
       "declared_share": 0.0,
-      "display_hours": 100,
+      "display_hours": 420,
       "domain": "backend",
       "first": "2017-10",
-      "hours": 105.9,
+      "hours": 421.9,
       "kind": "platform",
       "last": "2026-08",
       "level": "working"
@@ -5088,21 +6160,21 @@
       "level": "working"
     },
     "bash": {
-      "declared_share": 0.298,
+      "declared_share": 0.297,
       "display_hours": 890,
       "domain": "languages",
       "first": "2014-06",
-      "hours": 892.7,
+      "hours": 893.1,
       "kind": "language",
       "last": "2026-09",
       "level": "professional"
     },
     "blazor": {
       "declared_share": 0.0,
-      "display_hours": 150,
+      "display_hours": 310,
       "domain": "backend",
       "first": "2021-09",
-      "hours": 157.7,
+      "hours": 316.8,
       "kind": "platform",
       "last": "2026-09",
       "level": "working"
@@ -5112,7 +6184,7 @@
       "display_hours": 570,
       "domain": "blockchain",
       "first": "2021-08",
-      "hours": 574.4,
+      "hours": 574.5,
       "kind": "domain",
       "last": "2026-09",
       "level": "professional"
@@ -5128,23 +6200,23 @@
       "level": "professional"
     },
     "c-cpp": {
-      "declared_share": 0.897,
-      "display_hours": 6800,
+      "declared_share": 0.979,
+      "display_hours": 6200,
       "domain": "languages",
       "first": "2006-09",
-      "hours": 6845.6,
+      "hours": 6266.7,
       "kind": "language",
       "last": "2026-09",
       "level": "expert"
     },
     "computer-vision": {
       "declared_share": 1.0,
-      "display_hours": 110,
+      "display_hours": 80,
       "domain": "embedded",
       "first": "2008-09",
-      "hours": 113.4,
+      "hours": 88.2,
       "kind": "domain",
-      "last": "2009-09",
+      "last": "2009-03",
       "level": "working"
     },
     "cpp-cli": {
@@ -5157,12 +6229,22 @@
       "last": "2013-04",
       "level": "working"
     },
+    "cross-platform-architecture": {
+      "declared_share": 0.0,
+      "display_hours": 4900,
+      "domain": "mobile",
+      "first": "2015-02",
+      "hours": 4999.8,
+      "kind": "domain",
+      "last": "2026-09",
+      "level": "advanced"
+    },
     "csharp-dotnet": {
       "declared_share": 0.282,
       "display_hours": 13000,
       "domain": "languages",
       "first": "2006-09",
-      "hours": 13464.9,
+      "hours": 13465.2,
       "kind": "language",
       "last": "2026-09",
       "level": "expert"
@@ -5177,15 +6259,25 @@
       "last": "2025-04",
       "level": null
     },
-    "docker": {
-      "declared_share": 0.194,
-      "display_hours": 270,
-      "domain": "devops",
-      "first": "2020-05",
-      "hours": 278.1,
-      "kind": "platform",
+    "ddd": {
+      "declared_share": 0.0,
+      "display_hours": 110,
+      "domain": "practices",
+      "first": "2016-02",
+      "hours": 113.5,
+      "kind": "domain",
       "last": "2026-09",
       "level": "working"
+    },
+    "docker": {
+      "declared_share": 0.978,
+      "display_hours": 3000,
+      "domain": "devops",
+      "first": "2020-05",
+      "hours": 3006.4,
+      "kind": "platform",
+      "last": "2026-09",
+      "level": "advanced"
     },
     "dotnet-5": {
       "declared_share": 1.0,
@@ -5209,10 +6301,10 @@
     },
     "ef-core": {
       "declared_share": 0.0,
-      "display_hours": 140,
+      "display_hours": 480,
       "domain": "backend",
       "first": "2016-12",
-      "hours": 145.6,
+      "hours": 487.3,
       "kind": "platform",
       "last": "2026-07",
       "level": "working"
@@ -5262,7 +6354,7 @@
       "display_hours": 3500,
       "domain": "embedded",
       "first": "2009-10",
-      "hours": 3574.5,
+      "hours": 3574.6,
       "kind": "domain",
       "last": "2026-09",
       "level": "advanced"
@@ -5278,14 +6370,14 @@
       "level": null
     },
     "ios": {
-      "declared_share": 1.0,
-      "display_hours": 600,
+      "declared_share": 0.173,
+      "display_hours": 3500,
       "domain": "mobile",
       "first": "2011-12",
-      "hours": 607.6,
+      "hours": 3512.0,
       "kind": "platform",
-      "last": "2012-09",
-      "level": "professional"
+      "last": "2026-09",
+      "level": "advanced"
     },
     "java": {
       "declared_share": 0.995,
@@ -5329,12 +6421,12 @@
     },
     "linux": {
       "declared_share": 1.0,
-      "display_hours": 290,
+      "display_hours": 300,
       "domain": "devops",
       "first": "2006-09",
-      "hours": 296.1,
+      "hours": 308.7,
       "kind": "platform",
-      "last": "2009-03",
+      "last": "2009-09",
       "level": "working"
     },
     "llm-api": {
@@ -5352,9 +6444,9 @@
       "display_hours": 80,
       "domain": "languages",
       "first": "2006-09",
-      "hours": 84.6,
+      "hours": 88.2,
       "kind": "language",
-      "last": "2009-03",
+      "last": "2009-09",
       "level": "working"
     },
     "maui": {
@@ -5366,6 +6458,26 @@
       "kind": "platform",
       "last": "2026-09",
       "level": null
+    },
+    "mobile-build-release": {
+      "declared_share": 0.0,
+      "display_hours": 120,
+      "domain": "mobile",
+      "first": "2015-02",
+      "hours": 125.1,
+      "kind": "domain",
+      "last": "2026-09",
+      "level": "working"
+    },
+    "mobile-ui": {
+      "declared_share": 0.0,
+      "display_hours": 580,
+      "domain": "mobile",
+      "first": "2015-04",
+      "hours": 584.1,
+      "kind": "domain",
+      "last": "2026-09",
+      "level": "professional"
     },
     "mqtt": {
       "declared_share": 0.0,
@@ -5385,6 +6497,26 @@
       "hours": 364.0,
       "kind": "domain",
       "last": "2013-03",
+      "level": "working"
+    },
+    "mvp": {
+      "declared_share": 0.0,
+      "display_hours": 0,
+      "domain": "practices",
+      "first": "2015-05",
+      "hours": 4.5,
+      "kind": "domain",
+      "last": "2026-09",
+      "level": null
+    },
+    "mvvm": {
+      "declared_share": 0.0,
+      "display_hours": 230,
+      "domain": "practices",
+      "first": "2015-04",
+      "hours": 232.1,
+      "kind": "domain",
+      "last": "2026-09",
       "level": "working"
     },
     "native-cross-build": {
@@ -5418,11 +6550,11 @@
       "level": null
     },
     "objective-c": {
-      "declared_share": 0.614,
-      "display_hours": 930,
+      "declared_share": 0.381,
+      "display_hours": 1500,
       "domain": "mobile",
       "first": "2011-12",
-      "hours": 933.6,
+      "hours": 1504.7,
       "kind": "language",
       "last": "2025-04",
       "level": "professional"
@@ -5482,7 +6614,7 @@
       "display_hours": 1400,
       "domain": "languages",
       "first": "2018-11",
-      "hours": 1404.5,
+      "hours": 1405.8,
       "kind": "language",
       "last": "2026-09",
       "level": "professional"
@@ -5522,7 +6654,7 @@
       "display_hours": 300,
       "domain": "languages",
       "first": "2006-09",
-      "hours": 303.0,
+      "hours": 306.6,
       "kind": "language",
       "last": "2026-09",
       "level": "working"
@@ -5547,6 +6679,16 @@
       "last": "2010-12",
       "level": "advanced"
     },
+    "tdd": {
+      "declared_share": 1.0,
+      "display_hours": 1300,
+      "domain": "practices",
+      "first": "2025-03",
+      "hours": 1311.8,
+      "kind": "domain",
+      "last": "2026-09",
+      "level": "professional"
+    },
     "testlink": {
       "declared_share": 1.0,
       "display_hours": 170,
@@ -5556,6 +6698,16 @@
       "kind": "platform",
       "last": "2014-02",
       "level": "working"
+    },
+    "tests": {
+      "declared_share": 0.0,
+      "display_hours": 970,
+      "domain": "practices",
+      "first": "2015-02",
+      "hours": 973.8,
+      "kind": "domain",
+      "last": "2026-09",
+      "level": "professional"
     },
     "typescript": {
       "declared_share": 0.0,
@@ -5589,13 +6741,13 @@
     },
     "virtual-machines": {
       "declared_share": 1.0,
-      "display_hours": 20,
+      "display_hours": 1900,
       "domain": "devops",
-      "first": "2026-09",
-      "hours": 26.9,
+      "first": "2014-04",
+      "hours": 1915.0,
       "kind": "platform",
       "last": "2026-09",
-      "level": null
+      "level": "advanced"
     },
     "vmware": {
       "declared_share": 1.0,
@@ -5642,7 +6794,7 @@
       "display_hours": 1500,
       "domain": "mobile",
       "first": "2006-09",
-      "hours": 1516.9,
+      "hours": 1529.5,
       "kind": "platform",
       "last": "2014-02",
       "level": "professional"
@@ -5688,11 +6840,21 @@
       "level": "working"
     },
     "xamarin": {
-      "declared_share": 0.124,
-      "display_hours": 2600,
+      "declared_share": 0.072,
+      "display_hours": 4400,
       "domain": "mobile",
       "first": "2015-02",
-      "hours": 2603.8,
+      "hours": 4462.9,
+      "kind": "platform",
+      "last": "2026-09",
+      "level": "advanced"
+    },
+    "xamarin-forms": {
+      "declared_share": 0.0,
+      "display_hours": 3200,
+      "domain": "mobile",
+      "first": "2015-02",
+      "hours": 3259.8,
       "kind": "platform",
       "last": "2026-09",
       "level": "advanced"

@@ -42,10 +42,15 @@ Rules:
    when a month has neither evidence nor a declared period do the tiers of
    ``data/experiences.json`` apply (``experience_shares``, last fallback,
    reported by the CLI).
-4. **Overlays** (declared): on personal commit days of the listed months, a
-   tech gets the tier share of the day's hours, flagged declared, unless the
-   day's measured share is higher; from ``measured_from`` on, evidence only.
-   Professional hours never receive an overlay.
+4. **Overlays** (declared): a tech gets a tier share (full 1.00, primary
+   0.70, secondary 0.35, incident 0.10) of the hours of the allocation units
+   in scope during listed months, flagged declared, unless the measured share
+   is higher; from ``measured_from`` on, evidence only. Scope is ``personal``
+   (personal commit days), ``pro`` (professional and study hours) or ``all``;
+   a period may carry its own ``scope``, or a ``source`` limiting it to that
+   timeline source's professional hours. A scope string may continue with a
+   free-text note after its keyword (``"all (personal code and ...)"``);
+   ``per period`` means every period states its own scope or source.
 5. **Personal time**: each commit day on which at least one repository is
    personal counts the period's personal budget, with the day's file shares.
    A day with only professional repositories adds nothing: the calendar
@@ -71,7 +76,7 @@ import re
 import sys
 from collections import defaultdict
 from collections.abc import Iterable, Mapping
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from datetime import date
 
 from scripts.activity import timeline as tl
@@ -85,7 +90,9 @@ CLASSES_NAME = "repo-classes.json"
 DECLARED_NAME = "declared.json"
 
 KINDS = ("language", "platform", "domain")
-TIER_WEIGHTS = {"primary": 0.70, "secondary": 0.35, "incident": 0.10}
+TIER_WEIGHTS = {"full": 1.00, "primary": 0.70, "secondary": 0.35, "incident": 0.10}
+SCOPES = ("personal", "pro", "all")
+_SCOPE_RE = re.compile(r"^(personal|pro|all|per period)\b")
 # Highest first; below the last threshold a tech has no level (not shown).
 LEVELS = (("expert", 5000), ("advanced", 1600), ("professional", 500), ("working", 50))
 CONTEXT_KEYS = ("pro", "personal", "study")
@@ -142,8 +149,11 @@ NOTES = (
     "Months of a source without a commit use that source's file counts over "
     "its period, restricted to techs already seen in an own commit by then.",
     "Git is excluded from hours: a tool every commit implies.",
-    "The collector does not distinguish native Xamarin from Xamarin.Forms: "
-    "measured Xamarin hours are reported under 'xamarin'.",
+    "Xamarin is measured at project level: every file of a project "
+    "referencing Xamarin counts for 'xamarin', and for 'xamarin-forms' too "
+    "when the project references Xamarin.Forms.",
+    "tdd hours are declared only; coverage.test_only_commits counts own "
+    "commits touching test files only, as evidence.",
     "The collector does not distinguish ASP.NET Core from ASP.NET Web API 2, "
     "nor EF Core from Entity Framework 6: they are reported under "
     "'asp-net-core' and 'ef-core'.",
@@ -229,6 +239,7 @@ class Day:
     public: bool
     files: int
     file_counts: dict[str, int]
+    test_only_commits: int = 0
 
 
 @dataclass(frozen=True)
@@ -276,7 +287,12 @@ def parse_evidence(data: object) -> dict[str, Day]:
                 raise ValueError(f"{where}: file count of {tech!r} must be an integer")
             if count > files:
                 raise ValueError(f"{where}: file count of {tech!r} exceeds files")
-        days[key] = Day(key, tuple(repos), bool(raw.get("public")), files, counts)
+        test_only = raw.get("test_only_commits", 0)
+        if not _count(test_only):
+            raise ValueError(f"{where}: test_only_commits must be an integer")
+        days[key] = Day(
+            key, tuple(repos), bool(raw.get("public")), files, counts, test_only
+        )
     return days
 
 
@@ -388,10 +404,42 @@ class DeclaredPeriod:
 
 
 @dataclass(frozen=True)
+class OverlayPeriod:
+    start: str
+    end: str | None
+    tier: str
+    scope: str  # personal | pro | all
+    source: str | None = None  # pro hours of this timeline source only
+
+    def applies(self, unit: Unit) -> bool:
+        index = tl._index(unit.month)
+        if index < tl._index(self.start) or (
+            self.end is not None and index > tl._index(self.end)
+        ):
+            return False
+        if self.source is not None and unit.source != self.source:
+            return False
+        if self.scope == "personal":
+            return unit.kind == "personal"
+        if self.scope == "pro":
+            return unit.kind != "personal"
+        return True
+
+
+@dataclass(frozen=True)
 class Overlay:
     tech: str
-    periods: tuple[tuple[str, str, str], ...]  # (start, end, tier)
-    measured_from: str
+    periods: tuple[OverlayPeriod, ...]
+    measured_from: str | None = None
+
+    def share_for(self, unit: Unit) -> float:
+        """The declared share this overlay gives ``unit`` (0 when none)."""
+        if self.measured_from is not None and unit.month >= self.measured_from:
+            return 0.0
+        return max(
+            (TIER_WEIGHTS[p.tier] for p in self.periods if p.applies(unit)),
+            default=0.0,
+        )
 
 
 @dataclass(frozen=True)
@@ -403,15 +451,17 @@ class Declared:
         del as_of  # an open end runs to the timeline's end, which bounds months
         return [p for p in self.periods if p.source == source and p.covers(month)]
 
-    def overlay_shares(self, month: str) -> dict[str, float]:
-        out: dict[str, float] = {}
+    def apply_overlays(self, unit: Unit) -> Unit:
+        """``unit`` with each overlay's share where it beats the measured one."""
+        shares, declared = dict(unit.shares), set(unit.declared)
         for overlay in self.overlays:
-            if month >= overlay.measured_from:
-                continue
-            for start, end, tier in overlay.periods:
-                if start <= month <= end:
-                    out[overlay.tech] = TIER_WEIGHTS[tier]
-        return out
+            share = overlay.share_for(unit)
+            if share > shares.get(overlay.tech, 0.0):
+                shares[overlay.tech] = min(share, 1.0)
+                declared.add(overlay.tech)
+        if declared == set(unit.declared):
+            return unit
+        return replace(unit, shares=shares, declared=frozenset(declared))
 
 
 def _month(value: object, where: str) -> str:
@@ -471,20 +521,42 @@ def _parse_declared_period(raw: object, tech_map: TechMap) -> DeclaredPeriod:
     )
 
 
+def _scope(value: object, where: str) -> str:
+    match = _SCOPE_RE.match(value) if isinstance(value, str) else None
+    if match is None:
+        raise ValueError(
+            f"{where}: scope must start with personal, pro, all or 'per period'"
+        )
+    return match.group(1)
+
+
 def _parse_overlay(raw: object, tech_map: TechMap) -> Overlay:
     if not isinstance(raw, dict):
         raise ValueError("declared: each overlay must be an object")
     tech = _known(str(raw.get("tech")), tech_map, "declared overlay")
     where = f"declared overlay {tech}"
-    periods = tuple(
-        (
-            _month(p.get("start"), where),
-            _month(p.get("end"), where),
-            _tier(p.get("tier"), where),
-        )
-        for p in raw.get("periods", [])
+    default = raw.get("scope")
+    periods = []
+    for p in raw.get("periods", []):
+        start = _month(p.get("start"), where)
+        end = None if p.get("end") is None else _month(p.get("end"), where)
+        tier = _tier(p.get("tier"), where)
+        source = p.get("source")
+        if "scope" in p:
+            scope = _scope(p["scope"], where)
+        elif source is not None:
+            scope = "pro"
+        else:
+            scope = _scope(default, where)
+        if scope == "per period":
+            raise ValueError(f"{where}: a period needs its own scope or source")
+        if source is not None and scope != "pro":
+            raise ValueError(f"{where}: a source limits pro hours only")
+        periods.append(OverlayPeriod(start, end, tier, scope, source))
+    measured = raw.get("measured_from")
+    return Overlay(
+        tech, tuple(periods), None if measured is None else _month(measured, where)
     )
-    return Overlay(tech, periods, _month(raw.get("measured_from"), where))
 
 
 def parse_declared(data: object, tech_map: TechMap) -> Declared:
@@ -560,6 +632,7 @@ class Unit:
     declared: frozenset[str]  # techs whose share was declared, not measured
     period: int
     fallback: str | None = None  # source id when experiences.json tiers apply
+    source: str | None = None  # timeline source of professional/study hours
 
 
 @dataclass
@@ -656,22 +729,19 @@ def build_units(inputs: Inputs) -> list[Unit]:
                     shares = inputs.shares_of(in_month)
                 else:
                     shares = {t: v for t, v in whole.items() if seen[t] <= month}
-                units.append(Unit(month, kind, hours, shares, frozenset(), index))
+                units.append(
+                    Unit(
+                        month, kind, hours, shares, frozenset(), index, None, source.id
+                    )
+                )
 
     for index, day in personal_days:
         budget = tl.budget_for(timeline.periods[index].context)
         hours = tl.personal_hours(budget, [date.fromisoformat(day)])
         if hours > 0:
             shares = inputs.shares_of([day])
-            declared = set()
-            for tech, share in inputs.declared.overlay_shares(day[:7]).items():
-                if share > shares.get(tech, 0.0):
-                    shares[tech] = share
-                    declared.add(tech)
-            units.append(
-                Unit(day[:7], "personal", hours, shares, frozenset(declared), index)
-            )
-    return units
+            units.append(Unit(day[:7], "personal", hours, shares, frozenset(), index))
+    return [inputs.declared.apply_overlays(unit) for unit in units]
 
 
 def _untraced_units(
@@ -688,13 +758,19 @@ def _untraced_units(
             part = hours / len(declared)
         if part > 0:
             shares = period.shares()
-            units.append(Unit(month, kind, part, shares, frozenset(shares), index))
+            units.append(
+                Unit(
+                    month, kind, part, shares, frozenset(shares), index, None, source.id
+                )
+            )
     if declared or hours <= 0:
         return units
     shares = experience_shares(
         experiences_for(source.id), month, inputs.experiences, inputs.tech_map
     )
-    return [Unit(month, kind, hours, shares, frozenset(shares), index, source.id)]
+    return [
+        Unit(month, kind, hours, shares, frozenset(shares), index, source.id, source.id)
+    ]
 
 
 def allocations(units: list[Unit]) -> list[dict[str, float]]:
@@ -782,6 +858,7 @@ def aggregate(inputs: Inputs, catalogue: list[dict]) -> dict:
             "commit_days": len(days),
             "public_days": public,
             "public_share": _r(public / len(days), 4) if days else 0.0,
+            "test_only_commits": sum(d.test_only_commits for d in days.values()),
         },
         "context_totals": {
             k: _r(math.fsum(math.fsum(context[m][k]) for m in context))

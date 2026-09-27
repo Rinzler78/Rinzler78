@@ -277,9 +277,13 @@ def test_parse_declared_reads_periods_and_overlays(tech_map):
         "2007-01",
     ]
     assert len(declared.for_month("freelance-client", "2008-05", "2008-05")) == 1
-    assert declared.overlay_shares("2007-09") == {"ai-driven-development": 0.1}
-    assert declared.overlay_shares("2008-05") == {}
-    assert declared.overlay_shares("2006-01") == {}
+    ai, tdd, docker = declared.overlays
+    assert ai.periods[0].scope == "personal"
+    assert ai.measured_from == "2008-05"
+    assert tdd.periods[0].scope == "pro" and tdd.periods[0].source == "org-b"
+    assert tdd.periods[1].scope == "personal" and tdd.periods[1].end is None
+    assert docker.periods[0].scope == "all"
+    assert hr.TIER_WEIGHTS["full"] == 1.0
 
 
 def test_declared_tier_on_a_language_adds_to_its_share(tech_map):
@@ -341,6 +345,56 @@ def _declared(**overrides) -> dict:
                 "overlays": [
                     {
                         "tech": "docker",
+                        "scope": "everyone",
+                        "periods": [{"start": "2008-01", "end": None, "tier": "full"}],
+                    }
+                ],
+            },
+            "scope",
+        ),
+        (
+            {
+                "version": 1,
+                "periods": [],
+                "overlays": [
+                    {
+                        "tech": "docker",
+                        "scope": "per period",
+                        "periods": [{"start": "2008-01", "end": None, "tier": "full"}],
+                    }
+                ],
+            },
+            "scope",
+        ),
+        (
+            {
+                "version": 1,
+                "periods": [],
+                "overlays": [
+                    {
+                        "tech": "docker",
+                        "scope": "all",
+                        "periods": [
+                            {
+                                "start": "2008-01",
+                                "end": None,
+                                "tier": "full",
+                                "scope": "personal",
+                                "source": "org-b",
+                            }
+                        ],
+                    }
+                ],
+            },
+            "source",
+        ),
+        (
+            {
+                "version": 1,
+                "periods": [],
+                "overlays": [
+                    {
+                        "tech": "docker",
                         "periods": [
                             {"start": "2008-01", "end": "2008-02", "tier": "x"}
                         ],
@@ -380,6 +434,10 @@ def test_parse_evidence_reads_days():
         (lambda d: d["days"].update({"2007-13-01": d["days"]["2007-08-06"]}), "date"),
         (lambda d: d["days"]["2007-08-06"].pop("file_counts"), "file_counts"),
         (lambda d: d["days"]["2007-08-06"].update({"files": -1}), "files"),
+        (
+            lambda d: d["days"]["2007-08-06"].update({"test_only_commits": "x"}),
+            "test_only_commits",
+        ),
         (lambda d: d["days"]["2007-08-06"].update({"files": True}), "files"),
         (
             lambda d: d["days"]["2007-08-06"].update({"file_counts": {"ble": 9}}),
@@ -478,9 +536,12 @@ def test_declared_periods_replace_experience_tiers(doc):
     assert jul["context"]["pro"] == pytest.approx(154.0)
     # A: languages as-is, docker secondary 0.35, git excluded; B: bash only.
     assert jul["techs"] == {"python": 77.0, "docker": 26.95, "bash": 77.0}
+    # docker: org C measured 0.2 share in Jan-Mar; the "all" overlay adds
+    # 0.10 to org D's February (50.4 h), lower than org C's measured share.
     measured = 128.8 * 0.2 + 2 * 0.7 * 168 * 0.2
+    declared = 26.95 + 50.4 * 0.1
     assert doc["techs"]["docker"]["declared_share"] == pytest.approx(
-        26.95 / (26.95 + measured), abs=0.001
+        declared / (declared + measured), abs=0.001
     )
 
 
@@ -513,6 +574,38 @@ def test_months_without_declaration_fall_back_to_experiences(inputs, doc):
         ("school-x", "2007-05"),
         ("school-x", "2007-06"),
     ]
+
+
+def test_source_limited_overlay_on_pro_hours(doc):
+    # tdd primary on org B's 2007-10 only (184 h), full on personal days
+    # from 2008-05 (11 h): never on org C / org D, never in 2007-11.
+    tdd = doc["techs"]["tdd"]
+    assert tdd["hours"] == pytest.approx(184 * 0.7 + 11.0)
+    assert tdd["declared_share"] == 1.0
+    assert "tdd" not in doc["by_month"]["2007-11"]["techs"]
+    assert "tdd" not in doc["by_month"]["2008-01"]["techs"]
+
+
+def test_overlay_period_filters_scope_source_and_months():
+    period = hr.OverlayPeriod("2008-01", "2008-03", "primary", "pro", "org-c")
+    unit = hr.Unit("2008-02", "pro", 10.0, {}, frozenset(), 4, None, "org-c")
+    assert period.applies(unit)
+    assert not period.applies(hr.Unit("2008-02", "pro", 1.0, {}, frozenset(), 4))
+    assert not period.applies(
+        hr.Unit("2008-04", "pro", 1.0, {}, frozenset(), 4, None, "org-c")
+    )
+    everyone = hr.OverlayPeriod("2008-01", None, "full", "all")
+    assert everyone.applies(hr.Unit("2030-01", "study", 1.0, {}, frozenset(), 1))
+
+
+def test_measured_share_wins_over_a_lower_overlay(doc):
+    feb = doc["by_month"]["2008-02"]["techs"]
+    # org C carried docker 0.2 (117.6 h x 0.2) + org D overlay 0.1 (50.4 h).
+    assert feb["docker"] == pytest.approx(117.6 * 0.2 + 50.4 * 0.1)
+
+
+def test_coverage_counts_test_only_commits(doc):
+    assert doc["coverage"]["test_only_commits"] == 1
 
 
 def test_ai_overlay_on_personal_days_only(doc):
@@ -580,6 +673,7 @@ def test_coverage_and_as_of(doc):
         "commit_days": 8,
         "public_days": 3,
         "public_share": 0.375,
+        "test_only_commits": 1,
     }
     assert doc["activity_as_of"] == "2008-05-02"
     assert doc["version"] == 1

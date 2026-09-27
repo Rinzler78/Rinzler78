@@ -134,7 +134,18 @@ the author's machine only: it reads `$PROFILE_PRIVATE_DIR/timeline.json`,
 mapped to `{"context": "pro" | "personal", "source": <timeline source id>}`;
 unclassified repositories count as personal).
 
-The collector (`python -m scripts.activity.evidence`) keeps only repositories
+The collector (`python -m scripts.activity.evidence`, vocabulary v2) gives
+each file the techs of its language, path rules and line signatures, plus
+those of its nearest enclosing project file (`.csproj`, `packages.config`,
+`build.gradle`, `package.json`, `pyproject.toml`): a file of a Xamarin.iOS
+project counts for xamarin and ios as well as C#. Project rules can be scoped
+to some files (MVVM frameworks: views and view models) or to multi-platform
+solutions (shared code: cross-platform-architecture). A project holding the
+Model / View / ViewModel triad counts those layers for mvvm. A `.h` header is
+Objective-C when its directory or build root holds `.m`/`.mm` files. Days
+also record `test_only_commits`.
+
+The collector keeps only repositories
 owned by the author or by a company he worked for: `$PROFILE_PRIVATE_DIR/owners.json`
 lists allowed key prefixes (`{"allow": ["github.com/<owner>/", "local:"]}`);
 other repositories are dropped before deduplication and listed in
@@ -161,9 +172,12 @@ other repositories are dropped before deduplication and listed in
   `within_study_budget` project takes half of the study months it covers).
   `pro_hours_per_weekday` overrides the context budget for those months, in
   `hours.py` (the timeline keeps its budgets). Hours are flagged `declared`.
-- `overlays` declare a tech on personal commit days of listed months (tier
-  share of the day's hours) until `measured_from`; professional hours never
-  receive one.
+- `overlays` declare a tech (AI-assisted development, Docker, TDD...) as a
+  tier share (full 1.00, primary 0.70, secondary 0.35, incident 0.10) of the
+  hours in scope during listed months: `personal` (commit days), `pro`
+  (professional and study hours) or `all`, per overlay or per period; a period
+  with a `source` applies to that source's professional hours only. The
+  measured share wins when higher; `measured_from` ends a declaration.
 - Last fallback, for a month with neither evidence nor a declared period:
   the tiers of `data/experiences.json` (`SOURCE_EXPERIENCES` maps timeline ids
   to experience ids; declared languages share 100 % pro rata). The CLI lists

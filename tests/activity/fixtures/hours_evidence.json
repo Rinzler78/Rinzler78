@@ -1,13 +1,100 @@
 {
-  "summary": {"note": "Synthetic sample, not real data."},
+  "summary": {
+    "note": "Synthetic sample, not real data."
+  },
   "days": {
-    "2007-08-06": {"repos": ["git.org-b/app"], "commits": 2, "public": false, "files": 5, "file_counts": {"csharp": 4, "dotnet": 1, "ble": 2}},
-    "2007-08-11": {"repos": ["github.com/me/tool"], "commits": 1, "public": true, "files": 2, "file_counts": {"python": 1}},
-    "2007-09-03": {"repos": ["git.org-b/app", "github.com/me/tool"], "commits": 3, "public": true, "files": 4, "file_counts": {"python": 2, "csharp": 2}},
-    "2008-01-15": {"repos": ["git.org-c/lib"], "commits": 1, "public": false, "files": 5, "file_counts": {"c-cpp": 3, "docker": 1}},
-    "2008-02-05": {"repos": ["git.org-d/web"], "commits": 1, "public": false, "files": 2, "file_counts": {"typescript": 2}},
-    "2008-04-10": {"repos": ["git.org-b/app"], "commits": 1, "public": false, "files": 1, "file_counts": {"csharp": 1}},
-    "2008-04-12": {"repos": ["unknown.host/x"], "commits": 1, "public": false, "files": 0, "file_counts": {}},
-    "2008-05-02": {"repos": ["github.com/me/tool"], "commits": 4, "public": true, "files": 10, "file_counts": {"python": 7, "ai-assisted": 3}}
+    "2007-08-06": {
+      "repos": [
+        "git.org-b/app"
+      ],
+      "commits": 2,
+      "public": false,
+      "files": 5,
+      "file_counts": {
+        "csharp": 4,
+        "dotnet": 1,
+        "ble": 2
+      }
+    },
+    "2007-08-11": {
+      "repos": [
+        "github.com/me/tool"
+      ],
+      "commits": 1,
+      "public": true,
+      "files": 2,
+      "file_counts": {
+        "python": 1
+      }
+    },
+    "2007-09-03": {
+      "repos": [
+        "git.org-b/app",
+        "github.com/me/tool"
+      ],
+      "commits": 3,
+      "public": true,
+      "files": 4,
+      "file_counts": {
+        "python": 2,
+        "csharp": 2
+      }
+    },
+    "2008-01-15": {
+      "repos": [
+        "git.org-c/lib"
+      ],
+      "commits": 1,
+      "public": false,
+      "files": 5,
+      "file_counts": {
+        "c-cpp": 3,
+        "docker": 1
+      }
+    },
+    "2008-02-05": {
+      "repos": [
+        "git.org-d/web"
+      ],
+      "commits": 1,
+      "public": false,
+      "files": 2,
+      "file_counts": {
+        "typescript": 2
+      }
+    },
+    "2008-04-10": {
+      "repos": [
+        "git.org-b/app"
+      ],
+      "commits": 1,
+      "public": false,
+      "files": 1,
+      "file_counts": {
+        "csharp": 1
+      }
+    },
+    "2008-04-12": {
+      "repos": [
+        "unknown.host/x"
+      ],
+      "commits": 1,
+      "public": false,
+      "files": 0,
+      "file_counts": {}
+    },
+    "2008-05-02": {
+      "repos": [
+        "github.com/me/tool"
+      ],
+      "commits": 4,
+      "public": true,
+      "files": 10,
+      "file_counts": {
+        "python": 7,
+        "ai-assisted": 3
+      },
+      "test_only_commits": 1
+    }
   }
 }
