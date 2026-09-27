@@ -868,21 +868,55 @@ def test_mvvm_triad_marks_its_three_layers(make_repo, ids, voc) -> None:
     assert no_triad.units == {"csharp": 1}
 
 
-def test_shared_code_of_a_multi_platform_solution(make_repo, ids, voc) -> None:
-    core = {"Core/Core.csproj": "<TargetFramework>netstandard2.0</TargetFramework>\n"}
-    multi = _only(
+def test_ordinary_shared_code_is_not_cross_platform(make_repo, ids, voc) -> None:
+    solution = {
+        "Core/Core.csproj": "<TargetFramework>netstandard2.0</TargetFramework>\n",
+        "App.Droid/App.Droid.csproj": "<Project/>\n",
+    }
+    commit = _only(
+        make_repo, ids, voc, "shared", solution, {"Core/Clock.cs": "class Clock {}\n"}
+    )
+    assert commit.units == {"csharp": 1}
+
+
+def test_interface_implemented_on_both_platforms(make_repo, ids, voc) -> None:
+    both = {
+        "App.iOS/Services/Clock.cs": "public class Clock : NSObject, IClock {}\n",
+        "App.Droid/Clock.cs": "class Clock : Java.Lang.Object, IClock\n{\n}\n",
+        "App.Droid/Other.cs": "class Other : IOther {}\n",
+    }
+    defined = _only(
         make_repo,
         ids,
         voc,
-        "multi",
-        {**core, "App.Droid/App.Droid.csproj": "<Project/>\n"},
-        {"Core/Clock.cs": "class Clock {}\n"},
+        "iface",
+        both,
+        {"Core/IClock.cs": "public interface IClock { }\n"},
     )
-    assert multi.units == {"csharp": 1, "cross-platform-architecture": 1}
-    single = _only(
-        make_repo, ids, voc, "single", core, {"Core/Clock.cs": "class C {}\n"}
+    assert defined.units == {"csharp": 1, "cross-platform-architecture": 1}
+    one_side = _only(
+        make_repo,
+        ids,
+        voc,
+        "iface1",
+        both,
+        {"Core/IOther.cs": "public interface IOther { }\n"},
     )
-    assert single.units == {"csharp": 1}
+    assert one_side.units == {"csharp": 1}
+
+
+def test_build_scripts_and_ci_of_mobile_repos(make_repo, ids, voc) -> None:
+    mobile = {"App.Droid/App.Droid.csproj": "<Project/>\n"}
+    extra = {
+        "buildAll.sh": "msbuild App.sln\n",
+        "scripts/lint.sh": "ruff check\n",
+        "scripts/ship.sh": "xcrun altool --upload-app app.ipa\n",
+        ".github/workflows/ci.yml": "on: push\n",
+    }
+    commit = _only(make_repo, ids, voc, "mobile", mobile, extra)
+    assert commit.units["mobile-build-release"] == 3  # not scripts/lint.sh
+    plain = _only(make_repo, ids, voc, "plain-ci", {"a.py": "x\n"}, extra)
+    assert "mobile-build-release" not in plain.units
 
 
 def test_unreadable_project_file_adds_nothing(make_repo, ids, voc) -> None:
@@ -925,13 +959,61 @@ def test_unreadable_project_file_adds_nothing(make_repo, ids, voc) -> None:
             ["DependencyService.Get<IApi>()"],
             "cross-platform-architecture",
         ),
-        ("App/Vm.cs", ["class V : INotifyPropertyChanged {}"], "mvvm"),
+        (
+            "App/HomePageController.cs",
+            ["public ICommand Save { get; }", "OnPropertyChanged();"],
+            "mvvm",
+        ),
+        (
+            "App/Vm.cs",
+            ["Refresh = new Command(Load);", "PropertyChanged?.Invoke(this, e);"],
+            "mvvm",
+        ),
+        (
+            "App/HomeController.cs",
+            ["class HomeController : BasePageController<HomePage>"],
+            "mvvm",
+        ),
+        ("App/Model/ItemUIModel.cs", ["OnPropertyChanged(nameof(Name));"], "mvvm"),
+        ("App/Api/StatusModel.cs", ["RaisePropertyChanged();"], "mvvm"),
+        (
+            "App/Api.cs",
+            ["DependencyService.Register<Api>();"],
+            "cross-platform-architecture",
+        ),
+        (
+            "App/Renderers.cs",
+            ["[assembly: ExportRenderer(typeof(A), typeof(B))]"],
+            "cross-platform-architecture",
+        ),
+        ("App/Paths.cs", ["#if __IOS__"], "cross-platform-architecture"),
+        ("Shared/Shared.shproj", ["<Project/>"], "cross-platform-architecture"),
+        (
+            "Core/Core.csproj",
+            ["<TargetFrameworks>netstandard2.0;net6.0</TargetFrameworks>"],
+            "cross-platform-architecture",
+        ),
         ("Shared/App.cs", ["using Xamarin.Forms;"], "xamarin-forms"),
         ("App/Page.xaml", ['<Label Text="{Binding Name}"/>'], "mvvm"),
     ],
 )
 def test_file_level_rules(voc: ev.Vocabulary, path, lines, tech) -> None:
     assert tech in voc.analyze_patch({path: lines})
+
+
+@pytest.mark.parametrize(
+    ("path", "lines"),
+    [
+        ("App/Vm.cs", ["class V : INotifyPropertyChanged {}"]),
+        ("App/Vm.cs", ["public ICommand Save { get; }"]),
+        ("App/Services/Sync.cs", ["OnPropertyChanged();"]),
+        ("Core/Core.csproj", ["<TargetFramework>netstandard2.0</TargetFramework>"]),
+    ],
+)
+def test_behavior_rules_need_their_evidence(voc: ev.Vocabulary, path, lines) -> None:
+    units = voc.analyze_patch({path: lines})
+    assert "mvvm" not in units
+    assert "cross-platform-architecture" not in units
 
 
 def test_aggregate_counts_test_only_commits() -> None:
@@ -948,9 +1030,16 @@ def test_aggregate_counts_test_only_commits() -> None:
         {"project_files": "x", "project_rules": [{"tech": "t"}]},
         {
             "project_files": "x",
-            "project_rules": [{"tech": "t", "content": ["x"], "requires": "moon"}],
+            "conjunctions": [{"tech": "t", "all": "x"}],
         },
         {"project_files": "x", "project_rules": "no"},
+        {"conjunctions": "no"},
+        {"conjunctions": [{"tech": "t", "all": []}]},
+        {"context_rules": "no"},
+        {"context_rules": [{"tech": "t", "requires": "moon", "path": "x"}]},
+        {"context_rules": [{"tech": "t", "requires": "mobile-repo"}]},
+        {"platform_sides": {"ios": "x"}},
+        {"platform_sides": "no"},
     ],
 )
 def test_vocabulary_rejects_malformed_project_rules(extra) -> None:

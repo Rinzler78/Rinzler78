@@ -33,10 +33,20 @@ Project context (vocabulary version 2)
     ``pyproject.toml``...), read from the references and target frameworks it
     declares (``project_rules``): a file of a Xamarin.iOS project counts for
     xamarin and ios as well as for its language. A rule may be limited to
-    some files of the project (``scope``) or to projects of a multi-platform
-    solution (``requires: multi-platform``: a sibling ``*.iOS`` / ``*.Droid``
-    project). A project whose tree holds the Model / View / ViewModel triad
-    counts the files of those three layers for mvvm. A ``.h`` header is
+    some files of the project (``scope``). A project whose tree holds the
+    Model / View / ViewModel triad counts the files of those three layers for
+    mvvm.
+
+Behavior rules (vocabulary version 3)
+    ``conjunctions`` need every group of signatures to match the added lines
+    (a file exposing commands AND raising PropertyChanged is MVVM, whatever
+    its name). An ``interface IName`` definition counts for the platform
+    abstraction when classes of both a ``*.iOS`` and a ``*.Droid`` /
+    ``*.Android`` project implement ``IName`` (``platform_sides``).
+    ``context_rules`` apply to repositories holding a mobile project
+    (``mobile_markers``): build and publish scripts touching build, sign,
+    ipa, apk, publish... (``keywords``, in the path or the added lines) and CI
+    pipelines count for mobile-build-release. A ``.h`` header is
     Objective-C when its directory or its build root (nearest ``.xcodeproj``,
     project file, ``CMakeLists.txt``, ``Makefile`` or ``.vcxproj``, else the
     repository) holds ``.m`` / ``.mm`` files, C/C++ otherwise. Everything is
@@ -176,10 +186,71 @@ class ProjectRule:
     content: re.Pattern[str]
     files: re.Pattern[str] | None
     scope: re.Pattern[str] | None
-    requires: str | None
 
 
-PROJECT_REQUIREMENTS = ("multi-platform",)
+@dataclass(frozen=True)
+class Conjunction:
+    tech: str
+    groups: tuple[re.Pattern[str], ...]
+
+
+@dataclass(frozen=True)
+class ContextRule:
+    tech: str
+    requires: str
+    path: re.Pattern[str]
+    keywords: re.Pattern[str] | None
+
+
+CONTEXT_REQUIREMENTS = ("mobile-repo",)
+
+
+def _conjunctions(raw: object) -> tuple[Conjunction, ...]:
+    if not isinstance(raw, list):
+        raise ValueError("conjunctions must be a list")
+    out = []
+    for rule in raw:
+        groups = rule.get("all") if isinstance(rule, dict) else None
+        if not isinstance(groups, list) or not groups:
+            raise ValueError("each conjunction needs a tech and non-empty 'all'")
+        tech = str(rule.get("tech"))
+        out.append(
+            Conjunction(
+                tech, tuple(_combine(g, f"conjunctions.{tech}") for g in groups)
+            )
+        )
+    return tuple(out)
+
+
+def _context_rules(raw: object) -> tuple[ContextRule, ...]:
+    if not isinstance(raw, list):
+        raise ValueError("context_rules must be a list")
+    out = []
+    for rule in raw:
+        if (
+            not isinstance(rule, dict)
+            or not {"tech", "requires", "path"} <= rule.keys()
+        ):
+            raise ValueError("each context rule needs a tech, requires and path")
+        if rule["requires"] not in CONTEXT_REQUIREMENTS:
+            raise ValueError(f"context rule requires unknown {rule['requires']!r}")
+        out.append(
+            ContextRule(
+                str(rule["tech"]),
+                rule["requires"],
+                _patterns([rule["path"]], "context rule path")[0],
+                _optional_pattern(rule.get("keywords"), "context rule keywords"),
+            )
+        )
+    return tuple(out)
+
+
+def _platform_sides(raw: object) -> dict[str, re.Pattern[str]]:
+    if raw is None:
+        return {}
+    if not isinstance(raw, dict) or set(raw) != {"ios", "android"}:
+        raise ValueError("platform_sides needs exactly 'ios' and 'android'")
+    return {side: _patterns([rx], "platform_sides")[0] for side, rx in raw.items()}
 
 
 def _project_rules(raw: object) -> tuple[ProjectRule, ...]:
@@ -189,9 +260,6 @@ def _project_rules(raw: object) -> tuple[ProjectRule, ...]:
     for rule in raw:
         if not isinstance(rule, dict) or not {"tech", "content"} <= rule.keys():
             raise ValueError("each project rule needs a tech and content")
-        requires = rule.get("requires")
-        if requires is not None and requires not in PROJECT_REQUIREMENTS:
-            raise ValueError(f"project rule requires unknown {requires!r}")
         files, scope = rule.get("files"), rule.get("scope")
         rules.append(
             ProjectRule(
@@ -199,7 +267,6 @@ def _project_rules(raw: object) -> tuple[ProjectRule, ...]:
                 content=_combine(rule["content"], f"project_rules.{rule['tech']}"),
                 files=None if files is None else _patterns([files], "files")[0],
                 scope=None if scope is None else _patterns([scope], "scope")[0],
-                requires=requires,
             )
         )
     return tuple(rules)
@@ -224,7 +291,11 @@ class Vocabulary:
     signatures: dict[str, re.Pattern[str]]
     project_files: re.Pattern[str] | None = None
     project_rules: tuple[ProjectRule, ...] = ()
-    platform_projects: re.Pattern[str] | None = None
+    conjunctions: tuple[Conjunction, ...] = ()
+    context_rules: tuple[ContextRule, ...] = ()
+    mobile_markers: re.Pattern[str] | None = None
+    platform_sides: dict[str, re.Pattern[str]] = field(default_factory=dict)
+    platform_interface_tech: str | None = None
 
     @classmethod
     def from_dict(cls, raw: object) -> Vocabulary:
@@ -263,9 +334,13 @@ class Vocabulary:
             },
             project_files=_optional_pattern(raw.get("project_files"), "project_files"),
             project_rules=_project_rules(raw.get("project_rules", [])),
-            platform_projects=_optional_pattern(
-                raw.get("platform_projects"), "platform_projects"
+            conjunctions=_conjunctions(raw.get("conjunctions", [])),
+            context_rules=_context_rules(raw.get("context_rules", [])),
+            mobile_markers=_optional_pattern(
+                raw.get("mobile_markers"), "mobile_markers"
             ),
+            platform_sides=_platform_sides(raw.get("platform_sides")),
+            platform_interface_tech=raw.get("platform_interface_tech"),
         )
 
     def is_excluded(self, path: str) -> bool:
@@ -295,8 +370,11 @@ class Vocabulary:
             for tech, regex in self.signatures.items():
                 if any(regex.search(ln) for ln in added):
                     techs.add(tech)
+            for rule in self.conjunctions:
+                if all(any(rx.search(ln) for ln in added) for rx in rule.groups):
+                    techs.add(rule.tech)
         if context is not None:
-            techs |= context.project_techs(path)
+            techs |= context.project_techs(path, added)
         return techs
 
     def file_techs(
@@ -345,6 +423,9 @@ HEADER_SUFFIXES = (".h",)
 OBJC_SUFFIXES = (".m", ".mm")
 _BUILD_ROOTS = re.compile(r"(?i)(\.xcodeproj|\.vcxproj|^CMakeLists\.txt|^Makefile)$")
 MAX_PROJECT_FILE = 512 * 1024
+_CLASS_BASES = re.compile(r"\bclass\s+\w+(?:<[^>]*>)?\s*:\s*([^{\n]+)")
+_INTERFACE_NAME = re.compile(r"\b(I[A-Z]\w*)\b")
+_INTERFACE_DEF = re.compile(r"\binterface\s+(I[A-Z]\w*)\b")
 TRIAD_DIRS = {"models": "model", "views": "view", "viewmodels": "viewmodel"}
 
 
@@ -373,7 +454,8 @@ class ContextCache:
     def __init__(self) -> None:
         self.entries: dict[str, list[tuple[str, bool, object]]] = {}
         self.objc: dict[str, bool] = {}
-        self.platform: dict[str, bool] = {}
+        self.found: dict[str, list] = {}
+        self.implemented: dict[str, frozenset[str]] = {}
         self.triad: dict[str, frozenset[str]] = {}
         self.content: dict[str, str | None] = {}
 
@@ -463,20 +545,48 @@ class ProjectContext:
                 self.cache.content[key] = None
         return self.cache.content[key]
 
-    def _has_platform(self, tree: pygit2.Tree, depth: int = 2) -> bool:
-        key = f"{tree.id}:{depth}"
-        if key not in self.cache.platform:
-            pattern = self.voc.platform_projects
-            found = False
+    def _find(self, tree: pygit2.Tree, pattern: re.Pattern[str], depth: int) -> list:
+        """``(name, is_dir, oid)`` entries matching ``pattern`` down to ``depth``."""
+        key = f"{tree.id}:{pattern.pattern}:{depth}"
+        if key not in self.cache.found:
+            found = []
             for name, is_dir, oid in self._entries(tree):
-                if pattern is not None and pattern.search(name):
-                    found = True
-                elif is_dir and depth > 0:
-                    found = self._has_platform(self._subtree(oid), depth - 1)
-                if found:
-                    break
-            self.cache.platform[key] = found
-        return self.cache.platform[key]
+                if pattern.search(name):
+                    found.append((name, is_dir, oid))
+                if is_dir and depth > 0:
+                    found.extend(self._find(self._subtree(oid), pattern, depth - 1))
+            self.cache.found[key] = found
+        return self.cache.found[key]
+
+    def is_mobile_repo(self) -> bool:
+        markers = self.voc.mobile_markers
+        return markers is not None and bool(self._find(self.tree, markers, 3))
+
+    def _implemented(self, tree: pygit2.Tree) -> frozenset[str]:
+        """Interface names (``I[A-Z]...``) implemented by classes under ``tree``."""
+        key = str(tree.id)
+        if key not in self.cache.implemented:
+            names: set[str] = set()
+            for name, is_dir, oid in self._entries(tree):
+                if is_dir:
+                    names |= self._implemented(self._subtree(oid))
+                elif name.endswith(".cs"):
+                    text = self._text(oid) or ""
+                    for bases in _CLASS_BASES.findall(text):
+                        names.update(_INTERFACE_NAME.findall(bases))
+            self.cache.implemented[key] = frozenset(names)
+        return self.cache.implemented[key]
+
+    def implemented_on_both_sides(self, interface: str) -> bool:
+        for pattern in self.voc.platform_sides.values():
+            dirs = [
+                self._subtree(oid)
+                for _, is_dir, oid in self._find(self.tree, pattern, 3)
+                if is_dir
+            ]
+            if not any(interface in self._implemented(d) for d in dirs):
+                return False
+        return True
 
     def _triad(self, tree: pygit2.Tree) -> frozenset[str]:
         key = str(tree.id)
@@ -491,9 +601,30 @@ class ProjectContext:
             self.cache.triad[key] = frozenset(roles)
         return self.cache.triad[key]
 
-    def project_techs(self, path: str) -> set[str]:
-        """Techs a file inherits from its nearest enclosing project."""
+    def _context_rule_techs(self, path: str, added: list[str] | None) -> set[str]:
         techs: set[str] = set()
+        for rule in self.voc.context_rules:
+            if not rule.path.search(path) or not self.is_mobile_repo():
+                continue
+            keywords = rule.keywords
+            if (
+                keywords is None
+                or keywords.search(path)
+                or any(keywords.search(ln) for ln in added or ())
+            ):
+                techs.add(rule.tech)
+        tech = self.voc.platform_interface_tech
+        if tech and added and self.voc.platform_sides:
+            for line in added:
+                match = _INTERFACE_DEF.search(line)
+                if match and self.implemented_on_both_sides(match.group(1)):
+                    techs.add(tech)
+                    break
+        return techs
+
+    def project_techs(self, path: str, added: list[str] | None = None) -> set[str]:
+        """Techs a file inherits from its project, repository and platforms."""
+        techs = self._context_rule_techs(path, added)
         pf = self.voc.project_files
         project = self._nearest(path, pf.search) if pf is not None else None
         directory, tree = project if project else ("", self.tree)
@@ -506,7 +637,6 @@ class ProjectContext:
                 techs.add("mvvm")
         if project is None:
             return techs
-        parent = self._dir(_parent(directory))
         for name, _, oid in self._entries(tree):
             if not pf.search(name):
                 continue
@@ -517,10 +647,6 @@ class ProjectContext:
                 if rule.files is not None and not rule.files.search(name):
                     continue
                 if rule.scope is not None and not rule.scope.search(relative):
-                    continue
-                if rule.requires == "multi-platform" and not (
-                    parent is not None and self._has_platform(parent)
-                ):
                     continue
                 if rule.content.search(text):
                     techs.add(rule.tech)

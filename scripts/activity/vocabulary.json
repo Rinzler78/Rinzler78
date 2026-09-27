@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "excluded": [
     "(?i)(^|/)(bin|obj|node_modules|vendor|bower_components|Pods|\\.venv|venv|site-packages|__pycache__)/",
     "(?i)\\.designer\\.cs$",
@@ -195,6 +195,24 @@
     {
       "pattern": "(?i)(^|/)[^/]*\\.Domain/(.*/)?Entities/",
       "tech": "ddd"
+    },
+    {
+      "pattern": "(?i)((^|/)(Models?|UiModels?)/[^/]+|Model)\\.cs$",
+      "tech": "mvvm",
+      "lines": [
+        "\\b(OnPropertyChanged|RaisePropertyChanged|NotifyPropertyChanged|SetProperty)\\s*[(<]|PropertyChanged\\?\\.Invoke|PropertyChanged\\s*\\(\\s*this"
+      ]
+    },
+    {
+      "pattern": "(?i)\\.(shproj|projitems)$",
+      "tech": "cross-platform-architecture"
+    },
+    {
+      "pattern": "(?i)\\.csproj$",
+      "tech": "cross-platform-architecture",
+      "lines": [
+        "<TargetFrameworks>"
+      ]
     }
   ],
   "signatures": {
@@ -354,7 +372,8 @@
     ],
     "cross-platform-architecture": [
       "DependencyService\\.(Get|Register)",
-      "\\[assembly:\\s*(Xamarin\\.Forms\\.)?Dependency\\("
+      "\\[assembly:\\s*(Xamarin\\.Forms\\.)?(Dependency|ExportRenderer)\\(",
+      "^\\s*#\\s*(el)?if\\b.*__(IOS|ANDROID|MOBILE)__"
     ],
     "tests": [
       "\\[(Test|TestFixture|TestCase|Fact|Theory|TestMethod|TestClass)\\b",
@@ -363,9 +382,8 @@
       "^\\s*import\\s+pytest\\b|^\\s*from\\s+unittest\\b|^\\s*import\\s+unittest\\b"
     ],
     "mvvm": [
-      "\\bINotifyPropertyChanged\\b",
-      "\\b(RelayCommand|DelegateCommand|ICommand|MvxViewModel|BindableBase|ObservableObject)\\b",
-      "\\{Binding\\b"
+      "\\{Binding\\b",
+      "\\bclass\\s+\\w+(<[^>]*>)?\\s*:[^{]*<\\s*\\w*Page\\s*>"
     ],
     "mvp": [
       "\\binterface\\s+I\\w+View\\b"
@@ -451,24 +469,39 @@
         "ReactiveUI"
       ],
       "scope": "(?i)(\\.xaml$|ViewModel[^/]*$|(^|/)(Views|Pages|ViewModels)/)"
-    },
+    }
+  ],
+  "conjunctions": [
     {
-      "tech": "cross-platform-architecture",
-      "requires": "multi-platform",
-      "files": "(?i)\\.(shproj|projitems)$",
-      "content": [
-        "."
-      ]
-    },
-    {
-      "tech": "cross-platform-architecture",
-      "requires": "multi-platform",
-      "files": "(?i)\\.csproj$",
-      "content": [
-        "<TargetFrameworks>",
-        "netstandard"
+      "tech": "mvvm",
+      "all": [
+        [
+          "\\b(public|protected|internal)\\s+(I?\\w*Command)\\b",
+          "\\bnew\\s+\\w*Command\\s*[(<]"
+        ],
+        [
+          "\\b(OnPropertyChanged|RaisePropertyChanged|NotifyPropertyChanged|SetProperty)\\s*[(<]|PropertyChanged\\?\\.Invoke|PropertyChanged\\s*\\(\\s*this"
+        ]
       ]
     }
   ],
-  "platform_projects": "(?i)^[^/]*\\.(ios|droid|android)(\\.csproj)?$"
+  "mobile_markers": "(?i)(^[^/]*\\.(ios|droid|android)(\\.csproj)?$|\\.xcodeproj$|^AndroidManifest\\.xml$)",
+  "platform_sides": {
+    "ios": "(?i)\\.ios$",
+    "android": "(?i)\\.(droid|android)$"
+  },
+  "platform_interface_tech": "cross-platform-architecture",
+  "context_rules": [
+    {
+      "tech": "mobile-build-release",
+      "requires": "mobile-repo",
+      "path": "(?i)((^|/)azure-pipelines[^/]*\\.ya?ml|^\\.github/workflows/[^/]+\\.ya?ml|(^|/)appveyor\\.ya?ml|(^|/)bitrise\\.ya?ml|(^|/)\\.gitlab-ci\\.ya?ml|(^|/)fastlane/.*)$"
+    },
+    {
+      "tech": "mobile-build-release",
+      "requires": "mobile-repo",
+      "path": "(?i)(\\.(sh|ps1|bat|cake)|(^|/)Makefile|(^|/)(build|scripts)/[^/]+)$",
+      "keywords": "(?i)build|archive|sign|(?<![a-z])(ipa|apk|aab)(?![a-z])|publish|deploy|testflight|play\\s*store|appcenter"
+    }
+  ]
 }

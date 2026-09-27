@@ -139,9 +139,15 @@ each file the techs of its language, path rules and line signatures, plus
 those of its nearest enclosing project file (`.csproj`, `packages.config`,
 `build.gradle`, `package.json`, `pyproject.toml`): a file of a Xamarin.iOS
 project counts for xamarin and ios as well as C#. Project rules can be scoped
-to some files (MVVM frameworks: views and view models) or to multi-platform
-solutions (shared code: cross-platform-architecture). A project holding the
-Model / View / ViewModel triad counts those layers for mvvm. A `.h` header is
+to some files (MVVM frameworks: views and view models). A project holding the Model / View / ViewModel triad counts those
+layers for mvvm. Vocabulary v3 adds behavior rules: a file both exposing
+commands and raising PropertyChanged, a class generic over a Page type, or a
+model raising PropertyChanged counts for mvvm whatever its name;
+cross-platform-architecture counts only files defining the platform
+abstraction (an interface implemented in both an iOS and an Android project,
+DependencyService / ExportRenderer / platform `#if` lines, multi-target or
+shared project files); in repositories holding a mobile project, build and
+publish scripts and CI pipelines count for mobile-build-release. A `.h` header is
 Objective-C when its directory or build root holds `.m`/`.mm` files. Days
 also record `test_only_commits`.
 

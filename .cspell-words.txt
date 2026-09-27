@@ -241,3 +241,9 @@ viewmodel
 viewmodels
 xcodeproj
 xunit
+altool
+msbuild
+nameof
+playstore
+testflight
+xcrun

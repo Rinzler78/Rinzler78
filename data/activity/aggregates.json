@@ -2126,14 +2126,14 @@
         "devops": 28.0,
         "embedded": 3.3,
         "languages": 53.16,
-        "mobile": 122.61,
+        "mobile": 114.99,
         "practices": 2.87
       },
       "techs": {
         "android": 30.95,
         "bash": 1.0,
         "bluetooth": 0.07,
-        "cross-platform-architecture": 37.14,
+        "cross-platform-architecture": 6.21,
         "csharp-dotnet": 51.29,
         "gps": 3.23,
         "ios": 23.31,
@@ -2162,7 +2162,7 @@
       "techs": {
         "android": 100.77,
         "bluetooth": 0.27,
-        "cross-platform-architecture": 67.43,
+        "cross-platform-architecture": 4.75,
         "csharp-dotnet": 137.02,
         "gps": 2.43,
         "ios": 99.27,
@@ -2190,7 +2190,7 @@
       "techs": {
         "android": 44.28,
         "bluetooth": 0.08,
-        "cross-platform-architecture": 53.18,
+        "cross-platform-architecture": 4.19,
         "csharp-dotnet": 81.24,
         "gps": 0.87,
         "ios": 53.18,
@@ -2221,7 +2221,7 @@
       "techs": {
         "android": 49.42,
         "bluetooth": 0.5,
-        "cross-platform-architecture": 70.86,
+        "cross-platform-architecture": 9.92,
         "csharp-dotnet": 86.0,
         "gps": 3.33,
         "ios": 41.84,
@@ -2253,7 +2253,7 @@
       "techs": {
         "android": 17.54,
         "bluetooth": 0.08,
-        "cross-platform-architecture": 28.45,
+        "cross-platform-architecture": 2.8,
         "csharp-dotnet": 37.8,
         "gps": 0.87,
         "ios": 18.61,
@@ -2283,7 +2283,7 @@
       "techs": {
         "android": 18.33,
         "bluetooth": 0.08,
-        "cross-platform-architecture": 29.74,
+        "cross-platform-architecture": 2.93,
         "csharp-dotnet": 39.52,
         "gps": 2.11,
         "ios": 25.31,
@@ -2312,7 +2312,7 @@
       "techs": {
         "android": 54.4,
         "bluetooth": 0.46,
-        "cross-platform-architecture": 59.56,
+        "cross-platform-architecture": 5.88,
         "csharp-dotnet": 77.08,
         "gps": 2.88,
         "ios": 48.26,
@@ -2336,13 +2336,13 @@
         "devops": 30.8,
         "embedded": 3.57,
         "languages": 74.24,
-        "mobile": 176.0,
+        "mobile": 149.49,
         "practices": 2.17
       },
       "techs": {
         "android": 48.81,
         "bluetooth": 0.47,
-        "cross-platform-architecture": 59.56,
+        "cross-platform-architecture": 4.95,
         "csharp-dotnet": 74.24,
         "gps": 3.09,
         "ios": 41.77,
@@ -2366,13 +2366,13 @@
         "devops": 30.8,
         "embedded": 1.64,
         "languages": 76.39,
-        "mobile": 173.93,
+        "mobile": 146.78,
         "practices": 2.01
       },
       "techs": {
         "android": 40.28,
         "bluetooth": 0.76,
-        "cross-platform-architecture": 59.31,
+        "cross-platform-architecture": 6.52,
         "csharp-dotnet": 75.15,
         "gps": 0.87,
         "ios": 39.19,
@@ -2397,13 +2397,13 @@
         "devops": 29.4,
         "embedded": 3.94,
         "languages": 60.12,
-        "mobile": 135.87,
+        "mobile": 119.42,
         "practices": 1.92
       },
       "techs": {
         "android": 26.63,
         "bluetooth": 0.36,
-        "cross-platform-architecture": 44.69,
+        "cross-platform-architecture": 3.76,
         "csharp-dotnet": 60.12,
         "gps": 3.57,
         "ios": 27.93,
@@ -2426,13 +2426,13 @@
         "devops": 32.2,
         "embedded": 6.38,
         "languages": 109.14,
-        "mobile": 184.0,
+        "mobile": 147.22,
         "practices": 2.44
       },
       "techs": {
         "android": 43.08,
         "bluetooth": 2.98,
-        "cross-platform-architecture": 91.06,
+        "cross-platform-architecture": 10.33,
         "csharp-dotnet": 109.14,
         "gps": 3.4,
         "ios": 35.55,
@@ -2456,13 +2456,13 @@
         "devops": 29.4,
         "embedded": 4.51,
         "languages": 70.68,
-        "mobile": 155.37,
+        "mobile": 124.7,
         "practices": 1.92
       },
       "techs": {
         "android": 32.66,
         "bluetooth": 0.07,
-        "cross-platform-architecture": 58.78,
+        "cross-platform-architecture": 3.63,
         "csharp-dotnet": 70.68,
         "gps": 4.44,
         "ios": 31.84,
@@ -2491,7 +2491,7 @@
       "techs": {
         "android": 48.69,
         "bluetooth": 0.88,
-        "cross-platform-architecture": 86.3,
+        "cross-platform-architecture": 10.59,
         "csharp-dotnet": 105.27,
         "ddd": 2.33,
         "gps": 5.47,
@@ -2520,7 +2520,7 @@
       },
       "techs": {
         "android": 58.28,
-        "cross-platform-architecture": 109.46,
+        "cross-platform-architecture": 6.96,
         "csharp-dotnet": 129.38,
         "ddd": 6.35,
         "gps": 2.66,
@@ -2544,12 +2544,12 @@
         "devops": 29.4,
         "embedded": 2.37,
         "languages": 57.25,
-        "mobile": 112.36
+        "mobile": 99.99
       },
       "techs": {
         "android": 13.95,
         "bluetooth": 0.39,
-        "cross-platform-architecture": 54.05,
+        "cross-platform-architecture": 4.83,
         "csharp-dotnet": 57.25,
         "gps": 1.97,
         "ios": 13.0,
@@ -2571,13 +2571,13 @@
         "devops": 30.8,
         "embedded": 0.95,
         "languages": 126.84,
-        "mobile": 176.0,
+        "mobile": 104.56,
         "practices": 2.84
       },
       "techs": {
         "android": 31.0,
         "bluetooth": 0.08,
-        "cross-platform-architecture": 110.23,
+        "cross-platform-architecture": 5.91,
         "csharp-dotnet": 126.84,
         "ddd": 0.83,
         "gps": 0.87,
@@ -2606,7 +2606,7 @@
       },
       "techs": {
         "android": 79.29,
-        "cross-platform-architecture": 75.71,
+        "cross-platform-architecture": 7.82,
         "csharp-dotnet": 123.1,
         "gps": 2.23,
         "ios": 78.48,
@@ -2628,13 +2628,13 @@
         "devops": 11.76,
         "embedded": 3.14,
         "languages": 55.12,
-        "mobile": 92.96,
+        "mobile": 76.16,
         "practices": 2.71
       },
       "techs": {
         "android": 18.98,
         "bluetooth": 0.07,
-        "cross-platform-architecture": 43.95,
+        "cross-platform-architecture": 2.68,
         "csharp-dotnet": 55.12,
         "ddd": 0.8,
         "gps": 3.07,
@@ -2662,7 +2662,7 @@
       },
       "techs": {
         "android": 69.0,
-        "cross-platform-architecture": 70.85,
+        "cross-platform-architecture": 12.55,
         "csharp-dotnet": 110.35,
         "ios": 63.74,
         "mobile-build-release": 1.77,
@@ -2684,13 +2684,13 @@
         "devops": 12.32,
         "embedded": 3.35,
         "languages": 69.25,
-        "mobile": 157.17,
+        "mobile": 130.13,
         "practices": 4.64
       },
       "techs": {
         "android": 22.55,
         "bluetooth": 0.08,
-        "cross-platform-architecture": 56.89,
+        "cross-platform-architecture": 4.21,
         "csharp-dotnet": 69.25,
         "ddd": 0.83,
         "gps": 3.28,
@@ -2720,7 +2720,7 @@
       "techs": {
         "android": 54.27,
         "bluetooth": 26.23,
-        "cross-platform-architecture": 102.33,
+        "cross-platform-architecture": 16.73,
         "csharp-dotnet": 133.88,
         "ddd": 0.8,
         "gps": 1.32,
@@ -2750,7 +2750,7 @@
       "techs": {
         "android": 50.31,
         "bluetooth": 28.48,
-        "cross-platform-architecture": 118.2,
+        "cross-platform-architecture": 12.89,
         "csharp-dotnet": 152.93,
         "ddd": 0.83,
         "gps": 0.87,
@@ -2775,12 +2775,12 @@
         "devops": 12.32,
         "embedded": 2.34,
         "languages": 68.63,
-        "mobile": 107.51
+        "mobile": 78.83
       },
       "techs": {
         "android": 10.04,
         "bluetooth": 2.34,
-        "cross-platform-architecture": 32.19,
+        "cross-platform-architecture": 3.51,
         "csharp-dotnet": 68.63,
         "ef-core": 20.33,
         "ios": 15.12,
@@ -2803,12 +2803,12 @@
         "devops": 12.32,
         "embedded": 6.97,
         "languages": 124.71,
-        "mobile": 176.0
+        "mobile": 157.02
       },
       "techs": {
         "android": 35.83,
         "bluetooth": 4.3,
-        "cross-platform-architecture": 92.36,
+        "cross-platform-architecture": 6.41,
         "csharp-dotnet": 124.53,
         "ef-core": 13.47,
         "gps": 2.67,
@@ -2834,12 +2834,12 @@
         "embedded": 1.9,
         "languages": 109.57,
         "mobile": 160.0,
-        "practices": 3.17
+        "practices": 3.03
       },
       "techs": {
         "android": 44.15,
         "bluetooth": 1.11,
-        "cross-platform-architecture": 82.49,
+        "cross-platform-architecture": 8.54,
         "csharp-dotnet": 107.8,
         "ddd": 0.76,
         "ef-core": 1.07,
@@ -2847,7 +2847,7 @@
         "ios": 41.59,
         "mobile-build-release": 1.22,
         "mobile-ui": 7.34,
-        "mvvm": 0.59,
+        "mvvm": 0.44,
         "objective-c": 0.76,
         "tests": 1.82,
         "virtual-machines": 11.2,
@@ -2873,7 +2873,7 @@
       "techs": {
         "android": 71.91,
         "bluetooth": 0.08,
-        "cross-platform-architecture": 99.28,
+        "cross-platform-architecture": 18.67,
         "csharp-dotnet": 129.18,
         "ddd": 0.87,
         "ef-core": 1.23,
@@ -2903,7 +2903,7 @@
       "techs": {
         "android": 83.06,
         "bluetooth": 2.7,
-        "cross-platform-architecture": 68.31,
+        "cross-platform-architecture": 4.13,
         "csharp-dotnet": 92.4,
         "gps": 0.54,
         "ios": 82.88,
@@ -2926,13 +2926,13 @@
         "embedded": 2.3,
         "languages": 128.26,
         "mobile": 184.0,
-        "practices": 5.76
+        "practices": 5.51
       },
       "techs": {
         "android": 61.68,
         "bash": 0.9,
         "bluetooth": 1.39,
-        "cross-platform-architecture": 121.68,
+        "cross-platform-architecture": 12.95,
         "csharp-dotnet": 126.86,
         "ddd": 0.87,
         "ef-core": 1.23,
@@ -2940,7 +2940,7 @@
         "ios": 58.25,
         "mobile-build-release": 1.79,
         "mobile-ui": 3.64,
-        "mvvm": 1.56,
+        "mvvm": 1.31,
         "objective-c": 0.87,
         "tests": 3.33,
         "virtual-machines": 12.88,
@@ -2966,7 +2966,7 @@
       "techs": {
         "android": 45.71,
         "bluetooth": 0.31,
-        "cross-platform-architecture": 127.05,
+        "cross-platform-architecture": 9.73,
         "csharp-dotnet": 140.83,
         "ddd": 0.83,
         "ef-core": 1.17,
@@ -2998,7 +2998,7 @@
       "techs": {
         "android": 61.92,
         "bluetooth": 3.91,
-        "cross-platform-architecture": 105.34,
+        "cross-platform-architecture": 11.64,
         "csharp-dotnet": 120.46,
         "ddd": 0.8,
         "ef-core": 1.12,
@@ -3024,13 +3024,13 @@
         "devops": 12.88,
         "embedded": 6.68,
         "languages": 149.82,
-        "mobile": 184.0,
-        "practices": 3.77
+        "mobile": 180.96,
+        "practices": 3.66
       },
       "techs": {
         "android": 42.29,
         "bluetooth": 4.96,
-        "cross-platform-architecture": 130.45,
+        "cross-platform-architecture": 6.43,
         "csharp-dotnet": 149.82,
         "ddd": 0.87,
         "ef-core": 1.23,
@@ -3038,7 +3038,6 @@
         "ios": 42.08,
         "mobile-build-release": 1.3,
         "mobile-ui": 8.48,
-        "mvvm": 0.11,
         "objective-c": 0.87,
         "tests": 2.79,
         "virtual-machines": 12.88,
@@ -3063,7 +3062,7 @@
       "techs": {
         "android": 48.69,
         "bluetooth": 5.71,
-        "cross-platform-architecture": 112.26,
+        "cross-platform-architecture": 18.25,
         "csharp-dotnet": 113.68,
         "ddd": 0.8,
         "ef-core": 1.12,
@@ -3089,14 +3088,14 @@
         "devops": 12.32,
         "embedded": 9.9,
         "languages": 131.24,
-        "mobile": 177.34,
+        "mobile": 172.72,
         "practices": 5.51
       },
       "techs": {
         "android": 43.07,
         "asp-net-core": 0.02,
         "bluetooth": 6.67,
-        "cross-platform-architecture": 124.94,
+        "cross-platform-architecture": 5.62,
         "csharp-dotnet": 130.54,
         "ddd": 0.83,
         "ef-core": 1.17,
@@ -3124,14 +3123,14 @@
         "devops": 12.32,
         "embedded": 0.95,
         "languages": 141.51,
-        "mobile": 178.7,
+        "mobile": 178.24,
         "practices": 11.58
       },
       "techs": {
         "android": 60.66,
         "asp-net-core": 0.02,
         "bluetooth": 0.08,
-        "cross-platform-architecture": 109.19,
+        "cross-platform-architecture": 9.17,
         "csharp-dotnet": 140.34,
         "ddd": 0.83,
         "ef-core": 1.26,
@@ -3159,14 +3158,14 @@
         "devops": 11.76,
         "embedded": 5.53,
         "languages": 107.63,
-        "mobile": 168.1,
+        "mobile": 168.17,
         "practices": 6.62
       },
       "techs": {
         "android": 83.1,
         "bash": 0.93,
         "bluetooth": 2.85,
-        "cross-platform-architecture": 133.64,
+        "cross-platform-architecture": 3.67,
         "csharp-dotnet": 106.64,
         "ddd": 0.8,
         "ef-core": 1.25,
@@ -3200,7 +3199,7 @@
       "techs": {
         "android": 65.36,
         "bluetooth": 0.08,
-        "cross-platform-architecture": 112.58,
+        "cross-platform-architecture": 8.27,
         "csharp-dotnet": 129.84,
         "ddd": 0.87,
         "ef-core": 1.23,
@@ -3226,13 +3225,13 @@
         "devops": 11.2,
         "embedded": 7.91,
         "languages": 141.17,
-        "mobile": 160.0,
-        "practices": 5.6
+        "mobile": 110.63,
+        "practices": 5.43
       },
       "techs": {
         "android": 25.92,
         "bluetooth": 5.64,
-        "cross-platform-architecture": 136.21,
+        "cross-platform-architecture": 3.16,
         "csharp-dotnet": 141.17,
         "ddd": 2.67,
         "ef-core": 1.07,
@@ -3240,7 +3239,6 @@
         "ios": 24.92,
         "mobile-build-release": 2.57,
         "mobile-ui": 11.17,
-        "mvvm": 0.17,
         "objective-c": 0.76,
         "tests": 2.75,
         "virtual-machines": 11.2,
@@ -3265,7 +3263,7 @@
       "techs": {
         "android": 69.69,
         "bluetooth": 0.35,
-        "cross-platform-architecture": 140.15,
+        "cross-platform-architecture": 14.71,
         "csharp-dotnet": 111.31,
         "ddd": 0.83,
         "ef-core": 1.17,
@@ -3292,7 +3290,7 @@
         "devops": 11.76,
         "embedded": 9.42,
         "languages": 108.25,
-        "mobile": 168.0,
+        "mobile": 164.61,
         "practices": 7.2
       },
       "techs": {
@@ -3301,7 +3299,7 @@
         "azure": 0.17,
         "bash": 0.76,
         "bluetooth": 5.67,
-        "cross-platform-architecture": 65.17,
+        "cross-platform-architecture": 8.4,
         "csharp-dotnet": 104.4,
         "ddd": 0.8,
         "ef-core": 3.62,
@@ -3330,15 +3328,15 @@
         "devops": 12.88,
         "embedded": 2.26,
         "languages": 111.97,
-        "mobile": 147.31,
-        "practices": 33.67
+        "mobile": 132.46,
+        "practices": 33.76
       },
       "techs": {
         "android": 26.77,
         "asp-net-core": 1.43,
         "bash": 1.27,
         "bluetooth": 0.08,
-        "cross-platform-architecture": 51.92,
+        "cross-platform-architecture": 10.27,
         "csharp-dotnet": 109.02,
         "ddd": 0.87,
         "ef-core": 3.42,
@@ -3346,7 +3344,7 @@
         "ios": 25.62,
         "mobile-build-release": 1.23,
         "mobile-ui": 10.32,
-        "mvvm": 0.34,
+        "mvvm": 0.42,
         "objective-c": 0.87,
         "tests": 32.46,
         "virtual-machines": 12.88,
@@ -3366,13 +3364,13 @@
         "devops": 11.76,
         "embedded": 9.53,
         "languages": 129.93,
-        "mobile": 168.0,
-        "practices": 3.66
+        "mobile": 135.85,
+        "practices": 3.18
       },
       "techs": {
         "android": 27.73,
         "bluetooth": 8.58,
-        "cross-platform-architecture": 100.9,
+        "cross-platform-architecture": 4.57,
         "csharp-dotnet": 126.85,
         "ddd": 0.8,
         "ef-core": 4.31,
@@ -3380,7 +3378,7 @@
         "ios": 28.29,
         "mobile-build-release": 0.74,
         "mobile-ui": 6.28,
-        "mvvm": 0.95,
+        "mvvm": 0.47,
         "objective-c": 0.8,
         "tests": 1.92,
         "virtual-machines": 11.76,
@@ -3400,15 +3398,15 @@
         "devops": 12.32,
         "embedded": 3.38,
         "languages": 137.91,
-        "mobile": 176.03,
-        "practices": 10.35
+        "mobile": 176.09,
+        "practices": 11.94
       },
       "techs": {
         "android": 28.11,
         "asp-net-core": 1.96,
         "bash": 0.37,
         "bluetooth": 1.95,
-        "cross-platform-architecture": 112.36,
+        "cross-platform-architecture": 7.16,
         "csharp-dotnet": 122.76,
         "ddd": 0.83,
         "ef-core": 12.05,
@@ -3416,7 +3414,7 @@
         "ios": 29.38,
         "mobile-build-release": 1.28,
         "mobile-ui": 18.89,
-        "mvvm": 6.67,
+        "mvvm": 8.26,
         "objective-c": 0.83,
         "tests": 2.85,
         "virtual-machines": 12.32,
@@ -3437,14 +3435,14 @@
         "embedded": 1.28,
         "languages": 154.08,
         "mobile": 184.0,
-        "practices": 4.71
+        "practices": 4.53
       },
       "techs": {
         "android": 44.52,
         "asp-net-core": 5.04,
         "bash": 1.0,
         "bluetooth": 0.2,
-        "cross-platform-architecture": 95.73,
+        "cross-platform-architecture": 4.67,
         "csharp-dotnet": 150.65,
         "ddd": 0.87,
         "ef-core": 5.57,
@@ -3453,7 +3451,7 @@
         "javascript": 0.87,
         "mobile-build-release": 1.6,
         "mobile-ui": 3.95,
-        "mvvm": 0.52,
+        "mvvm": 0.35,
         "objective-c": 0.87,
         "tests": 3.32,
         "virtual-machines": 12.88,
@@ -3475,12 +3473,12 @@
         "embedded": 1.32,
         "languages": 106.88,
         "mobile": 160.0,
-        "practices": 3.97
+        "practices": 3.51
       },
       "techs": {
         "android": 62.13,
         "bluetooth": 0.53,
-        "cross-platform-architecture": 124.23,
+        "cross-platform-architecture": 20.79,
         "csharp-dotnet": 102.95,
         "ddd": 0.76,
         "ef-core": 1.07,
@@ -3488,7 +3486,7 @@
         "ios": 59.57,
         "mobile-build-release": 8.56,
         "mobile-ui": 7.46,
-        "mvvm": 1.39,
+        "mvvm": 0.92,
         "objective-c": 0.76,
         "tests": 1.82,
         "virtual-machines": 11.2,
@@ -3516,13 +3514,13 @@
         "asp-net-core": 2.46,
         "bash": 0.69,
         "bluetooth": 0.96,
-        "cross-platform-architecture": 136.33,
+        "cross-platform-architecture": 25.04,
         "csharp-dotnet": 139.87,
         "ddd": 0.87,
         "ef-core": 1.62,
         "gps": 1.11,
         "ios": 45.39,
-        "mobile-build-release": 6.06,
+        "mobile-build-release": 6.65,
         "mobile-ui": 4.4,
         "mvvm": 0.29,
         "objective-c": 0.87,
@@ -3544,24 +3542,24 @@
         "devops": 12.32,
         "embedded": 12.93,
         "languages": 154.65,
-        "mobile": 171.54,
-        "practices": 3.44
+        "mobile": 146.59,
+        "practices": 3.56
       },
       "techs": {
         "android": 23.55,
         "bash": 0.12,
         "bluetooth": 10.19,
-        "cross-platform-architecture": 54.49,
+        "cross-platform-architecture": 3.78,
         "csharp-dotnet": 66.1,
         "ddd": 0.83,
         "ef-core": 1.65,
         "gps": 2.74,
         "ios": 22.9,
         "javascript": 23.72,
-        "mobile-build-release": 0.75,
+        "mobile-build-release": 0.87,
         "mobile-ui": 4.11,
         "mvp": 0.16,
-        "mvvm": 0.3,
+        "mvvm": 0.42,
         "objective-c": 0.83,
         "python": 0.04,
         "tests": 2.15,
@@ -3583,14 +3581,14 @@
         "devops": 11.76,
         "embedded": 6.45,
         "languages": 107.24,
-        "mobile": 169.0,
-        "practices": 6.16
+        "mobile": 152.35,
+        "practices": 4.28
       },
       "techs": {
         "android": 28.61,
         "bash": 0.06,
         "bluetooth": 4.64,
-        "cross-platform-architecture": 47.93,
+        "cross-platform-architecture": 3.56,
         "csharp-dotnet": 56.77,
         "ddd": 0.8,
         "ef-core": 1.36,
@@ -3598,10 +3596,10 @@
         "ios": 28.82,
         "java": 0.19,
         "javascript": 3.23,
-        "mobile-build-release": 1.09,
+        "mobile-build-release": 1.15,
         "mobile-ui": 4.38,
         "mvp": 0.3,
-        "mvvm": 3.11,
+        "mvvm": 1.23,
         "objective-c": 0.8,
         "python": 0.03,
         "tests": 1.95,
@@ -3623,8 +3621,8 @@
         "devops": 12.88,
         "embedded": 2.19,
         "languages": 160.11,
-        "mobile": 99.69,
-        "practices": 40.8
+        "mobile": 89.55,
+        "practices": 40.76
       },
       "techs": {
         "android": 24.02,
@@ -3632,16 +3630,15 @@
         "azure": 0.12,
         "bash": 0.52,
         "bluetooth": 0.29,
-        "cross-platform-architecture": 40.32,
+        "cross-platform-architecture": 3.34,
         "csharp-dotnet": 158.73,
         "ddd": 1.02,
         "ef-core": 2.76,
         "gps": 1.9,
         "ios": 23.74,
-        "mobile-build-release": 1.06,
+        "mobile-build-release": 1.09,
         "mobile-ui": 2.83,
         "mvp": 0.03,
-        "mvvm": 0.04,
         "objective-c": 0.87,
         "python": 0.59,
         "tests": 39.71,
@@ -3663,24 +3660,24 @@
         "devops": 11.2,
         "embedded": 9.6,
         "languages": 123.79,
-        "mobile": 160.0,
-        "practices": 3.58
+        "mobile": 136.53,
+        "practices": 3.21
       },
       "techs": {
         "android": 25.31,
         "asp-net-core": 0.75,
         "bash": 2.52,
         "bluetooth": 2.3,
-        "cross-platform-architecture": 62.73,
+        "cross-platform-architecture": 8.16,
         "csharp-dotnet": 120.49,
         "ddd": 0.76,
         "ef-core": 6.75,
         "gps": 7.3,
         "ios": 28.52,
-        "mobile-build-release": 1.26,
+        "mobile-build-release": 1.31,
         "mobile-ui": 2.59,
         "mvp": 0.12,
-        "mvvm": 0.66,
+        "mvvm": 0.29,
         "objective-c": 0.76,
         "python": 0.56,
         "tests": 2.04,
@@ -3702,21 +3699,22 @@
         "embedded": 8.99,
         "languages": 127.45,
         "mobile": 168.0,
-        "practices": 2.71
+        "practices": 3.04
       },
       "techs": {
         "android": 43.63,
         "asp-net-core": 0.16,
         "bash": 1.06,
         "bluetooth": 1.71,
-        "cross-platform-architecture": 90.41,
+        "cross-platform-architecture": 6.93,
         "csharp-dotnet": 124.43,
         "ddd": 0.8,
         "ef-core": 2.51,
         "gps": 7.29,
         "ios": 35.52,
-        "mobile-build-release": 8.19,
+        "mobile-build-release": 8.84,
         "mobile-ui": 3.97,
+        "mvvm": 0.33,
         "objective-c": 0.8,
         "tests": 1.92,
         "virtual-machines": 11.76,
@@ -3736,14 +3734,14 @@
         "devops": 12.32,
         "embedded": 4.05,
         "languages": 144.76,
-        "mobile": 162.32,
+        "mobile": 128.88,
         "practices": 3.27
       },
       "techs": {
         "android": 28.33,
         "asp-net-core": 0.96,
         "bluetooth": 1.04,
-        "cross-platform-architecture": 62.96,
+        "cross-platform-architecture": 3.87,
         "csharp-dotnet": 143.48,
         "ddd": 0.83,
         "ef-core": 2.24,
@@ -3771,14 +3769,14 @@
         "devops": 12.88,
         "embedded": 6.01,
         "languages": 150.17,
-        "mobile": 184.4,
-        "practices": 3.97
+        "mobile": 144.19,
+        "practices": 4.37
       },
       "techs": {
         "android": 30.52,
         "asp-net-core": 2.47,
         "bluetooth": 4.7,
-        "cross-platform-architecture": 80.16,
+        "cross-platform-architecture": 4.35,
         "csharp-dotnet": 140.09,
         "ddd": 0.87,
         "ef-core": 1.63,
@@ -3788,7 +3786,7 @@
         "mobile-build-release": 2.75,
         "mobile-ui": 4.33,
         "mvp": 0.4,
-        "mvvm": 0.6,
+        "mvvm": 1.0,
         "objective-c": 0.87,
         "python": 0.2,
         "tests": 2.1,
@@ -3811,23 +3809,23 @@
         "embedded": 6.35,
         "languages": 123.28,
         "mobile": 160.0,
-        "practices": 3.95
+        "practices": 4.64
       },
       "techs": {
         "android": 43.14,
         "asp-net-core": 0.46,
         "bash": 1.37,
         "bluetooth": 1.44,
-        "cross-platform-architecture": 60.15,
+        "cross-platform-architecture": 3.92,
         "csharp-dotnet": 116.65,
         "ddd": 0.76,
         "ef-core": 1.98,
         "gps": 4.91,
         "ios": 40.15,
-        "mobile-build-release": 5.28,
+        "mobile-build-release": 6.2,
         "mobile-ui": 7.4,
         "mvp": 1.14,
-        "mvvm": 0.23,
+        "mvvm": 0.91,
         "objective-c": 0.76,
         "python": 0.46,
         "tests": 1.82,
@@ -3849,13 +3847,13 @@
         "embedded": 9.58,
         "languages": 153.62,
         "mobile": 184.0,
-        "practices": 4.14
+        "practices": 3.62
       },
       "techs": {
         "android": 41.49,
         "bash": 0.65,
         "bluetooth": 0.08,
-        "cross-platform-architecture": 72.54,
+        "cross-platform-architecture": 4.88,
         "csharp-dotnet": 151.41,
         "ddd": 0.87,
         "ef-core": 2.27,
@@ -3864,7 +3862,7 @@
         "mobile-build-release": 1.33,
         "mobile-ui": 4.03,
         "mvp": 0.13,
-        "mvvm": 1.04,
+        "mvvm": 0.52,
         "objective-c": 0.87,
         "python": 0.65,
         "tests": 2.1,
@@ -3886,13 +3884,13 @@
         "embedded": 8.42,
         "languages": 143.4,
         "mobile": 176.0,
-        "practices": 8.63
+        "practices": 8.14
       },
       "techs": {
         "android": 29.83,
         "azure": 0.48,
         "bluetooth": 2.97,
-        "cross-platform-architecture": 89.2,
+        "cross-platform-architecture": 3.04,
         "csharp-dotnet": 128.45,
         "ddd": 0.83,
         "ef-core": 3.59,
@@ -3901,7 +3899,7 @@
         "mobile-build-release": 1.74,
         "mobile-ui": 18.28,
         "mvp": 0.24,
-        "mvvm": 5.55,
+        "mvvm": 5.06,
         "objective-c": 0.83,
         "tests": 2.01,
         "virtual-machines": 12.32,
@@ -3928,7 +3926,7 @@
         "android": 28.04,
         "bash": 0.51,
         "bluetooth": 0.07,
-        "cross-platform-architecture": 57.96,
+        "cross-platform-architecture": 4.22,
         "csharp-dotnet": 115.68,
         "ddd": 0.8,
         "ef-core": 5.23,
@@ -3957,12 +3955,12 @@
         "embedded": 3.27,
         "languages": 138.16,
         "mobile": 184.0,
-        "practices": 7.53
+        "practices": 8.19
       },
       "techs": {
         "android": 45.07,
         "bluetooth": 1.06,
-        "cross-platform-architecture": 73.92,
+        "cross-platform-architecture": 6.35,
         "csharp-dotnet": 127.4,
         "ddd": 0.87,
         "ef-core": 3.02,
@@ -3971,7 +3969,7 @@
         "mobile-build-release": 8.22,
         "mobile-ui": 13.98,
         "mvp": 0.16,
-        "mvvm": 4.4,
+        "mvvm": 5.05,
         "objective-c": 0.87,
         "python": 0.49,
         "tests": 2.1,
@@ -3992,8 +3990,8 @@
         "devops": 19.26,
         "embedded": 2.39,
         "languages": 123.08,
-        "mobile": 171.93,
-        "practices": 9.02
+        "mobile": 171.92,
+        "practices": 9.67
       },
       "techs": {
         "android": 36.8,
@@ -4001,7 +3999,7 @@
         "azure-devops": 7.5,
         "bash": 0.12,
         "bluetooth": 1.07,
-        "cross-platform-architecture": 54.73,
+        "cross-platform-architecture": 5.28,
         "csharp-dotnet": 109.62,
         "ddd": 0.8,
         "ef-core": 1.85,
@@ -4010,7 +4008,7 @@
         "java": 0.24,
         "mobile-build-release": 1.53,
         "mobile-ui": 17.17,
-        "mvvm": 4.72,
+        "mvvm": 5.36,
         "objective-c": 0.8,
         "tests": 3.51,
         "virtual-machines": 11.76,
@@ -4031,15 +4029,15 @@
         "devops": 12.32,
         "embedded": 0.95,
         "languages": 113.5,
-        "mobile": 176.0,
-        "practices": 6.88
+        "mobile": 176.03,
+        "practices": 7.32
       },
       "techs": {
         "android": 60.92,
         "asp-net-core": 0.2,
         "bash": 1.79,
         "bluetooth": 0.08,
-        "cross-platform-architecture": 46.67,
+        "cross-platform-architecture": 5.0,
         "csharp-dotnet": 108.7,
         "ddd": 0.83,
         "ef-core": 9.76,
@@ -4048,6 +4046,7 @@
         "javascript": 0.4,
         "mobile-build-release": 7.9,
         "mobile-ui": 6.08,
+        "mvvm": 0.43,
         "objective-c": 0.83,
         "tests": 6.05,
         "virtual-machines": 12.32,
@@ -4067,14 +4066,14 @@
         "devops": 12.88,
         "embedded": 1.77,
         "languages": 121.83,
-        "mobile": 167.95,
+        "mobile": 161.2,
         "practices": 22.39
       },
       "techs": {
         "android": 35.51,
         "bash": 0.0,
         "bluetooth": 0.86,
-        "cross-platform-architecture": 36.49,
+        "cross-platform-architecture": 2.93,
         "csharp-dotnet": 111.51,
         "ddd": 0.87,
         "ef-core": 1.23,
@@ -4104,12 +4103,12 @@
         "embedded": 24.3,
         "languages": 134.9,
         "mobile": 160.0,
-        "practices": 11.26
+        "practices": 12.13
       },
       "techs": {
         "android": 33.31,
         "bluetooth": 19.0,
-        "cross-platform-architecture": 83.34,
+        "cross-platform-architecture": 3.59,
         "csharp-dotnet": 134.9,
         "ddd": 0.76,
         "ef-core": 1.07,
@@ -4118,7 +4117,7 @@
         "mobile-build-release": 1.52,
         "mobile-ui": 4.29,
         "mvp": 0.35,
-        "mvvm": 0.52,
+        "mvvm": 1.39,
         "objective-c": 0.76,
         "tests": 9.64,
         "virtual-machines": 11.2,
@@ -4138,14 +4137,14 @@
         "embedded": 5.81,
         "languages": 152.02,
         "mobile": 177.0,
-        "practices": 10.15
+        "practices": 10.35
       },
       "techs": {
         "android": 36.07,
         "asp-net-core": 0.25,
         "bash": 0.86,
         "bluetooth": 3.32,
-        "cross-platform-architecture": 66.6,
+        "cross-platform-architecture": 4.17,
         "csharp-dotnet": 150.36,
         "ddd": 1.46,
         "ef-core": 2.67,
@@ -4154,7 +4153,7 @@
         "mobile-build-release": 1.06,
         "mobile-ui": 5.46,
         "mvp": 0.25,
-        "mvvm": 0.9,
+        "mvvm": 1.09,
         "objective-c": 0.83,
         "tests": 7.55,
         "virtual-machines": 12.32,
@@ -4175,19 +4174,18 @@
         "embedded": 0.44,
         "languages": 87.23,
         "mobile": 74.92,
-        "practices": 46.27
+        "practices": 45.65
       },
       "techs": {
         "android": 23.05,
         "bash": 0.93,
-        "cross-platform-architecture": 5.39,
         "csharp-dotnet": 82.29,
         "ef-core": 0.67,
         "gps": 0.44,
         "ios": 12.7,
-        "mobile-build-release": 0.19,
+        "mobile-build-release": 0.37,
         "mobile-ui": 7.78,
-        "mvvm": 45.61,
+        "mvvm": 44.98,
         "tests": 0.67,
         "virtual-machines": 12.1,
         "xamarin": 50.89,
@@ -4205,7 +4203,7 @@
         "devops": 39.78,
         "languages": 58.7,
         "mobile": 42.43,
-        "practices": 14.7
+        "practices": 11.23
       },
       "techs": {
         "android": 1.57,
@@ -4216,7 +4214,7 @@
         "ios": 1.35,
         "mobile-build-release": 0.67,
         "mobile-ui": 15.41,
-        "mvvm": 14.7,
+        "mvvm": 11.23,
         "virtual-machines": 7.7,
         "xamarin": 16.24,
         "xamarin-forms": 15.45,
@@ -4288,7 +4286,7 @@
         "embedded": 1.38,
         "languages": 19.12,
         "mobile": 22.0,
-        "practices": 9.4
+        "practices": 8.29
       },
       "techs": {
         "android": 2.13,
@@ -4298,7 +4296,7 @@
         "ios": 2.23,
         "mobile-build-release": 0.65,
         "mobile-ui": 5.25,
-        "mvvm": 9.12,
+        "mvvm": 8.01,
         "tests": 0.28,
         "virtual-machines": 3.3,
         "xamarin": 9.8,
@@ -4317,17 +4315,18 @@
         "embedded": 3.64,
         "languages": 64.21,
         "mobile": 37.91,
-        "practices": 19.37
+        "practices": 18.64
       },
       "techs": {
         "android": 2.22,
+        "cross-platform-architecture": 0.87,
         "csharp-dotnet": 57.5,
         "docker": 23.1,
         "gps": 3.64,
         "ios": 3.5,
         "mobile-build-release": 0.29,
         "mobile-ui": 9.35,
-        "mvvm": 19.37,
+        "mvvm": 18.64,
         "python": 2.01,
         "virtual-machines": 6.6,
         "xamarin": 15.23,
@@ -4346,18 +4345,19 @@
         "embedded": 2.2,
         "languages": 37.79,
         "mobile": 38.0,
-        "practices": 14.94
+        "practices": 13.25
       },
       "techs": {
         "android": 4.56,
         "azure-devops": 0.09,
+        "cross-platform-architecture": 0.68,
         "csharp-dotnet": 33.54,
         "docker": 15.4,
         "gps": 2.2,
         "ios": 4.41,
         "mobile-build-release": 0.76,
         "mobile-ui": 5.69,
-        "mvvm": 13.77,
+        "mvvm": 12.09,
         "tests": 1.16,
         "virtual-machines": 4.4,
         "xamarin": 15.97,
@@ -4380,7 +4380,7 @@
       },
       "techs": {
         "android": 5.6,
-        "cross-platform-architecture": 4.28,
+        "cross-platform-architecture": 1.67,
         "csharp-dotnet": 14.03,
         "docker": 7.7,
         "gps": 2.39,
@@ -4408,7 +4408,6 @@
       },
       "techs": {
         "android": 2.2,
-        "cross-platform-architecture": 6.6,
         "csharp-dotnet": 8.8,
         "docker": 3.85,
         "ios": 4.4,
@@ -4429,19 +4428,18 @@
         "embedded": 0.41,
         "languages": 32.15,
         "mobile": 16.72,
-        "practices": 16.46
+        "practices": 4.31
       },
       "techs": {
         "ai-driven-development": 11.55,
         "android": 2.37,
-        "cross-platform-architecture": 0.41,
         "csharp-dotnet": 31.07,
         "docker": 11.55,
         "gps": 0.41,
         "ios": 2.37,
         "mobile-build-release": 0.14,
         "mobile-ui": 1.49,
-        "mvvm": 15.88,
+        "mvvm": 3.73,
         "tests": 0.58,
         "virtual-machines": 3.3,
         "xamarin": 6.99,
@@ -4480,8 +4478,7 @@
         "backend": 55.0,
         "devops": 34.65,
         "languages": 48.5,
-        "mobile": 26.55,
-        "practices": 4.35
+        "mobile": 26.55
       },
       "techs": {
         "ai-driven-development": 26.95,
@@ -4492,7 +4489,6 @@
         "docker": 26.95,
         "ef-core": 50.65,
         "mobile-ui": 26.55,
-        "mvvm": 4.35,
         "virtual-machines": 7.7,
         "web": 0.22
       }
@@ -4508,8 +4504,7 @@
         "backend": 61.79,
         "devops": 34.65,
         "languages": 58.08,
-        "mobile": 37.77,
-        "practices": 5.22
+        "mobile": 37.77
       },
       "techs": {
         "ai-driven-development": 26.95,
@@ -4519,7 +4514,6 @@
         "docker": 26.95,
         "ef-core": 49.4,
         "mobile-ui": 37.77,
-        "mvvm": 5.22,
         "virtual-machines": 7.7,
         "web": 0.32
       }
@@ -4535,8 +4529,7 @@
         "backend": 36.29,
         "devops": 24.75,
         "languages": 46.3,
-        "mobile": 15.63,
-        "practices": 1.63
+        "mobile": 15.63
       },
       "techs": {
         "ai-driven-development": 19.25,
@@ -4546,7 +4539,6 @@
         "docker": 19.25,
         "ef-core": 22.3,
         "mobile-ui": 15.63,
-        "mvvm": 1.63,
         "virtual-machines": 5.5,
         "web": 1.43
       }
@@ -4562,8 +4554,7 @@
         "backend": 42.04,
         "devops": 40.36,
         "languages": 60.1,
-        "mobile": 16.1,
-        "practices": 2.19
+        "mobile": 16.1
       },
       "techs": {
         "ai-driven-development": 30.8,
@@ -4575,7 +4566,6 @@
         "ef-core": 15.83,
         "github-actions": 0.76,
         "mobile-ui": 16.1,
-        "mvvm": 2.19,
         "virtual-machines": 8.8,
         "web": 2.21
       }
@@ -4592,7 +4582,7 @@
         "devops": 90.32,
         "languages": 140.1,
         "mobile": 9.34,
-        "practices": 4.97
+        "practices": 1.12
       },
       "techs": {
         "ai-driven-development": 69.3,
@@ -4607,7 +4597,6 @@
         "github-actions": 1.22,
         "javascript": 0.43,
         "mobile-ui": 9.34,
-        "mvvm": 3.86,
         "python": 0.25,
         "sql": 0.01,
         "virtual-machines": 19.8,
@@ -4627,7 +4616,7 @@
         "embedded": 0.32,
         "languages": 171.21,
         "mobile": 0.28,
-        "practices": 6.47
+        "practices": 5.22
       },
       "techs": {
         "ai-driven-development": 69.3,
@@ -4641,7 +4630,7 @@
         "gps": 0.32,
         "javascript": 1.66,
         "mobile-ui": 0.28,
-        "mvvm": 1.63,
+        "mvvm": 0.37,
         "virtual-machines": 19.8,
         "web": 1.16
       }
@@ -4660,7 +4649,7 @@
         "embedded": 0.01,
         "languages": 134.13,
         "mobile": 0.08,
-        "practices": 7.18
+        "practices": 7.36
       },
       "techs": {
         "ai-driven-development": 61.6,
@@ -4677,7 +4666,7 @@
         "gps": 0.01,
         "javascript": 0.04,
         "mobile-ui": 0.08,
-        "mvvm": 0.06,
+        "mvvm": 0.24,
         "sql": 0.11,
         "virtual-machines": 17.6,
         "web": 0.09
@@ -4714,8 +4703,7 @@
         "blockchain": 60.43,
         "devops": 100.05,
         "languages": 200.49,
-        "mobile": 0.79,
-        "practices": 1.16
+        "mobile": 0.79
       },
       "techs": {
         "ai-driven-development": 77.0,
@@ -4725,7 +4713,6 @@
         "docker": 77.55,
         "github-actions": 0.5,
         "mobile-ui": 0.79,
-        "mvvm": 1.16,
         "python": 0.5,
         "virtual-machines": 22.0
       }
@@ -4741,8 +4728,7 @@
         "blockchain": 20.74,
         "devops": 84.15,
         "languages": 173.83,
-        "mobile": 0.38,
-        "practices": 3.45
+        "mobile": 0.38
       },
       "techs": {
         "ai-driven-development": 65.45,
@@ -4750,7 +4736,6 @@
         "csharp-dotnet": 173.83,
         "docker": 65.45,
         "mobile-ui": 0.38,
-        "mvvm": 3.45,
         "virtual-machines": 18.7
       }
     },
@@ -4765,14 +4750,14 @@
         "blockchain": 35.85,
         "devops": 64.35,
         "languages": 140.91,
-        "practices": 1.53
+        "practices": 0.19
       },
       "techs": {
         "ai-driven-development": 50.05,
         "blockchain": 35.85,
         "csharp-dotnet": 140.91,
         "docker": 50.05,
-        "mvvm": 1.53,
+        "mvvm": 0.19,
         "virtual-machines": 14.3
       }
     },
@@ -4786,8 +4771,7 @@
         "ai-llm": 7.7,
         "blockchain": 1.83,
         "devops": 9.9,
-        "languages": 21.89,
-        "practices": 0.11
+        "languages": 21.89
       },
       "techs": {
         "ai-driven-development": 7.7,
@@ -4795,7 +4779,6 @@
         "blockchain": 1.83,
         "csharp-dotnet": 21.44,
         "docker": 7.7,
-        "mvvm": 0.11,
         "virtual-machines": 2.2
       }
     },
@@ -4810,14 +4793,13 @@
         "blockchain": 18.53,
         "devops": 44.55,
         "languages": 98.68,
-        "practices": 14.69
+        "practices": 13.68
       },
       "techs": {
         "ai-driven-development": 34.65,
         "blockchain": 18.53,
         "csharp-dotnet": 98.68,
         "docker": 34.65,
-        "mvvm": 1.01,
         "tests": 13.68,
         "virtual-machines": 9.9
       }
@@ -4834,7 +4816,7 @@
         "devops": 84.15,
         "languages": 172.48,
         "mobile": 0.15,
-        "practices": 11.75
+        "practices": 10.33
       },
       "techs": {
         "ai-driven-development": 65.45,
@@ -4842,7 +4824,7 @@
         "csharp-dotnet": 172.48,
         "docker": 65.45,
         "mobile-ui": 0.15,
-        "mvvm": 1.79,
+        "mvvm": 0.37,
         "tests": 9.96,
         "virtual-machines": 18.7
       }
@@ -4858,7 +4840,7 @@
         "blockchain": 12.14,
         "devops": 39.84,
         "languages": 82.11,
-        "practices": 1.45
+        "practices": 1.21
       },
       "techs": {
         "ai-driven-development": 30.8,
@@ -4867,7 +4849,6 @@
         "csharp-dotnet": 75.8,
         "docker": 30.8,
         "github-actions": 0.24,
-        "mvvm": 0.24,
         "tests": 1.21,
         "virtual-machines": 8.8
       }
@@ -4884,7 +4865,7 @@
         "devops": 69.3,
         "languages": 142.88,
         "mobile": 1.51,
-        "practices": 6.88
+        "practices": 6.85
       },
       "techs": {
         "ai-driven-development": 107.8,
@@ -4894,7 +4875,6 @@
         "docker": 53.9,
         "go": 0.63,
         "mobile-ui": 1.51,
-        "mvvm": 0.03,
         "tests": 6.85,
         "virtual-machines": 15.4
       }
@@ -4910,7 +4890,7 @@
         "blockchain": 15.74,
         "devops": 44.55,
         "languages": 97.45,
-        "practices": 0.94
+        "practices": 0.71
       },
       "techs": {
         "ai-driven-development": 69.3,
@@ -4918,7 +4898,6 @@
         "blockchain": 15.74,
         "csharp-dotnet": 96.08,
         "docker": 34.65,
-        "mvvm": 0.23,
         "tests": 0.71,
         "virtual-machines": 9.9
       }
@@ -4935,7 +4914,7 @@
         "devops": 74.25,
         "languages": 161.03,
         "mobile": 0.65,
-        "practices": 6.29
+        "practices": 6.18
       },
       "techs": {
         "ai-driven-development": 115.5,
@@ -4944,7 +4923,7 @@
         "csharp-dotnet": 130.15,
         "docker": 57.75,
         "mobile-ui": 0.65,
-        "mvvm": 0.75,
+        "mvvm": 0.65,
         "tests": 5.53,
         "virtual-machines": 16.5
       }
@@ -4961,7 +4940,7 @@
         "devops": 69.3,
         "languages": 150.89,
         "mobile": 1.6,
-        "practices": 7.84
+        "practices": 7.49
       },
       "techs": {
         "ai-driven-development": 107.8,
@@ -4969,7 +4948,6 @@
         "csharp-dotnet": 140.42,
         "docker": 53.9,
         "mobile-ui": 1.6,
-        "mvvm": 0.35,
         "python": 10.48,
         "tests": 7.49,
         "virtual-machines": 15.4
@@ -4988,7 +4966,7 @@
         "devops": 74.25,
         "languages": 148.89,
         "mobile": 1.35,
-        "practices": 2.06
+        "practices": 1.92
       },
       "techs": {
         "ai-driven-development": 115.5,
@@ -4997,7 +4975,7 @@
         "docker": 57.75,
         "grpc": 15.43,
         "mobile-ui": 1.35,
-        "mvvm": 0.24,
+        "mvvm": 0.1,
         "tests": 1.82,
         "virtual-machines": 16.5
       }
@@ -5437,7 +5415,7 @@
         "devops": 63.49,
         "languages": 41.53,
         "mobile": 3.37,
-        "practices": 48.29
+        "practices": 45.22
       },
       "techs": {
         "ai-driven-development": 77.0,
@@ -5449,7 +5427,6 @@
         "github-actions": 1.89,
         "go": 0.27,
         "mobile-ui": 3.37,
-        "mvvm": 3.08,
         "python": 11.48,
         "tdd": 26.95,
         "tests": 16.66,
@@ -5573,7 +5550,7 @@
         "devops": 159.74,
         "languages": 123.46,
         "mobile": 5.1,
-        "practices": 106.86
+        "practices": 106.42
       },
       "techs": {
         "ai-driven-development": 198.0,
@@ -5591,7 +5568,7 @@
         "kubernetes": 0.15,
         "llm-api": 0.15,
         "mobile-ui": 5.1,
-        "mvvm": 0.49,
+        "mvvm": 0.05,
         "powershell": 0.39,
         "python": 6.58,
         "sql": 0.45,
@@ -5614,8 +5591,8 @@
         "blockchain": 13.1,
         "devops": 97.22,
         "languages": 89.79,
-        "mobile": 26.24,
-        "practices": 74.22
+        "mobile": 31.57,
+        "practices": 73.29
       },
       "techs": {
         "ai-driven-development": 121.0,
@@ -5624,6 +5601,7 @@
         "bash": 31.17,
         "blazor": 9.61,
         "blockchain": 13.1,
+        "cross-platform-architecture": 0.25,
         "csharp-dotnet": 52.49,
         "ddd": 0.76,
         "docker": 84.7,
@@ -5632,9 +5610,9 @@
         "ios": 5.27,
         "javascript": 0.63,
         "maui": 0.38,
-        "mobile-build-release": 0.28,
+        "mobile-build-release": 5.36,
         "mobile-ui": 6.6,
-        "mvvm": 2.93,
+        "mvvm": 2.01,
         "tdd": 42.35,
         "tests": 28.18,
         "virtual-machines": 12.1,
@@ -5656,7 +5634,7 @@
         "devops": 115.13,
         "embedded": 0.69,
         "languages": 100.02,
-        "mobile": 5.25,
+        "mobile": 6.57,
         "practices": 93.56
       },
       "techs": {
@@ -5667,6 +5645,7 @@
         "bash": 2.44,
         "blazor": 9.7,
         "blockchain": 0.81,
+        "cross-platform-architecture": 0.38,
         "csharp-dotnet": 69.93,
         "ddd": 1.77,
         "docker": 100.1,
@@ -5674,7 +5653,7 @@
         "github-actions": 0.73,
         "ios": 0.6,
         "javascript": 0.15,
-        "mobile-build-release": 0.11,
+        "mobile-build-release": 1.06,
         "mobile-ui": 4.0,
         "mvvm": 0.42,
         "nfc": 0.69,
@@ -5739,7 +5718,7 @@
         "embedded": 0.02,
         "languages": 152.05,
         "mobile": 2.23,
-        "practices": 164.62
+        "practices": 164.58
       },
       "techs": {
         "ai-driven-development": 275.0,
@@ -5757,7 +5736,6 @@
         "llm-api": 2.66,
         "mobile-ui": 2.23,
         "mvp": 0.12,
-        "mvvm": 0.04,
         "nodejs": 0.27,
         "python": 65.9,
         "sql": 2.79,
@@ -5781,8 +5759,8 @@
         "devops": 232.84,
         "embedded": 0.18,
         "languages": 150.59,
-        "mobile": 9.18,
-        "practices": 167.84
+        "mobile": 10.56,
+        "practices": 164.79
       },
       "techs": {
         "ai-driven-development": 286.0,
@@ -5800,9 +5778,9 @@
         "ios": 0.34,
         "javascript": 0.26,
         "llm-api": 0.53,
-        "mobile-build-release": 0.57,
+        "mobile-build-release": 1.96,
         "mobile-ui": 1.62,
-        "mvvm": 9.72,
+        "mvvm": 6.67,
         "nfc": 0.18,
         "nodejs": 0.36,
         "python": 14.74,
@@ -5997,13 +5975,13 @@
       },
       "domains": {
         "ai-llm": 190.0,
-        "backend": 54.08,
-        "blockchain": 0.25,
-        "devops": 133.14,
+        "backend": 54.07,
+        "blockchain": 0.24,
+        "devops": 133.13,
         "embedded": 1.77,
-        "languages": 177.29,
-        "mobile": 78.6,
-        "practices": 129.7
+        "languages": 177.02,
+        "mobile": 78.71,
+        "practices": 129.5
       },
       "techs": {
         "ai-driven-development": 190.0,
@@ -6012,37 +5990,37 @@
         "azure-devops": 53.9,
         "bash": 106.9,
         "blazor": 0.11,
-        "blockchain": 0.25,
+        "blockchain": 0.24,
         "bluetooth": 0.04,
         "c-cpp": 7.7,
-        "cross-platform-architecture": 0.02,
-        "csharp-dotnet": 70.99,
+        "cross-platform-architecture": 0.03,
+        "csharp-dotnet": 70.93,
         "ddd": 0.02,
         "docker": 79.1,
         "dotnet-5": 53.9,
-        "github-actions": 0.39,
-        "gps": 1.65,
+        "github-actions": 0.38,
+        "gps": 1.67,
         "grpc": 0.04,
         "ios": 0.04,
         "llm-api": 0.04,
         "maui": 0.07,
         "mobile-build-release": 0.01,
-        "mobile-ui": 0.06,
+        "mobile-ui": 0.05,
         "mqtt": 0.03,
         "mvp": 0.02,
-        "mvvm": 0.11,
-        "nfc": 0.04,
-        "python": 18.54,
+        "mvvm": 0.03,
+        "nfc": 0.03,
+        "python": 18.31,
         "ruby": 0.02,
         "sql": 0.06,
         "swift": 0.77,
         "tdd": 120.4,
-        "tests": 9.14,
-        "vector-db": 0.05,
+        "tests": 9.03,
+        "vector-db": 0.04,
         "virtual-machines": 30.55,
         "web": 0.04,
-        "xamarin": 54.52,
-        "xamarin-forms": 0.01
+        "xamarin": 54.57,
+        "xamarin-forms": 0.06
       }
     }
   },
@@ -6231,20 +6209,20 @@
     },
     "cross-platform-architecture": {
       "declared_share": 0.0,
-      "display_hours": 4900,
+      "display_hours": 450,
       "domain": "mobile",
       "first": "2015-02",
-      "hours": 4999.8,
+      "hours": 458.1,
       "kind": "domain",
       "last": "2026-09",
-      "level": "advanced"
+      "level": "working"
     },
     "csharp-dotnet": {
       "declared_share": 0.282,
       "display_hours": 13000,
       "domain": "languages",
       "first": "2006-09",
-      "hours": 13465.2,
+      "hours": 13465.1,
       "kind": "language",
       "last": "2026-09",
       "level": "expert"
@@ -6461,10 +6439,10 @@
     },
     "mobile-build-release": {
       "declared_share": 0.0,
-      "display_hours": 120,
+      "display_hours": 130,
       "domain": "mobile",
       "first": "2015-02",
-      "hours": 125.1,
+      "hours": 135.1,
       "kind": "domain",
       "last": "2026-09",
       "level": "working"
@@ -6511,10 +6489,10 @@
     },
     "mvvm": {
       "declared_share": 0.0,
-      "display_hours": 230,
+      "display_hours": 170,
       "domain": "practices",
       "first": "2015-04",
-      "hours": 232.1,
+      "hours": 177.6,
       "kind": "domain",
       "last": "2026-09",
       "level": "working"
@@ -6614,7 +6592,7 @@
       "display_hours": 1400,
       "domain": "languages",
       "first": "2018-11",
-      "hours": 1405.8,
+      "hours": 1405.6,
       "kind": "language",
       "last": "2026-09",
       "level": "professional"
@@ -6704,7 +6682,7 @@
       "display_hours": 970,
       "domain": "practices",
       "first": "2015-02",
-      "hours": 973.8,
+      "hours": 973.7,
       "kind": "domain",
       "last": "2026-09",
       "level": "professional"
@@ -6854,7 +6832,7 @@
       "display_hours": 3200,
       "domain": "mobile",
       "first": "2015-02",
-      "hours": 3259.8,
+      "hours": 3259.9,
       "kind": "platform",
       "last": "2026-09",
       "level": "advanced"
