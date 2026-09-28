@@ -161,7 +161,7 @@ def test_line_scoped_rule_disambiguates_dot_m(voc: ev.Vocabulary) -> None:
     matlab = voc.analyze_patch({"calc.m": ["function y = f(x)", "y = zeros(3);"]})
     objective_c = voc.analyze_patch({"View.m": ["#import <UIKit/UIKit.h>"]})
     assert matlab == {"matlab": 1}
-    assert objective_c == {"objective-c": 1}
+    assert objective_c == {"objective-c": 1, "ios": 1}  # UIKit import
 
 
 def test_sql_from_clause_is_not_docker(voc: ev.Vocabulary) -> None:
@@ -231,8 +231,65 @@ def test_collect_keeps_own_commits_once(make_repo, tmp_path, ids, voc) -> None:
     assert first.repo == "github.com/jane/app"
     assert first.units == {"python": 1, "llm-api": 1}
     assert first.weights == {"python": 0.5, "llm-api": 0.5}
+    assert first.files == 1
     assert first.has_patch
     assert result.failures == {}
+
+
+def test_files_count_every_analyzed_file(make_repo, ids, voc) -> None:
+    files = {
+        "a.py": "import anthropic\n",
+        "README.md": "notes\n",
+        "obj/Debug/x.cs": "generated\n",
+    }
+    repo = make_repo("files", [(OWN, "2021-03-04T10:00:00+00:00", files)])
+    (commit,) = ev.collect([repo], ids, voc, is_public=never_public).commits.values()
+    # The generated file is excluded; the README is analyzed with no tech.
+    assert commit.files == 2
+    assert commit.units == {"python": 1, "llm-api": 1}
+
+
+def test_owners_filter_drops_foreign_repos(make_repo, ids, voc) -> None:
+    day = "2021-03-04T10:00:00+00:00"
+    mine = make_repo(
+        "mine", [(OWN, day, {"a.py": "x\n"})], remote="git@github.com:jane/app.git"
+    )
+    foreign = make_repo(
+        "foreign",
+        [(OWN, day, {"b.py": "x\n"}), (OWN, day, {"c.py": "y\n"})],
+        remote="https://github.com/someone/fork.git",
+    )
+    owners = ev.Owners.from_dict({"allow": ["github.com/jane/"]})
+
+    result = ev.collect(
+        [mine, foreign], ids, voc, is_public=never_public, owned=owners.allows
+    )
+
+    assert {c.repo for c in result.commits.values()} == {"github.com/jane/app"}
+    assert result.excluded == {"github.com/someone/fork": 2}
+    out = ev.aggregate(result, vocabulary_version=1)
+    assert out["summary"]["excluded_repos"] == {"github.com/someone/fork": 2}
+
+
+def test_owners_prefix_match() -> None:
+    owners = ev.Owners.from_dict({"allow": ["github.com/jane/", "local:"]})
+    assert owners.allows("github.com/jane/app")
+    assert owners.allows("local:/tmp/x")
+    assert not owners.allows("github.com/janet/app")
+
+
+@pytest.mark.parametrize(
+    "raw", [[], {"allow": "x"}, {"allow": [1]}, {"allow": []}, {"allow": [""]}]
+)
+def test_owners_reject_malformed_config(raw: object) -> None:
+    with pytest.raises(ValueError, match="allow"):
+        ev.Owners.from_dict(raw)
+
+
+def test_load_owners_reads_json(tmp_path: Path) -> None:
+    path = tmp_path / "owners.json"
+    path.write_text(json.dumps({"allow": ["local:"]}))
+    assert ev.load_owners(path).allows("local:/x")
 
 
 def test_unreadable_repo_is_reported(tmp_path, ids, voc) -> None:
@@ -279,6 +336,7 @@ def test_merge_commits_add_no_lines(make_repo, ids, voc) -> None:
 
     assert len(result.commits) == 4
     assert result.commits[merge].units == {}
+    assert result.commits[merge].files == 0
     assert result.commits[merge].has_patch
 
 
@@ -298,6 +356,8 @@ def test_deleted_binary_and_modified_files(make_repo, ids, voc) -> None:
     commits = ev.collect([repo], ids, voc, is_public=never_public).commits
 
     assert commits[shrink].units == {"python": 1}
+    assert commits[shrink].files == 1
+    assert commits[swap].files == 0
     assert commits[swap].units == {}
 
 
@@ -364,11 +424,13 @@ def test_missing_blob_falls_back_to_names_then_full_copy_upgrades(
     (commit,) = alone.commits.values()
     assert not commit.has_patch
     assert commit.units == {"csharp": 1}
+    assert commit.files == 1  # names-only commits count their files too
 
     both = ev.collect([blobless, full], ids, voc, is_public=lambda key: True)
     (commit,) = both.commits.values()
     assert commit.has_patch
     assert commit.units == {"csharp": 1, "ble": 1}
+    assert commit.files == 1
     assert commit.public
 
 
@@ -380,6 +442,7 @@ def test_missing_tree_yields_no_units(make_repo, ids, voc) -> None:
     (commit,) = ev.collect([repo], ids, voc, is_public=never_public).commits.values()
 
     assert commit.units == {}
+    assert commit.files == 0
     assert not commit.has_patch
 
 
@@ -395,9 +458,17 @@ def test_remote_url_prefers_origin_then_any(make_repo) -> None:
 # --- aggregation -------------------------------------------------------------
 
 
-def _commit(h: str, day: str, repo: str, units: dict[str, int], public=False):
+def _commit(
+    h: str, day: str, repo: str, units: dict[str, int], public=False, files=None
+):
     return ev.CommitEvidence(
-        hash=h, day=day, repo=repo, units=units, has_patch=bool(units), public=public
+        hash=h,
+        day=day,
+        repo=repo,
+        units=units,
+        has_patch=bool(units),
+        public=public,
+        files=len(units) if files is None else files,
     )
 
 
@@ -405,7 +476,7 @@ def test_aggregate_per_day_and_summary() -> None:
     result = ev.CollectResult(
         commits={
             "a": _commit("a", "2021-01-01", "r1", {"python": 1}, public=True),
-            "b": _commit("b", "2021-01-01", "r2", {"docker": 1, "python": 1}),
+            "b": _commit("b", "2021-01-01", "r2", {"docker": 1, "python": 1}, files=3),
             "c": _commit("c", "2021-01-02", "r2", {}),
         },
         failures={"/x": "boom"},
@@ -418,6 +489,8 @@ def test_aggregate_per_day_and_summary() -> None:
     assert day["public"] is True
     assert day["techs"] == {"docker": 0.25, "python": 0.75}
     assert day["presence"] == ["docker", "python"]
+    assert day["files"] == 4
+    assert day["file_counts"] == {"docker": 1, "python": 2}
     assert out["days"]["2021-01-02"]["techs"] == {}
     assert out["summary"] == {
         "vocabulary_version": 7,
@@ -427,6 +500,7 @@ def test_aggregate_per_day_and_summary() -> None:
         "public_day_share": 0.5,
         "commits_without_patch": 1,
         "failures": {"/x": "boom"},
+        "excluded_repos": {},
     }
 
 
@@ -536,6 +610,7 @@ def _private_dir(tmp_path: Path, repo: Path) -> Path:
     private.mkdir()
     (private / "identities.json").write_text(json.dumps(IDENTITIES))
     (private / "repos.txt").write_text(f"# comment\n\n{repo}\n")
+    (private / "owners.json").write_text(json.dumps({"allow": ["local:"]}))
     return private
 
 
@@ -551,7 +626,22 @@ def test_main_uses_private_dir_defaults(
     out = json.loads((private / "evidence.json").read_text())
     assert out["summary"]["unique_commits"] == 1
     assert "2022-02-02" in out["days"]
-    assert "unique commits: 1" in capsys.readouterr().out
+    printed = capsys.readouterr().out
+    assert "unique commits: 1" in printed
+    assert "excluded repos: 0" in printed
+
+
+def test_main_lists_excluded_repos(make_repo, tmp_path, monkeypatch, capsys) -> None:
+    repo = make_repo("cli", [(OWN, "2022-02-02T10:00:00+00:00", {"a.py": "x\n"})])
+    private = _private_dir(tmp_path, repo)
+    (private / "owners.json").write_text(json.dumps({"allow": ["github.com/jane/"]}))
+    monkeypatch.setenv("PROFILE_PRIVATE_DIR", str(private))
+
+    assert ev.main([]) == 0
+
+    out = json.loads((private / "evidence.json").read_text())
+    assert out["days"] == {}
+    assert f"excluded local:{repo}: 1 commit(s)" in capsys.readouterr().out
 
 
 def test_main_accepts_explicit_paths(make_repo, tmp_path, monkeypatch) -> None:
@@ -570,6 +660,8 @@ def test_main_accepts_explicit_paths(make_repo, tmp_path, monkeypatch) -> None:
             str(target),
             "--visibility-cache",
             str(tmp_path / "vis.json"),
+            "--owners",
+            str(private / "owners.json"),
         ]
     )
 
@@ -633,3 +725,481 @@ def test_scoped_flags_stay_with_their_alternative() -> None:
     voc = ev.Vocabulary.from_dict(raw)
     assert voc.analyze_patch({"f": ["ABC"]}) == {"t": 1}
     assert voc.analyze_patch({"f": ["xyz"]}) == {}
+
+
+# --- project context (vocabulary v2) -----------------------------------------
+
+DAY = "2021-03-04T10:00:00+00:00"
+FORMS_IOS = (
+    '<Project><ItemGroup><Reference Include="Xamarin.iOS" />'
+    '<PackageReference Include="Xamarin.Forms" /></ItemGroup></Project>\n'
+)
+
+
+def _only(make_repo, ids, voc, name: str, files: dict[str, str], extra=None):
+    """Collect a repo whose last own commit adds ``extra`` over ``files``."""
+    commits = [(OWN, DAY, files)]
+    if extra:
+        commits.append((OWN, "2021-03-05T10:00:00+00:00", extra))
+    repo = make_repo(name, commits)
+    result = ev.collect([repo], ids, voc, is_public=never_public)
+    return max(result.commits.values(), key=lambda c: c.day)
+
+
+def test_header_is_objective_c_when_its_project_has_m_files(
+    make_repo, ids, voc
+) -> None:
+    objc = _only(
+        make_repo,
+        ids,
+        voc,
+        "objc",
+        {"App/View.m": "#import <UIKit/UIKit.h>\n"},
+        {"App/Model/Item.h": "@interface Item\n"},
+    )
+    assert objc.units == {"objective-c": 1}
+    plain = _only(
+        make_repo, ids, voc, "plain", {"lib/a.c": "int a;\n"}, {"lib/a.h": "int a;\n"}
+    )
+    assert plain.units == {"c-cpp": 1}
+
+
+def test_header_in_c_directory_of_a_mixed_repo_stays_c(make_repo, ids, voc) -> None:
+    commit = _only(
+        make_repo,
+        ids,
+        voc,
+        "mixed",
+        {
+            "ios/App.xcodeproj/project.pbxproj": "x\n",
+            "ios/View.m": "#import <UIKit/UIKit.h>\n",
+            "core/Core.vcxproj.filters": "x\n",
+            "core/src/a.c": "int a;\n",
+            "core/CMakeLists.txt": "project(core)\n",
+        },
+        {"core/src/a.h": "int a;\n", "ios/View.h": "@interface V\n"},
+    )
+    # ios/View.h sits next to .m files; core/src/a.h belongs to the core/
+    # build root (CMakeLists.txt), which holds no Objective-C.
+    assert commit.units == {"objective-c": 1, "c-cpp": 1}
+
+
+def test_files_inherit_their_project_techs(make_repo, ids, voc) -> None:
+    commit = _only(
+        make_repo,
+        ids,
+        voc,
+        "forms",
+        {"App.iOS/App.iOS.csproj": FORMS_IOS},
+        {"App.iOS/Services/Clock.cs": "class Clock {}\n"},
+    )
+    assert commit.units == {
+        "csharp": 1,
+        "xamarin": 1,
+        "xamarin-forms": 1,
+        "ios": 1,
+    }
+
+
+def test_native_android_project(make_repo, ids, voc) -> None:
+    commit = _only(
+        make_repo,
+        ids,
+        voc,
+        "android",
+        {"app/build.gradle": "apply plugin: 'com.android.application'\n"},
+        {"app/src/main/java/A.java": "class A {}\n"},
+    )
+    assert commit.units == {"java": 1, "android": 1}
+
+
+def test_test_project_files_count_as_tests_and_test_only_commits(
+    make_repo, ids, voc
+) -> None:
+    commit = _only(
+        make_repo,
+        ids,
+        voc,
+        "tested",
+        {"Core.Specs/Core.Specs.csproj": '<PackageReference Include="NUnit" />\n'},
+        {"Core.Specs/ClockSpec.cs": "class ClockSpec {}\n"},
+    )
+    assert commit.units == {"csharp": 1, "tests": 1}
+    assert commit.test_only
+
+
+def test_mvvm_framework_applies_to_ui_and_viewmodel_files_only(
+    make_repo, ids, voc
+) -> None:
+    project = {"App/App.csproj": '<PackageReference Include="MvvmCross" />\n'}
+    view = _only(
+        make_repo, ids, voc, "mvx1", project, {"App/Views/Home.xaml": "<Grid/>\n"}
+    )
+    assert view.units == {"xaml": 1, "mobile-ui": 1, "mvvm": 1}
+    service = _only(
+        make_repo, ids, voc, "mvx2", project, {"App/Services/Api.cs": "class A {}\n"}
+    )
+    assert service.units == {"csharp": 1}
+
+
+def test_mvvm_triad_marks_its_three_layers(make_repo, ids, voc) -> None:
+    project = {
+        "App/App.csproj": "<Project/>\n",
+        "App/Models/Item.cs": "class Item {}\n",
+        "App/Views/ItemPage.cs": "class ItemPage {}\n",
+        "App/ViewModels/ItemViewModel.cs": "class ItemViewModel {}\n",
+    }
+    model = _only(
+        make_repo, ids, voc, "t1", project, {"App/Models/Item.cs": "class Item2 {}\n"}
+    )
+    assert model.units == {"csharp": 1, "mvvm": 1}
+    other = _only(
+        make_repo, ids, voc, "t2", project, {"App/Services/X.cs": "class X {}\n"}
+    )
+    assert other.units == {"csharp": 1}
+    no_triad = _only(
+        make_repo,
+        ids,
+        voc,
+        "t3",
+        {"App/App.csproj": "<Project/>\n", "App/Models/Item.cs": "class I {}\n"},
+        {"App/Models/Item.cs": "class Item2 {}\n"},
+    )
+    assert no_triad.units == {"csharp": 1}
+
+
+def test_ordinary_shared_code_is_not_cross_platform(make_repo, ids, voc) -> None:
+    solution = {
+        "Core/Core.csproj": "<TargetFramework>netstandard2.0</TargetFramework>\n",
+        "App.Droid/App.Droid.csproj": "<Project/>\n",
+    }
+    commit = _only(
+        make_repo, ids, voc, "shared", solution, {"Core/Clock.cs": "class Clock {}\n"}
+    )
+    assert commit.units == {"csharp": 1}
+
+
+def test_interface_implemented_on_both_platforms(make_repo, ids, voc) -> None:
+    both = {
+        "App.iOS/Services/Clock.cs": "public class Clock : NSObject, IClock {}\n",
+        "App.Droid/Clock.cs": "class Clock : Java.Lang.Object, IClock\n{\n}\n",
+        "App.Droid/Other.cs": "class Other : IOther {}\n",
+    }
+    defined = _only(
+        make_repo,
+        ids,
+        voc,
+        "iface",
+        both,
+        {"Core/IClock.cs": "public interface IClock { }\n"},
+    )
+    assert defined.units == {"csharp": 1, "cross-platform-architecture": 1}
+    one_side = _only(
+        make_repo,
+        ids,
+        voc,
+        "iface1",
+        both,
+        {"Core/IOther.cs": "public interface IOther { }\n"},
+    )
+    assert one_side.units == {"csharp": 1}
+
+
+def test_build_scripts_and_ci_of_mobile_repos(make_repo, ids, voc) -> None:
+    mobile = {"App.Droid/App.Droid.csproj": "<Project/>\n"}
+    extra = {
+        "buildAll.sh": "msbuild App.sln\n",
+        "scripts/lint.sh": "ruff check\n",
+        "scripts/ship.sh": "xcrun altool --upload-app app.ipa\n",
+        ".github/workflows/ci.yml": "on: push\n",
+    }
+    commit = _only(make_repo, ids, voc, "mobile", mobile, extra)
+    assert commit.units["mobile-build-release"] == 3  # not scripts/lint.sh
+    plain = _only(make_repo, ids, voc, "plain-ci", {"a.py": "x\n"}, extra)
+    assert "mobile-build-release" not in plain.units
+
+
+def test_unreadable_project_file_adds_nothing(make_repo, ids, voc) -> None:
+    repo = make_repo(
+        "blobless-project",
+        [
+            (OWN, DAY, {"App.iOS/App.iOS.csproj": FORMS_IOS}),
+            (OWN, "2021-03-05T10:00:00+00:00", {"App.iOS/A.cs": "class A {}\n"}),
+        ],
+    )
+    _drop_object(repo, "HEAD:App.iOS/App.iOS.csproj")
+    commits = ev.collect([repo], ids, voc, is_public=never_public).commits
+    last = max(commits.values(), key=lambda c: c.day)
+    assert last.units == {"csharp": 1, "ios": 1, "xamarin": 1}  # path rules only
+
+
+@pytest.mark.parametrize(
+    ("path", "lines", "tech"),
+    [
+        (
+            "App.iOS/App.iOS.csproj",
+            ["<CodesignKey>iPhone</CodesignKey>"],
+            "mobile-build-release",
+        ),
+        ("fastlane/Fastfile", ["lane :beta"], "mobile-build-release"),
+        ("azure-pipelines.yml", ["- task: XamarinAndroid@1"], "mobile-build-release"),
+        ("Core/ClockTests.cs", ["[Test]"], "tests"),
+        ("tests/test_x.py", ["x = 1"], "tests"),
+        ("web/app.spec.ts", ["x"], "tests"),
+        ("App/HomePresenter.cs", ["class P {}"], "mvp"),
+        ("App/IHome.cs", ["public interface IHomeView {}"], "mvp"),
+        ("Shop.Domain/ValueObjects/Money.cs", ["class Money {}"], "ddd"),
+        ("Shop/Entities/Order.cs", ["class OrderAggregate {}"], "ddd"),
+        ("App/Info.plist", ["<plist/>"], "ios"),
+        ("App/Main.cs", ["using UIKit;"], "ios"),
+        ("App/Main.cs", ["using Android.App;"], "android"),
+        ("App/Conv.cs", ["class C : IValueConverter {}"], "mobile-ui"),
+        (
+            "App/HomePageController.cs",
+            ["public ICommand Save { get; }", "OnPropertyChanged();"],
+            "mvvm",
+        ),
+        (
+            "App/Vm.cs",
+            ["Refresh = new Command(Load);", "PropertyChanged?.Invoke(this, e);"],
+            "mvvm",
+        ),
+        (
+            "App/HomeController.cs",
+            ["class HomeController : BasePageController<HomePage>"],
+            "mvvm",
+        ),
+        ("App/Model/ItemUIModel.cs", ["OnPropertyChanged(nameof(Name));"], "mvvm"),
+        ("App/Api/StatusModel.cs", ["RaisePropertyChanged();"], "mvvm"),
+        (
+            "App/Api.cs",
+            ["DependencyService.Register<Api>();"],
+            "cross-platform-architecture",
+        ),
+        (
+            "App/Renderers.cs",
+            ["[assembly: ExportRenderer(typeof(A), typeof(B))]"],
+            "cross-platform-architecture",
+        ),
+        ("App/Paths.cs", ["#if __IOS__"], "cross-platform-architecture"),
+        ("Shared/Shared.shproj", ["<Project/>"], "cross-platform-architecture"),
+        (
+            "Core/Core.csproj",
+            ["<TargetFrameworks>netstandard2.0;net6.0</TargetFrameworks>"],
+            "cross-platform-architecture",
+        ),
+        ("Shared/App.cs", ["using Xamarin.Forms;"], "xamarin-forms"),
+        ("App/Page.xaml", ['<Label Text="{Binding Name}"/>'], "mvvm"),
+    ],
+)
+def test_file_level_rules(voc: ev.Vocabulary, path, lines, tech) -> None:
+    assert tech in voc.analyze_patch({path: lines})
+
+
+@pytest.mark.parametrize(
+    ("path", "lines"),
+    [
+        ("App/Vm.cs", ["class V : INotifyPropertyChanged {}"]),
+        ("App/Vm.cs", ["public ICommand Save { get; }"]),
+        ("App/Services/Sync.cs", ["OnPropertyChanged();"]),
+        ("Core/Core.csproj", ["<TargetFramework>netstandard2.0</TargetFramework>"]),
+        ("App/Api.cs", ["var api = DependencyService.Get<IApi>();"]),
+    ],
+)
+def test_behavior_rules_need_their_evidence(voc: ev.Vocabulary, path, lines) -> None:
+    units = voc.analyze_patch({path: lines})
+    assert "mvvm" not in units
+    assert "cross-platform-architecture" not in units
+
+
+def test_aggregate_counts_test_only_commits() -> None:
+    commit = _commit("a", "2021-01-01", "r1", {"tests": 1, "csharp": 1})
+    commit.test_only = True
+    out = ev.aggregate(ev.CollectResult(commits={"a": commit}), vocabulary_version=2)
+    assert out["days"]["2021-01-01"]["test_only_commits"] == 1
+
+
+@pytest.mark.parametrize(
+    "extra",
+    [
+        {"project_files": 1},
+        {"project_files": "x", "project_rules": [{"tech": "t"}]},
+        {
+            "project_files": "x",
+            "conjunctions": [{"tech": "t", "all": "x"}],
+        },
+        {"project_files": "x", "project_rules": "no"},
+        {"conjunctions": "no"},
+        {"conjunctions": [{"tech": "t", "all": []}]},
+        {"context_rules": "no"},
+        {"context_rules": [{"tech": "t", "requires": "moon", "path": "x"}]},
+        {"context_rules": [{"tech": "t", "requires": "mobile-repo"}]},
+        {"platform_sides": {"ios": "x"}},
+        {"platform_sides": "no"},
+    ],
+)
+def test_vocabulary_rejects_malformed_project_rules(extra) -> None:
+    raw = {
+        "version": 2,
+        "excluded": [],
+        "languages": {},
+        "path_rules": [],
+        "signatures": {},
+        **extra,
+    }
+    with pytest.raises(ValueError):
+        ev.Vocabulary.from_dict(raw)
+
+
+def test_mvvm_triad_from_file_names(make_repo, ids, voc) -> None:
+    project = {
+        "App/App.csproj": "<Project/>\n",
+        "App/ItemModel.cs": "class ItemModel {}\n",
+        "App/ItemView.cs": "class ItemView {}\n",
+        "App/ItemViewModel.cs": "class ItemViewModel {}\n",
+    }
+    commit = _only(
+        make_repo, ids, voc, "names", project, {"App/ItemModel.cs": "class M {}\n"}
+    )
+    assert commit.units == {"csharp": 1, "mvvm": 1}
+
+
+def test_context_tolerates_missing_directories(make_repo, voc) -> None:
+    repo_path = make_repo("ctx", [(OWN, DAY, {"lib/a.c": "int a;\n"})])
+    repo = ev.open_repository(repo_path)
+    tree = repo.revparse_single("HEAD").peel(ev.pygit2.Commit).tree
+    context = ev.ProjectContext(repo, tree, voc, ev.ContextCache())
+    assert context.header_language("gone/x.h") is None
+    assert context.header_language("lib/a.c/x.h") is None  # a file, not a dir
+
+
+def test_missing_parent_tree_yields_nothing(make_repo, ids, voc) -> None:
+    repo = make_repo(
+        "orphan",
+        [
+            (OWN, DAY, {"a.py": "x = 1\n"}),
+            (OWN, "2021-03-05T10:00:00+00:00", {"b.py": "y = 2\n"}),
+        ],
+    )
+    _drop_object(repo, "HEAD~1^{tree}")
+    commits = ev.collect([repo], ids, voc, is_public=never_public).commits
+    last = max(commits.values(), key=lambda c: c.day)
+    assert (last.units, last.files, last.has_patch) == ({}, 0, False)
+
+
+# --- MVVM at project level ---------------------------------------------------
+
+BASE_VM = (
+    "public class BasePageController : Bindable\n{\n"
+    "    public ICommand Save { get; }\n"
+    "    void Changed() => OnPropertyChanged();\n}\n"
+)
+SDK = {
+    "Sdk/Sdk.csproj": "<Project/>\n",
+    "Sdk/Base/BasePageController.cs": BASE_VM,
+    "Sdk/Base/DefaultLoginPageController.cs": (
+        "public class DefaultLoginPageController : BasePageController {}\n"
+    ),
+}
+APP_PROJECT = (
+    '<ItemGroup><ProjectReference Include="..\\Sdk\\Sdk.csproj" /></ItemGroup>\n'
+)
+
+
+def test_presentation_layer_of_an_mvvm_project(make_repo, ids, voc) -> None:
+    control = _only(
+        make_repo, ids, voc, "p1", SDK, {"Sdk/Controls/Badge.cs": "class Badge {}\n"}
+    )
+    assert "mvvm" in control.units
+    service = _only(
+        make_repo, ids, voc, "p2", SDK, {"Sdk/Services/Api.cs": "class Api {}\n"}
+    )
+    assert "mvvm" not in service.units
+
+
+def test_presentation_of_a_project_without_viewmodel(make_repo, ids, voc) -> None:
+    commit = _only(
+        make_repo,
+        ids,
+        voc,
+        "p3",
+        {"App/App.csproj": "<Project/>\n", "App/Api.cs": "class Api {}\n"},
+        {"App/Views/Home.cs": "class Home {}\n"},
+    )
+    assert "mvvm" not in commit.units
+
+
+def test_referencing_an_mvvm_sdk_and_inheriting_its_viewmodels(
+    make_repo, ids, voc
+) -> None:
+    tree = {**SDK, "App/App.csproj": APP_PROJECT}
+    derived = _only(
+        make_repo,
+        ids,
+        voc,
+        "p4",
+        tree,
+        {
+            "App/Login/LoginFlow.cs": (
+                "public class ShopLoginFlow : DefaultLoginPageController {}\n"
+            )
+        },
+    )
+    assert "mvvm" in derived.units
+    view = _only(make_repo, ids, voc, "p5", tree, {"App/Views/X.cs": "class X {}\n"})
+    assert "mvvm" in view.units
+    network = _only(
+        make_repo, ids, voc, "p6", tree, {"App/Net/Client.cs": "class Client {}\n"}
+    )
+    assert "mvvm" not in network.units
+
+
+def test_shared_project_import_carries_mvvm(make_repo, ids, voc) -> None:
+    tree = {
+        "Shared/Shared.projitems": "<Project/>\n",
+        "Shared/Base/BasePageController.cs": BASE_VM,
+        "App/App.csproj": '<Import Project="..\\Shared\\Shared.projitems" />\n',
+    }
+    commit = _only(
+        make_repo, ids, voc, "p7", tree, {"App/Pages/Home.cs": "class Home {}\n"}
+    )
+    assert "mvvm" in commit.units
+
+
+def test_registry_carries_mvvm_across_repositories(
+    make_repo, tmp_path, ids, voc
+) -> None:
+    sdk = make_repo("sdk-repo", [(OWN, DAY, SDK)])
+    app = make_repo(
+        "app-repo",
+        [
+            (OWN, DAY, {"App/App.csproj": APP_PROJECT}),
+            (
+                OWN,
+                "2021-03-05T10:00:00+00:00",
+                {
+                    "App/Views/X.cs": "class X {}\n",
+                    "App/Flow.cs": "class Flow : DefaultLoginPageController {}\n",
+                },
+            ),
+        ],
+    )
+    registry = ev.mvvm_registry([sdk, app, tmp_path / "missing"], voc)
+    assert "sdk.csproj" in registry.projects
+    assert {"BasePageController", "DefaultLoginPageController"} <= registry.classes
+    alone = ev.collect([app], ids, voc, is_public=never_public)
+    last = max(alone.commits.values(), key=lambda c: c.day)
+    assert "mvvm" not in last.units
+    shared = ev.collect([app], ids, voc, is_public=never_public, registry=registry)
+    last = max(shared.commits.values(), key=lambda c: c.day)
+    assert last.units["mvvm"] == 2
+
+
+def test_project_references_cycles_and_escapes_terminate(make_repo, ids, voc) -> None:
+    tree = {
+        "A/A.csproj": '<ProjectReference Include="..\\B\\B.csproj" />\n'
+        '<ProjectReference Include="..\\..\\Out\\Out.csproj" />\n',
+        "B/B.csproj": '<ProjectReference Include="..\\A\\A.csproj" />\n',
+    }
+    commit = _only(make_repo, ids, voc, "cycle", tree, {"A/Views/V.cs": "class V {}\n"})
+    assert "mvvm" not in commit.units

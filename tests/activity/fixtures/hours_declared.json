@@ -1,0 +1,108 @@
+{
+  "version": 1,
+  "note": "Synthetic sample, not real data.",
+  "periods": [
+    {
+      "source": "freelance-client",
+      "label": "Mission A",
+      "start": "2007-07",
+      "end": "2007-07",
+      "pro_hours_per_weekday": 7,
+      "languages": {
+        "python": 1.0
+      },
+      "tiers": {
+        "docker": "secondary",
+        "git": "primary"
+      },
+      "facts": [
+        "synthetic"
+      ]
+    },
+    {
+      "source": "freelance-client",
+      "label": "Mission B",
+      "start": "2007-07",
+      "end": null,
+      "pro_hours_per_weekday": 7,
+      "languages": {
+        "bash": 1.0
+      },
+      "tiers": {}
+    },
+    {
+      "source": "school-x",
+      "label": "School",
+      "start": "2006-09",
+      "end": "2007-03",
+      "languages": {
+        "c-cpp": 0.6,
+        "sql": 0.4
+      },
+      "tiers": {
+        "windows-ce": "secondary"
+      }
+    },
+    {
+      "source": "school-x",
+      "label": "Cup",
+      "start": "2007-01",
+      "end": "2007-03",
+      "within_study_budget": true,
+      "languages": {
+        "c-cpp": 1.0
+      },
+      "tiers": {
+        "computer-vision": "primary"
+      }
+    }
+  ],
+  "overlays": [
+    {
+      "tech": "ai-driven-development",
+      "scope": "personal (synthetic note)",
+      "periods": [
+        {
+          "start": "2007-08",
+          "end": "2008-03",
+          "tier": "incident"
+        },
+        {
+          "start": "2008-04",
+          "end": "2008-04",
+          "tier": "secondary"
+        }
+      ],
+      "measured_from": "2008-05"
+    },
+    {
+      "tech": "tdd",
+      "scope": "per period",
+      "periods": [
+        {
+          "start": "2007-10",
+          "end": "2007-10",
+          "tier": "primary",
+          "source": "org-b"
+        },
+        {
+          "start": "2008-05",
+          "end": null,
+          "tier": "full",
+          "scope": "personal"
+        }
+      ]
+    },
+    {
+      "tech": "docker",
+      "scope": "all",
+      "periods": [
+        {
+          "start": "2008-02",
+          "end": "2008-02",
+          "tier": "incident"
+        }
+      ]
+    }
+  ]
+}

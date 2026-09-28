@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 4,
   "excluded": [
     "(?i)(^|/)(bin|obj|node_modules|vendor|bower_components|Pods|\\.venv|venv|site-packages|__pycache__)/",
     "(?i)\\.designer\\.cs$",
@@ -57,73 +57,452 @@
     ".proto": "grpc"
   },
   "path_rules": [
-    {"pattern": "(?i)(^|/)(dockerfile[^/]*|docker-compose[^/]*\\.ya?ml|compose\\.ya?ml|\\.dockerignore)$", "tech": "docker"},
-    {"pattern": "^\\.github/workflows/[^/]+\\.ya?ml$", "tech": "github-actions"},
-    {"pattern": "(?i)(^|/)azure-pipelines[^/]*\\.ya?ml$", "tech": "azure-devops"},
-    {"pattern": "(?i)(\\.droid|\\.android|\\.ios)/[^/]+.*\\.cs$|(^|/)(android|ios)/.*\\.cs$", "tech": "xamarin"},
-    {"pattern": "(?i)(^|/)controllers/[^/]+\\.cs$", "tech": "aspnet"},
-    {"pattern": "(?i)(^|/)migrations/[^/]+\\.cs$|dbcontext[^/]*\\.cs$", "tech": "ef"},
-    {"pattern": "(?i)(^|/)(\\.claude/|claude\\.md$|agents\\.md$|\\.cursor/|\\.cursorrules$)", "tech": "ai-assisted"},
-    {"pattern": "(?i)\\.(csproj|sln|props)$", "tech": "dotnet"},
-    {"pattern": "(?i)(^|/)(pyproject\\.toml|setup\\.py|requirements[^/]*\\.txt)$", "tech": "python"},
-    {"pattern": "(^|/)package\\.json$", "tech": "node"},
-    {"pattern": "(^|/)Cargo\\.toml$", "tech": "rust"},
-    {"pattern": "\\.sol$", "tech": "blockchain"},
-    {"pattern": "\\.m$", "tech": "objective-c", "lines": ["^\\s*(#import|@interface|@implementation|@property|@end\\b)", "\\[\\[?\\w+ alloc\\]"]},
-    {"pattern": "\\.m$", "tech": "matlab", "lines": ["^\\s*function\\s+(\\[[^\\]]*\\]|\\w+)\\s*=", "^\\s*%%", "\\b(zeros|ones|linspace|disp|fprintf|figure)\\("]}
+    {
+      "pattern": "(?i)(^|/)(dockerfile[^/]*|docker-compose[^/]*\\.ya?ml|compose\\.ya?ml|\\.dockerignore)$",
+      "tech": "docker"
+    },
+    {
+      "pattern": "^\\.github/workflows/[^/]+\\.ya?ml$",
+      "tech": "github-actions"
+    },
+    {
+      "pattern": "(?i)(^|/)azure-pipelines[^/]*\\.ya?ml$",
+      "tech": "azure-devops"
+    },
+    {
+      "pattern": "(?i)(\\.droid|\\.android|\\.ios)/[^/]+.*\\.cs$|(^|/)(android|ios)/.*\\.cs$",
+      "tech": "xamarin"
+    },
+    {
+      "pattern": "(?i)(^|/)controllers/[^/]+\\.cs$",
+      "tech": "aspnet"
+    },
+    {
+      "pattern": "(?i)(^|/)migrations/[^/]+\\.cs$|dbcontext[^/]*\\.cs$",
+      "tech": "ef"
+    },
+    {
+      "pattern": "(?i)(^|/)(\\.claude/|claude\\.md$|agents\\.md$|\\.cursor/|\\.cursorrules$)",
+      "tech": "ai-assisted"
+    },
+    {
+      "pattern": "(?i)\\.(csproj|sln|props)$",
+      "tech": "dotnet"
+    },
+    {
+      "pattern": "(?i)(^|/)(pyproject\\.toml|setup\\.py|requirements[^/]*\\.txt)$",
+      "tech": "python"
+    },
+    {
+      "pattern": "(^|/)package\\.json$",
+      "tech": "node"
+    },
+    {
+      "pattern": "(^|/)Cargo\\.toml$",
+      "tech": "rust"
+    },
+    {
+      "pattern": "\\.sol$",
+      "tech": "blockchain"
+    },
+    {
+      "pattern": "\\.m$",
+      "tech": "objective-c",
+      "lines": [
+        "^\\s*(#import|@interface|@implementation|@property|@end\\b)",
+        "\\[\\[?\\w+ alloc\\]"
+      ]
+    },
+    {
+      "pattern": "\\.m$",
+      "tech": "matlab",
+      "lines": [
+        "^\\s*function\\s+(\\[[^\\]]*\\]|\\w+)\\s*=",
+        "^\\s*%%",
+        "\\b(zeros|ones|linspace|disp|fprintf|figure)\\("
+      ]
+    },
+    {
+      "pattern": "(?i)(^|/)[^/]*\\.ios/",
+      "tech": "ios"
+    },
+    {
+      "pattern": "(?i)(^|/)(Info|Entitlements)\\.plist$",
+      "tech": "ios"
+    },
+    {
+      "pattern": "(?i)(^|/)[^/]*\\.(droid|android)/",
+      "tech": "android"
+    },
+    {
+      "pattern": "(?i)(^|/)AndroidManifest\\.xml$",
+      "tech": "android"
+    },
+    {
+      "pattern": "(?i)\\.xaml$",
+      "tech": "mobile-ui"
+    },
+    {
+      "pattern": "(?i)(^|/)(Views|Pages|Renderers|Converters|Controls)/[^/]+$",
+      "tech": "mobile-ui"
+    },
+    {
+      "pattern": "(?i)(^|/)fastlane/",
+      "tech": "mobile-build-release"
+    },
+    {
+      "pattern": "(?i)(^|/)appcenter-(pre|post)-[^/]*\\.sh$|(^|/)(bitrise\\.ya?ml|codemagic\\.ya?ml)$",
+      "tech": "mobile-build-release"
+    },
+    {
+      "pattern": "(?i)\\.csproj$",
+      "tech": "mobile-build-release",
+      "lines": [
+        "<(CodesignKey|CodesignProvision|CodesignEntitlements|AndroidKeyStore|AndroidSigning\\w*|AndroidSupportedAbis|AndroidPackageFormat|AndroidUseAapt2|MtouchArch|ArchiveOnBuild|BuildIpa|IpaPackageName|AndroidCreatePackagePerAbi)\\b"
+      ]
+    },
+    {
+      "pattern": "(?i)(^|/)(azure-pipelines[^/]*\\.ya?ml|\\.github/workflows/[^/]+\\.ya?ml|(build|publish|deploy|release)[^/]*\\.(sh|ps1|cake|bat))$",
+      "tech": "mobile-build-release",
+      "lines": [
+        "(?i)xamarin|\\.ipa\\b|\\.apk\\b|\\.aab\\b|MonoAndroid|Xamarin\\.iOS|codesign|provisioning|keystore|appcenter"
+      ]
+    },
+    {
+      "pattern": "(?i)(^|/)[^/]*\\.(Tests|UnitTests|UITests|IntegrationTests|Test|Specs)/",
+      "tech": "tests"
+    },
+    {
+      "pattern": "(^|/)tests?/",
+      "tech": "tests"
+    },
+    {
+      "pattern": "(^|/)test_[^/]*\\.py$|_test\\.(py|go)$|\\.(spec|test)\\.(ts|tsx|js|jsx)$|(^|/)conftest\\.py$",
+      "tech": "tests"
+    },
+    {
+      "pattern": "(?i)ViewModel[^/]*\\.\\w+$",
+      "tech": "mvvm"
+    },
+    {
+      "pattern": "(?i)Presenter[^/]*\\.\\w+$",
+      "tech": "mvp"
+    },
+    {
+      "pattern": "(?i)(^|/)(Domain|ValueObjects|Aggregates|DomainEvents|Specifications)/",
+      "tech": "ddd"
+    },
+    {
+      "pattern": "(?i)(^|/)[^/]*\\.Domain/(.*/)?Entities/",
+      "tech": "ddd"
+    },
+    {
+      "pattern": "(?i)((^|/)(Models?|UiModels?)/[^/]+|Model)\\.cs$",
+      "tech": "mvvm",
+      "lines": [
+        "\\b(OnPropertyChanged|RaisePropertyChanged|NotifyPropertyChanged|SetProperty)\\s*[(<]|PropertyChanged\\?\\.Invoke|PropertyChanged\\s*\\(\\s*this"
+      ]
+    },
+    {
+      "pattern": "(?i)\\.(shproj|projitems)$",
+      "tech": "cross-platform-architecture"
+    },
+    {
+      "pattern": "(?i)\\.csproj$",
+      "tech": "cross-platform-architecture",
+      "lines": [
+        "<TargetFrameworks>"
+      ]
+    }
   ],
   "signatures": {
     "ble": [
-      "CoreBluetooth", "\\bCB(Peripheral|CentralManager|Characteristic|UUID)\\b", "Plugin\\.BLE",
-      "BluetoothGatt", "BluetoothLeScanner", "\\bGatt[A-Z]\\w*", "BluetoothLE",
-      "NetToolBox\\.Bluetooth", "\\bBluetooth(Adapter|Device|Characteristic|CharacteristicDescriptor|Service)\\b",
-      "^\\s*(import|from)\\s+bleak\\b", "@abandonware/noble"
+      "CoreBluetooth",
+      "\\bCB(Peripheral|CentralManager|Characteristic|UUID)\\b",
+      "Plugin\\.BLE",
+      "BluetoothGatt",
+      "BluetoothLeScanner",
+      "\\bGatt[A-Z]\\w*",
+      "BluetoothLE",
+      "NetToolBox\\.Bluetooth",
+      "\\bBluetooth(Adapter|Device|Characteristic|CharacteristicDescriptor|Service)\\b",
+      "^\\s*(import|from)\\s+bleak\\b",
+      "@abandonware/noble"
     ],
     "nfc": [
-      "\\bNfc[A-Z]\\w*", "CoreNFC", "\\bNFC(NDEF|Tag|Reader)\\w*", "Mifare", "Iso14443", "IsoDep",
-      "\\bNdef(Message|Record)\\b", "android\\.nfc"
+      "\\bNfc[A-Z]\\w*",
+      "CoreNFC",
+      "\\bNFC(NDEF|Tag|Reader)\\w*",
+      "Mifare",
+      "Iso14443",
+      "IsoDep",
+      "\\bNdef(Message|Record)\\b",
+      "android\\.nfc"
     ],
     "gps-maps": [
-      "CoreLocation", "\\bCLLocation\\w*", "Geolocation", "Geolocator", "\\bHERE\\.", "Here\\.Sdk",
-      "HereSdk", "MapKit", "\\bMKMapView\\b", "Xamarin\\.Forms\\.Maps", "GoogleMap", "\\bLocationManager\\b",
-      "\\bNMEA\\b", "\\bleaflet\\b", "openstreetmap", "Mapbox"
+      "CoreLocation",
+      "\\bCLLocation\\w*",
+      "Geolocation",
+      "Geolocator",
+      "\\bHERE\\.",
+      "Here\\.Sdk",
+      "HereSdk",
+      "MapKit",
+      "\\bMKMapView\\b",
+      "Xamarin\\.Forms\\.Maps",
+      "GoogleMap",
+      "\\bLocationManager\\b",
+      "\\bNMEA\\b",
+      "\\bleaflet\\b",
+      "openstreetmap",
+      "Mapbox"
     ],
     "xamarin": [
-      "Xamarin\\.(Forms|iOS|Android|Essentials)", "\\bContentPage\\b", "Device\\.BeginInvokeOnMainThread",
+      "Xamarin\\.(Forms|iOS|Android|Essentials)",
+      "\\bContentPage\\b",
+      "Device\\.BeginInvokeOnMainThread",
       "^\\s*using\\s+(Android|UIKit|Foundation|CoreGraphics)(\\.\\w+)*\\s*;"
     ],
-    "maui": ["Microsoft\\.Maui"],
-    "aspnet": [
-      "Microsoft\\.AspNetCore(?!\\.Components)", "\\[ApiController\\]", "\\bControllerBase\\b",
-      "System\\.Web\\.(Http|Mvc)", "WebApplication\\.CreateBuilder", "\\bIApplicationBuilder\\b"
+    "maui": [
+      "Microsoft\\.Maui"
     ],
-    "ef": ["Microsoft\\.EntityFrameworkCore", "\\bDbContext\\b", "System\\.Data\\.Entity", "\\bDbSet<"],
-    "blazor": ["Microsoft\\.AspNetCore\\.Components", "MudBlazor", "^\\s*@code\\s*\\{"],
+    "aspnet": [
+      "Microsoft\\.AspNetCore(?!\\.Components)",
+      "\\[ApiController\\]",
+      "\\bControllerBase\\b",
+      "System\\.Web\\.(Http|Mvc)",
+      "WebApplication\\.CreateBuilder",
+      "\\bIApplicationBuilder\\b"
+    ],
+    "ef": [
+      "Microsoft\\.EntityFrameworkCore",
+      "\\bDbContext\\b",
+      "System\\.Data\\.Entity",
+      "\\bDbSet<"
+    ],
+    "blazor": [
+      "Microsoft\\.AspNetCore\\.Components",
+      "MudBlazor",
+      "^\\s*@code\\s*\\{"
+    ],
     "blockchain": [
-      "cosmos-sdk", "CosmosSdk", "Cosmos\\.Client", "cosmjs", "(?i)cosmwasm", "Osmosis", "osmosisd",
-      "CometBFT", "Tendermint", "\\b[Ww]eb3\\b", "\\bethers\\b", "Nethereum", "Solana", "Solnet",
-      "\\bIdena\\b", "\\bAIOZ\\b", "(?i)\\b(?:akash)\\b", "\\b(?:bech32)\\b", "(?i)bscscan", "(?i)etherscan",
-      "Uniswap", "\\bERC20\\b", "pragma solidity"
+      "cosmos-sdk",
+      "CosmosSdk",
+      "Cosmos\\.Client",
+      "cosmjs",
+      "(?i)cosmwasm",
+      "Osmosis",
+      "osmosisd",
+      "CometBFT",
+      "Tendermint",
+      "\\b[Ww]eb3\\b",
+      "\\bethers\\b",
+      "Nethereum",
+      "Solana",
+      "Solnet",
+      "\\bIdena\\b",
+      "\\bAIOZ\\b",
+      "(?i)\\b(?:akash)\\b",
+      "\\b(?:bech32)\\b",
+      "(?i)bscscan",
+      "(?i)etherscan",
+      "Uniswap",
+      "\\bERC20\\b",
+      "pragma solidity"
     ],
     "llm-api": [
       "^\\s*(import|from)\\s+(anthropic|openai|litellm|langchain\\w*|langgraph|ollama|crewai|mistralai|google\\.generativeai)\\b",
-      "\\b(Async)?(Anthropic|OpenAI)\\(", "\\blitellm\\.", "@anthropic-ai/sdk",
-      "api\\.(openai|anthropic)\\.com", "Azure\\.AI\\.OpenAI", "Microsoft\\.SemanticKernel",
+      "\\b(Async)?(Anthropic|OpenAI)\\(",
+      "\\blitellm\\.",
+      "@anthropic-ai/sdk",
+      "api\\.(openai|anthropic)\\.com",
+      "Azure\\.AI\\.OpenAI",
+      "Microsoft\\.SemanticKernel",
       "^(anthropic|openai|litellm|langchain[\\w-]*)\\s*([<>=~!]=|[<>]|$)"
     ],
-    "docker": ["\\bdocker(-| )compose\\b", "\\bdocker (run|build|exec|pull|push)\\b"],
+    "docker": [
+      "\\bdocker(-| )compose\\b",
+      "\\bdocker (run|build|exec|pull|push)\\b"
+    ],
     "azure": [
-      "Microsoft\\.Azure", "\\bAzure\\.[A-Z]\\w+", "azurewebsites\\.net", "AzureFunctions", "AzureWebJobs",
-      "\\baz (login|webapp|group|functionapp|storage)\\b", "\\bazure-(functions|storage|identity)\\b"
+      "Microsoft\\.Azure",
+      "\\bAzure\\.[A-Z]\\w+",
+      "azurewebsites\\.net",
+      "AzureFunctions",
+      "AzureWebJobs",
+      "\\baz (login|webapp|group|functionapp|storage)\\b",
+      "\\bazure-(functions|storage|identity)\\b"
     ],
     "sql": [
       "^\\s*(CREATE|ALTER|DROP)\\s+(TABLE|VIEW|INDEX|PROCEDURE|FUNCTION|TRIGGER)\\b",
-      "\\bSELECT\\s+.+\\s+FROM\\s+\\w", "\\bINSERT\\s+INTO\\b", "\\bUPDATE\\s+\\w+\\s+SET\\b",
+      "\\bSELECT\\s+.+\\s+FROM\\s+\\w",
+      "\\bINSERT\\s+INTO\\b",
+      "\\bUPDATE\\s+\\w+\\s+SET\\b",
       "\\bDELETE\\s+FROM\\b"
     ],
-    "grpc": ["Grpc\\.(Core|Net|AspNetCore)", "^\\s*import\\s+grpc\\b", "\\b(?:grpcio)\\b"],
-    "kubernetes": ["^\\s*kind:\\s*(Deployment|StatefulSet|DaemonSet|Ingress)\\s*$", "\\bkubectl\\b"],
-    "mqtt": ["paho\\.mqtt", "MQTTnet"],
-    "vector-db": ["(?i)\\bqdrant", "\\b(?:chromadb)\\b", "\\b(?:pgvector)\\b", "\\b(?:faiss)\\b"]
-  }
+    "grpc": [
+      "Grpc\\.(Core|Net|AspNetCore)",
+      "^\\s*import\\s+grpc\\b",
+      "\\b(?:grpcio)\\b"
+    ],
+    "kubernetes": [
+      "^\\s*kind:\\s*(Deployment|StatefulSet|DaemonSet|Ingress)\\s*$",
+      "\\bkubectl\\b"
+    ],
+    "mqtt": [
+      "paho\\.mqtt",
+      "MQTTnet"
+    ],
+    "vector-db": [
+      "(?i)\\bqdrant",
+      "\\b(?:chromadb)\\b",
+      "\\b(?:pgvector)\\b",
+      "\\b(?:faiss)\\b"
+    ],
+    "ios": [
+      "^\\s*using\\s+(UIKit|Foundation)(\\.\\w+)*\\s*;",
+      "#import\\s+<(UIKit|Foundation)/"
+    ],
+    "android": [
+      "^\\s*using\\s+Android(\\.\\w+)*\\s*;",
+      "^\\s*import\\s+android\\."
+    ],
+    "mobile-ui": [
+      ":\\s*(ContentPage|ContentView|\\w*Renderer|IValueConverter)\\b"
+    ],
+    "cross-platform-architecture": [
+      "DependencyService\\.Register\\b",
+      "\\[assembly:\\s*(Xamarin\\.Forms\\.)?(Dependency|ExportRenderer)\\(",
+      "^\\s*#\\s*(el)?if\\b.*__(IOS|ANDROID|MOBILE)__"
+    ],
+    "tests": [
+      "\\[(Test|TestFixture|TestCase|Fact|Theory|TestMethod|TestClass)\\b",
+      "^\\s*using\\s+(NUnit|Xunit|Microsoft\\.VisualStudio\\.TestTools)",
+      "Xamarin\\.UITest",
+      "^\\s*import\\s+pytest\\b|^\\s*from\\s+unittest\\b|^\\s*import\\s+unittest\\b"
+    ],
+    "mvvm": [
+      "\\{Binding\\b",
+      "\\bclass\\s+\\w+(<[^>]*>)?\\s*:[^{]*<\\s*\\w*Page\\s*>"
+    ],
+    "mvp": [
+      "\\binterface\\s+I\\w+View\\b"
+    ],
+    "ddd": [
+      "\\bclass\\s+\\w*(ValueObject|AggregateRoot|Aggregate)\\b"
+    ],
+    "xamarin-forms": [
+      "^\\s*using\\s+Xamarin\\.Forms\\b",
+      "\\bXamarin\\.Forms\\.",
+      "xmlns=\"http://xamarin\\.com/schemas/2014/forms\""
+    ]
+  },
+  "project_files": "(?i)(\\.(csproj|fsproj|vbproj|shproj|projitems)|^packages\\.config|^build\\.gradle(\\.kts)?|^package\\.json|^pyproject\\.toml)$",
+  "project_rules": [
+    {
+      "tech": "xamarin",
+      "content": [
+        "Xamarin\\.(iOS|Android|Forms|Mac|Essentials)\\b",
+        "MonoAndroid",
+        "Xamarin\\.iOS10",
+        "MonoTouch"
+      ]
+    },
+    {
+      "tech": "xamarin-forms",
+      "content": [
+        "Xamarin\\.Forms\\b"
+      ]
+    },
+    {
+      "tech": "ios",
+      "content": [
+        "Xamarin\\.iOS\\b",
+        "Xamarin\\.iOS10",
+        "MonoTouch"
+      ]
+    },
+    {
+      "tech": "android",
+      "content": [
+        "Xamarin\\.Android\\b",
+        "MonoAndroid",
+        "com\\.android\\.(application|library)"
+      ]
+    },
+    {
+      "tech": "aspnet",
+      "content": [
+        "Microsoft\\.AspNetCore(?!\\.Components)",
+        "System\\.Web\\.Http",
+        "Microsoft\\.NET\\.Sdk\\.Web\\b"
+      ]
+    },
+    {
+      "tech": "blazor",
+      "content": [
+        "Microsoft\\.AspNetCore\\.Components",
+        "Sdk\\.BlazorWebAssembly",
+        "MudBlazor"
+      ]
+    },
+    {
+      "tech": "ef",
+      "content": [
+        "EntityFramework"
+      ]
+    },
+    {
+      "tech": "tests",
+      "files": "(?i)\\.(csproj|fsproj|vbproj)$|^packages\\.config$",
+      "content": [
+        "\\b(NUnit|xunit|MSTest\\.TestFramework|Xamarin\\.UITest|Microsoft\\.NET\\.Test\\.Sdk)\\b"
+      ]
+    },
+    {
+      "tech": "mvvm",
+      "content": [
+        "MvvmCross",
+        "\\bPrism\\b",
+        "MvvmLight",
+        "CommunityToolkit\\.Mvvm",
+        "ReactiveUI"
+      ],
+      "scope": "(?i)(\\.xaml$|ViewModel[^/]*$|(^|/)(Views|Pages|ViewModels)/)"
+    }
+  ],
+  "conjunctions": [
+    {
+      "tech": "mvvm",
+      "all": [
+        [
+          "\\b(public|protected|internal)\\s+(I?\\w*Command)\\b",
+          "\\bnew\\s+\\w*Command\\s*[(<]"
+        ],
+        [
+          "\\b(OnPropertyChanged|RaisePropertyChanged|NotifyPropertyChanged|SetProperty)\\s*[(<]|PropertyChanged\\?\\.Invoke|PropertyChanged\\s*\\(\\s*this"
+        ]
+      ]
+    }
+  ],
+  "mobile_markers": "(?i)(^[^/]*\\.(ios|droid|android)(\\.csproj)?$|\\.xcodeproj$|^AndroidManifest\\.xml$)",
+  "platform_sides": {
+    "ios": "(?i)\\.ios$",
+    "android": "(?i)\\.(droid|android)$"
+  },
+  "platform_interface_tech": "cross-platform-architecture",
+  "context_rules": [
+    {
+      "tech": "mobile-build-release",
+      "requires": "mobile-repo",
+      "path": "(?i)((^|/)azure-pipelines[^/]*\\.ya?ml|^\\.github/workflows/[^/]+\\.ya?ml|(^|/)appveyor\\.ya?ml|(^|/)bitrise\\.ya?ml|(^|/)\\.gitlab-ci\\.ya?ml|(^|/)fastlane/.*)$"
+    },
+    {
+      "tech": "mobile-build-release",
+      "requires": "mobile-repo",
+      "path": "(?i)(\\.(sh|ps1|bat|cake)|(^|/)Makefile|(^|/)(build|scripts)/[^/]+)$",
+      "keywords": "(?i)build|archive|sign|(?<![a-z])(ipa|apk|aab)(?![a-z])|publish|deploy|testflight|play\\s*store|appcenter"
+    }
+  ],
+  "presentation": "(?i)(\\.xaml(\\.cs)?$|(^|/)(Views?|Pages?|Controls|Converters?|Renderers?|Models?|UiModels?|PageControllers?|ViewModels?|PageModels?)/|(Page|View|PageController|ViewModel|PageModel|UiModel|Converter|Renderer|Cell)\\.cs$)"
 }

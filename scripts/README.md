@@ -125,6 +125,96 @@ default path):
 Publishing a new claim: add the registry entry, add the marker through the
 data/templates, `make generate`, `make claims-lock`, commit the pages and the lock.
 
+## Hours aggregates (ADR-013)
+
+`python -m scripts.activity.hours --out data/activity/aggregates.json` turns the
+private timeline and commit evidence into the committed aggregates. It runs on
+the author's machine only: it reads `$PROFILE_PRIVATE_DIR/timeline.json`,
+`evidence.json` (collector output) and `repo-classes.json` (every repository key
+mapped to `{"context": "pro" | "personal", "source": <timeline source id>}`;
+unclassified repositories count as personal).
+
+The collector (`python -m scripts.activity.evidence`, vocabulary v2) gives
+each file the techs of its language, path rules and line signatures, plus
+those of its nearest enclosing project file (`.csproj`, `packages.config`,
+`build.gradle`, `package.json`, `pyproject.toml`): a file of a Xamarin.iOS
+project counts for xamarin and ios as well as C#. Project rules can be scoped
+to some files (MVVM frameworks: views and view models). A project holding the Model / View / ViewModel triad counts those
+layers for mvvm. Vocabulary v3 adds behavior rules: a file both exposing
+commands and raising PropertyChanged, a class generic over a Page type, or a
+model raising PropertyChanged is a ViewModel whatever its name, and so is any
+class deriving from one (resolved across the tree). Vocabulary v4 counts mvvm
+at project level: a project defining a ViewModel, referencing an MVVM
+framework, or referencing (`ProjectReference`, shared-project `Import`) such a
+project counts its whole presentation layer (`presentation`: pages, views,
+controls, page controllers, view models, bindable models, converters,
+renderers) for mvvm, not its services or platform glue. References into
+submodules resolve through a registry built from every repository's HEAD
+before the walk;
+cross-platform-architecture counts only files defining the platform
+abstraction (an interface implemented in both an iOS and an Android project,
+`DependencyService.Register`, `[assembly: Dependency/ExportRenderer]`,
+platform `#if` lines, multi-target or
+shared project files); in repositories holding a mobile project, build and
+publish scripts and CI pipelines count for mobile-build-release. A `.h` header is
+Objective-C when its directory or build root holds `.m`/`.mm` files. Days
+also record `test_only_commits`.
+
+The collector keeps only repositories
+owned by the author or by a company he worked for: `$PROFILE_PRIVATE_DIR/owners.json`
+lists allowed key prefixes (`{"allow": ["github.com/<owner>/", "local:"]}`);
+other repositories are dropped before deduplication and listed in
+`summary.excluded_repos` with their number of own commits.
+
+**Allocation (file share).**
+
+- A tech receives the hours times the share of analyzed files touching it
+  (`files` and `file_counts` per evidence day). A C# file calling a BLE API
+  counts for both; each file has one language, so languages sum to about 1 and
+  no tech exceeds its period's budget. Context totals are additive; tech and
+  domain totals are not. A domain sums its techs' shares, capped at 1.
+- Professional hours (calendar weekdays) are split by timeline source. A
+  source's month uses the file counts summed over that source's commit days of
+  the month; a month without a commit uses the counts over the whole period,
+  restricted to techs already seen in an own commit by then (hours with
+  nothing left count for the context, not for a tech).
+- Declared periods (no trace: before 2014, a client whose commits are not
+  collected) come from the private `$PROFILE_PRIVATE_DIR/declared.json`,
+  written by the author: per source and month range (`end: null` runs to
+  `as_of`), explicit `languages` shares summing to 1 and `tiers` for other
+  techs (primary 0.70, secondary 0.35, incident 0.10). Periods covering the
+  same month share its hours equally (a mission overlap; a
+  `within_study_budget` project takes half of the study months it covers).
+  `pro_hours_per_weekday` overrides the context budget for those months, in
+  `hours.py` (the timeline keeps its budgets). Hours are flagged `declared`.
+- `overlays` declare a tech (AI-assisted development, Docker, TDD...) as a
+  tier share (full 1.00, primary 0.70, secondary 0.35, incident 0.10) of the
+  hours in scope during listed months: `personal` (commit days), `pro`
+  (professional and study hours) or `all`, per overlay or per period; a period
+  with a `source` applies to that source's professional hours only. The
+  measured share wins when higher; `measured_from` ends a declaration.
+- Last fallback, for a month with neither evidence nor a declared period:
+  the tiers of `data/experiences.json` (`SOURCE_EXPERIENCES` maps timeline ids
+  to experience ids; declared languages share 100 % pro rata). The CLI lists
+  every such month.
+- Personal hours: the period's personal budget on each commit day with at least
+  one personal repository, with that day's file shares. A professional
+  repository outside its source's period counts as personal.
+- `tech_map.json` maps collector ids to catalogue ids, gives each catalogue id
+  a kind (language, platform, domain) and a domain, and excludes Git. An
+  unknown collector id is an error: extend the map, never skip it.
+
+**Output** `data/activity/aggregates.json`: `version`, `activity_as_of` (last
+evidence day), `coverage` (commit days, public days, public share),
+`context_totals`, `levels`, `by_month` (`context`, `techs`, `domains`), `techs`
+(`hours`, `display_hours` rounded down, `level`, `first`, `last`,
+`declared_share`, `kind`, `domain`) and `notes`. No repository, identity or
+private source id is written.
+
+**Sanity checks** (the file is not written when one fails): no tech starts
+before its first commit or declared period, nor before its release month
+(`RELEASE_MONTHS`); no tech exceeds a period's budget.
+
 ## Helpers available in the templates
 
 `generate.py` exposes in all templates: `profile`, `domains`, `techs`
