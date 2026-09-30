@@ -155,8 +155,16 @@ cross-platform-architecture counts only files defining the platform
 abstraction (an interface implemented in both an iOS and an Android project,
 `DependencyService.Register`, `[assembly: Dependency/ExportRenderer]`,
 platform `#if` lines, multi-target or
-shared project files); in repositories holding a mobile project, build and
-publish scripts and CI pipelines count for mobile-build-release. A `.h` header is
+shared project files); in repositories holding a mobile project, scripts and
+pipeline steps that publish (upload, store, TestFlight, App Center) count for
+mobile-release. Vocabulary v5 (ADR-018): building alone is not a skill;
+signing and provisioning properties, fastlane and store metadata count for
+mobile-release; toolchain files (CMake, Make, NDK sections, `.vcxproj`
+platform lines, per-OS/arch scripts, `GOOS`/`--target`/`-march`) count for
+cross-compilation-toolchains. A repository whose product is a container image
+(a root Dockerfile or compose file, and a path naming docker/node/devcontainer
+or a tree made mostly of image support files) counts every file for docker;
+elsewhere only Dockerfile, compose and `.devcontainer` files do. A `.h` header is
 Objective-C when its directory or build root holds `.m`/`.mm` files. Days
 also record `test_only_commits`.
 
@@ -204,11 +212,20 @@ other repositories are dropped before deduplication and listed in
   a kind (language, platform, domain) and a domain, and excludes Git. An
   unknown collector id is an error: extend the map, never skip it.
 
+**Levels (ADR-018).** `data/activity/evidence_levels.json` (committed) maps a
+tech to a level granted by an attested achievement and its claim id
+(`{"version": 1, "levels": {tech: {"level", "claim"}}}`), never the evidence
+itself. Each tech gets `hours_level` (the ADR-013 convention),
+`evidence_level`, `display_level` (the higher of the two), `level_source`
+(`hours` | `evidence`) and `claim`. The CLI fails when the committed levels
+differ from the author's `evidence_levels` in `declared.json`, and lists the
+claims behind evidence-sourced levels that are not yet in the claims lock.
+
 **Output** `data/activity/aggregates.json`: `version`, `activity_as_of` (last
 evidence day), `coverage` (commit days, public days, public share),
 `context_totals`, `levels`, `by_month` (`context`, `techs`, `domains`), `techs`
-(`hours`, `display_hours` rounded down, `level`, `first`, `last`,
-`declared_share`, `kind`, `domain`) and `notes`. No repository, identity or
+(`hours`, `display_hours` rounded down, `first`, `last`,
+`declared_share`, `kind`, `domain`, and the level fields above) and `notes`. No repository, identity or
 private source id is written.
 
 **Sanity checks** (the file is not written when one fails): no tech starts

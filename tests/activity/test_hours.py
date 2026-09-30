@@ -48,7 +48,13 @@ def inputs(tech_map) -> hr.Inputs:
 
 @pytest.fixture
 def doc(inputs) -> dict:
-    return hr.aggregate(inputs, catalogue=[])
+    return hr.aggregate(
+        inputs,
+        catalogue=[],
+        evidence_levels=hr.parse_evidence_levels(
+            _json("hours_evidence_levels.json"), inputs.tech_map
+        ),
+    )
 
 
 # --- Tech map ------------------------------------------------------------
@@ -654,7 +660,7 @@ def test_tech_entries_carry_level_period_and_domain(doc):
     csharp = doc["techs"]["csharp-dotnet"]
     expected = 184 + 80 + (184 + 176 + 168) * 7 / 9 + 1.5 + 11
     assert csharp["hours"] == pytest.approx(expected, abs=0.1)
-    assert csharp["level"] == "professional"
+    assert csharp["hours_level"] == "professional"
     assert csharp["display_hours"] == hr.display_hours(expected)
     assert (csharp["first"], csharp["last"]) == ("2007-08", "2008-04")
     assert csharp["domain"] == "languages"
@@ -767,6 +773,8 @@ def _cli_args(out: pathlib.Path) -> list[str]:
         str(out),
         "--experiences",
         str(FIXTURES / "hours_experiences.json"),
+        "--evidence-levels",
+        str(FIXTURES / "hours_evidence_levels.json"),
     ]
 
 
@@ -822,3 +830,127 @@ def test_module_entry_point(tmp_path, monkeypatch):
     with pytest.raises(SystemExit) as exc:
         runpy.run_module("scripts.activity.hours", run_name="__main__")
     assert exc.value.code == 0
+
+
+# --- Evidence levels (ADR-018) -------------------------------------------
+
+
+def test_display_level_is_the_higher_of_hours_and_evidence(doc):
+    csharp = doc["techs"]["csharp-dotnet"]
+    assert (csharp["hours_level"], csharp["evidence_level"]) == (
+        "professional",
+        "expert",
+    )
+    assert csharp["display_level"] == "expert"
+    assert csharp["level_source"] == "evidence"
+    assert csharp["claim"] == "sample-sdk-design"
+    python = doc["techs"]["python"]
+    assert python["evidence_level"] == "working"
+    assert python["display_level"] == python["hours_level"]
+    assert python["level_source"] == "hours"
+    assert python["claim"] is None
+
+
+def test_evidence_can_lift_a_tech_below_the_hours_threshold(doc):
+    vision = doc["techs"]["computer-vision"]
+    assert vision["hours_level"] is None
+    assert vision["display_level"] == "advanced"
+    assert vision["level_source"] == "evidence"
+
+
+def test_techs_without_evidence_show_their_hours_level(doc):
+    docker = doc["techs"]["docker"]
+    assert docker["evidence_level"] is None
+    assert docker["display_level"] == docker["hours_level"]
+    assert docker["level_source"] == "hours"
+    assert "rust" not in doc["techs"]
+
+
+@pytest.mark.parametrize(
+    ("raw", "message"),
+    [
+        ([], "object"),
+        ({"version": 2, "levels": {}}, "version"),
+        ({"version": 1, "levels": []}, "levels"),
+        (
+            {"version": 1, "levels": {"cobol": {"level": "expert", "claim": "a"}}},
+            "unknown tech",
+        ),
+        (
+            {"version": 1, "levels": {"python": {"level": "guru", "claim": "a"}}},
+            "level",
+        ),
+        (
+            {
+                "version": 1,
+                "levels": {"python": {"level": "expert", "claim": "Not Kebab"}},
+            },
+            "claim",
+        ),
+        (
+            {
+                "version": 1,
+                "levels": {"python": {"level": "expert", "claim": "a", "basis": "x"}},
+            },
+            "keys",
+        ),
+    ],
+)
+def test_evidence_levels_reject_defects(raw, message, tech_map):
+    with pytest.raises(ValueError, match=message):
+        hr.parse_evidence_levels(raw, tech_map)
+
+
+def test_level_rank_orders_the_convention():
+    assert hr.level_rank(None) < hr.level_rank("working") < hr.level_rank("expert")
+
+
+def test_declared_evidence_levels_are_read_without_their_basis(tech_map):
+    declared = hr.parse_declared(_json("hours_declared.json"), tech_map)
+    assert declared.evidence_levels["csharp-dotnet"] == "expert"
+    with pytest.raises(ValueError, match="evidence_levels"):
+        hr.parse_declared(
+            {"version": 1, "periods": [], "evidence_levels": {"python": "expert"}},
+            tech_map,
+        )
+
+
+def test_evidence_level_mismatch_with_declared_is_a_sanity_issue(inputs):
+    levels = hr.parse_evidence_levels(
+        _json("hours_evidence_levels.json"), inputs.tech_map
+    )
+    assert hr.evidence_mismatches(levels, inputs.declared) == []
+    changed = dict(levels)
+    changed["python"] = hr.EvidenceLevel("expert", "sample-package")
+    assert hr.evidence_mismatches(changed, inputs.declared) == [
+        "evidence level of python: committed expert, declared working"
+    ]
+    changed.pop("rust")
+    assert "evidence level of rust: committed none, declared working" in (
+        hr.evidence_mismatches(changed, inputs.declared)
+    )
+
+
+def test_cli_reports_evidence_mismatch_and_missing_claims(
+    tmp_path, monkeypatch, capsys
+):
+    private = _private_dir(tmp_path)
+    declared = _json("hours_declared.json")
+    declared["evidence_levels"]["python"]["level"] = "expert"
+    (private / "declared.json").write_text(json.dumps(declared), encoding="utf-8")
+    monkeypatch.setenv("PROFILE_PRIVATE_DIR", str(private))
+    out = tmp_path / "a.json"
+    assert hr.main(_cli_args(out)) == 1
+    assert "evidence level of python" in capsys.readouterr().err
+    assert not out.exists()
+
+
+def test_cli_lists_claims_missing_from_the_lock(tmp_path, monkeypatch, capsys):
+    monkeypatch.setenv("PROFILE_PRIVATE_DIR", str(_private_dir(tmp_path)))
+    lock = tmp_path / "lock.json"
+    lock.write_text(json.dumps({"version": 1, "claims": {"sample-vision": {}}}))
+    args = [*_cli_args(tmp_path / "a.json"), "--claims-lock", str(lock)]
+    assert hr.main(args) == 0
+    printed = capsys.readouterr().out
+    assert "claims not yet in the lock: sample-sdk-design" in printed
+    assert "evidence levels without hours: rust" in printed
