@@ -51,3 +51,33 @@ def test_prose_alone_selects_nothing():
 
 def test_one_widening_file_widens_the_whole_set():
     assert select(["tests/test_hero.py", "pyproject.toml"]) is None
+
+
+# --- sub-packages (scripts/<pkg>/ ↔ tests/<pkg>/) ---------------------------
+# A sub-package's modules share fixtures and data files (vocabularies, maps),
+# so any change inside it runs that package's whole test directory — wider
+# than one sibling, far narrower than the full suite.
+
+
+def test_a_subpackage_module_selects_its_package_tests():
+    assert select(["scripts/activity/hours.py"]) == ["tests/activity"]
+
+
+def test_a_subpackage_data_file_selects_its_package_tests():
+    assert select(["scripts/activity/vocabulary.json"]) == ["tests/activity"]
+
+
+def test_a_subpackage_conftest_selects_only_its_package():
+    assert select(["tests/activity/conftest.py"]) == ["tests/activity"]
+
+
+def test_a_subpackage_test_selects_itself():
+    assert select(["tests/activity/test_hours.py"]) == ["tests/activity/test_hours.py"]
+
+
+def test_the_root_conftest_still_widens_to_everything():
+    assert select(["tests/conftest.py"]) is None
+
+
+def test_a_subpackage_without_tests_widens_to_everything():
+    assert select(["scripts/missing/module.py"]) is None

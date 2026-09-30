@@ -11,6 +11,9 @@ Mapping, deliberately conservative — when in doubt, widen rather than skip:
 
 - ``tests/test_x.py``          → itself
 - ``scripts/x.py``             → ``tests/test_x.py`` when it exists
+- ``scripts/<pkg>/...``        → the whole ``tests/<pkg>/`` directory (a
+                                 sub-package shares fixtures and data files)
+- ``tests/<pkg>/conftest.py``  → ``tests/<pkg>/`` (its fixtures reach no further)
 - data, schemas, templates,
   fonts, generated artifacts    → the generation and real-data guards
 - anything else (pyproject,
@@ -56,6 +59,12 @@ MODULE_TESTS = {
 }
 
 
+def _package(path: str, root: str) -> str | None:
+    """``pkg`` when ``path`` is ``<root>/<pkg>/...``, else ``None``."""
+    parts = path.split("/")
+    return parts[1] if len(parts) > 2 and parts[0] == root else None
+
+
 def select(changed: list[str]) -> list[str] | None:
     """Return the test paths to run, or ``None`` to mean "run everything"."""
     selected: set[str] = set()
@@ -63,8 +72,16 @@ def select(changed: list[str]) -> list[str] | None:
         path = raw.replace("\\", "/")
         if path.startswith("tests/") and path.endswith(".py"):
             if path.endswith("conftest.py"):
-                return None  # shared fixtures reach every test
+                package = _package(path, "tests")
+                if package is None:
+                    return None  # the root fixtures reach every test
+                selected.add(f"tests/{package}")
+                continue
             selected.add(path)
+        elif (package := _package(path, "scripts")) and package != "templates":
+            if not (TESTS / package).is_dir():
+                return None  # a sub-package without its own tests: do not guess
+            selected.add(f"tests/{package}")
         elif path.startswith("scripts/") and path.endswith(".py"):
             stem = pathlib.Path(path).stem
             if stem in MODULE_TESTS:
