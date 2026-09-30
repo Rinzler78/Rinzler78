@@ -1,5 +1,5 @@
 {
-  "version": 4,
+  "version": 5,
   "excluded": [
     "(?i)(^|/)(bin|obj|node_modules|vendor|bower_components|Pods|\\.venv|venv|site-packages|__pycache__)/",
     "(?i)\\.designer\\.cs$",
@@ -58,7 +58,7 @@
   },
   "path_rules": [
     {
-      "pattern": "(?i)(^|/)(dockerfile[^/]*|docker-compose[^/]*\\.ya?ml|compose\\.ya?ml|\\.dockerignore)$",
+      "pattern": "(?i)(^|/)(dockerfile[^/]*|docker-compose[^/]*\\.ya?ml|compose\\.ya?ml|\\.dockerignore)$|(^|/)\\.devcontainer/",
       "tech": "docker"
     },
     {
@@ -147,28 +147,6 @@
       "tech": "mobile-ui"
     },
     {
-      "pattern": "(?i)(^|/)fastlane/",
-      "tech": "mobile-build-release"
-    },
-    {
-      "pattern": "(?i)(^|/)appcenter-(pre|post)-[^/]*\\.sh$|(^|/)(bitrise\\.ya?ml|codemagic\\.ya?ml)$",
-      "tech": "mobile-build-release"
-    },
-    {
-      "pattern": "(?i)\\.csproj$",
-      "tech": "mobile-build-release",
-      "lines": [
-        "<(CodesignKey|CodesignProvision|CodesignEntitlements|AndroidKeyStore|AndroidSigning\\w*|AndroidSupportedAbis|AndroidPackageFormat|AndroidUseAapt2|MtouchArch|ArchiveOnBuild|BuildIpa|IpaPackageName|AndroidCreatePackagePerAbi)\\b"
-      ]
-    },
-    {
-      "pattern": "(?i)(^|/)(azure-pipelines[^/]*\\.ya?ml|\\.github/workflows/[^/]+\\.ya?ml|(build|publish|deploy|release)[^/]*\\.(sh|ps1|cake|bat))$",
-      "tech": "mobile-build-release",
-      "lines": [
-        "(?i)xamarin|\\.ipa\\b|\\.apk\\b|\\.aab\\b|MonoAndroid|Xamarin\\.iOS|codesign|provisioning|keystore|appcenter"
-      ]
-    },
-    {
       "pattern": "(?i)(^|/)[^/]*\\.(Tests|UnitTests|UITests|IntegrationTests|Test|Specs)/",
       "tech": "tests"
     },
@@ -212,6 +190,56 @@
       "tech": "cross-platform-architecture",
       "lines": [
         "<TargetFrameworks>"
+      ]
+    },
+    {
+      "pattern": "(?i)\\.csproj$",
+      "tech": "mobile-release",
+      "lines": [
+        "<(CodesignKey|CodesignProvision|CodesignEntitlements|AndroidKeyStore|AndroidSigning\\w*|ArchiveOnBuild)\\b"
+      ]
+    },
+    {
+      "pattern": "(?i)(^|/)fastlane/",
+      "tech": "mobile-release"
+    },
+    {
+      "pattern": "(?i)(^|/)(AppStore|PlayStore|store)[-_ ]?metadata/",
+      "tech": "mobile-release"
+    },
+    {
+      "pattern": "(?i)(^|/)(CMakeLists\\.txt|[^/]+\\.cmake|(GNU)?Makefile|Android\\.mk|Application\\.mk|supported_platforms\\.json|resolve_arch\\.sh)$",
+      "tech": "cross-compilation-toolchains"
+    },
+    {
+      "pattern": "(?i)(^|/)build\\.gradle(\\.kts)?$",
+      "tech": "cross-compilation-toolchains",
+      "lines": [
+        "\\b(externalNativeBuild|abiFilters|ndkVersion|ndkBuild)\\b",
+        "^\\s*ndk\\s*\\{"
+      ]
+    },
+    {
+      "pattern": "(?i)\\.vcxproj$",
+      "tech": "cross-compilation-toolchains",
+      "lines": [
+        "<(PlatformToolset|Platform)>",
+        "ProjectConfiguration\\s+Include=\"[^\"]*\\|(x64|Win32|ARM64?)\""
+      ]
+    },
+    {
+      "pattern": "(?i)(^|/)[^/]*[-_.](linux|windows|win32|win64|macos|darwin|android|ios|arm64|armv7|aarch64|x86_64|x64|x86)([-_.][^/]*)?\\.(sh|bash|ps1|bat|cmd)$",
+      "tech": "cross-compilation-toolchains"
+    },
+    {
+      "pattern": "(?i)(\\.(sh|bash|ps1|bat|cmd|mk|ya?ml)|(^|/)(GNU)?Makefile)$",
+      "tech": "cross-compilation-toolchains",
+      "lines": [
+        "\\bGOOS=|\\bGOARCH=",
+        "(^|\\s)--target[= ]\\S",
+        "(^|\\s)-march=",
+        "CMAKE_TOOLCHAIN_FILE",
+        "(^|\\s)--host="
       ]
     }
   ],
@@ -319,10 +347,6 @@
       "Azure\\.AI\\.OpenAI",
       "Microsoft\\.SemanticKernel",
       "^(anthropic|openai|litellm|langchain[\\w-]*)\\s*([<>=~!]=|[<>]|$)"
-    ],
-    "docker": [
-      "\\bdocker(-| )compose\\b",
-      "\\bdocker (run|build|exec|pull|push)\\b"
     ],
     "azure": [
       "Microsoft\\.Azure",
@@ -493,16 +517,18 @@
   "platform_interface_tech": "cross-platform-architecture",
   "context_rules": [
     {
-      "tech": "mobile-build-release",
+      "tech": "mobile-release",
       "requires": "mobile-repo",
-      "path": "(?i)((^|/)azure-pipelines[^/]*\\.ya?ml|^\\.github/workflows/[^/]+\\.ya?ml|(^|/)appveyor\\.ya?ml|(^|/)bitrise\\.ya?ml|(^|/)\\.gitlab-ci\\.ya?ml|(^|/)fastlane/.*)$"
-    },
-    {
-      "tech": "mobile-build-release",
-      "requires": "mobile-repo",
-      "path": "(?i)(\\.(sh|ps1|bat|cake)|(^|/)Makefile|(^|/)(build|scripts)/[^/]+)$",
-      "keywords": "(?i)build|archive|sign|(?<![a-z])(ipa|apk|aab)(?![a-z])|publish|deploy|testflight|play\\s*store|appcenter"
+      "path": "(?i)((^|/)azure-pipelines[^/]*\\.ya?ml|^\\.github/workflows/[^/]+\\.ya?ml|(^|/)appveyor\\.ya?ml|(^|/)bitrise\\.ya?ml|(^|/)codemagic\\.ya?ml|(^|/)\\.gitlab-ci\\.ya?ml|\\.(sh|bash|ps1|bat|cake)|(^|/)Makefile|(^|/)(build|scripts)/[^/]+)$",
+      "keywords": "(?i)publish|deploy|testflight|play\\s*(store|console)|appcenter|upload|altool|\\bsupply\\b|\\bpilot\\b"
     }
   ],
-  "presentation": "(?i)(\\.xaml(\\.cs)?$|(^|/)(Views?|Pages?|Controls|Converters?|Renderers?|Models?|UiModels?|PageControllers?|ViewModels?|PageModels?)/|(Page|View|PageController|ViewModel|PageModel|UiModel|Converter|Renderer|Cell)\\.cs$)"
+  "presentation": "(?i)(\\.xaml(\\.cs)?$|(^|/)(Views?|Pages?|Controls|Converters?|Renderers?|Models?|UiModels?|PageControllers?|ViewModels?|PageModels?)/|(Page|View|PageController|ViewModel|PageModel|UiModel|Converter|Renderer|Cell)\\.cs$)",
+  "container_repos": {
+    "root_files": "(?i)^(dockerfile[^/]*|docker-compose[^/]*\\.ya?ml|compose\\.ya?ml)$",
+    "name": "(?i)(docker|node|devcontainer)",
+    "support": "(?i)^(dockerfile[^/]*|docker-compose[^/]*\\.ya?ml|compose\\.ya?ml|\\.dockerignore|\\.env[^/]*|[^/]*\\.(sh|bash|ps1|env|conf)|readme[^/]*|license[^/]*|\\.git\\w*|\\.github|\\.devcontainer)$",
+    "min_share": 0.5,
+    "tech": "docker"
+  }
 }

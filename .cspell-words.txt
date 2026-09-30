@@ -247,3 +247,5 @@ nameof
 playstore
 testflight
 xcrun
+armv
+goarch
