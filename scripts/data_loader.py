@@ -10,6 +10,8 @@ Public surface (V1, incremental):
 - ``check_aggregates_integrity(aggregates, techs, domains)`` verifies that the
   committed activity aggregates (ADR-013) only name catalogued techs, filed
   under the same declared domain as in the catalogue.
+- ``check_icons_integrity(icons, techs, aggregates)`` verifies that the icon
+  map names catalogued techs and covers every skill line (ADR-016).
 """
 
 import json
@@ -165,3 +167,20 @@ def check_aggregates_integrity(
                 raise DataLoadError(
                     f"Aggregates month {month} references uncatalogued tech {tech_id!r}"
                 )
+
+
+def check_icons_integrity(icons: dict, techs: list[dict], aggregates: dict) -> None:
+    """The icon map names catalogued techs and covers every skill line.
+
+    ADR-016: every tech shown as a skill line carries an icon, a vendored logo
+    or its initials; a tech below the working threshold needs none.
+    """
+    catalogue = {t["id"] for t in techs}
+    for tech_id in sorted(icons.get("techs", {})):
+        if tech_id not in catalogue:
+            raise DataLoadError(f"Icons reference uncatalogued tech {tech_id!r}")
+    for tech_id, entry in sorted(aggregates.get("techs", {}).items()):
+        if entry.get("display_level") and tech_id not in icons.get("techs", {}):
+            raise DataLoadError(
+                f"Skill {tech_id!r} has no icon: add it to data/icons.json"
+            )

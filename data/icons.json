@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "sources": {
+    "skillicons": {
+      "url": "https://skillicons.dev",
+      "note": "Served live in the icon band only; every id verified to return a non-empty SVG."
+    },
+    "devicon": {
+      "version": "2.17.0",
+      "license": "MIT",
+      "url": "https://github.com/devicons/devicon",
+      "files": "assets/icons/devicon/"
+    },
+    "simple-icons": {
+      "version": "16.33.0",
+      "license": "CC0-1.0",
+      "url": "https://github.com/simple-icons/simple-icons",
+      "files": "assets/icons/simple-icons/"
+    }
+  },
+  "techs": {
+    "active-directory": {
+      "initials": "AD"
+    },
+    "ai-driven-development": {
+      "tile": "simple-icons/claude",
+      "color": "#D97757"
+    },
+    "aix": {
+      "initials": "AIX"
+    },
+    "android": {
+      "tile": "simple-icons/android",
+      "color": "#3DDC84"
+    },
+    "asp-net-core": {
+      "band": "dotnet",
+      "tile": "simple-icons/dotnet",
+      "color": "#512BD4"
+    },
+    "augmented-reality": {
+      "initials": "AR"
+    },
+    "azure-devops": {
+      "tile": "devicon/azuredevops-original",
+      "color": "#0078D4"
+    },
+    "bash": {
+      "band": "bash",
+      "tile": "simple-icons/gnubash",
+      "color": "#4EAA25"
+    },
+    "blazor": {
+      "tile": "simple-icons/blazor",
+      "color": "#512BD4"
+    },
+    "blockchain": {
+      "initials": "BC"
+    },
+    "bluetooth": {
+      "tile": "simple-icons/bluetooth",
+      "color": "#0082FC"
+    },
+    "c-cpp": {
+      "band": "cpp",
+      "tile": "simple-icons/cplusplus",
+      "color": "#00599C"
+    },
+    "computer-vision": {
+      "initials": "CV"
+    },
+    "cpp-cli": {
+      "band": "cpp",
+      "tile": "simple-icons/cplusplus",
+      "color": "#00599C"
+    },
+    "cross-compilation-toolchains": {
+      "initials": "XC"
+    },
+    "cross-platform-architecture": {
+      "initials": "XPA"
+    },
+    "csharp-dotnet": {
+      "band": "cs",
+      "tile": "devicon/csharp-plain",
+      "color": "#68217A"
+    },
+    "ddd": {
+      "initials": "DDD"
+    },
+    "docker": {
+      "band": "docker",
+      "tile": "simple-icons/docker",
+      "color": "#2496ED"
+    },
+    "dotnet-5": {
+      "band": "dotnet",
+      "tile": "simple-icons/dotnet",
+      "color": "#512BD4"
+    },
+    "driver-development": {
+      "initials": "DRV"
+    },
+    "ef-core": {
+      "initials": "EF"
+    },
+    "git": {
+      "band": "git",
+      "tile": "simple-icons/git",
+      "color": "#F03C2E",
+      "band_only": true
+    },
+    "git-server": {
+      "band": "git",
+      "tile": "simple-icons/git",
+      "color": "#F03C2E"
+    },
+    "gprs": {
+      "initials": "GPRS"
+    },
+    "gps": {
+      "initials": "GPS"
+    },
+    "ios": {
+      "band": "apple",
+      "tile": "simple-icons/ios",
+      "color": "#000000"
+    },
+    "java": {
+      "band": "java",
+      "tile": "devicon/java-plain",
+      "color": "#EA2D2E"
+    },
+    "linux": {
+      "band": "linux",
+      "tile": "simple-icons/linux",
+      "color": "#FCC624"
+    },
+    "matlab": {
+      "band": "matlab",
+      "tile": "devicon/matlab-plain",
+      "color": "#6DD0C7"
+    },
+    "mobile-release": {
+      "initials": "REL"
+    },
+    "mobile-ui": {
+      "initials": "UI"
+    },
+    "multithreading": {
+      "initials": "MT"
+    },
+    "mvvm": {
+      "initials": "MVVM"
+    },
+    "nfc": {
+      "tile": "simple-icons/nfc",
+      "color": "#002E5F"
+    },
+    "objective-c": {
+      "tile": "devicon/objectivec-plain",
+      "color": "#0B5A9D"
+    },
+    "payment-integration": {
+      "initials": "PAY"
+    },
+    "pic-microcontroller": {
+      "initials": "PIC"
+    },
+    "pinvoke-interop": {
+      "initials": "PI"
+    },
+    "python": {
+      "band": "py",
+      "tile": "simple-icons/python",
+      "color": "#3776AB"
+    },
+    "soap-webservices": {
+      "initials": "SOAP"
+    },
+    "sql": {
+      "initials": "SQL"
+    },
+    "tcp-networking": {
+      "initials": "TCP"
+    },
+    "tdd": {
+      "initials": "TDD"
+    },
+    "testlink": {
+      "initials": "TL"
+    },
+    "tests": {
+      "initials": "TST"
+    },
+    "typescript": {
+      "band": "ts",
+      "tile": "simple-icons/typescript",
+      "color": "#3178C6"
+    },
+    "usb-driver": {
+      "initials": "USB"
+    },
+    "virtual-machines": {
+      "initials": "VM"
+    },
+    "vmware": {
+      "tile": "simple-icons/vmware",
+      "color": "#607078"
+    },
+    "web": {
+      "band": "html",
+      "tile": "simple-icons/html5",
+      "color": "#E34F26"
+    },
+    "windows": {
+      "band": "windows",
+      "tile": "devicon/windows8-original",
+      "color": "#00ADEF"
+    },
+    "windows-ce": {
+      "band": "windows",
+      "tile": "devicon/windows8-original",
+      "color": "#00ADEF"
+    },
+    "windows-mobile": {
+      "band": "windows",
+      "tile": "devicon/windows8-original",
+      "color": "#00ADEF"
+    },
+    "windows-rt": {
+      "band": "windows",
+      "tile": "devicon/windows8-original",
+      "color": "#00ADEF"
+    },
+    "windows-server": {
+      "band": "windows",
+      "tile": "devicon/windows8-original",
+      "color": "#00ADEF"
+    },
+    "windows-services": {
+      "band": "windows",
+      "tile": "devicon/windows8-original",
+      "color": "#00ADEF"
+    },
+    "winforms": {
+      "initials": "WF"
+    },
+    "xamarin": {
+      "tile": "devicon/xamarin-original",
+      "color": "#3498DB"
+    },
+    "xamarin-forms": {
+      "tile": "devicon/xamarin-original",
+      "color": "#3498DB"
+    },
+    "xaml": {
+      "initials": "XAML"
+    }
+  }
+}

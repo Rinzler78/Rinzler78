@@ -20,6 +20,7 @@ if str(_REPO_ROOT) not in sys.path:
 from scripts.data_loader import (  # noqa: E402
     DataLoadError,
     check_aggregates_integrity,
+    check_icons_integrity,
     check_referential_integrity,
     load_collection,
 )
@@ -37,6 +38,7 @@ SCHEMA_MAP = {
     "services.json": "service.schema.json",
     "modes.json": "mode.schema.json",
     "methodology.json": "methodology.schema.json",
+    "icons.json": "icons.schema.json",
 }
 
 
@@ -58,8 +60,7 @@ def main() -> int:
         except DataLoadError as e:
             errors.append(str(e))
             continue
-        if isinstance(collection, list):
-            bag[data_file.stem] = collection
+        bag[data_file.stem] = collection
 
     aggregates = None
     try:
@@ -73,6 +74,7 @@ def main() -> int:
         try:
             check_referential_integrity(bag)
             check_aggregates_integrity(aggregates, bag["techs"], bag["domains"])
+            check_icons_integrity(bag["icons"], bag["techs"], aggregates)
         except DataLoadError as e:
             errors.append(str(e))
 

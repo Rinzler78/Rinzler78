@@ -3,6 +3,7 @@ import pytest
 from scripts.data_loader import (
     DataLoadError,
     check_aggregates_integrity,
+    check_icons_integrity,
     check_referential_integrity,
     load_collection,
 )
@@ -242,3 +243,31 @@ def test_aggregates_with_a_consistent_calendar_pass():
     aggregates["coverage"] = {"commit_days": 1}
     aggregates["calendar"] = {"2026-03-01": {"context": "study", "intensity": 4}}
     check_aggregates_integrity(aggregates, _CATALOGUE, _DOMAINS)
+
+
+# --- Icons (ADR-016) ---------------------------------------------------------
+
+
+def _skill_aggregates(**levels: str | None) -> dict:
+    return {"techs": {t: {"display_level": lvl} for t, lvl in levels.items()}}
+
+
+def test_icons_must_name_catalogued_techs():
+    icons = {"techs": {"ghost": {"initials": "G"}}}
+    with pytest.raises(DataLoadError, match="ghost"):
+        check_icons_integrity(icons, _CATALOGUE, _skill_aggregates())
+
+
+def test_every_skill_line_needs_an_icon():
+    icons = {"techs": {}}
+    with pytest.raises(DataLoadError, match="python"):
+        check_icons_integrity(icons, _CATALOGUE, _skill_aggregates(python="working"))
+
+
+def test_a_tech_below_the_threshold_needs_no_icon():
+    check_icons_integrity({"techs": {}}, _CATALOGUE, _skill_aggregates(python=None))
+
+
+def test_icons_covering_every_skill_pass():
+    icons = {"techs": {"python": {"initials": "PY"}}}
+    check_icons_integrity(icons, _CATALOGUE, _skill_aggregates(python="expert"))

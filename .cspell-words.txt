@@ -253,3 +253,6 @@ dandroid
 dcmake
 gnueabihf
 mcpu
+Consolas
+Menlo
+perline
