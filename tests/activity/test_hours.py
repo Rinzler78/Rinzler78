@@ -797,6 +797,23 @@ def test_cli_writes_deterministic_aggregates(tmp_path, monkeypatch, capsys):
     assert "sanity: OK" in printed
 
 
+def test_cli_open_timeline_runs_to_the_latest_evidence_month(tmp_path, monkeypatch):
+    private = _private_dir(tmp_path)
+    timeline = _json("hours_timeline.json")
+    del timeline["as_of"]
+    timeline["periods"][-1]["end"] = None
+    (private / "timeline.json").write_text(json.dumps(timeline), encoding="utf-8")
+    monkeypatch.setenv("PROFILE_PRIVATE_DIR", str(private))
+    open_out, closed_out = tmp_path / "open.json", tmp_path / "closed.json"
+    assert hr.main(_cli_args(open_out)) == 0
+    (tmp_path / "c").mkdir()
+    monkeypatch.setenv("PROFILE_PRIVATE_DIR", str(_private_dir(tmp_path / "c")))
+    assert hr.main(_cli_args(closed_out)) == 0
+    # The latest evidence day is 2008-05-02: same aggregates as an explicit
+    # as_of of 2008-05.
+    assert open_out.read_bytes() == closed_out.read_bytes()
+
+
 def test_cli_without_private_dir_fails(monkeypatch, capsys, tmp_path):
     monkeypatch.delenv("PROFILE_PRIVATE_DIR", raising=False)
     assert hr.main(["--out", str(tmp_path / "a.json")]) == 2

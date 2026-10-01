@@ -3,6 +3,7 @@
 Inputs (private, read from ``$PROFILE_PRIVATE_DIR``, never committed):
 
 - ``timeline.json``: the continuous timeline (``scripts.activity.timeline``);
+  without ``as_of``, it runs to the month of the latest evidence day;
 - ``evidence.json``: one entry per own-commit day, written by the collector::
 
       {"days": {"YYYY-MM-DD": {"repos": [...], "commits": n, "public": bool,
@@ -1082,9 +1083,13 @@ def main(argv: list[str] | None = None) -> int:
         return 2
     private = pathlib.Path(directory)
     try:
+        days = parse_evidence(_read_json(private / EVIDENCE_NAME))
+        # A timeline without as_of runs to the month of the latest evidence
+        # day: the collection, not the clock, dates the aggregates.
+        latest = max(days)[:7] if days else None
         inputs = Inputs(
-            timeline=tl.load_timeline(private / tl.PRIVATE_TIMELINE_NAME),
-            days=parse_evidence(_read_json(private / EVIDENCE_NAME)),
+            timeline=tl.load_timeline(private / tl.PRIVATE_TIMELINE_NAME, latest),
+            days=days,
             classes=parse_repo_classes(_read_json(private / CLASSES_NAME)),
             tech_map=load_tech_map(args.tech_map),
             experiences=parse_experiences(_read_json(args.experiences)),
