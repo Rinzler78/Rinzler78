@@ -249,3 +249,7 @@ testflight
 xcrun
 armv
 goarch
+dandroid
+dcmake
+gnueabihf
+mcpu

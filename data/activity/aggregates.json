@@ -1,5 +1,5 @@
 {
-  "activity_as_of": "2026-09-30",
+  "activity_as_of": "2026-10-01",
   "by_month": {
     "2006-09": {
       "context": {
@@ -4951,14 +4951,13 @@
       },
       "domains": {
         "ai-llm": 61.6,
-        "devops": 14.5,
+        "devops": 13.94,
         "languages": 50.07,
         "practices": 6.64
       },
       "techs": {
         "ai-driven-development": 61.6,
         "bash": 11.76,
-        "cross-compilation-toolchains": 0.56,
         "docker": 11.0,
         "github-actions": 2.94,
         "python": 38.31,
@@ -5037,14 +5036,13 @@
       },
       "domains": {
         "ai-llm": 61.6,
-        "devops": 0.54,
+        "devops": 0.36,
         "languages": 67.77,
         "practices": 2.65
       },
       "techs": {
         "ai-driven-development": 61.6,
         "bash": 5.57,
-        "cross-compilation-toolchains": 0.18,
         "github-actions": 0.36,
         "python": 62.19,
         "tests": 2.65
@@ -5058,14 +5056,13 @@
       },
       "domains": {
         "ai-llm": 100.1,
-        "devops": 1.94,
+        "devops": 1.56,
         "languages": 126.0,
         "practices": 25.82
       },
       "techs": {
         "ai-driven-development": 100.1,
         "bash": 2.22,
-        "cross-compilation-toolchains": 0.38,
         "github-actions": 1.56,
         "python": 123.78,
         "tests": 25.82
@@ -5096,14 +5093,13 @@
       },
       "domains": {
         "ai-llm": 61.6,
-        "devops": 1.77,
+        "devops": 0.55,
         "languages": 82.91,
         "practices": 17.35
       },
       "techs": {
         "ai-driven-development": 61.6,
         "bash": 6.11,
-        "cross-compilation-toolchains": 1.22,
         "github-actions": 0.55,
         "python": 76.79,
         "tests": 17.35
@@ -5153,7 +5149,7 @@
       "domains": {
         "ai-llm": 66.0,
         "blockchain": 0.49,
-        "devops": 1.66,
+        "devops": 0.97,
         "languages": 45.1,
         "practices": 28.77
       },
@@ -5161,7 +5157,6 @@
         "ai-driven-development": 66.0,
         "bash": 0.28,
         "blockchain": 0.49,
-        "cross-compilation-toolchains": 0.69,
         "docker": 0.28,
         "github-actions": 0.69,
         "python": 44.82,
@@ -5177,7 +5172,7 @@
       },
       "domains": {
         "ai-llm": 154.0,
-        "devops": 1.23,
+        "devops": 0.79,
         "languages": 118.87,
         "mobile": 0.41,
         "practices": 111.1
@@ -5186,7 +5181,6 @@
         "ai-driven-development": 154.0,
         "bash": 0.66,
         "c-cpp": 0.27,
-        "cross-compilation-toolchains": 0.44,
         "csharp-dotnet": 0.14,
         "dart": 0.14,
         "github-actions": 0.79,
@@ -5235,7 +5229,7 @@
       "domains": {
         "ai-llm": 187.0,
         "blockchain": 29.88,
-        "devops": 46.81,
+        "devops": 49.01,
         "languages": 129.68,
         "practices": 129.25
       },
@@ -5243,7 +5237,7 @@
         "ai-driven-development": 187.0,
         "bash": 54.41,
         "blockchain": 29.88,
-        "cross-compilation-toolchains": 3.07,
+        "cross-compilation-toolchains": 5.27,
         "docker": 39.98,
         "github-actions": 4.48,
         "go": 1.0,
@@ -5293,7 +5287,7 @@
       "domains": {
         "ai-llm": 154.0,
         "backend": 0.4,
-        "devops": 1.13,
+        "devops": 1.03,
         "embedded": 0.89,
         "languages": 113.96,
         "mobile": 0.89,
@@ -5302,7 +5296,6 @@
       "techs": {
         "ai-driven-development": 154.0,
         "bash": 1.2,
-        "cross-compilation-toolchains": 0.1,
         "ddd": 14.81,
         "docker": 0.74,
         "github-actions": 0.29,
@@ -5328,7 +5321,7 @@
       "domains": {
         "ai-llm": 66.0,
         "backend": 0.67,
-        "devops": 0.62,
+        "devops": 0.55,
         "languages": 48.74,
         "mobile": 1.31,
         "practices": 39.06
@@ -5336,7 +5329,6 @@
       "techs": {
         "ai-driven-development": 66.0,
         "bash": 6.78,
-        "cross-compilation-toolchains": 0.06,
         "ddd": 5.14,
         "docker": 0.43,
         "github-actions": 0.12,
@@ -5361,7 +5353,7 @@
         "ai-llm": 110.0,
         "backend": 0.96,
         "blockchain": 11.32,
-        "devops": 20.81,
+        "devops": 20.69,
         "languages": 56.27,
         "mobile": 3.2,
         "practices": 59.37
@@ -5370,7 +5362,7 @@
         "ai-driven-development": 110.0,
         "bash": 7.89,
         "blockchain": 11.32,
-        "cross-compilation-toolchains": 0.25,
+        "cross-compilation-toolchains": 0.12,
         "csharp-dotnet": 9.7,
         "ddd": 8.64,
         "docker": 19.67,
@@ -5408,7 +5400,6 @@
         "bash": 63.38,
         "blazor": 13.67,
         "blockchain": 44.78,
-        "cross-compilation-toolchains": 0.08,
         "csharp-dotnet": 52.05,
         "ddd": 0.87,
         "docker": 108.33,
@@ -5439,7 +5430,7 @@
         "ai-llm": 121.0,
         "backend": 22.76,
         "blockchain": 13.1,
-        "devops": 14.77,
+        "devops": 13.86,
         "languages": 89.79,
         "mobile": 26.56,
         "practices": 75.64
@@ -5451,7 +5442,7 @@
         "bash": 31.17,
         "blazor": 9.61,
         "blockchain": 13.1,
-        "cross-compilation-toolchains": 1.21,
+        "cross-compilation-toolchains": 0.3,
         "cross-platform-architecture": 0.25,
         "csharp-dotnet": 52.49,
         "ddd": 0.76,
@@ -5481,7 +5472,7 @@
         "ai-llm": 143.0,
         "backend": 25.69,
         "blockchain": 0.81,
-        "devops": 1.37,
+        "devops": 0.92,
         "embedded": 0.69,
         "languages": 100.02,
         "mobile": 5.74,
@@ -5495,7 +5486,6 @@
         "bash": 2.44,
         "blazor": 9.7,
         "blockchain": 0.81,
-        "cross-compilation-toolchains": 0.45,
         "cross-platform-architecture": 0.38,
         "csharp-dotnet": 69.93,
         "ddd": 1.77,
@@ -5564,7 +5554,7 @@
         "ai-llm": 275.0,
         "backend": 13.46,
         "blockchain": 3.11,
-        "devops": 20.49,
+        "devops": 20.18,
         "embedded": 0.02,
         "languages": 152.05,
         "mobile": 2.23,
@@ -5576,7 +5566,7 @@
         "bash": 30.2,
         "blazor": 5.76,
         "blockchain": 3.11,
-        "cross-compilation-toolchains": 0.51,
+        "cross-compilation-toolchains": 0.2,
         "csharp-dotnet": 35.0,
         "ddd": 5.13,
         "docker": 18.41,
@@ -5606,7 +5596,7 @@
         "ai-llm": 286.0,
         "backend": 7.26,
         "blockchain": 72.87,
-        "devops": 7.48,
+        "devops": 6.3,
         "embedded": 0.18,
         "languages": 150.59,
         "mobile": 9.64,
@@ -5619,7 +5609,7 @@
         "bash": 26.65,
         "blazor": 0.07,
         "blockchain": 72.87,
-        "cross-compilation-toolchains": 1.36,
+        "cross-compilation-toolchains": 0.18,
         "csharp-dotnet": 98.56,
         "ddd": 7.4,
         "docker": 2.08,
@@ -5654,7 +5644,7 @@
         "ai-llm": 242.0,
         "backend": 6.95,
         "blockchain": 8.53,
-        "devops": 6.52,
+        "devops": 5.93,
         "embedded": 2.43,
         "languages": 152.2,
         "mobile": 1.96,
@@ -5667,7 +5657,7 @@
         "blazor": 1.87,
         "blockchain": 8.53,
         "bluetooth": 0.1,
-        "cross-compilation-toolchains": 0.85,
+        "cross-compilation-toolchains": 0.25,
         "csharp-dotnet": 22.97,
         "ddd": 6.5,
         "docker": 4.52,
@@ -5702,7 +5692,7 @@
         "backend": 53.93,
         "blockchain": 0.29,
         "desktop": 154.0,
-        "devops": 154.33,
+        "devops": 154.05,
         "embedded": 0.44,
         "languages": 171.46,
         "mobile": 107.95,
@@ -5715,7 +5705,7 @@
         "bash": 57.71,
         "blockchain": 0.29,
         "c-cpp": 77.0,
-        "cross-compilation-toolchains": 108.08,
+        "cross-compilation-toolchains": 107.8,
         "csharp-dotnet": 77.0,
         "docker": 0.05,
         "dotnet-5": 53.9,
@@ -5745,7 +5735,7 @@
       "domains": {
         "ai-llm": 224.0,
         "backend": 114.56,
-        "devops": 56.82,
+        "devops": 56.74,
         "languages": 205.03,
         "mobile": 162.09,
         "practices": 152.89
@@ -5758,7 +5748,6 @@
         "bash": 57.71,
         "blazor": 0.33,
         "c-cpp": 16.1,
-        "cross-compilation-toolchains": 0.09,
         "csharp-dotnet": 151.77,
         "ddd": 0.3,
         "docker": 0.26,
@@ -5827,11 +5816,11 @@
         "ai-llm": 199.0,
         "backend": 54.26,
         "blockchain": 0.32,
-        "devops": 104.38,
+        "devops": 104.34,
         "embedded": 1.99,
-        "languages": 184.73,
+        "languages": 184.49,
         "mobile": 79.39,
-        "practices": 136.16
+        "practices": 136.23
       },
       "techs": {
         "ai-driven-development": 199.0,
@@ -5843,7 +5832,6 @@
         "blockchain": 0.32,
         "bluetooth": 0.1,
         "c-cpp": 7.7,
-        "cross-compilation-toolchains": 0.03,
         "cross-platform-architecture": 0.17,
         "csharp-dotnet": 70.8,
         "ddd": 0.08,
@@ -5860,29 +5848,52 @@
         "mvp": 0.08,
         "mvvm": 0.16,
         "nfc": 0.1,
-        "python": 26.01,
+        "python": 25.78,
         "ruby": 0.02,
         "sql": 0.18,
         "swift": 0.77,
         "tdd": 123.55,
-        "tests": 12.3,
+        "tests": 12.36,
         "vector-db": 0.11,
         "virtual-machines": 26.95,
         "web": 0.08,
         "xamarin": 54.89,
         "xamarin-forms": 0.17
       }
+    },
+    "2026-10": {
+      "context": {
+        "personal": 3.0,
+        "pro": 154.0,
+        "study": 0.0
+      },
+      "domains": {
+        "ai-llm": 157.0,
+        "devops": 154.0,
+        "languages": 157.0,
+        "practices": 110.35
+      },
+      "techs": {
+        "ai-driven-development": 157.0,
+        "azure-devops": 53.9,
+        "bash": 154.0,
+        "docker": 107.8,
+        "python": 3.0,
+        "tdd": 108.85,
+        "tests": 1.5,
+        "virtual-machines": 53.9
+      }
     }
   },
   "context_totals": {
-    "personal": 6515.0,
-    "pro": 23064.0,
+    "personal": 6518.0,
+    "pro": 23218.0,
     "study": 1008.0
   },
   "coverage": {
-    "commit_days": 1473,
-    "public_days": 242,
-    "public_share": 0.1643,
+    "commit_days": 1474,
+    "public_days": 243,
+    "public_share": 0.1649,
     "test_only_commits": 300
   },
   "levels": {
@@ -5895,7 +5906,7 @@
     "Hours measure coding practice, not working time (ADR-013).",
     "Hours per context (pro, personal, study) are additive; hours per tech and per domain are not additive: a tech receives the hours times the share of analyzed files touching it, and one file may touch several techs (a C# file calling a BLE API counts for both), so no tech exceeds its period's budget.",
     "A domain's hours sum its techs' file shares, capped at the hours: a file touching two techs of one domain may count twice below that cap.",
-    "display_level is the higher of hours_level and evidence_level; level_source says which one applies and claim names the attested achievement behind an evidence level (ADR-018).",
+    "display_level is the higher of hours_level and evidence_level when the evidence level's claim is attested in the claims lock, else hours_level; level_source says which one applies, claim names the attested achievement, pending_claim a claim still to attest (ADR-018).",
     "Levels are a convention: working >= 50 h, professional >= 500 h, advanced >= 1,600 h, expert >= 5,000 h. display_hours is rounded down so a shown figure never crosses a threshold the raw hours do not.",
     "declared_share is the part of a tech's hours declared by the author, for periods without any collectable commit trace (before 2014, study, a client whose commits are not collected) and for tool use that leaves no trace: declared languages share the hours explicitly; other techs get primary 0.70, secondary 0.35, incident 0.10 of the hours.",
     "Declared periods covering the same month share its hours equally (an overlap between two missions; a project inside the study budget takes half of the study hours of the months it covers).",
@@ -5920,21 +5931,23 @@
       "hours_level": "professional",
       "kind": "platform",
       "last": "2011-11",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "ai-driven-development": {
-      "claim": "ai-agent-driven-development",
+      "claim": null,
       "declared_share": 1.0,
-      "display_hours": 4900,
+      "display_hours": 5000,
       "display_level": "expert",
       "domain": "ai-llm",
       "evidence_level": "expert",
       "first": "2021-06",
-      "hours": 4926.3,
-      "hours_level": "advanced",
+      "hours": 5083.3,
+      "hours_level": "expert",
       "kind": "domain",
-      "last": "2026-09",
-      "level_source": "evidence"
+      "last": "2026-10",
+      "level_source": "hours",
+      "pending_claim": null
     },
     "aix": {
       "claim": null,
@@ -5948,7 +5961,8 @@
       "hours_level": "professional",
       "kind": "platform",
       "last": "2013-03",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "android": {
       "claim": null,
@@ -5962,7 +5976,8 @@
       "hours_level": "advanced",
       "kind": "platform",
       "last": "2026-09",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "asp-net-core": {
       "claim": null,
@@ -5976,7 +5991,8 @@
       "hours_level": "working",
       "kind": "platform",
       "last": "2026-08",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "augmented-reality": {
       "claim": null,
@@ -5990,7 +6006,8 @@
       "hours_level": "working",
       "kind": "domain",
       "last": "2013-04",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "azure": {
       "claim": null,
@@ -6004,35 +6021,38 @@
       "hours_level": null,
       "kind": "platform",
       "last": "2026-09",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "azure-devops": {
       "claim": null,
-      "declared_share": 0.966,
-      "display_hours": 220,
+      "declared_share": 0.973,
+      "display_hours": 270,
       "display_level": "working",
       "domain": "devops",
       "evidence_level": null,
       "first": "2019-11",
-      "hours": 223.2,
+      "hours": 277.1,
       "hours_level": "working",
       "kind": "platform",
-      "last": "2026-09",
-      "level_source": "hours"
+      "last": "2026-10",
+      "level_source": "hours",
+      "pending_claim": null
     },
     "bash": {
       "claim": null,
-      "declared_share": 0.297,
-      "display_hours": 890,
+      "declared_share": 0.401,
+      "display_hours": 1000,
       "display_level": "professional",
       "domain": "languages",
       "evidence_level": null,
       "first": "2014-06",
-      "hours": 893.1,
+      "hours": 1047.1,
       "hours_level": "professional",
       "kind": "language",
-      "last": "2026-09",
-      "level_source": "hours"
+      "last": "2026-10",
+      "level_source": "hours",
+      "pending_claim": null
     },
     "blazor": {
       "claim": null,
@@ -6046,7 +6066,8 @@
       "hours_level": "working",
       "kind": "platform",
       "last": "2026-09",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "blockchain": {
       "claim": null,
@@ -6060,13 +6081,14 @@
       "hours_level": "professional",
       "kind": "domain",
       "last": "2026-09",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "bluetooth": {
-      "claim": "ble-connected-breathalyzer",
+      "claim": null,
       "declared_share": 0.846,
       "display_hours": 1400,
-      "display_level": "advanced",
+      "display_level": "professional",
       "domain": "embedded",
       "evidence_level": "advanced",
       "first": "2011-12",
@@ -6074,7 +6096,8 @@
       "hours_level": "professional",
       "kind": "domain",
       "last": "2026-09",
-      "level_source": "evidence"
+      "level_source": "hours",
+      "pending_claim": "ble-connected-breathalyzer"
     },
     "c-cpp": {
       "claim": null,
@@ -6088,7 +6111,8 @@
       "hours_level": "expert",
       "kind": "language",
       "last": "2026-09",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "computer-vision": {
       "claim": null,
@@ -6102,7 +6126,8 @@
       "hours_level": "working",
       "kind": "domain",
       "last": "2009-03",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "cpp-cli": {
       "claim": null,
@@ -6116,27 +6141,29 @@
       "hours_level": "working",
       "kind": "language",
       "last": "2013-04",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "cross-compilation-toolchains": {
       "claim": null,
-      "declared_share": 0.944,
-      "display_hours": 220,
+      "declared_share": 0.967,
+      "display_hours": 210,
       "display_level": "working",
       "domain": "devops",
       "evidence_level": null,
       "first": "2012-10",
-      "hours": 224.5,
+      "hours": 219.0,
       "hours_level": "working",
       "kind": "platform",
-      "last": "2026-09",
-      "level_source": "hours"
+      "last": "2026-08",
+      "level_source": "hours",
+      "pending_claim": null
     },
     "cross-platform-architecture": {
-      "claim": "cross-platform-white-label-sdk",
+      "claim": null,
       "declared_share": 0.0,
       "display_hours": 440,
-      "display_level": "expert",
+      "display_level": "working",
       "domain": "mobile",
       "evidence_level": "expert",
       "first": "2015-02",
@@ -6144,7 +6171,8 @@
       "hours_level": "working",
       "kind": "domain",
       "last": "2026-09",
-      "level_source": "evidence"
+      "level_source": "hours",
+      "pending_claim": "cross-platform-white-label-sdk"
     },
     "csharp-dotnet": {
       "claim": null,
@@ -6158,7 +6186,8 @@
       "hours_level": "expert",
       "kind": "language",
       "last": "2026-09",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "dart": {
       "claim": null,
@@ -6172,7 +6201,8 @@
       "hours_level": null,
       "kind": "language",
       "last": "2025-04",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "ddd": {
       "claim": null,
@@ -6186,21 +6216,23 @@
       "hours_level": "working",
       "kind": "domain",
       "last": "2026-09",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "docker": {
-      "claim": "docker-published-images",
-      "declared_share": 0.081,
-      "display_hours": 660,
-      "display_level": "advanced",
+      "claim": null,
+      "declared_share": 0.21,
+      "display_hours": 770,
+      "display_level": "professional",
       "domain": "devops",
       "evidence_level": "advanced",
       "first": "2020-05",
-      "hours": 662.3,
+      "hours": 770.1,
       "hours_level": "professional",
       "kind": "platform",
-      "last": "2026-09",
-      "level_source": "evidence"
+      "last": "2026-10",
+      "level_source": "hours",
+      "pending_claim": "docker-published-images"
     },
     "dotnet-5": {
       "claim": null,
@@ -6214,7 +6246,8 @@
       "hours_level": "working",
       "kind": "platform",
       "last": "2026-09",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "driver-development": {
       "claim": null,
@@ -6228,7 +6261,8 @@
       "hours_level": "working",
       "kind": "domain",
       "last": "2009-07",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "ef-core": {
       "claim": null,
@@ -6242,7 +6276,8 @@
       "hours_level": "working",
       "kind": "platform",
       "last": "2026-07",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "git-server": {
       "claim": null,
@@ -6256,7 +6291,8 @@
       "hours_level": "working",
       "kind": "platform",
       "last": "2014-02",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "github-actions": {
       "claim": null,
@@ -6270,7 +6306,8 @@
       "hours_level": null,
       "kind": "platform",
       "last": "2026-09",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "go": {
       "claim": null,
@@ -6284,7 +6321,8 @@
       "hours_level": null,
       "kind": "language",
       "last": "2026-04",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "gprs": {
       "claim": null,
@@ -6298,7 +6336,8 @@
       "hours_level": "professional",
       "kind": "domain",
       "last": "2010-12",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "gps": {
       "claim": null,
@@ -6312,7 +6351,8 @@
       "hours_level": "advanced",
       "kind": "domain",
       "last": "2026-09",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "grpc": {
       "claim": null,
@@ -6326,7 +6366,8 @@
       "hours_level": null,
       "kind": "platform",
       "last": "2026-09",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "ios": {
       "claim": null,
@@ -6340,7 +6381,8 @@
       "hours_level": "advanced",
       "kind": "platform",
       "last": "2026-09",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "java": {
       "claim": null,
@@ -6354,7 +6396,8 @@
       "hours_level": "professional",
       "kind": "language",
       "last": "2025-04",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "javascript": {
       "claim": null,
@@ -6368,7 +6411,8 @@
       "hours_level": null,
       "kind": "language",
       "last": "2026-07",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "kotlin": {
       "claim": null,
@@ -6382,7 +6426,8 @@
       "hours_level": null,
       "kind": "language",
       "last": "2025-04",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "kubernetes": {
       "claim": null,
@@ -6396,7 +6441,8 @@
       "hours_level": null,
       "kind": "platform",
       "last": "2025-11",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "linux": {
       "claim": null,
@@ -6410,7 +6456,8 @@
       "hours_level": "working",
       "kind": "platform",
       "last": "2009-09",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "llm-api": {
       "claim": null,
@@ -6424,7 +6471,8 @@
       "hours_level": null,
       "kind": "domain",
       "last": "2026-09",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "matlab": {
       "claim": null,
@@ -6438,7 +6486,8 @@
       "hours_level": "working",
       "kind": "language",
       "last": "2009-09",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "maui": {
       "claim": null,
@@ -6452,7 +6501,8 @@
       "hours_level": null,
       "kind": "platform",
       "last": "2026-09",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "mobile-release": {
       "claim": null,
@@ -6466,7 +6516,8 @@
       "hours_level": "professional",
       "kind": "domain",
       "last": "2026-04",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "mobile-ui": {
       "claim": null,
@@ -6480,7 +6531,8 @@
       "hours_level": "professional",
       "kind": "domain",
       "last": "2026-09",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "mqtt": {
       "claim": null,
@@ -6494,7 +6546,8 @@
       "hours_level": null,
       "kind": "domain",
       "last": "2026-09",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "multithreading": {
       "claim": null,
@@ -6508,7 +6561,8 @@
       "hours_level": "working",
       "kind": "domain",
       "last": "2013-03",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "mvp": {
       "claim": null,
@@ -6522,13 +6576,14 @@
       "hours_level": null,
       "kind": "domain",
       "last": "2026-09",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "mvvm": {
-      "claim": "mvvm-white-label-sdk",
+      "claim": null,
       "declared_share": 0.0,
       "display_hours": 850,
-      "display_level": "expert",
+      "display_level": "professional",
       "domain": "practices",
       "evidence_level": "expert",
       "first": "2015-04",
@@ -6536,7 +6591,8 @@
       "hours_level": "professional",
       "kind": "domain",
       "last": "2026-09",
-      "level_source": "evidence"
+      "level_source": "hours",
+      "pending_claim": "mvvm-white-label-sdk"
     },
     "nfc": {
       "claim": null,
@@ -6550,7 +6606,8 @@
       "hours_level": "advanced",
       "kind": "domain",
       "last": "2026-09",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "nodejs": {
       "claim": null,
@@ -6564,7 +6621,8 @@
       "hours_level": null,
       "kind": "platform",
       "last": "2026-07",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "objective-c": {
       "claim": null,
@@ -6578,7 +6636,8 @@
       "hours_level": "professional",
       "kind": "language",
       "last": "2025-04",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "payment-integration": {
       "claim": null,
@@ -6592,7 +6651,8 @@
       "hours_level": "professional",
       "kind": "domain",
       "last": "2012-09",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "php": {
       "claim": null,
@@ -6606,7 +6666,8 @@
       "hours_level": null,
       "kind": "language",
       "last": "2025-04",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "pic-microcontroller": {
       "claim": null,
@@ -6620,7 +6681,8 @@
       "hours_level": "working",
       "kind": "platform",
       "last": "2009-03",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "pinvoke-interop": {
       "claim": null,
@@ -6634,7 +6696,8 @@
       "hours_level": "working",
       "kind": "platform",
       "last": "2026-06",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "powershell": {
       "claim": null,
@@ -6648,21 +6711,23 @@
       "hours_level": null,
       "kind": "language",
       "last": "2026-07",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "python": {
-      "claim": "python-pypi-package",
+      "claim": null,
       "declared_share": 0.0,
       "display_hours": 1400,
-      "display_level": "advanced",
+      "display_level": "professional",
       "domain": "languages",
       "evidence_level": "advanced",
       "first": "2018-11",
-      "hours": 1413.3,
+      "hours": 1416.0,
       "hours_level": "professional",
       "kind": "language",
-      "last": "2026-09",
-      "level_source": "evidence"
+      "last": "2026-10",
+      "level_source": "hours",
+      "pending_claim": "python-pypi-package"
     },
     "ruby": {
       "claim": null,
@@ -6676,7 +6741,8 @@
       "hours_level": null,
       "kind": "language",
       "last": "2026-09",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "rust": {
       "claim": null,
@@ -6690,7 +6756,8 @@
       "hours_level": null,
       "kind": "language",
       "last": "2025-04",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "soap-webservices": {
       "claim": null,
@@ -6704,7 +6771,8 @@
       "hours_level": "professional",
       "kind": "platform",
       "last": "2011-11",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "sql": {
       "claim": null,
@@ -6718,7 +6786,8 @@
       "hours_level": "working",
       "kind": "language",
       "last": "2026-09",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "swift": {
       "claim": null,
@@ -6732,7 +6801,8 @@
       "hours_level": null,
       "kind": "language",
       "last": "2026-09",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "tcp-networking": {
       "claim": null,
@@ -6746,21 +6816,23 @@
       "hours_level": "advanced",
       "kind": "domain",
       "last": "2010-12",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "tdd": {
       "claim": null,
       "declared_share": 1.0,
-      "display_hours": 1300,
+      "display_hours": 1400,
       "display_level": "professional",
       "domain": "practices",
       "evidence_level": null,
       "first": "2025-03",
-      "hours": 1314.9,
+      "hours": 1423.8,
       "hours_level": "professional",
       "kind": "domain",
-      "last": "2026-09",
-      "level_source": "hours"
+      "last": "2026-10",
+      "level_source": "hours",
+      "pending_claim": null
     },
     "testlink": {
       "claim": null,
@@ -6774,7 +6846,8 @@
       "hours_level": "working",
       "kind": "platform",
       "last": "2014-02",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "tests": {
       "claim": null,
@@ -6784,11 +6857,12 @@
       "domain": "practices",
       "evidence_level": null,
       "first": "2015-02",
-      "hours": 977.0,
+      "hours": 978.5,
       "hours_level": "professional",
       "kind": "domain",
-      "last": "2026-09",
-      "level_source": "hours"
+      "last": "2026-10",
+      "level_source": "hours",
+      "pending_claim": null
     },
     "typescript": {
       "claim": null,
@@ -6802,7 +6876,8 @@
       "hours_level": "working",
       "kind": "language",
       "last": "2026-07",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "usb-driver": {
       "claim": null,
@@ -6816,7 +6891,8 @@
       "hours_level": "professional",
       "kind": "domain",
       "last": "2014-02",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "vector-db": {
       "claim": null,
@@ -6830,21 +6906,23 @@
       "hours_level": null,
       "kind": "domain",
       "last": "2026-09",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "virtual-machines": {
       "claim": null,
       "declared_share": 1.0,
-      "display_hours": 390,
+      "display_hours": 440,
       "display_level": "working",
       "domain": "devops",
       "evidence_level": null,
       "first": "2014-11",
-      "hours": 391.5,
+      "hours": 445.4,
       "hours_level": "working",
       "kind": "platform",
-      "last": "2026-09",
-      "level_source": "hours"
+      "last": "2026-10",
+      "level_source": "hours",
+      "pending_claim": null
     },
     "vmware": {
       "claim": null,
@@ -6858,7 +6936,8 @@
       "hours_level": "professional",
       "kind": "platform",
       "last": "2011-11",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "web": {
       "claim": null,
@@ -6872,7 +6951,8 @@
       "hours_level": "working",
       "kind": "language",
       "last": "2026-09",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "windows": {
       "claim": null,
@@ -6886,7 +6966,8 @@
       "hours_level": "working",
       "kind": "platform",
       "last": "2013-03",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "windows-ce": {
       "claim": null,
@@ -6900,7 +6981,8 @@
       "hours_level": "expert",
       "kind": "platform",
       "last": "2012-09",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "windows-mobile": {
       "claim": null,
@@ -6914,7 +6996,8 @@
       "hours_level": "professional",
       "kind": "platform",
       "last": "2014-02",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "windows-rt": {
       "claim": null,
@@ -6928,7 +7011,8 @@
       "hours_level": "working",
       "kind": "platform",
       "last": "2013-04",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "windows-server": {
       "claim": null,
@@ -6942,7 +7026,8 @@
       "hours_level": "professional",
       "kind": "platform",
       "last": "2011-11",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "windows-services": {
       "claim": null,
@@ -6956,7 +7041,8 @@
       "hours_level": "professional",
       "kind": "platform",
       "last": "2011-11",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "winforms": {
       "claim": null,
@@ -6970,13 +7056,14 @@
       "hours_level": "working",
       "kind": "platform",
       "last": "2026-06",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "xamarin": {
-      "claim": "xamarin-sdk-five-apps",
+      "claim": null,
       "declared_share": 0.072,
       "display_hours": 4400,
-      "display_level": "expert",
+      "display_level": "advanced",
       "domain": "mobile",
       "evidence_level": "expert",
       "first": "2015-02",
@@ -6984,7 +7071,8 @@
       "hours_level": "advanced",
       "kind": "platform",
       "last": "2026-09",
-      "level_source": "evidence"
+      "level_source": "hours",
+      "pending_claim": "xamarin-sdk-five-apps"
     },
     "xamarin-forms": {
       "claim": null,
@@ -6998,7 +7086,8 @@
       "hours_level": "advanced",
       "kind": "platform",
       "last": "2026-09",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     },
     "xaml": {
       "claim": null,
@@ -7012,8 +7101,9 @@
       "hours_level": "working",
       "kind": "language",
       "last": "2026-01",
-      "level_source": "hours"
+      "level_source": "hours",
+      "pending_claim": null
     }
   },
-  "version": 1
+  "version": 2
 }

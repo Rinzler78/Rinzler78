@@ -216,12 +216,15 @@ other repositories are dropped before deduplication and listed in
 tech to a level granted by an attested achievement and its claim id
 (`{"version": 1, "levels": {tech: {"level", "claim"}}}`), never the evidence
 itself. Each tech gets `hours_level` (the ADR-013 convention),
-`evidence_level`, `display_level` (the higher of the two), `level_source`
-(`hours` | `evidence`) and `claim`. The CLI fails when the committed levels
-differ from the author's `evidence_levels` in `declared.json`, and lists the
-claims behind evidence-sourced levels that are not yet in the claims lock.
+`evidence_level`, `display_level`, `level_source` (`hours` | `evidence`),
+`claim` and `pending_claim`. An evidence level lifts `display_level` above
+`hours_level` only when its claim is in `data/claims.lock.json`; until then it
+grants nothing, `level_source` stays `hours` and the claim appears as
+`pending_claim`. The CLI fails when the committed levels differ from the
+author's `evidence_levels` in `declared.json`, and lists pending claims (not a
+failure).
 
-**Output** `data/activity/aggregates.json`: `version`, `activity_as_of` (last
+**Output** `data/activity/aggregates.json` (`version` 2 since ADR-018): `version`, `activity_as_of` (last
 evidence day), `coverage` (commit days, public days, public share),
 `context_totals`, `levels`, `by_month` (`context`, `techs`, `domains`), `techs`
 (`hours`, `display_hours` rounded down, `first`, `last`,

@@ -54,6 +54,7 @@ def doc(inputs) -> dict:
         evidence_levels=hr.parse_evidence_levels(
             _json("hours_evidence_levels.json"), inputs.tech_map
         ),
+        attested={"sample-sdk-design", "sample-vision"},
     )
 
 
@@ -682,7 +683,7 @@ def test_coverage_and_as_of(doc):
         "test_only_commits": 1,
     }
     assert doc["activity_as_of"] == "2008-05-02"
-    assert doc["version"] == 1
+    assert doc["version"] == 2
     assert doc["levels"] == {
         "working": 50,
         "professional": 500,
@@ -844,11 +845,26 @@ def test_display_level_is_the_higher_of_hours_and_evidence(doc):
     assert csharp["display_level"] == "expert"
     assert csharp["level_source"] == "evidence"
     assert csharp["claim"] == "sample-sdk-design"
+    assert csharp["pending_claim"] is None
     python = doc["techs"]["python"]
     assert python["evidence_level"] == "working"
     assert python["display_level"] == python["hours_level"]
     assert python["level_source"] == "hours"
     assert python["claim"] is None
+    assert python["pending_claim"] is None  # lower than hours: nothing to attest
+
+
+def test_unattested_evidence_grants_nothing(inputs):
+    levels = hr.parse_evidence_levels(
+        _json("hours_evidence_levels.json"), inputs.tech_map
+    )
+    doc = hr.aggregate(inputs, catalogue=[], evidence_levels=levels, attested=set())
+    csharp = doc["techs"]["csharp-dotnet"]
+    assert csharp["evidence_level"] == "expert"
+    assert csharp["display_level"] == "professional"
+    assert csharp["level_source"] == "hours"
+    assert csharp["claim"] is None
+    assert csharp["pending_claim"] == "sample-sdk-design"
 
 
 def test_evidence_can_lift_a_tech_below_the_hours_threshold(doc):
@@ -872,6 +888,14 @@ def test_techs_without_evidence_show_their_hours_level(doc):
         ([], "object"),
         ({"version": 2, "levels": {}}, "version"),
         ({"version": 1, "levels": []}, "levels"),
+        (
+            {"version": 1, "levels": {"python": {"level": "expert", "claim": "abc\n"}}},
+            "claim",
+        ),
+        (
+            {"version": 1, "levels": {"python": {"level": "expert", "claim": "-abc"}}},
+            "claim",
+        ),
         (
             {"version": 1, "levels": {"cobol": {"level": "expert", "claim": "a"}}},
             "unknown tech",
@@ -903,6 +927,31 @@ def test_evidence_levels_reject_defects(raw, message, tech_map):
 
 def test_level_rank_orders_the_convention():
     assert hr.level_rank(None) < hr.level_rank("working") < hr.level_rank("expert")
+
+
+def test_claim_ids_follow_the_claims_registry_rule(tech_map):
+    raw = {"version": 1, "levels": {"python": {"level": "expert", "claim": "a-"}}}
+    assert hr.parse_evidence_levels(raw, tech_map)["python"].claim == "a-"
+
+
+@pytest.mark.parametrize(
+    "evidence",
+    [[], {"python": "expert"}, {"python": {"level": "guru"}}, {"python": {}}],
+)
+def test_declared_evidence_levels_must_be_well_formed(evidence, tech_map):
+    raw = {"version": 1, "periods": [], "evidence_levels": evidence}
+    with pytest.raises(ValueError, match="evidence_levels"):
+        hr.parse_declared(raw, tech_map)
+
+
+def test_cli_reports_malformed_declared_evidence(tmp_path, monkeypatch, capsys):
+    private = _private_dir(tmp_path)
+    declared = _json("hours_declared.json")
+    declared["evidence_levels"] = ["not", "an", "object"]
+    (private / "declared.json").write_text(json.dumps(declared), encoding="utf-8")
+    monkeypatch.setenv("PROFILE_PRIVATE_DIR", str(private))
+    assert hr.main(_cli_args(tmp_path / "a.json")) == 1
+    assert "evidence_levels must be an object" in capsys.readouterr().err
 
 
 def test_declared_evidence_levels_are_read_without_their_basis(tech_map):
@@ -953,4 +1002,7 @@ def test_cli_lists_claims_missing_from_the_lock(tmp_path, monkeypatch, capsys):
     assert hr.main(args) == 0
     printed = capsys.readouterr().out
     assert "claims not yet in the lock: sample-sdk-design" in printed
+    doc = json.loads((tmp_path / "a.json").read_text())
+    assert doc["techs"]["computer-vision"]["level_source"] == "evidence"
+    assert doc["techs"]["csharp-dotnet"]["pending_claim"] == "sample-sdk-design"
     assert "evidence levels without hours: rust" in printed

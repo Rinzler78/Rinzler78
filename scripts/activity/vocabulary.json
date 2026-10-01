@@ -1,5 +1,5 @@
 {
-  "version": 5,
+  "version": 6,
   "excluded": [
     "(?i)(^|/)(bin|obj|node_modules|vendor|bower_components|Pods|\\.venv|venv|site-packages|__pycache__)/",
     "(?i)\\.designer\\.cs$",
@@ -208,8 +208,20 @@
       "tech": "mobile-release"
     },
     {
-      "pattern": "(?i)(^|/)(CMakeLists\\.txt|[^/]+\\.cmake|(GNU)?Makefile|Android\\.mk|Application\\.mk|supported_platforms\\.json|resolve_arch\\.sh)$",
+      "pattern": "(?i)((^|/)[^/]*toolchain[^/]*\\.cmake|(^|/)toolchains/[^/]+|(^|/)supported_platforms\\.json|(^|/)resolve_arch\\.sh)$",
       "tech": "cross-compilation-toolchains"
+    },
+    {
+      "pattern": "(?i)(\\.(sh|bash|ps1|bat|cmd|mk|cmake|ya?ml)|(^|/)(GNU)?Makefile|(^|/)CMakeLists\\.txt)$",
+      "tech": "cross-compilation-toolchains",
+      "lines": [
+        "(CMAKE_TOOLCHAIN_FILE|CMAKE_SYSTEM_NAME|CMAKE_SYSTEM_PROCESSOR|CMAKE_OSX_ARCHITECTURES|ANDROID_ABI|ANDROID_PLATFORM|APP_ABI|CROSS_COMPILE)\\b",
+        "(^|\\s)--host=\\S",
+        "(^|\\s)--target[= ]\\S",
+        "(^|\\s)-m(arch|cpu)=\\S",
+        "(^|[\\s$(])(TARGET_)?ARCH\\s*[:?+]?=",
+        "\\bGO(OS|ARCH)="
+      ]
     },
     {
       "pattern": "(?i)(^|/)build\\.gradle(\\.kts)?$",
@@ -223,23 +235,8 @@
       "pattern": "(?i)\\.vcxproj$",
       "tech": "cross-compilation-toolchains",
       "lines": [
-        "<(PlatformToolset|Platform)>",
-        "ProjectConfiguration\\s+Include=\"[^\"]*\\|(x64|Win32|ARM64?)\""
-      ]
-    },
-    {
-      "pattern": "(?i)(^|/)[^/]*[-_.](linux|windows|win32|win64|macos|darwin|android|ios|arm64|armv7|aarch64|x86_64|x64|x86)([-_.][^/]*)?\\.(sh|bash|ps1|bat|cmd)$",
-      "tech": "cross-compilation-toolchains"
-    },
-    {
-      "pattern": "(?i)(\\.(sh|bash|ps1|bat|cmd|mk|ya?ml)|(^|/)(GNU)?Makefile)$",
-      "tech": "cross-compilation-toolchains",
-      "lines": [
-        "\\bGOOS=|\\bGOARCH=",
-        "(^|\\s)--target[= ]\\S",
-        "(^|\\s)-march=",
-        "CMAKE_TOOLCHAIN_FILE",
-        "(^|\\s)--host="
+        "<Platform>(ARM|ARM64|Win32)</Platform>",
+        "ProjectConfiguration\\s+Include=\"[^\"]*\\|(ARM|ARM64|Win32)\""
       ]
     }
   ],
