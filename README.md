@@ -38,16 +38,16 @@ J'accompagne les équipes techniques — **startups en construction comme struct
   <img src="assets/svg/journey-share.svg" width="100%" alt="Part de l'effort par domaine, chaque année ramenée à 100 %" />
 </picture>
 
-<sub>**L'arc se lit directement.** L'embarqué occupe l'essentiel de 2006 à 2013, le mobile prend le relais jusqu'en 2019, le cloud domine à partir de 2020, l'IA apparaît en 2023. Chaque année est ramenée à 100 % : c'est une répartition, pas un volume.</sub>
+<sub>**L'arc se lit directement.** Windows CE et Windows Mobile ouvrent 2006 à 2008, l'embarqué et le mobile se partagent 2009 à 2013, le mobile domine de 2014 à 2020, l'IA prend le relais à partir de 2022. Chaque année est ramenée à 100 % : c'est une répartition, pas un volume.</sub>
 
 <sub><b>Compétences les mieux ancrées</b></sub>
 
 <picture>
   <source media="(prefers-color-scheme: light)" srcset="assets/svg/light/top-skills.svg" />
-  <img src="assets/svg/top-skills.svg" width="100%" alt="Compétences les mieux ancrées, score sur 99 dérivé des heures d'exposition" />
+  <img src="assets/svg/top-skills.svg" width="100%" alt="Compétences au niveau le plus élevé, en heures de code mesurées" />
 </picture>
 
-<sub>**Le score vient des heures d'exposition réelles** — expériences datées et jours de commits — jamais d'une auto-évaluation. C# / .NET à 99 sur vingt ans ; l'AI-Driven Development déjà à 83 en trois ans.</sub>
+<sub>**Les heures viennent d'une chronologie datée et des jours de commits**, jamais d'une auto-évaluation. Le niveau suit une convention publiée : working dès 50 h, professional dès 500 h, advanced dès 1 600 h, expert dès 5 000 h.</sub>
 
 <sub><b>Un profil large</b></sub>
 
@@ -56,13 +56,13 @@ J'accompagne les équipes techniques — **startups en construction comme struct
   <img src="assets/svg/domain-split.svg" width="100%" alt="Répartition de l'exposition cumulée par domaine, en parts" />
 </picture>
 
-<sub>**Polyvalent, pas dispersé.** Le DevOps concentre un tiers de l'exposition, mais quatre domaines dépassent chacun 13 %. Les parts se recoupent volontairement — une mission compte dans chaque domaine qu'elle touche — donc seuls les pourcentages sont affichés, jamais un total d'heures.</sub>
+<sub>**Polyvalent, pas dispersé.** Le mobile concentre plus de deux cinquièmes des heures, mais quatre autres domaines dépassent chacun 11 %. Les parts se recoupent volontairement — un fichier compte dans chaque domaine qu'il touche — donc seuls les pourcentages sont affichés, jamais un total d'heures.</sub>
 
 <sub><b>Expertise centrale</b></sub>
 
 <picture>
   <source media="(prefers-color-scheme: light)" srcset="assets/svg/light/core-expertise.svg" />
-  <img src="assets/svg/core-expertise.svg" width="100%" alt="Core expertise — current level and peak reached" />
+  <img src="assets/svg/core-expertise.svg" width="100%" alt="Core expertise — measured hours and level" />
 </picture>
 
 <sub><b>Stack par domaine</b></sub>
@@ -131,7 +131,7 @@ J'accompagne les équipes techniques — **startups en construction comme struct
 
 <div align="center">
 
-<sub><b>Conçu comme un produit.</b> Ce profil est généré depuis du JSON, validé par schémas, scoré sur des heures d'exposition réelles, testé (90 %+ de couverture), linté, scanné côté sécurité, vérifié orthographiquement (en + fr) et régénéré à chaque commit — gates pre-commit + pre-push, CI GitHub Actions, protection de branche. <b>Le dépôt est la preuve.</b></sub>
+<sub><b>Conçu comme un produit.</b> Ce profil est généré depuis du JSON, validé par schémas, aux niveaux tirés d'heures de code mesurées, testé (90 %+ de couverture), linté, scanné côté sécurité, vérifié orthographiquement (en + fr) et régénéré à chaque commit — gates pre-commit + pre-push, CI GitHub Actions, protection de branche. <b>Le dépôt est la preuve.</b></sub>
 </div>
 
 <div align="center">
@@ -173,4 +173,4 @@ Coach basket à Pélissanne, en Provence, après avoir attrapé un ballon pour l
 
 </sub>
 
-**Liens directs :** [FFBBApiClientV2_Python](https://github.com/Rinzler78/FFBBApiClientV2_Python) · [CometBFT.Client](https://github.com/Rinzler78/CometBFT.Client) · [osmosis-launcher](https://github.com/Rinzler78/osmosis-launcher) · [docker.idena-node](https://github.com/Rinzler78/docker.idena-node) · [aioz-node-docker](https://github.com/Rinzler78/aioz-node-docker) · [Here.Sdk.Common](https://github.com/Rinzler78/Here.Sdk.Common) · [NetExtension](https://github.com/Rinzler78/NetExtension) · [docker-cleaner](https://github.com/Rinzler78/docker-cleaner)
+**Liens directs :** [FFBBApiClientV2_Python](https://github.com/Rinzler78/FFBBApiClientV2_Python) · [CometBFT.Client](https://github.com/Rinzler78/CometBFT.Client) · [osmosis-launcher](https://github.com/Rinzler78/osmosis-launcher) · [docker.idena-node](https://github.com/Rinzler78/docker.idena-node) · [aioz-node-docker](https://github.com/Rinzler78/aioz-node-docker) · [Here.Sdk.Meta](https://github.com/Rinzler78/Here.Sdk.Meta) · [NetExtension](https://github.com/Rinzler78/NetExtension) · [docker-cleaner](https://github.com/Rinzler78/docker-cleaner)

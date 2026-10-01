@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Activity aggregates",
+  "description": "Hours per month, tech, domain and context, computed on the author's workstation by scripts/activity/hours.py (ADR-013) with levels from hours and evidence (ADR-018). The only source of skills, levels and periods the generator reads; activity_as_of is the page's reference date.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "activity_as_of",
+    "by_month",
+    "context_totals",
+    "coverage",
+    "levels",
+    "notes",
+    "techs"
+  ],
+  "$defs": {
+    "hours": { "type": "number", "minimum": 0 },
+    "month": { "type": "string", "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])$" },
+    "id": { "type": "string", "pattern": "^[a-z0-9_-]+$" },
+    "level": { "enum": ["working", "professional", "advanced", "expert"] },
+    "level_or_null": {
+      "oneOf": [{ "$ref": "#/$defs/level" }, { "type": "null" }]
+    },
+    "claim_or_null": {
+      "oneOf": [
+        { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+        { "type": "null" }
+      ]
+    },
+    "contexts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["personal", "pro", "study"],
+      "properties": {
+        "personal": { "$ref": "#/$defs/hours" },
+        "pro": { "$ref": "#/$defs/hours" },
+        "study": { "$ref": "#/$defs/hours" }
+      }
+    },
+    "hours_by_id": {
+      "type": "object",
+      "propertyNames": { "$ref": "#/$defs/id" },
+      "additionalProperties": { "$ref": "#/$defs/hours" }
+    },
+    "count": { "type": "integer", "minimum": 0 }
+  },
+  "properties": {
+    "version": { "const": 2 },
+    "activity_as_of": {
+      "description": "Day of the latest own commit collected (YYYY-MM-DD): the date hours, levels and periods are measured against.",
+      "type": "string",
+      "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$"
+    },
+    "by_month": {
+      "type": "object",
+      "propertyNames": { "$ref": "#/$defs/month" },
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["context", "domains", "techs"],
+        "properties": {
+          "context": { "$ref": "#/$defs/contexts" },
+          "domains": { "$ref": "#/$defs/hours_by_id" },
+          "techs": { "$ref": "#/$defs/hours_by_id" }
+        }
+      }
+    },
+    "context_totals": { "$ref": "#/$defs/contexts" },
+    "coverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["commit_days", "public_days", "public_share", "test_only_commits"],
+      "properties": {
+        "commit_days": { "$ref": "#/$defs/count" },
+        "public_days": { "$ref": "#/$defs/count" },
+        "public_share": { "type": "number", "minimum": 0, "maximum": 1 },
+        "test_only_commits": { "$ref": "#/$defs/count" }
+      }
+    },
+    "levels": {
+      "description": "Hours thresholds of the level convention (ADR-013 section 5).",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["working", "professional", "advanced", "expert"],
+      "properties": {
+        "working": { "$ref": "#/$defs/count" },
+        "professional": { "$ref": "#/$defs/count" },
+        "advanced": { "$ref": "#/$defs/count" },
+        "expert": { "$ref": "#/$defs/count" }
+      }
+    },
+    "notes": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "techs": {
+      "type": "object",
+      "propertyNames": { "$ref": "#/$defs/id" },
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "hours",
+          "display_hours",
+          "hours_level",
+          "evidence_level",
+          "display_level",
+          "level_source",
+          "claim",
+          "pending_claim",
+          "first",
+          "last",
+          "declared_share",
+          "domain",
+          "kind"
+        ],
+        "properties": {
+          "hours": { "$ref": "#/$defs/hours" },
+          "display_hours": { "$ref": "#/$defs/count" },
+          "hours_level": { "$ref": "#/$defs/level_or_null" },
+          "evidence_level": { "$ref": "#/$defs/level_or_null" },
+          "display_level": { "$ref": "#/$defs/level_or_null" },
+          "level_source": { "enum": ["hours", "evidence"] },
+          "claim": { "$ref": "#/$defs/claim_or_null" },
+          "pending_claim": { "$ref": "#/$defs/claim_or_null" },
+          "first": { "$ref": "#/$defs/month" },
+          "last": { "$ref": "#/$defs/month" },
+          "declared_share": { "type": "number", "minimum": 0, "maximum": 1 },
+          "domain": { "$ref": "#/$defs/id" },
+          "kind": { "enum": ["language", "platform", "domain"] }
+        }
+      }
+    }
+  }
+}

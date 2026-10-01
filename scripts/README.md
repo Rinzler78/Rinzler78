@@ -1,7 +1,9 @@
 # scripts/ — data-driven generation
 
-The README and the SVGs are **generated** from `data/*.json` via Jinja2. The score
-and the expertise levels are **derived** from the exposure hours (ADR-006).
+The README and the SVGs are **generated** from `data/*.json` via Jinja2. Hours,
+levels and periods are **read** from the committed activity aggregates
+(`data/activity/aggregates.json`, ADR-013, ADR-018); the generator derives none
+of them, and its only reference date is the aggregates' `activity_as_of`.
 
 ## Installation
 
@@ -22,16 +24,17 @@ make check                         # validate-data + generate + lint + format + 
 ## Pipeline
 
 ```
-data/*.json
-   │  DataLoader  (load_collection + JSON Schema + referential integrity)
+private timeline + commit evidence        (author's machine only)
+   │  scripts/activity/hours.py
    ▼
-HoursCalculator  (exposure hours per tech: experiences ×1880 + projects ×9)
+data/activity/aggregates.json + data/*.json   (committed)
+   │  DataLoader  (load_collection + JSON Schema + referential integrity,
+   │               every aggregate tech catalogued under the same domain)
    ▼
-ScoreEngine      (peak = 99·(1−e^(−h/3000)) ; current = decay(peak, gap))
+ViewBuilder      (build_skills: catalogue + hours/level/period, recency order;
+   │              build_domain_year_hours: by_month domains → per-year series)
    ▼
-ViewBuilder      (build_skills: techs enriched with hours/since/until/score/level)
-   ▼
-generate.py      (Jinja2)  →  assets/svg/*.svg + README.md
+generate.py      (Jinja2)  →  assets/svg/*.svg + README.md + pages/
 ```
 
 ## Workflow
@@ -47,10 +50,8 @@ generate.py      (Jinja2)  →  assets/svg/*.svg + README.md
 
 ```
 scripts/
-├── data_loader.py       # load_collection + schema + check_referential_integrity
-├── hours_calculator.py  # compute_tech_hours (concurrent tiers, derived since/until)
-├── score_engine.py      # compute_skill (peak/decay, max vs current, overrides)
-├── view_builder.py      # build_skills (enriches techs for the templates)
+├── data_loader.py       # load_collection + schema + referential/aggregates integrity
+├── view_builder.py      # build_skills, build_domain_year_hours (from the aggregates)
 ├── generate.py          # entry point — loads data, enriches, renders templates
 ├── validate_data.py     # CLI: schemas + referential integrity
 ├── validate.py          # CLI: SVG well-formedness + README refs
@@ -129,7 +130,9 @@ data/templates, `make generate`, `make claims-lock`, commit the pages and the lo
 
 `python -m scripts.activity.hours --out data/activity/aggregates.json` turns the
 private timeline and commit evidence into the committed aggregates. It runs on
-the author's machine only: it reads `$PROFILE_PRIVATE_DIR/timeline.json`,
+the author's machine only: it reads `$PROFILE_PRIVATE_DIR/timeline.json`
+(the last period may be open, `end: null`, and `as_of` may be omitted: the
+timeline then runs to the month of the latest evidence day),
 `evidence.json` (collector output) and `repo-classes.json` (every repository key
 mapped to `{"context": "pro" | "personal", "source": <timeline source id>}`;
 unclassified repositories count as personal).
@@ -237,20 +240,23 @@ before its first commit or declared period, nor before its release month
 
 ## Helpers available in the templates
 
-`generate.py` exposes in all templates: `profile`, `domains`, `techs`
-(enriched into Skills), `experiences`, `timeline`, `projects`, `theme`, `content`,
-plus:
+`generate.py` exposes in all templates: `profile`, `domains`, `techs` (the
+whole catalogue, enriched), `skills` (the techs with a displayed level),
+`experiences`, `timeline`, `projects`, `theme`, `content`, `aggregates`,
+`as_of` / `as_of_year` (from `activity_as_of`), plus:
 
-- `techs_by_domain(domain_id)` → Skills of a domain
+- `techs_by_domain(domain_id)` → skill lines of a domain, by recency then hours
 - `domain_by_id(domain_id)` / `tech_by_id(tech_id)` (root id OR version)
 - `projects_highlighted()` → `highlight: true` projects (showcase)
 - `domains_in_id_card()` → `show_in_id_card: true` domains, sorted by order
-- `level_color(level)` / `level_label(level)` → color / label for the 5 levels
+- `level_color(level)` / `level_label(level)` → color / label for the 4 levels
 
-Each Skill carries: `since`, `until`, `score_max`, `level_max`, `score_current`,
-`level_current` (ADR-006).
+Each tech carries: `hours`, `display_hours`, `level` (the aggregates'
+`display_level`, `None` below the working threshold or for a tool such as
+Git), `level_source`, `claim`, `first`, `last`, `since` and `until` (`None`
+while used in the year of `activity_as_of`).
 
 ## See also
 
 - [`/CONTEXT.md`](../CONTEXT.md) — glossary of concepts
-- [`/docs/adr/`](../docs/adr/) — decisions (001 generation, 006 hours model, 005 quality gates)
+- [`/docs/adr/`](../docs/adr/) — decisions (001 generation, 005 quality gates, 013 hours, 016 page content and dates, 018 levels)

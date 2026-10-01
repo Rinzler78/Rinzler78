@@ -123,7 +123,8 @@
     "backend": "#3987e5",
     "devops": "#199e70",
     "blockchain": "#c98500",
-    "ai-llm": "#9085e9"
+    "ai-llm": "#9085e9",
+    "desktop": "#9aa3b2"
   },
 
   "series_light": {
@@ -132,6 +133,7 @@
     "backend": "#2a78d6",
     "devops": "#1baf7a",
     "blockchain": "#eda100",
-    "ai-llm": "#4a3aa7"
+    "ai-llm": "#4a3aa7",
+    "desktop": "#64748b"
   }
 }

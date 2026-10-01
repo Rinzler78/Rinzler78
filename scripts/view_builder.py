@@ -1,43 +1,34 @@
-"""Derived view models from the data bag (ADR-003, ADR-006).
+"""View models from the data bag and the committed aggregates (ADR-003).
 
-Public surface (V1, incremental):
-- ``build_skills(techs, experiences, projects, today)`` enriches each tech
-  with its derived exposure hours and expertise (max + current), producing
-  template-ready dicts.
-
-Skills are *derived*, never stored: the enrichment composes HoursCalculator
-(hours + since/until per tech) and ScoreEngine (peak/decay) over the raw
-tech collection.
-
+Public surface:
+- ``build_skills(techs, aggregates)`` enriches each catalogue tech with its
+  figures from ``data/activity/aggregates.json`` — hours, displayed hours and
+  level, level source and claim, first and last month, since/until years —
+  and orders them by recency, then hours (ADR-018).
+- ``build_domain_year_hours(aggregates)`` sums the per-month domain hours of
+  the aggregates per calendar year: the journey series.
 - ``build_profile_as_code(profile, skills, services)`` renders the profile as
   a small C# class (the "Profile as Code" section).
+- ``build_signature_arc(domains)`` projects the curated narrative arc.
+
+Nothing about a skill is derived here: hours, levels and periods are computed
+on the author's workstation from the activity timeline and commit evidence
+(ADR-013, ADR-018), and the generator only reads them.
 """
 
 import re
-from datetime import date
 
-from scripts.hours_calculator import (
-    TechHours,
-    compute_tech_hours,
-    compute_tech_hours_by_year,
-)
-from scripts.score_engine import compute_skill
-
-# Cross-cutting domains, excluded from the per-domain timeline. Languages are
-# used inside every other domain, so the row is lit every year and only
-# flattens the scale of the rows that carry information.
-TIMELINE_EXCLUDED_DOMAINS = frozenset({"languages"})
+# Cross-cutting domains, excluded from the per-domain timeline. Languages and
+# engineering practices are used inside every other domain, so their rows are
+# lit every year and only flatten the scale of the rows that carry information.
+TIMELINE_EXCLUDED_DOMAINS = frozenset({"languages", "practices"})
 
 
 def build_profile_as_code(
     profile: dict, skills: list[dict], services: list[dict]
 ) -> str:
     class_name = re.sub(r"[^A-Za-z0-9]", "", profile["name"])
-    featured = sorted(
-        (s for s in skills if s.get("featured")),
-        key=lambda s: s.get("score_current", 0),
-        reverse=True,
-    )
+    featured = [s for s in skills if s.get("featured")]
     core = ", ".join(f'"{s["label"]}"' for s in featured)
 
     shown = sorted(
@@ -80,63 +71,84 @@ def build_signature_arc(domains: list[dict]) -> list[dict]:
     ]
 
 
-def build_domain_year_hours(
-    techs: list[dict],
-    experiences: list[dict],
-    projects: list[dict],
-    today: date,
-) -> dict[str, dict[int, int]]:
-    """Exposure hours per domain, per calendar year — the journey series.
+def build_domain_year_hours(aggregates: dict) -> dict[str, dict[int, float]]:
+    """Hours per domain, per calendar year — the journey series.
 
-    Aggregates the per-tech split up to domains, skipping
-    :data:`TIMELINE_EXCLUDED_DOMAINS`. A tech referenced by an experience but
-    absent from the collection is ignored rather than guessed at: referential
-    integrity is validated upstream, so a miss here means the reference is
-    genuinely dangling and inventing a domain for it would fabricate a row.
-
-    Tier fractions are cumulative, not normalized (ADR-006): one engagement
-    counts its hours in full under each domain it touches. Summing across
-    domains therefore double-counts — these values carry *shares*, never a
-    total that can be shown as hours worked.
+    Sums the per-month domain hours of the aggregates, skipping
+    :data:`TIMELINE_EXCLUDED_DOMAINS` and years without hours. Hours per
+    domain are not additive across domains (one file may touch several), so
+    these values are drawn as *shares*, never as a total of hours worked.
     """
-    domain_of = {tech["id"]: tech["domain"] for tech in techs}
-    by_tech = compute_tech_hours_by_year(experiences, projects, today)
+    series: dict[str, dict[int, float]] = {}
+    for month, row in sorted(aggregates["by_month"].items()):
+        year = int(month[:4])
+        for domain, hours in row["domains"].items():
+            if domain in TIMELINE_EXCLUDED_DOMAINS or hours <= 0:
+                continue
+            years = series.setdefault(domain, {})
+            years[year] = years.get(year, 0.0) + hours
+    return {
+        domain: {year: round(hours, 1) for year, hours in sorted(years.items())}
+        for domain, years in series.items()
+    }
 
-    series: dict[str, dict[int, int]] = {}
-    for tech_id, years in by_tech.items():
-        domain = domain_of.get(tech_id)
-        if domain is None or domain in TIMELINE_EXCLUDED_DOMAINS:
-            continue
-        row = series.setdefault(domain, {})
-        for year, hours in years.items():
-            row[year] = row.get(year, 0) + hours
 
-    return {d: dict(sorted(years.items())) for d, years in series.items()}
+def _month_index(month: str) -> int:
+    return int(month[:4]) * 12 + int(month[5:7])
 
 
-def build_skills(
-    techs: list[dict],
-    experiences: list[dict],
-    projects: list[dict],
-    today: date,
-) -> list[dict]:
-    tech_hours = compute_tech_hours(experiences, projects, today)
+def build_skills(techs: list[dict], aggregates: dict) -> list[dict]:
+    """Catalogue techs enriched with their aggregate figures, newest first.
 
+    Every catalogue tech is returned, so a project or a timeline event can
+    still resolve its label; ``level`` is ``None`` for a tech that is not a
+    skill line — below the working threshold, or a tool every commit implies
+    such as Git, which the aggregates never measure (ADR-016).
+
+    ``until`` is ``None`` while the tech was used in the year of
+    ``activity_as_of``, else the year of its last use. Order: most recent last
+    use first, then hours (ADR-018: never by hours alone).
+    """
+    as_of_year = int(aggregates["activity_as_of"][:4])
     skills: list[dict] = []
     for tech in techs:
-        th = tech_hours.get(tech["id"], TechHours(0, None, None))
-        skill = compute_skill(tech, th, today)
+        entry = aggregates["techs"].get(tech["id"])
+        if entry is None:
+            skills.append(
+                {
+                    **tech,
+                    "hours": 0,
+                    "display_hours": 0,
+                    "level": None,
+                    "level_source": None,
+                    "claim": None,
+                    "first": None,
+                    "last": None,
+                    "since": None,
+                    "until": None,
+                }
+            )
+            continue
+        last_year = int(entry["last"][:4])
         skills.append(
             {
                 **tech,
-                "hours": th.hours,
-                "since": th.since,
-                "until": th.until,
-                "score_max": skill.score_max,
-                "level_max": skill.level_max.value,
-                "score_current": skill.score_current,
-                "level_current": skill.level_current.value,
-                "override_applied": skill.override_applied,
+                "hours": entry["hours"],
+                "display_hours": entry["display_hours"],
+                "level": entry["display_level"],
+                "level_source": entry["level_source"],
+                "claim": entry["claim"],
+                "first": entry["first"],
+                "last": entry["last"],
+                "since": int(entry["first"][:4]),
+                "until": None if last_year >= as_of_year else last_year,
             }
         )
-    return skills
+    return sorted(
+        skills,
+        key=lambda s: (
+            -_month_index(s["last"]) if s["last"] else 0,
+            -s["hours"],
+            s["id"],
+        ),
+    )

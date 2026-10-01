@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Tech collection",
-  "description": "Technical skills. Score/level and since/until are derived (ADR-006), never stored at tech level. since lives only inside versions[].",
+  "description": "Technical skills catalogue: labels, domains and versions. Hours, levels and periods are never stored here: the generator reads them from data/activity/aggregates.json (ADR-013, ADR-018). since lives only inside versions[].",
   "type": "array",
   "items": {
     "type": "object",
@@ -14,10 +14,6 @@
       "display_version": { "type": "string" },
       "notes": { "type": "string" },
       "featured": { "type": "boolean" },
-      "level_override": {
-        "enum": ["expert", "advanced", "professional", "working", "explored"]
-      },
-      "score_override": { "type": "integer", "minimum": 0, "maximum": 99 },
       "versions": {
         "type": "array",
         "items": {

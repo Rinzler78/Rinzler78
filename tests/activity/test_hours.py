@@ -706,11 +706,19 @@ def test_notes_state_the_rules(doc):
 
 
 def test_notes_list_domain_differences_with_catalogue(inputs):
-    catalogue = json.loads(CATALOGUE.read_text(encoding="utf-8"))
+    catalogue = [
+        {"id": "objective-c", "domain": "languages"},
+        {"id": "windows-ce", "domain": "embedded"},
+    ]
     doc = hr.aggregate(inputs, catalogue=catalogue)
     joined = " ".join(doc["notes"])
     assert "objective-c: languages -> mobile" in joined
     assert "windows-ce: embedded -> mobile" in joined
+
+
+def test_the_real_catalogue_files_techs_as_the_tech_map_does(inputs):
+    catalogue = json.loads(CATALOGUE.read_text(encoding="utf-8"))
+    assert hr.domain_differences(inputs.tech_map, catalogue) == []
 
 
 def test_public_source_alias():

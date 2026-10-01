@@ -14,9 +14,9 @@ This repo is Boris Leclere's GitHub profile. The README and the decorative SVGs 
 
 ### Domain
 
-`data/domains.json` — Taxonomy of areas of expertise. Each domain has a stable snake_case `id`, a human `label` and an `order` (display rank). The current domains: `embedded`, `mobile`, `languages`, `backend`, `devops`, `ai-llm`, `blockchain`. **Embedded comes first** by convention (signature track record).
+`data/domains.json` — Taxonomy of areas of expertise. Each domain has a stable snake_case `id`, a human `label` and an `order` (display rank). The current domains: `embedded`, `mobile`, `desktop`, `languages`, `backend`, `devops`, `ai-llm`, `blockchain`, `practices` (engineering practices: TDD, tests, MVVM, DDD). **Embedded comes first** by convention (signature track record). Each tech's domain follows `scripts/activity/tech_map.json`, the map the hours are aggregated with; `validate_data.py` fails when the catalogue and the aggregates disagree.
 
-A domain is read as a **timeline** by every per-domain view, so membership is decided by what a tech *is used for*, not by where it was first met. General-purpose operating systems (`linux-ubuntu`, `windows`) therefore sit in `devops`, not `embedded`: they run under every engagement, and filing them as embedded kept that domain lit to the present day while the profile states professional embedded work stopped. `windows-ce` — a real embedded target — stays. Pinned by `tests/test_domain_taxonomy.py`.
+A domain is read as a **timeline** by every per-domain view, so membership is decided by what a tech *is used for*, not by where it was first met. General-purpose operating systems (`linux`, `linux-ubuntu`, `windows`, `windows-server`) therefore sit in `devops`, not `embedded`: they run under every engagement, and filing them as embedded kept that domain lit to the present day while the profile states professional embedded work stopped. Mobile development gathers the mobile platforms old and new, Windows CE and Windows Mobile included (ADR-016). Pinned by `tests/test_domain_taxonomy.py`.
 
 ### Signature arc
 
@@ -24,24 +24,19 @@ A first-class narrative concept: the **ordered progression of domains** `embedde
 
 ### Tech
 
-`data/techs.json` — A "tech" is a technical skill with a root identifier that is **stable over time** (e.g. `csharp`, never `csharp-12`). Each tech carries: `id` (snake_case without version), `label`, `domain-id`, `since` (mandatory adoption year), `until` (year of last use if abandoned, optional), `notes`. It contains a `versions[]` array: each version has its own full snake_case `id` (e.g. `csharp_2_0`, `csharp_12`) + `version` (label) + `since` (year of that version).
+`data/techs.json` — The **catalogue**: a "tech" is a technical skill with a root identifier that is **stable over time** (e.g. `csharp`, never `csharp-12`). Each tech carries: `id`, `label`, `domain`, optional `display_version`, `notes`, `featured` (display-only: core expertise selection), and a `versions[]` array: each version has its own full snake_case `id` (e.g. `csharp_2_0`, `csharp_12`) + `version` (label) + `since` (year of that version). Every tech the aggregates name is catalogued; a tech without aggregates (Git, a tool every commit implies — ADR-016) stays in the catalogue but is never a skill line.
 
-**Level and score** are **derived values**, never entered directly (except via override). The generator computes `score` ∈ [0, 99] from the entered facts and infers `level` among 5 tiers (`expert` / `advanced` / `professional` / `working` / `explored`) via fixed thresholds. See [ADR-002](docs/adr/0002-tech-score-derivation.md) for the formula and the tiers.
+### Activity aggregates
 
-`depth` field (0–3): depth of production usage, **factual self-assessment** (including private engagements invisible on GitHub). 0 = read-level, 3 = core expertise. Additive (+20/level). Corrects the bias "the formula only sees what is public". See [ADR-002](docs/adr/0002-tech-score-derivation.md).
+`data/activity/aggregates.json` — Hours per month, tech, domain and context, computed on the author's workstation by `scripts/activity/hours.py` from the private activity timeline and commit evidence (ADR-013), and committed. Per tech: `hours`, `display_hours` (rounded down so a shown figure never crosses a threshold), `hours_level`, `evidence_level`, `display_level` (the higher of the two when the evidence's claim is attested — ADR-018), `level_source`, `claim`, `pending_claim`, `first`/`last` (`YYYY-MM`), `declared_share`, `domain`, `kind`. Also `by_month`, `context_totals`, `coverage`, the `levels` convention and `notes`. Validated by `schemas/aggregates.schema.json`.
 
-Override fields (optional, to be used when the formula underrates, e.g. private usage not listed in `projects.json`):
-- `level_override` — forces the qualitative level (applies to the **current** level)
-- `score_override` — forces the current numeric score
-- `featured` — **display-only** boolean (hero / core expertise selection). It **no longer** influences the score since [ADR-006](docs/adr/0006-hours-based-expertise-model.md).
+**Levels** are a published convention, not a score: `working` ≥ 50 h, `professional` ≥ 500 h, `advanced` ≥ 1,600 h, `expert` ≥ 5,000 h. There is no 0–99 score and no decay (ADR-013 superseded ADR-006). A tech is a **skill line** from the working threshold; below it, it stays in the data.
 
-**Score and levels derived from hours** (ADR-006): `since`, `until`, `score_max`/`level_max` (peak reached) and `score_current`/`level_current` (after decay) are **computed** by the `HoursCalculator → ScoreEngine → ViewBuilder` pipeline from **exposure hours**. The hours come from two sources: **Experience** (duration × 1880 h/year) and **Project** (`active_days` × 9 h), distributed across concurrent tiers `primary 0.70 / secondary 0.35 / incident 0.10` (cumulative, not normalized — on a C#+Xamarin+Bluetooth project all three count in full). `peak = 99·(1−e^(−h/3000))`; decay toward a `0.30·peak` floor based on time of inactivity.
-
-**Temporal invariant**: a tech's `since`/`until` are **derived** from the Experience and Project that use it (`until = null` if a current source still employs it, otherwise the latest end). The principle "a skill stops at the end of its last period" is thus implemented structurally — no more manual entry of `until`.
+**Reference date**: `activity_as_of` — the day of the latest collected own commit — is the page's only date. "Now", periods and the years of coding are measured against it; generation never reads the clock (ADR-011, ADR-016 as amended).
 
 ### Experience
 
-`data/experiences.json` — A **dated period** of the track record (employment, studies, mission, competition, internship): `id`, `org`, `role`, `type` (`cdi`/`freelance`/`mission`/`education`/`competition`/`internship`), `start` (`YYYY-MM`), `end` (`YYYY-MM` or `null` if current), `tech_weights` (map `tech_id → tier`). Hours source #1 (duration × 1880 h/year distributed across tiers). Dated bounds from the CV (LinkedIn). Good Angel / My Good Life (parallel, remote work) are modeled as **one** period in two phases so as not to double-count the hours.
+`data/experiences.json` — A **dated period** of the track record (employment, studies, mission, competition, internship): `id`, `org`, `role`, `type` (`cdi`/`freelance`/`mission`/`education`/`competition`/`internship`), `start` (`YYYY-MM`), `end` (`YYYY-MM` or `null` if current), `tech_weights` (map `tech_id → tier`). The tiers are the last-resort estimate `scripts/activity/hours.py` uses for a month with neither commit evidence nor a declared period (ADR-013). Dated bounds from the CV (LinkedIn). Good Angel / My Good Life (parallel, remote work) are modeled as **one** period in two phases so as not to double-count the hours.
 
 ### Timeline Event
 
@@ -51,7 +46,7 @@ Override fields (optional, to be used when the formula underrates, e.g. private 
 
 ### Project
 
-`data/projects.json` — A public repository. Dual role: **showcase** (`highlight`, `description`, `stack_label` — the ~8 shown) AND **hours source #2** (`active_days` × 9 h, distributed by `tech_weights` concurrent tiers). `active_days` = number of distinct days with commits (objective, from GitHub); `start`/`end` = creation/last push years (`end: null` = still active → contributes to the techs' `until = null`). Fields: `id`, `name`, `github_url`, `domain`, `tech_ids[]`, `active_days`, `start`, `end`, `tech_weights`, `state` (`active`/`legacy`/`archive`), `highlight`. All significant repositories (≥ 3 commit-days) are present for the hours; `highlight=true` selects the showcase.
+`data/projects.json` — A public repository shown on the profile: `id`, `name`, `github_url`, `domain`, `tech_ids[]`, `start`, `end` (`null` = still active), `state` (`active`/`legacy`/`archive`), `highlight` (selects the showcase), `description`, `stack_label`, and `metrics` — the **sources** of its external counters (`pypi` package, `dockerhub` image). Counters themselves are never stored: data retrievable live is read live (ADR-016 as amended). Projects are not an hours source.
 
 ### Service
 
@@ -70,10 +65,6 @@ Mode answers the question "**how can I engage Boris**". Extracted from the histo
 `data/methodology.json` — Collection of **working principles**: `id` (kebab-case), `title`, `body`, `order`. Examples: "Simple before clever", "Tested before validated", "Business value before technical ego", "AI accelerates, it does not replace discipline".
 
 > **i18n**: the narrative fields of Service / Mode / Methodology are in **raw FR** for now (like the rest of `content`). They will be wrapped `{fr, en}` uniformly when the i18n track (DeepL, [ADR-004](docs/adr/0004-i18n-bilingual-readme.md)) is implemented — no half-i18n for now.
-
-### Config
-
-`data/config.json` — Singleton object holding the generation settings. Its only field today is **`as_of`** (`YYYY-MM-DD`): the **reference date** the whole derivation runs against. Hours accrue for every ongoing Experience, so scores, levels and row order move with this date — reading the system clock instead would make the same revision regenerate differently tomorrow. `scripts/bump_as_of.py`, called by the weekly refresh workflow, is the one place that moves it. See [ADR-011](docs/adr/0011-committed-reference-date.md).
 
 ### Theme
 
@@ -118,7 +109,7 @@ Views are **derived**, never stored. This is the invariant that guarantees inter
 
 ### Journey series
 
-`domain_years` — exposure hours **per domain, per calendar year**, built by `build_domain_year_hours` from the same hours that produce the Tech scores, so a chart and a score can never disagree. The `languages` domain is excluded: it is used inside every other domain, so its row would be lit every year while flattening the scale of the rows that carry information. Tier fractions are cumulative, so summing across domains double-counts — these values are rendered as **shares**, never as hours worked. See [ADR-006](docs/adr/0006-hours-based-expertise-model.md).
+`domain_years` — hours **per domain, per calendar year**, built by `build_domain_year_hours` from the `by_month` domain hours of the aggregates — the same aggregates as the skill lines, so a chart and a level can never disagree. The `languages` and `practices` domains are excluded: they are used inside every other domain, so their rows would be lit every year while flattening the scale of the rows that carry information. One file may touch several domains, so summing across domains double-counts — these values are rendered as **shares**, never as hours worked. See [ADR-013](docs/adr/0013-activity-timeline-evidence-hours.md).
 
 ### Chart
 
@@ -140,7 +131,7 @@ The **narrative fields** (titles, short descriptions, pitch, prose) are entered 
 
 The cache carries `{ fr_hash, en, manual: bool, reviewed: bool }`. If `manual: true`, the hook never touches `en`. If `reviewed: false`, the hook shows a warning but the generation of `README.en.md` proceeds.
 
-The **factual fields** (id, name, dates, tech labels, URLs, score) are not i18n — plain string/number.
+The **factual fields** (id, name, dates, tech labels, URLs, hours, levels) are not i18n — plain string/number.
 
 See [ADR-004](docs/adr/0004-i18n-bilingual-readme.md).
 

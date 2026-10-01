@@ -2,11 +2,13 @@
 {%- set width = 300 -%}
 {%- set height = 280 -%}
 {%- set pal = theme.palette -%}
-{%- set years_coding = 2026 - profile.since_coding -%}
+{%- set years_coding = as_of_year - profile.since_coding -%}
 {%- set public_repos = projects | length -%}
 {%- set active_projects = projects | selectattr('state', 'equalto', 'active') | list | length -%}
-{%- set total_techs = techs | length -%}
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {{ width }} {{ height }}" width="{{ width }}" height="{{ height }}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Activity stats — {{ years_coding }} années de code, {{ total_techs }} technologies maîtrisées, {{ public_repos }} dépôts publics, {{ active_projects }} actifs">
+{#- Skill lines only (ADR-013: from 50 h): the catalogue also holds techs
+    below the threshold and tools such as Git, which are not skills. -#}
+{%- set total_techs = skills | length -%}
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {{ width }} {{ height }}" width="{{ width }}" height="{{ height }}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Activity stats — {{ years_coding }} années de code, {{ total_techs }} technologies pratiquées (50 h et plus), {{ public_repos }} dépôts publics, {{ active_projects }} actifs">
   <title>Activity stats</title>
   <desc>Cards de statistiques quantifiables : années de code, technologies, dépôts publics, projets actifs.</desc>
 

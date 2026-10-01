@@ -40,10 +40,7 @@
     <!-- description -->
     <text x="{{ x + 16 }}" y="{{ y + 74 }}" font-family="'{{ theme.fonts.body }}', {{ theme.fonts.body_fallback }}" font-size="11" fill="{{ pal.text }}" opacity="0.85">{{ proj.description | truncate(70, true, '…') }}</text>
 
-    <!-- footer : extra metric ou state -->
-    {%- if proj.extra_metric %}
-    <text x="{{ x + 16 }}" y="{{ y + card_h - 14 }}" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="10" fill="{{ pal.warn }}">★ {{ proj.extra_metric }}</text>
-    {%- endif %}
+    <!-- footer -->
     <text x="{{ x + card_w - 16 }}" y="{{ y + card_h - 14 }}" text-anchor="end" font-family="'{{ theme.fonts.mono }}', {{ theme.fonts.mono_fallback }}" font-size="10" fill="{{ pal.text_muted }}">→ github</text>
   {%- endfor %}
 </svg>

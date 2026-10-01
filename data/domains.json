@@ -24,15 +24,21 @@
     "arc_signature": "iOS · NFC · Xamarin"
   },
   {
+    "id": "desktop",
+    "label": "Desktop",
+    "order": 3,
+    "show_in_id_card": false
+  },
+  {
     "id": "languages",
     "label": "Languages",
-    "order": 3,
+    "order": 4,
     "show_in_id_card": false
   },
   {
     "id": "backend",
     "label": "Backend & Web",
-    "order": 4,
+    "order": 5,
     "show_in_id_card": true,
     "id_card_summary": "C# / .NET 8 / 10 · ASP.NET Core · Blazor · FastAPI · EF Core",
     "id_card_daterange": null
@@ -40,7 +46,7 @@
   {
     "id": "devops",
     "label": "DevOps & Infrastructure",
-    "order": 5,
+    "order": 6,
     "show_in_id_card": true,
     "id_card_summary": "Docker 24.x · Compose v2 · GitHub Actions · Linux Ubuntu LTS",
     "id_card_daterange": null,
@@ -52,7 +58,7 @@
   {
     "id": "ai-llm",
     "label": "AI & LLM",
-    "order": 6,
+    "order": 7,
     "show_in_id_card": true,
     "id_card_summary": "Claude API SDK · OpenAI v1.x · LangChain 0.2.x · LiteLLM",
     "id_card_daterange": null,
@@ -64,9 +70,15 @@
   {
     "id": "blockchain",
     "label": "Blockchain",
-    "order": 7,
+    "order": 8,
     "show_in_id_card": true,
     "id_card_summary": "Cosmos SDK · CometBFT · Idena · AIOZ · Osmosis",
     "id_card_daterange": null
+  },
+  {
+    "id": "practices",
+    "label": "Engineering practices",
+    "order": 9,
+    "show_in_id_card": false
   }
 ]

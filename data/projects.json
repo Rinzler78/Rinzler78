@@ -12,17 +12,8 @@
       "osmosis",
       "python"
     ],
-    "active_days": 154,
     "start": "2022-01",
     "end": null,
-    "tech_weights": {
-      "csharp-dotnet": "primary",
-      "bash": "secondary",
-      "python": "incident",
-      "osmosis": "primary",
-      "cosmos-sdk": "secondary",
-      "ai-driven-development": "secondary"
-    },
     "state": "active",
     "highlight": false
   },
@@ -36,14 +27,8 @@
       "bash",
       "csharp-dotnet"
     ],
-    "active_days": 49,
     "start": "2026-01",
     "end": null,
-    "tech_weights": {
-      "csharp-dotnet": "primary",
-      "bash": "incident",
-      "ai-driven-development": "secondary"
-    },
     "state": "active",
     "highlight": false
   },
@@ -57,14 +42,8 @@
       "bash",
       "python"
     ],
-    "active_days": 46,
     "start": "2024-01",
     "end": null,
-    "tech_weights": {
-      "python": "primary",
-      "bash": "secondary",
-      "ai-driven-development": "secondary"
-    },
     "state": "active",
     "highlight": true,
     "description": "Python client for the French Basketball Federation (FFBB) v2 API. Reverse-engineered, packaged, published to PyPI, full CI.",
@@ -87,17 +66,8 @@
       "csharp-dotnet",
       "docker"
     ],
-    "active_days": 20,
     "start": "2026-01",
     "end": null,
-    "tech_weights": {
-      "csharp-dotnet": "primary",
-      "bash": "secondary",
-      "docker": "incident",
-      "cometbft": "primary",
-      "cosmos-sdk": "secondary",
-      "ai-driven-development": "secondary"
-    },
     "state": "active",
     "highlight": true,
     "description": ".NET client library for CometBFT nodes — REST, WebSocket and gRPC transports, generic block model.",
@@ -112,13 +82,8 @@
       "ai-driven-development",
       "python"
     ],
-    "active_days": 20,
     "start": "2024-01",
     "end": "2024-12",
-    "tech_weights": {
-      "python": "primary",
-      "ai-driven-development": "secondary"
-    },
     "state": "active",
     "highlight": false
   },
@@ -134,16 +99,8 @@
       "osmosis",
       "python"
     ],
-    "active_days": 18,
     "start": "2022-01",
     "end": null,
-    "tech_weights": {
-      "python": "primary",
-      "bash": "secondary",
-      "osmosis": "primary",
-      "cosmos-sdk": "secondary",
-      "ai-driven-development": "secondary"
-    },
     "state": "active",
     "highlight": true,
     "description": "Modified Osmosis launcher tuned for server-side `osmosisd` execution.",
@@ -159,19 +116,12 @@
       "docker",
       "idena"
     ],
-    "active_days": 15,
     "start": "2020-01",
     "end": null,
-    "tech_weights": {
-      "bash": "secondary",
-      "docker": "primary",
-      "idena": "primary"
-    },
     "state": "active",
     "highlight": true,
     "description": "Dockerized Idena blockchain node with monitoring and update automation. Adopted by the Idena community.",
     "stack_label": "Docker · Shell · GitHub Actions",
-    "extra_metric": "470+ Docker Hub pulls",
     "metrics": {
       "dockerhub": "rinzlerfr/idena-node"
     }
@@ -185,13 +135,8 @@
       "csharp-dotnet",
       "ef-core"
     ],
-    "active_days": 14,
     "start": "2021-01",
     "end": "2022-12",
-    "tech_weights": {
-      "csharp-dotnet": "primary",
-      "ef-core": "primary"
-    },
     "state": "active",
     "highlight": false
   },
@@ -205,14 +150,8 @@
       "bash",
       "python"
     ],
-    "active_days": 14,
     "start": "2022-01",
     "end": null,
-    "tech_weights": {
-      "python": "primary",
-      "bash": "secondary",
-      "ai-driven-development": "secondary"
-    },
     "state": "active",
     "highlight": false
   },
@@ -226,14 +165,8 @@
       "bash",
       "python"
     ],
-    "active_days": 14,
     "start": "2024-01",
     "end": null,
-    "tech_weights": {
-      "python": "primary",
-      "bash": "secondary",
-      "ai-driven-development": "secondary"
-    },
     "state": "legacy",
     "highlight": false,
     "description": "Legacy client for the previous FFBB API generation, kept for reference.",
@@ -251,13 +184,8 @@
       "csharp-dotnet",
       "nodejs"
     ],
-    "active_days": 13,
     "start": "2019-01",
     "end": "2022-12",
-    "tech_weights": {
-      "nodejs": "primary",
-      "csharp-dotnet": "secondary"
-    },
     "state": "active",
     "highlight": false
   },
@@ -273,16 +201,8 @@
       "docker",
       "osmosis"
     ],
-    "active_days": 13,
     "start": "2022-01",
     "end": "2023-12",
-    "tech_weights": {
-      "bash": "secondary",
-      "docker": "primary",
-      "osmosis": "primary",
-      "cosmos-sdk": "secondary",
-      "ai-driven-development": "secondary"
-    },
     "state": "active",
     "highlight": false
   },
@@ -295,13 +215,8 @@
       "ai-driven-development",
       "python"
     ],
-    "active_days": 13,
     "start": "2024-01",
     "end": null,
-    "tech_weights": {
-      "python": "primary",
-      "ai-driven-development": "secondary"
-    },
     "state": "active",
     "highlight": false
   },
@@ -314,13 +229,8 @@
       "csharp-dotnet",
       "xamarin-forms"
     ],
-    "active_days": 12,
     "start": "2020-01",
     "end": null,
-    "tech_weights": {
-      "csharp-dotnet": "primary",
-      "xamarin-forms": "primary"
-    },
     "state": "active",
     "highlight": false,
     "description": "Tetris App developed using Xamarin Forms"
@@ -333,12 +243,8 @@
     "tech_ids": [
       "csharp-dotnet"
     ],
-    "active_days": 11,
     "start": "2018-01",
     "end": "2023-12",
-    "tech_weights": {
-      "csharp-dotnet": "primary"
-    },
     "state": "active",
     "highlight": false
   },
@@ -351,13 +257,8 @@
       "asp-net-core",
       "csharp-dotnet"
     ],
-    "active_days": 9,
     "start": "2021-01",
     "end": "2023-12",
-    "tech_weights": {
-      "csharp-dotnet": "primary",
-      "asp-net-core": "primary"
-    },
     "state": "active",
     "highlight": false
   },
@@ -370,13 +271,8 @@
       "ai-driven-development",
       "python"
     ],
-    "active_days": 8,
     "start": "2025-01",
     "end": null,
-    "tech_weights": {
-      "python": "primary",
-      "ai-driven-development": "secondary"
-    },
     "state": "active",
     "highlight": false
   },
@@ -392,16 +288,8 @@
       "docker",
       "osmosis"
     ],
-    "active_days": 8,
     "start": "2022-01",
     "end": null,
-    "tech_weights": {
-      "bash": "secondary",
-      "docker": "secondary",
-      "osmosis": "primary",
-      "cosmos-sdk": "secondary",
-      "ai-driven-development": "secondary"
-    },
     "state": "active",
     "highlight": false,
     "metrics": {
@@ -417,13 +305,8 @@
       "bash",
       "github-actions"
     ],
-    "active_days": 7,
     "start": "2014-01",
     "end": "2021-12",
-    "tech_weights": {
-      "bash": "primary",
-      "github-actions": "secondary"
-    },
     "state": "active",
     "highlight": false
   },
@@ -436,13 +319,8 @@
       "bash",
       "csharp-dotnet"
     ],
-    "active_days": 6,
     "start": "2020-01",
     "end": "2020-12",
-    "tech_weights": {
-      "csharp-dotnet": "primary",
-      "bash": "secondary"
-    },
     "state": "active",
     "highlight": false
   },
@@ -454,12 +332,8 @@
     "tech_ids": [
       "csharp-dotnet"
     ],
-    "active_days": 6,
     "start": "2021-01",
     "end": "2024-12",
-    "tech_weights": {
-      "csharp-dotnet": "primary"
-    },
     "state": "active",
     "highlight": false,
     "metrics": {
@@ -477,15 +351,8 @@
       "bash",
       "docker"
     ],
-    "active_days": 5,
     "start": "2023-01",
     "end": "2024-12",
-    "tech_weights": {
-      "bash": "secondary",
-      "docker": "primary",
-      "aioz": "primary",
-      "ai-driven-development": "secondary"
-    },
     "state": "active",
     "highlight": false,
     "description": "Autonomous reward withdrawal for AIOZ nodes, packaged as a Docker workload.",
@@ -505,15 +372,8 @@
       "bash",
       "docker"
     ],
-    "active_days": 4,
     "start": "2023-01",
     "end": null,
-    "tech_weights": {
-      "bash": "secondary",
-      "docker": "primary",
-      "aioz": "primary",
-      "ai-driven-development": "secondary"
-    },
     "state": "active",
     "highlight": true,
     "description": "Docker image for AIOZ blockchain node deployment (decentralized content delivery).",
@@ -523,9 +383,9 @@
     }
   },
   {
-    "id": "here-sdk-common",
-    "name": "Here.Sdk.Common",
-    "github_url": "https://github.com/Rinzler78/Here.Sdk.Common",
+    "id": "here-sdk-meta",
+    "name": "Here.Sdk.Meta",
+    "github_url": "https://github.com/Rinzler78/Here.Sdk.Meta",
     "domain": "backend",
     "tech_ids": [
       "ai-driven-development",
@@ -533,18 +393,11 @@
       "csharp-dotnet",
       "xamarin-forms"
     ],
-    "active_days": 4,
     "start": "2026-01",
     "end": null,
-    "tech_weights": {
-      "csharp-dotnet": "primary",
-      "bash": "secondary",
-      "xamarin-forms": "secondary",
-      "ai-driven-development": "secondary"
-    },
     "state": "active",
     "highlight": true,
-    "description": "Minimal shared vocabulary for the `Here.Sdk.*` ecosystem: geography, units, error model.",
+    "description": "Orchestration cockpit of the `Here.Sdk.*` ecosystem, a .NET wrapper family around the HERE SDK 4.x: release cascade, nightly integration, ecosystem audit.",
     "stack_label": "C# · .NET"
   },
   {
@@ -556,13 +409,8 @@
       "csharp-dotnet",
       "xamarin-forms"
     ],
-    "active_days": 3,
     "start": "2019-01",
     "end": "2019-12",
-    "tech_weights": {
-      "csharp-dotnet": "primary",
-      "xamarin-forms": "primary"
-    },
     "state": "active",
     "highlight": false,
     "description": "XamYard"
@@ -577,14 +425,8 @@
       "bash",
       "python"
     ],
-    "active_days": 3,
     "start": "2025-01",
     "end": null,
-    "tech_weights": {
-      "python": "primary",
-      "bash": "secondary",
-      "ai-driven-development": "secondary"
-    },
     "state": "active",
     "highlight": false
   },
@@ -596,12 +438,8 @@
     "tech_ids": [
       "csharp-dotnet"
     ],
-    "active_days": 3,
     "start": "2018-01",
     "end": "2020-12",
-    "tech_weights": {
-      "csharp-dotnet": "primary"
-    },
     "state": "active",
     "highlight": false
   },
@@ -614,13 +452,8 @@
       "bash",
       "csharp-dotnet"
     ],
-    "active_days": 2,
     "start": "2021-01",
     "end": null,
-    "tech_weights": {
-      "csharp-dotnet": "primary",
-      "bash": "secondary"
-    },
     "state": "active",
     "highlight": true,
     "description": "Reusable .NET extensions: MVVM helpers, JSON utilities, HTTP abstractions. Actively maintained.",
@@ -636,14 +469,8 @@
       "bash",
       "docker"
     ],
-    "active_days": 2,
     "start": "2025-01",
     "end": null,
-    "tech_weights": {
-      "bash": "secondary",
-      "docker": "primary",
-      "ai-driven-development": "secondary"
-    },
     "state": "active",
     "highlight": true,
     "description": "Disposable Docker cleanup tool.",

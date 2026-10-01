@@ -1,5 +1,186 @@
 [
   {
+    "id": "bluetooth",
+    "label": "Bluetooth / BLE / GATT",
+    "domain": "embedded",
+    "featured": true,
+    "display_version": "Classic + BLE 4.x · custom GATT",
+    "notes": "Heavy use across career: Ingenico payment terminals, then Good Angel connected breathalyzer — designed GATT protocols, custom cross-platform Bluetooth stack (iOS CoreBluetooth + Android).",
+    "versions": []
+  },
+  {
+    "id": "nfc",
+    "label": "NFC",
+    "domain": "embedded",
+    "display_version": "ISO 14443 / 15693 (Mifare)",
+    "notes": "Ingenico mobile payment (Mifare Ultralight), Ondeo Gazpar meters.",
+    "versions": []
+  },
+  {
+    "id": "gps",
+    "label": "GPS",
+    "domain": "embedded",
+    "display_version": "NMEA · A-GPS",
+    "notes": "GoodKap connected GPS appliances, Neurones speed-limit service.",
+    "versions": []
+  },
+  {
+    "id": "computer-vision",
+    "label": "Computer Vision (embedded)",
+    "domain": "embedded",
+    "display_version": "Industrial camera · PIC16F1938",
+    "notes": "French Robotics Cup final-year project: embedded vision and robot positioning, 28th/200+ teams.",
+    "versions": []
+  },
+  {
+    "id": "gprs",
+    "label": "GPRS",
+    "domain": "embedded",
+    "versions": []
+  },
+  {
+    "id": "usb-driver",
+    "label": "USB drivers",
+    "domain": "embedded",
+    "versions": []
+  },
+  {
+    "id": "driver-development",
+    "label": "Driver development",
+    "domain": "embedded",
+    "versions": []
+  },
+  {
+    "id": "pic-microcontroller",
+    "label": "PIC microcontrollers",
+    "domain": "embedded",
+    "versions": []
+  },
+  {
+    "id": "augmented-reality",
+    "label": "Augmented reality",
+    "domain": "embedded",
+    "versions": []
+  },
+  {
+    "id": "mqtt",
+    "label": "MQTT",
+    "domain": "embedded",
+    "versions": []
+  },
+  {
+    "id": "objective-c",
+    "label": "Objective-C",
+    "domain": "mobile",
+    "display_version": "iOS 5 → 10",
+    "notes": "Native iOS NFC libraries (Ingenico, used downstream by Nespresso) and early Xamarin.iOS bindings.",
+    "versions": [
+      { "id": "objective_c_ios", "version": "iOS 5-10", "since": 2011 }
+    ]
+  },
+  {
+    "id": "xamarin-forms",
+    "label": "Xamarin.Forms",
+    "domain": "mobile",
+    "display_version": "Forms 2.3 → 4.7 · Essentials 1.x",
+    "notes": "Cross-platform iOS/Android for Good Angel & My Good Life products. Forms + platform bindings + Essentials.",
+    "versions": [
+      { "id": "xamarin_forms_2_3", "version": "Forms 2.3", "since": 2016 },
+      { "id": "xamarin_forms_4_7", "version": "Forms 4.7", "since": 2020 }
+    ]
+  },
+  {
+    "id": "windows-mobile",
+    "label": "Windows Mobile",
+    "domain": "mobile",
+    "display_version": "6.x",
+    "notes": "Ondeo Gazpar meter configuration chain (NFC under Windows Mobile 6).",
+    "versions": []
+  },
+  {
+    "id": "windows-ce",
+    "label": "Windows CE",
+    "domain": "mobile",
+    "display_version": "5.0 / 6.0",
+    "notes": "Gunnebo deposit machines (100+ units), GoodKap GPS, Neurones, Ingenico IPA280.",
+    "versions": [
+      { "id": "windows_ce_5_0", "version": "5.0", "since": 2009 },
+      { "id": "windows_ce_6_0", "version": "6.0", "since": 2010 }
+    ]
+  },
+  {
+    "id": "xamarin",
+    "label": "Xamarin (iOS, Android)",
+    "domain": "mobile",
+    "versions": []
+  },
+  {
+    "id": "android",
+    "label": "Android",
+    "domain": "mobile",
+    "versions": []
+  },
+  {
+    "id": "ios",
+    "label": "iOS",
+    "domain": "mobile",
+    "versions": []
+  },
+  {
+    "id": "mobile-release",
+    "label": "Mobile release (signing, stores)",
+    "domain": "mobile",
+    "versions": []
+  },
+  {
+    "id": "mobile-ui",
+    "label": "Mobile UI",
+    "domain": "mobile",
+    "versions": []
+  },
+  {
+    "id": "cross-platform-architecture",
+    "label": "Cross-platform architecture",
+    "domain": "mobile",
+    "versions": []
+  },
+  {
+    "id": "swift",
+    "label": "Swift",
+    "domain": "mobile",
+    "versions": []
+  },
+  {
+    "id": "maui",
+    "label": ".NET MAUI",
+    "domain": "mobile",
+    "versions": []
+  },
+  {
+    "id": "windows-services",
+    "label": "Windows services",
+    "domain": "desktop",
+    "versions": []
+  },
+  {
+    "id": "windows-rt",
+    "label": "Windows RT",
+    "domain": "desktop",
+    "versions": []
+  },
+  {
+    "id": "pinvoke-interop",
+    "label": "P/Invoke interop",
+    "domain": "desktop",
+    "versions": []
+  },
+  {
+    "id": "winforms",
+    "label": "Windows Forms",
+    "domain": "desktop",
+    "versions": []
+  },
+  {
     "id": "csharp-dotnet",
     "label": "C# / .NET",
     "domain": "languages",
@@ -63,14 +244,94 @@
     ]
   },
   {
-    "id": "objective-c",
-    "label": "Objective-C",
+    "id": "java",
+    "label": "Java",
     "domain": "languages",
-    "display_version": "iOS 5 → 10",
-    "notes": "Native iOS NFC libraries (Ingenico, used downstream by Nespresso) and early Xamarin.iOS bindings.",
-    "versions": [
-      { "id": "objective_c_ios", "version": "iOS 5-10", "since": 2011 }
-    ]
+    "versions": []
+  },
+  {
+    "id": "multithreading",
+    "label": "Multithreading",
+    "domain": "languages",
+    "versions": []
+  },
+  {
+    "id": "sql",
+    "label": "SQL",
+    "domain": "languages",
+    "versions": []
+  },
+  {
+    "id": "xaml",
+    "label": "XAML",
+    "domain": "languages",
+    "versions": []
+  },
+  {
+    "id": "web",
+    "label": "HTML / CSS",
+    "domain": "languages",
+    "versions": []
+  },
+  {
+    "id": "cpp-cli",
+    "label": "C++/CLI",
+    "domain": "languages",
+    "versions": []
+  },
+  {
+    "id": "matlab",
+    "label": "MATLAB",
+    "domain": "languages",
+    "versions": []
+  },
+  {
+    "id": "javascript",
+    "label": "JavaScript",
+    "domain": "languages",
+    "versions": []
+  },
+  {
+    "id": "go",
+    "label": "Go",
+    "domain": "languages",
+    "versions": []
+  },
+  {
+    "id": "powershell",
+    "label": "PowerShell",
+    "domain": "languages",
+    "versions": []
+  },
+  {
+    "id": "ruby",
+    "label": "Ruby",
+    "domain": "languages",
+    "versions": []
+  },
+  {
+    "id": "dart",
+    "label": "Dart",
+    "domain": "languages",
+    "versions": []
+  },
+  {
+    "id": "kotlin",
+    "label": "Kotlin",
+    "domain": "languages",
+    "versions": []
+  },
+  {
+    "id": "php",
+    "label": "PHP",
+    "domain": "languages",
+    "versions": []
+  },
+  {
+    "id": "rust",
+    "label": "Rust",
+    "domain": "languages",
+    "versions": []
   },
   {
     "id": "asp-net-core",
@@ -144,66 +405,33 @@
     "versions": []
   },
   {
-    "id": "xamarin-forms",
-    "label": "Xamarin (Forms, iOS, Android)",
-    "domain": "mobile",
-    "display_version": "Forms 2.3 → 4.7 · Essentials 1.x",
-    "notes": "Cross-platform iOS/Android for Good Angel & My Good Life products. Forms + platform bindings + Essentials.",
-    "versions": [
-      { "id": "xamarin_forms_2_3", "version": "Forms 2.3", "since": 2016 },
-      { "id": "xamarin_forms_4_7", "version": "Forms 4.7", "since": 2020 }
-    ]
-  },
-  {
-    "id": "windows-mobile",
-    "label": "Windows Mobile",
-    "domain": "mobile",
-    "display_version": "6.x",
-    "notes": "Ondeo Gazpar meter configuration chain (NFC under Windows Mobile 6).",
+    "id": "tcp-networking",
+    "label": "TCP/IP networking",
+    "domain": "backend",
     "versions": []
   },
   {
-    "id": "windows-ce",
-    "label": "Windows CE",
-    "domain": "embedded",
-    "display_version": "5.0 / 6.0",
-    "notes": "Gunnebo deposit machines (100+ units), GoodKap GPS, Neurones, Ingenico IPA280.",
-    "versions": [
-      { "id": "windows_ce_5_0", "version": "5.0", "since": 2009 },
-      { "id": "windows_ce_6_0", "version": "6.0", "since": 2010 }
-    ]
-  },
-  {
-    "id": "bluetooth",
-    "label": "Bluetooth / BLE / GATT",
-    "domain": "embedded",
-    "featured": true,
-    "display_version": "Classic + BLE 4.x · custom GATT",
-    "notes": "Heavy use across career: Ingenico payment terminals, then Good Angel connected breathalyzer — designed GATT protocols, custom cross-platform Bluetooth stack (iOS CoreBluetooth + Android).",
+    "id": "soap-webservices",
+    "label": "SOAP web services",
+    "domain": "backend",
     "versions": []
   },
   {
-    "id": "nfc",
-    "label": "NFC",
-    "domain": "embedded",
-    "display_version": "ISO 14443 / 15693 (Mifare)",
-    "notes": "Ingenico mobile payment (Mifare Ultralight), Ondeo Gazpar meters.",
+    "id": "payment-integration",
+    "label": "Payment integration",
+    "domain": "backend",
     "versions": []
   },
   {
-    "id": "gps",
-    "label": "GPS",
-    "domain": "embedded",
-    "display_version": "NMEA · A-GPS",
-    "notes": "GoodKap connected GPS appliances, Neurones speed-limit service.",
+    "id": "dotnet-5",
+    "label": ".NET 5+",
+    "domain": "backend",
     "versions": []
   },
   {
-    "id": "computer-vision",
-    "label": "Computer Vision (embedded)",
-    "domain": "embedded",
-    "display_version": "Industrial camera · PIC16F1938",
-    "notes": "French Robotics Cup final-year project: embedded vision and robot positioning, 28th/200+ teams.",
+    "id": "grpc",
+    "label": "gRPC",
+    "domain": "backend",
     "versions": []
   },
   {
@@ -249,6 +477,72 @@
     "versions": []
   },
   {
+    "id": "windows-server",
+    "label": "Windows Server",
+    "domain": "devops",
+    "versions": []
+  },
+  {
+    "id": "aix",
+    "label": "IBM AIX",
+    "domain": "devops",
+    "versions": []
+  },
+  {
+    "id": "active-directory",
+    "label": "Active Directory",
+    "domain": "devops",
+    "versions": []
+  },
+  {
+    "id": "vmware",
+    "label": "VMware",
+    "domain": "devops",
+    "versions": []
+  },
+  {
+    "id": "virtual-machines",
+    "label": "Virtual machines",
+    "domain": "devops",
+    "versions": []
+  },
+  {
+    "id": "linux",
+    "label": "Linux",
+    "domain": "devops",
+    "versions": []
+  },
+  {
+    "id": "azure-devops",
+    "label": "Azure DevOps",
+    "domain": "devops",
+    "versions": []
+  },
+  {
+    "id": "cross-compilation-toolchains",
+    "label": "Cross-compilation toolchains",
+    "domain": "devops",
+    "versions": []
+  },
+  {
+    "id": "git-server",
+    "label": "Git server",
+    "domain": "devops",
+    "versions": []
+  },
+  {
+    "id": "testlink",
+    "label": "TestLink",
+    "domain": "devops",
+    "versions": []
+  },
+  {
+    "id": "kubernetes",
+    "label": "Kubernetes",
+    "domain": "devops",
+    "versions": []
+  },
+  {
     "id": "ai-driven-development",
     "label": "AI-Driven Development",
     "domain": "ai-llm",
@@ -271,6 +565,18 @@
     "domain": "ai-llm",
     "display_version": "SDK 0.x",
     "notes": "Production usage on trading bot (Alph.bot) and SafeAudit.",
+    "versions": []
+  },
+  {
+    "id": "llm-api",
+    "label": "LLM APIs",
+    "domain": "ai-llm",
+    "versions": []
+  },
+  {
+    "id": "vector-db",
+    "label": "Vector databases",
+    "domain": "ai-llm",
     "versions": []
   },
   {
@@ -310,7 +616,43 @@
     "label": "Idena",
     "domain": "blockchain",
     "display_version": "Node ops",
-    "notes": "Dockerized node — 470+ Docker Hub pulls.",
+    "notes": "Dockerized node with monitoring and update automation.",
+    "versions": []
+  },
+  {
+    "id": "blockchain",
+    "label": "Blockchain",
+    "domain": "blockchain",
+    "versions": []
+  },
+  {
+    "id": "tdd",
+    "label": "Test-driven development",
+    "domain": "practices",
+    "versions": []
+  },
+  {
+    "id": "tests",
+    "label": "Automated testing",
+    "domain": "practices",
+    "versions": []
+  },
+  {
+    "id": "mvvm",
+    "label": "MVVM",
+    "domain": "practices",
+    "versions": []
+  },
+  {
+    "id": "ddd",
+    "label": "Domain-driven design",
+    "domain": "practices",
+    "versions": []
+  },
+  {
+    "id": "mvp",
+    "label": "MVP pattern",
+    "domain": "practices",
     "versions": []
   }
 ]
