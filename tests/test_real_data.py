@@ -141,3 +141,15 @@ def test_validate_data_cli_rejects_aggregates_off_schema(tmp_path, monkeypatch, 
     monkeypatch.setattr(vd, "AGGREGATES", path)
     assert vd.main() == 1
     assert "aggregates.json" in capsys.readouterr().err
+
+
+def test_validate_data_cli_rejects_an_impossible_activity_date(
+    tmp_path, monkeypatch, capsys
+):
+    aggregates = _aggregates()
+    aggregates["activity_as_of"] = "2026-02-31"
+    path = tmp_path / "aggregates.json"
+    path.write_text(json.dumps(aggregates), encoding="utf-8")
+    monkeypatch.setattr(vd, "AGGREGATES", path)
+    assert vd.main() == 1
+    assert "2026-02-31" in capsys.readouterr().err

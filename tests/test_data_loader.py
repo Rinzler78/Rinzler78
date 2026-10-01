@@ -195,3 +195,17 @@ def test_aggregates_month_domain_must_be_declared():
     aggregates["by_month"]["2026-01"]["domains"] = {"nowhere": 1.0}
     with pytest.raises(DataLoadError, match="nowhere"):
         check_aggregates_integrity(aggregates, _CATALOGUE, _DOMAINS)
+
+
+def test_aggregates_activity_date_must_exist_in_the_calendar():
+    # The schema pattern admits 2026-02-31; the calendar does not.
+    aggregates = _aggregates(python="languages")
+    aggregates["activity_as_of"] = "2026-02-31"
+    with pytest.raises(DataLoadError, match="2026-02-31"):
+        check_aggregates_integrity(aggregates, _CATALOGUE, _DOMAINS)
+
+
+def test_aggregates_with_a_real_activity_date_pass():
+    aggregates = _aggregates(python="languages")
+    aggregates["activity_as_of"] = "2024-02-29"
+    check_aggregates_integrity(aggregates, _CATALOGUE, _DOMAINS)

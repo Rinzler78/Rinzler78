@@ -13,6 +13,7 @@ import json
 import pathlib
 import runpy
 import sys
+from dataclasses import replace
 
 import pytest
 
@@ -820,6 +821,24 @@ def test_cli_open_timeline_runs_to_the_latest_evidence_month(tmp_path, monkeypat
     # The latest evidence day is 2008-05-02: same aggregates as an explicit
     # as_of of 2008-05.
     assert open_out.read_bytes() == closed_out.read_bytes()
+
+
+def test_aggregate_refuses_empty_evidence(inputs):
+    # activity_as_of is the day of the latest own commit: without any evidence
+    # day there is no such day, and a timeline month is not one.
+    empty = replace(inputs, days={})
+    with pytest.raises(ValueError, match="no evidence day"):
+        hr.aggregate(empty, catalogue=[])
+
+
+def test_cli_refuses_empty_evidence(tmp_path, monkeypatch, capsys):
+    private = _private_dir(tmp_path)
+    (private / "evidence.json").write_text('{"days": {}}', encoding="utf-8")
+    monkeypatch.setenv("PROFILE_PRIVATE_DIR", str(private))
+    out = tmp_path / "a.json"
+    assert hr.main(_cli_args(out)) == 1
+    assert not out.exists()
+    assert "no evidence day" in capsys.readouterr().err
 
 
 def test_cli_without_private_dir_fails(monkeypatch, capsys, tmp_path):

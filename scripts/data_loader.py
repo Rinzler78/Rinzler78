@@ -13,6 +13,7 @@ Public surface (V1, incremental):
 """
 
 import json
+from datetime import date
 from pathlib import Path
 
 import jsonschema
@@ -89,12 +90,25 @@ def check_aggregates_integrity(
 ) -> None:
     """Every tech the aggregates name is catalogued, under the same domain.
 
+    Also checks that ``activity_as_of`` is a real calendar day (the only
+    day-precision date of the file; months are bounded by the schema).
+
     The aggregates are computed on the author's workstation from
     ``scripts/activity/tech_map.json``; the page reads labels and domains from
     ``data/techs.json``. A tech missing from the catalogue would have hours and
     no label, and a domain that differs would put its hours under one domain
     in the charts and its skill line under another.
     """
+    as_of = aggregates.get("activity_as_of")
+    if as_of is not None:
+        # The schema pattern admits 2026-02-31; only the calendar does not.
+        try:
+            date.fromisoformat(as_of)
+        except ValueError as e:
+            raise DataLoadError(
+                f"Aggregates activity_as_of {as_of!r} is not a calendar date"
+            ) from e
+
     catalogue = {t["id"]: t.get("domain") for t in techs}
     domain_ids = {d["id"] for d in domains}
 

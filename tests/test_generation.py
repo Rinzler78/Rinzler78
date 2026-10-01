@@ -268,3 +268,18 @@ def test_every_generated_figure_appears_on_the_front_page():
         "domain-split.svg",
     ):
         assert name in text, f"{name} is generated but never shown on the front page"
+
+
+def test_activity_stats_count_claims_no_hours_threshold():
+    # The count is of displayed levels, and an attested evidence level can
+    # lift a tech below 50 h (ADR-018): the label must not promise "50 h".
+    import defusedxml.ElementTree as ET
+
+    fr = ET.fromstring((SVG_DIR / "activity-stats.svg").read_text(encoding="utf-8"))
+    en = ET.fromstring(
+        (SVG_DIR / "en" / "activity-stats.svg").read_text(encoding="utf-8")
+    )
+    for root in (fr, en):
+        assert "50 h" not in root.get("aria-label")
+    assert "displayed level" in en.get("aria-label")
+    assert fr.get("aria-label") != en.get("aria-label")

@@ -50,7 +50,8 @@ def dominant_eras(
 ) -> list[tuple[str, int, int]]:
     """``(domain, first, last)`` runs of at least ``min_years`` led by a domain.
 
-    A year's leader is the domain with the most hours; a tie goes to the
+    A run covers consecutive years only: a year without hours ends it. A
+    year's leader is the domain with the most hours; a tie goes to the
     first domain id in alphabetical order, so the result never depends on
     dictionary order.
     """
@@ -65,7 +66,11 @@ def dominant_eras(
     eras: list[tuple[str, int, int]] = []
     start = 0
     for i in range(1, len(leaders) + 1):
-        if i == len(leaders) or leaders[i][1] != leaders[start][1]:
+        if (
+            i == len(leaders)
+            or leaders[i][1] != leaders[start][1]
+            or leaders[i][0] != leaders[i - 1][0] + 1  # a gap year ends a run
+        ):
             first, domain = leaders[start]
             last = leaders[i - 1][0]
             if last - first + 1 >= min_years:

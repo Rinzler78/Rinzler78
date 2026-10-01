@@ -122,6 +122,8 @@ def enrich(data: dict[str, Any], lang: str = "fr") -> dict[str, Any]:
     are skill lines: a displayed level, i.e. at least the working threshold.
     """
     aggregates = data["aggregates"]
+    # The page language, for SVG templates whose accessible text is not data.
+    data["lang"] = lang
     data["techs"] = build_skills(data["techs"], aggregates)
     data["skills"] = [t for t in data["techs"] if t["level"]]
     data["as_of"] = aggregates["activity_as_of"]

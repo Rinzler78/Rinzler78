@@ -895,7 +895,14 @@ def aggregate(
     evidence_levels: Mapping[str, EvidenceLevel] | None = None,
     attested: set[str] | None = None,
 ) -> dict:
-    """The committed aggregates document (deterministic, no private names)."""
+    """The committed aggregates document (deterministic, no private names).
+
+    ``activity_as_of`` is the day of the latest own commit; evidence without
+    any day cannot date the aggregates and is refused rather than dated by a
+    timeline month.
+    """
+    if not inputs.days:
+        raise ValueError("evidence: no evidence day, activity_as_of has no date")
     tech_map = inputs.tech_map
     units = build_units(inputs)
     allocs = allocations(units)
@@ -956,11 +963,11 @@ def aggregate(
         # Version 2 (ADR-018): per-tech "level" became hours_level,
         # evidence_level, display_level, level_source, claim, pending_claim.
         "version": AGGREGATES_VERSION,
-        "activity_as_of": max(days) if days else inputs.timeline.as_of,
+        "activity_as_of": max(days),
         "coverage": {
             "commit_days": len(days),
             "public_days": public,
-            "public_share": _r(public / len(days), 4) if days else 0.0,
+            "public_share": _r(public / len(days), 4),
             "test_only_commits": sum(d.test_only_commits for d in days.values()),
         },
         "context_totals": {

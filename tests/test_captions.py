@@ -65,6 +65,16 @@ def test_a_lead_shorter_than_the_minimum_is_not_an_era():
     assert dominant_eras(series) == [("mobile", 2006, 2008)]
 
 
+def test_a_gap_year_ends_an_era():
+    # 2007 has no hours at all: 2006 and 2008 are not consecutive years.
+    series = _years(mobile={2006: 9, 2008: 9, 2009: 9, 2010: 9})
+    assert dominant_eras(series, min_years=2) == [("mobile", 2008, 2010)]
+    assert dominant_eras(series, min_years=1) == [
+        ("mobile", 2006, 2006),
+        ("mobile", 2008, 2010),
+    ]
+
+
 def test_a_tie_is_broken_deterministically():
     series = _years(
         mobile={2006: 5, 2007: 5, 2008: 5}, embedded={2006: 5, 2007: 5, 2008: 5}
