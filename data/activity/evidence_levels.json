@@ -1,0 +1,33 @@
+{
+  "levels": {
+    "ai-driven-development": {
+      "claim": "ai-agent-driven-development",
+      "level": "expert"
+    },
+    "bluetooth": {
+      "claim": "ble-connected-breathalyzer",
+      "level": "advanced"
+    },
+    "cross-platform-architecture": {
+      "claim": "cross-platform-white-label-sdk",
+      "level": "expert"
+    },
+    "docker": {
+      "claim": "docker-published-images",
+      "level": "advanced"
+    },
+    "mvvm": {
+      "claim": "mvvm-white-label-sdk",
+      "level": "expert"
+    },
+    "python": {
+      "claim": "python-pypi-package",
+      "level": "advanced"
+    },
+    "xamarin": {
+      "claim": "xamarin-sdk-five-apps",
+      "level": "expert"
+    }
+  },
+  "version": 1
+}

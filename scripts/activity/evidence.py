@@ -58,7 +58,15 @@ Behavior rules (vocabulary version 3)
     ``context_rules`` apply to repositories holding a mobile project
     (``mobile_markers``): build and publish scripts touching build, sign,
     ipa, apk, publish... (``keywords``, in the path or the added lines) and CI
-    pipelines count for mobile-build-release. A ``.h`` header is
+    pipelines count for mobile-release when they publish (upload, store,
+    TestFlight, App Center...): building alone is not a skill (ADR-018).
+
+Container repositories (vocabulary version 5)
+    A repository whose product is a container image (``container_repos``: a
+    Dockerfile or compose file at its root, and a name saying so or a tree
+    made mostly of image support files) counts every analyzed file for
+    docker; elsewhere only Dockerfile, compose and ``.devcontainer`` files
+    do. A ``.h`` header is
     Objective-C when its directory or its build root (nearest ``.xcodeproj``,
     project file, ``CMakeLists.txt``, ``Makefile`` or ``.vcxproj``, else the
     repository) holds ``.m`` / ``.mm`` files, C/C++ otherwise. Everything is
@@ -258,6 +266,33 @@ def _context_rules(raw: object) -> tuple[ContextRule, ...]:
     return tuple(out)
 
 
+@dataclass(frozen=True)
+class ContainerRule:
+    root_files: re.Pattern[str]
+    name: re.Pattern[str]
+    support: re.Pattern[str]
+    min_share: float
+    tech: str
+
+
+def _container_rule(raw: object) -> ContainerRule | None:
+    if raw is None:
+        return None
+    keys = {"root_files", "name", "support", "min_share", "tech"}
+    if not isinstance(raw, dict) or set(raw) != keys:
+        raise ValueError(f"container_repos needs exactly {sorted(keys)}")
+    share = raw["min_share"]
+    if isinstance(share, bool) or not isinstance(share, int | float):
+        raise ValueError("container_repos min_share must be a number")
+    return ContainerRule(
+        _patterns([raw["root_files"]], "root_files")[0],
+        _patterns([raw["name"]], "name")[0],
+        _patterns([raw["support"]], "support")[0],
+        float(share),
+        str(raw["tech"]),
+    )
+
+
 def _platform_sides(raw: object) -> dict[str, re.Pattern[str]]:
     if raw is None:
         return {}
@@ -308,6 +343,7 @@ class Vocabulary:
     context_rules: tuple[ContextRule, ...] = ()
     mobile_markers: re.Pattern[str] | None = None
     presentation: re.Pattern[str] | None = None
+    container_repos: ContainerRule | None = None
     platform_sides: dict[str, re.Pattern[str]] = field(default_factory=dict)
     platform_interface_tech: str | None = None
 
@@ -351,6 +387,7 @@ class Vocabulary:
             conjunctions=_conjunctions(raw.get("conjunctions", [])),
             context_rules=_context_rules(raw.get("context_rules", [])),
             presentation=_optional_pattern(raw.get("presentation"), "presentation"),
+            container_repos=_container_rule(raw.get("container_repos")),
             mobile_markers=_optional_pattern(
                 raw.get("mobile_markers"), "mobile_markers"
             ),
@@ -504,8 +541,50 @@ class ProjectContext:
         tree: pygit2.Tree,
         vocabulary: Vocabulary,
         cache: ContextCache,
+        key: str = "",
     ) -> None:
         self.repo, self.tree, self.voc, self.cache = repo, tree, vocabulary, cache
+        self.key = key
+
+    # container repositories
+    def _support_counts(self, tree: pygit2.Tree) -> tuple[int, int]:
+        """``(files, support files)`` under ``tree`` for the container rule."""
+        key = f"support:{tree.id}"
+        if key not in self.cache.found:
+            rule = self.voc.container_repos
+            files = support = 0
+            for name, is_dir, oid in self._entries(tree):
+                is_support = rule is not None and bool(rule.support.search(name))
+                if is_dir:
+                    sub_files, sub_support = self._support_counts(self._subtree(oid))
+                    files += sub_files
+                    support += sub_files if is_support else sub_support
+                else:
+                    files += 1
+                    support += int(is_support)
+            self.cache.found[key] = [files, support]
+        files, support = self.cache.found[key]
+        return files, support
+
+    def is_container_repo(self) -> bool:
+        """The repository's product is a container image (ADR-018)."""
+        rule = self.voc.container_repos
+        if rule is None:
+            return False
+        roots = [n for n, is_dir, _ in self._entries(self.tree) if not is_dir]
+        if not any(rule.root_files.search(n) for n in roots):
+            return False
+        # The repository path, host left out: a local copy kept under a
+        # "Dockers/" folder says so as much as a name ending in "-docker".
+        path = (
+            self.key.split(":", 1)[1]
+            if self.key.startswith("local:")
+            else (self.key.split("/", 1)[-1])
+        )
+        if rule.name.search(path):
+            return True
+        files, support = self._support_counts(self.tree)
+        return support >= rule.min_share * files
 
     # tree access
     def _dir(self, path: str) -> pygit2.Tree | None:
@@ -786,6 +865,8 @@ class ProjectContext:
     def project_techs(self, path: str, added: list[str] | None = None) -> set[str]:
         """Techs a file inherits from its project, repository and platforms."""
         techs = self._context_rule_techs(path, added)
+        if self.is_container_repo():
+            techs.add(self.voc.container_repos.tech)
         pf = self.voc.project_files
         project = self._nearest(path, pf.search) if pf is not None else None
         directory, tree = project if project else ("", self.tree)
@@ -987,6 +1068,7 @@ def analyze_commit(
     commit: pygit2.Commit,
     vocabulary: Vocabulary,
     cache: ContextCache | None = None,
+    key: str = "",
 ) -> Analysis:
     """Units, files and test-only flag for one commit; names only when
     content is gone. ``files`` counts the analyzed (non-excluded) files."""
@@ -1000,7 +1082,7 @@ def analyze_commit(
         tree = commit.tree
     except pygit2.GitError:
         return Analysis({}, False, 0, False)
-    context = ProjectContext(repo, tree, vocabulary, cache or ContextCache())
+    context = ProjectContext(repo, tree, vocabulary, cache or ContextCache(), key)
     try:
         files = added_lines(repo, commit, keep)
         return _analysis(vocabulary.file_techs(files.items(), context), True)
@@ -1092,7 +1174,7 @@ def collect(
                 commits[h] = evidence
             evidence.public = evidence.public or public
             if not evidence.has_patch:
-                analysis = analyze_commit(repo, commit, vocabulary, cache)
+                analysis = analyze_commit(repo, commit, vocabulary, cache, key)
                 evidence.units = analysis.units
                 evidence.has_patch = analysis.has_patch
                 evidence.files = analysis.files

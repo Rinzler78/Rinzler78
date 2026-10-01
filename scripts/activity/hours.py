@@ -80,6 +80,7 @@ from dataclasses import dataclass, field, replace
 from datetime import date
 
 from scripts.activity import timeline as tl
+from scripts.claims import _ID as CLAIM_ID  # one claim id rule (ADR-014)
 
 REPO = pathlib.Path(__file__).resolve().parents[2]
 DEFAULT_TECH_MAP = pathlib.Path(__file__).with_name("tech_map.json")
@@ -88,6 +89,9 @@ DEFAULT_CATALOGUE = REPO / "data" / "techs.json"
 EVIDENCE_NAME = "evidence.json"
 CLASSES_NAME = "repo-classes.json"
 DECLARED_NAME = "declared.json"
+DEFAULT_EVIDENCE_LEVELS = REPO / "data" / "activity" / "evidence_levels.json"
+DEFAULT_CLAIMS_LOCK = REPO / "data" / "claims.lock.json"
+AGGREGATES_VERSION = 2
 
 KINDS = ("language", "platform", "domain")
 TIER_WEIGHTS = {"full": 1.00, "primary": 0.70, "secondary": 0.35, "incident": 0.10}
@@ -133,6 +137,10 @@ NOTES = (
     "budget.",
     "A domain's hours sum its techs' file shares, capped at the hours: a file "
     "touching two techs of one domain may count twice below that cap.",
+    "display_level is the higher of hours_level and evidence_level when the "
+    "evidence level's claim is attested in the claims lock, else hours_level; "
+    "level_source says which one applies, claim names the attested "
+    "achievement, pending_claim a claim still to attest (ADR-018).",
     "Levels are a convention: working >= 50 h, professional >= 500 h, "
     "advanced >= 1,600 h, expert >= 5,000 h. display_hours is rounded down so "
     "a shown figure never crosses a threshold the raw hours do not.",
@@ -446,6 +454,7 @@ class Overlay:
 class Declared:
     periods: tuple[DeclaredPeriod, ...]
     overlays: tuple[Overlay, ...]
+    evidence_levels: dict[str, str] = field(default_factory=dict)
 
     def for_month(self, source: str, month: str, as_of: str) -> list[DeclaredPeriod]:
         del as_of  # an open end runs to the timeline's end, which bounds months
@@ -570,9 +579,18 @@ def parse_declared(data: object, tech_map: TechMap) -> Declared:
         raise ValueError("declared: periods must be a list")
     if not isinstance(overlays, list):
         raise ValueError("declared: overlays must be a list")
+    raw_levels = data.get("evidence_levels", {})
+    if not isinstance(raw_levels, dict):
+        raise ValueError("declared: evidence_levels must be an object")
+    evidence: dict[str, str] = {}
+    for tech, entry in raw_levels.items():
+        if not isinstance(entry, dict) or level_rank(entry.get("level")) == 0:
+            raise ValueError(f"declared: evidence_levels.{tech} needs a known level")
+        evidence[_known(tech, tech_map, "declared evidence_levels")] = entry["level"]
     return Declared(
         tuple(_parse_declared_period(p, tech_map) for p in periods),
         tuple(_parse_overlay(o, tech_map) for o in overlays),
+        evidence,
     )
 
 
@@ -603,6 +621,59 @@ def domain_hours(
 
 
 # --- Levels ------------------------------------------------------------------
+
+
+def level_rank(level: object) -> int:
+    """0 for no level, then working < professional < advanced < expert."""
+    names = [name for name, _ in reversed(LEVELS)]
+    return names.index(level) + 1 if level in names else 0
+
+
+@dataclass(frozen=True)
+class EvidenceLevel:
+    """A level granted by an attested achievement (ADR-018)."""
+
+    level: str
+    claim: str
+
+
+def parse_evidence_levels(data: object, tech_map: TechMap) -> dict[str, EvidenceLevel]:
+    """Validate ``data/activity/evidence_levels.json``: level and claim id only."""
+    if not isinstance(data, dict):
+        raise ValueError("evidence_levels: top level must be an object")
+    if data.get("version") != 1:
+        raise ValueError("evidence_levels: version must be 1")
+    levels = data.get("levels")
+    if not isinstance(levels, dict):
+        raise ValueError("evidence_levels: levels must be an object")
+    out: dict[str, EvidenceLevel] = {}
+    for tech, entry in levels.items():
+        where = f"evidence_levels.{tech}"
+        _known(tech, tech_map, where)
+        if not isinstance(entry, dict) or set(entry) != {"level", "claim"}:
+            raise ValueError(f"{where}: keys must be exactly level and claim")
+        if level_rank(entry["level"]) == 0:
+            raise ValueError(f"{where}: unknown level {entry['level']!r}")
+        claim = entry["claim"]
+        if not isinstance(claim, str) or not CLAIM_ID.fullmatch(claim):
+            raise ValueError(f"{where}: claim must be a kebab-case id")
+        out[tech] = EvidenceLevel(entry["level"], claim)
+    return out
+
+
+def evidence_mismatches(
+    levels: Mapping[str, EvidenceLevel], declared: Declared
+) -> list[str]:
+    """Committed evidence levels that differ from the author's declaration."""
+    issues = []
+    for tech in sorted(set(levels) | set(declared.evidence_levels)):
+        committed = levels[tech].level if tech in levels else "none"
+        stated = declared.evidence_levels.get(tech, "none")
+        if committed != stated:
+            issues.append(
+                f"evidence level of {tech}: committed {committed}, declared {stated}"
+            )
+    return issues
 
 
 def level_for(hours: float) -> str | None:
@@ -795,7 +866,34 @@ def domain_differences(tech_map: TechMap, catalogue: list[dict]) -> list[str]:
     return diffs
 
 
-def aggregate(inputs: Inputs, catalogue: list[dict]) -> dict:
+def _levels(
+    hours_level: str | None, evidence: EvidenceLevel | None, attested: set[str]
+) -> dict:
+    """Hours level, evidence level, and the level shown (ADR-018).
+
+    An evidence level lifts the shown level only when its claim is attested
+    (present in the claims lock); otherwise it grants nothing and its claim is
+    reported as ``pending_claim``.
+    """
+    evidence_level = evidence.level if evidence else None
+    higher = level_rank(evidence_level) > level_rank(hours_level)
+    lifted = higher and evidence.claim in attested
+    return {
+        "hours_level": hours_level,
+        "evidence_level": evidence_level,
+        "display_level": evidence_level if lifted else hours_level,
+        "level_source": "evidence" if lifted else "hours",
+        "claim": evidence.claim if lifted else None,
+        "pending_claim": evidence.claim if higher and not lifted else None,
+    }
+
+
+def aggregate(
+    inputs: Inputs,
+    catalogue: list[dict],
+    evidence_levels: Mapping[str, EvidenceLevel] | None = None,
+    attested: set[str] | None = None,
+) -> dict:
     """The committed aggregates document (deterministic, no private names)."""
     tech_map = inputs.tech_map
     units = build_units(inputs)
@@ -837,7 +935,9 @@ def aggregate(inputs: Inputs, catalogue: list[dict]) -> dict:
         techs[tech] = {
             "hours": _r(total, 1),
             "display_hours": display_hours(total),
-            "level": level_for(total),
+            **_levels(
+                level_for(total), (evidence_levels or {}).get(tech), attested or set()
+            ),
             "first": min(tech_months[tech]),
             "last": max(tech_months[tech]),
             "declared_share": _r(math.fsum(tech_declared[tech]) / total, 3),
@@ -852,7 +952,9 @@ def aggregate(inputs: Inputs, catalogue: list[dict]) -> dict:
     if diffs:
         notes.append("Domains that differ from data/techs.json: " + "; ".join(diffs))
     return {
-        "version": 1,
+        # Version 2 (ADR-018): per-tech "level" became hours_level,
+        # evidence_level, display_level, level_source, claim, pending_claim.
+        "version": AGGREGATES_VERSION,
         "activity_as_of": max(days) if days else inputs.timeline.as_of,
         "coverage": {
             "commit_days": len(days),
@@ -949,7 +1051,7 @@ def _summary(doc: dict, inputs: Inputs, issues: list[str]) -> str:
     for tech, entry in ranked[:25]:
         lines.append(
             f"{tech:<24}{entry['hours']:>9.0f}{entry['display_hours']:>8}  "
-            f"{entry['level'] or '-':<13}{entry['first']:<9}{entry['last']:<9}"
+            f"{entry['display_level'] or '-':<13}{entry['first']:<9}{entry['last']:<9}"
             f"{entry['declared_share']:.0%}"
         )
     for unit in build_units(inputs):
@@ -970,6 +1072,8 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--tech-map", default=str(DEFAULT_TECH_MAP))
     parser.add_argument("--experiences", default=str(DEFAULT_EXPERIENCES))
     parser.add_argument("--catalogue", default=str(DEFAULT_CATALOGUE))
+    parser.add_argument("--evidence-levels", default=str(DEFAULT_EVIDENCE_LEVELS))
+    parser.add_argument("--claims-lock", default=str(DEFAULT_CLAIMS_LOCK))
     args = parser.parse_args(argv)
 
     directory = os.environ.get(tl.PRIVATE_DIR_ENV)
@@ -989,13 +1093,26 @@ def main(argv: list[str] | None = None) -> int:
             _read_json(private / DECLARED_NAME), inputs.tech_map
         )
         catalogue = _read_json(args.catalogue)
-        doc = aggregate(inputs, catalogue=catalogue)
+        levels = parse_evidence_levels(
+            _read_json(args.evidence_levels), inputs.tech_map
+        )
+        locked = set(_read_json(args.claims_lock).get("claims", {}))
+        doc = aggregate(
+            inputs, catalogue=catalogue, evidence_levels=levels, attested=locked
+        )
     except (OSError, ValueError) as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 1
 
     issues = sanity_checks(doc, build_units(inputs), inputs)
+    issues += evidence_mismatches(levels, inputs.declared)
     print(_summary(doc, inputs, issues))
+    pending = sorted({e["pending_claim"] for e in doc["techs"].values()} - {None})
+    if pending:
+        print(f"claims not yet in the lock: {', '.join(pending)}")
+    unmeasured = sorted(set(levels) - set(doc["techs"]))
+    if unmeasured:
+        print(f"evidence levels without hours: {', '.join(unmeasured)}")
     if issues:
         for issue in issues:
             print(f"sanity: {issue}", file=sys.stderr)

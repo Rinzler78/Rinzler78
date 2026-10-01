@@ -104,5 +104,23 @@
         }
       ]
     }
-  ]
+  ],
+  "evidence_levels": {
+    "csharp-dotnet": {
+      "level": "expert",
+      "basis": "Synthetic basis, never published."
+    },
+    "python": {
+      "level": "working",
+      "basis": "Synthetic basis, never published."
+    },
+    "computer-vision": {
+      "level": "advanced",
+      "basis": "Synthetic basis, never published."
+    },
+    "rust": {
+      "level": "working",
+      "basis": "Synthetic basis, never published."
+    }
+  }
 }

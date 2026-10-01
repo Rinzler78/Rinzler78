@@ -905,18 +905,48 @@ def test_interface_implemented_on_both_platforms(make_repo, ids, voc) -> None:
     assert one_side.units == {"csharp": 1}
 
 
-def test_build_scripts_and_ci_of_mobile_repos(make_repo, ids, voc) -> None:
+def test_release_steps_of_mobile_repos(make_repo, ids, voc) -> None:
     mobile = {"App.Droid/App.Droid.csproj": "<Project/>\n"}
     extra = {
         "buildAll.sh": "msbuild App.sln\n",
         "scripts/lint.sh": "ruff check\n",
         "scripts/ship.sh": "xcrun altool --upload-app app.ipa\n",
         ".github/workflows/ci.yml": "on: push\n",
+        ".github/workflows/store.yml": "- run: appcenter distribute release\n",
     }
     commit = _only(make_repo, ids, voc, "mobile", mobile, extra)
-    assert commit.units["mobile-build-release"] == 3  # not scripts/lint.sh
+    # Building is not a skill: only the upload and the store step count.
+    assert commit.units["mobile-release"] == 2
     plain = _only(make_repo, ids, voc, "plain-ci", {"a.py": "x\n"}, extra)
-    assert "mobile-build-release" not in plain.units
+    assert "mobile-release" not in plain.units
+
+
+def test_container_repositories_count_every_file_for_docker(
+    make_repo, ids, voc
+) -> None:
+    image = {"Dockerfile": "FROM alpine\n", "entrypoint.sh": "run\n"}
+    named = _only(
+        make_repo, ids, voc, "idena-node-docker", image, {"src/update.py": "x\n"}
+    )
+    assert named.units == {"python": 1, "docker": 1}
+    mostly_image = {
+        "Dockerfile": "FROM alpine\n",
+        "docker-compose.yml": "services: {}\n",
+        "start.sh": "up\n",
+        "README.md": "doc\n",
+    }
+    shared = _only(make_repo, ids, voc, "toolbox", mostly_image, {"tool.py": "x\n"})
+    assert shared.units["docker"] == 1
+    app = {
+        "Dockerfile": "FROM python\n",
+        **{f"app/m{i}.py": "x\n" for i in range(6)},
+    }
+    code = _only(make_repo, ids, voc, "webapp", app, {"app/new.py": "x\n"})
+    assert "docker" not in code.units
+    dockerfile = _only(
+        make_repo, ids, voc, "webapp2", app, {"Dockerfile": "FROM python:3.12\n"}
+    )
+    assert dockerfile.units == {"docker": 1}
 
 
 def test_unreadable_project_file_adds_nothing(make_repo, ids, voc) -> None:
@@ -939,10 +969,66 @@ def test_unreadable_project_file_adds_nothing(make_repo, ids, voc) -> None:
         (
             "App.iOS/App.iOS.csproj",
             ["<CodesignKey>iPhone</CodesignKey>"],
-            "mobile-build-release",
+            "mobile-release",
         ),
-        ("fastlane/Fastfile", ["lane :beta"], "mobile-build-release"),
-        ("azure-pipelines.yml", ["- task: XamarinAndroid@1"], "mobile-build-release"),
+        ("App.Droid/App.Droid.csproj", ["<AndroidKeyStore>True"], "mobile-release"),
+        ("fastlane/Fastfile", ["lane :beta"], "mobile-release"),
+        ("fastlane/metadata/en-US/description.txt", ["An app"], "mobile-release"),
+        (".devcontainer/devcontainer.json", ["{}"], "docker"),
+        ("cmake/arm64-toolchain.cmake", ["# empty"], "cross-compilation-toolchains"),
+        ("toolchains/linux.cmake", ["# empty"], "cross-compilation-toolchains"),
+        (
+            "CMakeLists.txt",
+            ["set(CMAKE_SYSTEM_NAME Linux)"],
+            "cross-compilation-toolchains",
+        ),
+        (
+            "CMakeLists.txt",
+            ["set(CMAKE_OSX_ARCHITECTURES arm64)"],
+            "cross-compilation-toolchains",
+        ),
+        (
+            "build.sh",
+            ["cmake -DCMAKE_TOOLCHAIN_FILE=x.cmake"],
+            "cross-compilation-toolchains",
+        ),
+        ("build.sh", ["cmake -DANDROID_ABI=arm64-v8a"], "cross-compilation-toolchains"),
+        (
+            "GNUmakefile",
+            ["CROSS_COMPILE ?= arm-linux-gnueabihf-"],
+            "cross-compilation-toolchains",
+        ),
+        ("Makefile", ["ARCH=arm64"], "cross-compilation-toolchains"),
+        ("Makefile", ["TARGET_ARCH := x86_64"], "cross-compilation-toolchains"),
+        ("build.sh", ["cc -mcpu=cortex-a53 main.c"], "cross-compilation-toolchains"),
+        (
+            "jni/Application.mk",
+            ["APP_ABI := arm64-v8a"],
+            "cross-compilation-toolchains",
+        ),
+        (
+            "app/build.gradle",
+            ["abiFilters 'arm64-v8a'"],
+            "cross-compilation-toolchains",
+        ),
+        (
+            "Core/Core.vcxproj",
+            ['<ProjectConfiguration Include="Release|ARM64">'],
+            "cross-compilation-toolchains",
+        ),
+        (
+            "Core/Core.vcxproj",
+            ["<Platform>Win32</Platform>"],
+            "cross-compilation-toolchains",
+        ),
+        ("supported_platforms.json", ["[]"], "cross-compilation-toolchains"),
+        ("scripts/resolve_arch.sh", ["uname -m"], "cross-compilation-toolchains"),
+        (
+            "build.sh",
+            ["GOOS=linux GOARCH=arm64 go build"],
+            "cross-compilation-toolchains",
+        ),
+        ("build.sh", ["cc -march=armv7-a main.c"], "cross-compilation-toolchains"),
         ("Core/ClockTests.cs", ["[Test]"], "tests"),
         ("tests/test_x.py", ["x = 1"], "tests"),
         ("web/app.spec.ts", ["x"], "tests"),
@@ -1004,12 +1090,29 @@ def test_file_level_rules(voc: ev.Vocabulary, path, lines, tech) -> None:
         ("App/Services/Sync.cs", ["OnPropertyChanged();"]),
         ("Core/Core.csproj", ["<TargetFramework>netstandard2.0</TargetFramework>"]),
         ("App/Api.cs", ["var api = DependencyService.Get<IApi>();"]),
+        ("build.sh", ["dotnet build -c Release"]),
+        ("app/build.gradle", ["implementation 'com.example:lib:1.0'"]),
+        ("run.sh", ["docker run --rm app"]),
+        ("azure-pipelines.yml", ["- task: XamarinAndroid@1"]),
+        ("CMakeLists.txt", ["project(core)"]),
+        ("GNUmakefile", ["CC ?= gcc"]),
+        ("cmake/warnings.cmake", ["add_compile_options(-Wall)"]),
+        ("jni/Android.mk", ["LOCAL_MODULE := core"]),
+        ("Core/Core.vcxproj", ["<PlatformToolset>v142</PlatformToolset>"]),
+        ("Core/Core.vcxproj", ["<Platform>x64</Platform>"]),
+        ("build_android_arm64.sh", ["make"]),
     ],
 )
 def test_behavior_rules_need_their_evidence(voc: ev.Vocabulary, path, lines) -> None:
     units = voc.analyze_patch({path: lines})
-    assert "mvvm" not in units
-    assert "cross-platform-architecture" not in units
+    for tech in (
+        "mvvm",
+        "cross-platform-architecture",
+        "cross-compilation-toolchains",
+        "mobile-release",
+        "docker",
+    ):
+        assert tech not in units
 
 
 def test_aggregate_counts_test_only_commits() -> None:
@@ -1036,6 +1139,16 @@ def test_aggregate_counts_test_only_commits() -> None:
         {"context_rules": [{"tech": "t", "requires": "mobile-repo"}]},
         {"platform_sides": {"ios": "x"}},
         {"platform_sides": "no"},
+        {"container_repos": {"name": "x"}},
+        {
+            "container_repos": {
+                "root_files": "x",
+                "name": "x",
+                "support": "x",
+                "min_share": "half",
+                "tech": "docker",
+            }
+        },
     ],
 )
 def test_vocabulary_rejects_malformed_project_rules(extra) -> None:
@@ -1203,3 +1316,35 @@ def test_project_references_cycles_and_escapes_terminate(make_repo, ids, voc) ->
     }
     commit = _only(make_repo, ids, voc, "cycle", tree, {"A/Views/V.cs": "class V {}\n"})
     assert "mvvm" not in commit.units
+
+
+def test_vocabulary_without_container_rule(make_repo) -> None:
+    repo_path = make_repo("bare-docker", [(OWN, DAY, {"Dockerfile": "FROM x\n"})])
+    repo = ev.open_repository(repo_path)
+    tree = repo.revparse_single("HEAD").peel(ev.pygit2.Commit).tree
+    minimal = ev.Vocabulary.from_dict(
+        {
+            "version": 1,
+            "excluded": [],
+            "languages": {},
+            "path_rules": [],
+            "signatures": {},
+        }
+    )
+    context = ev.ProjectContext(repo, tree, minimal, ev.ContextCache(), "x/docker")
+    assert not context.is_container_repo()
+
+
+def test_container_name_may_come_from_the_folder(make_repo) -> None:
+    repo_path = make_repo(
+        "stack", [(OWN, DAY, {"Dockerfile": "FROM x\n", "a.py": "1\n", "b.py": "2\n"})]
+    )
+    repo = ev.open_repository(repo_path)
+    tree = repo.revparse_single("HEAD").peel(ev.pygit2.Commit).tree
+    voc = ev.load_vocabulary()
+    kept = ev.ProjectContext(
+        repo, tree, voc, ev.ContextCache(), "local:/home/me/Dockers/stack"
+    )
+    assert kept.is_container_repo()
+    other = ev.ProjectContext(repo, tree, voc, ev.ContextCache(), "github.com/me/stack")
+    assert not other.is_container_repo()

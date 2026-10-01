@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "levels": {
+    "csharp-dotnet": {
+      "level": "expert",
+      "claim": "sample-sdk-design"
+    },
+    "python": {
+      "level": "working",
+      "claim": "sample-package"
+    },
+    "computer-vision": {
+      "level": "advanced",
+      "claim": "sample-vision"
+    },
+    "rust": {
+      "level": "working",
+      "claim": "sample-unused"
+    }
+  }
+}
