@@ -1,1 +1,1 @@
-Dockerized node — 470+ Docker Hub pulls.
+Dockerized node with monitoring and update automation.

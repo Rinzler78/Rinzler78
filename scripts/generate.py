@@ -15,7 +15,6 @@ import json
 import pathlib
 import re
 import sys
-from datetime import date
 from typing import Any
 
 try:
@@ -35,6 +34,7 @@ if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
 
 from scripts import charts  # noqa: E402
+from scripts.captions import domain_shares, render_conclusions  # noqa: E402
 from scripts.font_outline import outline_text  # noqa: E402
 from scripts.translate import CACHE, localize_data  # noqa: E402
 from scripts.view_builder import (  # noqa: E402
@@ -84,16 +84,7 @@ def _escape_amp(obj: Any) -> Any:
     return obj
 
 
-def reference_date() -> date:
-    """The committed date the whole derivation runs against.
-
-    Hours accrue for every ongoing experience, so scores, levels and row order
-    move with the reference date. Reading the clock would make the same
-    revision regenerate differently tomorrow; `data/config.json` pins it, and
-    the weekly refresh workflow bumps it deliberately.
-    """
-    config = json.loads((DATA / "config.json").read_text(encoding="utf-8"))
-    return date.fromisoformat(config["as_of"])
+AGGREGATES = DATA / "activity" / "aggregates.json"
 
 
 def load_data() -> dict[str, Any]:
@@ -114,30 +105,39 @@ def load_data() -> dict[str, Any]:
         ),
         "theme": json.loads((DATA / "theme.json").read_text(encoding="utf-8")),
         "content": json.loads((DATA / "content.json").read_text(encoding="utf-8")),
+        # Hours, levels and periods (ADR-013, ADR-018), committed by the
+        # author's local collection. Its activity_as_of is the page's single
+        # reference date: generation never reads the clock (ADR-011).
+        "aggregates": json.loads(AGGREGATES.read_text(encoding="utf-8")),
     }
     return _escape_amp(raw)
 
 
-def enrich(data: dict[str, Any], today: date) -> dict[str, Any]:
-    """Replaces raw `techs` with the enriched Skills (hours + max/current).
+def enrich(data: dict[str, Any], lang: str = "fr") -> dict[str, Any]:
+    """Replaces raw `techs` with the catalogue enriched from the aggregates.
 
-    The templates consume enriched techs: each tech carries `since`,
-    `until`, `score_max`, `level_max`, `score_current`, `level_current`
-    derived from the experiences (ADR-006). See scripts/view_builder.py.
+    Each tech carries `hours`, `display_hours`, `level`, `level_source`,
+    `claim`, `first`/`last` and `since`/`until`, read from the committed
+    aggregates (see scripts/view_builder.py). `skills` keeps the techs that
+    are skill lines: a displayed level, i.e. at least the working threshold.
     """
-    data["techs"] = build_skills(
-        data["techs"], data["experiences"], data["projects"], today
-    )
+    aggregates = data["aggregates"]
+    # The page language, for SVG templates whose accessible text is not data.
+    data["lang"] = lang
+    data["techs"] = build_skills(data["techs"], aggregates)
+    data["skills"] = [t for t in data["techs"] if t["level"]]
+    data["as_of"] = aggregates["activity_as_of"]
+    data["as_of_year"] = int(aggregates["activity_as_of"][:4])
     data["profile_as_code"] = build_profile_as_code(
-        data["profile"], data["techs"], data["services"]
+        data["profile"], data["skills"], data["services"]
     )
     data["signature_arc"] = build_signature_arc(data["domains"])
-    # The journey series: exposure hours per domain, per year. Derived from the
-    # same hours that produce the scores, so the timeline and the numbers can
-    # never disagree.
-    data["domain_years"] = build_domain_year_hours(
-        data["techs"], data["experiences"], data["projects"], today
-    )
+    # The journey series: hours per domain, per year, from the same aggregates
+    # as the skill lines, so the chart and the levels can never disagree.
+    data["domain_years"] = build_domain_year_hours(aggregates)
+    # Chart conclusions carry placeholders, never typed figures: fill them
+    # from the series above and the level convention (scripts/captions.py).
+    render_conclusions(data, lang)
     return data
 
 
@@ -158,11 +158,13 @@ def make_env(data: dict[str, Any]) -> Environment:
     )
 
     techs = data["techs"]
+    skills = data["skills"]
     domains = data["domains"]
     projects = data["projects"]
 
     def techs_by_domain(domain_id: str) -> list[dict]:
-        return [t for t in techs if t["domain"] == domain_id]
+        """The skill lines of a domain, in skill order (recency, then hours)."""
+        return [t for t in skills if t["domain"] == domain_id]
 
     def domain_by_id(domain_id: str) -> dict | None:
         return next((d for d in domains if d["id"] == domain_id), None)
@@ -191,14 +193,13 @@ def make_env(data: dict[str, Any]) -> Environment:
             key=lambda d: d["order"],
         )
 
-    # Palette key per derived level (ADR-006 vocabulary). Falls back to the
-    # theme's level_colors block when present, else a sane default key.
+    # Palette key per level (ADR-013 convention). Falls back to the theme's
+    # level_colors block when present, else a sane default key.
     _LEVEL_PALETTE = {
         "expert": "accent",
         "advanced": "info",
         "professional": "info",
         "working": "text",
-        "explored": "text_dim",
     }
 
     def level_color(level: str) -> str:
@@ -215,7 +216,6 @@ def make_env(data: dict[str, Any]) -> Environment:
             "advanced": "Advanced",
             "professional": "Professional",
             "working": "Working knowledge",
-            "explored": "Explored",
         }
         return mapping.get(level, level.title())
 
@@ -275,19 +275,10 @@ def make_env(data: dict[str, Any]) -> Environment:
         )
 
     def chart_domain_split(caption: str = "", center_label: str = "") -> str:
-        totals = {k: sum(v.values()) for k, v in data["domain_years"].items()}
-        grand = sum(totals.values())
-        if not grand:
+        # The same shares the split conclusion quotes (scripts/captions.py).
+        shares = domain_shares(data["domain_years"])
+        if not shares:
             return charts.donut([], _series_colors(), _chart_ink(), caption=caption)
-        shares = sorted(
-            ((k, round(v / grand * 100, 1)) for k, v in totals.items()),
-            key=lambda kv: -kv[1],
-        )
-        # Rounding each share independently rarely lands on 100; the donut
-        # refuses a set that does not make a whole, so the remainder goes to
-        # the smallest slice where it is least visible.
-        drift = round(100.0 - sum(pct for _, pct in shares), 1)
-        shares[-1] = (shares[-1][0], round(shares[-1][1] + drift, 1))
         return charts.donut(
             shares,
             _series_colors(),
@@ -298,15 +289,21 @@ def make_env(data: dict[str, Any]) -> Environment:
             center_label=center_label,
         )
 
+    _LEVEL_RANK = {"working": 1, "professional": 2, "advanced": 3, "expert": 4}
+
     def chart_top_skills(count: int = 8, caption: str = "") -> str:
+        # Highest displayed level first, hours within a level (ADR-018: a
+        # level granted by evidence ranks with its level, not its hours).
         ranked = sorted(
-            (t for t in data["techs"] if t.get("score_current")),
-            key=lambda t: -t["score_current"],
+            skills,
+            key=lambda t: (-_LEVEL_RANK[t["level"]], -t["hours"], t["id"]),
         )[:count]
         return charts.bar_rows(
-            [(t["label"], t["score_current"]) for t in ranked],
+            [(t["label"], t["display_hours"]) for t in ranked],
             data["theme"]["palette"]["accent"],
             _chart_ink(),
+            maximum=max((t["display_hours"] for t in ranked), default=1) or 1,
+            unit=" h",
             caption=caption,
         )
 
@@ -437,9 +434,8 @@ def main() -> int:
     raw = load_data()
     # EN data: localize the translatable fields from the committed cache, then
     # re-escape (`&` in English values) — _escape_amp is idempotent.
-    as_of = reference_date()
-    en_data = enrich(_escape_amp(localize_data(raw, CACHE)), as_of)
-    fr_data = enrich(raw, as_of)
+    en_data = enrich(_escape_amp(localize_data(raw, CACHE)), "en")
+    fr_data = enrich(raw, "fr")
 
     env_fr = make_env(fr_data)
     env_en = make_env(en_data)

@@ -13,6 +13,7 @@ import json
 import pathlib
 import runpy
 import sys
+from dataclasses import replace
 
 import pytest
 
@@ -706,11 +707,19 @@ def test_notes_state_the_rules(doc):
 
 
 def test_notes_list_domain_differences_with_catalogue(inputs):
-    catalogue = json.loads(CATALOGUE.read_text(encoding="utf-8"))
+    catalogue = [
+        {"id": "objective-c", "domain": "languages"},
+        {"id": "windows-ce", "domain": "embedded"},
+    ]
     doc = hr.aggregate(inputs, catalogue=catalogue)
     joined = " ".join(doc["notes"])
     assert "objective-c: languages -> mobile" in joined
     assert "windows-ce: embedded -> mobile" in joined
+
+
+def test_the_real_catalogue_files_techs_as_the_tech_map_does(inputs):
+    catalogue = json.loads(CATALOGUE.read_text(encoding="utf-8"))
+    assert hr.domain_differences(inputs.tech_map, catalogue) == []
 
 
 def test_public_source_alias():
@@ -795,6 +804,41 @@ def test_cli_writes_deterministic_aggregates(tmp_path, monkeypatch, capsys):
     assert "csharp-dotnet" in printed
     assert "unclassified repositories: 1" in printed
     assert "sanity: OK" in printed
+
+
+def test_cli_open_timeline_runs_to_the_latest_evidence_month(tmp_path, monkeypatch):
+    private = _private_dir(tmp_path)
+    timeline = _json("hours_timeline.json")
+    del timeline["as_of"]
+    timeline["periods"][-1]["end"] = None
+    (private / "timeline.json").write_text(json.dumps(timeline), encoding="utf-8")
+    monkeypatch.setenv("PROFILE_PRIVATE_DIR", str(private))
+    open_out, closed_out = tmp_path / "open.json", tmp_path / "closed.json"
+    assert hr.main(_cli_args(open_out)) == 0
+    (tmp_path / "c").mkdir()
+    monkeypatch.setenv("PROFILE_PRIVATE_DIR", str(_private_dir(tmp_path / "c")))
+    assert hr.main(_cli_args(closed_out)) == 0
+    # The latest evidence day is 2008-05-02: same aggregates as an explicit
+    # as_of of 2008-05.
+    assert open_out.read_bytes() == closed_out.read_bytes()
+
+
+def test_aggregate_refuses_empty_evidence(inputs):
+    # activity_as_of is the day of the latest own commit: without any evidence
+    # day there is no such day, and a timeline month is not one.
+    empty = replace(inputs, days={})
+    with pytest.raises(ValueError, match="no evidence day"):
+        hr.aggregate(empty, catalogue=[])
+
+
+def test_cli_refuses_empty_evidence(tmp_path, monkeypatch, capsys):
+    private = _private_dir(tmp_path)
+    (private / "evidence.json").write_text('{"days": {}}', encoding="utf-8")
+    monkeypatch.setenv("PROFILE_PRIVATE_DIR", str(private))
+    out = tmp_path / "a.json"
+    assert hr.main(_cli_args(out)) == 1
+    assert not out.exists()
+    assert "no evidence day" in capsys.readouterr().err
 
 
 def test_cli_without_private_dir_fails(monkeypatch, capsys, tmp_path):

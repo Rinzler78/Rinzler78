@@ -1,20 +1,44 @@
 {
+  "caption_words": {
+    "fr": {
+      "and": " et ",
+      "range": "{label} de {start} à {end}",
+      "since": "{label} depuis {start}",
+      "split_head": "{label} pèse {pct} des heures",
+      "split_then": ", puis ",
+      "level": "{level} dès {hours} h",
+      "decimal": ",",
+      "thousands": " ",
+      "percent": "{value} %"
+    },
+    "en": {
+      "and": " and ",
+      "range": "{label} from {start} to {end}",
+      "since": "{label} since {start}",
+      "split_head": "{label} holds {pct} of the hours",
+      "split_then": ", then ",
+      "level": "{level} from {hours} h",
+      "decimal": ".",
+      "thousands": ",",
+      "percent": "{value}%"
+    }
+  },
   "charts": {
     "journey_share": {
       "aria": "Part de l'effort par domaine, chaque année ramenée à 100 %",
       "title": "Où le temps est passé",
-      "conclusion": "**L'arc se lit directement.** L'embarqué occupe l'essentiel de 2006 à 2013, le mobile prend le relais jusqu'en 2019, le cloud domine à partir de 2020, l'IA apparaît en 2023. Chaque année est ramenée à 100 % : c'est une répartition, pas un volume."
+      "conclusion": "**L'arc se lit directement.** Domaine dominant, période par période : {eras}. Chaque année est ramenée à un tout : c'est une répartition, pas un volume."
     },
     "domain_split": {
       "aria": "Répartition de l'exposition cumulée par domaine, en parts",
       "center": "domaines",
       "title": "Un profil large",
-      "conclusion": "**Polyvalent, pas dispersé.** Le DevOps concentre un tiers de l'exposition, mais quatre domaines dépassent chacun 13 %. Les parts se recoupent volontairement — une mission compte dans chaque domaine qu'elle touche — donc seuls les pourcentages sont affichés, jamais un total d'heures."
+      "conclusion": "**Polyvalent, pas dispersé.** {split}. Les parts se recoupent volontairement — un fichier compte dans chaque domaine qu'il touche — donc seuls les pourcentages sont affichés, jamais un total d'heures."
     },
     "top_skills": {
-      "aria": "Compétences les mieux ancrées, score sur 99 dérivé des heures d'exposition",
+      "aria": "Compétences au niveau le plus élevé, en heures de code mesurées",
       "title": "Compétences les mieux ancrées",
-      "conclusion": "**Le score vient des heures d'exposition réelles** — expériences datées et jours de commits — jamais d'une auto-évaluation. C# / .NET à 99 sur vingt ans ; l'AI-Driven Development déjà à 83 en trois ans."
+      "conclusion": "**Les heures viennent d'une chronologie datée et des jours de commits**, jamais d'une auto-évaluation. Le niveau suit une convention publiée : {levels}."
     }
   },
 
@@ -40,7 +64,7 @@
     "prose_contextuelle": [
       {
         "title": "C# / .NET (depuis 2006)",
-        "body": "C# est ma langue maternelle. J'ai vécu Framework 2.0, traversé Mono/Xamarin, basculé sur .NET Core, puis sur .NET 5 → 8 → 10. À chaque palier j'ai migré des codebases existantes (Good Angel passe de Framework 4.x à .NET Core 3.1 puis 6 ; My Good Life suit ASP.NET Web API 2 → API minimal moderne). Aujourd'hui mes projets actifs (`NetExtension`, `CometBFT.Client`, `Here.Sdk.Common`) sont tous sur .NET 8/10."
+        "body": "C# est ma langue maternelle. J'ai vécu Framework 2.0, traversé Mono/Xamarin, basculé sur .NET Core, puis sur .NET 5 → 8 → 10. À chaque palier j'ai migré des codebases existantes (Good Angel passe de Framework 4.x à .NET Core 3.1 puis 6 ; My Good Life suit ASP.NET Web API 2 → API minimal moderne). Aujourd'hui mes projets actifs (`NetExtension`, `CometBFT.Client`, `Here.Sdk`) sont tous sur .NET 8/10."
       },
       {
         "title": "Embarqué (2009-2013)",

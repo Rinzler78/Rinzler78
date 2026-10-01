@@ -1,0 +1,1 @@
+**Les heures viennent d'une chronologie datée et des jours de commits**, jamais d'une auto-évaluation. Le niveau suit une convention publiée : {levels}.

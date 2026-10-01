@@ -3,6 +3,7 @@
 Inputs (private, read from ``$PROFILE_PRIVATE_DIR``, never committed):
 
 - ``timeline.json``: the continuous timeline (``scripts.activity.timeline``);
+  without ``as_of``, it runs to the month of the latest evidence day;
 - ``evidence.json``: one entry per own-commit day, written by the collector::
 
       {"days": {"YYYY-MM-DD": {"repos": [...], "commits": n, "public": bool,
@@ -894,7 +895,14 @@ def aggregate(
     evidence_levels: Mapping[str, EvidenceLevel] | None = None,
     attested: set[str] | None = None,
 ) -> dict:
-    """The committed aggregates document (deterministic, no private names)."""
+    """The committed aggregates document (deterministic, no private names).
+
+    ``activity_as_of`` is the day of the latest own commit; evidence without
+    any day cannot date the aggregates and is refused rather than dated by a
+    timeline month.
+    """
+    if not inputs.days:
+        raise ValueError("evidence: no evidence day, activity_as_of has no date")
     tech_map = inputs.tech_map
     units = build_units(inputs)
     allocs = allocations(units)
@@ -955,11 +963,11 @@ def aggregate(
         # Version 2 (ADR-018): per-tech "level" became hours_level,
         # evidence_level, display_level, level_source, claim, pending_claim.
         "version": AGGREGATES_VERSION,
-        "activity_as_of": max(days) if days else inputs.timeline.as_of,
+        "activity_as_of": max(days),
         "coverage": {
             "commit_days": len(days),
             "public_days": public,
-            "public_share": _r(public / len(days), 4) if days else 0.0,
+            "public_share": _r(public / len(days), 4),
             "test_only_commits": sum(d.test_only_commits for d in days.values()),
         },
         "context_totals": {
@@ -1082,9 +1090,13 @@ def main(argv: list[str] | None = None) -> int:
         return 2
     private = pathlib.Path(directory)
     try:
+        days = parse_evidence(_read_json(private / EVIDENCE_NAME))
+        # A timeline without as_of runs to the month of the latest evidence
+        # day: the collection, not the clock, dates the aggregates.
+        latest = max(days)[:7] if days else None
         inputs = Inputs(
-            timeline=tl.load_timeline(private / tl.PRIVATE_TIMELINE_NAME),
-            days=parse_evidence(_read_json(private / EVIDENCE_NAME)),
+            timeline=tl.load_timeline(private / tl.PRIVATE_TIMELINE_NAME, latest),
+            days=days,
             classes=parse_repo_classes(_read_json(private / CLASSES_NAME)),
             tech_map=load_tech_map(args.tech_map),
             experiences=parse_experiences(_read_json(args.experiences)),

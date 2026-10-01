@@ -16,7 +16,7 @@
 | Project | Stack | State | Description |
 |---|---|---|---|
 | [FFBBApiClientV2_Python](https://github.com/Rinzler78/FFBBApiClientV2_Python) | Python · PyScaffold · pytest · GitHub Actions | active | Python client for the French Basketball Federation (FFBB) v2 API. Reverse-engineered, packaged, published to PyPI, full CI. |
-| [Here.Sdk.Common](https://github.com/Rinzler78/Here.Sdk.Common) | C# · .NET | active | Minimal shared vocabulary for the `Here.Sdk.*` ecosystem: geography, units, error model. |
+| [Here.Sdk.Meta](https://github.com/Rinzler78/Here.Sdk.Meta) | C# · .NET | active | Orchestration cockpit of the `Here.Sdk.*` ecosystem, a .NET wrapper family around the HERE SDK 4.x: release cascade, nightly integration, ecosystem audit. |
 | [NetExtension](https://github.com/Rinzler78/NetExtension) | C# · .NET 10 | active | Reusable .NET extensions: MVVM helpers, JSON utilities, HTTP abstractions. Actively maintained. |
 | [FFBBApiClient_Python](https://github.com/Rinzler78/FFBBApiClient_Python) | Python | legacy | Legacy client for the previous FFBB API generation, kept for reference. |
 | [XamTetris](https://github.com/Rinzler78/XamTetris) | — | active | Tetris App developed using Xamarin Forms |

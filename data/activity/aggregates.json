@@ -5915,8 +5915,7 @@
     "Git is excluded from hours: a tool every commit implies.",
     "Xamarin is measured at project level: every file of a project referencing Xamarin counts for 'xamarin', and for 'xamarin-forms' too when the project references Xamarin.Forms.",
     "tdd hours are declared only; coverage.test_only_commits counts own commits touching test files only, as evidence.",
-    "The collector does not distinguish ASP.NET Core from ASP.NET Web API 2, nor EF Core from Entity Framework 6: they are reported under 'asp-net-core' and 'ef-core'.",
-    "Domains that differ from data/techs.json: objective-c: languages -> mobile; windows-ce: embedded -> mobile"
+    "The collector does not distinguish ASP.NET Core from ASP.NET Web API 2, nor EF Core from Entity Framework 6: they are reported under 'asp-net-core' and 'ef-core'."
   ],
   "techs": {
     "active-directory": {

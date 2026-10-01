@@ -2,6 +2,7 @@ import pytest
 
 from scripts.data_loader import (
     DataLoadError,
+    check_aggregates_integrity,
     check_referential_integrity,
     load_collection,
 )
@@ -145,3 +146,66 @@ def test_check_referential_integrity_ignores_collections_without_foreign_keys():
         "methodology": [{"id": "simple-before-clever"}],
     }
     check_referential_integrity(bag)
+
+
+# --- Aggregates (ADR-013, ADR-018) -----------------------------------------
+
+
+def _aggregates(**techs: str) -> dict:
+    """Aggregates naming each tech id with its domain, and one month of it."""
+    return {
+        "techs": {tech_id: {"domain": domain} for tech_id, domain in techs.items()},
+        "by_month": {"2026-01": {"techs": dict.fromkeys(techs, 1.0)}},
+    }
+
+
+_CATALOGUE = [{"id": "python", "domain": "languages"}]
+_DOMAINS = [{"id": "languages"}]
+
+
+def test_aggregates_integrity_passes_when_every_tech_is_catalogued():
+    check_aggregates_integrity(_aggregates(python="languages"), _CATALOGUE, _DOMAINS)
+
+
+def test_aggregates_referencing_an_uncatalogued_tech_fail():
+    with pytest.raises(DataLoadError, match="ghost"):
+        check_aggregates_integrity(_aggregates(ghost="languages"), [], _DOMAINS)
+
+
+def test_aggregates_referencing_an_uncatalogued_tech_in_a_month_fail():
+    aggregates = _aggregates(python="languages")
+    aggregates["by_month"]["2026-01"]["techs"]["ghost"] = 2.0
+    with pytest.raises(DataLoadError, match="ghost"):
+        check_aggregates_integrity(aggregates, _CATALOGUE, _DOMAINS)
+
+
+def test_aggregates_domain_must_match_the_catalogue():
+    with pytest.raises(DataLoadError, match="python"):
+        check_aggregates_integrity(_aggregates(python="mobile"), _CATALOGUE, _DOMAINS)
+
+
+def test_aggregates_domain_must_be_declared():
+    catalogue = [{"id": "python", "domain": "nowhere"}]
+    with pytest.raises(DataLoadError, match="nowhere"):
+        check_aggregates_integrity(_aggregates(python="nowhere"), catalogue, _DOMAINS)
+
+
+def test_aggregates_month_domain_must_be_declared():
+    aggregates = _aggregates(python="languages")
+    aggregates["by_month"]["2026-01"]["domains"] = {"nowhere": 1.0}
+    with pytest.raises(DataLoadError, match="nowhere"):
+        check_aggregates_integrity(aggregates, _CATALOGUE, _DOMAINS)
+
+
+def test_aggregates_activity_date_must_exist_in_the_calendar():
+    # The schema pattern admits 2026-02-31; the calendar does not.
+    aggregates = _aggregates(python="languages")
+    aggregates["activity_as_of"] = "2026-02-31"
+    with pytest.raises(DataLoadError, match="2026-02-31"):
+        check_aggregates_integrity(aggregates, _CATALOGUE, _DOMAINS)
+
+
+def test_aggregates_with_a_real_activity_date_pass():
+    aggregates = _aggregates(python="languages")
+    aggregates["activity_as_of"] = "2024-02-29"
+    check_aggregates_integrity(aggregates, _CATALOGUE, _DOMAINS)

@@ -1,1 +1,0 @@
-Minimal shared vocabulary for the `Here.Sdk.*` ecosystem: geography, units, error model.

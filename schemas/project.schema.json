@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Project collection",
-  "description": "Public repos. Display (highlight + description) and hours-source (active_days x 9 + concurrent tech_weights tiers, ADR-006) in one entry. since/until of a tech derive from start/end of the projects + experiences using it.",
+  "description": "Public repos shown on the profile: display fields (highlight, description, stack_label) and the sources of their external counters (metrics). Hours never come from here: they are measured from commit evidence (ADR-013).",
   "type": "array",
   "items": {
     "type": "object",
@@ -13,22 +13,16 @@
       "github_url": { "type": "string", "pattern": "^https://github\\.com/" },
       "domain": { "type": "string", "minLength": 1 },
       "tech_ids": { "type": "array", "items": { "type": "string" } },
-      "active_days": { "type": "integer", "minimum": 0 },
       "start": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}$" },
       "end": { "type": ["string", "null"], "pattern": "^[0-9]{4}-[0-9]{2}$" },
-      "tech_weights": {
-        "type": "object",
-        "additionalProperties": { "enum": ["primary", "secondary", "incident"] }
-      },
       "state": { "enum": ["active", "legacy", "archive"] },
       "highlight": { "type": "boolean" },
       "description": { "type": "string" },
       "stack_label": { "type": "string" },
       "category": { "type": "string" },
       "pypi": { "type": "string" },
-      "extra_metric": { "type": "string" },
       "metrics": {
-        "description": "External counter sources fetched daily into data/metrics.json (never hard-coded).",
+        "description": "Sources of external counters (package and image ids). Counters are read live, never stored (ADR-016 as amended).",
         "type": "object",
         "additionalProperties": false,
         "minProperties": 1,

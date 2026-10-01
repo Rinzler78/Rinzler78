@@ -1,5 +1,4 @@
-"""Fetch a static OSM map for the profile location — run manually, like
-``fetch_metrics.py``.
+"""Fetch a static OSM map for the profile location — run manually.
 
 The README cannot embed an interactive map (no JS/iframe in GitHub markdown)
 and the generator must stay deterministic and offline, so this script is run

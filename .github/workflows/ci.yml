@@ -5,8 +5,8 @@ name: CI
   pull_request:
     branches: [master]
 
-# Read-only: no CI job may write to the repo.
-# The only write-scoped workflow is update-profile (auto-commit of metrics).
+# Read-only: no CI job may write to the repo. External counters are live-only
+# badges (ADR-016 as amended), so no workflow commits data back.
 permissions:
   contents: read
 
@@ -34,8 +34,9 @@ jobs:
         run: pre-commit run --all-files --show-diff-on-failure
       # Safety net: the committed generated artifacts (SVG/README) are in
       # sync with the data. Generation derives its dates from the committed
-      # `as_of` in data/config.json, never from the clock, so this diff stays
-      # empty however long after the commit CI runs (ADR-011).
+      # `activity_as_of` in data/activity/aggregates.json, never from the
+      # clock, so this diff stays empty however long after the commit CI runs
+      # (ADR-011, ADR-016).
       - name: Generated artifacts up-to-date
         run: git diff --exit-code
       # Claims (ADR-014): runs on the pages just proven up to date. The private

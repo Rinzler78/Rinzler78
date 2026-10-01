@@ -397,3 +397,89 @@ def test_module_entry_point(monkeypatch, capsys):
     with pytest.raises(SystemExit) as exc:
         runpy.run_module("scripts.activity.timeline", run_name="__main__")
     assert exc.value.code == 0
+
+
+# --- Open end (the current period) ----------------------------------------
+
+
+def test_last_period_may_be_open_until_as_of(raw):
+    raw["periods"][-1]["end"] = None
+    timeline = tl.parse_timeline(raw)
+    assert timeline.periods[-1].end == "2011-06"
+    assert timeline.periods[-1].months == 6
+
+
+def test_open_end_stretches_to_a_later_as_of(raw):
+    raw["periods"][-1]["end"] = None
+    raw["as_of"] = "2011-09"
+    assert tl.parse_timeline(raw).periods[-1].end == "2011-09"
+
+
+def test_only_the_last_period_may_be_open(raw):
+    raw["periods"][3]["end"] = None
+    with pytest.raises(ValueError, match="only the last period"):
+        tl.parse_timeline(raw)
+
+
+def test_open_end_before_its_start_is_rejected(raw):
+    raw["periods"][-1]["end"] = None
+    raw["as_of"] = "2010-12"
+    with pytest.raises(ValueError, match="after"):
+        tl.parse_timeline(raw)
+
+
+def test_as_of_may_be_supplied_by_the_caller(raw):
+    del raw["as_of"]
+    raw["periods"][-1]["end"] = None
+    timeline = tl.parse_timeline(raw, as_of="2011-08")
+    assert timeline.as_of == "2011-08"
+    assert timeline.periods[-1].end == "2011-08"
+
+
+def test_as_of_in_the_file_wins_over_the_caller(raw):
+    raw["periods"][-1]["end"] = None
+    assert tl.parse_timeline(raw, as_of="2011-08").as_of == "2011-06"
+
+
+def test_missing_as_of_without_caller_value_is_rejected(raw):
+    del raw["as_of"]
+    with pytest.raises(ValueError, match="as_of"):
+        tl.parse_timeline(raw)
+
+
+def test_caller_as_of_must_be_a_month(raw):
+    del raw["as_of"]
+    with pytest.raises(ValueError, match="YYYY-MM"):
+        tl.parse_timeline(raw, as_of="2011")
+
+
+def test_closed_last_period_must_still_end_at_a_supplied_as_of(raw):
+    del raw["as_of"]
+    with pytest.raises(ValueError, match="as_of"):
+        tl.parse_timeline(raw, as_of="2011-08")
+
+
+def test_load_timeline_passes_the_caller_as_of(tmp_path, raw):
+    del raw["as_of"]
+    raw["periods"][-1]["end"] = None
+    path = tmp_path / "t.json"
+    path.write_text(json.dumps(raw), encoding="utf-8")
+    assert tl.load_timeline(path, as_of="2011-07").as_of == "2011-07"
+
+
+def test_cli_check_takes_as_of_for_an_open_timeline(tmp_path, raw, capsys):
+    del raw["as_of"]
+    raw["periods"][-1]["end"] = None
+    path = tmp_path / "t.json"
+    path.write_text(json.dumps(raw), encoding="utf-8")
+    assert tl.main(["--check", str(path), "--as-of", "2011-07"]) == 0
+    assert "as_of=2011-07" in capsys.readouterr().out
+
+
+def test_cli_check_defaults_as_of_to_the_current_month(tmp_path, raw, capsys):
+    del raw["as_of"]
+    raw["periods"][-1]["end"] = None
+    path = tmp_path / "t.json"
+    path.write_text(json.dumps(raw), encoding="utf-8")
+    assert tl.main(["--check", str(path)]) == 0
+    assert f"as_of={date.today():%Y-%m}" in capsys.readouterr().out

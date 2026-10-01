@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """
-validate_data.py — Validate the data/*.json files against their JSON Schemas
-and check referential integrity (all FKs point to an existing entity). Used by
-the pre-commit hook.
+validate_data.py — Validate the data/*.json files and the committed activity
+aggregates against their JSON Schemas and check referential integrity (all FKs
+point to an existing entity; every tech the aggregates name is catalogued).
+Used by the pre-commit hook.
 
 Exit 0 if everything is OK, 1 otherwise.
 """
@@ -18,16 +19,17 @@ if str(_REPO_ROOT) not in sys.path:
 
 from scripts.data_loader import (  # noqa: E402
     DataLoadError,
+    check_aggregates_integrity,
     check_referential_integrity,
     load_collection,
 )
 
 DATA = _REPO_ROOT / "data"
 SCHEMAS = _REPO_ROOT / "schemas"
+AGGREGATES = DATA / "activity" / "aggregates.json"
 
 # (data file, schema file or None)
 SCHEMA_MAP = {
-    "config.json": "config.schema.json",
     "techs.json": "tech.schema.json",
     "experiences.json": "experience.schema.json",
     "projects.json": "project.schema.json",
@@ -35,7 +37,6 @@ SCHEMA_MAP = {
     "services.json": "service.schema.json",
     "modes.json": "mode.schema.json",
     "methodology.json": "methodology.schema.json",
-    "metrics.json": "metrics.schema.json",
 }
 
 
@@ -60,9 +61,18 @@ def main() -> int:
         if isinstance(collection, list):
             bag[data_file.stem] = collection
 
+    aggregates = None
+    try:
+        aggregates = load_collection(
+            AGGREGATES, schema=_schema("aggregates.schema.json")
+        )
+    except DataLoadError as e:
+        errors.append(str(e))
+
     if not errors:
         try:
             check_referential_integrity(bag)
+            check_aggregates_integrity(aggregates, bag["techs"], bag["domains"])
         except DataLoadError as e:
             errors.append(str(e))
 

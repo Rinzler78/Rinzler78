@@ -1,6 +1,6 @@
 # ADR-011 — Committed reference date for reproducible generation
 
-- **Status**: Accepted (committed data extended by [ADR-013](0013-activity-timeline-evidence-hours.md); one reference date split in two by [ADR-016](0016-front-page-v2-content-icons-dates.md))
+- **Status**: Superseded for the date by [ADR-016](0016-front-page-v2-content-icons-dates.md) (as amended) and [ADR-018](0018-levels-from-hours-and-evidence.md): the page's only reference date is `activity_as_of` in `data/activity/aggregates.json`; `data/config.json` and `bump_as_of.py` are removed. The principle (never read the clock) stands.
 - **Date**: 2026-09-23
 - **Amends**: [ADR-006](0006-hours-based-expertise-model.md) (when the hours are measured from)
 - **Related to**: [ADR-001](0001-data-driven-svg-generation.md), [ADR-005](0005-quality-gates-ci-branch-protection.md)

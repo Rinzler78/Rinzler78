@@ -151,3 +151,20 @@ def test_escape_protects_markup_characters_without_double_escaping():
 def test_a_label_carrying_markup_still_parses():
     svg = bar_rows([('R&D <lead> "x"', 50)], "#818cf8", INK)
     _parse(svg)  # would raise on malformed XML
+
+
+def test_escape_leaves_an_existing_entity_alone():
+    # The data bag is loaded with `&` already escaped (generate._escape_amp);
+    # escaping it again printed "AI &amp;amp; LLM" in every chart label.
+    from scripts.charts import escape
+
+    assert escape("AI &amp; LLM") == "AI &amp; LLM"
+    assert escape("R&D &#38; &lt;x&gt;") == "R&amp;D &#38; &lt;x&gt;"
+
+
+def test_no_generated_chart_double_escapes_an_ampersand():
+    from pathlib import Path
+
+    svg_dir = Path(__file__).resolve().parent.parent / "assets" / "svg"
+    for svg in svg_dir.rglob("*.svg"):
+        assert "&amp;amp;" not in svg.read_text(encoding="utf-8"), svg.name

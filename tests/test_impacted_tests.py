@@ -11,11 +11,11 @@ from scripts.impacted_tests import select
 
 
 def test_a_test_file_selects_itself():
-    assert select(["tests/test_score_engine.py"]) == ["tests/test_score_engine.py"]
+    assert select(["tests/test_view_builder.py"]) == ["tests/test_view_builder.py"]
 
 
 def test_a_module_selects_its_sibling_guard():
-    assert select(["scripts/score_engine.py"]) == ["tests/test_score_engine.py"]
+    assert select(["scripts/view_builder.py"]) == ["tests/test_view_builder.py"]
 
 
 def test_generation_modules_also_pull_the_artifact_guards():

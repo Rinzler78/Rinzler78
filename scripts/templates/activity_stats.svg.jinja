@@ -2,11 +2,14 @@
 {%- set width = 300 -%}
 {%- set height = 280 -%}
 {%- set pal = theme.palette -%}
-{%- set years_coding = 2026 - profile.since_coding -%}
+{%- set years_coding = as_of_year - profile.since_coding -%}
 {%- set public_repos = projects | length -%}
 {%- set active_projects = projects | selectattr('state', 'equalto', 'active') | list | length -%}
-{%- set total_techs = techs | length -%}
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {{ width }} {{ height }}" width="{{ width }}" height="{{ height }}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Activity stats — {{ years_coding }} années de code, {{ total_techs }} technologies maîtrisées, {{ public_repos }} dépôts publics, {{ active_projects }} actifs">
+{#- Techs with a displayed level only: the catalogue also holds techs without
+    one and tools such as Git, which are not skills. No hours threshold is
+    stated: an attested evidence level can lift a tech below it (ADR-018). -#}
+{%- set total_techs = skills | length -%}
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {{ width }} {{ height }}" width="{{ width }}" height="{{ height }}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Activity stats — {% if lang == 'en' %}{{ years_coding }} years of code, {{ total_techs }} technologies with a displayed level, {{ public_repos }} public repositories, {{ active_projects }} active{% else %}{{ years_coding }} années de code, {{ total_techs }} technologies avec un niveau affiché, {{ public_repos }} dépôts publics, {{ active_projects }} actifs{% endif %}">
   <title>Activity stats</title>
   <desc>Cards de statistiques quantifiables : années de code, technologies, dépôts publics, projets actifs.</desc>
 

@@ -15,9 +15,23 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 
-# Operating systems used as a workstation or a server. Not embedded targets:
-# Windows CE is, these are not.
-GENERAL_PURPOSE_OS = {"linux-ubuntu", "windows"}
+# Operating systems used as a workstation or a server. Not embedded targets.
+GENERAL_PURPOSE_OS = {"linux", "linux-ubuntu", "windows", "windows-server"}
+
+# ADR-016: mobile development gathers the mobile platforms, old and new, and
+# the work that ships them — Windows CE and Windows Mobile included.
+MOBILE = {
+    "android",
+    "xamarin",
+    "xamarin-forms",
+    "ios",
+    "objective-c",
+    "windows-ce",
+    "windows-mobile",
+    "mobile-ui",
+    "mobile-release",
+    "cross-platform-architecture",
+}
 
 
 def _techs() -> list[dict]:
@@ -40,10 +54,15 @@ def test_general_purpose_operating_systems_are_infrastructure():
         )
 
 
-def test_embedded_holds_only_embedded_targets():
+def test_embedded_holds_no_general_purpose_os():
     embedded = {t["id"] for t in _techs() if t["domain"] == "embedded"}
     assert embedded.isdisjoint(GENERAL_PURPOSE_OS)
-    assert "windows-ce" in embedded  # a real embedded target stays
+
+
+def test_mobile_holds_every_mobile_platform():
+    by_id = {t["id"]: t for t in _techs()}
+    for tech_id in MOBILE:
+        assert by_id[tech_id]["domain"] == "mobile", tech_id
 
 
 def test_every_tech_points_at_a_declared_domain():

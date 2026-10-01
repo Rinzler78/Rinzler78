@@ -1,57 +1,63 @@
-"""The generation reference date is committed, never read from the clock.
+"""The page has one reference date, and it is committed data.
 
-Scores, levels and row order derive from exposure hours, and hours accrue for
-every ongoing experience. Reading the system clock therefore makes the output
-drift month by month: the same revision regenerates differently tomorrow, the
-`git diff --exit-code` CI step breaks on its own, and the pre-commit
-`generate-profile` hook rewrites files on an unrelated commit.
-
-The reference date lives in `data/config.json` instead, so a revision pins its
-own output. The weekly refresh workflow bumps it deliberately.
+Hours, levels, periods and "now" are measured against the date of the
+author's latest local collection: ``activity_as_of`` in
+``data/activity/aggregates.json`` (ADR-013, ADR-016 as amended, ADR-018).
+Reading the system clock instead would make the same revision regenerate
+differently tomorrow, break the ``git diff --exit-code`` CI step on its own,
+and make the pre-commit ``generate-profile`` hook rewrite files on an
+unrelated commit (ADR-011).
 """
 
 from __future__ import annotations
 
-import datetime
 import json
+import re
 from pathlib import Path
 
 import scripts.generate as gen
 
 ROOT = Path(__file__).resolve().parent.parent
-CONFIG = ROOT / "data" / "config.json"
-OUTPUTS = ("README.md", "README.en.md")
+AGGREGATES = ROOT / "data" / "activity" / "aggregates.json"
+GENERATION_PATH = (
+    ROOT / "scripts" / "generate.py",
+    ROOT / "scripts" / "view_builder.py",
+    ROOT / "scripts" / "charts.py",
+)
 
 
-def _read_outputs() -> dict[str, str]:
-    out = {name: (ROOT / name).read_text(encoding="utf-8") for name in OUTPUTS}
-    for svg in sorted((ROOT / "assets" / "svg").rglob("*.svg")):
-        out[str(svg.relative_to(ROOT))] = svg.read_text(encoding="utf-8")
-    for page in sorted((ROOT / "pages").rglob("*.md")):
-        out[str(page.relative_to(ROOT))] = page.read_text(encoding="utf-8")
-    return out
+def _as_of() -> str:
+    return json.loads(AGGREGATES.read_text(encoding="utf-8"))["activity_as_of"]
 
 
-def test_config_carries_the_reference_date():
-    config = json.loads(CONFIG.read_text(encoding="utf-8"))
-    datetime.date.fromisoformat(config["as_of"])
+def test_the_reference_date_is_the_aggregates_activity_date():
+    data = gen.enrich(gen.load_data())
+    assert data["as_of"] == _as_of()
+    assert data["as_of_year"] == int(_as_of()[:4])
 
 
-def test_reference_date_comes_from_config():
-    expected = json.loads(CONFIG.read_text(encoding="utf-8"))["as_of"]
-    assert gen.reference_date() == datetime.date.fromisoformat(expected)
+def test_no_other_reference_date_is_committed():
+    assert not (ROOT / "data" / "config.json").exists()
 
 
-def test_generation_ignores_the_system_clock(monkeypatch):
-    # The session fixture already rendered against the real clock.
-    before = _read_outputs()
+def test_generation_never_reads_the_clock():
+    for path in GENERATION_PATH:
+        source = path.read_text(encoding="utf-8")
+        assert "today(" not in source, f"{path.name} reads the clock"
+        assert "now(" not in source, f"{path.name} reads the clock"
 
-    class _Clock(datetime.date):
-        @classmethod
-        def today(cls):  # a visitor regenerating five years later
-            return cls(2031, 7, 14)
 
-    monkeypatch.setattr(gen, "date", _Clock)
-    gen.main()
+def test_no_template_computes_against_a_literal_year():
+    # A year typed into a template is a second reference date that never moves.
+    for template in (ROOT / "scripts" / "templates").glob("*.jinja"):
+        text = template.read_text(encoding="utf-8")
+        assert not re.search(r"\b20\d\d\s*-", text), template.name
 
-    assert _read_outputs() == before
+
+def test_an_ongoing_skill_reads_as_now_against_the_activity_date():
+    data = gen.enrich(gen.load_data())
+    as_of_year = data["as_of_year"]
+    for skill in data["skills"]:
+        last_year = int(skill["last"][:4])
+        assert last_year <= as_of_year, skill["id"]
+        assert (skill["until"] is None) == (last_year == as_of_year), skill["id"]

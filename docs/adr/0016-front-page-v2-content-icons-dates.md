@@ -1,6 +1,6 @@
 # ADR-016 — Front page v2: content sections, tech icons, two reference dates
 
-- **Status**: Accepted
+- **Status**: Accepted, amended 2026-09-26 (see *Amendment*: counters live-only, one reference date)
 - **Date**: 2026-09-26
 - **Amends**: [ADR-011](0011-committed-reference-date.md) (one reference date becomes two),
   [ADR-013](0013-activity-timeline-evidence-hours.md) (tools every commit implies),
@@ -121,3 +121,16 @@ The footer shows both. No duration is computed against a date later than its dat
   an icon.
 - Timeline and achievements are ordered newest first.
 - The footer shows two dates, and no "active" label is later than the activity date.
+
+## Amendment (2026-09-26): counters are live-only
+
+Author rule: data retrievable live is never stored.
+
+- External counters (PyPI downloads, Docker Hub pulls, stars) are shown only as live
+  badges built from the projects' `metrics` sources. No counter is fetched into the
+  repository: `data/metrics.json`, `scripts/fetch_metrics.py` and the daily
+  `update-profile.yml` workflow are removed: no workflow commits data to the default branch.
+- Section 5 therefore keeps one reference date: the **activity date**,
+  `activity_as_of` in `data/activity/aggregates.json`. The footer shows it alone.
+- The success criterion on counters reads: no external counter appears in `data/` or
+  in the templates.

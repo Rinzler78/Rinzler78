@@ -38,16 +38,16 @@ I support technical teams - both startups and more mature structures** - in thei
   <img src="assets/svg/en/journey-share.svg" width="100%" alt="Share of effort per domain, each year normalized to 100%" />
 </picture>
 
-<sub>**L'arc se lit directement.** L'embarqué occupe l'essentiel de 2006 à 2013, le mobile prend le relais jusqu'en 2019, le cloud domine à partir de 2020, l'IA apparaît en 2023. Chaque année est ramenée à 100 % : c'est une répartition, pas un volume.</sub>
+<sub>**The arc reads at a glance.** Leading domain, period by period: Mobile from 2006 to 2008, Mobile from 2014 to 2020 and AI &amp; LLM since 2022. Each year is scaled to a whole: this is a split, not a volume.</sub>
 
 <sub><b>Compétences les mieux ancrées</b></sub>
 
 <picture>
   <source media="(prefers-color-scheme: light)" srcset="assets/svg/en/light/top-skills.svg" />
-  <img src="assets/svg/en/top-skills.svg" width="100%" alt="Strongest skills, scored out of 99 from exposure hours" />
+  <img src="assets/svg/en/top-skills.svg" width="100%" alt="Highest-level skills, in measured coding hours" />
 </picture>
 
-<sub>**Le score vient des heures d'exposition réelles** — expériences datées et jours de commits — jamais d'une auto-évaluation. C# / .NET à 99 sur vingt ans ; l'AI-Driven Development déjà à 83 en trois ans.</sub>
+<sub>**Hours come from a dated timeline and from commit days**, never from self-assessment. The level follows a published convention: working from 50 h, professional from 500 h, advanced from 1,600 h and expert from 5,000 h.</sub>
 
 <sub><b>Un profil large</b></sub>
 
@@ -56,13 +56,13 @@ I support technical teams - both startups and more mature structures** - in thei
   <img src="assets/svg/en/domain-split.svg" width="100%" alt="Lifetime exposure split by domain, as shares" />
 </picture>
 
-<sub>**Polyvalent, pas dispersé.** Le DevOps concentre un tiers de l'exposition, mais quatre domaines dépassent chacun 13 %. Les parts se recoupent volontairement — une mission compte dans chaque domaine qu'elle touche — donc seuls les pourcentages sont affichés, jamais un total d'heures.</sub>
+<sub>**Versatile, not scattered.** Mobile holds 42.6% of the hours, then Embedded &amp; Systems 19.2%, DevOps &amp; Infrastructure 12.1% and AI &amp; LLM 11.4%. The shares overlap on purpose — a file counts in every domain it touches — so only percentages are shown, never a total of hours.</sub>
 
 <sub><b>Core expertise</b></sub>
 
 <picture>
   <source media="(prefers-color-scheme: light)" srcset="assets/svg/en/light/core-expertise.svg" />
-  <img src="assets/svg/en/core-expertise.svg" width="100%" alt="Core expertise — current level and peak reached" />
+  <img src="assets/svg/en/core-expertise.svg" width="100%" alt="Core expertise — measured hours and level" />
 </picture>
 
 <sub><b>Stack by domain</b></sub>
@@ -131,7 +131,7 @@ I support technical teams - both startups and more mature structures** - in thei
 
 <div align="center">
 
-<sub><b>Built like a product.</b> This profile is generated from JSON, validated against schemas, scored from real exposure hours, tested (90%+ coverage), linted, security-scanned, spell-checked (en + fr), and regenerated on every commit — pre-commit + pre-push gates, GitHub Actions CI, branch protection. <b>The repo is the proof.</b></sub>
+<sub><b>Built like a product.</b> This profile is generated from JSON, validated against schemas, leveled from measured coding hours, tested (90%+ coverage), linted, security-scanned, spell-checked (en + fr), and regenerated on every commit — pre-commit + pre-push gates, GitHub Actions CI, branch protection. <b>The repo is the proof.</b></sub>
 </div>
 
 <div align="center">
@@ -173,4 +173,4 @@ Basketball coach in Pélissanne, Provence, after picking up a ball for the first
 
 </sub>
 
-**Direct links :** [FFBBApiClientV2_Python](https://github.com/Rinzler78/FFBBApiClientV2_Python) · [CometBFT.Client](https://github.com/Rinzler78/CometBFT.Client) · [osmosis-launcher](https://github.com/Rinzler78/osmosis-launcher) · [docker.idena-node](https://github.com/Rinzler78/docker.idena-node) · [aioz-node-docker](https://github.com/Rinzler78/aioz-node-docker) · [Here.Sdk.Common](https://github.com/Rinzler78/Here.Sdk.Common) · [NetExtension](https://github.com/Rinzler78/NetExtension) · [docker-cleaner](https://github.com/Rinzler78/docker-cleaner)
+**Direct links :** [FFBBApiClientV2_Python](https://github.com/Rinzler78/FFBBApiClientV2_Python) · [CometBFT.Client](https://github.com/Rinzler78/CometBFT.Client) · [osmosis-launcher](https://github.com/Rinzler78/osmosis-launcher) · [docker.idena-node](https://github.com/Rinzler78/docker.idena-node) · [aioz-node-docker](https://github.com/Rinzler78/aioz-node-docker) · [Here.Sdk.Meta](https://github.com/Rinzler78/Here.Sdk.Meta) · [NetExtension](https://github.com/Rinzler78/NetExtension) · [docker-cleaner](https://github.com/Rinzler78/docker-cleaner)

@@ -8,9 +8,9 @@ context, which fixes a daily budget inside a fixed day grid, and the sources
 File format (JSON)::
 
     {
-      "as_of": "YYYY-MM",
+      "as_of": "YYYY-MM (optional)",
       "periods": [
-        {"start": "YYYY-MM", "end": "YYYY-MM", "context": "<context>",
+        {"start": "YYYY-MM", "end": "YYYY-MM" | null, "context": "<context>",
          "label": "...", "sources": [{"id": "...", "share": 1.0}],
          "note": "optional free text"}
       ],
@@ -18,6 +18,11 @@ File format (JSON)::
     }
 
 Both bounds of a period are inclusive: ``start == end`` is a one-month period.
+The last period alone may have ``end: null``: the current period, open until
+``as_of``. ``as_of`` may be omitted from the file, so the timeline does not
+need an edit every month; the caller then supplies it (the hours CLI uses the
+month of the latest evidence day, ``--check`` takes ``--as-of`` and defaults to
+the current month). A value in the file wins over the caller's.
 
 The real timeline is private (ADR-014) and never lives in this repository.
 Its directory is given by the ``PROFILE_PRIVATE_DIR`` environment variable;
@@ -81,8 +86,8 @@ CONTEXTS = (
 _MONTH_RE = re.compile(r"^(\d{4})-(\d{2})$")
 _PERIOD_KEYS = {"start", "end", "context", "label", "sources"}
 _PERIOD_OPTIONAL = {"note"}
-_TOP_KEYS = {"as_of", "periods"}
-_TOP_OPTIONAL = {"exceptions"}
+_TOP_KEYS = {"periods"}
+_TOP_OPTIONAL = {"as_of", "exceptions"}
 _SHARE_TOLERANCE = 1e-9
 
 
@@ -213,13 +218,18 @@ def _parse_sources(raw: object, context: str, where: str) -> tuple[Source, ...]:
     return tuple(sources)
 
 
-def _parse_period(raw: object, position: int) -> Period:
+def _parse_period(raw: object, position: int, open_end: str | None) -> Period:
+    """One period; ``open_end`` replaces ``end: null`` (last period only)."""
     where = f"period #{position}"
     if not isinstance(raw, dict):
         raise ValueError(f"{where}: must be an object")
     _require_keys(raw, _PERIOD_KEYS, _PERIOD_OPTIONAL, where)
     where = f"period #{position} ({raw['start']}..{raw['end']})"
     start, end = raw["start"], raw["end"]
+    if end is None:
+        if open_end is None:
+            raise ValueError(f"{where}: only the last period may have an open end")
+        end = open_end
     if _index(start) > _index(end):
         raise ValueError(f"{where}: start is after end")
     context = raw["context"]
@@ -235,12 +245,18 @@ def _parse_period(raw: object, position: int) -> Period:
     return Period(start, end, context, label, sources, note)
 
 
-def parse_timeline(data: object) -> Timeline:
-    """Validate a decoded timeline document and return it as a ``Timeline``."""
+def parse_timeline(data: object, as_of: str | None = None) -> Timeline:
+    """Validate a decoded timeline document and return it as a ``Timeline``.
+
+    ``as_of`` is the caller's month for a file without one; the file's own
+    ``as_of`` wins when both are given. An open last period ends at it.
+    """
     if not isinstance(data, dict):
         raise ValueError("timeline: top level must be an object")
     _require_keys(data, _TOP_KEYS, _TOP_OPTIONAL, "timeline")
-    as_of = data["as_of"]
+    as_of = data.get("as_of", as_of)
+    if as_of is None:
+        raise ValueError("timeline: as_of is neither in the file nor supplied")
     parse_month(as_of)
     raw_periods = data["periods"]
     if not isinstance(raw_periods, list) or not raw_periods:
@@ -251,7 +267,11 @@ def parse_timeline(data: object) -> Timeline:
     ):
         raise ValueError("timeline: exceptions must be a list of strings")
 
-    periods = tuple(_parse_period(p, i) for i, p in enumerate(raw_periods, 1))
+    last = len(raw_periods)
+    periods = tuple(
+        _parse_period(p, i, as_of if i == last else None)
+        for i, p in enumerate(raw_periods, 1)
+    )
     if periods[0].start != TIMELINE_START:
         raise ValueError(
             f"timeline: must start at {TIMELINE_START}, starts at {periods[0].start}"
@@ -272,10 +292,10 @@ def parse_timeline(data: object) -> Timeline:
     return Timeline(as_of, periods, tuple(exceptions))
 
 
-def load_timeline(path: str | os.PathLike[str]) -> Timeline:
+def load_timeline(path: str | os.PathLike[str], as_of: str | None = None) -> Timeline:
     """Read and validate a timeline file; any defect raises ValueError."""
     text = pathlib.Path(path).read_text(encoding="utf-8")
-    return parse_timeline(json.loads(text))
+    return parse_timeline(json.loads(text), as_of)
 
 
 # --- Hours ---------------------------------------------------------------
@@ -339,13 +359,20 @@ def main(argv: list[str] | None = None) -> int:
         metavar="FILE",
         help=f"timeline file (default: ${PRIVATE_DIR_ENV}/{PRIVATE_TIMELINE_NAME})",
     )
+    parser.add_argument(
+        "--as-of",
+        default=None,
+        metavar="YYYY-MM",
+        help="month for a file without as_of (default: the current month)",
+    )
     args = parser.parse_args(argv)
+    as_of = args.as_of or f"{date.today():%Y-%m}"
     path = pathlib.Path(args.check) if args.check else _default_path()
     if path is None:
         print(f"error: no file given and {PRIVATE_DIR_ENV} is not set", file=sys.stderr)
         return 2
     try:
-        timeline = load_timeline(path)
+        timeline = load_timeline(path, as_of)
     except (OSError, ValueError) as exc:
         print(f"error: {path}: {exc}", file=sys.stderr)
         return 1

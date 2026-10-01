@@ -7,9 +7,13 @@ Public surface (V1, incremental):
   JSON Schema, and returns its parsed content.
 - ``check_referential_integrity(bag)`` verifies that every foreign key
   reference in a loaded data bag points to an existing entity.
+- ``check_aggregates_integrity(aggregates, techs, domains)`` verifies that the
+  committed activity aggregates (ADR-013) only name catalogued techs, filed
+  under the same declared domain as in the catalogue.
 """
 
 import json
+from datetime import date
 from pathlib import Path
 
 import jsonschema
@@ -19,7 +23,7 @@ class DataLoadError(Exception):
     """Raised when data cannot be loaded or fails validation."""
 
 
-def load_collection(path: Path, schema: dict | None = None) -> list[dict]:
+def load_collection(path: Path, schema: dict | None = None) -> list[dict] | dict:
     path = Path(path)
     try:
         with path.open(encoding="utf-8") as f:
@@ -78,4 +82,58 @@ def check_referential_integrity(bag: dict[str, list[dict]]) -> None:
                 raise DataLoadError(
                     f"Timeline event {event.get('year', '?')!r} "
                     f"references unknown tech {tid!r}"
+                )
+
+
+def check_aggregates_integrity(
+    aggregates: dict, techs: list[dict], domains: list[dict]
+) -> None:
+    """Every tech the aggregates name is catalogued, under the same domain.
+
+    Also checks that ``activity_as_of`` is a real calendar day (the only
+    day-precision date of the file; months are bounded by the schema).
+
+    The aggregates are computed on the author's workstation from
+    ``scripts/activity/tech_map.json``; the page reads labels and domains from
+    ``data/techs.json``. A tech missing from the catalogue would have hours and
+    no label, and a domain that differs would put its hours under one domain
+    in the charts and its skill line under another.
+    """
+    as_of = aggregates.get("activity_as_of")
+    if as_of is not None:
+        # The schema pattern admits 2026-02-31; only the calendar does not.
+        try:
+            date.fromisoformat(as_of)
+        except ValueError as e:
+            raise DataLoadError(
+                f"Aggregates activity_as_of {as_of!r} is not a calendar date"
+            ) from e
+
+    catalogue = {t["id"]: t.get("domain") for t in techs}
+    domain_ids = {d["id"] for d in domains}
+
+    for tech_id, entry in sorted(aggregates.get("techs", {}).items()):
+        if tech_id not in catalogue:
+            raise DataLoadError(f"Aggregates reference uncatalogued tech {tech_id!r}")
+        domain = entry.get("domain")
+        if domain != catalogue[tech_id]:
+            raise DataLoadError(
+                f"Aggregates file {tech_id!r} under {domain!r}, "
+                f"the catalogue under {catalogue[tech_id]!r}"
+            )
+        if domain not in domain_ids:
+            raise DataLoadError(
+                f"Aggregates tech {tech_id!r} references unknown domain {domain!r}"
+            )
+
+    for month, row in sorted(aggregates.get("by_month", {}).items()):
+        for domain in sorted(row.get("domains", {})):
+            if domain not in domain_ids:
+                raise DataLoadError(
+                    f"Aggregates month {month} references unknown domain {domain!r}"
+                )
+        for tech_id in sorted(row.get("techs", {})):
+            if tech_id not in catalogue:
+                raise DataLoadError(
+                    f"Aggregates month {month} references uncatalogued tech {tech_id!r}"
                 )

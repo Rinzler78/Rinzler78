@@ -1,6 +1,6 @@
 {
-  "fr_hash": "767704c8b9bd2d9ecc2f481e8e53e7bfe67951e020a58c74564f3e10c338ae18",
-  "en": "Dockerized node - 470+ Docker Hub pulls.",
+  "fr_hash": "cd7044b1e76488712ede321f825e0bb880aac3e19295303c678b45294f8632d7",
+  "en": "Dockerized node with monitoring and update automation.",
   "manual": false,
   "reviewed": false
 }
