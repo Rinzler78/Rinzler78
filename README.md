@@ -2,175 +2,101 @@
 <sub><b>🇫🇷 Français</b> · <a href="README.en.md">🇬🇧 English</a></sub>
 </div>
 
-<div align="center">
+<picture><source media="(prefers-color-scheme: light)" srcset="assets/svg/light/identity.svg" /><img src="assets/svg/identity.svg" width="415" alt="Boris Leclere, Freelance CTO · Architecte de Solutions, disponible. embedded → mobile → cloud → ai. Senas, Provence-Alpes-Côte d'Azur." /></picture> <picture><source media="(prefers-color-scheme: light)" srcset="assets/svg/light/figures.svg" /><img src="assets/svg/figures.svg" width="415" alt="20 ans de code, environ 30 000 heures de code mesurées, 1 474 jours de commit depuis 2014, 11 technologies au niveau avancé ou expert." /></picture>
 
-<a href="mailto:borisleclere.pro@gmail.com">
-  <picture>
-    <source media="(prefers-color-scheme: light)" srcset="assets/svg/light/header.svg" />
-    <img src="assets/svg/header.svg" width="100%" alt="Header — Boris Leclere, Freelance CTO · Architecte de Solutions. Statut : available. Basé à Senas, France. Langues : fr / en. 20 années de code." />
-  </picture>
-</a>
+[borisleclere.pro@gmail.com](mailto:borisleclere.pro@gmail.com) · [LinkedIn](https://www.linkedin.com/in/borisleclere) · [Malt](https://www.malt.fr/profile/borisleclere) · [GitHub](https://github.com/Rinzler78) · [PyPI](https://pypi.org/user/Rinzler78)
 
-**Freelance CTO**&nbsp;&nbsp;·&nbsp;&nbsp;**Software Architect**&nbsp;&nbsp;·&nbsp;&nbsp;**AI-Driven Development**
+Freelance CTO · Architecte de Solutions, je code depuis 2006. Au compteur : 20 ans de code, environ 30 000 heures de pratique mesurées, 1 474 jours de commit depuis 2014 et 11 technologies au niveau avancé ou expert.
 
-</div>
+## Comment je peux aider
 
-<p align="center">
+J'accompagne les équipes techniques, des startups en construction aux structures établies, sur 6 types d'intervention :
 
-J'accompagne les équipes techniques — **startups en construction comme structures plus matures** — sur leur stratégie logicielle : choix de stack, architecture, dette technique, industrialisation, mise en production. J'aime autant comprendre un protocole bas niveau, orchestrer un pipeline CI/CD que brancher un LLM sur un produit existant. **Mon angle, c'est la polyvalence et une curiosité sincère pour la technologie** — pas un terrain de jeu unique.
+- **Architecture &amp; refonte logicielle** — Concevoir ou réparer des systèmes maintenables, testables et évolutifs. Sortir une codebase de la dette technique sans tout réécrire.
+- **Audit technique** — État des lieux honnête : code, architecture, tests, CI/CD, sécurité, documentation. Un rapport actionnable, priorisé par impact.
+- **Conception &amp; livraison de MVP** — Porter un produit de l'idée à la mise en marché : architecture pragmatique, choix de stack, livraison itérative qui tient la charge.
+- **Industrialisation CI/CD &amp; delivery** — Stabiliser la chaîne de livraison : Docker, GitHub Actions, releases reproductibles, environnements de dev normalisés.
+- **AI-Driven Development** — Structurer l'usage des agents IA pour livrer vite sans chaos : specs, règles, mémoire, quality gates, contexte maîtrisé.
+- **Developer tooling &amp; automatisation** — Créer les outils qui font gagner du temps à l'équipe : CLI, générateurs, scripts, APIs internes, automatisations sur mesure.
 
-</p>
+Formats d'intervention : CTO temps partiel · Architecte de solutions · Renfort technique d'urgence · Cofondateur technique freelance.
 
-<div align="center">
+## Open source
 
-### Explorer
-**[Stack](pages/stack.md)**  ·  **[Parcours](pages/journey.md)**  ·  **[Projets](pages/projects.md)**  ·  **[Travailler avec moi](pages/working-with-me.md)**
+<picture><source media="(prefers-color-scheme: light)" srcset="assets/svg/light/oss-docker-cleaner.svg" /><img src="assets/svg/oss-docker-cleaner.svg" width="415" alt="docker-cleaner : Disposable Docker cleanup tool. Stack : AI-Driven Development, Bash / Shell, Docker." /></picture> <picture><source media="(prefers-color-scheme: light)" srcset="assets/svg/light/oss-ffbb-api-client-v2.svg" /><img src="assets/svg/oss-ffbb-api-client-v2.svg" width="415" alt="FFBBApiClientV2_Python : Python client for the French Basketball Federation (FFBB) v2 API. Stack : AI-Driven Development, Bash / Shell, Python." /></picture>
 
-</div>
+**docker-cleaner** [![Pulls Docker Hub](https://img.shields.io/docker/pulls/rinzlerfr/docker-cleaner?style=flat-square&color=3f6212)](https://hub.docker.com/r/rinzlerfr/docker-cleaner) [![Étoiles GitHub](https://img.shields.io/github/stars/Rinzler78/docker-cleaner?style=flat-square&color=3f6212)](https://github.com/Rinzler78/docker-cleaner) &nbsp;·&nbsp; **FFBBApiClientV2_Python** [![Téléchargements PyPI par mois](https://img.shields.io/pypi/dm/ffbb-api-client-v2?style=flat-square&color=3f6212)](https://pypi.org/project/ffbb-api-client-v2/) [![Étoiles GitHub](https://img.shields.io/github/stars/Rinzler78/FFBBApiClientV2_Python?style=flat-square&color=3f6212)](https://github.com/Rinzler78/FFBBApiClientV2_Python)
 
-<div align="center">
+<picture><source media="(prefers-color-scheme: light)" srcset="assets/svg/light/oss-aioz-node-docker.svg" /><img src="assets/svg/oss-aioz-node-docker.svg" width="415" alt="aioz-node-docker : Docker image for AIOZ blockchain node deployment (decentralized content delivery). Stack : AI-Driven Development, AIOZ Network, Bash / Shell, Docker." /></picture> <picture><source media="(prefers-color-scheme: light)" srcset="assets/svg/light/oss-docker-idena-node.svg" /><img src="assets/svg/oss-docker-idena-node.svg" width="415" alt="docker.idena-node : Dockerized Idena blockchain node with monitoring and update automation. Stack : Bash / Shell, Docker, Idena." /></picture>
 
+**aioz-node-docker** [![Pulls Docker Hub](https://img.shields.io/docker/pulls/rinzlerfr/aioznode?style=flat-square&color=3f6212)](https://hub.docker.com/r/rinzlerfr/aioznode) [![Étoiles GitHub](https://img.shields.io/github/stars/Rinzler78/aioz-node-docker?style=flat-square&color=3f6212)](https://github.com/Rinzler78/aioz-node-docker) &nbsp;·&nbsp; **docker.idena-node** [![Pulls Docker Hub](https://img.shields.io/docker/pulls/rinzlerfr/idena-node?style=flat-square&color=3f6212)](https://hub.docker.com/r/rinzlerfr/idena-node) [![Étoiles GitHub](https://img.shields.io/github/stars/Rinzler78/docker.idena-node?style=flat-square&color=3f6212)](https://github.com/Rinzler78/docker.idena-node)
 
-<sub><b>Où le temps est passé</b></sub>
+<picture><source media="(prefers-color-scheme: light)" srcset="assets/svg/light/oss-ffbb-api-client-v1.svg" /><img src="assets/svg/oss-ffbb-api-client-v1.svg" width="415" alt="FFBBApiClient_Python : Legacy client for the previous FFBB API generation, kept for reference. Stack : AI-Driven Development, Bash / Shell, Python." /></picture> <picture><source media="(prefers-color-scheme: light)" srcset="assets/svg/light/oss-aioz-node-auto-withdraw.svg" /><img src="assets/svg/oss-aioz-node-auto-withdraw.svg" width="415" alt="aioz-node-auto-withdraw-reward-docker : Autonomous reward withdrawal for AIOZ nodes, packaged as a Docker workload. Stack : AI-Driven Development, AIOZ Network, Bash / Shell, Docker." /></picture>
 
-<picture>
-  <source media="(prefers-color-scheme: light)" srcset="assets/svg/light/journey-share.svg" />
-  <img src="assets/svg/journey-share.svg" width="100%" alt="Part de l'effort par domaine, chaque année ramenée à 100 %" />
-</picture>
+**FFBBApiClient_Python** [![Téléchargements PyPI par mois](https://img.shields.io/pypi/dm/ffbb-api-client?style=flat-square&color=3f6212)](https://pypi.org/project/ffbb-api-client/) [![Étoiles GitHub](https://img.shields.io/github/stars/Rinzler78/FFBBApiClient_Python?style=flat-square&color=3f6212)](https://github.com/Rinzler78/FFBBApiClient_Python) &nbsp;·&nbsp; **aioz-node-auto-withdraw-reward-docker** [![Pulls Docker Hub](https://img.shields.io/docker/pulls/rinzlerfr/aioznode-auto-withdraw-reward?style=flat-square&color=3f6212)](https://hub.docker.com/r/rinzlerfr/aioznode-auto-withdraw-reward) [![Étoiles GitHub](https://img.shields.io/github/stars/Rinzler78/aioz-node-auto-withdraw-reward-docker?style=flat-square&color=3f6212)](https://github.com/Rinzler78/aioz-node-auto-withdraw-reward-docker)
 
-<sub>**L'arc se lit directement.** Domaine dominant, période par période : Mobile de 2006 à 2008, Mobile de 2014 à 2020 et AI &amp; LLM depuis 2022. Chaque année est ramenée à un tout : c'est une répartition, pas un volume.</sub>
+6 projets publics publiés sur Docker Hub et PyPI, avec leurs compteurs lus en direct sous chaque tuile.
 
-<sub><b>Compétences les mieux ancrées</b></sub>
+## Compétences
 
-<picture>
-  <source media="(prefers-color-scheme: light)" srcset="assets/svg/light/top-skills.svg" />
-  <img src="assets/svg/top-skills.svg" width="100%" alt="Compétences au niveau le plus élevé, en heures de code mesurées" />
-</picture>
+<picture><source media="(prefers-color-scheme: light)" srcset="https://skillicons.dev/icons?i=apple,windows,py,bash,cs,cpp,html,ts,java,matlab,dotnet,docker,git,linux&amp;theme=light&amp;perline=16" /><img src="https://skillicons.dev/icons?i=apple,windows,py,bash,cs,cpp,html,ts,java,matlab,dotnet,docker,git,linux&amp;theme=dark&amp;perline=16" width="729" alt="Technologies pratiquées" /></picture>
+<picture><source media="(prefers-color-scheme: light)" srcset="assets/svg/light/skills-band.svg" /><img src="assets/svg/skills-band.svg" width="466" alt="NFC, Bluetooth / BLE / GATT, Xamarin (iOS, Android), Android, Objective-C, Blazor (WASM &amp; Server), Azure DevOps, VMware, AI-Driven Development" /></picture>
 
-<sub>**Les heures viennent d'une chronologie datée et des jours de commits**, jamais d'une auto-évaluation. Le niveau suit une convention publiée : working dès 50 h, professional dès 500 h, advanced dès 1 600 h et expert dès 5 000 h.</sub>
+<picture><source media="(prefers-color-scheme: light)" srcset="assets/svg/light/skills-embedded.svg" /><img src="assets/svg/skills-embedded.svg" width="415" alt="Embarqué &amp; systèmes : GPS ≈ 3 500 h avancé 2009–actif, NFC ≈ 1 800 h avancé 2011–actif, Bluetooth / BLE / GATT ≈ 1 400 h professionnel 2011–actif, USB drivers ≈ 610 h professionnel 2013–2014, Augmented reality ≈ 60 h opérationnel 2013, GPRS ≈ 910 h professionnel 2009–2010, Driver development ≈ 490 h opérationnel 2009, Computer Vision (embedded) ≈ 80 h opérationnel 2008–2009, PIC microcontrollers ≈ 80 h opérationnel 2008–2009." /></picture> <picture><source media="(prefers-color-scheme: light)" srcset="assets/svg/light/skills-mobile.svg" /><img src="assets/svg/skills-mobile.svg" width="415" alt="Mobile : Xamarin (iOS, Android) ≈ 4 400 h avancé 2015–actif, Android ≈ 3 600 h avancé 2011–actif, iOS ≈ 3 500 h avancé 2011–actif, Xamarin.Forms ≈ 3 200 h avancé 2015–actif, Mobile UI ≈ 580 h professionnel 2015–actif, Cross-platform architecture ≈ 440 h opérationnel 2015–actif, Mobile release (signing, stores) ≈ 900 h professionnel 2014–actif, Objective-C ≈ 1 500 h professionnel 2011–2025, Windows Mobile ≈ 1 500 h professionnel 2006–2014, Windows CE ≈ 5 100 h expert 2006–2012." /></picture>
 
-<sub><b>Un profil large</b></sub>
+<picture><source media="(prefers-color-scheme: light)" srcset="assets/svg/light/skills-desktop.svg" /><img src="assets/svg/skills-desktop.svg" width="415" alt="Desktop : P/Invoke interop ≈ 100 h opérationnel 2026–actif, Windows Forms ≈ 50 h opérationnel 2026–actif, Windows RT ≈ 120 h opérationnel 2013, Windows services ≈ 660 h professionnel 2011." /></picture> <picture><source media="(prefers-color-scheme: light)" srcset="assets/svg/light/skills-languages.svg" /><img src="assets/svg/skills-languages.svg" width="415" alt="Langages : Python ≈ 1 400 h professionnel 2018–actif, Bash / Shell ≈ 1 000 h professionnel 2014–actif, C# / .NET ≈ 13 000 h expert 2006–actif, C / C++ ≈ 6 200 h expert 2006–actif, SQL ≈ 300 h opérationnel 2006–actif, HTML / CSS ≈ 130 h opérationnel 2014–actif, TypeScript ≈ 60 h opérationnel 2025–actif, XAML ≈ 140 h opérationnel 2015–actif, Java ≈ 570 h professionnel 2011–2025, C++/CLI ≈ 120 h opérationnel 2013, Multithreading ≈ 360 h opérationnel 2012–2013, MATLAB ≈ 80 h opérationnel 2006–2009." /></picture>
 
-<picture>
-  <source media="(prefers-color-scheme: light)" srcset="assets/svg/light/domain-split.svg" />
-  <img src="assets/svg/domain-split.svg" width="100%" alt="Répartition de l'exposition cumulée par domaine, en parts" />
-</picture>
+<picture><source media="(prefers-color-scheme: light)" srcset="assets/svg/light/skills-backend.svg" /><img src="assets/svg/skills-backend.svg" width="415" alt="Backend &amp; web : .NET 5+ ≈ 320 h opérationnel 2026–actif, Blazor (WASM &amp; Server) ≈ 310 h opérationnel 2021–actif, ASP.NET Core ≈ 420 h opérationnel 2017–actif, Entity Framework ≈ 480 h opérationnel 2016–actif, Payment integration ≈ 600 h professionnel 2011–2012, SOAP web services ≈ 1 500 h professionnel 2009–2011, TCP/IP networking ≈ 1 800 h avancé 2009–2010." /></picture> <picture><source media="(prefers-color-scheme: light)" srcset="assets/svg/light/skills-devops.svg" /><img src="assets/svg/skills-devops.svg" width="415" alt="DevOps &amp; infra : Docker ≈ 770 h professionnel 2020–actif, Virtual machines ≈ 440 h opérationnel 2014–actif, Azure DevOps ≈ 270 h opérationnel 2019–actif, Cross-compilation toolchains ≈ 210 h opérationnel 2012–actif, Git server ≈ 170 h opérationnel 2013–2014, TestLink ≈ 170 h opérationnel 2013–2014, IBM AIX ≈ 720 h professionnel 2012–2013, Windows ≈ 360 h opérationnel 2012–2013, Windows Server ≈ 920 h professionnel 2009–2011, Active Directory ≈ 660 h professionnel 2011, VMware ≈ 660 h professionnel 2011, Linux ≈ 300 h opérationnel 2006–2009." /></picture>
 
-<sub>**Polyvalent, pas dispersé.** Mobile pèse 42,6 % des heures, puis Embedded &amp; Systems 19,2 %, DevOps &amp; Infrastructure 12,1 % et AI &amp; LLM 11,4 %. Les parts se recoupent volontairement — un fichier compte dans chaque domaine qu'il touche — donc seuls les pourcentages sont affichés, jamais un total d'heures.</sub>
+<picture><source media="(prefers-color-scheme: light)" srcset="assets/svg/light/skills-ai-llm.svg" /><img src="assets/svg/skills-ai-llm.svg" width="415" alt="IA &amp; LLM : AI-Driven Development ≈ 5 000 h expert 2021–actif." /></picture> <picture><source media="(prefers-color-scheme: light)" srcset="assets/svg/light/skills-blockchain.svg" /><img src="assets/svg/skills-blockchain.svg" width="415" alt="Blockchain : Blockchain ≈ 570 h professionnel 2021–actif." /></picture>
 
-<sub><b>Expertise centrale</b></sub>
+<picture><source media="(prefers-color-scheme: light)" srcset="assets/svg/light/skills-practices.svg" /><img src="assets/svg/skills-practices.svg" width="415" alt="Pratiques d'ingénierie : Test-driven development ≈ 1 400 h professionnel 2025–actif, Automated testing ≈ 970 h professionnel 2015–actif, MVVM ≈ 850 h professionnel 2015–actif, Domain-driven design ≈ 110 h opérationnel 2016–actif." /></picture>
 
-<picture>
-  <source media="(prefers-color-scheme: light)" srcset="assets/svg/light/core-expertise.svg" />
-  <img src="assets/svg/core-expertise.svg" width="100%" alt="Core expertise — measured hours and level" />
-</picture>
+60 technologies pratiquées au moins 50 h, réparties en 9 domaines et classées de la plus récente à la plus ancienne ; 34 sont actives en 2026, dont C# / .NET (≈ 13 000 h), C / C++ (≈ 6 200 h) et AI-Driven Development (≈ 5 000 h).
 
-<sub><b>Stack par domaine</b></sub>
+## Chronologie
 
-<picture>
-  <source media="(prefers-color-scheme: light)" srcset="assets/svg/light/stack-summary.svg" />
-  <img src="assets/svg/stack-summary.svg" width="100%" alt="Seniority per domain" />
-</picture>
+- **2023 → aujourd'hui** · [Indépendant](pages/journey.md#exp-freelance) · _indépendant_
+- **2014 – 2023** · [Good Angel / My Good Life](pages/journey.md#exp-goodangel-mgl-p2) · _CDI_
+- **2013 – 2014** · [Theoris SAS · mission Ondeo Systems](pages/journey.md#exp-theoris-ondeo) · _mission_
+- **2013** · [Theoris SAS · mission Dassault Systèmes](pages/journey.md#exp-theoris-dassault) · _mission_
+- **2012 – 2013** · [Theoris SAS · mission Systar](pages/journey.md#exp-theoris-systar) · _mission_
+- **2011 – 2012** · [Theoris SAS · mission Ingenico](pages/journey.md#exp-theoris-ingenico) · _mission_
+- **2011** · [Neurones Assistance](pages/journey.md#exp-neurones) · _CDI_
+- **2009 – 2010** · [GoodKap!](pages/journey.md#exp-goodkap) · _CDI_
+- **2009** · [Gunnebo](pages/journey.md#exp-gunnebo) · _stage_
+- **2008 – 2009** · [Coupe de France de Robotique](pages/journey.md#exp-robotics-cup) · _compétition_
+- **2006 – 2009** · [Université de Reims Champagne-Ardenne](pages/journey.md#exp-studies-embedded) · _études_
 
-<sub>Le tableau complet, version par version, est sur la **[page stack](pages/stack.md)**.</sub>
+11 postes et missions depuis 2006, du plus récent au plus ancien ; chaque ligne mène au détail sur la [page parcours](pages/journey.md).
 
-<sub><b>Projets publics</b></sub>
+## Méthode
 
-<picture>
-  <source media="(prefers-color-scheme: light)" srcset="assets/svg/light/featured-projects.svg" />
-  <img src="assets/svg/featured-projects.svg" width="100%" alt="Featured public repositories" />
-</picture>
+**Les heures viennent de traces datées, jamais d'une auto-évaluation.** Une chronologie continue des postes et des missions donne le temps professionnel, mois par mois ; les 1 474 jours de commit depuis 2014 (243 dans des dépôts publics) donnent le temps personnel et la part de chaque technologie, lue dans les lignes ajoutées. Là où aucune trace n'existe, la part est déclarée par l'auteur et comptée comme telle.
 
-<sub><b>Jalons</b></sub>
+**Le niveau est une convention :** opérationnel dès 50 h, professionnel dès 500 h, avancé dès 1 600 h et expert dès 5 000 h. Le niveau affiché est le plus haut entre celui des heures et celui d'une réalisation attestée.
 
-<picture>
-  <source media="(prefers-color-scheme: light)" srcset="assets/svg/light/timeline-mini.svg" />
-  <img src="assets/svg/timeline-mini.svg" width="100%" alt="Career milestones" />
-</picture>
+Certains faits de carrière reposent sur la déclaration de l'auteur. Aucun chiffre de cette page n'est saisi à la main : tous sont calculés à la génération, et les compteurs publics sont lus en direct.
 
-<sub><b>Ce que vous pouvez acheter</b></sub>
+## Activité
 
-<picture>
-  <source media="(prefers-color-scheme: light)" srcset="assets/svg/light/services.svg" />
-  <img src="assets/svg/services.svg" width="100%" alt="Services: Architecture &amp; refonte logicielle · Audit technique · Conception &amp; livraison de MVP · Industrialisation CI/CD &amp; delivery · AI-Driven Development · Developer tooling &amp; automatisation" />
-</picture>
+<picture><source media="(prefers-color-scheme: light)" srcset="assets/svg/light/calendar-2014-2020.svg" /><img src="assets/svg/calendar-2014-2020.svg" width="415" alt="Calendrier des jours de commit de 2014 à 2020 : 868 jours, dont 802 en contexte professionnel et 66 en projets personnels." /></picture> <picture><source media="(prefers-color-scheme: light)" srcset="assets/svg/light/calendar-2021-2026.svg" /><img src="assets/svg/calendar-2021-2026.svg" width="415" alt="Calendrier des jours de commit de 2021 à 2026 : 606 jours, dont 0 en contexte professionnel et 606 en projets personnels." /></picture>
 
-<sub><b>Comment m'engager</b></sub>
+1 474 jours de commit depuis 2014, toutes sources confondues : 802 dans un contexte professionnel, 672 en projets personnels ; plus la case est intense, plus la journée a touché de fichiers.
 
-<picture>
-  <source media="(prefers-color-scheme: light)" srcset="assets/svg/light/modes.svg" />
-  <img src="assets/svg/modes.svg" width="100%" alt="Engagement modes" />
-</picture>
+### Ce que GitHub voit
 
-<sub><b>Comment je travaille</b></sub>
+<picture><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Rinzler78/Rinzler78/output/github-contribution-grid-snake.svg" /><img src="https://raw.githubusercontent.com/Rinzler78/Rinzler78/output/github-contribution-grid-snake-dark.svg" width="834" alt="Le serpent qui mange le graphe de contributions GitHub" /></picture>
 
-<picture>
-  <source media="(prefers-color-scheme: light)" srcset="assets/svg/light/methodology.svg" />
-  <img src="assets/svg/methodology.svg" width="100%" alt="Engineering principles" />
-</picture>
+<picture><source media="(prefers-color-scheme: light)" srcset="https://streak-stats.demolab.com/?user=Rinzler78&amp;locale=fr&amp;border=d9dfcf&amp;background=fbfcf8&amp;stroke=d9dfcf&amp;ring=3f6212&amp;fire=3f6212&amp;currStreakNum=141810&amp;sideNums=141810&amp;currStreakLabel=3f6212&amp;sideLabels=525a4a&amp;dates=6b7361" /><img src="https://streak-stats.demolab.com/?user=Rinzler78&amp;locale=fr&amp;border=262e21&amp;background=0c0f0a&amp;stroke=262e21&amp;ring=a3e635&amp;fire=a3e635&amp;currStreakNum=eef2e8&amp;sideNums=eef2e8&amp;currStreakLabel=a3e635&amp;sideLabels=a3ab9a&amp;dates=7b8472" width="415" alt="Séries de contributions GitHub" /></picture>
 
-<sub><b>Activité</b></sub>
+Ces deux vues ne comptent que les contributions visibles par GitHub ; le calendrier ci-dessus inclut aussi les dépôts privés et le travail en poste.
 
-<picture>
-  <source media="(prefers-color-scheme: light)" srcset="assets/svg/light/activity-stats.svg" />
-  <img src="assets/svg/activity-stats.svg" width="100%" alt="Activity stats" />
-</picture>
+## Pour aller plus loin
 
-</div>
+[Stack](pages/stack.md) · [Parcours](pages/journey.md) · [Projets](pages/projects.md) · [Travailler avec moi](pages/working-with-me.md)
 
-<div align="center">
+---
 
-<a href="https://www.openstreetmap.org/?mlat=43.74&mlon=5.06#map=9/43.74/5.06">
-  <picture>
-    <source media="(prefers-color-scheme: light)" srcset="assets/map-dark.png" />
-    <img src="assets/map.png" width="640" alt="Localisation — Senas, Provence-Alpes-Côte d'Azur, France. Coordonnées 43.74° N, 5.06° E. Carte OpenStreetMap, cliquer pour ouvrir." />
-  </picture>
-</a>
-
-</div>
-
-<div align="center">
-
-<sub><b>Conçu comme un produit.</b> Ce profil est généré depuis du JSON, validé par schémas, aux niveaux tirés d'heures de code mesurées, testé (90 %+ de couverture), linté, scanné côté sécurité, vérifié orthographiquement (en + fr) et régénéré à chaque commit — gates pre-commit + pre-push, CI GitHub Actions, protection de branche. <b>Le dépôt est la preuve.</b></sub>
-</div>
-
-<div align="center">
-
-<a href="mailto:borisleclere.pro@gmail.com"><picture><source media="(prefers-color-scheme: light)" srcset="assets/svg/light/chip-email.svg" /><img alt="Email — borisleclere.pro@gmail.com" src="assets/svg/chip-email.svg" /></picture></a><a href="tel:+33626263461"><picture><source media="(prefers-color-scheme: light)" srcset="assets/svg/light/chip-phone.svg" /><img alt="Téléphone — +33 6 26 26 34 61" src="assets/svg/chip-phone.svg" /></picture></a><a href="https://wa.me/33626263461"><picture><source media="(prefers-color-scheme: light)" srcset="assets/svg/light/chip-whatsapp.svg" /><img alt="WhatsApp" src="assets/svg/chip-whatsapp.svg" /></picture></a><a href="https://www.linkedin.com/in/borisleclere"><picture><source media="(prefers-color-scheme: light)" srcset="assets/svg/light/chip-linkedin.svg" /><img alt="LinkedIn" src="assets/svg/chip-linkedin.svg" /></picture></a><a href="https://www.malt.fr/profile/borisleclere"><picture><source media="(prefers-color-scheme: light)" srcset="assets/svg/light/chip-malt.svg" /><img alt="Malt" src="assets/svg/chip-malt.svg" /></picture></a><a href="https://pypi.org/user/Rinzler78"><picture><source media="(prefers-color-scheme: light)" srcset="assets/svg/light/chip-pypi.svg" /><img alt="PyPI" src="assets/svg/chip-pypi.svg" /></picture></a><a href="https://discordapp.com/users/rinzler84"><picture><source media="(prefers-color-scheme: light)" srcset="assets/svg/light/chip-discord.svg" /><img alt="Discord" src="assets/svg/chip-discord.svg" /></picture></a><a href="https://twitter.com/BorisLeclere"><picture><source media="(prefers-color-scheme: light)" srcset="assets/svg/light/chip-twitter.svg" /><img alt="X" src="assets/svg/chip-twitter.svg" /></picture></a>
-<sub><a href="tel:+33626263461">+33 6 26 26 34 61</a>  &nbsp;·&nbsp;  <a href="https://wa.me/33626263461">WhatsApp</a>  &nbsp;·&nbsp;  <code>EOF · github.com/Rinzler78 · 2026 — still curious, still shipping_</code></sub>
-
-</div>
-
-<details>
-<summary><code>$ cat ~/.bashrc  # easter eggs</code></summary>
-
-```
-[OK] curiosity      … mounted at /home/boris
-[OK] coffee         … daemon running on :8080
-[OK] basketball.so  … loaded since 1991
-[WARN] imposter.sys … signal ignored
-[OK] embedded.ko    … 2006 → 2013
-[OK] mobile.ko      … 2011 →
-[OK] cloud.ko       … 2020 →
-[OK] llm.ko         … 2023 →
-[OK] provence.env   … exported PATH=$PATH:/sunlight
-```
-
-```
-// pragma: humanity
-// FIXME: shave fewer yaks
-// ls projects/ --sort=love-desc
-// pulse check
-// human.boris{ basketball: true, papa: true }
-// open socket
-```
-
-</details>
-
-<sub align="center">
-
-Coach basket à Pélissanne, en Provence, après avoir attrapé un ballon pour la première fois à 7 ans (et ne l'ayant jamais vraiment lâché depuis). Autodidacte du BEP Électrotechnique au Master Systèmes Embarqués. Papa d'un futur peut-être-développeur.
-
-</sub>
-
-**Liens directs :** [FFBBApiClientV2_Python](https://github.com/Rinzler78/FFBBApiClientV2_Python) · [CometBFT.Client](https://github.com/Rinzler78/CometBFT.Client) · [osmosis-launcher](https://github.com/Rinzler78/osmosis-launcher) · [docker.idena-node](https://github.com/Rinzler78/docker.idena-node) · [aioz-node-docker](https://github.com/Rinzler78/aioz-node-docker) · [Here.Sdk.Meta](https://github.com/Rinzler78/Here.Sdk.Meta) · [NetExtension](https://github.com/Rinzler78/NetExtension) · [docker-cleaner](https://github.com/Rinzler78/docker-cleaner)
+<sub>Boris Leclere · données au 2026-10-01 · [comment c'est mesuré](#méthode)</sub><br>
+<sub><code>$ uptime --since=2006 → 20 ans, 1 474 jours de commit, plus longue série 21 j, record 195 jours en 2019 · still curious_</code></sub>

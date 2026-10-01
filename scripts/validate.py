@@ -6,6 +6,9 @@ Checks:
 1. All local resources (`<img src="..."`, `srcset="..."`) referenced
    in README.md point to a file that exists.
 2. All SVGs in `assets/svg/` are well-formed XML.
+3. The tile grid rules (ADR-015): no SVG root declares `width="100%"`, every
+   root declares a width and a height, and no text in a front page tile is
+   set under 20 units.
 
 Exit 0 if everything is OK, non-zero otherwise. Used by the pre-commit hook.
 """
@@ -77,9 +80,43 @@ def validate_svgs() -> list[str]:
     return errors
 
 
+# Front page tiles (scripts/tiles.py): the 20-unit text floor applies to them.
+TILE_PREFIXES = ("identity", "figures", "oss-", "skills-", "calendar-")
+MIN_TILE_FONT = 20.0
+
+
+def svg_rule_errors(markup: str, tile: bool) -> list[str]:
+    """The grid rules one SVG breaks; ``tile`` adds the text-size floor."""
+    root = ET.fromstring(markup)
+    errors = []
+    width, height = root.get("width"), root.get("height")
+    if width is not None and width.strip().endswith("%"):
+        errors.append(f'root width="{width}": use a fixed width')
+    if width is None or height is None:
+        errors.append("root must declare both a width and a height")
+    if tile:
+        for el in root.iter():
+            size = el.get("font-size")
+            if size is not None and float(size) < MIN_TILE_FONT:
+                errors.append(f"text at font-size {size}, under {MIN_TILE_FONT:g}")
+    return errors
+
+
+def validate_svg_rules() -> list[str]:
+    """Grid rule violations across every generated SVG."""
+    errors: list[str] = []
+    for svg in sorted(SVG_DIR.rglob("*.svg")):
+        tile = svg.name.startswith(TILE_PREFIXES)
+        for error in svg_rule_errors(svg.read_text(encoding="utf-8"), tile):
+            errors.append(f"{svg.relative_to(REPO)}  →  {error}")
+    return errors
+
+
 def main() -> int:
     missing_refs = validate_readme_refs()
     bad_svgs = validate_svgs()
+    if not bad_svgs:
+        bad_svgs = validate_svg_rules()
 
     if missing_refs:
         print(
@@ -90,7 +127,7 @@ def main() -> int:
             print(f"    - {m}", file=sys.stderr)
 
     if bad_svgs:
-        print(f"[validate.py] ✗ {len(bad_svgs)} malformed SVG(s):", file=sys.stderr)
+        print(f"[validate.py] ✗ {len(bad_svgs)} SVG error(s):", file=sys.stderr)
         for e in bad_svgs:
             print(f"    - {e}", file=sys.stderr)
 

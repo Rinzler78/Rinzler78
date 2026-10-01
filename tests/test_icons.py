@@ -190,9 +190,10 @@ def test_only_used_icons_are_vendored():
     assert on_disk == used
 
 
-def test_initials_too_wide_for_the_badge_are_compressed_not_shrunk():
+def test_initials_too_wide_for_the_badge_are_tightened_not_shrunk():
     spec = icons.IconSpec("mvvm", "initials", initials="MVVM")
     ink = {"stroke": "#a3e635", "text": "#a3e635", "fill": "#0c0f0a"}
-    out = icons.render(spec, 0, 0, 40, fill="", ink=ink)
-    assert 'textLength="32"' in out
+    out = icons.render(spec, 0, 0, 48, fill="", ink=ink)
+    # 4 glyphs x 0.62 em x 20 = 49.6 units for 42 of room: -1.9 per glyph.
+    assert 'letter-spacing="-1.9"' in out
     assert 'font-size="20"' in out

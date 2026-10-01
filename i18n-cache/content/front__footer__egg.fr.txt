@@ -1,0 +1,1 @@
+$ uptime --since={since} → {years} ans, {days} jours de commit, plus longue série {streak} j, record {busiest} jours en {busiest_year} · {tagline}_

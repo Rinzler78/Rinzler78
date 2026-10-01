@@ -1,148 +1,109 @@
-{%- import '_pieces.md.jinja' as pc -%}
+{#- Front page v2 (ADR-015, ADR-016, ADR-018). Every figure comes from the
+    `front` view (scripts/front.py); tiles are 415 px half tiles on one grid,
+    dark by default with a light override; all text is native markdown. -#}
 {%- set svg = svg | default('') -%}
 {%- set lang = lang | default('fr') -%}
-{%- set pages = 'pages/' ~ ('en/' if lang == 'en' else '') -%}
+{%- set f = front -%}
+{%- macro half(name, alt) -%}
+<picture><source media="(prefers-color-scheme: light)" srcset="assets/svg/{{ svg }}light/{{ name }}" /><img src="assets/svg/{{ svg }}{{ name }}" width="415" alt="{{ alt }}" /></picture>
+{%- endmacro -%}
 <div align="right">
 <sub>{% if lang == 'en' %}<a href="README.md">🇫🇷 Français</a> · <b>🇬🇧 English</b>{% else %}<b>🇫🇷 Français</b> · <a href="README.en.md">🇬🇧 English</a>{% endif %}</sub>
 </div>
 
-<div align="center">
+{{ half('identity.svg', f.identity.aria) }} {{ half('figures.svg', f.figures.aria) }}
 
-<a href="mailto:{{ profile.contacts.email_pro }}">
-  <picture>
-    <source media="(prefers-color-scheme: light)" srcset="assets/svg/{{ svg }}light/header.svg" />
-    <img src="assets/svg/{{ svg }}header.svg" width="100%" alt="{% if lang == 'en' %}Header — {{ profile.name }}, {{ profile.role }}. Status: {{ profile.status }}. Based in {{ profile.location.city }}, {{ profile.location.country }}. Languages: {{ profile.languages | join(' / ') }}. {{ as_of_year - profile.since_coding }} years of code.{% else %}Header — {{ profile.name }}, {{ profile.role }}. Statut : {{ profile.status }}. Basé à {{ profile.location.city }}, {{ profile.location.country }}. Langues : {{ profile.languages | join(' / ') }}. {{ as_of_year - profile.since_coding }} années de code.{% endif %}" />
-  </picture>
-</a>
+{% for label, href in f.contacts %}[{{ label }}]({{ href }}){{ ' · ' if not loop.last else '' }}{% endfor %}
 
-**{{ profile.taglines | join('**&nbsp;&nbsp;·&nbsp;&nbsp;**') }}**
 
-</div>
+{{ f.identity_sentence }}
 
-<p align="center">
+## {{ f.help.title }}
 
-{{ content.approach.paragraph }}
+{{ f.help.intro }}
 
-</p>
-
-<div align="center">
-
-### {% if lang == 'en' %}Explore{% else %}Explorer{% endif %}
-
-**[{% if lang == 'en' %}Stack{% else %}Stack{% endif %}]({{ pages }}stack.md)**  ·  **[{% if lang == 'en' %}Journey{% else %}Parcours{% endif %}]({{ pages }}journey.md)**  ·  **[{% if lang == 'en' %}Projects{% else %}Projets{% endif %}]({{ pages }}projects.md)**  ·  **[{% if lang == 'en' %}Working with me{% else %}Travailler avec moi{% endif %}]({{ pages }}working-with-me.md)**
-
-</div>
-
-<div align="center">
-
-{% macro chart(name, block) -%}
-<picture>
-  <source media="(prefers-color-scheme: light)" srcset="assets/svg/{{ svg }}light/{{ name }}.svg" />
-  <img src="assets/svg/{{ svg }}{{ name }}.svg" width="100%" alt="{{ block.aria }}" />
-</picture>
-
-<sub>{{ block.conclusion }}</sub>
-{%- endmacro %}
-
-<sub><b>{{ content.charts.journey_share.title }}</b></sub>
-
-{{ chart('journey-share', content.charts.journey_share) }}
-
-<sub><b>{{ content.charts.top_skills.title }}</b></sub>
-
-{{ chart('top-skills', content.charts.top_skills) }}
-
-<sub><b>{{ content.charts.domain_split.title }}</b></sub>
-
-{{ chart('domain-split', content.charts.domain_split) }}
-
-<sub><b>{% if lang == 'en' %}Core expertise{% else %}Expertise centrale{% endif %}</b></sub>
-
-{{ pc.fig('', svg, 'core-expertise.svg', 'Core expertise — measured hours and level') }}
-
-<sub><b>{% if lang == 'en' %}Stack by domain{% else %}Stack par domaine{% endif %}</b></sub>
-
-{{ pc.fig('', svg, 'stack-summary.svg', 'Seniority per domain') }}
-
-<sub>{% if lang == 'en' %}The full table, version by version, is on the **[stack page]({{ pages }}stack.md)**.{% else %}Le tableau complet, version par version, est sur la **[page stack]({{ pages }}stack.md)**.{% endif %}</sub>
-
-<sub><b>{% if lang == 'en' %}Public projects{% else %}Projets publics{% endif %}</b></sub>
-
-{{ pc.fig('', svg, 'featured-projects.svg', 'Featured public repositories') }}
-
-<sub><b>{% if lang == 'en' %}Milestones{% else %}Jalons{% endif %}</b></sub>
-
-{{ pc.fig('', svg, 'timeline-mini.svg', 'Career milestones') }}
-
-<sub><b>{% if lang == 'en' %}What you can buy{% else %}Ce que vous pouvez acheter{% endif %}</b></sub>
-
-{{ pc.fig('', svg, 'services.svg', 'Services: ' ~ (services | selectattr('visible') | map(attribute='title') | join(' · '))) }}
-
-<sub><b>{% if lang == 'en' %}How to engage me{% else %}Comment m'engager{% endif %}</b></sub>
-
-{{ pc.fig('', svg, 'modes.svg', 'Engagement modes') }}
-
-<sub><b>{% if lang == 'en' %}How I work{% else %}Comment je travaille{% endif %}</b></sub>
-
-{{ pc.fig('', svg, 'methodology.svg', 'Engineering principles') }}
-
-<sub><b>{% if lang == 'en' %}Activity{% else %}Activité{% endif %}</b></sub>
-
-{{ pc.fig('', svg, 'activity-stats.svg', 'Activity stats') }}
-
-</div>
-
-<div align="center">
-
-<a href="https://www.openstreetmap.org/?mlat={{ profile.location.lat }}&mlon={{ profile.location.lon }}#map=9/{{ profile.location.lat }}/{{ profile.location.lon }}">
-  <picture>
-    <source media="(prefers-color-scheme: light)" srcset="assets/map-dark.png" />
-    <img src="assets/map.png" width="640" alt="Localisation — {{ profile.location.city }}, {{ profile.location.region }}, {{ profile.location.country }}. Coordonnées {{ profile.location.lat }}° N, {{ profile.location.lon }}° E. Carte OpenStreetMap, cliquer pour ouvrir." />
-  </picture>
-</a>
-
-</div>
-
-<div align="center">
-
-{% if lang == 'en' %}<sub><b>Built like a product.</b> This profile is generated from JSON, validated against schemas, leveled from measured coding hours, tested (90%+ coverage), linted, security-scanned, spell-checked (en + fr), and regenerated on every commit — pre-commit + pre-push gates, GitHub Actions CI, branch protection. <b>The repo is the proof.</b></sub>{% else %}<sub><b>Conçu comme un produit.</b> Ce profil est généré depuis du JSON, validé par schémas, aux niveaux tirés d'heures de code mesurées, testé (90 %+ de couverture), linté, scanné côté sécurité, vérifié orthographiquement (en + fr) et régénéré à chaque commit — gates pre-commit + pre-push, CI GitHub Actions, protection de branche. <b>Le dépôt est la preuve.</b></sub>{% endif %}
-
-</div>
-
-<div align="center">
-
-{% set phone_digits = profile.contacts.phone | replace('+', '') | replace(' ', '') %}
-{% for c in contact_chips %}
-<a href="{{ c.href }}"><picture><source media="(prefers-color-scheme: light)" srcset="assets/svg/{{ svg }}light/chip-{{ c.id }}.svg" /><img alt="{{ c.label }}{% if c.value %} — {{ c.value }}{% endif %}" src="assets/svg/{{ svg }}chip-{{ c.id }}.svg" /></picture></a>
-{%- endfor %}
-
-<sub><a href="tel:+{{ phone_digits }}">{{ profile.contacts.phone }}</a>  &nbsp;·&nbsp;  <a href="https://wa.me/{{ phone_digits }}">WhatsApp</a>  &nbsp;·&nbsp;  <code>{{ content.connect.footer_eof }}</code></sub>
-
-</div>
-
-<details>
-<summary><code>$ cat ~/.bashrc  # easter eggs</code></summary>
-
-```
-{% for line in content.boot_log.lines %}{{ line }}
+{% for s in f.help.services %}
+- **{{ s.title }}** — {{ s.short_description }}
 {% endfor %}
-```
 
-```
-{{ content.approach.headline_easter_egg }}
-{{ content.modes_intervention.easter_egg }}
-{{ content.featured.easter_egg }}
-{{ content.github_activity.easter_egg }}
-{{ content.beyond_code.easter_egg }}
-{{ content.connect.easter_egg }}
-```
+{{ f.help.modes }}
+{% if f.achievements['items'] %}
 
-</details>
+## {{ f.achievements.title }}
 
-<sub align="center">
+{% for a in f.achievements['items'] %}
+- **{{ a.year }}** · _{{ a.context_label }}_ — {{ a.wording }}
+{% endfor %}
+{% endif %}
 
-{{ content.beyond_code.paragraph }}
+## {{ f.oss.title }}
 
-</sub>
+{% for pair in f.oss.pairs %}
+{% for p in pair %}{{ half('oss-' ~ p.id ~ '.svg', p.aria) }}{{ ' ' if not loop.last else '' }}{% endfor %}
 
-**{% if lang == 'en' %}Direct links{% else %}Liens directs{% endif %} :** {% for p in projects_highlighted() %}[{{ p.name }}]({{ p.github_url }}){% if not loop.last %} · {% endif %}{% endfor %}
+
+{% for p in pair %}**{{ p.name }}** {% for b in p.badges %}[![{{ b.alt }}]({{ b.src }})]({{ b.href }}){{ ' ' if not loop.last else '' }}{% endfor %}{{ ' &nbsp;·&nbsp; ' if not loop.last else '' }}{% endfor %}
+
+
+{% endfor %}
+{{ f.oss.sentence }}
+
+## {{ f.skills.title }}
+
+{% for row in f.skills.served_rows %}
+<picture><source media="(prefers-color-scheme: light)" srcset="{{ skillicons_url(row, 'light') | replace('&', '&amp;') }}" /><img src="{{ skillicons_url(row, 'dark') | replace('&', '&amp;') }}" width="{{ band_width(row | length) }}" alt="{{ f.skills.band_alt }}" /></picture>
+{% endfor %}
+{% if f.skills.local %}
+<picture><source media="(prefers-color-scheme: light)" srcset="assets/svg/{{ svg }}light/skills-band.svg" /><img src="assets/svg/{{ svg }}skills-band.svg" width="{{ band_width(f.skills.local | length) }}" alt="{{ f.skills.local_alt }}" /></picture>
+{% endif %}
+
+{% for pair in f.skills.pairs %}
+{% for t in pair %}{{ half('skills-' ~ t.domain ~ '.svg', t.aria) }}{{ ' ' if not loop.last else '' }}{% endfor %}
+
+
+{% endfor %}
+{{ f.skills.sentence }}
+{% if f.skills.evidence_note %}
+
+<sub>{{ f.skills.evidence_note }}</sub>
+{% endif %}
+
+## {{ f.timeline.title }}
+
+{% for e in f.timeline.entries %}
+- **{{ e.when }}** · [{{ e.org }}]({{ f.pages }}journey.md#{{ e.anchor }}) · _{{ e.type_label }}_
+{% endfor %}
+
+{{ f.timeline.sentence }}
+
+## {{ f.method.title }}
+
+{{ f.method.hours }}
+
+{{ f.method.levels }}
+
+{{ f.method.statements }}
+
+## {{ f.activity.title }}
+
+{% for h in f.activity.halves %}{{ half('calendar-' ~ h.years[0] ~ '-' ~ h.years[-1] ~ '.svg', h.aria) }}{{ ' ' if not loop.last else '' }}{% endfor %}
+
+
+{{ f.activity.sentence }}
+
+### {{ f.activity.github_title }}
+
+<picture><source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/{{ profile.username }}/{{ profile.username }}/output/github-contribution-grid-snake.svg" /><img src="https://raw.githubusercontent.com/{{ profile.username }}/{{ profile.username }}/output/github-contribution-grid-snake-dark.svg" width="834" alt="{{ f.activity.snake_alt }}" /></picture>
+
+<picture><source media="(prefers-color-scheme: light)" srcset="{{ streak_url('light') | replace('&', '&amp;') }}" /><img src="{{ streak_url('dark') | replace('&', '&amp;') }}" width="415" alt="{{ f.activity.streak_alt }}" /></picture>
+
+{{ f.activity.github_sentence }}
+
+## {{ f.more.title }}
+
+[{{ f.more.stack }}]({{ f.pages }}stack.md) · [{{ f.more.journey }}]({{ f.pages }}journey.md) · [{{ f.more.projects }}]({{ f.pages }}projects.md) · [{{ f.more.working }}]({{ f.pages }}working-with-me.md)
+
+---
+
+<sub>{{ f.footer.signature }}</sub><br>
+<sub><code>{{ f.footer.egg }}</code></sub>

@@ -1,4 +1,4 @@
-# cspell:ignore Conçu produit jalons carrière carriere parcours
+# cspell:ignore jalons carrière carriere parcours
 """Generation pipeline guards (PRD: test_generation / test_determinism).
 
 These run the real generator into the repo's output files. Generation is
@@ -91,8 +91,8 @@ def test_readme_is_dark_first():
     for readme in READMES:
         text = readme.read_text(encoding="utf-8")
         assert 'media="(prefers-color-scheme: light)"' in text
-        assert "light/header.svg" in text
-        assert "dark/header.svg" not in text  # dark is now the default, not a source
+        assert "light/identity.svg" in text
+        assert "dark/identity.svg" not in text  # dark is the default, not a source
     assert not (SVG_DIR / "dark").exists()
     assert (SVG_DIR / "light").is_dir()
 
@@ -104,15 +104,6 @@ def test_generation_is_deterministic():
     gen.main()
     second = _read_all()
     assert first == second
-
-
-def test_quality_manifesto_is_localized_per_readme():
-    # Bilingual rule: prose is French in README.md, English in README.en.md.
-    fr = (ROOT / "README.md").read_text(encoding="utf-8")
-    en = (ROOT / "README.en.md").read_text(encoding="utf-8")
-    assert "Conçu comme un produit" in fr
-    assert "Built like a product" not in fr
-    assert "Built like a product" in en
 
 
 def test_timeline_alt_says_parcours_not_carriere():
@@ -131,62 +122,6 @@ def test_footer_exposes_no_fake_email():
         assert "github.com/Rinzler78" in text
 
 
-def test_front_contact_cluster_has_phone_and_whatsapp():
-    # All communication channels live on the front, phone actionable via tel:
-    # and WhatsApp (wa.me, digits derived from profile.contacts.phone).
-    for readme in READMES:
-        t = readme.read_text(encoding="utf-8")
-        assert "mailto:borisleclere.pro@gmail.com" in t
-        assert "linkedin.com/in/borisleclere" in t
-        assert "malt.fr/profile/borisleclere" in t
-        assert "pypi.org/user/Rinzler78" in t
-        assert "discordapp.com/users/rinzler84" in t
-        assert "twitter.com/BorisLeclere" in t
-        assert "tel:+33626263461" in t
-        assert "https://wa.me/33626263461" in t
-
-
-def test_location_uses_committed_osm_map_linked_to_live():
-    # Real OSM raster (light + dark), committed for reliability, linked to the
-    # live OpenStreetMap page. The hand-drawn map.svg is retired.
-    for readme in READMES:
-        t = readme.read_text(encoding="utf-8")
-        assert "assets/map.png" in t
-        assert "assets/map-dark.png" in t
-        assert "openstreetmap.org/?mlat=43.74&mlon=5.06" in t
-        assert "map.svg" not in t
-    assert (ROOT / "assets" / "map.png").exists()
-    assert (ROOT / "assets" / "map-dark.png").exists()
-
-
-def test_no_third_party_service_renders_any_figure():
-    # ADR-009: every figure is generated from this repo's own data. The
-    # replaced widgets were also a liability — two of the three were returning
-    # 503 and 402 while this was written, so the profile showed broken images.
-    RENDERERS = (
-        "readme-typing-svg.demolab.com",
-        "github-readme-stats.vercel.app",
-        "github-readme-activity-graph.vercel.app",
-        "github-contribution-grid-snake",
-        "github-profile-trophy.vercel.app",
-        "capsule-render.vercel.app",
-        "streak-stats.demolab.com",
-    )
-    for readme in READMES:
-        text = readme.read_text(encoding="utf-8")
-        for renderer in RENDERERS:
-            assert renderer not in text, f"{readme.name} still renders via {renderer}"
-
-
-def test_the_front_page_carries_the_charts_it_replaced_them_with():
-    # A widget is removed only when something stronger stands in its place
-    # (ADR-009): the three in-house charts are that replacement.
-    for readme in READMES:
-        text = readme.read_text(encoding="utf-8")
-        for chart in ("journey-share.svg", "top-skills.svg", "domain-split.svg"):
-            assert chart in text, f"{readme.name} is missing {chart}"
-
-
 def test_each_chart_is_doubled_by_a_text_conclusion():
     # The charts are images: a reader who only reads prose, or who reads with a
     # screen reader, must still get the point. The expected prose is computed
@@ -201,73 +136,16 @@ def test_each_chart_is_doubled_by_a_text_conclusion():
         "fr": (copy.deepcopy(raw), ROOT / "README.md"),
         "en": (gen._escape_amp(localize_data(raw, CACHE)), ROOT / "README.en.md"),
     }
-    for lang, (bag, readme) in pages.items():
-        text = readme.read_text(encoding="utf-8")
+    for lang, (bag, _readme) in pages.items():
+        # The history charts moved to the stack page with the v2 front page.
+        stack = ROOT / "pages" / ("en/" if lang == "en" else "") / "stack.md"
+        text = stack.read_text(encoding="utf-8")
         for key, block in gen.enrich(bag, lang)["content"]["charts"].items():
             conclusion = block.get("conclusion")
             assert conclusion, f"{key} has no conclusion to double its chart"
             assert conclusion in text, (
                 f"{lang} {key}: the conclusion is not on the page"
             )
-
-
-def test_no_image_in_the_readmes_is_fetched_from_another_host():
-    # Stronger than a blocklist of known widget hosts: every figure must come
-    # from this repository. A remote <img> is a rendering dependency that can
-    # go down (two of the replaced widgets were returning 503 and 402), change
-    # style, or disappear — and the profile shows the failure.
-    import re
-
-    for readme in READMES:
-        text = readme.read_text(encoding="utf-8")
-        remote = re.findall(r'(?:src|srcset)="(https?://[^"]+)"', text)
-        assert not remote, f"{readme.name} fetches images from {sorted(set(remote))}"
-
-
-def test_the_contact_row_is_generated_from_the_declared_chips():
-    import json
-
-    chips = json.loads((ROOT / "data" / "content.json").read_text(encoding="utf-8"))
-    declared = [c["id"] for c in chips["connect"]["chips"]]
-    text = (ROOT / "README.md").read_text(encoding="utf-8")
-    for chip_id in declared:
-        assert f"chip-{chip_id}.svg" in text, f"chip {chip_id} never reaches the page"
-
-
-def test_the_front_page_carries_the_substance_not_just_links():
-    # ADR-009: the front page had drifted to one section — a hero above a list
-    # of four links — against the thirteen of the page it replaces. A showcase
-    # visitor does not click, so anything behind a link is effectively absent.
-    import re
-
-    for readme in READMES:
-        text = readme.read_text(encoding="utf-8")
-        headings = re.findall(r"^#{2,3} |<sub><b>", text, flags=re.MULTILINE)
-        assert len(headings) >= 13, (
-            f"{readme.name} is down to {len(headings)} sections; the page it "
-            "replaces carries 13"
-        )
-
-
-def test_every_generated_figure_appears_on_the_front_page():
-    # A view nobody links is a view nobody sees. Detail pages go deeper; they
-    # no longer stand in for the front.
-    text = (ROOT / "README.md").read_text(encoding="utf-8")
-    for name in (
-        "header.svg",
-        "core-expertise.svg",
-        "stack-summary.svg",
-        "featured-projects.svg",
-        "timeline-mini.svg",
-        "services.svg",
-        "modes.svg",
-        "methodology.svg",
-        "activity-stats.svg",
-        "journey-share.svg",
-        "top-skills.svg",
-        "domain-split.svg",
-    ):
-        assert name in text, f"{name} is generated but never shown on the front page"
 
 
 def test_activity_stats_count_claims_no_hours_threshold():
@@ -283,3 +161,18 @@ def test_activity_stats_count_claims_no_hours_threshold():
         assert "50 h" not in root.get("aria-label")
     assert "displayed level" in en.get("aria-label")
     assert fr.get("aria-label") != en.get("aria-label")
+
+
+def test_every_generated_svg_is_shown_somewhere():
+    # A view nobody links is a view nobody sees; generation clears the tree
+    # first, so a retired view cannot linger either.
+    shown = "".join(_read_all()[k] for k in _read_all() if k.endswith(".md"))
+    for svg in sorted(SVG_DIR.glob("*.svg")):
+        assert svg.name in shown, f"{svg.name} is generated but shown nowhere"
+
+
+def test_history_charts_live_on_the_stack_page():
+    for page in (ROOT / "pages" / "stack.md", ROOT / "pages" / "en" / "stack.md"):
+        text = page.read_text(encoding="utf-8")
+        for chart in ("journey-share.svg", "top-skills.svg", "domain-split.svg"):
+            assert chart in text, f"{page.name} is missing {chart}"

@@ -39,6 +39,7 @@ SCHEMA_MAP = {
     "modes.json": "mode.schema.json",
     "methodology.json": "methodology.schema.json",
     "icons.json": "icons.schema.json",
+    "achievements.json": "achievement.schema.json",
 }
 
 

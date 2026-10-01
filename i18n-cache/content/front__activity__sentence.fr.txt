@@ -1,0 +1,1 @@
+{days} jours de commit depuis {first_year}, toutes sources confondues : {pro} dans un contexte professionnel, {personal} en projets personnels ; plus la case est intense, plus la journée a touché de fichiers.

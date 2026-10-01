@@ -53,21 +53,22 @@ scripts/
 ├── data_loader.py       # load_collection + schema + referential/aggregates integrity
 ├── view_builder.py      # build_skills, build_domain_year_hours (from the aggregates)
 ├── captions.py          # chart conclusions: figures computed per language, never typed
+├── front.py             # front page view: key figures, gated achievements, live badges
+├── tiles.py             # front page tiles: SVG panels on the 590-unit grid (ADR-015)
+├── icons.py             # tech icons: vendored logos, contrast fallback, icon band
 ├── generate.py          # entry point — loads data, enriches, renders templates
 ├── validate_data.py     # CLI: schemas + referential integrity
-├── validate.py          # CLI: SVG well-formedness + README refs
+├── validate.py          # CLI: SVG well-formedness, grid rules, README refs
 ├── claims.py            # CLI: claim markers vs data/claims.lock.json (ADR-014)
 ├── requirements.txt     # generation deps (jinja2, defusedxml, jsonschema)
 └── templates/
     ├── _panel.svg.jinja         # shared macros (panel, bar, chip, stat, status_dot)
-    ├── header.svg.jinja
     ├── stack_summary.svg.jinja
     ├── activity_stats.svg.jinja
     ├── timeline_mini.svg.jinja
     ├── featured_projects.svg.jinja
     ├── modes.svg.jinja
-    ├── map.svg.jinja
-    └── README.md.jinja
+    └── README.md.jinja          # the front page (tiles from scripts/tiles.py)
 ```
 
 ## Claims registry (ADR-014)

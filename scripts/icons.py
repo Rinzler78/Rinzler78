@@ -20,7 +20,7 @@ from __future__ import annotations
 
 import pathlib
 from dataclasses import dataclass, field
-from html import escape
+from html import escape, unescape
 
 import defusedxml.ElementTree as ET
 
@@ -132,12 +132,13 @@ def render(
     """
     if spec.kind == "initials":
         font = initials_font_size(spec.initials, size)
-        room = size - 8
-        # At the 20-unit floor four letters overflow a small badge: compress
-        # the glyphs to the badge instead of shrinking the text below 20.
+        room = size - 6
+        natural = len(spec.initials) * _MONO_ADVANCE * font
+        # At the 20-unit floor four letters overflow a small badge: tighten
+        # the letter spacing instead of shrinking the text below 20.
         fit = (
-            f' textLength="{_t(room)}" lengthAdjust="spacingAndGlyphs"'
-            if len(spec.initials) * _MONO_ADVANCE * font > room
+            f' letter-spacing="{_t((room - natural) / len(spec.initials))}"'
+            if natural > room
             else ""
         )
         return (
@@ -203,12 +204,14 @@ def band_units(count: int) -> int:
     return count * BAND_PITCH - (BAND_PITCH - BAND_ICON) if count else 0
 
 
-def band_svg(tech_ids: list[str], doc: dict, theme: str) -> str:
+def band_svg(
+    tech_ids: list[str], doc: dict, theme: str, labels: dict | None = None
+) -> str:
     """One line of in-house band icons on the skillicons.dev template."""
     bg, fallback = BAND_BG[theme], BAND_INK[theme]
     width = band_units(len(tech_ids))
     parts = []
-    labels = []
+    names = []
     for i, tech_id in enumerate(tech_ids):
         spec = tile_icon(tech_id, doc)
         x = i * BAND_PITCH
@@ -219,8 +222,8 @@ def band_svg(tech_ids: list[str], doc: dict, theme: str) -> str:
         offset = (BAND_ICON - BAND_LOGO) / 2
         fill = ink_for(spec.color, bg, fallback) if spec.color else fallback
         parts.append(render(spec, x + offset, offset, BAND_LOGO, fill, {}))
-        labels.append(tech_id)
-    aria = escape(", ".join(labels))
+        names.append((labels or {}).get(tech_id, tech_id))
+    aria = escape(unescape(", ".join(names)))
     return (
         f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {BAND_ICON}" '
         f'width="{width}" height="{BAND_ICON}" role="img" aria-label="{aria}">'

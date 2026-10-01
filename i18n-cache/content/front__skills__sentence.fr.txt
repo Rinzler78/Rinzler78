@@ -1,0 +1,1 @@
+{count} technologies pratiquées au moins {threshold} h, réparties en {domains} domaines et classées de la plus récente à la plus ancienne ; {active} sont actives en {year}, dont {top}.

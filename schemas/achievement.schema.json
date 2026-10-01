@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Achievements",
+  "description": "What was done, newest first on the front page (ADR-016 section 1). Each achievement names the claim that attests it (ADR-014): it is published only once that claim is in data/claims.lock.json, and its wording, per language, is what the lock hashes.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["id", "claim", "context", "date", "fr", "en"],
+    "properties": {
+      "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+      "claim": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+      "context": { "enum": ["product", "mission", "personal", "study"] },
+      "date": {
+        "description": "Year (YYYY) or month (YYYY-MM) of the achievement.",
+        "type": "string",
+        "pattern": "^[0-9]{4}(-(0[1-9]|1[0-2]))?$"
+      },
+      "fr": { "type": "string", "minLength": 1 },
+      "en": { "type": "string", "minLength": 1 }
+    }
+  }
+}

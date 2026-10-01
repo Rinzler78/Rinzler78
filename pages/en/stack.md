@@ -25,6 +25,33 @@
   </tr>
 </table>
 
+## Où le temps est passé
+
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="../../assets/svg/en/light/journey-share.svg" />
+  <img src="../../assets/svg/en/journey-share.svg" width="100%" alt="Share of effort per domain, each year normalized to 100%" />
+</picture>
+
+**The arc reads at a glance.** Leading domain, period by period: Mobile from 2006 to 2008, Mobile from 2014 to 2020 and AI &amp; LLM since 2022. Each year is scaled to a whole: this is a split, not a volume.
+
+## Compétences les mieux ancrées
+
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="../../assets/svg/en/light/top-skills.svg" />
+  <img src="../../assets/svg/en/top-skills.svg" width="100%" alt="Highest-level skills, in measured coding hours" />
+</picture>
+
+**Hours come from a dated timeline and from commit days**, never from self-assessment. The level follows a published convention: working from 50 h, professional from 500 h, advanced from 1,600 h and expert from 5,000 h.
+
+## Un profil large
+
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="../../assets/svg/en/light/domain-split.svg" />
+  <img src="../../assets/svg/en/domain-split.svg" width="100%" alt="Lifetime exposure split by domain, as shares" />
+</picture>
+
+**Versatile, not scattered.** Mobile holds 42.6% of the hours, then Embedded &amp; Systems 19.2%, DevOps &amp; Infrastructure 12.1% and AI &amp; LLM 11.4%. The shares overlap on purpose — a file counts in every domain it touches — so only percentages are shown, never a total of hours.
+
 ## All skills, by domain
 **Embedded &amp; Systems**
 

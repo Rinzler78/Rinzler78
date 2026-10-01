@@ -1,0 +1,1 @@
+{role}, je code depuis {since}. Au compteur : {years} ans de code, environ {hours} heures de pratique mesurées, {days} jours de commit depuis {first_year} et {skills} technologies au niveau avancé ou expert.

@@ -54,7 +54,7 @@ def build_signature_arc(domains: list[dict]) -> list[dict]:
     Selects the domains carrying ``arc_order`` (a curated subset — the years
     and signature words are editorial, user-validated), ordered by it, and
     projects each to ``{label, year, signature, domain_id}``. Single source
-    of truth for the hero hook and for ``content.boot_log`` consistency.
+    of truth for the arc line of the identity tile.
     """
     nodes = sorted(
         (d for d in domains if d.get("arc_order") is not None),

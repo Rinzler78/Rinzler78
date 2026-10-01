@@ -1,0 +1,6 @@
+{
+  "fr_hash": "0bde0f5d0db7865a581e05482e6bd6e3274b60c84fdcade081a9987426385740",
+  "en": "$ uptime --since={since}",
+  "manual": true,
+  "reviewed": false
+}

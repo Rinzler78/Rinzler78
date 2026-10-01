@@ -256,3 +256,5 @@ mcpu
 Consolas
 Menlo
 perline
+Segoe
+tspan

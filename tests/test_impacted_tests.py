@@ -21,7 +21,15 @@ def test_a_module_selects_its_sibling_guard():
 def test_generation_modules_also_pull_the_artifact_guards():
     selected = select(["scripts/generate.py"])
     assert "tests/test_generation.py" in selected
-    assert "tests/test_hero.py" in selected
+    assert "tests/test_front_page.py" in selected
+
+
+def test_front_page_modules_pull_their_guard_and_the_artifact_guards():
+    for module in ("front", "tiles", "icons"):
+        selected = select([f"scripts/{module}.py"])
+        assert "tests/test_front_page.py" in selected, module
+    assert "tests/test_front.py" in select(["scripts/front.py"])
+    assert "tests/test_icons.py" in select(["scripts/icons.py"])
 
 
 def test_data_changes_pull_the_data_and_artifact_guards():
@@ -50,7 +58,7 @@ def test_prose_alone_selects_nothing():
 
 
 def test_one_widening_file_widens_the_whole_set():
-    assert select(["tests/test_hero.py", "pyproject.toml"]) is None
+    assert select(["tests/test_front_page.py", "pyproject.toml"]) is None
 
 
 # --- sub-packages (scripts/<pkg>/ ↔ tests/<pkg>/) ---------------------------

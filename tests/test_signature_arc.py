@@ -6,7 +6,6 @@ single source. `content.boot_log` must stay consistent with those years.
 """
 
 import json
-import re
 from pathlib import Path
 
 from scripts.view_builder import build_signature_arc
@@ -72,15 +71,6 @@ def test_signature_arc_ignores_unspecified_order():
     assert arc == []
 
 
-# boot_log line -> arc node label it must agree with.
-_BOOT_LOG_TO_ARC = {
-    "embedded": "embedded",
-    "mobile": "mobile",
-    "cloud": "cloud",
-    "llm": "ai",
-}
-
-
 def test_arc_gradient_stops_are_valid_palette_keys():
     # The hero ribbon gradient encodes the arc (warm origin -> cool ai). Stops
     # are palette keys so they resolve per-palette (light + dark).
@@ -90,20 +80,3 @@ def test_arc_gradient_stops_are_valid_palette_keys():
     for key in stops:
         assert key in theme["palette"], f"{key} missing from dark palette"
         assert key in theme["palette_light"], f"{key} missing from light palette"
-
-
-def test_boot_log_years_match_the_signature_arc():
-    domains = json.loads((DATA / "domains.json").read_text(encoding="utf-8"))
-    content = json.loads((DATA / "content.json").read_text(encoding="utf-8"))
-    arc_year = {n["label"]: n["year"] for n in build_signature_arc(domains)}
-
-    for line in content["boot_log"]["lines"]:
-        m = re.match(r"\[\w+\]\s+(\w+)\.ko\s+.*?(\d{4})", line)
-        if not m:
-            continue
-        node = _BOOT_LOG_TO_ARC.get(m.group(1))
-        if node is None:
-            continue
-        assert int(m.group(2)) == arc_year[node], (
-            f"boot_log {m.group(1)}.ko {m.group(2)} != arc {node} {arc_year[node]}"
-        )

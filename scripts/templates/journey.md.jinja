@@ -20,7 +20,7 @@
 ## {% if lang == 'en' %}Professional experience{% else %}Expérience professionnelle{% endif %}
 
 {% for x in experiences | sort(attribute='start', reverse=true) %}
-- **{{ x.start }} → {{ x.end or ('now' if lang == 'en' else "aujourd'hui") }}** · {{ x.role }} — {{ x.org }}{{ (' _(' ~ x.type ~ ')_') if x.type else '' }}
+- <a id="exp-{{ x.id }}"></a>**{{ x.start }} → {{ x.end or ('now' if lang == 'en' else "aujourd'hui") }}** · {{ x.role }} — {{ x.org }}{{ (' _(' ~ x.type ~ ')_') if x.type else '' }}
 {% endfor %}
 
 {{ pc.back(root, lang) }}
