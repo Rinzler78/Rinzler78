@@ -114,11 +114,28 @@ def _check_calendar(aggregates: dict) -> None:
 
 
 def _check_period(tech_id: str, entry: dict, as_of: str | None) -> None:
-    """``first_year`` <= ``last_year``; ``active`` iff the last year is the
-    year of ``activity_as_of`` (aggregates v4)."""
+    """The period sits inside the raw months and the activity date:
+    ``year(first) <= first_year <= last_year <= year(last) <= year(as_of)``,
+    and ``active`` iff the last year is the year of ``activity_as_of``
+    (aggregates v4)."""
     first, last = entry.get("first_year"), entry.get("last_year")
     if first is None or last is None:
         return
+    if as_of is not None and last > int(as_of[:4]):
+        raise DataLoadError(
+            f"Aggregates tech {tech_id!r}: last_year {last} after activity_as_of "
+            f"{as_of}"
+        )
+    if entry.get("first") and first < int(entry["first"][:4]):
+        raise DataLoadError(
+            f"Aggregates tech {tech_id!r}: first_year {first} before its first "
+            f"month {entry['first']}"
+        )
+    if entry.get("last") and last > int(entry["last"][:4]):
+        raise DataLoadError(
+            f"Aggregates tech {tech_id!r}: last_year {last} after its last month "
+            f"{entry['last']}"
+        )
     if first > last:
         raise DataLoadError(
             f"Aggregates tech {tech_id!r}: first_year {first} after last_year {last}"

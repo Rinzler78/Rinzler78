@@ -383,3 +383,45 @@ def test_band_width_keeps_the_skillicons_scale():
     # same scale, so an in-house icon is the size of a skillicons one.
     assert front.band_width(16) == 834
     assert front.band_width(1) == round(256 * 834 / (16 * 300 - 44))
+
+
+# --- Review fixes ---------------------------------------------------------------
+
+
+def test_a_project_on_both_registries_presents_both():
+    copy = {
+        "registries": {"pypi": "PyPI", "dockerhub": "Docker Hub"},
+        "legacy": "archived",
+        "badges": {"pypi": "D", "dockerhub": "P", "stars": "S"},
+        "aria": "{name} : {summary} Stack : {techs}.",
+    }
+    both = _project(metrics={"pypi": "pkg-name", "dockerhub": "me/img"})
+    entry = front.oss_entry(front.open_source([both])[0], {"python": "Python"}, copy)
+    assert entry["registries"] == ["PyPI", "Docker Hub"]
+    assert entry["commands"] == ["$ pip install pkg-name", "$ docker pull me/img"]
+    assert [b["alt"] for b in entry["badges"]] == ["D", "P", "S"]
+    assert entry["techs"] == ["Python"]
+
+
+def test_band_segments_keep_the_band_order_in_same_source_runs():
+    from scripts.icons import BandEntry
+
+    entries = [
+        BandEntry("skillicons", "cs"),
+        BandEntry("local", "nfc"),
+        BandEntry("local", "bluetooth"),
+        BandEntry("skillicons", "py"),
+    ]
+    assert front.band_segments(entries, per_line=16) == [
+        {"source": "skillicons", "keys": ["cs"]},
+        {"source": "local", "keys": ["nfc", "bluetooth"]},
+        {"source": "skillicons", "keys": ["py"]},
+    ]
+
+
+def test_a_band_run_longer_than_a_line_is_split():
+    from scripts.icons import BandEntry
+
+    entries = [BandEntry("skillicons", f"i{n}") for n in range(5)]
+    segments = front.band_segments(entries, per_line=2)
+    assert [s["keys"] for s in segments] == [["i0", "i1"], ["i2", "i3"], ["i4"]]

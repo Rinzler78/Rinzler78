@@ -44,3 +44,15 @@ def test_an_entry_wider_than_the_tile_wraps_onto_two_lines():
 def test_initials_entries_carry_no_badge():
     (seg,) = _segments([_row("GPRS", icon=INITIALS)])
     assert seg.icon is False and seg.x == tiles.X0
+
+
+def test_an_outlined_title_that_cannot_fit_at_the_floor_fails():
+    import pytest
+
+    with pytest.raises(tiles.LayoutError, match="too wide"):
+        tiles.outline(0, 0, "W" * 60, 34, "#000", max_width=200)
+
+
+def test_an_outlined_title_shrinks_to_fit_when_it_can():
+    _, width = tiles.outline(0, 0, "aioz-node-auto-withdraw", 34, "#000", max_width=400)
+    assert width <= 400

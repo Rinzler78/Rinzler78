@@ -82,7 +82,7 @@ def test_every_half_tile_is_415_px_and_carries_alt_text():
         for tag in re.findall(r'<img src="assets/svg/[^"]+"[^>]*>', text):
             name = re.search(r'src="assets/svg/(?:en/)?([^"]+)"', tag).group(1)
             assert re.search(r'alt="[^"]+"', tag), tag
-            if name != "skills-band.svg":
+            if not name.startswith("skills-band"):
                 assert 'width="415"' in tag, tag
 
 
@@ -212,3 +212,17 @@ def test_english_page_carries_english_copy():
     for french in ("Comment je peux aider", "jours de commit", "aujourd'hui"):
         assert french not in en
     assert "commit days" in en
+
+
+def test_icon_band_is_one_line_in_band_order():
+    fr, _ = _fresh_text()
+    section = fr.split("## Compétences", 1)[1].split("skills-embedded.svg", 1)[0]
+    band_lines = [
+        line
+        for line in section.splitlines()
+        if "skillicons.dev" in line or "skills-band-" in line
+    ]
+    assert len(band_lines) == 1  # one flowing paragraph, runs in order
+    assert band_lines[0].index("skills-band-1.svg") < band_lines[0].index(
+        "skillicons.dev"
+    )

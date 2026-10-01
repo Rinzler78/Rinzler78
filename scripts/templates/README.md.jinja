@@ -50,12 +50,9 @@
 
 ## {{ f.skills.title }}
 
-{% for row in f.skills.served_rows %}
-<picture><source media="(prefers-color-scheme: light)" srcset="{{ skillicons_url(row, 'light') | replace('&', '&amp;') }}" /><img src="{{ skillicons_url(row, 'dark') | replace('&', '&amp;') }}" width="{{ band_width(row | length) }}" alt="{{ f.skills.band_alt }}" /></picture>
-{% endfor %}
-{% if f.skills.local %}
-<picture><source media="(prefers-color-scheme: light)" srcset="assets/svg/{{ svg }}light/skills-band.svg" /><img src="assets/svg/{{ svg }}skills-band.svg" width="{{ band_width(f.skills.local | length) }}" alt="{{ f.skills.local_alt }}" /></picture>
-{% endif %}
+{# One flowing line: each same-source run is an inline image, in band order. #}
+{% for seg in f.skills.band %}{% if seg.source == 'skillicons' %}<picture><source media="(prefers-color-scheme: light)" srcset="{{ skillicons_url(seg['keys'], 'light') | replace('&', '&amp;') }}" /><img src="{{ skillicons_url(seg['keys'], 'dark') | replace('&', '&amp;') }}" width="{{ band_width(seg['keys'] | length) }}" alt="{{ f.skills.band_alt }}" /></picture>{% else %}<picture><source media="(prefers-color-scheme: light)" srcset="assets/svg/{{ svg }}light/{{ seg.file }}" /><img src="assets/svg/{{ svg }}{{ seg.file }}" width="{{ band_width(seg['keys'] | length) }}" alt="{{ seg.alt }}" /></picture>{% endif %}{{ ' ' if not loop.last else '' }}{% endfor %}
+
 
 {% for pair in f.skills.pairs %}
 {% for t in pair %}{{ half('skills-' ~ t.domain ~ '.svg', t.aria) }}{{ ' ' if not loop.last else '' }}{% endfor %}

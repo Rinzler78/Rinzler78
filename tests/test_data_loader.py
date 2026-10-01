@@ -284,3 +284,31 @@ def test_aggregates_period_years_must_be_ordered_and_active_consistent():
         check_aggregates_integrity(aggregates, _CATALOGUE, _DOMAINS)
     aggregates["techs"]["python"].update(last_year=2026, active=True)
     check_aggregates_integrity(aggregates, _CATALOGUE, _DOMAINS)
+
+
+def _with_period(**period) -> dict:
+    aggregates = _aggregates(python="languages")
+    aggregates["activity_as_of"] = "2026-03-01"
+    aggregates["techs"]["python"].update(
+        first="2018-11", last="2026-02", first_year=2018, last_year=2026, active=True
+    )
+    aggregates["techs"]["python"].update(period)
+    return aggregates
+
+
+def test_aggregates_period_must_sit_inside_the_raw_months():
+    with pytest.raises(DataLoadError, match="first_year"):
+        check_aggregates_integrity(_with_period(first_year=2017), _CATALOGUE, _DOMAINS)
+    aggregates = _with_period(last="2024-05", last_year=2025, active=False)
+    with pytest.raises(DataLoadError, match="last_year"):
+        check_aggregates_integrity(aggregates, _CATALOGUE, _DOMAINS)
+
+
+def test_aggregates_period_cannot_end_after_the_activity_date():
+    aggregates = _with_period(last="2099-01", last_year=2099, active=False)
+    with pytest.raises(DataLoadError, match="2099"):
+        check_aggregates_integrity(aggregates, _CATALOGUE, _DOMAINS)
+
+
+def test_aggregates_period_inside_the_raw_months_passes():
+    check_aggregates_integrity(_with_period(), _CATALOGUE, _DOMAINS)

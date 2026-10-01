@@ -200,6 +200,35 @@ def live_badges(project: dict, alts: dict) -> list[dict]:
     return badges
 
 
+def oss_entry(project: dict, labels: dict, copy: dict) -> dict:
+    """One open-source tile: every registry the project publishes to."""
+    metrics = project["metrics"]
+    registries, commands = [], []
+    if metrics.get("pypi"):
+        registries.append(copy["registries"]["pypi"])
+        commands.append(f"$ pip install {metrics['pypi']}")
+    if metrics.get("dockerhub"):
+        registries.append(copy["registries"]["dockerhub"])
+        commands.append(f"$ docker pull {metrics['dockerhub']}")
+    techs = [labels[t] for t in project["tech_ids"] if t != "git" and t in labels]
+    return {
+        "id": project["id"],
+        "name": project["name"],
+        "summary": project["summary"],
+        "registries": registries,
+        "commands": commands,
+        "legacy": copy["legacy"] if project.get("state") == "legacy" else "",
+        "techs": techs,
+        "badges": live_badges(project, copy["badges"]),
+        "aria": _fill(
+            copy["aria"],
+            name=project["name"],
+            summary=project["summary"],
+            techs=", ".join(techs),
+        ),
+    }
+
+
 # --- Skills ---------------------------------------------------------------------
 
 
@@ -213,6 +242,25 @@ def skill_tiles(skills: list[dict], domains: list[dict], bars: int) -> list[dict
                 {"domain": domain["id"], "bars": rows[:bars], "also": rows[bars:]}
             )
     return tiles
+
+
+def band_segments(entries: list, per_line: int) -> list[dict]:
+    """The icon band in its order: runs of one source, split at ``per_line``.
+
+    Each run becomes one image (a skillicons.dev URL or a local SVG), so the
+    band keeps the order of ``band_entries`` instead of grouping by source.
+    """
+    runs: list[dict] = []
+    for entry in entries:
+        if runs and runs[-1]["source"] == entry.source:
+            runs[-1]["keys"].append(entry.key)
+        else:
+            runs.append({"source": entry.source, "keys": [entry.key]})
+    return [
+        {"source": run["source"], "keys": chunk}
+        for run in runs
+        for chunk in band_rows(run["keys"], per_line)
+    ]
 
 
 def period(skill: dict, active: str) -> str:
@@ -415,37 +463,10 @@ def build_front(data: dict, lang: str) -> dict:
     # Open source -------------------------------------------------------------
     labels = {t["id"]: t["label"] for t in data["techs"]}
     oss_copy = copy["oss"]
-    oss = []
+    oss = [oss_entry(p, labels, oss_copy) for p in open_source(data["projects"])]
     registries: list[str] = []
-    for p in open_source(data["projects"]):
-        metrics = p["metrics"]
-        registry = "pypi" if metrics.get("pypi") else "dockerhub"
-        if oss_copy["registries"][registry] not in registries:
-            registries.append(oss_copy["registries"][registry])
-        command = (
-            f"$ pip install {metrics['pypi']}"
-            if registry == "pypi"
-            else f"$ docker pull {metrics['dockerhub']}"
-        )
-        techs = [labels[t] for t in p["tech_ids"] if t != "git" and t in labels]
-        oss.append(
-            {
-                "id": p["id"],
-                "name": p["name"],
-                "summary": p["summary"],
-                "registry": oss_copy["registries"][registry],
-                "command": command,
-                "legacy": oss_copy["legacy"] if p.get("state") == "legacy" else "",
-                "techs": techs,
-                "badges": live_badges(p, oss_copy["badges"]),
-                "aria": _fill(
-                    oss_copy["aria"],
-                    name=p["name"],
-                    summary=p["summary"],
-                    techs=", ".join(techs),
-                ),
-            }
-        )
+    for entry in oss:
+        registries += [r for r in entry["registries"] if r not in registries]
 
     # Skills ------------------------------------------------------------------
     sk = copy["skills"]
@@ -472,8 +493,17 @@ def build_front(data: dict, lang: str) -> dict:
         )
     ordered_ids = [r["id"] for t in tiles for r in t["bars"] + t["also"]]
     band = band_entries(ordered_ids, data["icons"])
-    served_ids = [e.key for e in band if e.source == "skillicons"]
-    local_ids = [e.key for e in band if e.source == "local"]
+    segments = band_segments(band, BAND_PER_LINE)
+    local_count = 0
+    for segment in segments:
+        segment["alt"] = (
+            ", ".join(labels[t] for t in segment["keys"])
+            if segment["source"] == "local"
+            else ""
+        )
+        if segment["source"] == "local":
+            local_count += 1
+            segment["file"] = f"skills-band-{local_count}.svg"
     active = [s for s in skills if s["until"] is None]
     top_active = sorted(active, key=lambda s: (-s["hours"], s["id"]))[:3]
     skills_sentence = _fill(
@@ -558,11 +588,8 @@ def build_front(data: dict, lang: str) -> dict:
         "skills": {
             "title": sk["title"],
             "band_alt": sk["band_alt"],
-            "skillicons": served_ids,
-            "served_rows": band_rows(served_ids, BAND_PER_LINE),
-            "local": local_ids,
+            "band": segments,
             "labels": labels,
-            "local_alt": ", ".join(labels[t] for t in local_ids),
             "tiles": tiles,
             "pairs": pairs(tiles),
             "sentence": skills_sentence,

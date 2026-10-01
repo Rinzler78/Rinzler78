@@ -93,6 +93,9 @@ def outline(x, y, s, size, fill, anchor="start", max_width=None):
     if max_width and o["width"] > max_width:
         size = max(MIN_FS, size * max_width / o["width"])
         o = outline_text(s, FONT, size)
+        # Re-measured: at the 20-unit floor the text may still not fit.
+        if o["width"] > max_width + 0.5:
+            raise LayoutError(f"outlined text too wide at the {MIN_FS}-unit floor: {s}")
     shift = {"start": 0, "middle": o["width"] / 2, "end": o["width"]}[anchor]
     return (
         f'<path transform="translate({_t(x - shift)},{_t(y)})" fill="{fill}" '
@@ -224,7 +227,7 @@ def figures_tile(view: dict, pal: dict) -> str:
 
 
 def oss_tile(project: dict, pal: dict) -> str:
-    eyebrow = project["registry"].lower()
+    eyebrow = " · ".join(r.lower() for r in project["registries"])
     if project["legacy"]:
         eyebrow += f" · {project['legacy']}"
     b = mono(X0, 70, eyebrow, pal["dim"])
@@ -241,7 +244,7 @@ def oss_tile(project: dict, pal: dict) -> str:
     for line in techs[:2]:
         b += mono(X0, y, line, pal["accent"], weight=600)
         y += 28
-    command = wrap_command(project["command"], WIDTH)
+    command = [line for cmd in project["commands"] for line in wrap_command(cmd, WIDTH)]
     cy = OSS_H - INSET - 34 - 28 * (len(command) - 1)
     if cy < y + 10:
         raise LayoutError(f"oss {project['id']}: content overflows the tile")
@@ -504,10 +507,11 @@ def render_all(view: dict, data: dict, mode: str) -> dict[str, str]:
         height = max(skills_height(t) for t in pair)
         for tile in pair:
             out[f"skills-{tile['domain']}.svg"] = skills_tile(tile, pal, height, ticks)
-    if view["skills"]["local"]:
-        out["skills-band.svg"] = icons.band_svg(
-            view["skills"]["local"], data["icons"], mode, view["skills"]["labels"]
-        )
+    for segment in view["skills"]["band"]:
+        if segment["source"] == "local":
+            out[segment["file"]] = icons.band_svg(
+                segment["keys"], data["icons"], mode, view["skills"]["labels"]
+            )
     activity = view["activity"]
     height = calendar_height(max(len(h["years"]) for h in activity["halves"]))
     for half in activity["halves"]:
