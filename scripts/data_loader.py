@@ -85,6 +85,32 @@ def check_referential_integrity(bag: dict[str, list[dict]]) -> None:
                 )
 
 
+def _check_calendar(aggregates: dict) -> None:
+    """Calendar days are real dates, none after ``activity_as_of``, one per
+    commit day of the coverage."""
+    calendar = aggregates.get("calendar")
+    if calendar is None:
+        return
+    as_of = aggregates.get("activity_as_of")
+    for day in sorted(calendar):
+        try:
+            date.fromisoformat(day)
+        except ValueError as e:
+            raise DataLoadError(
+                f"Aggregates calendar day {day!r} is not a calendar date"
+            ) from e
+        if as_of is not None and day > as_of:
+            raise DataLoadError(
+                f"Aggregates calendar day {day} is after activity_as_of {as_of}"
+            )
+    commit_days = aggregates.get("coverage", {}).get("commit_days")
+    if commit_days is not None and commit_days != len(calendar):
+        raise DataLoadError(
+            f"Aggregates calendar holds {len(calendar)} day(s), coverage "
+            f"commit_days says {commit_days}"
+        )
+
+
 def check_aggregates_integrity(
     aggregates: dict, techs: list[dict], domains: list[dict]
 ) -> None:
@@ -108,6 +134,8 @@ def check_aggregates_integrity(
             raise DataLoadError(
                 f"Aggregates activity_as_of {as_of!r} is not a calendar date"
             ) from e
+
+    _check_calendar(aggregates)
 
     catalogue = {t["id"]: t.get("domain") for t in techs}
     domain_ids = {d["id"] for d in domains}

@@ -228,12 +228,16 @@ grants nothing, `level_source` stays `hours` and the claim appears as
 author's `evidence_levels` in `declared.json`, and lists pending claims (not a
 failure).
 
-**Output** `data/activity/aggregates.json` (`version` 2 since ADR-018): `version`, `activity_as_of` (last
-evidence day), `coverage` (commit days, public days, public share),
-`context_totals`, `levels`, `by_month` (`context`, `techs`, `domains`), `techs`
-(`hours`, `display_hours` rounded down, `first`, `last`,
-`declared_share`, `kind`, `domain`, and the level fields above) and `notes`. No repository, identity or
-private source id is written.
+**Output** `data/activity/aggregates.json` (`version` 3: ADR-018 level fields,
+then the commit calendar): `version`, `activity_as_of` (last evidence day),
+`coverage` (commit days, public days, public share), `context_totals`, `levels`,
+`by_month` (`context`, `techs`, `domains`), `calendar` (every commit day:
+`context` — `pro` when a repository of the period's source was touched, `study`
+in a study period, else `personal` — and `intensity`, the 1–4 quartile of the
+day's analyzed files among all days), `techs` (`hours`, `display_hours` rounded
+down, `first`, `last`, `declared_share`, `kind`, `domain`, and the level fields
+above) and `notes`. No repository, identity, private source id or per-day count
+is written.
 
 **Sanity checks** (the file is not written when one fails): no tech starts
 before its first commit or declared period, nor before its release month

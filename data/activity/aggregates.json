@@ -5885,6 +5885,5904 @@
       }
     }
   },
+  "calendar": {
+    "2014-04-24": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2014-05-06": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2014-05-12": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2014-05-13": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2014-05-14": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2014-06-10": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2014-06-12": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2014-06-13": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2014-06-14": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2014-06-15": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2014-06-20": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2014-06-24": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2014-06-25": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2014-07-03": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2014-07-04": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2014-07-07": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2014-07-08": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2014-07-10": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2014-07-11": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2014-07-16": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2014-07-17": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2014-07-18": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2014-07-21": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2014-07-22": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2014-07-25": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2014-07-28": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2014-07-30": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2014-07-31": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2014-08-07": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2014-08-09": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2014-08-15": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2014-08-19": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2014-08-20": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2014-08-21": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2014-08-22": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2014-08-23": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2014-08-29": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2014-08-30": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2014-09-01": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2014-09-03": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2014-09-16": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2014-09-22": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2014-09-24": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2014-09-25": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2014-09-26": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2014-09-29": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2014-09-30": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2014-10-01": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2014-10-06": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2014-10-07": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2014-10-08": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2014-10-13": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2014-10-14": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2014-10-15": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2014-10-16": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2014-10-17": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2014-10-20": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2014-10-21": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2014-10-23": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2014-10-24": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2014-10-27": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2014-10-28": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2014-10-29": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2014-11-04": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2014-11-05": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2014-11-06": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2014-11-08": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2014-11-11": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2014-11-12": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2014-11-21": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2014-11-25": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2014-12-10": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2014-12-11": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2014-12-16": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2014-12-18": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2014-12-24": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2014-12-31": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2015-01-05": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2015-01-06": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2015-01-14": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-01-19": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2015-01-20": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2015-01-22": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2015-01-23": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2015-01-26": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2015-01-28": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2015-01-29": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-02-03": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-02-04": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-02-05": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-02-09": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-02-10": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-02-11": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-02-12": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2015-02-14": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2015-02-16": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2015-02-17": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2015-02-18": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-02-19": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-02-20": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2015-02-24": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-02-25": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-02-27": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-03-03": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-03-05": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-03-09": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-03-12": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2015-03-13": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2015-03-16": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2015-03-17": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-03-19": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-03-20": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-03-23": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-03-25": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2015-03-26": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-03-27": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2015-03-28": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2015-03-29": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2015-03-30": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2015-04-01": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-04-03": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2015-04-04": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2015-04-08": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-04-11": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2015-04-13": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2015-04-14": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2015-04-16": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2015-04-28": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2015-04-30": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2015-05-01": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2015-05-02": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2015-05-05": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-05-06": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2015-05-07": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2015-05-12": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2015-05-13": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-05-14": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2015-05-18": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-05-19": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2015-05-20": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-05-21": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2015-05-22": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2015-05-26": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2015-06-03": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-06-04": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-06-05": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2015-06-08": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2015-06-11": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-06-12": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-06-13": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-06-14": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2015-06-15": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-06-16": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2015-06-17": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2015-06-29": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2015-06-30": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2015-07-02": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2015-07-03": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-07-05": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2015-07-06": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-07-07": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-07-08": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2015-07-16": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2015-07-17": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2015-07-20": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2015-07-23": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-07-24": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2015-07-30": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2015-08-03": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2015-08-11": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-08-12": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-08-17": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-08-18": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2015-08-19": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2015-08-23": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-08-25": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2015-08-27": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-08-28": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2015-08-31": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2015-09-01": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2015-09-03": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2015-09-04": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2015-09-07": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-09-08": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2015-09-10": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2015-09-11": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2015-09-15": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2015-09-18": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-09-21": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2015-09-22": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-09-23": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-09-24": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2015-10-13": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2015-10-14": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2015-10-15": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2015-10-16": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2015-10-19": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2015-10-20": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2015-10-22": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-10-23": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2015-10-26": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-10-27": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2015-10-28": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2015-10-29": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-11-02": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2015-11-04": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-11-05": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2015-11-11": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2015-11-12": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2015-11-16": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2015-11-17": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2015-11-18": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2015-11-19": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2015-11-20": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2015-11-23": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2015-11-24": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2015-11-25": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2015-11-30": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-12-01": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2015-12-02": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2015-12-03": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2015-12-07": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2015-12-08": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-12-09": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2015-12-10": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-12-11": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2015-12-17": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2015-12-18": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2015-12-23": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-12-24": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-12-28": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2015-12-29": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2015-12-30": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2016-01-05": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2016-01-12": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2016-01-13": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2016-01-20": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2016-01-27": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2016-01-29": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2016-02-01": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2016-02-02": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2016-02-03": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2016-02-04": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2016-02-05": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2016-02-06": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2016-02-08": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2016-02-09": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2016-02-10": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2016-02-12": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2016-02-15": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2016-02-16": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2016-02-17": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2016-02-19": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2016-02-20": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2016-02-21": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2016-02-24": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2016-02-29": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2016-03-02": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2016-03-03": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2016-03-04": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2016-03-07": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2016-03-16": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2016-03-21": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2016-03-24": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2016-03-25": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2016-03-31": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2016-04-01": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2016-04-06": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2016-04-07": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2016-04-11": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2016-04-13": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2016-04-14": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2016-04-15": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2016-04-20": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2016-04-26": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2016-05-24": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2016-05-31": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2016-06-02": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2016-06-06": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2016-06-16": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2016-06-19": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2016-06-23": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2016-06-24": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2016-06-27": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2016-06-28": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2016-06-29": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2016-07-20": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2016-07-21": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2016-07-29": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2016-08-02": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2016-08-03": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2016-08-11": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2016-08-16": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2016-08-30": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2016-08-31": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2016-09-01": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2016-09-12": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2016-09-20": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2016-09-27": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2016-10-03": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2016-10-06": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2016-10-07": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2016-10-10": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2016-10-11": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2016-10-14": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2016-10-17": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2016-10-18": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2016-10-19": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2016-10-24": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2016-10-26": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2016-11-01": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2016-11-02": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2016-11-03": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2016-11-07": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2016-11-08": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2016-11-10": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2016-11-17": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2016-11-18": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2016-11-21": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2016-11-23": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2016-11-24": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2016-11-25": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2016-11-26": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2016-11-28": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2016-11-29": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2016-12-05": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2016-12-09": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2016-12-12": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2016-12-13": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2016-12-14": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2016-12-15": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2016-12-17": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2016-12-19": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2017-01-02": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2017-01-03": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2017-01-06": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2017-01-09": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2017-01-13": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2017-01-14": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2017-01-17": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2017-01-19": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2017-01-23": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2017-01-25": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2017-01-30": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2017-01-31": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2017-02-01": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2017-02-06": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2017-02-07": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2017-02-08": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2017-02-09": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2017-02-10": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2017-02-12": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2017-02-13": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2017-02-16": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2017-02-18": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2017-02-20": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2017-02-21": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2017-02-22": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2017-02-23": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2017-02-25": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2017-02-27": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2017-03-08": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2017-03-12": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2017-03-13": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2017-03-14": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2017-03-17": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2017-03-20": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2017-03-22": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2017-03-27": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2017-04-05": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2017-04-07": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2017-04-12": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2017-04-13": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2017-04-14": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2017-04-18": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2017-04-20": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2017-04-21": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2017-04-22": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2017-04-24": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2017-04-25": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2017-04-26": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2017-04-27": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2017-04-28": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2017-05-10": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2017-05-12": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2017-05-15": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2017-05-17": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2017-05-18": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2017-05-19": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2017-05-22": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2017-05-23": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2017-05-24": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2017-05-25": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2017-05-29": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2017-05-30": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2017-06-01": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2017-06-02": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2017-06-06": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2017-06-08": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2017-06-09": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2017-06-12": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2017-06-13": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2017-06-15": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2017-06-19": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2017-06-20": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2017-06-25": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2017-06-30": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2017-07-05": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2017-07-06": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2017-07-07": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2017-07-10": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2017-07-11": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2017-07-12": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2017-07-13": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2017-07-17": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2017-07-19": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2017-07-20": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2017-07-21": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2017-07-24": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2017-07-25": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2017-07-26": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2017-07-27": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2017-07-28": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2017-08-01": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2017-08-04": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2017-08-08": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2017-08-09": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2017-08-10": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2017-08-11": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2017-08-16": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2017-08-17": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2017-08-18": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2017-08-21": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2017-08-22": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2017-08-24": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2017-08-25": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2017-09-12": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2017-09-13": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2017-09-14": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2017-09-18": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2017-09-26": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2017-09-29": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2017-10-02": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2017-10-09": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2017-10-11": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2017-10-13": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2017-10-17": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2017-10-18": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2017-10-19": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2017-10-22": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2017-10-23": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2017-10-26": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2017-10-27": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2017-10-30": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2017-11-02": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2017-11-04": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2017-11-05": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2017-11-06": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2017-11-08": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2017-11-09": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2017-11-12": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2017-11-21": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2017-12-05": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2017-12-15": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2017-12-20": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2017-12-21": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2017-12-22": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2017-12-27": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2018-01-19": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2018-01-22": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2018-01-29": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2018-02-01": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2018-02-02": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2018-02-05": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2018-02-07": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2018-02-15": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2018-02-19": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2018-02-20": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2018-03-01": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2018-03-02": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2018-03-05": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2018-03-06": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2018-03-07": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2018-03-08": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2018-03-09": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2018-03-12": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2018-03-13": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2018-03-14": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2018-03-15": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2018-03-16": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2018-03-26": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2018-04-05": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2018-04-09": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2018-04-10": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2018-04-11": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2018-04-13": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2018-04-16": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2018-04-17": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2018-04-18": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2018-04-19": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2018-04-20": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2018-04-23": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2018-04-24": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2018-04-25": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2018-04-26": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2018-05-07": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2018-05-09": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2018-05-11": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2018-05-14": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2018-05-17": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2018-05-18": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2018-05-22": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2018-05-23": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2018-05-24": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2018-05-25": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2018-05-28": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2018-05-29": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2018-06-01": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2018-06-04": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2018-06-05": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2018-06-06": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2018-06-07": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2018-06-13": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2018-06-14": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2018-06-15": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2018-06-20": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2018-06-21": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2018-06-22": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2018-06-25": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2018-06-26": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2018-06-28": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2018-07-04": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2018-07-06": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2018-07-09": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2018-07-10": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2018-07-11": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2018-07-12": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2018-07-15": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2018-07-16": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2018-07-17": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2018-07-18": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2018-07-23": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2018-07-30": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2018-07-31": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2018-08-01": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2018-08-02": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2018-08-03": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2018-08-16": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2018-08-22": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2018-08-23": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2018-08-24": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2018-08-31": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2018-09-11": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2018-09-12": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2018-09-13": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2018-09-14": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2018-09-19": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2018-09-20": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2018-09-27": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2018-09-28": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2018-10-01": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2018-10-02": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2018-10-03": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2018-10-08": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2018-10-10": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2018-10-11": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2018-10-12": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2018-10-18": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2018-10-19": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2018-10-22": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2018-10-23": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2018-10-24": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2018-10-25": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2018-10-26": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2018-10-29": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2018-10-31": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2018-11-02": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2018-11-05": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2018-11-06": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2018-11-08": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2018-11-09": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2018-11-12": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2018-11-16": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2018-11-18": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2018-11-19": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2018-11-20": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2018-11-21": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2018-11-23": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2018-11-27": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2018-11-28": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2018-11-29": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2018-11-30": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2018-12-06": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2018-12-07": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2018-12-10": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2018-12-11": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2018-12-12": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2018-12-13": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2018-12-14": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2018-12-17": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2018-12-19": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2018-12-20": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2018-12-21": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2018-12-22": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2019-01-02": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2019-01-03": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2019-01-05": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2019-01-07": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2019-01-08": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2019-01-09": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2019-01-10": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2019-01-11": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-01-14": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2019-01-15": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2019-01-16": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2019-01-17": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2019-01-18": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2019-01-21": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2019-01-22": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-01-23": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2019-01-24": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2019-01-25": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2019-01-28": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2019-01-29": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2019-01-30": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2019-02-01": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2019-02-02": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2019-02-03": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2019-02-05": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-02-06": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2019-02-07": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2019-02-08": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2019-02-11": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2019-02-12": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2019-02-13": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2019-02-14": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2019-02-15": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2019-02-18": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2019-02-19": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2019-02-20": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2019-02-21": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2019-02-22": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2019-02-25": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2019-02-26": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2019-02-27": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2019-02-28": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2019-03-01": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2019-03-04": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-03-05": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2019-03-06": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2019-03-07": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-03-08": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-03-11": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2019-03-12": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-03-13": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-03-14": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-03-18": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2019-03-19": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2019-03-20": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-03-21": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-03-22": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2019-03-25": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2019-03-27": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2019-03-28": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2019-03-29": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2019-04-01": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-04-02": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2019-04-04": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2019-04-05": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2019-04-06": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-04-11": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-04-12": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2019-04-16": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2019-04-18": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2019-04-23": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-05-06": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-05-07": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2019-05-10": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-05-13": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2019-05-14": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2019-05-15": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-05-16": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2019-05-17": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2019-05-18": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2019-05-19": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2019-05-20": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2019-05-21": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2019-05-27": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-05-29": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2019-05-31": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2019-06-03": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-06-04": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2019-06-05": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-06-06": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2019-06-11": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2019-06-12": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-06-13": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-06-14": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2019-06-17": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2019-06-18": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2019-06-19": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2019-06-20": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2019-06-21": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2019-07-03": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-07-04": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-07-09": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2019-07-10": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2019-07-11": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2019-07-12": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-07-15": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-07-16": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-07-17": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-07-18": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2019-07-19": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-07-22": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2019-07-23": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-07-26": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2019-07-29": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2019-07-31": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2019-08-01": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2019-08-05": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2019-08-06": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-08-07": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2019-08-08": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-08-09": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-08-13": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-08-14": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-08-20": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2019-08-21": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2019-08-22": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2019-08-23": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2019-08-26": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2019-08-27": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2019-08-28": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-08-29": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2019-08-30": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-09-16": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2019-09-17": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-09-18": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2019-09-19": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-09-20": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-09-23": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-09-24": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2019-09-25": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-10-02": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-10-03": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2019-10-04": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-10-07": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2019-10-08": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2019-10-09": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-10-10": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2019-10-14": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-10-15": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2019-10-17": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2019-10-18": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2019-10-21": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2019-10-22": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2019-10-23": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2019-10-24": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2019-10-25": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2019-10-28": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-10-30": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2019-10-31": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-11-01": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2019-11-02": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2019-11-03": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2019-11-04": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-11-05": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2019-11-06": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2019-11-07": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2019-11-08": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2019-11-12": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-11-13": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2019-11-14": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2019-11-15": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2019-11-18": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2019-11-19": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2019-11-20": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2019-11-21": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2019-11-24": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2019-11-25": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2019-11-27": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2019-11-29": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2019-12-02": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2019-12-03": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2019-12-04": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-12-05": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2019-12-06": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2019-12-07": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2019-12-08": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2019-12-09": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-12-10": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-12-11": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-12-12": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2019-12-13": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-12-16": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-12-18": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2019-12-19": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2019-12-25": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2020-01-05": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2020-01-06": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2020-01-07": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2020-01-08": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2020-01-09": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2020-01-10": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2020-01-15": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2020-01-16": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2020-01-20": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2020-01-21": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2020-01-30": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2020-02-03": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2020-02-04": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2020-02-05": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2020-02-06": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2020-02-07": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2020-02-11": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2020-02-12": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2020-02-13": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2020-02-14": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2020-02-24": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2020-02-26": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2020-02-27": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2020-03-04": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2020-03-06": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2020-03-10": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2020-03-12": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2020-03-13": {
+      "context": "pro",
+      "intensity": 4
+    },
+    "2020-03-16": {
+      "context": "pro",
+      "intensity": 1
+    },
+    "2020-03-23": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2020-03-24": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2020-03-26": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2020-03-27": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2020-03-29": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2020-03-30": {
+      "context": "pro",
+      "intensity": 2
+    },
+    "2020-03-31": {
+      "context": "pro",
+      "intensity": 3
+    },
+    "2020-04-01": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2020-04-02": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2020-04-03": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2020-04-08": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2020-04-10": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2020-04-13": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2020-04-14": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2020-04-19": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2020-04-20": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2020-04-21": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2020-04-24": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2020-05-02": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2020-05-03": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2020-05-04": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2020-05-13": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2020-05-22": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2020-05-23": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2020-05-24": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2020-06-01": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2020-06-09": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2020-06-12": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2020-07-17": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2020-07-23": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2020-08-30": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2020-10-12": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2020-10-20": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2020-10-31": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2020-11-03": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2020-11-04": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2020-11-05": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2020-11-10": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2020-11-14": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2020-11-30": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2021-01-04": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2021-01-05": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2021-01-18": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2021-01-20": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2021-02-03": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2021-02-04": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2021-03-04": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2021-06-18": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2021-06-22": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2021-06-23": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2021-08-18": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2021-08-20": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2021-08-23": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2021-08-24": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2021-08-27": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2021-09-06": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2021-09-08": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2021-09-21": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2021-09-22": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2021-09-28": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2021-09-29": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2021-09-30": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2021-10-05": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2021-10-08": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2021-10-14": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2021-10-15": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2021-10-18": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2021-10-26": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2021-10-27": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2021-11-01": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2021-11-06": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2021-11-07": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2021-11-22": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2021-11-23": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2021-12-17": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2021-12-19": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2021-12-20": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2021-12-22": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2021-12-23": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2021-12-27": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2021-12-28": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2021-12-29": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2022-01-05": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2022-01-06": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2022-01-11": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2022-01-12": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2022-01-13": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2022-01-14": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2022-01-16": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2022-01-17": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2022-01-18": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2022-01-19": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2022-01-21": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2022-01-24": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2022-01-25": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2022-01-26": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2022-01-27": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2022-01-28": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2022-01-29": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2022-01-31": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2022-02-02": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2022-02-03": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2022-02-04": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2022-02-06": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2022-02-07": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2022-02-08": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2022-02-09": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2022-02-10": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2022-02-11": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2022-02-14": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2022-02-21": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2022-02-22": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2022-02-23": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2022-02-24": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2022-02-25": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2022-02-26": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2022-02-27": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2022-02-28": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2022-03-01": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2022-03-02": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2022-03-03": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2022-03-04": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2022-03-07": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2022-03-08": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2022-03-11": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2022-03-14": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2022-03-15": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2022-03-16": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2022-03-17": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2022-03-18": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2022-03-22": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2022-03-23": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2022-03-24": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2022-03-25": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2022-04-02": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2022-04-07": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2022-04-14": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2022-05-02": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2022-05-03": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2022-05-04": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2022-05-05": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2022-05-16": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2022-05-17": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2022-05-18": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2022-05-19": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2022-05-20": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2022-05-21": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2022-05-22": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2022-05-23": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2022-05-24": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2022-05-25": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2022-05-26": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2022-05-27": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2022-05-28": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2022-05-29": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2022-05-30": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2022-05-31": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2022-06-01": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2022-06-02": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2022-06-03": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2022-06-06": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2022-06-07": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2022-06-09": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2022-06-10": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2022-06-13": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2022-06-16": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2022-06-17": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2022-06-18": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2022-06-19": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2022-06-20": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2022-06-21": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2022-06-24": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2022-06-25": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2022-06-30": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2022-07-02": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2022-07-05": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2022-07-06": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2022-07-11": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2022-07-12": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2022-07-16": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2022-07-18": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2022-07-22": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2022-07-23": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2022-07-24": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2022-07-25": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2022-07-26": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2022-07-28": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2022-08-01": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2022-08-26": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2022-09-08": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2022-09-12": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2022-09-15": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2022-09-16": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2022-09-18": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2022-09-19": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2022-09-26": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2022-09-28": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2022-09-29": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2022-10-04": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2022-10-05": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2022-10-07": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2022-10-10": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2022-10-11": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2022-10-12": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2022-10-13": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2022-10-14": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2022-10-15": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2022-10-17": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2022-10-18": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2022-10-24": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2022-10-25": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2022-10-27": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2022-10-28": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2022-10-29": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2022-10-31": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2022-11-01": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2022-11-03": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2022-11-04": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2022-11-07": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2022-11-08": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2022-11-09": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2022-11-29": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2022-11-30": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2022-12-01": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2022-12-02": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2022-12-04": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2022-12-05": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2022-12-06": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2022-12-10": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2022-12-12": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2022-12-15": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2022-12-16": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2022-12-19": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2022-12-20": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2022-12-22": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2022-12-26": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2022-12-27": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2023-01-04": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2023-01-05": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2023-01-13": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2023-01-15": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2023-01-17": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2023-01-22": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2023-01-23": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2023-01-29": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2023-01-30": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2023-02-01": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2023-02-02": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2023-02-06": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2023-02-11": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2023-02-13": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2023-02-15": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2023-02-16": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2023-02-18": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2023-02-19": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2023-02-20": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2023-02-21": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2023-02-22": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2023-02-26": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2023-02-27": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2023-02-28": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2023-03-01": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2023-03-02": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2023-03-04": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2023-03-05": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2023-03-08": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2023-03-09": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2023-03-10": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2023-03-14": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2023-03-15": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2023-03-17": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2023-03-18": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2023-03-19": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2023-03-22": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2023-03-27": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2023-04-04": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2023-04-06": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2023-04-08": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2023-04-10": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2023-04-11": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2023-04-14": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2023-04-15": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2023-04-17": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2023-04-19": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2023-04-21": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2023-04-22": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2023-04-23": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2023-04-24": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2023-04-25": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2023-04-26": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2023-05-17": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2023-05-22": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2023-05-23": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2023-06-05": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2023-06-13": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2023-11-01": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2023-11-08": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2023-12-26": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2023-12-27": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2023-12-28": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2023-12-30": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2023-12-31": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2024-01-03": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2024-01-11": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2024-01-16": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2024-01-22": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2024-01-23": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2024-01-24": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2024-01-25": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2024-01-31": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2024-02-01": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2024-02-03": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2024-02-04": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2024-02-12": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2024-02-16": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2024-02-18": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2024-02-19": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2024-02-20": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2024-02-22": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2024-02-23": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2024-02-24": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2024-02-28": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2024-03-01": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2024-03-02": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2024-03-13": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2024-03-17": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2024-03-22": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2024-04-21": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2024-04-22": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2024-04-26": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2024-04-28": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2024-05-01": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2024-05-09": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2024-05-15": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2024-05-22": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2024-05-24": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2024-05-28": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2024-05-29": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2024-05-31": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2024-06-02": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2024-06-03": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2024-06-06": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2024-06-07": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2024-06-09": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2024-06-10": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2024-06-11": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2024-06-23": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2024-06-24": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2024-06-25": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2024-06-26": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2024-06-28": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2024-06-30": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2024-07-04": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2024-08-03": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2024-08-04": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2024-08-06": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2024-08-07": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2024-08-09": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2024-08-18": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2024-08-25": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2024-08-30": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2024-09-02": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2024-09-09": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2024-09-12": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2025-02-03": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2025-02-13": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2025-03-13": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2025-03-17": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2025-03-21": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2025-03-24": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2025-03-25": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2025-03-26": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2025-04-02": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2025-04-04": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2025-04-06": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2025-04-07": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2025-04-11": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2025-04-15": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2025-04-16": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2025-04-18": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2025-04-23": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2025-04-24": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2025-04-25": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2025-04-28": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2025-04-29": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2025-04-30": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2025-05-26": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2025-05-28": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2025-06-03": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2025-06-04": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2025-06-06": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2025-06-07": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2025-06-08": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2025-06-09": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2025-06-10": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2025-06-13": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2025-06-15": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2025-06-16": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2025-06-19": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2025-06-23": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2025-06-24": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2025-06-25": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2025-06-26": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2025-06-27": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2025-06-30": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2025-07-08": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2025-07-09": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2025-07-10": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2025-07-11": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2025-07-15": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2025-07-22": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2025-07-23": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2025-08-07": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2025-08-08": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2025-08-11": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2025-08-12": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2025-08-13": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2025-08-14": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2025-08-16": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2025-08-17": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2025-08-18": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2025-08-19": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2025-08-20": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2025-08-26": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2025-08-27": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2025-08-28": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2025-09-12": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2025-09-14": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2025-09-15": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2025-09-16": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2025-09-17": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2025-09-18": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2025-10-02": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2025-10-03": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2025-10-06": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2025-10-20": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2025-10-22": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2025-10-23": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2025-10-28": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2025-10-29": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2025-10-30": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2025-10-31": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2025-11-03": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2025-11-04": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2025-11-05": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2025-11-06": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2025-11-07": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2025-11-08": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2025-11-09": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2025-11-10": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2025-11-11": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2025-11-12": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2025-11-13": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2025-11-15": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2025-11-17": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2025-11-18": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2025-11-19": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2025-11-22": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2025-11-23": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2025-11-24": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2025-12-03": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2025-12-05": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2025-12-08": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2025-12-09": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2025-12-10": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2025-12-11": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2025-12-12": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2025-12-13": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2025-12-16": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2025-12-18": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2025-12-30": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-01-17": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-01-18": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2026-01-19": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-01-21": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-01-22": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-01-23": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-01-24": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2026-01-25": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-01-26": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-01-27": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-01-28": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2026-01-29": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2026-01-30": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-02-03": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-02-04": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-02-05": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-02-06": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2026-02-07": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-02-08": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-02-09": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-02-10": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-02-11": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-02-12": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-02-13": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-02-14": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2026-02-16": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-02-18": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-02-19": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2026-02-20": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-02-21": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2026-02-25": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2026-02-26": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2026-02-27": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2026-03-02": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-03-03": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2026-03-04": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-03-05": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-03-06": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-03-07": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2026-03-09": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-03-11": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-03-12": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-03-13": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-03-14": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2026-03-16": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-03-17": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-03-18": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-03-19": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-03-20": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-03-21": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-03-22": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-03-23": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-03-24": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-03-25": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-03-26": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-03-27": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-03-30": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-03-31": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-04-02": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2026-04-03": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-04-05": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-04-07": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-04-08": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-04-09": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2026-04-10": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-04-11": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2026-04-12": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-04-13": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-04-14": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-04-15": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2026-04-16": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-04-17": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-04-18": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2026-04-19": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2026-04-20": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-04-21": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2026-04-22": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-04-23": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-04-24": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-04-25": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2026-04-26": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2026-04-27": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-04-29": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-04-30": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-05-01": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2026-05-02": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-05-04": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-05-05": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-05-06": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-05-07": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-05-11": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-05-12": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2026-05-18": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-05-19": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-05-20": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-05-21": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-05-22": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2026-05-23": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-05-24": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-05-25": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-05-26": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-05-27": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-05-28": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2026-05-29": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2026-05-30": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-05-31": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-06-01": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-06-02": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-06-03": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-06-21": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-06-22": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2026-06-23": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2026-06-24": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-06-25": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2026-06-27": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2026-07-04": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2026-07-05": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2026-07-08": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-07-09": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2026-07-13": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-07-14": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-07-15": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-07-16": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-07-17": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-07-18": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-07-19": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-07-20": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-07-21": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2026-07-22": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2026-07-25": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2026-07-26": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-07-27": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-07-28": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2026-07-29": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2026-07-30": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2026-07-31": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2026-08-01": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2026-08-02": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-08-03": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-08-06": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2026-08-08": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-08-09": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-08-10": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2026-08-11": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-08-12": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2026-08-15": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2026-08-19": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-08-20": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2026-08-21": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2026-08-22": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2026-08-23": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-08-24": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2026-08-25": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2026-08-26": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2026-08-27": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2026-08-28": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2026-08-29": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-08-30": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-08-31": {
+      "context": "personal",
+      "intensity": 1
+    },
+    "2026-09-10": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2026-09-12": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-09-13": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2026-09-17": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-09-20": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-09-21": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2026-09-22": {
+      "context": "personal",
+      "intensity": 2
+    },
+    "2026-09-23": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-09-24": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-09-25": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-09-26": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-09-27": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-09-28": {
+      "context": "personal",
+      "intensity": 3
+    },
+    "2026-09-29": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-09-30": {
+      "context": "personal",
+      "intensity": 4
+    },
+    "2026-10-01": {
+      "context": "personal",
+      "intensity": 1
+    }
+  },
   "context_totals": {
     "personal": 6518.0,
     "pro": 23218.0,
@@ -7104,5 +13002,5 @@
       "pending_claim": null
     }
   },
-  "version": 2
+  "version": 3
 }

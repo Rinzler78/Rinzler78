@@ -684,13 +684,59 @@ def test_coverage_and_as_of(doc):
         "test_only_commits": 1,
     }
     assert doc["activity_as_of"] == "2008-05-02"
-    assert doc["version"] == 2
+    assert doc["version"] == 3
     assert doc["levels"] == {
         "working": 50,
         "professional": 500,
         "advanced": 1600,
         "expert": 5000,
     }
+
+
+# --- Commit calendar ---------------------------------------------------------
+
+
+def test_calendar_has_one_entry_per_commit_day(doc):
+    assert sorted(doc["calendar"]) == sorted(
+        hr.parse_evidence(_json("hours_evidence.json"))
+    )
+    assert len(doc["calendar"]) == doc["coverage"]["commit_days"]
+
+
+def test_calendar_context_follows_the_day_classification(doc):
+    context = {day: entry["context"] for day, entry in doc["calendar"].items()}
+    assert context["2007-08-06"] == "pro"  # a repo of the period's source
+    assert context["2007-08-11"] == "personal"  # a personal repo
+    assert context["2007-09-03"] == "pro"  # mixed day: the pro trace wins
+    assert context["2008-04-10"] == "personal"  # pro repo outside its period
+    assert context["2008-04-12"] == "personal"  # unclassified repo
+
+
+def test_calendar_marks_a_study_source_day_as_study(inputs):
+    inputs.days["2007-03-05"] = hr.Day("2007-03-05", ("git.school/x",), False, 3, {})
+    inputs.classes["git.school/x"] = hr.RepoClass("pro", "school-x")
+    assert hr.commit_calendar(inputs)["2007-03-05"]["context"] == "study"
+
+
+def test_calendar_entries_carry_only_a_context_and_a_bucket(doc):
+    for entry in doc["calendar"].values():
+        assert set(entry) == {"context", "intensity"}
+        assert entry["intensity"] in (1, 2, 3, 4)
+
+
+@pytest.mark.parametrize(
+    ("files", "expected"),
+    [
+        ({}, {}),
+        ({"d1": 7}, {"d1": 1}),
+        (
+            {"a": 5, "b": 2, "c": 4, "d": 5, "e": 2, "f": 1, "g": 0, "h": 10},
+            {"a": 3, "b": 1, "c": 2, "d": 3, "e": 1, "f": 1, "g": 1, "h": 4},
+        ),
+    ],
+)
+def test_intensity_buckets_are_quartiles_of_analyzed_files(files, expected):
+    assert hr.intensity_buckets(files) == expected
 
 
 def test_output_names_no_repo_and_no_private_source(doc):

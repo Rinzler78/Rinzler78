@@ -8,6 +8,7 @@
     "version",
     "activity_as_of",
     "by_month",
+    "calendar",
     "context_totals",
     "coverage",
     "levels",
@@ -46,7 +47,7 @@
     "count": { "type": "integer", "minimum": 0 }
   },
   "properties": {
-    "version": { "const": 2 },
+    "version": { "const": 3 },
     "activity_as_of": {
       "description": "Day of the latest own commit collected (YYYY-MM-DD): the date hours, levels and periods are measured against.",
       "type": "string",
@@ -63,6 +64,22 @@
           "context": { "$ref": "#/$defs/contexts" },
           "domains": { "$ref": "#/$defs/hours_by_id" },
           "techs": { "$ref": "#/$defs/hours_by_id" }
+        }
+      }
+    },
+    "calendar": {
+      "description": "Every own-commit day (YYYY-MM-DD) with its context and a 1-4 intensity bucket (quartile of the day's analyzed files). No repository name and no count.",
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["context", "intensity"],
+        "properties": {
+          "context": { "enum": ["pro", "personal", "study"] },
+          "intensity": { "type": "integer", "minimum": 1, "maximum": 4 }
         }
       }
     },

@@ -209,3 +209,36 @@ def test_aggregates_with_a_real_activity_date_pass():
     aggregates = _aggregates(python="languages")
     aggregates["activity_as_of"] = "2024-02-29"
     check_aggregates_integrity(aggregates, _CATALOGUE, _DOMAINS)
+
+
+def test_aggregates_calendar_days_must_be_calendar_dates():
+    aggregates = _aggregates(python="languages")
+    aggregates["activity_as_of"] = "2026-03-01"
+    aggregates["calendar"] = {"2026-02-30": {"context": "pro", "intensity": 1}}
+    with pytest.raises(DataLoadError, match="2026-02-30"):
+        check_aggregates_integrity(aggregates, _CATALOGUE, _DOMAINS)
+
+
+def test_aggregates_calendar_cannot_run_past_the_activity_date():
+    aggregates = _aggregates(python="languages")
+    aggregates["activity_as_of"] = "2026-03-01"
+    aggregates["calendar"] = {"2026-03-02": {"context": "pro", "intensity": 1}}
+    with pytest.raises(DataLoadError, match="after activity_as_of"):
+        check_aggregates_integrity(aggregates, _CATALOGUE, _DOMAINS)
+
+
+def test_aggregates_calendar_counts_every_commit_day():
+    aggregates = _aggregates(python="languages")
+    aggregates["activity_as_of"] = "2026-03-01"
+    aggregates["coverage"] = {"commit_days": 2}
+    aggregates["calendar"] = {"2026-03-01": {"context": "pro", "intensity": 1}}
+    with pytest.raises(DataLoadError, match="commit_days"):
+        check_aggregates_integrity(aggregates, _CATALOGUE, _DOMAINS)
+
+
+def test_aggregates_with_a_consistent_calendar_pass():
+    aggregates = _aggregates(python="languages")
+    aggregates["activity_as_of"] = "2026-03-01"
+    aggregates["coverage"] = {"commit_days": 1}
+    aggregates["calendar"] = {"2026-03-01": {"context": "study", "intensity": 4}}
+    check_aggregates_integrity(aggregates, _CATALOGUE, _DOMAINS)
