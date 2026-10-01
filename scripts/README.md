@@ -52,6 +52,7 @@ generate.py      (Jinja2)  →  assets/svg/*.svg + README.md + pages/
 scripts/
 ├── data_loader.py       # load_collection + schema + referential/aggregates integrity
 ├── view_builder.py      # build_skills, build_domain_year_hours (from the aggregates)
+├── captions.py          # chart conclusions: figures computed per language, never typed
 ├── generate.py          # entry point — loads data, enriches, renders templates
 ├── validate_data.py     # CLI: schemas + referential integrity
 ├── validate.py          # CLI: SVG well-formedness + README refs

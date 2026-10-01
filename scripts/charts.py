@@ -15,6 +15,12 @@ coral stay as interface accents, never as series identity.
 from __future__ import annotations
 
 import math
+import re
+
+# An `&` that does not already open an entity. The data bag reaches the charts
+# with `&` escaped once (generate._escape_amp); escaping only bare ampersands
+# keeps that idempotent instead of printing "&amp;amp;".
+_BARE_AMP = re.compile(r"&(?!(?:amp|lt|gt|quot|apos|#\d+|#x[0-9a-fA-F]+);)")
 
 MONO = "'JetBrains Mono', ui-monospace, monospace"
 SANS = "'Inter', system-ui, sans-serif"
@@ -27,10 +33,10 @@ def escape(text: str) -> str:
     a parser module into a file that only ever *writes* markup, which is both
     unnecessary and the thing bandit's B406 blacklist is there to catch. `&`
     must go first, or the ampersands introduced by the later rules get escaped
-    a second time.
+    a second time; an ampersand that already opens an entity is left alone.
     """
     return (
-        text.replace("&", "&amp;")
+        _BARE_AMP.sub("&amp;", text)
         .replace("<", "&lt;")
         .replace(">", "&gt;")
         .replace('"', "&quot;")

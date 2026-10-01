@@ -189,19 +189,26 @@ def test_the_front_page_carries_the_charts_it_replaced_them_with():
 
 def test_each_chart_is_doubled_by_a_text_conclusion():
     # The charts are images: a reader who only reads prose, or who reads with a
-    # screen reader, must still get the point. The expected prose is read from
-    # the data rather than repeated here — a copy in the test would pass while
-    # the page said something else.
-    import json
+    # screen reader, must still get the point. The expected prose is computed
+    # from the data rather than repeated here — a copy in the test would pass
+    # while the page said something else.
+    import copy
 
-    charts = json.loads((ROOT / "data" / "content.json").read_text(encoding="utf-8"))[
-        "charts"
-    ]
-    text = (ROOT / "README.md").read_text(encoding="utf-8")
-    for key, block in charts.items():
-        conclusion = block.get("conclusion")
-        assert conclusion, f"{key} has no conclusion to double its chart"
-        assert conclusion in text, f"{key}: the conclusion never reaches the page"
+    from scripts.translate import CACHE, localize_data
+
+    raw = gen.load_data()
+    pages = {
+        "fr": (copy.deepcopy(raw), ROOT / "README.md"),
+        "en": (gen._escape_amp(localize_data(raw, CACHE)), ROOT / "README.en.md"),
+    }
+    for lang, (bag, readme) in pages.items():
+        text = readme.read_text(encoding="utf-8")
+        for key, block in gen.enrich(bag, lang)["content"]["charts"].items():
+            conclusion = block.get("conclusion")
+            assert conclusion, f"{key} has no conclusion to double its chart"
+            assert conclusion in text, (
+                f"{lang} {key}: the conclusion is not on the page"
+            )
 
 
 def test_no_image_in_the_readmes_is_fetched_from_another_host():

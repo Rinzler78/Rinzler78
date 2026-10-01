@@ -66,6 +66,12 @@ SINGLETONS: dict[str, list[str]] = {
         "charts.domain_split.aria",
         "charts.domain_split.center",
         "charts.top_skills.aria",
+        # Chart conclusions are wordings with placeholders ({eras}, {split},
+        # {levels}) filled at generation time (scripts/captions.py): the
+        # English entry must keep the same placeholders, so it is manual.
+        "charts.journey_share.conclusion",
+        "charts.domain_split.conclusion",
+        "charts.top_skills.conclusion",
     ],
 }
 

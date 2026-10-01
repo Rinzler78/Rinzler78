@@ -115,7 +115,7 @@ Views are **derived**, never stored. This is the invariant that guarantees inter
 
 A static SVG figure emitted by `scripts/charts.py`: `stacked_area` (share of effort per year), `donut` (lifetime split), `bar_rows` (ranked values). One form per question — never the same device twice.
 
-GitHub serves README SVGs inside an `<img>`, so **no JavaScript runs**: there is no hover, no tooltip and no second render. Every chart therefore bakes in its own direct labels, a `<title>` and an `aria-label` listing the values, and is doubled in the page by a line of prose stating the conclusion.
+GitHub serves README SVGs inside an `<img>`, so **no JavaScript runs**: there is no hover, no tooltip and no second render. Every chart therefore bakes in its own direct labels, a `<title>` and an `aria-label` listing the values, and is doubled in the page by a line of prose stating the conclusion. The conclusion is a wording with placeholders (`{eras}`, `{split}`, `{levels}`) in `data/content.json`, filled at generation time by `scripts/captions.py` from the same series and the level convention: no figure in it is typed by hand.
 
 Series colors are **injected by the caller** from a palette validated for color-vision deficiency, not from the brand accent — an indigo/coral-led set measures ΔE 1.5 between coral and aqua under protanopia. Accessibility captions are injected too: the module writes markup and carries no prose, or `README.en.md` would inherit French labels. See [ADR-009](docs/adr/0009-visual-redesign-devtool-direction.md).
 

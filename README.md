@@ -38,7 +38,7 @@ J'accompagne les équipes techniques — **startups en construction comme struct
   <img src="assets/svg/journey-share.svg" width="100%" alt="Part de l'effort par domaine, chaque année ramenée à 100 %" />
 </picture>
 
-<sub>**L'arc se lit directement.** Windows CE et Windows Mobile ouvrent 2006 à 2008, l'embarqué et le mobile se partagent 2009 à 2013, le mobile domine de 2014 à 2020, l'IA prend le relais à partir de 2022. Chaque année est ramenée à 100 % : c'est une répartition, pas un volume.</sub>
+<sub>**L'arc se lit directement.** Domaine dominant, période par période : Mobile de 2006 à 2008, Mobile de 2014 à 2020 et AI &amp; LLM depuis 2022. Chaque année est ramenée à un tout : c'est une répartition, pas un volume.</sub>
 
 <sub><b>Compétences les mieux ancrées</b></sub>
 
@@ -47,7 +47,7 @@ J'accompagne les équipes techniques — **startups en construction comme struct
   <img src="assets/svg/top-skills.svg" width="100%" alt="Compétences au niveau le plus élevé, en heures de code mesurées" />
 </picture>
 
-<sub>**Les heures viennent d'une chronologie datée et des jours de commits**, jamais d'une auto-évaluation. Le niveau suit une convention publiée : working dès 50 h, professional dès 500 h, advanced dès 1 600 h, expert dès 5 000 h.</sub>
+<sub>**Les heures viennent d'une chronologie datée et des jours de commits**, jamais d'une auto-évaluation. Le niveau suit une convention publiée : working dès 50 h, professional dès 500 h, advanced dès 1 600 h et expert dès 5 000 h.</sub>
 
 <sub><b>Un profil large</b></sub>
 
@@ -56,7 +56,7 @@ J'accompagne les équipes techniques — **startups en construction comme struct
   <img src="assets/svg/domain-split.svg" width="100%" alt="Répartition de l'exposition cumulée par domaine, en parts" />
 </picture>
 
-<sub>**Polyvalent, pas dispersé.** Le mobile concentre plus de deux cinquièmes des heures, mais quatre autres domaines dépassent chacun 11 %. Les parts se recoupent volontairement — un fichier compte dans chaque domaine qu'il touche — donc seuls les pourcentages sont affichés, jamais un total d'heures.</sub>
+<sub>**Polyvalent, pas dispersé.** Mobile pèse 42,6 % des heures, puis Embedded &amp; Systems 19,2 %, DevOps &amp; Infrastructure 12,1 % et AI &amp; LLM 11,4 %. Les parts se recoupent volontairement — un fichier compte dans chaque domaine qu'il touche — donc seuls les pourcentages sont affichés, jamais un total d'heures.</sub>
 
 <sub><b>Expertise centrale</b></sub>
 

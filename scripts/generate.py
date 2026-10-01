@@ -34,6 +34,7 @@ if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
 
 from scripts import charts  # noqa: E402
+from scripts.captions import domain_shares, render_conclusions  # noqa: E402
 from scripts.font_outline import outline_text  # noqa: E402
 from scripts.translate import CACHE, localize_data  # noqa: E402
 from scripts.view_builder import (  # noqa: E402
@@ -112,7 +113,7 @@ def load_data() -> dict[str, Any]:
     return _escape_amp(raw)
 
 
-def enrich(data: dict[str, Any]) -> dict[str, Any]:
+def enrich(data: dict[str, Any], lang: str = "fr") -> dict[str, Any]:
     """Replaces raw `techs` with the catalogue enriched from the aggregates.
 
     Each tech carries `hours`, `display_hours`, `level`, `level_source`,
@@ -132,6 +133,9 @@ def enrich(data: dict[str, Any]) -> dict[str, Any]:
     # The journey series: hours per domain, per year, from the same aggregates
     # as the skill lines, so the chart and the levels can never disagree.
     data["domain_years"] = build_domain_year_hours(aggregates)
+    # Chart conclusions carry placeholders, never typed figures: fill them
+    # from the series above and the level convention (scripts/captions.py).
+    render_conclusions(data, lang)
     return data
 
 
@@ -269,19 +273,10 @@ def make_env(data: dict[str, Any]) -> Environment:
         )
 
     def chart_domain_split(caption: str = "", center_label: str = "") -> str:
-        totals = {k: sum(v.values()) for k, v in data["domain_years"].items()}
-        grand = sum(totals.values())
-        if not grand:
+        # The same shares the split conclusion quotes (scripts/captions.py).
+        shares = domain_shares(data["domain_years"])
+        if not shares:
             return charts.donut([], _series_colors(), _chart_ink(), caption=caption)
-        shares = sorted(
-            ((k, round(v / grand * 100, 1)) for k, v in totals.items()),
-            key=lambda kv: -kv[1],
-        )
-        # Rounding each share independently rarely lands on 100; the donut
-        # refuses a set that does not make a whole, so the remainder goes to
-        # the smallest slice where it is least visible.
-        drift = round(100.0 - sum(pct for _, pct in shares), 1)
-        shares[-1] = (shares[-1][0], round(shares[-1][1] + drift, 1))
         return charts.donut(
             shares,
             _series_colors(),
@@ -437,8 +432,8 @@ def main() -> int:
     raw = load_data()
     # EN data: localize the translatable fields from the committed cache, then
     # re-escape (`&` in English values) — _escape_amp is idempotent.
-    en_data = enrich(_escape_amp(localize_data(raw, CACHE)))
-    fr_data = enrich(raw)
+    en_data = enrich(_escape_amp(localize_data(raw, CACHE)), "en")
+    fr_data = enrich(raw, "fr")
 
     env_fr = make_env(fr_data)
     env_en = make_env(en_data)

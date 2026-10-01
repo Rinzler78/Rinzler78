@@ -38,7 +38,7 @@ I support technical teams - both startups and more mature structures** - in thei
   <img src="assets/svg/en/journey-share.svg" width="100%" alt="Share of effort per domain, each year normalized to 100%" />
 </picture>
 
-<sub>**L'arc se lit directement.** Windows CE et Windows Mobile ouvrent 2006 à 2008, l'embarqué et le mobile se partagent 2009 à 2013, le mobile domine de 2014 à 2020, l'IA prend le relais à partir de 2022. Chaque année est ramenée à 100 % : c'est une répartition, pas un volume.</sub>
+<sub>**The arc reads at a glance.** Leading domain, period by period: Mobile from 2006 to 2008, Mobile from 2014 to 2020 and AI &amp; LLM since 2022. Each year is scaled to a whole: this is a split, not a volume.</sub>
 
 <sub><b>Compétences les mieux ancrées</b></sub>
 
@@ -47,7 +47,7 @@ I support technical teams - both startups and more mature structures** - in thei
   <img src="assets/svg/en/top-skills.svg" width="100%" alt="Highest-level skills, in measured coding hours" />
 </picture>
 
-<sub>**Les heures viennent d'une chronologie datée et des jours de commits**, jamais d'une auto-évaluation. Le niveau suit une convention publiée : working dès 50 h, professional dès 500 h, advanced dès 1 600 h, expert dès 5 000 h.</sub>
+<sub>**Hours come from a dated timeline and from commit days**, never from self-assessment. The level follows a published convention: working from 50 h, professional from 500 h, advanced from 1,600 h and expert from 5,000 h.</sub>
 
 <sub><b>Un profil large</b></sub>
 
@@ -56,7 +56,7 @@ I support technical teams - both startups and more mature structures** - in thei
   <img src="assets/svg/en/domain-split.svg" width="100%" alt="Lifetime exposure split by domain, as shares" />
 </picture>
 
-<sub>**Polyvalent, pas dispersé.** Le mobile concentre plus de deux cinquièmes des heures, mais quatre autres domaines dépassent chacun 11 %. Les parts se recoupent volontairement — un fichier compte dans chaque domaine qu'il touche — donc seuls les pourcentages sont affichés, jamais un total d'heures.</sub>
+<sub>**Versatile, not scattered.** Mobile holds 42.6% of the hours, then Embedded &amp; Systems 19.2%, DevOps &amp; Infrastructure 12.1% and AI &amp; LLM 11.4%. The shares overlap on purpose — a file counts in every domain it touches — so only percentages are shown, never a total of hours.</sub>
 
 <sub><b>Core expertise</b></sub>
 
