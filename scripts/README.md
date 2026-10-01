@@ -229,16 +229,23 @@ grants nothing, `level_source` stays `hours` and the claim appears as
 author's `evidence_levels` in `declared.json`, and lists pending claims (not a
 failure).
 
-**Output** `data/activity/aggregates.json` (`version` 3: ADR-018 level fields,
-then the commit calendar): `version`, `activity_as_of` (last evidence day),
+**Output** `data/activity/aggregates.json` (`version` 4: ADR-018 level fields,
+the commit calendar, then period years): `version`, `activity_as_of` (last evidence day),
 `coverage` (commit days, public days, public share), `context_totals`, `levels`,
 `by_month` (`context`, `techs`, `domains`), `calendar` (every commit day:
 `context` — `pro` when a repository of the period's source was touched, `study`
 in a study period, else `personal` — and `intensity`, the 1–4 quartile of the
 day's analyzed files among all days), `techs` (`hours`, `display_hours` rounded
-down, `first`, `last`, `declared_share`, `kind`, `domain`, and the level fields
-above) and `notes`. No repository, identity, private source id or per-day count
+down, `first`, `last` — raw months of any hour —, `first_year`, `last_year`,
+`active`, `declared_share`, `kind`, `domain`, and the level fields above) and `notes`. No repository, identity, private source id or per-day count
 is written.
+
+**Periods: a year counts from 10 h** (`YEAR_MIN_HOURS`). `first_year` and
+`last_year` are the first and last years in which the tech has at least 10 h
+(the year with most hours when none does); `active` is `last_year` being the
+year of `activity_as_of`. A fraction of an hour of vocabulary noise in a late
+month moves `last`, never the period: every page shows `first_year–last_year`
+or "active".
 
 **Sanity checks** (the file is not written when one fails): no tech starts
 before its first commit or declared period, nor before its release month

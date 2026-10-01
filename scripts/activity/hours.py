@@ -97,7 +97,11 @@ CLASSES_NAME = "repo-classes.json"
 DECLARED_NAME = "declared.json"
 DEFAULT_EVIDENCE_LEVELS = REPO / "data" / "activity" / "evidence_levels.json"
 DEFAULT_CLAIMS_LOCK = REPO / "data" / "claims.lock.json"
-AGGREGATES_VERSION = 3
+AGGREGATES_VERSION = 4
+# A year belongs to a tech's period only from this many hours in that year: a
+# fraction of an hour of vocabulary noise must not extend a period or make a
+# tech "active" (rule 9).
+YEAR_MIN_HOURS = 10
 # Buckets of the commit calendar: quartiles of the analyzed files of a day.
 CALENDAR_BUCKETS = 4
 
@@ -852,6 +856,15 @@ def _untraced_units(
     ]
 
 
+def period_years(year_hours: Mapping[int, float]) -> tuple[int, int]:
+    """First and last year with at least ``YEAR_MIN_HOURS`` (rule 9)."""
+    counted = sorted(y for y, h in year_hours.items() if h >= YEAR_MIN_HOURS)
+    if counted:
+        return counted[0], counted[-1]
+    peak = max(year_hours.items(), key=lambda kv: (kv[1], kv[0]))[0]
+    return peak, peak
+
+
 def intensity_buckets(files: Mapping[str, int]) -> dict[str, int]:
     """1-4 bucket of each day's analyzed files, by quartile over every day.
 
@@ -964,12 +977,16 @@ def aggregate(
     tech_hours: dict[str, list[float]] = defaultdict(list)
     tech_declared: dict[str, list[float]] = defaultdict(list)
     tech_months: dict[str, list[str]] = defaultdict(list)
+    tech_years: dict[str, dict[int, list[float]]] = defaultdict(
+        lambda: defaultdict(list)
+    )
     for unit, alloc in zip(units, allocs, strict=True):
         context[unit.month][unit.kind].append(unit.hours)
         for tech, hours in alloc.items():
             month_techs[unit.month][tech].append(hours)
             tech_hours[tech].append(hours)
             tech_months[tech].append(unit.month)
+            tech_years[tech][int(unit.month[:4])].append(hours)
             if tech in unit.declared:
                 tech_declared[tech].append(hours)
         for domain, hours in domain_hours(unit.hours, unit.shares, tech_map).items():
@@ -983,8 +1000,12 @@ def aggregate(
             "domains": {d: _r(math.fsum(v)) for d, v in month_domains[month].items()},
         }
 
+    as_of_year = int(max(inputs.days)[:4])
     techs = {}
     for tech, parts in tech_hours.items():
+        first_year, last_year = period_years(
+            {y: math.fsum(v) for y, v in tech_years[tech].items()}
+        )
         total = math.fsum(parts)
         info = tech_map.techs[tech]
         techs[tech] = {
@@ -995,6 +1016,9 @@ def aggregate(
             ),
             "first": min(tech_months[tech]),
             "last": max(tech_months[tech]),
+            "first_year": first_year,
+            "last_year": last_year,
+            "active": last_year == as_of_year,
             "declared_share": _r(math.fsum(tech_declared[tech]) / total, 3),
             "kind": info.kind,
             "domain": info.domain,
@@ -1010,6 +1034,7 @@ def aggregate(
         # Version 2 (ADR-018): per-tech "level" became hours_level,
         # evidence_level, display_level, level_source, claim, pending_claim.
         # Version 3: the per-day commit calendar (context and intensity).
+        # Version 4: per-tech first_year, last_year, active (rule 9).
         "version": AGGREGATES_VERSION,
         "activity_as_of": max(days),
         "coverage": {

@@ -47,7 +47,7 @@
     "count": { "type": "integer", "minimum": 0 }
   },
   "properties": {
-    "version": { "const": 3 },
+    "version": { "const": 4 },
     "activity_as_of": {
       "description": "Day of the latest own commit collected (YYYY-MM-DD): the date hours, levels and periods are measured against.",
       "type": "string",
@@ -125,6 +125,9 @@
           "pending_claim",
           "first",
           "last",
+          "first_year",
+          "last_year",
+          "active",
           "declared_share",
           "domain",
           "kind"
@@ -140,6 +143,20 @@
           "pending_claim": { "$ref": "#/$defs/claim_or_null" },
           "first": { "$ref": "#/$defs/month" },
           "last": { "$ref": "#/$defs/month" },
+          "first_year": {
+            "description": "First year with at least 10 h of the tech (a year counts from 10 h).",
+            "type": "integer",
+            "minimum": 1990
+          },
+          "last_year": {
+            "description": "Last year with at least 10 h of the tech.",
+            "type": "integer",
+            "minimum": 1990
+          },
+          "active": {
+            "description": "last_year is the year of activity_as_of.",
+            "type": "boolean"
+          },
           "declared_share": { "type": "number", "minimum": 0, "maximum": 1 },
           "domain": { "$ref": "#/$defs/id" },
           "kind": { "enum": ["language", "platform", "domain"] }

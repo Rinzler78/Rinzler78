@@ -58,7 +58,7 @@ MODULE_TESTS = {
     "font_outline": ("tests/test_font_outline.py", "tests/test_front_page.py"),
     # The front page view and its tiles shape every generated artifact.
     "front": ("tests/test_front.py",) + DATA_TESTS,
-    "tiles": DATA_TESTS,
+    "tiles": ("tests/test_tiles.py",) + DATA_TESTS,
     "icons": ("tests/test_icons.py",) + DATA_TESTS,
 }
 

@@ -216,7 +216,8 @@ def skill_tiles(skills: list[dict], domains: list[dict], bars: int) -> list[dict
 
 
 def period(skill: dict, active: str) -> str:
-    first, last = skill["first"][:4], skill["last"][:4]
+    first = str(skill["since"])
+    last = str(skill["until"])
     if skill["until"] is None:
         return f"{first}–{active}"
     return first if first == last else f"{first}–{last}"

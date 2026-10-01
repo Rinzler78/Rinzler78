@@ -16,6 +16,7 @@ Input is the page view of ``scripts.front.build_front``; output is markup.
 from __future__ import annotations
 
 import pathlib
+from dataclasses import dataclass, replace
 from datetime import date, timedelta
 from html import unescape
 
@@ -293,31 +294,62 @@ def _bar_row(row: dict, y: float, pal: dict, ticks: list[float]) -> str:
     return b
 
 
-def _also_layout(rows: list[dict]) -> list[list[tuple[dict, float]]]:
-    """Flow the compact chips into lines: (row, x) per chip."""
-    lines: list[list[tuple[dict, float]]] = [[]]
-    x = X0
+@dataclass(frozen=True)
+class Segment:
+    """One piece of the compact "also" line: optional logo, text, level."""
+
+    row: dict
+    x: float
+    icon: bool
+    text: str
+    level: str
+    width: float
+
+
+def _seg(row: dict, x: float, icon: bool, text: str, level: str) -> Segment:
+    lead = ALSO_ICON + 8 if icon else 0
+    width = lead + width_of(text + level, 20, MONO_ADVANCE)
+    return Segment(row, x, icon, text, level, width)
+
+
+def also_layout(rows: list[dict]) -> list[list[Segment]]:
+    """Flow the "also" entries into lines: label, hours and level each.
+
+    An entry wider than the tile breaks after its label, the hours and level
+    continuing on the next line; no segment crosses the right edge.
+    """
+    lines: list[list[Segment]] = []
+    x = RIGHT  # forces a first line
     for row in rows:
-        w = _chip_icon_w(row) + width_of(_chip_text(row), 20, MONO_ADVANCE)
-        if lines[-1] and x + w > RIGHT:
+        logo = row["icon"].kind == "vendored"
+        hours = row["hours_text"].replace("≈ ", "")
+        whole = _seg(row, X0, logo, f"{row['label']} {hours} · ", row["level"])
+        if whole.width > WIDTH:
+            head = _seg(row, X0, logo, row["label"], "")
+            tail = _seg(
+                row,
+                X0 + head.width - width_of(row["label"], 20, MONO_ADVANCE),
+                False,
+                f"{hours} · ",
+                row["level"],
+            )
+            lines += [[head], [tail]]
+            x = RIGHT
+            continue
+        if x + whole.width > RIGHT:
             lines.append([])
             x = X0
-        lines[-1].append((row, x))
-        x += w + 22
-    return lines if rows else []
-
-
-def _chip_icon_w(row: dict) -> float:
-    """A logo leads its chip; initials would only repeat the label's letters."""
-    return ALSO_ICON + 8 if row["icon"].kind == "vendored" else 0
-
-
-def _chip_text(row: dict) -> str:
-    return f"{row['label']} {row['hours_text'].replace('≈ ', '')}"
+        lines[-1].append(replace(whole, x=x))
+        x += whole.width + 22
+    for line in lines:
+        for seg in line:
+            if seg.x + seg.width > RIGHT + 0.01:
+                raise LayoutError(f"skills: also entry too wide: {seg.text}")
+    return lines
 
 
 def skills_height(tile: dict) -> int:
-    also = _also_layout(tile["also"])
+    also = also_layout(tile["also"])
     height = 176 + len(tile["bars"]) * ROW
     if also:
         height += 36 + len(also) * ALSO_LINE
@@ -330,16 +362,28 @@ def skills_tile(tile: dict, pal: dict, height: int, ticks: list[float]) -> str:
     for row in tile["bars"]:
         b += _bar_row(row, y, pal, ticks)
         y += ROW
-    lines = _also_layout(tile["also"])
+    lines = also_layout(tile["also"])
     if lines:
         y += 4
         b += mono(X0, y, tile["also_label"], pal["dim"])
         y += ALSO_LINE
         for line in lines:
-            for row, x in line:
-                if row["icon"].kind == "vendored":
-                    b += _icon(row["icon"], x, y - 19, ALSO_ICON, pal)
-                b += mono(x + _chip_icon_w(row), y, _chip_text(row), pal["muted"])
+            for seg in line:
+                tx = seg.x
+                if seg.icon:
+                    b += _icon(seg.row["icon"], seg.x, y - 19, ALSO_ICON, pal)
+                    tx += ALSO_ICON + 8
+                level = (
+                    f'<tspan fill="{pal["accent"]}" font-weight="700">'
+                    f"{escape(seg.level)}</tspan>"
+                    if seg.level
+                    else ""
+                )
+                b += (
+                    f'<text x="{_t(tx)}" y="{_t(y)}" font-family="{MONO}" '
+                    f'font-size="20" font-weight="500" fill="{pal["muted"]}">'
+                    f"{escape(seg.text)}{level}</text>"
+                )
             y += ALSO_LINE
     if y - ALSO_LINE + 30 > height:
         raise LayoutError(f"skills {tile['domain']}: content overflows the tile")

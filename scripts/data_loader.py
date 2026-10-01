@@ -113,6 +113,22 @@ def _check_calendar(aggregates: dict) -> None:
         )
 
 
+def _check_period(tech_id: str, entry: dict, as_of: str | None) -> None:
+    """``first_year`` <= ``last_year``; ``active`` iff the last year is the
+    year of ``activity_as_of`` (aggregates v4)."""
+    first, last = entry.get("first_year"), entry.get("last_year")
+    if first is None or last is None:
+        return
+    if first > last:
+        raise DataLoadError(
+            f"Aggregates tech {tech_id!r}: first_year {first} after last_year {last}"
+        )
+    if as_of is not None and entry.get("active") != (last == int(as_of[:4])):
+        raise DataLoadError(
+            f"Aggregates tech {tech_id!r}: active disagrees with last_year {last}"
+        )
+
+
 def check_aggregates_integrity(
     aggregates: dict, techs: list[dict], domains: list[dict]
 ) -> None:
@@ -155,6 +171,7 @@ def check_aggregates_integrity(
             raise DataLoadError(
                 f"Aggregates tech {tech_id!r} references unknown domain {domain!r}"
             )
+        _check_period(tech_id, entry, as_of)
 
     for month, row in sorted(aggregates.get("by_month", {}).items()):
         for domain in sorted(row.get("domains", {})):

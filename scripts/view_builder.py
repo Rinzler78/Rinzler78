@@ -3,7 +3,8 @@
 Public surface:
 - ``build_skills(techs, aggregates)`` enriches each catalogue tech with its
   figures from ``data/activity/aggregates.json`` — hours, displayed hours and
-  level, level source and claim, first and last month, since/until years —
+  level, level source and claim, first and last month, since/until years
+  (years with at least 10 h) —
   and orders them by recency, then hours (ADR-018).
 - ``build_domain_year_hours(aggregates)`` sums the per-month domain hours of
   the aggregates per calendar year: the journey series.
@@ -105,11 +106,11 @@ def build_skills(techs: list[dict], aggregates: dict) -> list[dict]:
     skill line — below the working threshold, or a tool every commit implies
     such as Git, which the aggregates never measure (ADR-016).
 
-    ``until`` is ``None`` while the tech was used in the year of
-    ``activity_as_of``, else the year of its last use. Order: most recent last
-    use first, then hours (ADR-018: never by hours alone).
+    ``since``/``until`` are the first and last years with at least 10 h
+    (aggregates ``first_year``/``last_year``); ``until`` is ``None`` while the
+    tech is ``active``. Order: latest period first, then the last month, then
+    hours (ADR-018: never by hours alone).
     """
-    as_of_year = int(aggregates["activity_as_of"][:4])
     skills: list[dict] = []
     for tech in techs:
         entry = aggregates["techs"].get(tech["id"])
@@ -129,7 +130,6 @@ def build_skills(techs: list[dict], aggregates: dict) -> list[dict]:
                 }
             )
             continue
-        last_year = int(entry["last"][:4])
         skills.append(
             {
                 **tech,
@@ -140,13 +140,16 @@ def build_skills(techs: list[dict], aggregates: dict) -> list[dict]:
                 "claim": entry["claim"],
                 "first": entry["first"],
                 "last": entry["last"],
-                "since": int(entry["first"][:4]),
-                "until": None if last_year >= as_of_year else last_year,
+                # Periods count a year from 10 h (aggregates v4, rule 9 of
+                # scripts/activity/hours.py): raw months may hold noise.
+                "since": entry["first_year"],
+                "until": None if entry["active"] else entry["last_year"],
             }
         )
     return sorted(
         skills,
         key=lambda s: (
+            -(s["until"] or 9999) if s["since"] else 0,
             -_month_index(s["last"]) if s["last"] else 0,
             -s["hours"],
             s["id"],

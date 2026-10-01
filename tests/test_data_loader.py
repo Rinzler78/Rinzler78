@@ -271,3 +271,16 @@ def test_a_tech_below_the_threshold_needs_no_icon():
 def test_icons_covering_every_skill_pass():
     icons = {"techs": {"python": {"initials": "PY"}}}
     check_icons_integrity(icons, _CATALOGUE, _skill_aggregates(python="expert"))
+
+
+def test_aggregates_period_years_must_be_ordered_and_active_consistent():
+    aggregates = _aggregates(python="languages")
+    aggregates["activity_as_of"] = "2026-03-01"
+    aggregates["techs"]["python"].update(first_year=2020, last_year=2019, active=False)
+    with pytest.raises(DataLoadError, match="first_year"):
+        check_aggregates_integrity(aggregates, _CATALOGUE, _DOMAINS)
+    aggregates["techs"]["python"].update(first_year=2019, last_year=2024, active=True)
+    with pytest.raises(DataLoadError, match="active"):
+        check_aggregates_integrity(aggregates, _CATALOGUE, _DOMAINS)
+    aggregates["techs"]["python"].update(last_year=2026, active=True)
+    check_aggregates_integrity(aggregates, _CATALOGUE, _DOMAINS)

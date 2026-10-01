@@ -263,6 +263,11 @@ def test_period_is_first_to_last_or_active():
     assert front.period(same, active="actif") == "2010"
 
 
+def test_period_ignores_a_noise_month_after_the_last_ten_hour_year():
+    noisy = _skill("nfc", "m", 1, last="2026-09", since=2011, until=2014)
+    assert front.period(noisy, active="actif") == "2011–2014"
+
+
 def test_evidence_marker_only_for_an_attested_evidence_level():
     assert front.evidence_marked([_skill("a", "m", 1)]) == []
     lifted = _skill("b", "m", 1, level="expert", level_source="evidence")
