@@ -1,0 +1,6 @@
+{
+  "fr_hash": "2eaa1ee2e6a53ac1c2ff489e432d7501693b4401a8c94c0249621db33c091466",
+  "en": "$ uptime --since={since} → {years} years, {days} commit days, longest streak {streak} d, record {busiest} days in {busiest_year} · {tagline}_",
+  "manual": true,
+  "reviewed": false
+}

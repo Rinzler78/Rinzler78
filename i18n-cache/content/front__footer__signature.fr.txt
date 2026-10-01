@@ -1,0 +1,1 @@
+{name} · données au {as_of} · [comment c'est mesuré](#{method})

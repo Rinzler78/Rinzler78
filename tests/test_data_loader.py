@@ -3,6 +3,7 @@ import pytest
 from scripts.data_loader import (
     DataLoadError,
     check_aggregates_integrity,
+    check_icons_integrity,
     check_referential_integrity,
     load_collection,
 )
@@ -209,3 +210,105 @@ def test_aggregates_with_a_real_activity_date_pass():
     aggregates = _aggregates(python="languages")
     aggregates["activity_as_of"] = "2024-02-29"
     check_aggregates_integrity(aggregates, _CATALOGUE, _DOMAINS)
+
+
+def test_aggregates_calendar_days_must_be_calendar_dates():
+    aggregates = _aggregates(python="languages")
+    aggregates["activity_as_of"] = "2026-03-01"
+    aggregates["calendar"] = {"2026-02-30": {"context": "pro", "intensity": 1}}
+    with pytest.raises(DataLoadError, match="2026-02-30"):
+        check_aggregates_integrity(aggregates, _CATALOGUE, _DOMAINS)
+
+
+def test_aggregates_calendar_cannot_run_past_the_activity_date():
+    aggregates = _aggregates(python="languages")
+    aggregates["activity_as_of"] = "2026-03-01"
+    aggregates["calendar"] = {"2026-03-02": {"context": "pro", "intensity": 1}}
+    with pytest.raises(DataLoadError, match="after activity_as_of"):
+        check_aggregates_integrity(aggregates, _CATALOGUE, _DOMAINS)
+
+
+def test_aggregates_calendar_counts_every_commit_day():
+    aggregates = _aggregates(python="languages")
+    aggregates["activity_as_of"] = "2026-03-01"
+    aggregates["coverage"] = {"commit_days": 2}
+    aggregates["calendar"] = {"2026-03-01": {"context": "pro", "intensity": 1}}
+    with pytest.raises(DataLoadError, match="commit_days"):
+        check_aggregates_integrity(aggregates, _CATALOGUE, _DOMAINS)
+
+
+def test_aggregates_with_a_consistent_calendar_pass():
+    aggregates = _aggregates(python="languages")
+    aggregates["activity_as_of"] = "2026-03-01"
+    aggregates["coverage"] = {"commit_days": 1}
+    aggregates["calendar"] = {"2026-03-01": {"context": "study", "intensity": 4}}
+    check_aggregates_integrity(aggregates, _CATALOGUE, _DOMAINS)
+
+
+# --- Icons (ADR-016) ---------------------------------------------------------
+
+
+def _skill_aggregates(**levels: str | None) -> dict:
+    return {"techs": {t: {"display_level": lvl} for t, lvl in levels.items()}}
+
+
+def test_icons_must_name_catalogued_techs():
+    icons = {"techs": {"ghost": {"initials": "G"}}}
+    with pytest.raises(DataLoadError, match="ghost"):
+        check_icons_integrity(icons, _CATALOGUE, _skill_aggregates())
+
+
+def test_every_skill_line_needs_an_icon():
+    icons = {"techs": {}}
+    with pytest.raises(DataLoadError, match="python"):
+        check_icons_integrity(icons, _CATALOGUE, _skill_aggregates(python="working"))
+
+
+def test_a_tech_below_the_threshold_needs_no_icon():
+    check_icons_integrity({"techs": {}}, _CATALOGUE, _skill_aggregates(python=None))
+
+
+def test_icons_covering_every_skill_pass():
+    icons = {"techs": {"python": {"initials": "PY"}}}
+    check_icons_integrity(icons, _CATALOGUE, _skill_aggregates(python="expert"))
+
+
+def test_aggregates_period_years_must_be_ordered_and_active_consistent():
+    aggregates = _aggregates(python="languages")
+    aggregates["activity_as_of"] = "2026-03-01"
+    aggregates["techs"]["python"].update(first_year=2020, last_year=2019, active=False)
+    with pytest.raises(DataLoadError, match="first_year"):
+        check_aggregates_integrity(aggregates, _CATALOGUE, _DOMAINS)
+    aggregates["techs"]["python"].update(first_year=2019, last_year=2024, active=True)
+    with pytest.raises(DataLoadError, match="active"):
+        check_aggregates_integrity(aggregates, _CATALOGUE, _DOMAINS)
+    aggregates["techs"]["python"].update(last_year=2026, active=True)
+    check_aggregates_integrity(aggregates, _CATALOGUE, _DOMAINS)
+
+
+def _with_period(**period) -> dict:
+    aggregates = _aggregates(python="languages")
+    aggregates["activity_as_of"] = "2026-03-01"
+    aggregates["techs"]["python"].update(
+        first="2018-11", last="2026-02", first_year=2018, last_year=2026, active=True
+    )
+    aggregates["techs"]["python"].update(period)
+    return aggregates
+
+
+def test_aggregates_period_must_sit_inside_the_raw_months():
+    with pytest.raises(DataLoadError, match="first_year"):
+        check_aggregates_integrity(_with_period(first_year=2017), _CATALOGUE, _DOMAINS)
+    aggregates = _with_period(last="2024-05", last_year=2025, active=False)
+    with pytest.raises(DataLoadError, match="last_year"):
+        check_aggregates_integrity(aggregates, _CATALOGUE, _DOMAINS)
+
+
+def test_aggregates_period_cannot_end_after_the_activity_date():
+    aggregates = _with_period(last="2099-01", last_year=2099, active=False)
+    with pytest.raises(DataLoadError, match="2099"):
+        check_aggregates_integrity(aggregates, _CATALOGUE, _DOMAINS)
+
+
+def test_aggregates_period_inside_the_raw_months_passes():
+    check_aggregates_integrity(_with_period(), _CATALOGUE, _DOMAINS)

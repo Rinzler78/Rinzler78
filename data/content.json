@@ -41,100 +41,129 @@
       "conclusion": "**Les heures viennent d'une chronologie datée et des jours de commits**, jamais d'une auto-évaluation. Le niveau suit une convention publiée : {levels}."
     }
   },
-
-  "approach": {
-    "headline_easter_egg": "// pragma: humanity",
-    "paragraph": "J'accompagne les équipes techniques — **startups en construction comme structures plus matures** — sur leur stratégie logicielle : choix de stack, architecture, dette technique, industrialisation, mise en production. J'aime autant comprendre un protocole bas niveau, orchestrer un pipeline CI/CD que brancher un LLM sur un produit existant. **Mon angle, c'est la polyvalence et une curiosité sincère pour la technologie** — pas un terrain de jeu unique."
-  },
-
-  "modes_intervention": {
-    "easter_egg": "// FIXME: shave fewer yaks"
-  },
-
-  "parcours": {
-    "blockquote": "*Parcours autodidacte assumé : du BEP Électrotechnique au Master Systèmes Embarqués, sans saut hors-cursus. Premier ordinateur — un ICL DRS M30 — dans les années 90, mais le code, lui, commence en 2006.*"
-  },
-
-  "featured": {
-    "easter_egg": "// ls projects/ --sort=love-desc",
-    "intro_blockquote": "Tous les dépôts publics, groupés par domaine. Stack et état à jour 2026."
-  },
-
-  "cahier_technique": {
-    "prose_contextuelle": [
-      {
-        "title": "C# / .NET (depuis 2006)",
-        "body": "C# est ma langue maternelle. J'ai vécu Framework 2.0, traversé Mono/Xamarin, basculé sur .NET Core, puis sur .NET 5 → 8 → 10. À chaque palier j'ai migré des codebases existantes (Good Angel passe de Framework 4.x à .NET Core 3.1 puis 6 ; My Good Life suit ASP.NET Web API 2 → API minimal moderne). Aujourd'hui mes projets actifs (`NetExtension`, `CometBFT.Client`, `Here.Sdk`) sont tous sur .NET 8/10."
+  "front": {
+    "identity": {
+      "prompt": "~/boris $ whoami",
+      "status": {
+        "available": "disponible",
+        "busy": "en mission"
       },
-      {
-        "title": "Embarqué (2009-2013)",
-        "body": "Quatre ans en industrie sur Windows CE 5.0/6.0, NFC ISO 14443/15693, drivers C/C++. Gunnebo : driver pour automate de dépôt d'espèces déployé sur 100+ machines sans incident post-livraison. Ingenico : librairie Objective-C de NFC Mifare utilisée downstream par Nespresso. Ondeo Systems : chaîne logicielle de configuration NFC pour compteurs Gazpar. Je ne refais pas d'embarqué pro aujourd'hui, mais cette fondation guide mes choix d'architecture quand la perf et la fiabilité comptent."
-      },
-      {
-        "title": "DevOps & conteneurisation (depuis 2020)",
-        "body": "Mes nodes blockchain m'ont forcé à industrialiser : Docker, Compose v2, GitHub Actions, Portainer. Mes images Idena et AIOZ tournent en prod chez d'autres opérateurs (470+ pulls Docker Hub). Mon poste de dev tourne sur Linux/Ubuntu 22.04 LTS avec des devcontainers normalisés — chaque projet démarre avec son environnement reproductible."
+      "since": "code depuis {since}",
+      "figures_prompt": "$ uptime --since={since}",
+      "years": "ans de code",
+      "hours": "heures de code",
+      "hours_extra": "mesurées",
+      "days": "jours de commit",
+      "days_extra": "depuis {first_year}",
+      "skills": "technos niveau",
+      "skills_extra": "avancé ou expert",
+      "aria_name": "{name}, {role}, {status}. {arc}. {location}.",
+      "aria_figures": "{years} ans de code, environ {hours} heures de code mesurées, {days} jours de commit depuis {first_year}, {skills} technologies au niveau avancé ou expert.",
+      "sentence": "{role}, je code depuis {since}. Au compteur : {years} ans de code, environ {hours} heures de pratique mesurées, {days} jours de commit depuis {first_year} et {skills} technologies au niveau avancé ou expert."
+    },
+    "help": {
+      "title": "Comment je peux aider",
+      "intro": "J'accompagne les équipes techniques, des startups en construction aux structures établies, sur {count} types d'intervention :",
+      "modes": "Formats d'intervention : {modes}."
+    },
+    "achievements": {
+      "title": "Réalisations",
+      "contexts": {
+        "product": "produit",
+        "mission": "mission",
+        "personal": "projet perso",
+        "study": "études"
       }
-    ]
-  },
-
-  "github_activity": {
-    "easter_egg": "// pulse check"
-  },
-
-  "boot_log": {
-    "summary_label": "> boot log — click à vos risques",
-    "lines": [
-      "[OK] curiosity      … mounted at /home/boris",
-      "[OK] coffee         … daemon running on :8080",
-      "[OK] basketball.so  … loaded since 1991",
-      "[WARN] imposter.sys … signal ignored",
-      "[OK] embedded.ko    … 2006 → 2013",
-      "[OK] mobile.ko      … 2011 →",
-      "[OK] cloud.ko       … 2020 →",
-      "[OK] llm.ko         … 2023 →",
-      "[OK] provence.env   … exported PATH=$PATH:/sunlight"
-    ]
-  },
-
-  "beyond_code": {
-    "easter_egg": "// human.boris{ basketball: true, papa: true }",
-    "paragraph": "Coach basket à Pélissanne, en Provence, après avoir attrapé un ballon pour la première fois à 7 ans (et ne l'ayant jamais vraiment lâché depuis). Autodidacte du BEP Électrotechnique au Master Systèmes Embarqués. Papa d'un futur peut-être-développeur."
-  },
-
-  "connect": {
-    "chips": [
-      { "id": "email", "label": "Email", "primary": true },
-      { "id": "phone", "label": "Téléphone" },
-      { "id": "whatsapp", "label": "WhatsApp" },
-      { "id": "linkedin", "label": "LinkedIn" },
-      { "id": "malt", "label": "Malt" },
-      { "id": "pypi", "label": "PyPI" },
-      { "id": "discord", "label": "Discord" },
-      { "id": "twitter", "label": "X" }
-    ],
-    "easter_egg": "// open socket",
-    "phone_label": "Tél. (sur demande sérieuse)",
-    "footer_eof": "EOF · github.com/Rinzler78 · 2026 — still curious, still shipping_"
-  },
-
-  "id_card_terminal": {
-    "title": "boris@github:~/id  —  cat profile.yaml",
-    "uptime_label": "$ uptime --since=2006",
-    "uptime_value": "~20 years of code · still curious"
-  },
-
-  "whoami_terminal": {
-    "title": "boris@github:~  —  whoami",
-    "lines": [
-      { "cmd": "whoami", "out_label": "Boris Leclere", "out_extra": "Freelance CTO & Architecte de Solutions" },
-      { "cmd": "pwd", "out_label": "/home/boris/provence" },
-      { "cmd": "uptime --since=2006", "out_label": "coding for ~20 years", "out_comment": "// still curious" }
-    ]
-  },
-
-  "map": {
-    "header": "$ traceroute home",
-    "subheader": "// last hop : Senas, Provence-Alpes-Côte d'Azur, France",
-    "ping_easter_egg": "// ping boris ~ 26ms"
+    },
+    "oss": {
+      "title": "Open source",
+      "sentence": "{count} projets publics publiés sur {registries}, avec leurs compteurs lus en direct sous chaque tuile.",
+      "registries": {
+        "pypi": "PyPI",
+        "dockerhub": "Docker Hub"
+      },
+      "legacy": "archivé",
+      "badges": {
+        "pypi": "Téléchargements PyPI par mois",
+        "dockerhub": "Pulls Docker Hub",
+        "stars": "Étoiles GitHub"
+      },
+      "aria": "{name} : {summary} Stack : {techs}."
+    },
+    "skills": {
+      "title": "Compétences",
+      "band_alt": "Technologies pratiquées",
+      "levels": {
+        "working": "opérationnel",
+        "professional": "professionnel",
+        "advanced": "avancé",
+        "expert": "expert"
+      },
+      "active": "actif",
+      "also": "aussi :",
+      "domains": {
+        "embedded": "Embarqué & systèmes",
+        "mobile": "Mobile",
+        "desktop": "Desktop",
+        "languages": "Langages",
+        "backend": "Backend & web",
+        "devops": "DevOps & infra",
+        "ai-llm": "IA & LLM",
+        "blockchain": "Blockchain",
+        "practices": "Pratiques d'ingénierie"
+      },
+      "aria": "{domain} : {rows}.",
+      "sentence": "{count} technologies pratiquées au moins {threshold} h, réparties en {domains} domaines et classées de la plus récente à la plus ancienne ; {active} sont actives en {year}, dont {top}.",
+      "evidence_note": "◆ niveau relevé par une réalisation attestée, voir la [méthode](#{method})."
+    },
+    "timeline": {
+      "title": "Chronologie",
+      "now": "aujourd'hui",
+      "sentence": "{count} postes et missions depuis {first}, du plus récent au plus ancien ; chaque ligne mène au détail sur la [page parcours]({journey}).",
+      "types": {
+        "education": "études",
+        "competition": "compétition",
+        "internship": "stage",
+        "cdi": "CDI",
+        "mission": "mission",
+        "freelance": "indépendant"
+      }
+    },
+    "method": {
+      "title": "Méthode",
+      "hours": "**Les heures viennent de traces datées, jamais d'une auto-évaluation.** Une chronologie continue des postes et des missions donne le temps professionnel, mois par mois ; les {days} jours de commit depuis {first_year} ({public} dans des dépôts publics) donnent le temps personnel et la part de chaque technologie, lue dans les lignes ajoutées. Là où aucune trace n'existe, la part est déclarée par l'auteur et comptée comme telle.",
+      "levels": "**Le niveau est une convention :** {levels}. Le niveau affiché est le plus haut entre celui des heures et celui d'une réalisation attestée.",
+      "statements": "Certains faits de carrière reposent sur la déclaration de l'auteur. Aucun chiffre de cette page n'est saisi à la main : tous sont calculés à la génération, et les compteurs publics sont lus en direct."
+    },
+    "activity": {
+      "title": "Activité",
+      "cal_prompt": "$ git log --author=boris --all",
+      "cal_sub": "{days} jours de commit",
+      "days_unit": "j",
+      "contexts": {
+        "pro": "pro",
+        "personal": "perso",
+        "study": "études"
+      },
+      "less": "moins",
+      "more": "plus",
+      "aria": "Calendrier des jours de commit de {first} à {last} : {days} jours, dont {pro} en contexte professionnel et {personal} en projets personnels.",
+      "sentence": "{days} jours de commit depuis {first_year}, toutes sources confondues : {pro} dans un contexte professionnel, {personal} en projets personnels ; plus la case est intense, plus la journée a touché de fichiers.",
+      "github_title": "Ce que GitHub voit",
+      "github_sentence": "Ces deux vues ne comptent que les contributions visibles par GitHub ; le calendrier ci-dessus inclut aussi les dépôts privés et le travail en poste.",
+      "snake_alt": "Le serpent qui mange le graphe de contributions GitHub",
+      "streak_alt": "Séries de contributions GitHub"
+    },
+    "more": {
+      "title": "Pour aller plus loin",
+      "stack": "Stack",
+      "journey": "Parcours",
+      "projects": "Projets",
+      "working": "Travailler avec moi"
+    },
+    "footer": {
+      "signature": "{name} · données au {as_of} · [comment c'est mesuré](#{method})",
+      "egg": "$ uptime --since={since} → {years} ans, {days} jours de commit, plus longue série {streak} j, record {busiest} jours en {busiest_year} · {tagline}_"
+    }
   }
 }

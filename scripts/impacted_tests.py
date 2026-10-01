@@ -45,7 +45,7 @@ DATA_LIKE = (
 DATA_TESTS = (
     "tests/test_generation.py",
     "tests/test_real_data.py",
-    "tests/test_hero.py",
+    "tests/test_front_page.py",
 )
 
 # Modules whose guards are not named ``test_<stem>.py``. Anything absent here
@@ -55,7 +55,11 @@ MODULE_TESTS = {
     "validate": DATA_TESTS,
     "validate_data": DATA_TESTS + ("tests/test_real_data.py",),
     "data_loader": DATA_TESTS + ("tests/test_data_loader.py",),
-    "font_outline": ("tests/test_font_outline.py", "tests/test_hero.py"),
+    "font_outline": ("tests/test_font_outline.py", "tests/test_front_page.py"),
+    # The front page view and its tiles shape every generated artifact.
+    "front": ("tests/test_front.py",) + DATA_TESTS,
+    "tiles": ("tests/test_tiles.py",) + DATA_TESTS,
+    "icons": ("tests/test_icons.py",) + DATA_TESTS,
 }
 
 

@@ -1,0 +1,1 @@
+{count} projets publics publiés sur {registries}, avec leurs compteurs lus en direct sous chaque tuile.

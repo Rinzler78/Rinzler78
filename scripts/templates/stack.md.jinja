@@ -21,6 +21,26 @@
   </tr>
 </table>
 
+{% macro chart(name, block) -%}
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="{{ root }}assets/svg/{{ svg }}light/{{ name }}.svg" />
+  <img src="{{ root }}assets/svg/{{ svg }}{{ name }}.svg" width="100%" alt="{{ block.aria }}" />
+</picture>
+
+{{ block.conclusion }}
+{%- endmacro %}
+## {{ content.charts.journey_share.title }}
+
+{{ chart('journey-share', content.charts.journey_share) }}
+
+## {{ content.charts.top_skills.title }}
+
+{{ chart('top-skills', content.charts.top_skills) }}
+
+## {{ content.charts.domain_split.title }}
+
+{{ chart('domain-split', content.charts.domain_split) }}
+
 ## {% if lang == 'en' %}All skills, by domain{% else %}Toutes les compétences, par domaine{% endif %}
 
 {% for d in domains | sort(attribute='order') %}

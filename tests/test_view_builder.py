@@ -25,6 +25,9 @@ def _entry(hours, level, first, last, **extra):
         "pending_claim": None,
         "first": first,
         "last": last,
+        "first_year": int(first[:4]),
+        "last_year": int(last[:4]),
+        "active": int(last[:4]) == 2026,
         "declared_share": 0.0,
         "domain": "languages",
         "kind": "language",
@@ -121,6 +124,26 @@ def test_a_skill_last_used_before_the_as_of_year_ends_that_year():
     (skill,) = build_skills([_tech("aix")], aggregates)
 
     assert (skill["since"], skill["until"]) == (2012, 2013)
+
+
+def test_the_period_comes_from_the_ten_hour_years_not_the_raw_months():
+    # NFC: 0.1 h of noise in 2026-09 does not make it active (aggregates v4).
+    entry = _entry(1831.2, "advanced", "2011-12", "2026-09")
+    entry.update(first_year=2011, last_year=2014, active=False)
+
+    (nfc,) = build_skills([_tech("nfc")], _aggregates(nfc=entry))
+
+    assert (nfc["since"], nfc["until"]) == (2011, 2014)
+
+
+def test_recency_order_follows_the_period_not_a_noise_month():
+    noisy = _entry(1831.2, "advanced", "2011-12", "2026-09")
+    noisy.update(last_year=2014, active=False)
+    recent = _entry(60.0, "working", "2020-01", "2020-06")
+    skills = build_skills(
+        [_tech("nfc"), _tech("ts")], _aggregates(nfc=noisy, ts=recent)
+    )
+    assert [s["id"] for s in skills] == ["ts", "nfc"]
 
 
 def test_the_displayed_level_is_the_aggregates_display_level():

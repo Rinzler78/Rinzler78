@@ -57,7 +57,10 @@ def test_no_template_computes_against_a_literal_year():
 def test_an_ongoing_skill_reads_as_now_against_the_activity_date():
     data = gen.enrich(gen.load_data())
     as_of_year = data["as_of_year"]
+    period_end = {t: e["last_year"] for t, e in data["aggregates"]["techs"].items()}
     for skill in data["skills"]:
-        last_year = int(skill["last"][:4])
-        assert last_year <= as_of_year, skill["id"]
+        # The period ends at the last year with 10 h (aggregates v4), never
+        # after the raw last month nor after the activity date.
+        last_year = period_end[skill["id"]]
+        assert last_year <= int(skill["last"][:4]) <= as_of_year, skill["id"]
         assert (skill["until"] is None) == (last_year == as_of_year), skill["id"]

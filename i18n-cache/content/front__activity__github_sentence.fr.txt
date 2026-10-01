@@ -1,0 +1,1 @@
+Ces deux vues ne comptent que les contributions visibles par GitHub ; le calendrier ci-dessus inclut aussi les dépôts privés et le travail en poste.

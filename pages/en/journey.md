@@ -26,17 +26,17 @@
 | **~1990s** | First computer - ICL DRS M30 — computer curiosity - no code yet - origins |  |
 
 ## Professional experience
-- **2023-04 → now** · Freelance CTO &amp; solutions architect — Indépendant _(freelance)_
-- **2020-01 → 2023-04** · CTO (modernization phase) — Good Angel / My Good Life _(cdi)_
-- **2014-04 → 2020-01** · Project manager then CTO (mobile phase) — Good Angel / My Good Life _(cdi)_
-- **2013-05 → 2014-02** · Analyst Engineer - Gazpar meters — Theoris SAS · mission Ondeo Systems _(mission)_
-- **2013-04 → 2013-04** · Analyst Engineer - Rafale augmented reality — Theoris SAS · mission Dassault Systèmes _(mission)_
-- **2012-10 → 2013-03** · Analyst engineer - server monitoring — Theoris SAS · mission Systar _(mission)_
-- **2011-12 → 2012-09** · Analyst Engineer - mobile payment — Theoris SAS · mission Ingenico _(mission)_
-- **2011-01 → 2011-11** · Embedded Systems Development Engineer — Neurones Assistance _(cdi)_
-- **2009-10 → 2010-12** · Embedded Systems Development Engineer — GoodKap! _(cdi)_
-- **2009-04 → 2009-07** · Trainee Embedded Systems Engineer — Gunnebo _(internship)_
-- **2008-09 → 2009-06** · Graduation project - autonomous robot — Coupe de France de Robotique _(competition)_
-- **2006-09 → 2009-06** · Bachelor → Master STIC EEA, Embedded Computing — Université de Reims Champagne-Ardenne _(education)_
+- <a id="exp-freelance"></a>**2023-04 → now** · Freelance CTO &amp; solutions architect — Independent _(freelance)_
+- <a id="exp-goodangel-mgl-p2"></a>**2020-01 → 2023-04** · CTO (modernization phase) — Good Angel / My Good Life _(cdi)_
+- <a id="exp-goodangel-mgl-p1"></a>**2014-04 → 2020-01** · Project manager then CTO (mobile phase) — Good Angel / My Good Life _(cdi)_
+- <a id="exp-theoris-ondeo"></a>**2013-05 → 2014-02** · Analyst Engineer - Gazpar meters — Theoris SAS · Ondeo Systems mission _(mission)_
+- <a id="exp-theoris-dassault"></a>**2013-04 → 2013-04** · Analyst Engineer - Rafale augmented reality — Theoris SAS · Dassault Systèmes mission _(mission)_
+- <a id="exp-theoris-systar"></a>**2012-10 → 2013-03** · Analyst engineer - server monitoring — Theoris SAS · Systar mission _(mission)_
+- <a id="exp-theoris-ingenico"></a>**2011-12 → 2012-09** · Analyst Engineer - mobile payment — Theoris SAS · Ingenico mission _(mission)_
+- <a id="exp-neurones"></a>**2011-01 → 2011-11** · Embedded Systems Development Engineer — Neurones Assistance _(cdi)_
+- <a id="exp-goodkap"></a>**2009-10 → 2010-12** · Embedded Systems Development Engineer — GoodKap! _(cdi)_
+- <a id="exp-gunnebo"></a>**2009-04 → 2009-07** · Trainee Embedded Systems Engineer — Gunnebo _(internship)_
+- <a id="exp-robotics-cup"></a>**2008-09 → 2009-06** · Graduation project - autonomous robot — French Robotics Cup _(competition)_
+- <a id="exp-studies-embedded"></a>**2006-09 → 2009-06** · Bachelor → Master STIC EEA, Embedded Computing — University of Reims Champagne-Ardenne _(education)_
 
 <sub><a href="../../README.en.md">← Back to profile</a></sub>

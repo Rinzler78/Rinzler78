@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Tech icons",
+  "description": "Icon of each tech shown on the front page (ADR-016 section 4): a skillicons.dev id for the icon band, a vendored logo (Devicon or Simple Icons path data under assets/icons/) with its brand color for the tiles, or initials when no logo exists.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "sources", "techs"],
+  "properties": {
+    "version": { "const": 1 },
+    "sources": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["url"],
+        "properties": {
+          "url": { "type": "string", "format": "uri" },
+          "version": { "type": "string" },
+          "license": { "type": "string" },
+          "files": { "type": "string" },
+          "note": { "type": "string" }
+        }
+      }
+    },
+    "techs": {
+      "type": "object",
+      "propertyNames": { "pattern": "^[a-z0-9_-]+$" },
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "band": { "type": "string", "pattern": "^[a-z0-9]+$" },
+          "tile": {
+            "type": "string",
+            "pattern": "^(devicon|simple-icons)/[a-z0-9-]+$"
+          },
+          "color": { "type": "string", "pattern": "^#[0-9A-F]{6}$" },
+          "initials": { "type": "string", "minLength": 1, "maxLength": 4 },
+          "band_only": { "const": true }
+        },
+        "oneOf": [
+          { "required": ["tile", "color"], "not": { "required": ["initials"] } },
+          { "required": ["initials"], "not": { "required": ["tile"] } }
+        ]
+      }
+    }
+  }
+}

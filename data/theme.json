@@ -1,7 +1,6 @@
 {
   "name": "GitHub Dark + Feu",
   "version": "2.0",
-
   "palette": {
     "arc_origin": "#f78166",
     "arc_mid": "#c98bd8",
@@ -22,7 +21,6 @@
     "danger": "#f85149",
     "code_bg": "#0a0d12"
   },
-
   "palette_light": {
     "arc_origin": "#c2410c",
     "arc_mid": "#8b5cf6",
@@ -43,7 +41,6 @@
     "danger": "#cf222e",
     "code_bg": "#f4eee6"
   },
-
   "fonts": {
     "display": "Inter",
     "body": "system-ui",
@@ -52,7 +49,6 @@
     "display_fallback": "system-ui, -apple-system, sans-serif",
     "body_fallback": "system-ui, -apple-system, sans-serif"
   },
-
   "patterns": {
     "panel": {
       "corner_radius": 8,
@@ -65,7 +61,6 @@
       "label_color": "text_muted",
       "label_weight": 600
     },
-
     "stat_card": {
       "value_font_size": 28,
       "value_weight": 700,
@@ -74,7 +69,6 @@
       "label_color": "text_muted",
       "label_letter_spacing": "0.1em"
     },
-
     "bar": {
       "height": 8,
       "corner_radius": 2,
@@ -84,7 +78,6 @@
       "value_color": "text_muted",
       "label_font_size": 12
     },
-
     "chip": {
       "corner_radius": 999,
       "padding_x": 12,
@@ -96,17 +89,19 @@
       "font_size": 11,
       "font_weight": 500
     },
-
     "status_dot": {
       "radius": 4,
       "color": "success",
       "pulse_duration": "1.8s"
     },
-
     "arc": {
-      "stops": ["arc_origin", "arc_mid", "accent", "accent_dark"]
+      "stops": [
+        "arc_origin",
+        "arc_mid",
+        "accent",
+        "accent_dark"
+      ]
     },
-
     "level_colors": {
       "expert": "accent",
       "expert-legacy": "accent_dark",
@@ -115,7 +110,6 @@
       "notions": "text_dim"
     }
   },
-
   "//series": "Categorical colors for data series, validated for color-vision deficiency. Deliberately NOT the brand accent: an indigo/coral-led set measures deltaE 1.5 between coral and aqua under protanopia. Indigo and coral stay as interface accents.",
   "series": {
     "embedded": "#d95926",
@@ -126,7 +120,6 @@
     "ai-llm": "#9085e9",
     "desktop": "#9aa3b2"
   },
-
   "series_light": {
     "embedded": "#eb6834",
     "mobile": "#e87ba4",
@@ -135,5 +128,32 @@
     "blockchain": "#eda100",
     "ai-llm": "#4a3aa7",
     "desktop": "#64748b"
+  },
+  "//tiles": "Front page v2 tiles (ADR-015): acid green on near-black in the dark theme, deep green on near-white in the light theme, where the bright step would fail contrast. 'personal' and 'study' color the activity calendar beside the accent (pro).",
+  "tiles": {
+    "dark": {
+      "panel": "#0c0f0a",
+      "dot": "#1d2419",
+      "border": "#262e21",
+      "text": "#eef2e8",
+      "muted": "#a3ab9a",
+      "dim": "#7b8472",
+      "accent": "#a3e635",
+      "track": "#1a2016",
+      "personal": "#d9d4c1",
+      "study": "#6e7864"
+    },
+    "light": {
+      "panel": "#fbfcf8",
+      "dot": "#e4e8dc",
+      "border": "#d9dfcf",
+      "text": "#141810",
+      "muted": "#525a4a",
+      "dim": "#6b7361",
+      "accent": "#3f6212",
+      "track": "#eaede3",
+      "personal": "#8c8570",
+      "study": "#b3baa6"
+    }
   }
 }

@@ -28,7 +28,7 @@ A first-class narrative concept: the **ordered progression of domains** `embedde
 
 ### Activity aggregates
 
-`data/activity/aggregates.json` — Hours per month, tech, domain and context, computed on the author's workstation by `scripts/activity/hours.py` from the private activity timeline and commit evidence (ADR-013), and committed. Per tech: `hours`, `display_hours` (rounded down so a shown figure never crosses a threshold), `hours_level`, `evidence_level`, `display_level` (the higher of the two when the evidence's claim is attested — ADR-018), `level_source`, `claim`, `pending_claim`, `first`/`last` (`YYYY-MM`), `declared_share`, `domain`, `kind`. Also `by_month`, `context_totals`, `coverage`, the `levels` convention and `notes`. Validated by `schemas/aggregates.schema.json`.
+`data/activity/aggregates.json` — Hours per month, tech, domain and context, computed on the author's workstation by `scripts/activity/hours.py` from the private activity timeline and commit evidence (ADR-013), and committed. Per tech: `hours`, `display_hours` (rounded down so a shown figure never crosses a threshold), `hours_level`, `evidence_level`, `display_level` (the higher of the two when the evidence's claim is attested — ADR-018), `level_source`, `claim`, `pending_claim`, `first`/`last` (`YYYY-MM`, raw months of any hour), `first_year`/`last_year`/`active` (the period: a year counts from 10 h), `declared_share`, `domain`, `kind`. Also `by_month`, `context_totals`, `coverage`, the `levels` convention, `notes`, and the `calendar` of every own-commit day (context `pro` / `personal` / `study` and a 1–4 intensity bucket; no repository, no count) that the front page's activity calendar draws. Validated by `schemas/aggregates.schema.json`.
 
 **Levels** are a published convention, not a score: `working` ≥ 50 h, `professional` ≥ 500 h, `advanced` ≥ 1,600 h, `expert` ≥ 5,000 h. There is no 0–99 score and no decay (ADR-013 superseded ADR-006). A tech is a **skill line** from the working threshold; below it, it stays in the data.
 
@@ -77,7 +77,11 @@ The Theme is editable separately from the other data — change it and all the S
 
 ### Content
 
-`data/content.json` — Collection of residual narrative modules (those that have not become their own entities): `//` easter eggs per section, `boot_log[]` (lines of the `<details>`), the self-taught blockquote, `footer_eof`, `beyond_code` prose. Each module has `id`, `kind`, `payload` (i18n when prose).
+`data/content.json` — Display copy that is not an entity: `front` (every heading, label and sentence template of the front page; placeholders such as `{days}` are filled by `scripts/front.py`, never typed; the whole tree is translated through the i18n cache), the chart blocks of the stack page (`charts`) and the per-language number format (`caption_words`).
+
+`data/achievements.json` — What was done (`id`, `claim`, `context` product / mission / personal / study, `date`, `fr`, `en`). An achievement is published only once its `claim` is in `data/claims.lock.json` (ADR-014), wrapped in its claim marker.
+
+`data/icons.json` — The icon of each tech shown on the front page (ADR-016): a skillicons.dev id for the icon band, a vendored Devicon / Simple Icons logo with its brand color for the tiles, or initials.
 
 **Promotions** from the historical content.json:
 - `modes_intervention[]` → **Mode** entity (data/modes.json)
@@ -98,7 +102,7 @@ A `.jinja` file in `scripts/templates/` that describes the rendering of an SVG o
 ### View (view)
 
 A view is an SVG, a markdown **Page**, or a section that **aggregates** several data concepts. Examples:
-- *hero* = identity banner: `Profile.name` (title) + **Signature arc** (hero visual) + "who-for" subtitle + scale line + contact cluster. **Light-first** (primary variant) with a dark mirror via `<picture>`. The arc ribbon's gradient **encodes the arc** (warm at the origin `embedded` → cool at the end `ai`). Display text (name + arc) is outlined to paths (see [ADR-007](docs/adr/0007-display-type-outlined-to-paths.md)).
+- *front page tiles* (ADR-015, ADR-016) = fixed-size SVG panels on one unit grid (half tile 590 units embedded at 415 px): the identity pair (name, role, availability, **Signature arc** line; computed key figures), one tile per open-source project with a live counter source, one skills tile per domain, two activity-calendar tiles. Built by `scripts/front.py` (the page view: every figure computed) and drawn by `scripts/tiles.py`; the name, tile titles and large figures are outlined to paths ([ADR-007](docs/adr/0007-display-type-outlined-to-paths.md)). Dark by default, light override via `<picture>`.
 - *id-card* = projection of Profile + filter of Techs (by domain)
 - *timeline-life* = sorted Timeline Events
 - *stack-{domain}* = Techs filtered by domain
@@ -121,7 +125,7 @@ Series colors are **injected by the caller** from a palette validated for color-
 
 ### Page
 
-A generated markdown file that is a view at document scale. `README.md` is the **front** Page (concise: hero + quick résumé + full contact cluster + links out); detail Pages live under `pages/` (e.g. `pages/stack.md`, `pages/journey.md`, `pages/projects.md`, `pages/toolbox.md`), each an aggregated view of the same `data/`. Pages are a first-class generation target alongside SVG views, rendered for FR + EN (`pages/en/*`) with the same dual-palette `<picture>` mechanism. See [ADR-008](docs/adr/0008-in-repo-multipage.md).
+A generated markdown file that is a view at document scale. `README.md` is the **front** Page (ADR-016 order: identity, offer, achievements, open source, skills, timeline, method and activity, signature); detail Pages live under `pages/` (e.g. `pages/stack.md`, `pages/journey.md`, `pages/projects.md`, `pages/toolbox.md`), each an aggregated view of the same `data/`. Pages are a first-class generation target alongside SVG views, rendered for FR + EN (`pages/en/*`) with the same dual-palette `<picture>` mechanism. See [ADR-008](docs/adr/0008-in-repo-multipage.md).
 
 ---
 

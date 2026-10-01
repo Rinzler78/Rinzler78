@@ -25,14 +25,41 @@
   </tr>
 </table>
 
+## Où le temps est passé
+
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="../assets/svg/light/journey-share.svg" />
+  <img src="../assets/svg/journey-share.svg" width="100%" alt="Part de l'effort par domaine, chaque année ramenée à 100 %" />
+</picture>
+
+**L'arc se lit directement.** Domaine dominant, période par période : Mobile de 2006 à 2008, Mobile de 2014 à 2020 et AI &amp; LLM depuis 2022. Chaque année est ramenée à un tout : c'est une répartition, pas un volume.
+
+## Compétences les mieux ancrées
+
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="../assets/svg/light/top-skills.svg" />
+  <img src="../assets/svg/top-skills.svg" width="100%" alt="Compétences au niveau le plus élevé, en heures de code mesurées" />
+</picture>
+
+**Les heures viennent d'une chronologie datée et des jours de commits**, jamais d'une auto-évaluation. Le niveau suit une convention publiée : working dès 50 h, professional dès 500 h, advanced dès 1 600 h et expert dès 5 000 h.
+
+## Un profil large
+
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="../assets/svg/light/domain-split.svg" />
+  <img src="../assets/svg/domain-split.svg" width="100%" alt="Répartition de l'exposition cumulée par domaine, en parts" />
+</picture>
+
+**Polyvalent, pas dispersé.** Mobile pèse 42,6 % des heures, puis Embedded &amp; Systems 19,2 %, DevOps &amp; Infrastructure 12,1 % et AI &amp; LLM 11,4 %. Les parts se recoupent volontairement — un fichier compte dans chaque domaine qu'il touche — donc seuls les pourcentages sont affichés, jamais un total d'heures.
+
 ## Toutes les compétences, par domaine
 **Embedded &amp; Systems**
 
 | Compétence | Heures | Niveau | Période | Versions |
 |---|---|---|---|---|
-| GPS | 3500 | advanced | 2009–now | NMEA · A-GPS |
-| NFC | 1800 | advanced | 2011–now | ISO 14443 / 15693 (Mifare) |
-| Bluetooth / BLE / GATT | 1400 | professional | 2011–now | Classic + BLE 4.x · custom GATT |
+| GPS | 3500 | advanced | 2009–2020 | NMEA · A-GPS |
+| Bluetooth / BLE / GATT | 1400 | professional | 2011–2020 | Classic + BLE 4.x · custom GATT |
+| NFC | 1800 | advanced | 2011–2014 | ISO 14443 / 15693 (Mifare) |
 | USB drivers | 610 | professional | 2013–2014 | — |
 | Augmented reality | 60 | working | 2013–2013 | — |
 | GPRS | 910 | professional | 2009–2010 | — |
@@ -46,12 +73,12 @@
 |---|---|---|---|---|
 | Xamarin (iOS, Android) | 4400 | advanced | 2015–now | — |
 | Android | 3600 | advanced | 2011–now | — |
-| iOS | 3500 | advanced | 2011–now | — |
-| Xamarin.Forms | 3200 | advanced | 2015–now | Forms 2.3 → 4.7 · Essentials 1.x |
 | Mobile UI | 580 | professional | 2015–now | — |
-| Cross-platform architecture | 440 | working | 2015–now | — |
-| Mobile release (signing, stores) | 900 | professional | 2014–now | — |
-| Objective-C | 1500 | professional | 2011–2025 | iOS 5 → 10 |
+| iOS | 3500 | advanced | 2011–2021 | — |
+| Xamarin.Forms | 3200 | advanced | 2015–2021 | Forms 2.3 → 4.7 · Essentials 1.x |
+| Cross-platform architecture | 440 | working | 2015–2020 | — |
+| Mobile release (signing, stores) | 900 | professional | 2014–2020 | — |
+| Objective-C | 1500 | professional | 2011–2017 | iOS 5 → 10 |
 | Windows Mobile | 1500 | professional | 2006–2014 | 6.x |
 | Windows CE | 5100 | expert | 2006–2012 | 5.0 / 6.0 |
 
@@ -68,18 +95,18 @@
 
 | Compétence | Heures | Niveau | Période | Versions |
 |---|---|---|---|---|
-| Python | 1400 | professional | 2018–now | 3.11+ |
-| Bash / Shell | 1000 | professional | 2014–now | Bash 5.x |
+| Python | 1400 | professional | 2023–now | 3.11+ |
+| Bash / Shell | 1000 | professional | 2020–now | Bash 5.x |
 | C# / .NET | 13000 | expert | 2006–now | C# 2.0 → 13 · .NET Framework 2.0 → .NET 10 |
 | C / C++ | 6200 | expert | 2006–now | C99 · C++11 · C++/CLI |
-| SQL | 300 | working | 2006–now | — |
-| HTML / CSS | 130 | working | 2014–now | — |
 | TypeScript | 60 | working | 2025–now | 5.x |
-| XAML | 140 | working | 2015–now | — |
-| Java | 570 | professional | 2011–2025 | — |
+| XAML | 140 | working | 2018–2020 | — |
+| HTML / CSS | 130 | working | 2018–2018 | — |
+| SQL | 300 | working | 2006–2013 | — |
 | C++/CLI | 120 | working | 2013–2013 | — |
 | Multithreading | 360 | working | 2012–2013 | — |
-| MATLAB | 80 | working | 2006–2009 | — |
+| Java | 570 | professional | 2011–2012 | — |
+| MATLAB | 80 | working | 2006–2008 | — |
 
 **Backend &amp; Web**
 
@@ -87,7 +114,7 @@
 |---|---|---|---|---|
 | .NET 5+ | 320 | working | 2026–now | — |
 | Blazor (WASM &amp; Server) | 310 | working | 2021–now | .NET 6+ |
-| ASP.NET Core | 420 | working | 2017–now | 2.2 → 8 |
+| ASP.NET Core | 420 | working | 2018–now | 2.2 → 8 |
 | Entity Framework | 480 | working | 2016–now | EF6 → EF Core 3.1+ |
 | Payment integration | 600 | professional | 2011–2012 | — |
 | SOAP web services | 1500 | professional | 2009–2011 | — |
@@ -99,7 +126,7 @@
 |---|---|---|---|---|
 | Docker | 770 | professional | 2020–now | 24.x+ · Compose v2 |
 | Virtual machines | 440 | working | 2014–now | — |
-| Azure DevOps | 270 | working | 2019–now | — |
+| Azure DevOps | 270 | working | 2026–now | — |
 | Cross-compilation toolchains | 210 | working | 2012–now | — |
 | Git server | 170 | working | 2013–2014 | — |
 | TestLink | 170 | working | 2013–2014 | — |

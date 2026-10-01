@@ -1,0 +1,6 @@
+{
+  "fr_hash": "42c98f2d91451517536fa4b98bb50e96cd5d7239d1eec628cb7cadbda581794b",
+  "en": "$ git log --author=boris --all",
+  "manual": true,
+  "reviewed": false
+}

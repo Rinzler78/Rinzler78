@@ -1,0 +1,1 @@
+{years} ans de code, environ {hours} heures de code mesurées, {days} jours de commit depuis {first_year}, {skills} technologies au niveau avancé ou expert.

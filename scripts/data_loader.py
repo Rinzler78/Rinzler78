@@ -10,6 +10,8 @@ Public surface (V1, incremental):
 - ``check_aggregates_integrity(aggregates, techs, domains)`` verifies that the
   committed activity aggregates (ADR-013) only name catalogued techs, filed
   under the same declared domain as in the catalogue.
+- ``check_icons_integrity(icons, techs, aggregates)`` verifies that the icon
+  map names catalogued techs and covers every skill line (ADR-016).
 """
 
 import json
@@ -85,6 +87,65 @@ def check_referential_integrity(bag: dict[str, list[dict]]) -> None:
                 )
 
 
+def _check_calendar(aggregates: dict) -> None:
+    """Calendar days are real dates, none after ``activity_as_of``, one per
+    commit day of the coverage."""
+    calendar = aggregates.get("calendar")
+    if calendar is None:
+        return
+    as_of = aggregates.get("activity_as_of")
+    for day in sorted(calendar):
+        try:
+            date.fromisoformat(day)
+        except ValueError as e:
+            raise DataLoadError(
+                f"Aggregates calendar day {day!r} is not a calendar date"
+            ) from e
+        if as_of is not None and day > as_of:
+            raise DataLoadError(
+                f"Aggregates calendar day {day} is after activity_as_of {as_of}"
+            )
+    commit_days = aggregates.get("coverage", {}).get("commit_days")
+    if commit_days is not None and commit_days != len(calendar):
+        raise DataLoadError(
+            f"Aggregates calendar holds {len(calendar)} day(s), coverage "
+            f"commit_days says {commit_days}"
+        )
+
+
+def _check_period(tech_id: str, entry: dict, as_of: str | None) -> None:
+    """The period sits inside the raw months and the activity date:
+    ``year(first) <= first_year <= last_year <= year(last) <= year(as_of)``,
+    and ``active`` iff the last year is the year of ``activity_as_of``
+    (aggregates v4)."""
+    first, last = entry.get("first_year"), entry.get("last_year")
+    if first is None or last is None:
+        return
+    if as_of is not None and last > int(as_of[:4]):
+        raise DataLoadError(
+            f"Aggregates tech {tech_id!r}: last_year {last} after activity_as_of "
+            f"{as_of}"
+        )
+    if entry.get("first") and first < int(entry["first"][:4]):
+        raise DataLoadError(
+            f"Aggregates tech {tech_id!r}: first_year {first} before its first "
+            f"month {entry['first']}"
+        )
+    if entry.get("last") and last > int(entry["last"][:4]):
+        raise DataLoadError(
+            f"Aggregates tech {tech_id!r}: last_year {last} after its last month "
+            f"{entry['last']}"
+        )
+    if first > last:
+        raise DataLoadError(
+            f"Aggregates tech {tech_id!r}: first_year {first} after last_year {last}"
+        )
+    if as_of is not None and entry.get("active") != (last == int(as_of[:4])):
+        raise DataLoadError(
+            f"Aggregates tech {tech_id!r}: active disagrees with last_year {last}"
+        )
+
+
 def check_aggregates_integrity(
     aggregates: dict, techs: list[dict], domains: list[dict]
 ) -> None:
@@ -109,6 +170,8 @@ def check_aggregates_integrity(
                 f"Aggregates activity_as_of {as_of!r} is not a calendar date"
             ) from e
 
+    _check_calendar(aggregates)
+
     catalogue = {t["id"]: t.get("domain") for t in techs}
     domain_ids = {d["id"] for d in domains}
 
@@ -125,6 +188,7 @@ def check_aggregates_integrity(
             raise DataLoadError(
                 f"Aggregates tech {tech_id!r} references unknown domain {domain!r}"
             )
+        _check_period(tech_id, entry, as_of)
 
     for month, row in sorted(aggregates.get("by_month", {}).items()):
         for domain in sorted(row.get("domains", {})):
@@ -137,3 +201,20 @@ def check_aggregates_integrity(
                 raise DataLoadError(
                     f"Aggregates month {month} references uncatalogued tech {tech_id!r}"
                 )
+
+
+def check_icons_integrity(icons: dict, techs: list[dict], aggregates: dict) -> None:
+    """The icon map names catalogued techs and covers every skill line.
+
+    ADR-016: every tech shown as a skill line carries an icon, a vendored logo
+    or its initials; a tech below the working threshold needs none.
+    """
+    catalogue = {t["id"] for t in techs}
+    for tech_id in sorted(icons.get("techs", {})):
+        if tech_id not in catalogue:
+            raise DataLoadError(f"Icons reference uncatalogued tech {tech_id!r}")
+    for tech_id, entry in sorted(aggregates.get("techs", {}).items()):
+        if entry.get("display_level") and tech_id not in icons.get("techs", {}):
+            raise DataLoadError(
+                f"Skill {tech_id!r} has no icon: add it to data/icons.json"
+            )

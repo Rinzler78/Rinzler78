@@ -47,7 +47,7 @@ TRANSLATABLE: dict[str, list[str]] = {
     "projects": ["description"],
     "domains": ["label"],
     "timeline": ["label", "description"],
-    "experiences": ["role", "note"],
+    "experiences": ["org", "role", "note"],
     "techs": ["notes"],
 }
 
@@ -55,10 +55,6 @@ TRANSLATABLE: dict[str, list[str]] = {
 SINGLETONS: dict[str, list[str]] = {
     "profile": ["role", "tagline"],
     "content": [
-        "approach.paragraph",
-        "beyond_code.paragraph",
-        "parcours.blockquote",
-        "map.subheader",
         # Chart captions become the aria-label and <title> of a generated SVG.
         # They are the only text a screen reader gets from a chart, so leaving
         # them untranslated makes README.en.md inaccessible in English.
@@ -74,6 +70,38 @@ SINGLETONS: dict[str, list[str]] = {
         "charts.top_skills.conclusion",
     ],
 }
+
+
+# Singleton subtrees translated leaf by leaf: every non-empty string under the
+# listed root is display copy. The front page copy (content.front) is a tree of
+# labels, sentences and templates with placeholders; listing each path here
+# would only invite a forgotten one. English entries with placeholders are
+# manual, like the chart conclusions above.
+SINGLETON_TREES: dict[str, list[str]] = {
+    "content": ["front"],
+}
+
+
+def tree_paths(obj: dict, root: str) -> list[str]:
+    """Dotted paths of every non-empty string leaf under ``obj[root]``, sorted."""
+    out: list[str] = []
+
+    def walk(node, prefix: str) -> None:
+        if isinstance(node, dict):
+            for key, value in node.items():
+                walk(value, f"{prefix}.{key}")
+        elif isinstance(node, str) and node:
+            out.append(prefix)
+
+    walk(obj.get(root), root)
+    return sorted(out)
+
+
+def _singleton_paths(entity: str, obj: dict) -> list[str]:
+    paths = list(SINGLETONS.get(entity, []))
+    for root in SINGLETON_TREES.get(entity, []):
+        paths += tree_paths(obj, root)
+    return paths
 
 
 def _get(obj: dict, path: str):
@@ -172,11 +200,11 @@ def localize_data(data: dict, cache_dir: pathlib.Path) -> dict:
                     en = _load_en(cache_dir, entity, f"{_item_key(item)}__{field}")
                     if en:
                         item[field] = en
-    for entity, paths in SINGLETONS.items():
+    for entity in SINGLETONS:
         obj = out.get(entity)
         if not isinstance(obj, dict):
             continue
-        for path in paths:
+        for path in _singleton_paths(entity, obj):
             if isinstance(_get(obj, path), str):
                 en = _load_en(cache_dir, entity, _singleton_key(path))
                 if en:
@@ -194,8 +222,9 @@ def main() -> int:
         n = translate_collection(entity, items, fields, CACHE, translate_fn)
         print(f"[translate.py] {entity}: {n} fields")
         total += n
-    for entity, paths in SINGLETONS.items():
+    for entity in SINGLETONS:
         obj = json.loads((DATA / f"{entity}.json").read_text(encoding="utf-8"))
+        paths = _singleton_paths(entity, obj)
         n = translate_singleton(entity, obj, paths, CACHE, translate_fn)
         print(f"[translate.py] {entity}: {n} fields")
         total += n

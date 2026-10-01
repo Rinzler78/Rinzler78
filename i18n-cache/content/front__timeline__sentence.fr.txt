@@ -1,0 +1,1 @@
+{count} postes et missions depuis {first}, du plus récent au plus ancien ; chaque ligne mène au détail sur la [page parcours]({journey}).

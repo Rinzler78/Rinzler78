@@ -1,0 +1,1 @@
+**Le niveau est une convention :** {levels}. Le niveau affiché est le plus haut entre celui des heures et celui d'une réalisation attestée.

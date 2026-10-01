@@ -14,6 +14,7 @@ from __future__ import annotations
 import json
 import pathlib
 import re
+import shutil
 import sys
 from typing import Any
 
@@ -33,7 +34,7 @@ _REPO_ROOT = pathlib.Path(__file__).resolve().parent.parent
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
 
-from scripts import charts  # noqa: E402
+from scripts import charts, front, icons, tiles  # noqa: E402
 from scripts.captions import domain_shares, render_conclusions  # noqa: E402
 from scripts.font_outline import outline_text  # noqa: E402
 from scripts.translate import CACHE, localize_data  # noqa: E402
@@ -105,6 +106,14 @@ def load_data() -> dict[str, Any]:
         ),
         "theme": json.loads((DATA / "theme.json").read_text(encoding="utf-8")),
         "content": json.loads((DATA / "content.json").read_text(encoding="utf-8")),
+        "icons": json.loads((DATA / "icons.json").read_text(encoding="utf-8")),
+        "achievements": json.loads(
+            (DATA / "achievements.json").read_text(encoding="utf-8")
+        ),
+        # Only claims attested in the lock are published (ADR-014).
+        "claims_lock": json.loads(
+            (DATA / "claims.lock.json").read_text(encoding="utf-8")
+        ),
         # Hours, levels and periods (ADR-013, ADR-018), committed by the
         # author's local collection. Its activity_as_of is the page's single
         # reference date: generation never reads the clock (ADR-011).
@@ -138,6 +147,8 @@ def enrich(data: dict[str, Any], lang: str = "fr") -> dict[str, Any]:
     # Chart conclusions carry placeholders, never typed figures: fill them
     # from the series above and the level convention (scripts/captions.py).
     render_conclusions(data, lang)
+    # The front page view (ADR-015, ADR-016): every figure computed here.
+    data["front"] = front.build_front(data, lang)
     return data
 
 
@@ -307,41 +318,25 @@ def make_env(data: dict[str, Any]) -> Environment:
             caption=caption,
         )
 
+    # Front page helpers (ADR-016): the icon band and the streak widget.
+    env.globals["skillicons_url"] = lambda ids, mode: icons.skillicons_url(
+        ids, mode, front.BAND_PER_LINE
+    )
+    env.globals["band_width"] = front.band_width
+    env.globals["streak_url"] = lambda mode: front.streak_url(
+        data["profile"]["username"], data["theme"]["tiles"][mode], data["lang"]
+    )
+
     env.globals["chart_journey_share"] = chart_journey_share
     env.globals["chart_domain_split"] = chart_domain_split
     env.globals["chart_top_skills"] = chart_top_skills
 
-    def _chip_ink() -> dict[str, str]:
-        pal = data["theme"]["palette"]
-        return {
-            "text": pal["text"],
-            "muted": pal["text_muted"],
-            "dim": pal["text_dim"],
-            "surface": pal["panel"],
-            "track": pal["panel_alt"],
-            "border": pal["border"],
-            # White reads on both accent steps; the chip fill is the accent,
-            # never a pale tint, so a fixed value is safe here.
-            "on_accent": "#ffffff",
-        }
-
-    def contact_chip(label: str, value: str = "", primary: bool = False) -> str:
-        return charts.chip(
-            label,
-            _chip_ink(),
-            accent=data["theme"]["palette"]["accent"],
-            primary=primary,
-            value=value,
-        )
-
-    env.globals["contact_chip"] = contact_chip
-    env.globals["contact_chips"] = contact_targets(data)
     return env
 
 
-# (template_filename, output_filename, extra_context)
+# (template_filename, output_filename, extra_context): the detail pages' views.
+# The front page tiles are rendered by scripts/tiles.py.
 SVG_TARGETS: list[tuple[str, str, dict]] = [
-    ("header.svg.jinja", "header.svg", {}),
     ("stack_summary.svg.jinja", "stack-summary.svg", {}),
     ("core_expertise.svg.jinja", "core-expertise.svg", {}),
     ("services.svg.jinja", "services.svg", {}),
@@ -358,65 +353,24 @@ SVG_TARGETS: list[tuple[str, str, dict]] = [
 ]
 
 
-def contact_targets(data: dict[str, Any]) -> list[dict[str, str]]:
-    """Resolve each declared contact chip to its label, value and href.
-
-    Labels are display copy and live in `content.json`; the addresses stay in
-    `profile.json`, so neither is duplicated. A chip whose id resolves to
-    nothing is dropped rather than rendered empty — an empty pill on the
-    contact row reads as a broken link.
-    """
-    contacts = data["profile"]["contacts"]
-    links = data["profile"]["links"]
-    digits = contacts["phone"].replace("+", "").replace(" ", "")
-    resolved = {
-        "email": (contacts["email_pro"], f"mailto:{contacts['email_pro']}"),
-        "phone": (contacts["phone"], f"tel:+{digits}"),
-        "whatsapp": ("", f"https://wa.me/{digits}"),
-        "linkedin": ("", links.get("linkedin", "")),
-        "malt": ("", links.get("malt", "")),
-        "pypi": ("", links.get("pypi", "")),
-        "discord": ("", links.get("discord", "")),
-        "twitter": ("", links.get("twitter", "")),
-        "youtube": ("", links.get("youtube", "")),
-        "github": ("", links.get("github", "")),
-    }
-    out: list[dict[str, str]] = []
-    for spec in data["content"]["connect"]["chips"]:
-        value, href = resolved.get(spec["id"], ("", ""))
-        if not href:
-            continue
-        out.append(
-            {
-                "id": spec["id"],
-                "label": spec["label"],
-                "value": value,
-                "href": href,
-                "primary": spec.get("primary", False),
-            }
-        )
-    return out
-
-
-def _render_svgs(env: Environment, out_dir: pathlib.Path) -> None:
+def _render_svgs(env: Environment, out_dir: pathlib.Path, mode: str) -> None:
     out_dir.mkdir(parents=True, exist_ok=True)
     for tpl_name, out_name, ctx in SVG_TARGETS:
         result = env.get_template(tpl_name).render(**ctx)
         (out_dir / out_name).write_text(result, encoding="utf-8")
-    # Contact chips: one SVG per chip, because an SVG served in an <img>
-    # carries a single link and the row has to be clickable per item.
-    for spec in env.globals["contact_chips"]:
-        svg = env.globals["contact_chip"](spec["label"], spec["value"], spec["primary"])
-        (out_dir / f"chip-{spec['id']}.svg").write_text(svg, encoding="utf-8")
+    data = env.globals
+    for name, svg in tiles.render_all(data["front"], data, mode).items():
+        (out_dir / name).write_text(svg, encoding="utf-8")
 
 
 def _render_both_palettes(env: Environment, theme: dict, svg_dir: pathlib.Path) -> None:
     """Render the SVG set twice — dark-first: dark default + light/ override."""
     dark = theme["palette"]
     light = theme.get("palette_light", dark)
-    _render_svgs(env, svg_dir)  # dark is primary → root dir (ADR-009)
+    _render_svgs(env, svg_dir, "dark")  # dark is primary → root dir (ADR-009)
     theme["palette"] = light
-    _render_svgs(env, svg_dir / "light")  # light is the prefers-color-scheme override
+    # light is the prefers-color-scheme override
+    _render_svgs(env, svg_dir / "light", "light")
     theme["palette"] = dark  # restore: the default palette is the dark one
 
 
@@ -444,10 +398,13 @@ def main() -> int:
     print("[generate.py] target: assets/svg/{,dark,en,en/dark}, README(.en).md")
     print()
 
-    # 4 SVG sets: fr×{dark,light} and en×{dark,light}.
+    # 4 SVG sets: fr×{dark,light} and en×{dark,light}. The tree is generated
+    # only: clearing it first drops the views a data change retired (a tile of
+    # a domain or a project that is gone) instead of shipping them stale.
+    shutil.rmtree(SVG_OUT, ignore_errors=True)
     _render_both_palettes(env_fr, fr_data["theme"], SVG_OUT)
     _render_both_palettes(env_en, en_data["theme"], SVG_OUT / "en")
-    print(f"  ✓ assets/svg/(dark|en|en/dark)/*.svg ({len(SVG_TARGETS)} × 4)")
+    print("  ✓ assets/svg/(light|en|en/light)/*.svg")
 
     # FR README (light default, dark via <picture>) + reciprocal EN link.
     README_OUT.write_text(
